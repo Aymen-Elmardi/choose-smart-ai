@@ -23,9 +23,12 @@ const CTASection = () => {
               variant="secondary" 
               size="xl" 
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+              asChild
             >
-              Start the Quiz
-              <ArrowRight className="w-5 h-5" />
+              <a href="/quiz" target="_blank" rel="noopener noreferrer">
+                Start the Quiz
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </Button>
           </div>
         </div>
