@@ -16,11 +16,13 @@ const HeroSection = () => {
               Most businesses choose the wrong provider and overpay. Answer a few simple questions and get a personalized recommendation.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl">
-                Take the Quiz
-                <ArrowRight className="w-5 h-5" />
+              <Button variant="hero" size="xl" asChild>
+                <a href="/quiz" target="_blank" rel="noopener noreferrer">
+                  Take the Quiz
+                  <ArrowRight className="w-5 h-5" />
+                </a>
               </Button>
-              <Button variant="hero-outline" size="xl">
+              <Button variant="hero-outline" size="xl" asChild>
                 <a href="#how-it-works">How it Works</a>
               </Button>
             </div>
