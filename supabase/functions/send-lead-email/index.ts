@@ -187,7 +187,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Sending lead email to production inbox: hello@chosepayments.com");
 
     const emailResponse = await resend.emails.send({
-      from: "ChosePayments <onboarding@resend.dev>",
+      from: "ChosePayments <leads@chosepayments.com>",
       to: "hello@chosepayments.com",
       subject: `New ChosePayments Lead – ${providerName}`,
       html: emailHtml,
