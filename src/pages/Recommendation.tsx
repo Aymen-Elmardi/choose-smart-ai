@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CreditCard, Check, MessageCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
+
 interface QuizAnswers {
   businessType: string;
   salesChannel: string;
@@ -20,6 +21,42 @@ interface Provider {
   reasons: string[];
 }
 
+const readStoredAnswers = (): QuizAnswers | null => {
+  try {
+    const raw = sessionStorage.getItem("quizAnswers");
+    if (!raw) return null;
+
+    const parsed = JSON.parse(raw) as Partial<QuizAnswers>;
+
+    return {
+      businessType: typeof parsed.businessType === "string" ? parsed.businessType : "",
+      salesChannel: typeof parsed.salesChannel === "string" ? parsed.salesChannel : "",
+      monthlyVolume: typeof parsed.monthlyVolume === "string" ? parsed.monthlyVolume : "",
+      avgTransaction: typeof parsed.avgTransaction === "string" ? parsed.avgTransaction : "",
+      international: typeof parsed.international === "string" ? parsed.international : "",
+      recurring: typeof parsed.recurring === "string" ? parsed.recurring : "",
+      priorities: Array.isArray(parsed.priorities)
+        ? parsed.priorities.filter((p): p is string => typeof p === "string")
+        : [],
+      location: typeof parsed.location === "string" ? parsed.location : "",
+    };
+  } catch {
+    return null;
+  }
+};
+
+const isQuizComplete = (a: QuizAnswers) =>
+  Boolean(
+    a.businessType &&
+      a.salesChannel &&
+      a.monthlyVolume &&
+      a.avgTransaction &&
+      a.international &&
+      a.recurring &&
+      a.location &&
+      a.priorities?.length
+  );
+
 const getRecommendation = (answers: QuizAnswers): Provider | null => {
   const {
     businessType,
@@ -31,8 +68,10 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
     location,
   } = answers;
 
-  const sellsOnline = salesChannel === "Online only" || salesChannel === "Both online and in-person";
-  const sellsInPerson = salesChannel === "In-person only" || salesChannel === "Both online and in-person";
+  const sellsOnline =
+    salesChannel === "Online only" || salesChannel === "Both online and in-person";
+  const sellsInPerson =
+    salesChannel === "In-person only" || salesChannel === "Both online and in-person";
   const acceptsInternational = international === "Yes";
   const needsRecurring = recurring === "Yes" || recurring === "Possibly later";
   const isDeveloperFriendly = priorities.includes("Developer-friendly");
@@ -40,24 +79,28 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   const wantsEasySetup = priorities.includes("Easy setup");
   const wantsLowestFees = priorities.includes("Lowest fees");
   const wantsOnlineInPerson = priorities.includes("Online + in-person support");
-  
+
   const isLowVolume = monthlyVolume === "< £5k";
-  const isMediumVolume = monthlyVolume === "£5k–20k" || monthlyVolume === "£20k–50k";
-  const isHighVolume = monthlyVolume === "£50k–100k" || monthlyVolume === "£100k+";
-  const volumeOver20k = monthlyVolume === "£20k–50k" || monthlyVolume === "£50k–100k" || monthlyVolume === "£100k+";
+  const isMediumVolume =
+    monthlyVolume === "£5k–20k" || monthlyVolume === "£20k–50k";
+  const volumeOver20k =
+    monthlyVolume === "£20k–50k" ||
+    monthlyVolume === "£50k–100k" ||
+    monthlyVolume === "£100k+";
   const volumeOver50k = monthlyVolume === "£50k–100k" || monthlyVolume === "£100k+";
-  
-  const isRestaurantOrRetail = businessType === "Restaurant or Café" || businessType === "Retail Shop";
+
+  const isRestaurantOrRetail =
+    businessType === "Restaurant or Café" || businessType === "Retail Shop";
   const isMarketplace = businessType === "Marketplace";
   const isSubscription = businessType === "Subscription Business";
-  const isEcommerce = businessType === "Ecommerce";
   const isUK = location === "UK";
 
   // DATMAN - UK Marketplaces with high volume (simplified since no split payment option in quiz)
   if (isMarketplace && volumeOver20k && isUK && (isDeveloperFriendly || wantsLowestFees)) {
     return {
       name: "Datman",
-      description: "Datman is ideal for UK marketplaces needing built-in revenue share and instant multi-party splitting at the point of transaction. Perfect for platforms scaling quickly and looking to earn income from every sale.",
+      description:
+        "Datman is ideal for UK marketplaces needing built-in revenue share and instant multi-party splitting at the point of transaction. Perfect for platforms scaling quickly and looking to earn income from every sale.",
       reasons: [
         "Your marketplace business model requires complex payment flows",
         "Your monthly volume of " + monthlyVolume + " qualifies for competitive rates",
@@ -71,7 +114,8 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   if (isMarketplace && volumeOver50k && acceptsInternational) {
     return {
       name: "Adyen",
-      description: "Adyen is a global payment platform built for enterprise marketplaces and platforms processing high volumes internationally.",
+      description:
+        "Adyen is a global payment platform built for enterprise marketplaces and platforms processing high volumes internationally.",
       reasons: [
         "Your marketplace handles international customers",
         "Your volume of " + monthlyVolume + " meets enterprise thresholds",
@@ -85,7 +129,8 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   if (sellsOnline && (acceptsInternational || needsRecurring || isDeveloperFriendly || wantsGlobalReach)) {
     return {
       name: "Stripe",
-      description: "Stripe is the leading payment platform for online businesses, offering powerful APIs and seamless international payment support.",
+      description:
+        "Stripe is the leading payment platform for online businesses, offering powerful APIs and seamless international payment support.",
       reasons: [
         sellsOnline ? "You sell products or services online" : "",
         acceptsInternational ? "You accept international customers" : "",
@@ -100,7 +145,8 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   if (isRestaurantOrRetail || sellsInPerson || wantsOnlineInPerson) {
     return {
       name: "Square",
-      description: "Square provides an all-in-one solution for businesses that sell in-person, with easy-to-use point-of-sale hardware and integrated online tools.",
+      description:
+        "Square provides an all-in-one solution for businesses that sell in-person, with easy-to-use point-of-sale hardware and integrated online tools.",
       reasons: [
         isRestaurantOrRetail ? "Perfect for your " + businessType.toLowerCase() + " business" : "",
         sellsInPerson ? "Optimized for in-person sales" : "",
@@ -115,7 +161,8 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   if (isLowVolume && sellsInPerson && wantsEasySetup) {
     return {
       name: "SumUp",
-      description: "SumUp is perfect for small businesses processing lower volumes who want a simple, affordable card reader with no monthly fees.",
+      description:
+        "SumUp is perfect for small businesses processing lower volumes who want a simple, affordable card reader with no monthly fees.",
       reasons: [
         "Your monthly volume under £5k qualifies for their simple pricing",
         "Ideal for in-person transactions",
@@ -129,7 +176,8 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   if (isSubscription || needsRecurring || isDeveloperFriendly || (isMediumVolume && sellsOnline)) {
     return {
       name: "Braintree",
-      description: "Braintree (a PayPal service) offers robust subscription billing and developer tools for businesses needing flexible payment solutions.",
+      description:
+        "Braintree (a PayPal service) offers robust subscription billing and developer tools for businesses needing flexible payment solutions.",
       reasons: [
         isSubscription ? "Built for subscription-based businesses" : "",
         needsRecurring ? "Strong recurring billing infrastructure" : "",
@@ -144,7 +192,8 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   if (isLowVolume || wantsEasySetup || businessType === "Other") {
     return {
       name: "PayPal",
-      description: "PayPal is trusted by millions of buyers worldwide, making it ideal for businesses that want instant credibility and easy checkout.",
+      description:
+        "PayPal is trusted by millions of buyers worldwide, making it ideal for businesses that want instant credibility and easy checkout.",
       reasons: [
         "Trusted by customers worldwide for secure payments",
         "Quick and easy setup with no technical knowledge required",
@@ -159,25 +208,202 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
 };
 
 const Recommendation = () => {
-  const [answers, setAnswers] = useState<QuizAnswers | null>(null);
-  const [recommendation, setRecommendation] = useState<Provider | null>(null);
-  const [noMatch, setNoMatch] = useState(false);
+  const [answers] = useState<QuizAnswers | null>(() => readStoredAnswers());
 
-  useEffect(() => {
-    const storedAnswers = sessionStorage.getItem("quizAnswers");
-    if (storedAnswers) {
-      const parsed = JSON.parse(storedAnswers) as QuizAnswers;
-      setAnswers(parsed);
-      const result = getRecommendation(parsed);
-      if (result) {
-        setRecommendation(result);
-      } else {
-        setNoMatch(true);
-      }
-    } else {
-      setNoMatch(true);
-    }
-  }, []);
+  const quizComplete = answers ? isQuizComplete(answers) : false;
+  const recommendation = answers && quizComplete ? getRecommendation(answers) : null;
+
+  const showNeedsQuiz = !answers || !quizComplete;
+  const showNoMatch = !!answers && quizComplete && !recommendation;
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <a href="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+                <CreditCard className="w-4 h-4 text-primary-foreground" />
+              </div>
+              <span className="font-bold text-foreground">ChosePayments</span>
+            </a>
+            <a
+              href="/"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Back to Home
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
+        <div className="text-center mb-8 md:mb-10 animate-fade-up">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+            Your Recommended Payment Provider
+          </h1>
+          <p className="text-lg text-muted-foreground">
+            Based on your answers, here's the best fit for your business.
+          </p>
+        </div>
+
+        {/* If user lands here without completing the quiz */}
+        {showNeedsQuiz && (
+          <Card className="border border-border shadow-elegant animate-fade-up animation-delay-100">
+            <CardContent className="p-8 md:p-10 text-center">
+              <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
+                Please complete the quiz to get your recommendation
+              </h2>
+              <p className="text-muted-foreground max-w-md mx-auto mb-6">
+                Your recommendation is generated from your quiz answers.
+              </p>
+              <Button asChild variant="hero" size="lg">
+                <a href="/quiz">Go to the quiz</a>
+              </Button>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Recommendation Card */}
+        {recommendation && (
+          <>
+            <Card className="border-2 border-primary/20 shadow-elegant animate-fade-up animation-delay-100">
+              <CardContent className="p-8 md:p-10">
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4">
+                    <CreditCard className="w-8 h-8 text-primary" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                    {recommendation.name}
+                  </h2>
+                  <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+                    {recommendation.description}
+                  </p>
+                </div>
+
+                <div className="bg-muted/50 rounded-xl p-6 md:p-8">
+                  <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
+                    Why {recommendation.name} is right for you
+                  </h3>
+                  <ul className="space-y-3">
+                    {recommendation.reasons.map((reason, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
+                          <Check className="w-3 h-3 text-primary" />
+                        </div>
+                        <span className="text-foreground">{reason}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Lead Capture Form - Below Recommendation */}
+            <div className="mt-10 animate-fade-up animation-delay-150">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-semibold text-foreground mb-2">
+                  Get connected to {recommendation.name}
+                </h3>
+                <p className="text-muted-foreground max-w-md mx-auto">
+                  If you'd like us to connect you to this provider, just share your contact details below. We already have your business information from the quiz.
+                </p>
+              </div>
+
+              <Card className="border border-border/50">
+                <CardContent className="p-6 md:p-8">
+                  <LeadCaptureForm
+                    quizAnswers={answers}
+                    recommendedProvider={recommendation.name}
+                    logicPath="recommendation"
+                  />
+
+                  {/* Primary CTA */}
+                  <div className="mt-8 text-center">
+                    <Button variant="hero" size="xl">
+                      Connect me to this provider
+                      <ArrowRight className="w-5 h-5" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </>
+        )}
+
+        {/* No Match Fallback */}
+        {showNoMatch && (
+          <>
+            <Card className="border-2 border-border shadow-elegant animate-fade-up animation-delay-100">
+              <CardContent className="p-8 md:p-10">
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-muted mb-4">
+                    <MessageCircle className="w-8 h-8 text-muted-foreground" />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                    We couldn't find an exact match
+                  </h2>
+                  <p className="text-muted-foreground text-lg max-w-md mx-auto">
+                    Based on your answers, we'd like to help you personally. Speak directly with one of our payment experts.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Lead Capture Form - Below Fallback Message */}
+            <div className="mt-10 animate-fade-up animation-delay-150">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-semibold text-foreground mb-2">
+                  Let us help you find the right fit
+                </h3>
+                <p className="text-muted-foreground max-w-md mx-auto">
+                  If you'd like us to connect you with a payment expert, just share your contact details below. We already have your business information from the quiz.
+                </p>
+              </div>
+
+              <Card className="border border-border/50">
+                <CardContent className="p-6 md:p-8">
+                  <LeadCaptureForm
+                    quizAnswers={answers}
+                    recommendedProvider={null}
+                    logicPath="fallback"
+                  />
+
+                  {/* Fallback CTA */}
+                  <div className="mt-8 text-center">
+                    <Button variant="hero" size="xl">
+                      Speak to one of our experts
+                      <ArrowRight className="w-5 h-5" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </>
+        )}
+
+        {/* Retake Quiz CTA */}
+        {!showNeedsQuiz && (
+          <div className="text-center mt-10 animate-fade-up animation-delay-200">
+            <p className="text-muted-foreground mb-4">Not what you expected?</p>
+            <a
+              href="/quiz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary font-medium hover:underline"
+            >
+              Retake the quiz →
+            </a>
+          </div>
+        )}
+      </main>
+    </div>
+  );
+};
+
+export default Recommendation;
 
   return (
     <div className="min-h-screen bg-background">
