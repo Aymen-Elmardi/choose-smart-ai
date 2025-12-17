@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CreditCard, ArrowRight, ArrowLeft, Check, Loader2 } from "lucide-react";
+import { CreditCard, ArrowRight, ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
 // Types
@@ -97,28 +95,38 @@ const QUESTIONS = [
   },
 ];
 
-const TOTAL_STEPS = QUESTIONS.length + 2; // Welcome + questions + lead capture
+const TOTAL_STEPS = QUESTIONS.length + 1; // Welcome + questions (lead capture moved to recommendation page)
 
 const Quiz = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_ANSWERS);
-  const [isLoading, setIsLoading] = useState(false);
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
   const progress = ((currentStep) / (TOTAL_STEPS - 1)) * 100;
 
   const handleOptionSelect = (questionId: string, option: string, multiSelect?: boolean) => {
+    const updatedAnswers = { ...answers };
+    
     if (multiSelect) {
       const currentValues = answers[questionId as keyof QuizAnswers] as string[];
       const newValues = currentValues.includes(option)
         ? currentValues.filter((v) => v !== option)
         : [...currentValues, option];
-      setAnswers({ ...answers, [questionId]: newValues });
+      updatedAnswers[questionId as keyof QuizAnswers] = newValues as any;
+      setAnswers(updatedAnswers);
     } else {
-      setAnswers({ ...answers, [questionId]: option });
-      // Auto-advance for single select
-      setTimeout(() => setCurrentStep((prev) => prev + 1), 300);
+      updatedAnswers[questionId as keyof QuizAnswers] = option as any;
+      setAnswers(updatedAnswers);
+      // Auto-advance for single select - check if last question
+      setTimeout(() => {
+        if (currentStep === QUESTIONS.length) {
+          // Last question - save and navigate
+          sessionStorage.setItem("quizAnswers", JSON.stringify(updatedAnswers));
+          navigate("/recommendation");
+        } else {
+          setCurrentStep((prev) => prev + 1);
+        }
+      }, 300);
     }
   };
 
@@ -128,7 +136,14 @@ const Quiz = () => {
     } else if (currentStep <= QUESTIONS.length) {
       const question = QUESTIONS[currentStep - 1];
       if (question.multiSelect) {
-        setCurrentStep((prev) => prev + 1);
+        // Check if this is the last question
+        if (currentStep === QUESTIONS.length) {
+          // Save and navigate to recommendation
+          sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
+          navigate("/recommendation");
+        } else {
+          setCurrentStep((prev) => prev + 1);
+        }
       }
     }
   };
@@ -137,35 +152,6 @@ const Quiz = () => {
     if (currentStep > 0) {
       setCurrentStep((prev) => prev - 1);
     }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validate form
-    const errors: Record<string, string> = {};
-    if (!answers.fullName.trim()) errors.fullName = "Name is required";
-    if (!answers.businessName.trim()) errors.businessName = "Business name is required";
-    if (!answers.email.trim()) errors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(answers.email)) {
-      errors.email = "Please enter a valid email";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-
-    setIsLoading(true);
-    // Simulate processing
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    
-    // Store answers in sessionStorage for results page
-    sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
-    
-    // Navigate to recommendation page
-    setIsLoading(false);
-    navigate("/recommendation");
   };
 
   const canProceed = () => {
@@ -201,118 +187,6 @@ const Quiz = () => {
               Start Quiz
               <ArrowRight className="w-5 h-5" />
             </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Lead Capture Screen
-  if (currentStep > QUESTIONS.length) {
-    return (
-      <div className="min-h-screen bg-background flex flex-col">
-        <QuizHeader progress={100} showBack onBack={handleBack} />
-        <div className="flex-1 flex items-center justify-center p-6">
-          <div className="max-w-md w-full animate-fade-up">
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                {isLoading ? (
-                  <Loader2 className="w-8 h-8 text-primary animate-spin" />
-                ) : (
-                  <Check className="w-8 h-8 text-primary" />
-                )}
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                We're Preparing Your Recommendation
-              </h2>
-              <p className="text-muted-foreground">
-                Enter your details to receive the best payment provider for your business.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label htmlFor="fullName">Full Name</Label>
-                <Input
-                  id="fullName"
-                  value={answers.fullName}
-                  onChange={(e) => {
-                    setAnswers({ ...answers, fullName: e.target.value });
-                    setFormErrors({ ...formErrors, fullName: "" });
-                  }}
-                  placeholder="John Smith"
-                  className={cn(formErrors.fullName && "border-destructive")}
-                />
-                {formErrors.fullName && (
-                  <p className="text-sm text-destructive mt-1">{formErrors.fullName}</p>
-                )}
-              </div>
-
-              <div>
-                <Label htmlFor="businessName">Business Name</Label>
-                <Input
-                  id="businessName"
-                  value={answers.businessName}
-                  onChange={(e) => {
-                    setAnswers({ ...answers, businessName: e.target.value });
-                    setFormErrors({ ...formErrors, businessName: "" });
-                  }}
-                  placeholder="Acme Ltd"
-                  className={cn(formErrors.businessName && "border-destructive")}
-                />
-                {formErrors.businessName && (
-                  <p className="text-sm text-destructive mt-1">{formErrors.businessName}</p>
-                )}
-              </div>
-
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={answers.email}
-                  onChange={(e) => {
-                    setAnswers({ ...answers, email: e.target.value });
-                    setFormErrors({ ...formErrors, email: "" });
-                  }}
-                  placeholder="john@acme.com"
-                  className={cn(formErrors.email && "border-destructive")}
-                />
-                {formErrors.email && (
-                  <p className="text-sm text-destructive mt-1">{formErrors.email}</p>
-                )}
-              </div>
-
-              <div>
-                <Label htmlFor="volume">Monthly Volume</Label>
-                <Input
-                  id="volume"
-                  value={answers.monthlyVolume}
-                  disabled
-                  className="bg-muted"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                variant="hero"
-                size="xl"
-                className="w-full mt-6"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Processing...
-                  </>
-                ) : (
-                  <>
-                    Show My Recommendation
-                    <ArrowRight className="w-5 h-5" />
-                  </>
-                )}
-              </Button>
-            </form>
           </div>
         </div>
       </div>
