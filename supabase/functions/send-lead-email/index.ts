@@ -1,3 +1,7 @@
+// ChosePayments Lead Email Function - Production Version
+// Last updated: 2024-12-17
+// Recipient: hello@chosepayments.com (HARDCODED - DO NOT CHANGE)
+
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
@@ -9,17 +13,14 @@ const corsHeaders = {
 };
 
 interface LeadEmailRequest {
-  // Contact info
   fullName: string;
   email: string;
   phone?: string;
   businessName?: string;
   businessWebsite?: string;
-  // Recommendation
   recommendedProvider: string | null;
   reasons?: string[];
   logicPath: string;
-  // Quiz answers
   businessType: string;
   salesChannel: string;
   monthlyVolume: string;
@@ -28,7 +29,6 @@ interface LeadEmailRequest {
   recurring: string;
   priorities: string[];
   region: string;
-  // Enrichment data
   enrichment: EnrichmentData | null;
 }
 
@@ -183,11 +183,12 @@ const handler = async (req: Request): Promise<Response> => {
 </html>
     `;
 
-    console.log("Sending email to hello@chosepayments.com");
+    // PRODUCTION RECIPIENT - HARDCODED
+    console.log("Sending lead email to production inbox: hello@chosepayments.com");
 
     const emailResponse = await resend.emails.send({
       from: "ChosePayments <onboarding@resend.dev>",
-      to: ["hello@chosepayments.com"],
+      to: "hello@chosepayments.com",
       subject: `New ChosePayments Lead – ${providerName}`,
       html: emailHtml,
     });
