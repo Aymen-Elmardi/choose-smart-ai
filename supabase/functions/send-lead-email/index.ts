@@ -3,6 +3,14 @@ import { Resend } from "https://esm.sh/resend@2.0.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
+// ========================================
+// EMAIL RECIPIENT CONFIGURATION
+// Change this to switch between test and production
+// Production: "hello@chosepayments.com"
+// Testing:    "aymen.elmardi@gmail.com"
+// ========================================
+const RECIPIENT_EMAIL = "aymen.elmardi@gmail.com";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -183,11 +191,11 @@ const handler = async (req: Request): Promise<Response> => {
 </html>
     `;
 
-    console.log("Sending email to hello@chosepayments.com");
+    console.log(`Sending email to ${RECIPIENT_EMAIL}`);
 
     const emailResponse = await resend.emails.send({
       from: "ChosePayments <onboarding@resend.dev>",
-      to: ["hello@chosepayments.com"],
+      to: [RECIPIENT_EMAIL],
       subject: `New ChosePayments Lead – ${providerName}`,
       html: emailHtml,
     });
