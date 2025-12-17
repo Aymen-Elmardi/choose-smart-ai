@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Quiz from "./pages/Quiz";
 import Recommendation from "./pages/Recommendation";
+import BestPaymentProcessorUK from "./pages/BestPaymentProcessorUK";
 import NotFound from "./pages/NotFound";
 import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/recommendation" element={<Recommendation />} />
+          <Route path="/best-payment-processor-uk" element={<BestPaymentProcessorUK />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
