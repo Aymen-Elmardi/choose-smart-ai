@@ -32,6 +32,9 @@ const BestPaymentApiUK = () => {
         <section className="section-padding pt-24 md:pt-32">
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
+              <p className="text-muted-foreground mb-4">
+                Most businesses overpay on card fees without realising it.
+              </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 Best Payment APIs for UK Developers (2025 Guide)
               </h1>
@@ -46,12 +49,18 @@ const BestPaymentApiUK = () => {
                   This guide compares the top payment APIs based on real developer concerns.
                 </p>
               </div>
-              <Button size="xl" asChild>
-                <Link to="/quiz?start=true">
-                  Take the Quiz — Find the Best API for Your Build
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+              <div className="flex flex-col items-center">
+                <Button size="xl" asChild>
+                  <Link to="/quiz?start=true">
+                    Answer a few quick questions
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+                <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
+              </div>
+              <p className="text-sm text-muted-foreground mt-6">
+                Independent guidance. We're paid by providers — not by you.
+              </p>
             </div>
           </div>
         </section>
@@ -389,19 +398,22 @@ const BestPaymentApiUK = () => {
               
               <div className="relative z-10">
                 <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-                  Not sure which payment API fits your build? Our quiz recommends the best provider for your app based on developer needs, UK requirements, and your business model.
+                  Not sure which payment API fits your build? Tell us a bit about your project and we'll match you with the right provider based on developer needs, UK requirements, and your business model.
                 </p>
-                <Button 
-                  variant="secondary" 
-                  size="xl" 
-                  className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-                  asChild
-                >
-                  <Link to="/quiz?start=true">
-                    Find the Right API
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
+                <div className="flex flex-col items-center">
+                  <Button 
+                    variant="secondary" 
+                    size="xl" 
+                    className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                    asChild
+                  >
+                    <Link to="/quiz?start=true">
+                      Answer a few quick questions
+                      <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  </Button>
+                  <span className="text-sm text-primary-foreground/70 mt-3">Takes under 1 minute • No spam</span>
+                </div>
               </div>
             </div>
           </div>
@@ -412,7 +424,7 @@ const BestPaymentApiUK = () => {
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-lg text-muted-foreground">
-                Developers often default to Stripe because it's familiar — but the best payment API depends on the specifics of your project. A retail POS app, a marketplace, and a subscription SaaS all have different requirements. Our recommendation engine helps you choose the right provider from day one.
+                Developers often default to Stripe because it's familiar — but the best payment API depends on the specifics of your project. A retail POS app, a marketplace, and a subscription SaaS all have different requirements. We help you choose the right provider from day one.
               </p>
             </div>
           </div>

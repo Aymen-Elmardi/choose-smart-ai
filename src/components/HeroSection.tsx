@@ -9,20 +9,26 @@ const HeroSection = () => {
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-up">
+            <p className="text-muted-foreground mb-4">
+              Most businesses overpay on card fees without realising it.
+            </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight text-balance">
               Find the Best Payment Provider for Your Business in{" "}
               <span className="text-primary">60 Seconds</span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl">
-              Most businesses choose the wrong provider and overpay. Answer a few simple questions and get a personalized recommendation.
+              Most businesses choose the wrong provider and overpay. Tell us a bit about your business and get a personalised match.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="xl" asChild>
-                <Link to="/quiz?start=true">
-                  Take the Quiz
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+              <div className="flex flex-col items-start">
+                <Button variant="hero" size="xl" asChild>
+                  <Link to="/quiz?start=true">
+                    Answer a few quick questions
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+                <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
+              </div>
               <Button variant="hero-outline" size="xl" asChild>
                 <a href="#how-it-works">How it Works</a>
               </Button>
@@ -37,6 +43,9 @@ const HeroSection = () => {
                 No signup required
               </div>
             </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Independent guidance. We're paid by providers — not by you.
+            </p>
           </div>
           
           <div className="animate-fade-up-delay-1 lg:pl-8">

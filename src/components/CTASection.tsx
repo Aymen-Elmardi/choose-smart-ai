@@ -15,22 +15,28 @@ const CTASection = () => {
           
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
-              Ready to Choose the Best Payment Provider?
+              Ready to Find the Right Payment Provider?
             </h2>
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-              Take the free 60-second quiz and get a tailored recommendation.
+              Tell us a bit about your business and get a tailored match in under 60 seconds.
             </p>
-            <Button 
-              variant="secondary" 
-              size="xl" 
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-              asChild
-            >
-              <Link to="/quiz?start=true">
-                Start the Quiz
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
+            <div className="flex flex-col items-center">
+              <Button 
+                variant="secondary" 
+                size="xl" 
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                asChild
+              >
+                <Link to="/quiz?start=true">
+                  Answer a few quick questions
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              <span className="text-sm text-primary-foreground/70 mt-3">Takes under 1 minute • No spam</span>
+            </div>
+            <p className="text-sm text-primary-foreground/60 mt-6">
+              Independent guidance. We're paid by providers — not by you.
+            </p>
           </div>
         </div>
       </div>

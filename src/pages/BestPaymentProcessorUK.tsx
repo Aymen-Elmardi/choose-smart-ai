@@ -41,18 +41,27 @@ const BestPaymentProcessorUK = () => {
         <section className="section-padding pt-24 md:pt-32">
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
+              <p className="text-muted-foreground mb-4">
+                Most businesses overpay on card fees without realising it.
+              </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 Best Payment Processor for Small Businesses in the UK (2025 Guide)
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                 Choosing a payment provider can be confusing — every company promises "simple fees" and "fast setup," but real costs vary based on your business type, payment volume, and how customers buy from you. This guide breaks everything down clearly, using real-world considerations instead of generic marketing claims.
               </p>
-              <Button size="xl" asChild>
-                <Link to="/quiz?start=true">
-                  Take the Quiz — Find Your Best Match
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
+              <div className="flex flex-col items-center">
+                <Button size="xl" asChild>
+                  <Link to="/quiz?start=true">
+                    Answer a few quick questions
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+                <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
+              </div>
+              <p className="text-sm text-muted-foreground mt-6">
+                Independent guidance. We're paid by providers — not by you.
+              </p>
             </div>
           </div>
         </section>
@@ -300,19 +309,22 @@ const BestPaymentProcessorUK = () => {
               
               <div className="relative z-10">
                 <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-                  Want a personalised recommendation? Answer a few simple questions and we'll match you with the right payment provider.
+                  Want to find the right provider for your business? Tell us a bit about what you need and we'll match you instantly.
                 </p>
-                <Button 
-                  variant="secondary" 
-                  size="xl" 
-                  className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-                  asChild
-                >
-                  <Link to="/quiz?start=true">
-                    Take the Quiz
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Link>
-                </Button>
+                <div className="flex flex-col items-center">
+                  <Button 
+                    variant="secondary" 
+                    size="xl" 
+                    className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                    asChild
+                  >
+                    <Link to="/quiz?start=true">
+                      Answer a few quick questions
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Link>
+                  </Button>
+                  <span className="text-sm text-primary-foreground/70 mt-3">Takes under 1 minute • No spam</span>
+                </div>
               </div>
             </div>
           </div>
@@ -323,10 +335,10 @@ const BestPaymentProcessorUK = () => {
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                How Our Recommendation Works
+                How We Match You to the Right Provider
               </h2>
               <p className="text-lg text-muted-foreground">
-                Our quiz analyses your business type, selling channels, transaction size, monthly volume, industry requirements, and contract preferences. We then recommend the most suitable provider based on real payment logic, not sponsorships.
+                We analyse your business type, selling channels, transaction size, monthly volume, industry requirements, and contract preferences. We then match you with the most suitable provider based on real payment logic, not sponsorships.
               </p>
             </div>
           </div>
