@@ -183,11 +183,11 @@ const handler = async (req: Request): Promise<Response> => {
 </html>
     `;
 
-    console.log("Sending email to aymen.elmardi@gmail.com");
+    console.log("Sending email to hello@chosepayments.com");
 
     const emailResponse = await resend.emails.send({
       from: "ChosePayments <onboarding@resend.dev>",
-      to: ["aymen.elmardi@gmail.com"],
+      to: ["hello@chosepayments.com"],
       subject: `New ChosePayments Lead – ${providerName}`,
       html: emailHtml,
     });
