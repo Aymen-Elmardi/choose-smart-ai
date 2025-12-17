@@ -5,13 +5,13 @@ const steps = [
     icon: ClipboardList,
     step: "01",
     title: "Tell Us About Your Business",
-    description: "Answer a few simple questions in our 30-60 second quiz about your business type, volume, and needs.",
+    description: "Answer a few quick questions (under 60 seconds) about your business type, volume, and needs.",
   },
   {
     icon: Sparkles,
     step: "02",
-    title: "Get a Personalized Recommendation",
-    description: "Our algorithm analyzes your responses and matches you with the best payment providers for your situation.",
+    title: "See Your Best Option",
+    description: "Our algorithm analyzes your responses and matches you with the right payment provider for your situation.",
   },
   {
     icon: Handshake,

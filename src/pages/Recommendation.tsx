@@ -294,10 +294,10 @@ const Recommendation = () => {
       <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
         <div className="text-center mb-8 md:mb-10 animate-fade-up">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Your Recommended Payment Provider
+            Your Best Option
           </h1>
           <p className="text-lg text-muted-foreground">
-            Based on your answers, here's the best fit for your business.
+            Based on your answers, here's the right provider for your business.
           </p>
         </div>
 
@@ -306,13 +306,13 @@ const Recommendation = () => {
           <Card className="border border-border shadow-elegant animate-fade-up animation-delay-100">
             <CardContent className="p-8 md:p-10 text-center">
               <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
-                Please complete the quiz to get your recommendation
+                Please answer a few questions first
               </h2>
               <p className="text-muted-foreground max-w-md mx-auto mb-6">
-                Your recommendation is generated from your quiz answers.
+                Your best option is generated from your answers.
               </p>
               <Button asChild variant="hero" size="lg">
-                <a href="/quiz?start=true">Go to the quiz</a>
+                <a href="/quiz?start=true">Answer a few quick questions</a>
               </Button>
             </CardContent>
           </Card>
@@ -365,7 +365,7 @@ const Recommendation = () => {
                       Thank you — you're all set.
                     </h3>
                     <p className="text-muted-foreground max-w-md mx-auto">
-                      We'll pass your details to the recommended provider (and other suitable options) so you'll hear back within 24 hours.
+                      We'll pass your details to the provider (and other suitable options) so you'll hear back within 24 hours.
                     </p>
                     <p className="text-muted-foreground max-w-md mx-auto mt-4">
                       Payment fees directly impact your profits, and we're here to help you keep more of what you earn.
@@ -379,7 +379,7 @@ const Recommendation = () => {
                       Get connected to {recommendation.name}
                     </h3>
                     <p className="text-muted-foreground max-w-md mx-auto">
-                      If you'd like us to connect you to this provider, just share your contact details below. We already have your business information from the quiz.
+                      If you'd like us to connect you to this provider, just share your contact details below. We already have your business information from your answers.
                     </p>
                   </div>
 
@@ -453,7 +453,7 @@ const Recommendation = () => {
                       Thank you — you're all set.
                     </h3>
                     <p className="text-muted-foreground max-w-md mx-auto">
-                      We'll pass your details to the recommended provider (and other suitable options) so you'll hear back within 24 hours.
+                      We'll pass your details to the provider (and other suitable options) so you'll hear back within 24 hours.
                     </p>
                     <p className="text-muted-foreground max-w-md mx-auto mt-4">
                       Payment fees directly impact your profits, and we're here to help you keep more of what you earn.
@@ -467,7 +467,7 @@ const Recommendation = () => {
                       Let us help you find the right fit
                     </h3>
                     <p className="text-muted-foreground max-w-md mx-auto">
-                      If you'd like us to connect you with a payment expert, just share your contact details below. We already have your business information from the quiz.
+                      If you'd like us to connect you with a payment expert, just share your contact details below. We already have your business information from your answers.
                     </p>
                   </div>
 
@@ -517,7 +517,7 @@ const Recommendation = () => {
               href="/quiz?start=true"
               className="text-primary font-medium hover:underline"
             >
-              Retake the quiz →
+              Answer again →
             </a>
           </div>
         )}

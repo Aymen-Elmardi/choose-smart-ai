@@ -32,18 +32,27 @@ const StripeVsSquareVsPaypal = () => {
         <section className="section-padding pt-24 md:pt-32">
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
+              <p className="text-muted-foreground mb-4">
+                Most businesses overpay on card fees without realising it.
+              </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 Stripe vs Square vs PayPal — Which Is Best for UK Businesses (2025)?
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                 Stripe, Square, and PayPal are the most commonly compared payment processors in the UK — but they're designed for different types of businesses. This guide gives you a clear, unbiased breakdown based on features, fees, and real-world use cases.
               </p>
-              <Button size="xl" asChild>
-                <Link to="/quiz?start=true">
-                  Take the Quiz — Get Your Recommendation
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+              <div className="flex flex-col items-center">
+                <Button size="xl" asChild>
+                  <Link to="/quiz?start=true">
+                    Answer a few quick questions
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+                <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
+              </div>
+              <p className="text-sm text-muted-foreground mt-6">
+                Independent guidance. We're paid by providers — not by you.
+              </p>
             </div>
           </div>
         </section>
@@ -387,19 +396,22 @@ const StripeVsSquareVsPaypal = () => {
               
               <div className="relative z-10">
                 <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-                  Still unsure which provider fits your business? Our quiz gives you a personalised recommendation in under a minute.
+                  Still unsure which provider fits your business? Tell us a bit about what you need and we'll match you instantly.
                 </p>
-                <Button 
-                  variant="secondary" 
-                  size="xl" 
-                  className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-                  asChild
-                >
-                  <Link to="/quiz?start=true">
-                    Take the Quiz
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
+                <div className="flex flex-col items-center">
+                  <Button 
+                    variant="secondary" 
+                    size="xl" 
+                    className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                    asChild
+                  >
+                    <Link to="/quiz?start=true">
+                      Answer a few quick questions
+                      <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  </Button>
+                  <span className="text-sm text-primary-foreground/70 mt-3">Takes under 1 minute • No spam</span>
+                </div>
               </div>
             </div>
           </div>
@@ -410,7 +422,7 @@ const StripeVsSquareVsPaypal = () => {
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-lg text-muted-foreground">
-                There's no single "best" provider — Stripe, Square, and PayPal each serve different business models. The right choice depends on how you sell, your volume, and your growth plans. Our tool helps you make the right decision instantly.
+                There's no single "best" provider — Stripe, Square, and PayPal each serve different business models. The right choice depends on how you sell, your volume, and your growth plans. We help you make the right decision instantly.
               </p>
             </div>
           </div>

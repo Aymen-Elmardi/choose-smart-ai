@@ -23,14 +23,14 @@ const Header = () => {
             </a>
             <Button variant="hero" size="default" asChild>
               <Link to="/quiz?start=true">
-                Take the Quiz
+                Answer a few quick questions
               </Link>
             </Button>
           </nav>
 
           <Button variant="hero" size="sm" className="md:hidden" asChild>
             <Link to="/quiz?start=true">
-              Start Quiz
+              Get Started
             </Link>
           </Button>
         </div>
