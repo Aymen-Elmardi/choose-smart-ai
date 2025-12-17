@@ -48,7 +48,7 @@ const BestPaymentProcessorUK = () => {
                 Choosing a payment provider can be confusing — every company promises "simple fees" and "fast setup," but real costs vary based on your business type, payment volume, and how customers buy from you. This guide breaks everything down clearly, using real-world considerations instead of generic marketing claims.
               </p>
               <Button size="xl" asChild>
-                <Link to="/quiz">
+                <Link to="/quiz?start=true">
                   Take the Quiz — Find Your Best Match
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
@@ -308,7 +308,7 @@ const BestPaymentProcessorUK = () => {
                   className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                   asChild
                 >
-                  <Link to="/quiz">
+                  <Link to="/quiz?start=true">
                     Take the Quiz
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>

@@ -22,14 +22,14 @@ const Header = () => {
               Why Us
             </a>
             <Button variant="hero" size="default" asChild>
-              <Link to="/quiz">
+              <Link to="/quiz?start=true">
                 Take the Quiz
               </Link>
             </Button>
           </nav>
 
           <Button variant="hero" size="sm" className="md:hidden" asChild>
-            <Link to="/quiz">
+            <Link to="/quiz?start=true">
               Start Quiz
             </Link>
           </Button>

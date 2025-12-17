@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { CreditCard, ArrowRight, ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -100,7 +100,9 @@ const TOTAL_STEPS = QUESTIONS.length + 1; // Welcome + questions (lead capture m
 
 const Quiz = () => {
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(0);
+  const [searchParams] = useSearchParams();
+  const shouldStartDirectly = searchParams.get("start") === "true";
+  const [currentStep, setCurrentStep] = useState(shouldStartDirectly ? 1 : 0);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_ANSWERS);
 
   // Scroll to top and mark quiz start when component mounts

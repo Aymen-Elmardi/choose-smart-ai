@@ -18,7 +18,7 @@ const HeroSection = () => {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="xl" asChild>
-                <Link to="/quiz">
+                <Link to="/quiz?start=true">
                   Take the Quiz
                   <ArrowRight className="w-5 h-5" />
                 </Link>
