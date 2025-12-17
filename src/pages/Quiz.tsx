@@ -117,16 +117,19 @@ const Quiz = () => {
     } else {
       updatedAnswers[questionId as keyof QuizAnswers] = option as any;
       setAnswers(updatedAnswers);
-      // Auto-advance for single select - check if last question
-      setTimeout(() => {
-        if (currentStep === QUESTIONS.length) {
-          // Last question - save and navigate
-          sessionStorage.setItem("quizAnswers", JSON.stringify(updatedAnswers));
-          navigate("/recommendation");
-        } else {
+      
+      // Check if this is the last question
+      if (currentStep === QUESTIONS.length) {
+        // Last question - save synchronously and navigate immediately
+        console.log("Saving quiz answers:", updatedAnswers);
+        sessionStorage.setItem("quizAnswers", JSON.stringify(updatedAnswers));
+        navigate("/recommendation");
+      } else {
+        // Auto-advance with visual feedback delay
+        setTimeout(() => {
           setCurrentStep((prev) => prev + 1);
-        }
-      }, 300);
+        }, 300);
+      }
     }
   };
 
