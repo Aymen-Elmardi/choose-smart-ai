@@ -18,8 +18,8 @@ const valueProps = [
   },
   {
     icon: MapPin,
-    title: "Made for UK Businesses",
-    description: "Tailored recommendations for UK businesses. Global support coming soon.",
+    title: "Made for UK and USA",
+    description: "Tailored recommendations for UK and USA businesses. Global support coming soon.",
   },
 ];
 
