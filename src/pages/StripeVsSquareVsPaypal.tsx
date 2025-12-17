@@ -39,7 +39,7 @@ const StripeVsSquareVsPaypal = () => {
                 Stripe, Square, and PayPal are the most commonly compared payment processors in the UK — but they're designed for different types of businesses. This guide gives you a clear, unbiased breakdown based on features, fees, and real-world use cases.
               </p>
               <Button size="xl" asChild>
-                <Link to="/quiz">
+                <Link to="/quiz?start=true">
                   Take the Quiz — Get Your Recommendation
                   <ArrowRight className="w-5 h-5" />
                 </Link>
@@ -395,7 +395,7 @@ const StripeVsSquareVsPaypal = () => {
                   className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                   asChild
                 >
-                  <Link to="/quiz">
+                  <Link to="/quiz?start=true">
                     Take the Quiz
                     <ArrowRight className="w-5 h-5" />
                   </Link>

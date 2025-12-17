@@ -312,7 +312,7 @@ const Recommendation = () => {
                 Your recommendation is generated from your quiz answers.
               </p>
               <Button asChild variant="hero" size="lg">
-                <a href="/quiz">Go to the quiz</a>
+                <a href="/quiz?start=true">Go to the quiz</a>
               </Button>
             </CardContent>
           </Card>
@@ -514,9 +514,7 @@ const Recommendation = () => {
           <div className="text-center mt-10 animate-fade-up animation-delay-200">
             <p className="text-muted-foreground mb-4">Not what you expected?</p>
             <a
-              href="/quiz"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/quiz?start=true"
               className="text-primary font-medium hover:underline"
             >
               Retake the quiz →
