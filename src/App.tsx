@@ -9,6 +9,7 @@ import Quiz from "./pages/Quiz";
 import Recommendation from "./pages/Recommendation";
 import BestPaymentProcessorUK from "./pages/BestPaymentProcessorUK";
 import StripeVsSquareVsPaypal from "./pages/StripeVsSquareVsPaypal";
+import BestPaymentApiUK from "./pages/BestPaymentApiUK";
 import NotFound from "./pages/NotFound";
 import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/recommendation" element={<Recommendation />} />
           <Route path="/best-payment-processor-uk" element={<BestPaymentProcessorUK />} />
           <Route path="/stripe-vs-square-vs-paypal-uk" element={<StripeVsSquareVsPaypal />} />
+          <Route path="/best-payment-api-uk" element={<BestPaymentApiUK />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
