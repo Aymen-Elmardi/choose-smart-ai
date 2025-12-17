@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
@@ -25,10 +26,10 @@ const CTASection = () => {
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
               asChild
             >
-              <a href="/quiz" target="_blank" rel="noopener noreferrer">
+              <Link to="/quiz">
                 Start the Quiz
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
