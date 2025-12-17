@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { CreditCard, Check, MessageCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-
+import LeadCaptureForm from "@/components/LeadCaptureForm";
 interface QuizAnswers {
   businessType: string;
   salesChannel: string;
@@ -244,6 +244,21 @@ const Recommendation = () => {
                 </ul>
               </div>
 
+              {/* Lead Capture Form */}
+              <div className="mt-10 pt-8 border-t border-border/50">
+                <h3 className="text-lg font-semibold text-foreground mb-1 text-center">
+                  Get connected to {recommendation.name}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-6 text-center">
+                  Fill in your details and we'll connect you directly.
+                </p>
+                <LeadCaptureForm 
+                  quizAnswers={answers} 
+                  recommendedProvider={recommendation.name}
+                  logicPath="recommendation"
+                />
+              </div>
+
               {/* Primary CTA */}
               <div className="mt-8 text-center">
                 <Button variant="hero" size="xl">
@@ -258,20 +273,34 @@ const Recommendation = () => {
         {/* No Match Fallback */}
         {noMatch && (
           <Card className="border-2 border-border shadow-elegant animate-fade-up animation-delay-100">
-            <CardContent className="p-8 md:p-10 text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-muted mb-4">
-                <MessageCircle className="w-8 h-8 text-muted-foreground" />
+            <CardContent className="p-8 md:p-10">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-muted mb-4">
+                  <MessageCircle className="w-8 h-8 text-muted-foreground" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                  We couldn't find an exact match
+                </h2>
+                <p className="text-muted-foreground text-lg mb-8 max-w-md mx-auto">
+                  Based on your answers, we'd like to help you personally. Speak directly with one of our payment experts.
+                </p>
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                We couldn't find an exact match
-              </h2>
-              <p className="text-muted-foreground text-lg mb-8 max-w-md mx-auto">
-                Based on your answers, we'd like to help you personally. Speak directly with one of our payment experts.
-              </p>
-              <Button variant="hero" size="xl">
-                Speak to one of our experts
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+
+              {/* Lead Capture Form for Fallback */}
+              <div className="mb-8">
+                <LeadCaptureForm 
+                  quizAnswers={answers} 
+                  recommendedProvider={null}
+                  logicPath="fallback"
+                />
+              </div>
+
+              <div className="text-center">
+                <Button variant="hero" size="xl">
+                  Speak to one of our experts
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </div>
             </CardContent>
           </Card>
         )}
