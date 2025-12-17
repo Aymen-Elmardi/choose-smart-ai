@@ -244,8 +244,8 @@ const Recommendation = () => {
                 </ul>
               </div>
 
-              {/* Lead Capture Form */}
-              <div className="mt-10 pt-8 border-t border-border/50">
+              {/* Lead Capture Form - with clear visual separation */}
+              <div className="mt-12 pt-10 border-t-2 border-border/30">
                 <h3 className="text-lg font-semibold text-foreground mb-1 text-center">
                   Get connected to {recommendation.name}
                 </h3>

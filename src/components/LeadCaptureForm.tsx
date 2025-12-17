@@ -72,9 +72,18 @@ const LeadCaptureForm = ({ quizAnswers, recommendedProvider, logicPath = "standa
   const websiteRef = useRef<HTMLInputElement>(null);
   const businessNameRef = useRef<HTMLInputElement>(null);
 
-  // Auto-focus name field on mount
+  // Only auto-focus on desktop (not mobile) to prevent keyboard from covering recommendation
   useEffect(() => {
-    nameRef.current?.focus();
+    const isMobile = window.innerWidth < 768 || 
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (!isMobile) {
+      // Small delay to ensure page has rendered
+      const timer = setTimeout(() => {
+        nameRef.current?.focus();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   // Update hidden fields when quiz answers change
