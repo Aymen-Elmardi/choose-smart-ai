@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CreditCard, ArrowRight, ArrowLeft, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -99,6 +100,7 @@ const QUESTIONS = [
 const TOTAL_STEPS = QUESTIONS.length + 2; // Welcome + questions + lead capture
 
 const Quiz = () => {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_ANSWERS);
   const [isLoading, setIsLoading] = useState(false);
@@ -161,9 +163,9 @@ const Quiz = () => {
     // Store answers in sessionStorage for results page
     sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
     
-    // TODO: Navigate to results page when built
-    console.log("Quiz completed:", answers);
+    // Navigate to recommendation page
     setIsLoading(false);
+    navigate("/recommendation");
   };
 
   const canProceed = () => {
