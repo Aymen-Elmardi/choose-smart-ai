@@ -8,6 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useEnrichmentData, EnrichmentData } from "@/hooks/useEnrichmentData";
 
 interface QuizAnswers {
   businessType: string;
@@ -38,6 +39,8 @@ interface LeadFormData {
   priorities: string[];
   recommendedProvider: string;
   logicPath: string;
+  // Enrichment data (hidden)
+  enrichment: EnrichmentData | null;
 }
 
 interface LeadCaptureFormProps {
@@ -47,6 +50,8 @@ interface LeadCaptureFormProps {
 }
 
 const LeadCaptureForm = ({ quizAnswers, recommendedProvider, logicPath = "standard" }: LeadCaptureFormProps) => {
+  const { enrichmentData, updateFormSignals, refreshTimingData } = useEnrichmentData();
+  
   const [formData, setFormData] = useState<LeadFormData>({
     fullName: "",
     email: "",
@@ -64,6 +69,8 @@ const LeadCaptureForm = ({ quizAnswers, recommendedProvider, logicPath = "standa
     priorities: quizAnswers?.priorities || [],
     recommendedProvider: recommendedProvider || "",
     logicPath: logicPath,
+    // Enrichment data
+    enrichment: null,
   });
 
   const nameRef = useRef<HTMLInputElement>(null);
@@ -93,6 +100,20 @@ const LeadCaptureForm = ({ quizAnswers, recommendedProvider, logicPath = "standa
       }));
     }
   }, [quizAnswers, recommendedProvider, logicPath]);
+
+  // Update enrichment data continuously
+  useEffect(() => {
+    refreshTimingData();
+    setFormData(prev => ({
+      ...prev,
+      enrichment: enrichmentData,
+    }));
+  }, [enrichmentData, refreshTimingData]);
+
+  // Update form behavior signals when optional fields change
+  useEffect(() => {
+    updateFormSignals(formData.phone, formData.businessWebsite, formData.businessName);
+  }, [formData.phone, formData.businessWebsite, formData.businessName, updateFormSignals]);
 
   // Extract business name from website URL
   const extractBusinessName = (url: string): string => {

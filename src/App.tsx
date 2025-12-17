@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,8 +8,12 @@ import Index from "./pages/Index";
 import Quiz from "./pages/Quiz";
 import Recommendation from "./pages/Recommendation";
 import NotFound from "./pages/NotFound";
+import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
 
 const queryClient = new QueryClient();
+
+// Initialize session tracking on app load
+initializeSessionTracking();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

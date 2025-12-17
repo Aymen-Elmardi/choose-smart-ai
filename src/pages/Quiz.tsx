@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CreditCard, ArrowRight, ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { markQuizStart } from "@/hooks/useEnrichmentData";
 
 // Types
 interface QuizAnswers {
@@ -102,9 +103,10 @@ const Quiz = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_ANSWERS);
 
-  // Scroll to top when component mounts for smooth transition from homepage
+  // Scroll to top and mark quiz start when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
+    markQuizStart();
   }, []);
 
   const progress = ((currentStep) / (TOTAL_STEPS - 1)) * 100;
