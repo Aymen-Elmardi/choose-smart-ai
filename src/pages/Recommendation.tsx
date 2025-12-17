@@ -1,8 +1,10 @@
-import { useState } from "react";
-import { CreditCard, Check, MessageCircle, ArrowRight } from "lucide-react";
+import { useState, useRef } from "react";
+import { CreditCard, Check, MessageCircle, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import LeadCaptureForm from "@/components/LeadCaptureForm";
+import { useToast } from "@/hooks/use-toast";
+import LeadCaptureForm, { LeadCaptureFormRef } from "@/components/LeadCaptureForm";
+import { supabase } from "@/integrations/supabase/client";
 
 interface QuizAnswers {
   businessType: string;
@@ -209,12 +211,62 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
 
 const Recommendation = () => {
   const [answers] = useState<QuizAnswers | null>(() => readStoredAnswers());
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const formRef = useRef<LeadCaptureFormRef>(null);
+  const { toast } = useToast();
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
   const recommendation = answers && quizComplete ? getRecommendation(answers) : null;
 
   const showNeedsQuiz = !answers || !quizComplete;
   const showNoMatch = !!answers && quizComplete && !recommendation;
+
+  const handleSubmit = async () => {
+    if (!formRef.current) return;
+
+    const validation = formRef.current.validate();
+    if (!validation.isValid) {
+      toast({
+        title: "Please fill in required fields",
+        description: validation.errors.join(". "),
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const formData = formRef.current.getFormData();
+    setIsSubmitting(true);
+
+    try {
+      const payload = {
+        ...formData,
+        reasons: recommendation?.reasons || [],
+        recurring: formData.recurringBilling,
+      };
+
+      const { data, error } = await supabase.functions.invoke("send-lead-email", {
+        body: payload,
+      });
+
+      if (error) throw error;
+
+      if (data?.success) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error(data?.error || "Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error submitting lead:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Something went wrong while sending your details. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -303,32 +355,69 @@ const Recommendation = () => {
 
             {/* Lead Capture Form - Below Recommendation */}
             <div className="mt-10 animate-fade-up animation-delay-150">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">
-                  Get connected to {recommendation.name}
-                </h3>
-                <p className="text-muted-foreground max-w-md mx-auto">
-                  If you'd like us to connect you to this provider, just share your contact details below. We already have your business information from the quiz.
-                </p>
-              </div>
-
-              <Card className="border border-border/50">
-                <CardContent className="p-6 md:p-8">
-                  <LeadCaptureForm
-                    quizAnswers={answers}
-                    recommendedProvider={recommendation.name}
-                    logicPath="recommendation"
-                  />
-
-                  {/* Primary CTA */}
-                  <div className="mt-8 text-center">
-                    <Button variant="hero" size="xl">
-                      Connect me to this provider
-                      <ArrowRight className="w-5 h-5" />
-                    </Button>
+              {isSubmitted ? (
+                <Card className="border border-primary/30 bg-primary/5">
+                  <CardContent className="p-8 md:p-10 text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                      <Check className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-3">
+                      Thank you — you're all set.
+                    </h3>
+                    <p className="text-muted-foreground max-w-md mx-auto">
+                      We'll pass your details to the recommended provider (and other suitable options) so you'll hear back within 24 hours.
+                    </p>
+                    <p className="text-muted-foreground max-w-md mx-auto mt-4">
+                      Payment fees directly impact your profits, and we're here to help you keep more of what you earn.
+                    </p>
+                  </CardContent>
+                </Card>
+              ) : (
+                <>
+                  <div className="text-center mb-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      Get connected to {recommendation.name}
+                    </h3>
+                    <p className="text-muted-foreground max-w-md mx-auto">
+                      If you'd like us to connect you to this provider, just share your contact details below. We already have your business information from the quiz.
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
+
+                  <Card className="border border-border/50">
+                    <CardContent className="p-6 md:p-8">
+                      <LeadCaptureForm
+                        ref={formRef}
+                        quizAnswers={answers}
+                        recommendedProvider={recommendation.name}
+                        recommendationReasons={recommendation.reasons}
+                        logicPath="recommendation"
+                      />
+
+                      {/* Primary CTA */}
+                      <div className="mt-8 text-center">
+                        <Button 
+                          variant="hero" 
+                          size="xl" 
+                          onClick={handleSubmit}
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 animate-spin" />
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              Connect me to this provider
+                              <ArrowRight className="w-5 h-5" />
+                            </>
+                          )}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
+              )}
             </div>
           </>
         )}
@@ -354,32 +443,68 @@ const Recommendation = () => {
 
             {/* Lead Capture Form - Below Fallback Message */}
             <div className="mt-10 animate-fade-up animation-delay-150">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">
-                  Let us help you find the right fit
-                </h3>
-                <p className="text-muted-foreground max-w-md mx-auto">
-                  If you'd like us to connect you with a payment expert, just share your contact details below. We already have your business information from the quiz.
-                </p>
-              </div>
-
-              <Card className="border border-border/50">
-                <CardContent className="p-6 md:p-8">
-                  <LeadCaptureForm
-                    quizAnswers={answers}
-                    recommendedProvider={null}
-                    logicPath="fallback"
-                  />
-
-                  {/* Fallback CTA */}
-                  <div className="mt-8 text-center">
-                    <Button variant="hero" size="xl">
-                      Speak to one of our experts
-                      <ArrowRight className="w-5 h-5" />
-                    </Button>
+              {isSubmitted ? (
+                <Card className="border border-primary/30 bg-primary/5">
+                  <CardContent className="p-8 md:p-10 text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                      <Check className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-3">
+                      Thank you — you're all set.
+                    </h3>
+                    <p className="text-muted-foreground max-w-md mx-auto">
+                      We'll pass your details to the recommended provider (and other suitable options) so you'll hear back within 24 hours.
+                    </p>
+                    <p className="text-muted-foreground max-w-md mx-auto mt-4">
+                      Payment fees directly impact your profits, and we're here to help you keep more of what you earn.
+                    </p>
+                  </CardContent>
+                </Card>
+              ) : (
+                <>
+                  <div className="text-center mb-6">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      Let us help you find the right fit
+                    </h3>
+                    <p className="text-muted-foreground max-w-md mx-auto">
+                      If you'd like us to connect you with a payment expert, just share your contact details below. We already have your business information from the quiz.
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
+
+                  <Card className="border border-border/50">
+                    <CardContent className="p-6 md:p-8">
+                      <LeadCaptureForm
+                        ref={formRef}
+                        quizAnswers={answers}
+                        recommendedProvider={null}
+                        logicPath="fallback"
+                      />
+
+                      {/* Fallback CTA */}
+                      <div className="mt-8 text-center">
+                        <Button 
+                          variant="hero" 
+                          size="xl" 
+                          onClick={handleSubmit}
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 animate-spin" />
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              Speak to one of our experts
+                              <ArrowRight className="w-5 h-5" />
+                            </>
+                          )}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
+              )}
             </div>
           </>
         )}
