@@ -243,6 +243,14 @@ const Recommendation = () => {
                   ))}
                 </ul>
               </div>
+
+              {/* Primary CTA */}
+              <div className="mt-8 text-center">
+                <Button variant="hero" size="xl">
+                  Connect me to this provider
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </div>
             </CardContent>
           </Card>
         )}
