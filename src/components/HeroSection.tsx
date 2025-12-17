@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-illustration.png";
 
@@ -17,10 +18,10 @@ const HeroSection = () => {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="xl" asChild>
-                <a href="/quiz" target="_blank" rel="noopener noreferrer">
+                <Link to="/quiz">
                   Take the Quiz
                   <ArrowRight className="w-5 h-5" />
-                </a>
+                </Link>
               </Button>
               <Button variant="hero-outline" size="xl" asChild>
                 <a href="#how-it-works">How it Works</a>

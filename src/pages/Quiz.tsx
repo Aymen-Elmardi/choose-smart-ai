@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CreditCard, ArrowRight, ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -101,6 +101,11 @@ const Quiz = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_ANSWERS);
+
+  // Scroll to top when component mounts for smooth transition from homepage
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const progress = ((currentStep) / (TOTAL_STEPS - 1)) * 100;
 
