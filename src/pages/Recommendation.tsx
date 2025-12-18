@@ -83,14 +83,24 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   const wantsLowestFees = priorities.includes("Keeping fees low");
   const wantsFlexibility = priorities.includes("Flexibility / future-proofing");
 
-  const isLowVolume = monthlyVolume === "< £5k";
+  // Handle both numeric ranges and early-stage expectation-based options
+  const isLowVolume = 
+    monthlyVolume === "< £5k" || 
+    monthlyVolume === "Just testing / very low volume" ||
+    monthlyVolume === "Small but growing";
   const isMediumVolume =
-    monthlyVolume === "£5k–20k" || monthlyVolume === "£20k–50k";
+    monthlyVolume === "£5k–20k" || 
+    monthlyVolume === "£20k–50k" ||
+    monthlyVolume === "Moderate volume";
   const volumeOver20k =
     monthlyVolume === "£20k–50k" ||
     monthlyVolume === "£50k–100k" ||
-    monthlyVolume === "£100k+";
-  const volumeOver50k = monthlyVolume === "£50k–100k" || monthlyVolume === "£100k+";
+    monthlyVolume === "£100k+" ||
+    monthlyVolume === "Planning to scale quickly";
+  const volumeOver50k = 
+    monthlyVolume === "£50k–100k" || 
+    monthlyVolume === "£100k+" ||
+    monthlyVolume === "Planning to scale quickly";
 
   const isRestaurantOrRetail =
     businessType === "Physical business";
