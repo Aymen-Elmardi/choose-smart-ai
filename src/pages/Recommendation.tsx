@@ -7,14 +7,13 @@ import LeadCaptureForm, { LeadCaptureFormRef } from "@/components/LeadCaptureFor
 import { supabase } from "@/integrations/supabase/client";
 
 interface QuizAnswers {
-  businessType: string;
   salesChannel: string;
-  monthlyVolume: string;
-  avgTransaction: string;
-  international: string;
-  recurring: string;
+  businessType: string;
   priorities: string[];
   location: string;
+  monthlyVolume: string;
+  avgTransaction: string;
+  features: string[];
 }
 
 interface Provider {
@@ -31,16 +30,17 @@ const readStoredAnswers = (): QuizAnswers | null => {
     const parsed = JSON.parse(raw) as Partial<QuizAnswers>;
 
     return {
-      businessType: typeof parsed.businessType === "string" ? parsed.businessType : "",
       salesChannel: typeof parsed.salesChannel === "string" ? parsed.salesChannel : "",
-      monthlyVolume: typeof parsed.monthlyVolume === "string" ? parsed.monthlyVolume : "",
-      avgTransaction: typeof parsed.avgTransaction === "string" ? parsed.avgTransaction : "",
-      international: typeof parsed.international === "string" ? parsed.international : "",
-      recurring: typeof parsed.recurring === "string" ? parsed.recurring : "",
+      businessType: typeof parsed.businessType === "string" ? parsed.businessType : "",
       priorities: Array.isArray(parsed.priorities)
         ? parsed.priorities.filter((p): p is string => typeof p === "string")
         : [],
       location: typeof parsed.location === "string" ? parsed.location : "",
+      monthlyVolume: typeof parsed.monthlyVolume === "string" ? parsed.monthlyVolume : "",
+      avgTransaction: typeof parsed.avgTransaction === "string" ? parsed.avgTransaction : "",
+      features: Array.isArray(parsed.features)
+        ? parsed.features.filter((f): f is string => typeof f === "string")
+        : [],
     };
   } catch {
     return null;
@@ -49,12 +49,10 @@ const readStoredAnswers = (): QuizAnswers | null => {
 
 const isQuizComplete = (a: QuizAnswers) =>
   Boolean(
-    a.businessType &&
-      a.salesChannel &&
+    a.salesChannel &&
+      a.businessType &&
       a.monthlyVolume &&
       a.avgTransaction &&
-      a.international &&
-      a.recurring &&
       a.location &&
       a.priorities?.length
   );
@@ -64,23 +62,26 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
     businessType,
     salesChannel,
     monthlyVolume,
-    international,
-    recurring,
+    features,
     priorities,
     location,
   } = answers;
 
+  // Derive feature flags from features array
+  const acceptsInternational = features.includes("International customers");
+  const needsRecurring = features.includes("Subscriptions / recurring billing");
+  const needsSplitPayments = features.includes("Split payments");
+  const hasMultipleSellers = features.includes("Multiple sellers");
+
   const sellsOnline =
-    salesChannel === "Online only" || salesChannel === "Both online and in-person";
+    salesChannel === "Online only" || salesChannel === "Both online and in person";
   const sellsInPerson =
-    salesChannel === "In-person only" || salesChannel === "Both online and in-person";
-  const acceptsInternational = international === "Yes";
-  const needsRecurring = recurring === "Yes" || recurring === "Possibly later";
-  const isDeveloperFriendly = priorities.includes("Developer-friendly");
-  const wantsGlobalReach = priorities.includes("Global reach");
+    salesChannel === "In person" || salesChannel === "Both online and in person";
+  const isDeveloperFriendly = priorities.includes("Ability to scale");
+  const wantsGlobalReach = priorities.includes("International payments");
   const wantsEasySetup = priorities.includes("Easy setup");
-  const wantsLowestFees = priorities.includes("Lowest fees");
-  const wantsOnlineInPerson = priorities.includes("Online + in-person support");
+  const wantsLowestFees = priorities.includes("Keeping fees low");
+  const wantsFlexibility = priorities.includes("Flexibility / future-proofing");
 
   const isLowVolume = monthlyVolume === "< £5k";
   const isMediumVolume =
@@ -92,10 +93,12 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   const volumeOver50k = monthlyVolume === "£50k–100k" || monthlyVolume === "£100k+";
 
   const isRestaurantOrRetail =
-    businessType === "Restaurant or Café" || businessType === "Retail Shop";
-  const isMarketplace = businessType === "Marketplace";
-  const isSubscription = businessType === "Subscription Business";
+    businessType === "Physical business";
+  const isMarketplace = businessType === "Marketplace / platform";
+  const isSubscription = needsRecurring;
+  const isEarlyStage = businessType === "Early-stage / just getting started";
   const isUK = location === "UK";
+  const wantsBothChannels = salesChannel === "Both online and in person";
 
   // DATMAN - UK Marketplaces with high volume (simplified since no split payment option in quiz)
   if (isMarketplace && volumeOver20k && isUK && (isDeveloperFriendly || wantsLowestFees)) {
@@ -143,16 +146,16 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
     };
   }
 
-  // SQUARE - Restaurants, retail, or in-person focused
-  if (isRestaurantOrRetail || sellsInPerson || wantsOnlineInPerson) {
+  // SQUARE - Physical businesses or in-person focused
+  if (isRestaurantOrRetail || sellsInPerson || wantsBothChannels) {
     return {
       name: "Square",
       description:
         "Square provides an all-in-one solution for businesses that sell in-person, with easy-to-use point-of-sale hardware and integrated online tools.",
       reasons: [
-        isRestaurantOrRetail ? "Perfect for your " + businessType.toLowerCase() + " business" : "",
+        isRestaurantOrRetail ? "Perfect for your physical business" : "",
         sellsInPerson ? "Optimized for in-person sales" : "",
-        wantsOnlineInPerson ? "Combined online and in-person support in one platform" : "",
+        wantsBothChannels ? "Combined online and in-person support in one platform" : "",
         "Simple setup with no long-term contracts",
         "Integrated POS hardware and software",
       ].filter(Boolean),
@@ -191,7 +194,7 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
   }
 
   // PAYPAL - Early stage, trust-focused, or low-value transactions
-  if (isLowVolume || wantsEasySetup || businessType === "Other") {
+  if (isLowVolume || wantsEasySetup || isEarlyStage || businessType === "Other / mixed") {
     return {
       name: "PayPal",
       description:
@@ -199,7 +202,7 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
       reasons: [
         "Trusted by customers worldwide for secure payments",
         "Quick and easy setup with no technical knowledge required",
-        isLowVolume ? "Great for businesses just starting out" : "",
+        isLowVolume || isEarlyStage ? "Great for businesses just starting out" : "",
         "Buyers feel confident paying with PayPal",
       ].filter(Boolean),
     };

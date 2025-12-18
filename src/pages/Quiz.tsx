@@ -7,92 +7,94 @@ import { markQuizStart } from "@/hooks/useEnrichmentData";
 
 // Types
 interface QuizAnswers {
-  businessType: string;
   salesChannel: string;
-  monthlyVolume: string;
-  avgTransaction: string;
-  international: string;
-  recurring: string;
+  businessType: string;
   priorities: string[];
   location: string;
+  monthlyVolume: string;
+  avgTransaction: string;
+  features: string[];
   fullName: string;
   businessName: string;
   email: string;
 }
 
 const INITIAL_ANSWERS: QuizAnswers = {
-  businessType: "",
   salesChannel: "",
-  monthlyVolume: "",
-  avgTransaction: "",
-  international: "",
-  recurring: "",
+  businessType: "",
   priorities: [],
   location: "",
+  monthlyVolume: "",
+  avgTransaction: "",
+  features: [],
   fullName: "",
   businessName: "",
   email: "",
 };
 
-// Question data
+// Question data - ordered for psychological flow
 const QUESTIONS = [
   {
-    id: "businessType",
-    question: "What type of business do you run?",
+    id: "salesChannel",
+    question: "How do (or will) your customers pay you?",
     options: [
-      "Ecommerce",
-      "Restaurant or Café",
-      "Retail Shop",
-      "Subscription Business",
-      "Professional Services",
-      "Marketplace",
-      "Other",
+      "Online only",
+      "In person",
+      "Both online and in person",
+      "Through a marketplace or platform",
+      "I'm not selling yet",
     ],
   },
   {
-    id: "salesChannel",
-    question: "Where do you sell?",
-    options: ["Online only", "In-person only", "Both online and in-person"],
-  },
-  {
-    id: "monthlyVolume",
-    question: "What's your monthly card volume?",
-    options: ["< £5k", "£5k–20k", "£20k–50k", "£50k–100k", "£100k+"],
-  },
-  {
-    id: "avgTransaction",
-    question: "What's your average transaction size?",
-    options: ["< £10", "£10–30", "£30–100", "£100+"],
-  },
-  {
-    id: "international",
-    question: "Do you accept international customers?",
-    options: ["Yes", "No", "Not sure"],
-  },
-  {
-    id: "recurring",
-    question: "Do you need recurring payments?",
-    options: ["Yes", "No", "Possibly later"],
+    id: "businessType",
+    question: "What best describes your business?",
+    options: [
+      "Early-stage / just getting started",
+      "Online business",
+      "Physical business",
+      "Marketplace / platform",
+      "Other / mixed",
+    ],
   },
   {
     id: "priorities",
-    question: "What matters most to you?",
+    question: "What matters most to you right now?",
     subtext: "Select all that apply",
     multiSelect: true,
     options: [
-      "Lowest fees",
+      "Keeping fees low",
       "Easy setup",
-      "Fast payouts",
-      "Developer-friendly",
-      "High acceptance rates",
-      "Online + in-person support",
-      "Global reach",
+      "Ability to scale",
+      "International payments",
+      "Flexibility / future-proofing",
     ],
   },
   {
     id: "location",
-    question: "Where is your business located?",
+    question: "Where are most of your customers located?",
     options: ["UK", "EU", "US", "Other"],
+  },
+  {
+    id: "monthlyVolume",
+    question: "Roughly how much do you process per month?",
+    options: ["< £5k", "£5k–20k", "£20k–50k", "£50k–100k", "£100k+"],
+  },
+  {
+    id: "avgTransaction",
+    question: "About how much is a typical sale?",
+    options: ["< £10", "£10–30", "£30–100", "£100+"],
+  },
+  {
+    id: "features",
+    question: "Do you need any of the following?",
+    subtext: "Select all that apply",
+    multiSelect: true,
+    options: [
+      "Split payments",
+      "Subscriptions / recurring billing",
+      "Multiple sellers",
+      "International customers",
+    ],
   },
 ];
 
