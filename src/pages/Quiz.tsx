@@ -33,72 +33,87 @@ const INITIAL_ANSWERS: QuizAnswers = {
 };
 
 // Question data - ordered for psychological flow
-const QUESTIONS = [
-  {
-    id: "salesChannel",
-    question: "How do (or will) your customers pay you?",
-    options: [
-      "Online only",
-      "In person",
-      "Both online and in person",
-      "Through a marketplace or platform",
-      "I'm not selling yet",
-    ],
-  },
-  {
-    id: "businessType",
-    question: "What best describes your business?",
-    options: [
-      "Early-stage / just getting started",
-      "Online business",
-      "Physical business",
-      "Marketplace / platform",
-      "Other / mixed",
-    ],
-  },
-  {
-    id: "priorities",
-    question: "What matters most to you right now?",
-    subtext: "Select all that apply",
-    multiSelect: true,
-    options: [
-      "Keeping fees low",
-      "Easy setup",
-      "Ability to scale",
-      "International payments",
-      "Flexibility / future-proofing",
-    ],
-  },
-  {
-    id: "location",
-    question: "Where are most of your customers located?",
-    options: ["UK", "EU", "US", "Other"],
-  },
-  {
-    id: "monthlyVolume",
-    question: "Roughly how much do you process per month?",
-    options: ["< £5k", "£5k–20k", "£20k–50k", "£50k–100k", "£100k+"],
-  },
-  {
-    id: "avgTransaction",
-    question: "About how much is a typical sale?",
-    options: ["< £10", "£10–30", "£30–100", "£100+"],
-  },
-  {
-    id: "features",
-    question: "Do you need any of the following?",
-    subtext: "Select all that apply",
-    multiSelect: true,
-    options: [
-      "Split payments",
-      "Subscriptions / recurring billing",
-      "Multiple sellers",
-      "International customers",
-    ],
-  },
-];
+const getQuestions = (answers: QuizAnswers) => {
+  const isEarlyStage = answers.businessType === "Early-stage / just getting started";
+  
+  return [
+    {
+      id: "salesChannel",
+      question: "How do (or will) your customers pay you?",
+      options: [
+        "Online only",
+        "In person",
+        "Both online and in person",
+        "Through a marketplace or platform",
+        "I'm not selling yet",
+      ],
+    },
+    {
+      id: "businessType",
+      question: "What best describes your business?",
+      options: [
+        "Early-stage / just getting started",
+        "Online business",
+        "Physical business",
+        "Marketplace / platform",
+        "Other / mixed",
+      ],
+    },
+    {
+      id: "priorities",
+      question: "What matters most to you right now?",
+      subtext: "Select all that apply",
+      multiSelect: true,
+      options: [
+        "Keeping fees low",
+        "Easy setup",
+        "Ability to scale",
+        "International payments",
+        "Flexibility / future-proofing",
+      ],
+    },
+    {
+      id: "location",
+      question: "Where are most of your customers located?",
+      options: ["UK", "EU", "US", "Other"],
+    },
+    {
+      id: "monthlyVolume",
+      question: isEarlyStage 
+        ? "Once you start selling, what best describes your expected volume?"
+        : "Roughly how much do you process per month?",
+      options: isEarlyStage
+        ? [
+            "Just testing / very low volume",
+            "Small but growing",
+            "Moderate volume",
+            "Planning to scale quickly",
+          ]
+        : ["< £5k", "£5k–20k", "£20k–50k", "£50k–100k", "£100k+"],
+    },
+    {
+      id: "avgTransaction",
+      question: "About how much is a typical sale?",
+      options: ["< £10", "£10–30", "£30–100", "£100+"],
+    },
+    {
+      id: "features",
+      question: "Do you need any of the following?",
+      subtext: "Select all that apply",
+      multiSelect: true,
+      options: [
+        "Split payments",
+        "Subscriptions / recurring billing",
+        "Multiple sellers",
+        "International customers",
+      ],
+    },
+  ];
+};
 
-const TOTAL_STEPS = QUESTIONS.length + 1; // Welcome + questions (lead capture moved to recommendation page)
+const QUESTION_COUNT = 7;
+
+const TOTAL_STEPS = QUESTION_COUNT + 1; // Welcome + questions (lead capture moved to recommendation page)
 
 const Quiz = () => {
   const navigate = useNavigate();
@@ -130,7 +145,7 @@ const Quiz = () => {
       setAnswers(updatedAnswers);
       
       // Check if this is the last question
-      if (currentStep === QUESTIONS.length) {
+      if (currentStep === QUESTION_COUNT) {
         // Last question - save synchronously and navigate immediately
         console.log("Saving quiz answers:", updatedAnswers);
         sessionStorage.setItem("quizAnswers", JSON.stringify(updatedAnswers));
@@ -147,11 +162,12 @@ const Quiz = () => {
   const handleNext = () => {
     if (currentStep === 0) {
       setCurrentStep(1);
-    } else if (currentStep <= QUESTIONS.length) {
-      const question = QUESTIONS[currentStep - 1];
-      if (question.multiSelect) {
+    } else if (currentStep <= QUESTION_COUNT) {
+      const questions = getQuestions(answers);
+      const question = questions[currentStep - 1];
+      if (question?.multiSelect) {
         // Check if this is the last question
-        if (currentStep === QUESTIONS.length) {
+        if (currentStep === QUESTION_COUNT) {
           // Save and navigate to recommendation
           sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
           navigate("/recommendation");
@@ -170,9 +186,10 @@ const Quiz = () => {
 
   const canProceed = () => {
     if (currentStep === 0) return true;
-    if (currentStep > QUESTIONS.length) return true;
+    if (currentStep > QUESTION_COUNT) return true;
     
-    const question = QUESTIONS[currentStep - 1];
+    const questions = getQuestions(answers);
+    const question = questions[currentStep - 1];
     const answer = answers[question.id as keyof QuizAnswers];
     
     if (question.multiSelect) {
@@ -208,7 +225,8 @@ const Quiz = () => {
   }
 
   // Question Screens
-  const question = QUESTIONS[currentStep - 1];
+  const questions = getQuestions(answers);
+  const question = questions[currentStep - 1];
   const currentAnswer = answers[question.id as keyof QuizAnswers];
 
   return (
@@ -218,7 +236,7 @@ const Quiz = () => {
         <div className="max-w-2xl w-full animate-fade-up" key={currentStep}>
           <div className="text-center mb-8">
             <p className="text-sm text-muted-foreground mb-2">
-              Question {currentStep} of {QUESTIONS.length}
+              Question {currentStep} of {QUESTION_COUNT}
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
               {question.question}
