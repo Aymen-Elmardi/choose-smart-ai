@@ -11,14 +11,13 @@ import {
 import { useEnrichmentData, EnrichmentData } from "@/hooks/useEnrichmentData";
 
 interface QuizAnswers {
-  businessType: string;
   salesChannel: string;
-  monthlyVolume: string;
-  avgTransaction: string;
-  international: string;
-  recurring: string;
+  businessType: string;
   priorities: string[];
   location: string;
+  monthlyVolume: string;
+  avgTransaction: string;
+  features: string[];
 }
 
 export interface LeadFormData {
@@ -65,14 +64,14 @@ const LeadCaptureForm = forwardRef<LeadCaptureFormRef, LeadCaptureFormProps>(
       phone: "",
       businessWebsite: "",
       businessName: "",
-      // Hidden fields
+      // Hidden fields - derive recurring/international from features array
       businessType: quizAnswers?.businessType || "",
       monthlyVolume: quizAnswers?.monthlyVolume || "",
       avgTransaction: quizAnswers?.avgTransaction || "",
       region: quizAnswers?.location || "",
       salesChannel: quizAnswers?.salesChannel || "",
-      recurringBilling: quizAnswers?.recurring || "",
-      international: quizAnswers?.international || "",
+      recurringBilling: quizAnswers?.features?.includes("Subscriptions / recurring billing") ? "Yes" : "No",
+      international: quizAnswers?.features?.includes("International customers") ? "Yes" : "No",
       priorities: quizAnswers?.priorities || [],
       recommendedProvider: recommendedProvider || "",
       logicPath: logicPath,
@@ -116,8 +115,8 @@ const LeadCaptureForm = forwardRef<LeadCaptureFormRef, LeadCaptureFormProps>(
           avgTransaction: quizAnswers.avgTransaction,
           region: quizAnswers.location,
           salesChannel: quizAnswers.salesChannel,
-          recurringBilling: quizAnswers.recurring,
-          international: quizAnswers.international,
+          recurringBilling: quizAnswers.features?.includes("Subscriptions / recurring billing") ? "Yes" : "No",
+          international: quizAnswers.features?.includes("International customers") ? "Yes" : "No",
           priorities: quizAnswers.priorities,
           recommendedProvider: recommendedProvider || "",
           logicPath: logicPath,
