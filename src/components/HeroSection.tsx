@@ -55,6 +55,10 @@ const HeroSection = () => {
                 src={heroImage}
                 alt="Payment processing illustration showing connected payment cards and networks"
                 className="relative w-full h-auto rounded-2xl shadow-card"
+                width={600}
+                height={400}
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
           </div>
