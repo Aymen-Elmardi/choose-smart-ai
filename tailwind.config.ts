@@ -14,7 +14,21 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        sans: [
+          '"Frutiger"',
+          '"Frutiger Neue"',
+          '"Inter"',
+          '"Source Sans 3"',
+          '"IBM Plex Sans"',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          'Helvetica',
+          'Arial',
+          'sans-serif',
+        ],
       },
       colors: {
         border: "hsl(var(--border))",
