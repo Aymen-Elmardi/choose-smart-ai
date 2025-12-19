@@ -366,6 +366,39 @@ const Recommendation = () => {
               </CardContent>
             </Card>
 
+            {/* Examples Section - Secondary Trust Element */}
+            <div className="mt-10 animate-fade-up animation-delay-125">
+              <h3 className="text-xl font-semibold text-foreground mb-6">
+                Examples of similar situations we often see
+              </h3>
+              <div className="space-y-6">
+                <div>
+                  <p className="text-muted-foreground">
+                    A UK-based food marketplace was processing orders successfully, but over time it became clear that their payment fees were quietly eating into margins. Each transaction felt small, but together they added up in ways that were hard to ignore.
+                  </p>
+                  <p className="text-muted-foreground mt-3">
+                    After reviewing how their payments actually worked, they moved to a setup that better matched their volume and order flow. The integration took more effort than their original choice, but it removed a cost problem that would only have grown as the marketplace scaled.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-muted-foreground">
+                    A franchise owner was collecting fees manually and regularly dealing with cancelled payments, late transfers, and uncomfortable follow-ups. It worked, but it created ongoing admin and tension that never really went away.
+                  </p>
+                  <p className="text-muted-foreground mt-3">
+                    By moving to a payment setup where franchise fees were split automatically at the point of sale, payments became part of the transaction itself, without chasing or manual intervention.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-muted-foreground">
+                    A coffee shop handling its own deliveries was paying drivers manually at the end of each period. As orders increased, reconciling payouts became time-consuming and easy to get wrong.
+                  </p>
+                  <p className="text-muted-foreground mt-3">
+                    By switching to a setup that routed driver payments automatically, what had been an ongoing task became part of the normal payment flow.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* Lead Capture Form - Below Recommendation */}
             <div className="mt-10 animate-fade-up animation-delay-150">
               {isSubmitted ? (
