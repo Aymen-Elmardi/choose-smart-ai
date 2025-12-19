@@ -21,6 +21,9 @@ const Header = () => {
             <a href="#why-us" className="text-muted-foreground hover:text-foreground transition-colors">
               Why Us
             </a>
+            <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
+              About
+            </Link>
             <Button variant="hero" size="default" asChild>
               <Link to="/quiz?start=true">
                 Answer a few quick questions
