@@ -5,7 +5,6 @@ import { CreditCard, ArrowRight, ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { markQuizStart } from "@/hooks/useEnrichmentData";
-import QuizLoadingTransition from "@/components/QuizLoadingTransition";
 
 // Types
 interface QuizAnswers {
@@ -123,7 +122,6 @@ const Quiz = () => {
   const shouldStartDirectly = searchParams.get("start") === "true";
   const [currentStep, setCurrentStep] = useState(shouldStartDirectly ? 1 : 0);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_ANSWERS);
-  const [showLoadingTransition, setShowLoadingTransition] = useState(false);
 
   // Scroll to top and mark quiz start when component mounts
   useEffect(() => {
@@ -149,10 +147,10 @@ const Quiz = () => {
       
       // Check if this is the last question
       if (currentStep === QUESTION_COUNT) {
-        // Last question - save synchronously and show loading transition
+        // Last question - save synchronously and navigate with loading flag
         console.log("Saving quiz answers:", updatedAnswers);
         sessionStorage.setItem("quizAnswers", JSON.stringify(updatedAnswers));
-        setShowLoadingTransition(true);
+        navigate("/recommendation?fromQuiz=true");
       } else {
         // Auto-advance with visual feedback delay
         setTimeout(() => {
@@ -171,9 +169,9 @@ const Quiz = () => {
       if (question?.multiSelect) {
         // Check if this is the last question
         if (currentStep === QUESTION_COUNT) {
-          // Save and show loading transition
+          // Save and navigate with loading flag
           sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
-          setShowLoadingTransition(true);
+          navigate("/recommendation?fromQuiz=true");
         } else {
           setCurrentStep((prev) => prev + 1);
         }
@@ -200,11 +198,6 @@ const Quiz = () => {
     }
     return !!answer;
   };
-
-  // Show loading transition after quiz completion
-  if (showLoadingTransition) {
-    return <QuizLoadingTransition />;
-  }
 
   // Welcome Screen
   if (currentStep === 0) {

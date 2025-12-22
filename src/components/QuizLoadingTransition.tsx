@@ -1,22 +1,8 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+interface QuizLoadingTransitionProps {
+  visible?: boolean;
+}
 
-const QuizLoadingTransition = () => {
-  const navigate = useNavigate();
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    // Transition to recommendation page after 2 seconds
-    const timer = setTimeout(() => {
-      setVisible(false);
-      setTimeout(() => {
-        navigate("/recommendation");
-      }, 300);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [navigate]);
-
+const QuizLoadingTransition = ({ visible = true }: QuizLoadingTransitionProps) => {
   return (
     <div 
       className={`min-h-screen bg-background flex items-center justify-center p-6 transition-opacity duration-300 ${
