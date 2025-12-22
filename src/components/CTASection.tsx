@@ -35,7 +35,7 @@ const CTASection = () => {
               <span className="text-sm text-primary-foreground/70 mt-3">Takes under 1 minute • No spam</span>
             </div>
             <p className="text-sm text-primary-foreground/60 mt-6">
-              Independent guidance. We're paid by providers — not by you.
+              We're compensated by payment providers when a relevant introduction is made. Your details are only shared for that purpose.
             </p>
           </div>
         </div>
