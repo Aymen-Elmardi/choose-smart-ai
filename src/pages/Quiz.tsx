@@ -40,7 +40,7 @@ const getQuestions = (answers: QuizAnswers) => {
   return [
     {
       id: "salesChannel",
-      question: "How do (or will) your customers pay you?",
+      question: "How do you plan to accept payments?",
       options: [
         "Online only",
         "In person",
