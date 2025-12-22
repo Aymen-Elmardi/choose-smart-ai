@@ -1,10 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { CreditCard, Check, MessageCircle, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import LeadCaptureForm, { LeadCaptureFormRef } from "@/components/LeadCaptureForm";
 import { supabase } from "@/integrations/supabase/client";
+import QuizLoadingTransition from "@/components/QuizLoadingTransition";
 
 interface QuizAnswers {
   salesChannel: string;
@@ -223,11 +225,31 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
 };
 
 const Recommendation = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const fromQuiz = searchParams.get("fromQuiz") === "true";
+  const [showLoader, setShowLoader] = useState(fromQuiz);
   const [answers] = useState<QuizAnswers | null>(() => readStoredAnswers());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const formRef = useRef<LeadCaptureFormRef>(null);
   const { toast } = useToast();
+
+  // Handle the loading transition from quiz
+  useEffect(() => {
+    if (fromQuiz) {
+      // Remove the query param to clean up URL
+      const newParams = new URLSearchParams(searchParams);
+      newParams.delete("fromQuiz");
+      setSearchParams(newParams, { replace: true });
+      
+      // Show loader for 2 seconds then fade to content
+      const timer = setTimeout(() => {
+        setShowLoader(false);
+      }, 2000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [fromQuiz, searchParams, setSearchParams]);
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
   const recommendation = answers && quizComplete ? getRecommendation(answers) : null;
@@ -280,6 +302,11 @@ const Recommendation = () => {
       setIsSubmitting(false);
     }
   };
+
+  // Show loading transition when coming from quiz
+  if (showLoader) {
+    return <QuizLoadingTransition />;
+  }
 
   return (
     <div className="min-h-screen bg-background">
