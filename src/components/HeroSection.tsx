@@ -44,7 +44,7 @@ const HeroSection = () => {
               </div>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
-              Independent guidance. We're paid by providers — not by you.
+              We're compensated by payment providers when a relevant introduction is made. Your details are only shared for that purpose.
             </p>
           </div>
           
