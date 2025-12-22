@@ -426,6 +426,9 @@ const Recommendation = () => {
                             </>
                           )}
                         </Button>
+                        <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
+                          We'll share your details along with the context from your answers, so the provider can respond more accurately.
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -513,6 +516,9 @@ const Recommendation = () => {
                             </>
                           )}
                         </Button>
+                        <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
+                          We'll share your details along with the context from your answers, so the provider can respond more accurately.
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
