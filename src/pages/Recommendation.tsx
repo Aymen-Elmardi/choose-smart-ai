@@ -215,10 +215,10 @@ const Recommendation = () => {
                     <Check className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-2xl font-semibold text-foreground mb-3">
-                    We've found the right option for you and your business.
+                    We've identified the right option for your business.
                   </h3>
                   <p className="text-muted-foreground text-lg max-w-md mx-auto">
-                    We'll connect you with the provider. You'll hear from us within 24 hours.
+                    Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
                   </p>
                 </CardContent>
               </Card>
@@ -321,10 +321,10 @@ const Recommendation = () => {
                     <Check className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-2xl font-semibold text-foreground mb-3">
-                    We've found the right option for you and your business.
+                    We've identified the right option for your business.
                   </h3>
                   <p className="text-muted-foreground text-lg max-w-md mx-auto">
-                    We'll connect you with the provider. You'll hear from us within 24 hours.
+                    Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
                   </p>
                 </CardContent>
               </Card>
