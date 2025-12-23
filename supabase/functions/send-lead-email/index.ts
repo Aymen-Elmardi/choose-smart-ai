@@ -34,6 +34,7 @@ interface LeadEmailRequest {
   recurring: string;
   priorities: string[];
   region: string;
+  market: string;
   enrichment: EnrichmentData | null;
 }
 
@@ -198,6 +199,7 @@ const handler = async (req: Request): Promise<Response> => {
         ? rawData.priorities.slice(0, 10).map((p: unknown) => sanitizeString(p, 100))
         : [],
       region: sanitizeString(rawData.region, 50),
+      market: sanitizeString(rawData.market, 10) || "UK",
       enrichment: rawData.enrichment || null,
     };
     
@@ -304,6 +306,7 @@ const handler = async (req: Request): Promise<Response> => {
   <h2>2. Recommendation Details</h2>
   <table>
     <tr class="highlight"><th>Recommended Provider</th><td><strong>${escapeHtml(providerName)}</strong></td></tr>
+    <tr class="highlight"><th>Market</th><td><strong>${formatValue(data.market)}</strong></td></tr>
     <tr><th>Logic Path</th><td>${formatValue(data.logicPath)}</td></tr>
   </table>
   ${data.reasons && data.reasons.length > 0 ? `

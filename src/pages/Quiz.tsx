@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 // Quiz page component for payment provider matching
 import { CreditCard, ArrowRight, ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { markQuizStart } from "@/hooks/useEnrichmentData";
+import type { Market } from "@/lib/recommendationLogic";
 
 // Types
 interface QuizAnswers {
@@ -118,10 +119,18 @@ const TOTAL_STEPS = QUESTION_COUNT + 1; // Welcome + questions (lead capture mov
 
 const Quiz = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchParams] = useSearchParams();
   const shouldStartDirectly = searchParams.get("start") === "true";
   const [currentStep, setCurrentStep] = useState(shouldStartDirectly ? 1 : 0);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_ANSWERS);
+  
+  // Detect market based on referrer path (if coming from /us page)
+  const [market] = useState<Market>(() => {
+    const referrer = document.referrer;
+    const isFromUS = referrer.includes("/us") || location.state?.market === "US";
+    return isFromUS ? "US" : "UK";
+  });
 
   // Scroll to top and mark quiz start when component mounts
   useEffect(() => {
@@ -148,8 +157,9 @@ const Quiz = () => {
       // Check if this is the last question
       if (currentStep === QUESTION_COUNT) {
         // Last question - save synchronously and navigate with loading flag
-        console.log("Saving quiz answers:", updatedAnswers);
+        console.log("Saving quiz answers:", updatedAnswers, "Market:", market);
         sessionStorage.setItem("quizAnswers", JSON.stringify(updatedAnswers));
+        sessionStorage.setItem("quizMarket", market);
         navigate("/recommendation?fromQuiz=true");
       } else {
         // Auto-advance with visual feedback delay
@@ -171,6 +181,7 @@ const Quiz = () => {
         if (currentStep === QUESTION_COUNT) {
           // Save and navigate with loading flag
           sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
+          sessionStorage.setItem("quizMarket", market);
           navigate("/recommendation?fromQuiz=true");
         } else {
           setCurrentStep((prev) => prev + 1);
