@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-illustration.png";
 
+// US market quiz link with state
+const USQuizLink = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <Link to="/quiz?start=true" state={{ market: "US" }} className={className}>
+    {children}
+  </Link>
+);
+
 const HeroSectionUS = () => {
   return (
     <section className="gradient-hero pt-24 pb-16 md:pt-32 md:pb-24">
@@ -22,10 +29,10 @@ const HeroSectionUS = () => {
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <div className="flex flex-col items-start">
                 <Button variant="hero" size="xl" asChild>
-                  <Link to="/quiz?start=true">
+                  <USQuizLink>
                     Answer a few quick questions
                     <ArrowRight className="w-5 h-5" />
-                  </Link>
+                  </USQuizLink>
                 </Button>
                 <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
               </div>

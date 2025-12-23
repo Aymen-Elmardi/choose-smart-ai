@@ -5,7 +5,7 @@ import ProblemSection from "@/components/ProblemSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ValuePropsSection from "@/components/ValuePropsSection";
 import ExamplesSection from "@/components/ExamplesSection";
-import CTASection from "@/components/CTASection";
+import CTASectionUS from "@/components/CTASectionUS";
 import Footer from "@/components/Footer";
 
 const IndexUS = () => {
@@ -19,7 +19,7 @@ const IndexUS = () => {
         <HowItWorksSection />
         <ValuePropsSection />
         <ExamplesSection />
-        <CTASection />
+        <CTASectionUS />
       </main>
       <Footer />
     </div>

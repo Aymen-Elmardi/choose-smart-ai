@@ -7,22 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import LeadCaptureForm, { LeadCaptureFormRef } from "@/components/LeadCaptureForm";
 import { supabase } from "@/integrations/supabase/client";
 import QuizLoadingTransition from "@/components/QuizLoadingTransition";
-
-interface QuizAnswers {
-  salesChannel: string;
-  businessType: string;
-  priorities: string[];
-  location: string;
-  monthlyVolume: string;
-  avgTransaction: string;
-  features: string[];
-}
-
-interface Provider {
-  name: string;
-  description: string;
-  reasons: string[];
-}
+import { getRecommendation, type QuizAnswers, type Provider, type Market } from "@/lib/recommendationLogic";
 
 const readStoredAnswers = (): QuizAnswers | null => {
   try {
@@ -59,169 +44,14 @@ const isQuizComplete = (a: QuizAnswers) =>
       a.priorities?.length
   );
 
-const getRecommendation = (answers: QuizAnswers): Provider | null => {
-  const {
-    businessType,
-    salesChannel,
-    monthlyVolume,
-    features,
-    priorities,
-    location,
-  } = answers;
-
-  // Derive feature flags from features array
-  const acceptsInternational = features.includes("International customers");
-  const needsRecurring = features.includes("Subscriptions / recurring billing");
-  const needsSplitPayments = features.includes("Split payments");
-  const hasMultipleSellers = features.includes("Multiple sellers");
-
-  const sellsOnline =
-    salesChannel === "Online only" || salesChannel === "Both online and in person";
-  const sellsInPerson =
-    salesChannel === "In person" || salesChannel === "Both online and in person";
-  const isDeveloperFriendly = priorities.includes("Ability to scale");
-  const wantsGlobalReach = priorities.includes("International payments");
-  const wantsEasySetup = priorities.includes("Easy setup");
-  const wantsLowestFees = priorities.includes("Keeping fees low");
-  const wantsFlexibility = priorities.includes("Flexibility / future-proofing");
-
-  // Handle both numeric ranges and early-stage expectation-based options
-  const isLowVolume = 
-    monthlyVolume === "< £5k" || 
-    monthlyVolume === "Just testing / very low volume" ||
-    monthlyVolume === "Small but growing";
-  const isMediumVolume =
-    monthlyVolume === "£5k–20k" || 
-    monthlyVolume === "£20k–50k" ||
-    monthlyVolume === "Moderate volume";
-  const volumeOver20k =
-    monthlyVolume === "£20k–50k" ||
-    monthlyVolume === "£50k–100k" ||
-    monthlyVolume === "£100k+" ||
-    monthlyVolume === "Planning to scale quickly";
-  const volumeOver50k = 
-    monthlyVolume === "£50k–100k" || 
-    monthlyVolume === "£100k+" ||
-    monthlyVolume === "Planning to scale quickly";
-
-  const isRestaurantOrRetail =
-    businessType === "Physical business";
-  const isMarketplace = businessType === "Marketplace / platform";
-  const isSubscription = needsRecurring;
-  const isEarlyStage = businessType === "Early-stage / just getting started";
-  const isUK = location === "UK";
-  const wantsBothChannels = salesChannel === "Both online and in person";
-
-  // DATMAN - UK Marketplaces with high volume (simplified since no split payment option in quiz)
-  if (isMarketplace && volumeOver20k && isUK && (isDeveloperFriendly || wantsLowestFees)) {
-    return {
-      name: "Datman",
-      description:
-        "Datman is ideal for UK marketplaces needing built-in revenue share and instant multi-party splitting at the point of transaction. Perfect for platforms scaling quickly and looking to earn income from every sale.",
-      reasons: [
-        "Your marketplace business model requires complex payment flows",
-        "Your monthly volume of " + monthlyVolume + " qualifies for competitive rates",
-        "UK-based with specialized marketplace payment infrastructure",
-        "Built-in revenue share and split payment capabilities",
-      ],
-    };
+const readStoredMarket = (): Market => {
+  try {
+    const raw = sessionStorage.getItem("quizMarket");
+    if (raw === "US") return "US";
+    return "UK";
+  } catch {
+    return "UK";
   }
-
-  // ADYEN - High volume international marketplaces
-  if (isMarketplace && volumeOver50k && acceptsInternational) {
-    return {
-      name: "Adyen",
-      description:
-        "Adyen is a global payment platform built for enterprise marketplaces and platforms processing high volumes internationally.",
-      reasons: [
-        "Your marketplace handles international customers",
-        "Your volume of " + monthlyVolume + " meets enterprise thresholds",
-        "Single platform for global payment processing",
-        "Advanced fraud protection and analytics",
-      ],
-    };
-  }
-
-  // STRIPE - Online businesses with developer needs or global reach
-  if (sellsOnline && (acceptsInternational || needsRecurring || isDeveloperFriendly || wantsGlobalReach)) {
-    return {
-      name: "Stripe",
-      description:
-        "Stripe is the leading payment platform for online businesses, offering powerful APIs and seamless international payment support.",
-      reasons: [
-        sellsOnline ? "You sell products or services online" : "",
-        acceptsInternational ? "You accept international customers" : "",
-        needsRecurring ? "You need recurring billing capabilities" : "",
-        isDeveloperFriendly ? "Developer-friendly tools are important to you" : "",
-        wantsGlobalReach ? "Global reach is a priority for your business" : "",
-      ].filter(Boolean),
-    };
-  }
-
-  // SQUARE - Physical businesses or in-person focused
-  if (isRestaurantOrRetail || sellsInPerson || wantsBothChannels) {
-    return {
-      name: "Square",
-      description:
-        "Square provides an all-in-one solution for businesses that sell in-person, with easy-to-use point-of-sale hardware and integrated online tools.",
-      reasons: [
-        isRestaurantOrRetail ? "Perfect for your physical business" : "",
-        sellsInPerson ? "Optimized for in-person sales" : "",
-        wantsBothChannels ? "Combined online and in-person support in one platform" : "",
-        "Simple setup with no long-term contracts",
-        "Integrated POS hardware and software",
-      ].filter(Boolean),
-    };
-  }
-
-  // SUMUP - Low volume, in-person, simplicity focused
-  if (isLowVolume && sellsInPerson && wantsEasySetup) {
-    return {
-      name: "SumUp",
-      description:
-        "SumUp is perfect for small businesses processing lower volumes who want a simple, affordable card reader with no monthly fees.",
-      reasons: [
-        "Your monthly volume under £5k qualifies for their simple pricing",
-        "Ideal for in-person transactions",
-        "No monthly fees — just pay per transaction",
-        "Easy setup with portable card readers",
-      ],
-    };
-  }
-
-  // BRAINTREE - Subscriptions or developer control
-  if (isSubscription || needsRecurring || isDeveloperFriendly || (isMediumVolume && sellsOnline)) {
-    return {
-      name: "Braintree",
-      description:
-        "Braintree (a PayPal service) offers robust subscription billing and developer tools for businesses needing flexible payment solutions.",
-      reasons: [
-        isSubscription ? "Built for subscription-based businesses" : "",
-        needsRecurring ? "Strong recurring billing infrastructure" : "",
-        isDeveloperFriendly ? "Developer-friendly APIs and documentation" : "",
-        sellsOnline ? "Optimized for online transactions" : "",
-        "Supports PayPal, Venmo, and card payments",
-      ].filter(Boolean),
-    };
-  }
-
-  // PAYPAL - Early stage, trust-focused, or low-value transactions
-  if (isLowVolume || wantsEasySetup || isEarlyStage || businessType === "Other / mixed") {
-    return {
-      name: "PayPal",
-      description:
-        "PayPal is trusted by millions of buyers worldwide, making it ideal for businesses that want instant credibility and easy checkout.",
-      reasons: [
-        "Trusted by customers worldwide for secure payments",
-        "Quick and easy setup with no technical knowledge required",
-        isLowVolume || isEarlyStage ? "Great for businesses just starting out" : "",
-        "Buyers feel confident paying with PayPal",
-      ].filter(Boolean),
-    };
-  }
-
-  // No match found
-  return null;
 };
 
 const Recommendation = () => {
@@ -229,6 +59,7 @@ const Recommendation = () => {
   const startedFromQuizRef = useRef(searchParams.get("fromQuiz") === "true");
   const [showLoader, setShowLoader] = useState(() => startedFromQuizRef.current);
   const [answers] = useState<QuizAnswers | null>(() => readStoredAnswers());
+  const [market] = useState<Market>(() => readStoredMarket());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const formRef = useRef<LeadCaptureFormRef>(null);
@@ -266,7 +97,7 @@ const Recommendation = () => {
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
 
-  const recommendation = answers && quizComplete ? getRecommendation(answers) : null;
+  const recommendation = answers && quizComplete ? getRecommendation(answers, market) : null;
 
   const showNeedsQuiz = !answers || !quizComplete;
   const showNoMatch = !!answers && quizComplete && !recommendation;
@@ -292,6 +123,7 @@ const Recommendation = () => {
         ...formData,
         reasons: recommendation?.reasons || [],
         recurring: formData.recurringBilling,
+        market: market,
       };
 
       const { data, error } = await supabase.functions.invoke("send-lead-email", {
