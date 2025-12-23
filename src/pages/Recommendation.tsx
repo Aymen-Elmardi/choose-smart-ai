@@ -180,10 +180,10 @@ const Recommendation = () => {
       <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
         <div className="text-center mb-8 md:mb-10 animate-fade-up">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Your Best Option
+            We've got what we need
           </h1>
           <p className="text-lg text-muted-foreground">
-            Based on your answers, here's the right provider for your business.
+            Based on what you shared, we're preparing a tailored introduction for your business.
           </p>
         </div>
 
