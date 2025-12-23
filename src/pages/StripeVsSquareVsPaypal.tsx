@@ -15,10 +15,10 @@ import {
 
 const StripeVsSquareVsPaypal = () => {
   useEffect(() => {
-    document.title = "Stripe vs Square vs PayPal (2025 UK Comparison Guide)";
+    document.title = "Stripe vs Square vs PayPal: Which Is Right for Your Business?";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Stripe vs Square vs PayPal — which is best for UK businesses? Clear comparison of fees, features, pros, cons, and which provider fits your business model. Includes a quick quiz for a personalised recommendation.");
+      metaDescription.setAttribute("content", "An independent comparison of Stripe, Square and PayPal. See which payment provider fits your business and why — in plain English.");
     }
     window.scrollTo(0, 0);
   }, []);

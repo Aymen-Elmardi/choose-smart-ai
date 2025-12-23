@@ -18,15 +18,15 @@ const BestPaymentProcessorUK = () => {
     window.scrollTo(0, 0);
     
     // Set SEO meta tags
-    document.title = "Best Payment Processor for Small Businesses UK (2025 Comparison)";
+    document.title = "Best Payment Processor in the UK (How to Choose the Right One)";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "See the top UK payment processors for small businesses in 2025. Simple comparisons of Stripe, Square, Zettle, PayPal, and more — plus a quick quiz to find your best match.");
+      metaDescription.setAttribute("content", "Most UK businesses overpay on card fees. Learn how to choose the right payment processor for your business in under a minute.");
     } else {
       const meta = document.createElement('meta');
       meta.name = "description";
-      meta.content = "See the top UK payment processors for small businesses in 2025. Simple comparisons of Stripe, Square, Zettle, PayPal, and more — plus a quick quiz to find your best match.";
+      meta.content = "Most UK businesses overpay on card fees. Learn how to choose the right payment processor for your business in under a minute.";
       document.head.appendChild(meta);
     }
   }, []);
