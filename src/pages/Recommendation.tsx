@@ -182,9 +182,6 @@ const Recommendation = () => {
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
             We've got what we need
           </h1>
-          <p className="text-lg text-muted-foreground">
-            Based on what you shared, we're preparing a tailored introduction for your business.
-          </p>
         </div>
 
         {/* If user lands here without completing the quiz */}
