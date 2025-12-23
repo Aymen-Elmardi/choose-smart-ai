@@ -226,8 +226,8 @@ const getRecommendation = (answers: QuizAnswers): Provider | null => {
 
 const Recommendation = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const fromQuiz = searchParams.get("fromQuiz") === "true";
-  const [showLoader, setShowLoader] = useState(fromQuiz);
+  const startedFromQuizRef = useRef(searchParams.get("fromQuiz") === "true");
+  const [showLoader, setShowLoader] = useState(() => startedFromQuizRef.current);
   const [answers] = useState<QuizAnswers | null>(() => readStoredAnswers());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -236,22 +236,36 @@ const Recommendation = () => {
 
   // Handle the loading transition from quiz
   useEffect(() => {
-    if (fromQuiz) {
-      // Remove the query param to clean up URL
-      const newParams = new URLSearchParams(searchParams);
-      newParams.delete("fromQuiz");
-      setSearchParams(newParams, { replace: true });
-      
-      // Show loader for 2 seconds then fade to content
-      const timer = setTimeout(() => {
-        setShowLoader(false);
-      }, 2000);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [fromQuiz, searchParams, setSearchParams]);
+    if (!startedFromQuizRef.current) return;
+
+    // Remove the query param to clean up URL
+    const newParams = new URLSearchParams(window.location.search);
+    newParams.delete("fromQuiz");
+    setSearchParams(newParams, { replace: true });
+
+    // Show loader for 2 seconds then fade to content
+    const timer = window.setTimeout(() => {
+      setShowLoader(false);
+    }, 2000);
+
+    // Hard fallback so the loader can never loop indefinitely
+    const hardFallback = window.setTimeout(() => {
+      setShowLoader(false);
+    }, 3000);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.clearTimeout(hardFallback);
+    };
+  }, [setSearchParams]);
+
+  // Ensure the loader exits immediately after a successful submission
+  useEffect(() => {
+    if (isSubmitted) setShowLoader(false);
+  }, [isSubmitted]);
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
+
   const recommendation = answers && quizComplete ? getRecommendation(answers) : null;
 
   const showNeedsQuiz = !answers || !quizComplete;
