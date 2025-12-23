@@ -36,7 +36,7 @@ const StripeVsSquareVsPaypal = () => {
                 Most businesses overpay on card fees without realising it.
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Stripe vs Square vs PayPal — Which Is Best for UK Businesses (2025)?
+                Stripe vs Square vs PayPal — Which Is Best for UK Businesses (2025/2026)?
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                 Stripe, Square, and PayPal are the most commonly compared payment processors in the UK — but they're designed for different types of businesses. This guide gives you a clear, unbiased breakdown based on features, fees, and real-world use cases.
