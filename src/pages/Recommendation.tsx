@@ -401,17 +401,11 @@ const Recommendation = () => {
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
                       <Check className="w-8 h-8 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-3">
-                      You're all set.
+                    <h3 className="text-2xl font-semibold text-foreground mb-3">
+                      We've found the right option for you and your business.
                     </h3>
-                    <p className="text-muted-foreground max-w-md mx-auto">
-                      We've shared your details along with the context from your answers, so the recommended provider can respond more accurately.
-                    </p>
-                    <p className="text-muted-foreground max-w-md mx-auto mt-4">
-                      You can expect a follow-up within the next 24 hours.
-                    </p>
-                    <p className="text-muted-foreground max-w-md mx-auto mt-4">
-                      Payment decisions affect your margins long-term. This step helps you move forward with fewer surprises.
+                    <p className="text-muted-foreground text-lg max-w-md mx-auto">
+                      We'll connect you with the provider. You'll hear from us within 24 hours.
                     </p>
                   </CardContent>
                 </Card>
@@ -495,17 +489,11 @@ const Recommendation = () => {
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
                       <Check className="w-8 h-8 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-3">
-                      You're all set.
+                    <h3 className="text-2xl font-semibold text-foreground mb-3">
+                      We've found the right option for you and your business.
                     </h3>
-                    <p className="text-muted-foreground max-w-md mx-auto">
-                      We've shared your details along with the context from your answers, so the recommended provider can respond more accurately.
-                    </p>
-                    <p className="text-muted-foreground max-w-md mx-auto mt-4">
-                      You can expect a follow-up within the next 24 hours.
-                    </p>
-                    <p className="text-muted-foreground max-w-md mx-auto mt-4">
-                      Payment decisions affect your margins long-term. This step helps you move forward with fewer surprises.
+                    <p className="text-muted-foreground text-lg max-w-md mx-auto">
+                      We'll connect you with the provider. You'll hear from us within 24 hours.
                     </p>
                   </CardContent>
                 </Card>
