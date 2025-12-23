@@ -15,10 +15,10 @@ import {
 
 const BestPaymentApiUK = () => {
   useEffect(() => {
-    document.title = "Best Payment APIs for UK Developers (2025 Comparison)";
+    document.title = "Best Payment API in the UK for Your Business";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Compare the best payment APIs for UK developers — Stripe, Square, Checkout.com, PayPal, and more. API quality, docs, SDKs, webhooks, errors, and integration speed. Includes a quiz to find the best provider for your project.");
+      metaDescription.setAttribute("content", "Compare the leading payment APIs used by UK businesses. Understand the trade-offs and choose the right option for your setup.");
     }
     window.scrollTo(0, 0);
   }, []);
