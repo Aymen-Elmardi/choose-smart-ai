@@ -8,6 +8,7 @@ import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
 
 // Eager load the homepage for best FCP
 import Index from "./pages/Index";
+import IndexUS from "./pages/IndexUS";
 
 // Lazy load other routes for code splitting
 const Quiz = lazy(() => import("./pages/Quiz"));
@@ -60,6 +61,7 @@ const App = () => (
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/us" element={<IndexUS />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/recommendation" element={<Recommendation />} />
             <Route path="/best-payment-processor-uk" element={<BestPaymentProcessorUK />} />
