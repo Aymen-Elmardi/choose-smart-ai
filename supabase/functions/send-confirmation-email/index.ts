@@ -106,15 +106,15 @@ const handler = async (req: Request): Promise<Response> => {
 <body>
   <p class="greeting">Hi ${escapeHtml(firstName)},</p>
   
-  <p>Thanks for completing the questions.</p>
+  <p>Thanks for taking a moment to answer the questions — we've got everything we need.</p>
   
-  <p>We've reviewed your answers and shared the right context with the provider that best fits your business. You don't need to do anything else for now.</p>
+  <p>We've reviewed your answers and shared the right context with the provider that best fits your business. There's nothing you need to do right now.</p>
   
-  <p>You should hear back within 24 hours with next steps or any follow-up they need.</p>
+  <p>You should hear back within 24 hours with next steps or any follow-up they may need.</p>
   
-  <p>If at any point this doesn't feel like the right fit, let us know. We can step in and help you find a better option.</p>
+  <p>If at any point this doesn't feel like the right fit, just reply to this email. We'll step in and help you find a better option.</p>
   
-  <p>We're here to make sure you don't get stuck with the wrong setup.</p>
+  <p>Our job is to make sure you don't get stuck with the wrong setup.</p>
   
   <div class="signature">
     <p class="company-name">ChosePayments</p>
