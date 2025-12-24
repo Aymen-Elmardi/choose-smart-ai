@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const MarketplacePlatforms = () => {
   useEffect(() => {
-    document.title = "Marketplace Payment Providers UK — Split Payments, Payouts & Compliance";
+    document.title = "Marketplace Payment Provider UK — Why Standard Options Don't Work";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const MarketplacePlatforms = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Standard providers don't handle split payments or multi-party payouts well. Find providers built for marketplaces, franchises, and platforms in the UK & EU."
+      "Most payment providers aren't built for platforms. If you need split payments, seller payouts, or multi-party compliance, this matters."
     );
 
     return () => {
@@ -33,11 +33,11 @@ const MarketplacePlatforms = () => {
         <div className="section-container max-w-3xl">
           <article className="prose prose-lg max-w-none">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Payment Providers for Marketplaces, Franchises & Platforms
+              Payment Providers for Marketplaces and Platforms
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Platforms and marketplaces often struggle with standard payment providers. Splitting funds, managing seller payouts, handling compliance across multiple parties — it's messy with tools not designed for it. If you've felt that friction, it's probably not you.
+              If you're building a marketplace, franchise, or multi-vendor platform, you've probably already discovered that most payment providers aren't built for what you're doing. You need to split funds between parties, manage payouts on different schedules, and handle compliance for sellers you don't fully control. Standard tools make this harder than it should be. That friction isn't your fault — it's a mismatch. Choosing the wrong provider here creates real problems later: blocked funds, compliance issues, or having to rebuild your payments layer from scratch. This page is here to help you understand what actually matters for platform payments before you commit.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

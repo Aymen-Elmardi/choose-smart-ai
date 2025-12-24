@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const SmallBusiness = () => {
   useEffect(() => {
-    document.title = "Best Payment Provider for Small Business UK — Avoid These Common Mistakes";
+    document.title = "Payment Provider for Small Business UK — How to Avoid the Wrong Fit";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const SmallBusiness = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Small businesses often pick the wrong provider and regret it. Learn how to choose based on your actual needs — not just the cheapest headline rate."
+      "Most small businesses pick based on a recommendation or a low rate — then realise it's not right. Here's how to avoid that."
     );
 
     return () => {
@@ -33,11 +33,11 @@ const SmallBusiness = () => {
         <div className="section-container max-w-3xl">
           <article className="prose prose-lg max-w-none">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Best Payment Providers for Small Businesses (UK & EU)
+              Payment Providers for Small Businesses (UK & EU)
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Most small businesses pick a payment provider based on a quick search or a friend's recommendation — then realise months later it wasn't the right fit. Hidden fees appear, support is slow or non-existent, and switching feels like too much hassle. It doesn't have to be this way.
+              When you're running a small business, choosing a payment provider often happens in a hurry. You go with what a friend uses, or what shows up first in a search, or whatever lets you start accepting payments fastest. That's understandable — but it's also how many businesses end up with a provider that doesn't quite fit. Fees turn out to be higher than expected. Support is hard to reach. And by the time you realise, switching feels like more trouble than it's worth. If you're still choosing, it's worth taking a bit more time to get this right.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

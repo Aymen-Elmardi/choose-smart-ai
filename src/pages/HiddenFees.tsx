@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const HiddenFees = () => {
   useEffect(() => {
-    document.title = "Hidden Payment Fees UK Businesses Don't Expect — And How to Avoid Them";
+    document.title = "Payment Provider Hidden Fees — What UK Businesses Aren't Told Upfront";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const HiddenFees = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Many UK businesses discover unexpected fees after signing up. Learn which charges to watch for and how to find a provider with transparent pricing."
+      "The rate you're quoted often isn't the rate you pay. Learn which fees get buried — and how to spot them before you sign up."
     );
 
     return () => {
@@ -33,11 +33,11 @@ const HiddenFees = () => {
         <div className="section-container max-w-3xl">
           <article className="prose prose-lg max-w-none">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Choosing a Payment Provider Without Hidden Fees
+              Hidden Fees in Payment Processing — What You're Not Being Told
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Too many businesses sign up with a payment provider expecting one rate — only to find unexpected charges appearing later. Monthly minimums, PCI fees, early exit penalties, and surcharges that weren't mentioned upfront. It's one of the most common complaints we hear, and it's avoidable.
+              You compared the rates, picked a provider, and signed up — then noticed charges you weren't expecting. A monthly minimum. A PCI fee. A penalty for leaving early. This happens constantly, and it's not always because providers are being dishonest. Payment pricing is genuinely confusing. But the result is the same: you end up paying more than you planned, and switching feels like a headache. If you're still choosing, it's worth understanding what's often left out of the pitch.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
