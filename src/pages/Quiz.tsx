@@ -340,7 +340,7 @@ const Quiz = () => {
       ? "Find the Right Payment Provider for Your EU Business"
       : "Which Payment Provider Should I Use for My Business?";
     
-    // Update meta description
+    // Update meta description - now with provider coverage
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement("meta");
@@ -349,7 +349,9 @@ const Quiz = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Answer a few quick questions and get matched with a payment provider that actually fits how your business works. No cost. No obligation."
+      isEU
+        ? "Compare leading UK & EU payment providers in one place. Find a provider that fits your business — no pressure, no surprises."
+        : "Compare 20+ UK & EU payment providers. Find the best fit for your business — without hidden fees or long-term contracts. Free 2-minute quiz."
     );
 
     // Cleanup: restore original title on unmount
@@ -556,6 +558,60 @@ const Quiz = () => {
             <p className="text-sm text-muted-foreground/80 mt-4 font-light">
               We assess fit across 20+ UK & EU payment providers — based on how your business actually operates.
             </p>
+
+            {/* SEO Content Block - Pain Points */}
+            <div className="mt-12 pt-8 border-t border-border/50 text-left">
+              <h2 className="text-xl font-semibold text-foreground mb-4">
+                Choosing a payment provider shouldn't come with surprises.
+              </h2>
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                Many businesses switch providers expecting savings — only to discover hidden fees, long contracts, or poor support later.
+                Our quiz focuses on best fit, not sales pressure. No contracts, no surprises.
+              </p>
+              <ul className="text-sm text-muted-foreground space-y-2">
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>No hidden fees</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>No long-term lock-ins</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>Clear support expectations</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span>Providers matched to your business model</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Why Businesses Use Us Section */}
+            <div className="mt-8 pt-6 border-t border-border/50 text-left">
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+                Why businesses use us
+              </h3>
+              <ul className="text-sm text-muted-foreground space-y-2">
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>We're not tied to one provider</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>We don't sell contracts</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>We recommend based on your answers — not commissions</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>You decide if you want an introduction</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
