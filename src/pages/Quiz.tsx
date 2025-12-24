@@ -36,7 +36,7 @@ const INITIAL_ANSWERS: QuizAnswers = {
 
 // Question data - ordered for psychological flow
 const getQuestions = (answers: QuizAnswers) => {
-  const isEarlyStage = answers.businessType === "Early-stage / just getting started";
+  const isEarlyStage = answers.businessType === "I'm still figuring things out";
   
   return [
     {
@@ -52,13 +52,13 @@ const getQuestions = (answers: QuizAnswers) => {
     },
     {
       id: "businessType",
-      question: "What best describes your business?",
+      question: "What best describes your setup today?",
       options: [
-        "Early-stage / just getting started",
-        "Online business",
-        "Physical business",
-        "Marketplace / platform",
-        "Other / mixed",
+        "I sell online",
+        "I sell in person",
+        "I sell both online and in person",
+        "I run a platform or marketplace",
+        "I'm still figuring things out",
       ],
     },
     {
