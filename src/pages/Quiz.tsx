@@ -335,10 +335,10 @@ const Quiz = () => {
   useEffect(() => {
     const isEU = answers.location === "EU";
     
-    // Update title
+    // Update title - UK version for now
     document.title = isEU
       ? "Find the Right Payment Provider for Your EU Business"
-      : "Find the Right Payment Provider for Your UK Business";
+      : "Which Payment Provider Should I Use for My Business?";
     
     // Update meta description
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -349,9 +349,7 @@ const Quiz = () => {
     }
     metaDescription.setAttribute(
       "content",
-      isEU
-        ? "Answer a few quick questions and get a payment provider recommendation tailored to how businesses operate across the EU. No cost, no commitment."
-        : "Answer a few quick questions and get a payment provider recommendation tailored to how UK businesses operate. No cost, no commitment."
+      "Answer a few quick questions and get matched with a payment provider that actually fits how your business works. No cost. No obligation."
     );
 
     // Cleanup: restore original title on unmount
@@ -545,13 +543,19 @@ const Quiz = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Let's Find the Best Payment Provider for Your Business
             </h1>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-6">
               Answer a few quick questions so we can recommend the perfect fit.
+            </p>
+            <p className="text-sm text-muted-foreground mb-6">
+              Most businesses choose a payment provider too early — and regret it later. This helps you get it right first time.
             </p>
             <Button variant="hero" size="xl" onClick={handleNext}>
               Start Quiz
               <ArrowRight className="w-5 h-5" />
             </Button>
+            <p className="text-sm text-muted-foreground/80 mt-4 font-light">
+              We assess fit across 20+ UK & EU payment providers — based on how your business actually operates.
+            </p>
           </div>
         </div>
       </div>
