@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const SwitchProvider = () => {
   useEffect(() => {
-    document.title = "How to Switch Payment Providers Safely | UK & EU Guide";
+    document.title = "Stuck With Your Payment Provider? How to Switch Without Penalties";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const SwitchProvider = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Learn how to switch payment providers in the UK & EU without disruption or penalties. Avoid cancellation fees and ensure a smooth transition."
+      "Worried about exit fees or contract lock-ins? Learn how UK & EU businesses switch payment providers safely — without disruption or hidden cancellation charges."
     );
 
     return () => {
@@ -37,7 +37,7 @@ const SwitchProvider = () => {
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Switching payment providers can feel daunting — especially if you're worried about disruption, cancellation fees, or losing access to funds. But with the right approach, it doesn't have to be complicated.
+              Many businesses feel trapped by their current provider — locked into long contracts, facing steep exit fees, or worried about funds being held during a transition. These are real concerns, and they stop a lot of merchants from making a change even when they know they should.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

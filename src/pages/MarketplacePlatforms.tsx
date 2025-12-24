@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const MarketplacePlatforms = () => {
   useEffect(() => {
-    document.title = "Payment Providers for Marketplaces, Franchises & Platforms | UK & EU";
+    document.title = "Marketplace Payment Providers UK — Split Payments, Payouts & Compliance";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const MarketplacePlatforms = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Find payment providers built for marketplaces, franchises and platforms. Split payments, payouts, and compliance for UK & EU businesses."
+      "Standard providers don't handle split payments or multi-party payouts well. Find providers built for marketplaces, franchises, and platforms in the UK & EU."
     );
 
     return () => {
@@ -37,7 +37,7 @@ const MarketplacePlatforms = () => {
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              If your business involves multiple parties — sellers, franchisees, service providers, or partners — you need a payment provider built for complexity. Standard payment processing won't cut it.
+              Platforms and marketplaces often struggle with standard payment providers. Splitting funds, managing seller payouts, handling compliance across multiple parties — it's messy with tools not designed for it. If you've felt that friction, it's probably not you.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

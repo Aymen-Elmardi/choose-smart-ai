@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const SmallBusiness = () => {
   useEffect(() => {
-    document.title = "Best Payment Providers for Small Businesses | UK & EU Guide";
+    document.title = "Best Payment Provider for Small Business UK — Avoid These Common Mistakes";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const SmallBusiness = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Find the best payment provider for your small business in the UK & EU. Practical advice on matching provider fit to your business size and stage."
+      "Small businesses often pick the wrong provider and regret it. Learn how to choose based on your actual needs — not just the cheapest headline rate."
     );
 
     return () => {
@@ -37,7 +37,7 @@ const SmallBusiness = () => {
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Choosing a payment provider as a small business isn't just about finding the cheapest option. It's about finding one that fits where you are now — and can grow with you.
+              Most small businesses pick a payment provider based on a quick search or a friend's recommendation — then realise months later it wasn't the right fit. Hidden fees appear, support is slow or non-existent, and switching feels like too much hassle. It doesn't have to be this way.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

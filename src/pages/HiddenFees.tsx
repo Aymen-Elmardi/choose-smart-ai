@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const HiddenFees = () => {
   useEffect(() => {
-    document.title = "Choosing a Payment Provider Without Hidden Fees | UK & EU Guide";
+    document.title = "Hidden Payment Fees UK Businesses Don't Expect — And How to Avoid Them";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const HiddenFees = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Understand why payment processor fees are often unclear and how to avoid unexpected merchant fees. Free guidance for UK & EU businesses."
+      "Many UK businesses discover unexpected fees after signing up. Learn which charges to watch for and how to find a provider with transparent pricing."
     );
 
     return () => {
@@ -37,7 +37,7 @@ const HiddenFees = () => {
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              One of the most common frustrations for UK and EU businesses is discovering fees they weren't told about upfront. Card machine fees, transaction charges, and merchant service costs can vary wildly — and the pricing isn't always transparent.
+              Too many businesses sign up with a payment provider expecting one rate — only to find unexpected charges appearing later. Monthly minimums, PCI fees, early exit penalties, and surcharges that weren't mentioned upfront. It's one of the most common complaints we hear, and it's avoidable.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
