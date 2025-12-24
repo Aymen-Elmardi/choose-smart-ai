@@ -331,6 +331,35 @@ const Quiz = () => {
     markQuizStart();
   }, []);
 
+  // Update SEO metadata based on location selection
+  useEffect(() => {
+    const isEU = answers.location === "EU";
+    
+    // Update title
+    document.title = isEU
+      ? "Find the Right Payment Provider for Your EU Business"
+      : "Find the Right Payment Provider for Your UK Business";
+    
+    // Update meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement("meta");
+      metaDescription.setAttribute("name", "description");
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute(
+      "content",
+      isEU
+        ? "Answer a few quick questions and get a payment provider recommendation tailored to how businesses operate across the EU. No cost, no commitment."
+        : "Answer a few quick questions and get a payment provider recommendation tailored to how UK businesses operate. No cost, no commitment."
+    );
+
+    // Cleanup: restore original title on unmount
+    return () => {
+      document.title = "ChosePayments - Find the Best Payment Provider in 60 Seconds";
+    };
+  }, [answers.location]);
+
   const questionCount = getQuestionCount(answers);
   const totalSteps = questionCount + 1; // Welcome + questions
   const progress = (currentStep / (totalSteps - 1)) * 100;
