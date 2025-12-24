@@ -154,22 +154,21 @@ const Quiz = () => {
       
       // Check if this is the last question
       if (currentStep === QUESTION_COUNT) {
-        // Last question - save synchronously and navigate with loading flag
-        console.log("Saving quiz answers:", updatedAnswers, "Market:", market);
+        // OPTIMISTIC: Navigate immediately, save in background
+        navigate("/recommendation?fromQuiz=true");
+        // Save async after navigation starts
         sessionStorage.setItem("quizAnswers", JSON.stringify(updatedAnswers));
         sessionStorage.setItem("quizMarket", market);
-        navigate("/recommendation?fromQuiz=true");
       } else {
-        // Auto-advance with visual feedback delay
-        setTimeout(() => {
-          setCurrentStep((prev) => prev + 1);
-        }, 300);
+        // OPTIMISTIC: Advance immediately with minimal visual feedback
+        setCurrentStep((prev) => prev + 1);
       }
     }
   };
 
   const handleNext = () => {
     if (currentStep === 0) {
+      // OPTIMISTIC: Advance immediately
       setCurrentStep(1);
     } else if (currentStep <= QUESTION_COUNT) {
       const questions = getQuestions(answers);
@@ -177,11 +176,12 @@ const Quiz = () => {
       if (question?.multiSelect) {
         // Check if this is the last question
         if (currentStep === QUESTION_COUNT) {
-          // Save and navigate with loading flag
+          // OPTIMISTIC: Navigate immediately, save in background
+          navigate("/recommendation?fromQuiz=true");
           sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
           sessionStorage.setItem("quizMarket", market);
-          navigate("/recommendation?fromQuiz=true");
         } else {
+          // OPTIMISTIC: Advance immediately
           setCurrentStep((prev) => prev + 1);
         }
       }
