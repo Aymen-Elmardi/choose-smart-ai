@@ -70,13 +70,12 @@ const getQuestions = (answers: QuizAnswers) => {
         "Keeping fees low",
         "Ability to scale",
         "International payments",
-        "Built for growth",
       ],
     },
     {
       id: "location",
       question: "Where are most of your customers located?",
-      options: ["UK", "EU", "US", "Other"],
+      options: ["UK", "EU", "UK & EU", "Other"],
     },
     {
       id: "monthlyVolume",
