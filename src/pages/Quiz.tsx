@@ -68,10 +68,9 @@ const getQuestions = (answers: QuizAnswers) => {
       multiSelect: true,
       options: [
         "Keeping fees low",
-        "Easy setup",
         "Ability to scale",
         "International payments",
-        "Flexibility / future-proofing",
+        "Built for growth",
       ],
     },
     {
