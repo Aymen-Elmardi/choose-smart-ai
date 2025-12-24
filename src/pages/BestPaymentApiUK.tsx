@@ -15,10 +15,10 @@ import {
 
 const BestPaymentApiUK = () => {
   useEffect(() => {
-    document.title = "Best Payment API in the UK for Your Business";
+    document.title = "Best Payment API UK — Compare Without the Marketing Spin";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Compare the leading payment APIs used by UK businesses. Understand the trade-offs and choose the right option for your setup.");
+      metaDescription.setAttribute("content", "Developers often pick Stripe by default — but it's not always the best fit. Compare UK payment APIs based on real trade-offs: fees, support, docs, and how easy they are to leave.");
     }
     window.scrollTo(0, 0);
   }, []);
@@ -33,20 +33,20 @@ const BestPaymentApiUK = () => {
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-muted-foreground mb-4">
-                Most businesses overpay on card fees without realising it.
+                Picking a payment API is easy. Switching later isn't.
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 Best Payment APIs for UK Developers (2025 Guide)
               </h1>
               <div className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto space-y-4 text-left">
                 <p>
-                  If you're a developer building a new product, Shopify store, SaaS tool, app, or marketplace, choosing the right payment API is one of the most important early decisions you'll make.
+                  Most developers pick Stripe by default — it's well-documented, widely supported, and works well for a lot of use cases. But it's not always the right choice, and switching later can be painful.
                 </p>
                 <p>
-                  Stripe is the default option for many developers — and for good reason — but it's not always the best fit. Some projects need faster activation, better marketplace support, simpler fees, or UK-focused features.
+                  Some projects need faster activation, simpler pricing, better marketplace support, or a provider with actual human support when things go wrong. The marketing materials don't always make these trade-offs clear.
                 </p>
                 <p>
-                  This guide compares the top payment APIs based on real developer concerns.
+                  This guide compares the leading payment APIs honestly — so you can choose well the first time.
                 </p>
               </div>
               <div className="flex flex-col items-center">

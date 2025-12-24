@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const ChooseProvider = () => {
   useEffect(() => {
-    document.title = "How to Choose the Right Payment Provider | UK & EU Guide";
+    document.title = "How to Choose a Payment Provider Without Regret | UK & EU Guide";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const ChooseProvider = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "A practical framework for comparing payment providers in the UK & EU. Learn how to choose based on fit, not just price. Free decision guide."
+      "Most businesses pick a provider too quickly and regret it. Use this framework to choose based on fit — not just fees. Avoid contracts, hidden charges, and bad support."
     );
 
     return () => {
@@ -37,7 +37,7 @@ const ChooseProvider = () => {
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Most businesses choose a payment provider based on a recommendation or a quick Google search. But the cheapest option isn't always the best fit — and switching later is more painful than getting it right first time.
+              Choosing too quickly is one of the most common regrets we hear from business owners. They signed up based on a friend's advice or a low headline rate — then discovered hidden fees, unhelpful support, or long contracts that made switching difficult.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

@@ -15,10 +15,10 @@ import {
 
 const StripeVsSquareVsPaypal = () => {
   useEffect(() => {
-    document.title = "Stripe vs Square vs PayPal: Which Is Right for Your Business?";
+    document.title = "Stripe vs Square vs PayPal UK — Which Won't Lock You In or Surprise You?";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "An independent comparison of Stripe, Square and PayPal. See which payment provider fits your business and why — in plain English.");
+      metaDescription.setAttribute("content", "Comparing Stripe, Square and PayPal? Learn the real differences — including hidden costs, support quality, and contract terms. Independent, UK-focused guide.");
     }
     window.scrollTo(0, 0);
   }, []);
@@ -33,13 +33,13 @@ const StripeVsSquareVsPaypal = () => {
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-muted-foreground mb-4">
-                Most businesses overpay on card fees without realising it.
+                Choosing between these three? The right answer depends on your business — not theirs.
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 Stripe vs Square vs PayPal — Which Is Best for UK Businesses (2025/2026)?
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                Stripe, Square, and PayPal are the most commonly compared payment processors in the UK — but they're designed for different types of businesses. This guide gives you a clear, unbiased breakdown based on features, fees, and real-world use cases.
+                These are the three most-searched providers — but many businesses pick one and regret it later. The fees look similar on the surface, but how they work day-to-day varies a lot. This guide breaks down what actually matters: real costs, support, and how easy it is to leave if things don't work out.
               </p>
               <div className="flex flex-col items-center">
                 <Button size="xl" asChild>

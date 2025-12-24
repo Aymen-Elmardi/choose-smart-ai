@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const SupportMatters = () => {
   useEffect(() => {
-    document.title = "Why Support Matters More Than Price in Payments | UK & EU";
+    document.title = "Payment Provider Support Issues? Why It Matters More Than Fees";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const SupportMatters = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Discover why payment provider support quality matters more than fees. Avoid poor customer service issues and operational risks for UK & EU businesses."
+      "Low fees mean nothing when your account is frozen and no one responds. Learn why support quality should be a top priority when choosing a payment provider."
     );
 
     return () => {
@@ -37,7 +37,7 @@ const SupportMatters = () => {
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              When comparing payment providers, it's tempting to focus on transaction fees. But when something goes wrong — and eventually, something will — the quality of support can make or break your business.
+              The worst time to discover your provider has poor support is when your account gets frozen, a payout doesn't arrive, or a dispute escalates. Too many businesses learn the hard way that cheap fees aren't worth much when you can't reach anyone to help.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

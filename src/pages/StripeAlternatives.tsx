@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const StripeAlternatives = () => {
   useEffect(() => {
-    document.title = "Stripe Alternatives for Marketplaces & Platforms | UK & EU";
+    document.title = "Outgrowing Stripe? Marketplace Payment Alternatives for UK & EU Platforms";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const StripeAlternatives = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Explore alternatives to Stripe for marketplaces and platforms in the UK & EU. Compare split payment providers and find the right fit for your platform."
+      "Stripe Connect not working for you? Explore alternatives built for marketplaces — with simpler onboarding, better pricing at scale, and fewer compliance headaches."
     );
 
     return () => {
@@ -37,7 +37,7 @@ const StripeAlternatives = () => {
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Stripe is often the default choice for platforms and marketplaces — and for good reason. But as your platform grows, you may find that other providers offer better fit for your specific model.
+              Many platforms start with Stripe — but hit problems as they scale. Seller onboarding becomes friction-heavy, fees eat into margins, and support can feel distant when things go wrong. If you're wondering whether there's a better fit, you're not alone.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

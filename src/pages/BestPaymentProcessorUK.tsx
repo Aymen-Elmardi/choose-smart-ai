@@ -18,15 +18,15 @@ const BestPaymentProcessorUK = () => {
     window.scrollTo(0, 0);
     
     // Set SEO meta tags
-    document.title = "Best Payment Processor in the UK (How to Choose the Right One)";
+    document.title = "Best Payment Processor UK — Avoid Hidden Fees, Long Contracts & Poor Support";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Most UK businesses overpay on card fees. Learn how to choose the right payment processor for your business in under a minute.");
+      metaDescription.setAttribute("content", "Tired of unexpected charges and locked-in contracts? Compare UK payment processors based on real costs, support quality, and exit terms — not just headline rates.");
     } else {
       const meta = document.createElement('meta');
       meta.name = "description";
-      meta.content = "Most UK businesses overpay on card fees. Learn how to choose the right payment processor for your business in under a minute.";
+      meta.content = "Tired of unexpected charges and locked-in contracts? Compare UK payment processors based on real costs, support quality, and exit terms — not just headline rates.";
       document.head.appendChild(meta);
     }
   }, []);
@@ -42,13 +42,13 @@ const BestPaymentProcessorUK = () => {
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-muted-foreground mb-4">
-                Most businesses overpay on card fees without realising it.
+                Too many businesses discover fees they weren't told about.
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 Best Payment Processor for Small Businesses in the UK (2025 Guide)
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                Choosing a payment provider can be confusing — every company promises "simple fees" and "fast setup," but real costs vary based on your business type, payment volume, and how customers buy from you. This guide breaks everything down clearly, using real-world considerations instead of generic marketing claims.
+                Choosing a payment provider shouldn't mean signing up for surprises. But too often, businesses get locked into long contracts, hit with fees that weren't disclosed upfront, or can't reach support when something goes wrong. This guide helps you compare based on what actually matters — so you don't have to switch later.
               </p>
               <div className="flex flex-col items-center">
                 <Button size="xl" asChild>
