@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { CreditCard, Check, MessageCircle, ArrowRight, Loader2, ChevronDown } from "lucide-react";
+import { CreditCard, Check, MessageCircle, ArrowRight, Loader2, ChevronDown, CheckCircle2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Card, CardContent } from "@/components/ui/card";
@@ -64,6 +64,8 @@ const Recommendation = () => {
   const [market] = useState<Market>(() => readStoredMarket());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isProviderNotified, setIsProviderNotified] = useState(false);
+  const [isConfirmationSent, setIsConfirmationSent] = useState(false);
   const [recommendation, setRecommendation] = useState<Provider | null>(null);
   const [alternatives, setAlternatives] = useState<Provider[]>([]);
   const [isLoadingRecommendation, setIsLoadingRecommendation] = useState(true);
@@ -171,6 +173,9 @@ const Recommendation = () => {
     setIsSubmitted(true);
     setBackgroundError(null);
 
+    // Extract first name from full name
+    const firstName = formData.fullName.trim().split(/\s+/)[0] || formData.fullName;
+
     // Send data to backend in background
     const payload = {
       ...formData,
@@ -180,6 +185,7 @@ const Recommendation = () => {
     };
 
     try {
+      // Send lead email to provider
       const { data, error } = await supabase.functions.invoke("send-lead-email", {
         body: payload,
       });
@@ -188,6 +194,26 @@ const Recommendation = () => {
 
       if (!data?.success) {
         throw new Error(data?.error || "Failed to send email");
+      }
+
+      // Mark provider as notified
+      setIsProviderNotified(true);
+
+      // Send confirmation email to user
+      try {
+        const { data: confirmData, error: confirmError } = await supabase.functions.invoke("send-confirmation-email", {
+          body: {
+            email: formData.email,
+            firstName: firstName,
+          },
+        });
+
+        if (!confirmError && confirmData?.success) {
+          setIsConfirmationSent(true);
+        }
+      } catch (confirmErr) {
+        // Don't fail the whole flow if confirmation email fails
+        console.error("Confirmation email error:", confirmErr);
       }
     } catch (error) {
       console.error("Error submitting lead:", error);
@@ -241,9 +267,39 @@ const Recommendation = () => {
                   <h3 className="text-2xl font-semibold text-foreground mb-3">
                     We've identified the right option for your business.
                   </h3>
-                  <p className="text-muted-foreground text-lg max-w-md mx-auto">
+                  <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
                     Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
                   </p>
+                  
+                  {/* Verification Indicators */}
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
+                    <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
+                      isProviderNotified 
+                        ? 'bg-primary/10 text-primary' 
+                        : 'bg-muted text-muted-foreground'
+                    }`}>
+                      {isProviderNotified ? (
+                        <CheckCircle2 className="w-4 h-4" />
+                      ) : (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      )}
+                      <span>{isProviderNotified ? 'Provider notified' : 'Notifying provider...'}</span>
+                    </div>
+                    
+                    <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
+                      isConfirmationSent 
+                        ? 'bg-primary/10 text-primary' 
+                        : 'bg-muted text-muted-foreground'
+                    }`}>
+                      {isConfirmationSent ? (
+                        <Mail className="w-4 h-4" />
+                      ) : (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      )}
+                      <span>{isConfirmationSent ? 'Confirmation sent' : 'Sending confirmation...'}</span>
+                    </div>
+                  </div>
+                  
                   {backgroundError && (
                     <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
                       {backgroundError}
@@ -391,9 +447,39 @@ const Recommendation = () => {
                   <h3 className="text-2xl font-semibold text-foreground mb-3">
                     We've identified the right option for your business.
                   </h3>
-                  <p className="text-muted-foreground text-lg max-w-md mx-auto">
+                  <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
                     Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
                   </p>
+                  
+                  {/* Verification Indicators */}
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
+                    <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
+                      isProviderNotified 
+                        ? 'bg-primary/10 text-primary' 
+                        : 'bg-muted text-muted-foreground'
+                    }`}>
+                      {isProviderNotified ? (
+                        <CheckCircle2 className="w-4 h-4" />
+                      ) : (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      )}
+                      <span>{isProviderNotified ? 'Provider notified' : 'Notifying provider...'}</span>
+                    </div>
+                    
+                    <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
+                      isConfirmationSent 
+                        ? 'bg-primary/10 text-primary' 
+                        : 'bg-muted text-muted-foreground'
+                    }`}>
+                      {isConfirmationSent ? (
+                        <Mail className="w-4 h-4" />
+                      ) : (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      )}
+                      <span>{isConfirmationSent ? 'Confirmation sent' : 'Sending confirmation...'}</span>
+                    </div>
+                  </div>
+                  
                   {backgroundError && (
                     <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
                       {backgroundError}
