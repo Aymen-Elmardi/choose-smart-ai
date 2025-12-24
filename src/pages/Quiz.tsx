@@ -74,8 +74,8 @@ const getQuestions = (answers: QuizAnswers) => {
     },
     {
       id: "location",
-      question: "Where are most of your customers located?",
-      options: ["UK", "EU", "UK & EU", "Other"],
+      question: "Where are most of your customers based?",
+      options: ["UK", "EU", "UK & EU", "Elsewhere"],
     },
     {
       id: "monthlyVolume",
