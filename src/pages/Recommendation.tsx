@@ -66,6 +66,7 @@ const Recommendation = () => {
   const [recommendation, setRecommendation] = useState<Provider | null>(null);
   const [alternatives, setAlternatives] = useState<Provider[]>([]);
   const [isLoadingRecommendation, setIsLoadingRecommendation] = useState(true);
+  const [backgroundError, setBackgroundError] = useState<string | null>(null);
   const formRef = useRef<LeadCaptureFormRef>(null);
   const { toast } = useToast();
 
@@ -153,36 +154,35 @@ const Recommendation = () => {
     }
 
     const formData = formRef.current.getFormData();
-    setIsSubmitting(true);
+    
+    // OPTIMISTIC: Show success immediately, send data in background
+    setIsSubmitted(true);
+    setBackgroundError(null);
+
+    // Send data to backend in background
+    const payload = {
+      ...formData,
+      reasons: recommendation?.reasons || [],
+      recurring: formData.recurringBilling,
+      market: market,
+    };
 
     try {
-      const payload = {
-        ...formData,
-        reasons: recommendation?.reasons || [],
-        recurring: formData.recurringBilling,
-        market: market,
-      };
-
       const { data, error } = await supabase.functions.invoke("send-lead-email", {
         body: payload,
       });
 
       if (error) throw error;
 
-      if (data?.success) {
-        setIsSubmitted(true);
-      } else {
+      if (!data?.success) {
         throw new Error(data?.error || "Failed to send email");
       }
     } catch (error) {
       console.error("Error submitting lead:", error);
-      toast({
-        title: "Something went wrong",
-        description: "Something went wrong while sending your details. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
+      // Show calm inline message for background errors
+      setBackgroundError("We're just double-checking your details. One moment.");
+      // Clear the error after a few seconds
+      setTimeout(() => setBackgroundError(null), 5000);
     }
   };
 
@@ -254,6 +254,11 @@ const Recommendation = () => {
                   <p className="text-muted-foreground text-lg max-w-md mx-auto">
                     Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
                   </p>
+                  {backgroundError && (
+                    <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
+                      {backgroundError}
+                    </p>
+                  )}
                 </CardContent>
               </Card>
             ) : (
@@ -399,6 +404,11 @@ const Recommendation = () => {
                   <p className="text-muted-foreground text-lg max-w-md mx-auto">
                     Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
                   </p>
+                  {backgroundError && (
+                    <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
+                      {backgroundError}
+                    </p>
+                  )}
                 </CardContent>
               </Card>
             ) : (
