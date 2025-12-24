@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const ChooseProvider = () => {
   useEffect(() => {
-    document.title = "How to Choose a Payment Provider Without Regret | UK & EU Guide";
+    document.title = "How to Choose a Payment Provider — Without Regretting It Later";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const ChooseProvider = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Most businesses pick a provider too quickly and regret it. Use this framework to choose based on fit — not just fees. Avoid contracts, hidden charges, and bad support."
+      "Most businesses choose too fast and pay for it later. A short framework for picking the right provider — before you're locked in."
     );
 
     return () => {
@@ -33,11 +33,11 @@ const ChooseProvider = () => {
         <div className="section-container max-w-3xl">
           <article className="prose prose-lg max-w-none">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              How to Choose the Right Payment Provider (Not Just the Cheapest)
+              How to Choose a Payment Provider (Without Regret)
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Choosing too quickly is one of the most common regrets we hear from business owners. They signed up based on a friend's advice or a low headline rate — then discovered hidden fees, unhelpful support, or long contracts that made switching difficult.
+              It's easy to pick the first provider that looks reasonable — a friend's recommendation, the one with the lowest rate, or just the name you've heard of. But that's how businesses end up locked into something that doesn't fit. Hidden costs appear. Support is slow or absent. Switching feels like too much hassle. If you're still deciding, this is the right time to slow down and think it through.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

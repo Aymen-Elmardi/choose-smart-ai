@@ -15,10 +15,10 @@ import {
 
 const StripeVsSquareVsPaypal = () => {
   useEffect(() => {
-    document.title = "Stripe vs Square vs PayPal UK — Which Won't Lock You In or Surprise You?";
+    document.title = "Stripe vs Square vs PayPal UK — Which One Actually Fits Your Business?";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Comparing Stripe, Square and PayPal? Learn the real differences — including hidden costs, support quality, and contract terms. Independent, UK-focused guide.");
+      metaDescription.setAttribute("content", "These are the most-searched providers, but many businesses pick one and regret it. See what actually differs — beyond fees.");
     }
     window.scrollTo(0, 0);
   }, []);
@@ -33,13 +33,13 @@ const StripeVsSquareVsPaypal = () => {
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-muted-foreground mb-4">
-                Choosing between these three? The right answer depends on your business — not theirs.
+                The three names everyone searches — but which one is right for you?
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Stripe vs Square vs PayPal — Which Is Best for UK Businesses (2025/2026)?
+                Stripe vs Square vs PayPal — A Practical Comparison for UK Businesses
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                These are the three most-searched providers — but many businesses pick one and regret it later. The fees look similar on the surface, but how they work day-to-day varies a lot. This guide breaks down what actually matters: real costs, support, and how easy it is to leave if things don't work out.
+                You're comparing the obvious options — which makes sense. But many businesses pick one of these and later wish they hadn't. Not because these providers are bad, but because they're different in ways that matter more than fees. How they handle support. How easy it is to leave. How well they fit your actual business model. If you're still deciding, it's worth understanding those differences before you commit.
               </p>
               <div className="flex flex-col items-center">
                 <Button size="xl" asChild>

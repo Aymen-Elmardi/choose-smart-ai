@@ -18,15 +18,15 @@ const BestPaymentProcessorUK = () => {
     window.scrollTo(0, 0);
     
     // Set SEO meta tags
-    document.title = "Best Payment Processor UK — Avoid Hidden Fees, Long Contracts & Poor Support";
+    document.title = "Best Payment Processor UK 2025 — How to Avoid the Wrong Choice";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Tired of unexpected charges and locked-in contracts? Compare UK payment processors based on real costs, support quality, and exit terms — not just headline rates.");
+      metaDescription.setAttribute("content", "Most UK businesses pick a payment provider too quickly and regret it. See what actually matters before you commit — not just fees.");
     } else {
       const meta = document.createElement('meta');
       meta.name = "description";
-      meta.content = "Tired of unexpected charges and locked-in contracts? Compare UK payment processors based on real costs, support quality, and exit terms — not just headline rates.";
+      meta.content = "Most UK businesses pick a payment provider too quickly and regret it. See what actually matters before you commit — not just fees.";
       document.head.appendChild(meta);
     }
   }, []);
@@ -42,13 +42,13 @@ const BestPaymentProcessorUK = () => {
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-muted-foreground mb-4">
-                Too many businesses discover fees they weren't told about.
+                The provider you pick now will affect your business for years.
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Best Payment Processor for Small Businesses in the UK (2025 Guide)
+                Best Payment Processor for UK Businesses (2025)
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                Choosing a payment provider shouldn't mean signing up for surprises. But too often, businesses get locked into long contracts, hit with fees that weren't disclosed upfront, or can't reach support when something goes wrong. This guide helps you compare based on what actually matters — so you don't have to switch later.
+                Most businesses choose a payment provider based on a quick search or a friend's suggestion — and end up stuck with something that doesn't fit. The fees look fine until you see the extras. The setup seems easy until you need help. And switching later is more painful than it should be. This guide is here to help you slow down and get it right the first time.
               </p>
               <div className="flex flex-col items-center">
                 <Button size="xl" asChild>

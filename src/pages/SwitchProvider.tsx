@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const SwitchProvider = () => {
   useEffect(() => {
-    document.title = "Stuck With Your Payment Provider? How to Switch Without Penalties";
+    document.title = "How to Switch Payment Providers — Without Getting Penalised";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const SwitchProvider = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Worried about exit fees or contract lock-ins? Learn how UK & EU businesses switch payment providers safely — without disruption or hidden cancellation charges."
+      "Stuck with the wrong provider? Learn how to leave without exit fees, fund holds, or unnecessary disruption."
     );
 
     return () => {
@@ -33,11 +33,11 @@ const SwitchProvider = () => {
         <div className="section-container max-w-3xl">
           <article className="prose prose-lg max-w-none">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              How to Switch Payment Providers Safely (UK & EU)
+              Switching Payment Providers — How to Do It Without Getting Stuck
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Many businesses feel trapped by their current provider — locked into long contracts, facing steep exit fees, or worried about funds being held during a transition. These are real concerns, and they stop a lot of merchants from making a change even when they know they should.
+              You want to leave your current provider, but you're not sure what will happen if you try. Will they hold your funds? Is there an exit fee buried somewhere? Will the switch disrupt your business? These worries are common — and often the reason businesses stay with a provider that's clearly not working. If you're in that position, this page is for you. You can switch, but it helps to understand what to check first.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
