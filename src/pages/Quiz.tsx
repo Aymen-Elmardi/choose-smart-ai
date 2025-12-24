@@ -14,6 +14,7 @@ interface QuizAnswers {
   priorities: string[];
   location: string;
   monthlyVolume: string;
+  avgTransaction: string;
   features: string[];
   // Derived flags for engine
   needsOnline: boolean;
@@ -32,6 +33,7 @@ const INITIAL_ANSWERS: QuizAnswers = {
   priorities: [],
   location: "",
   monthlyVolume: "",
+  avgTransaction: "",
   features: [],
   needsOnline: false,
   needsInPerson: false,
@@ -127,7 +129,19 @@ const getQuestions = (answers: QuizAnswers): Question[] => {
     ],
   });
 
-  // Q5: Priorities (always, max 2)
+  // Q5: Average Transaction Value (always)
+  questions.push({
+    id: "avgTransaction",
+    question: "What's your typical transaction size?",
+    options: [
+      "Under £20",
+      "£20–£100",
+      "£100–£500",
+      "£500+",
+    ],
+  });
+
+  // Q6: Priorities (always, max 2)
   questions.push({
     id: "priorities",
     question: "What matters most to you right now?",
@@ -272,6 +286,22 @@ const mapBusinessType = (businessType: string): string => {
       return "Marketplace / platform";
     default:
       return "Other / mixed";
+  }
+};
+
+// Map average transaction to engine format
+const mapAvgTransaction = (option: string): string => {
+  switch (option) {
+    case "Under £20":
+      return "< £30";
+    case "£20–£100":
+      return "£30–100";
+    case "£100–£500":
+      return "£100–500";
+    case "£500+":
+      return "£500+";
+    default:
+      return "£30–100";
   }
 };
 
@@ -420,7 +450,7 @@ const Quiz = () => {
       priorities: ans.priorities.map(mapPriority),
       location: ans.location === "UK and EU" ? "UK & EU" : ans.location,
       monthlyVolume: mapMonthlyVolume(ans.monthlyVolume),
-      avgTransaction: "£30–100", // Default value
+      avgTransaction: mapAvgTransaction(ans.avgTransaction),
       features: [], // Not collecting features in this flow
       // Additional metadata for lead capture
       industry: ans.industry,
