@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { CreditCard, Check, MessageCircle, ArrowRight, Loader2, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -56,6 +56,7 @@ const readStoredMarket = (): Market => {
 };
 
 const Recommendation = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const startedFromQuizRef = useRef(searchParams.get("fromQuiz") === "true");
   const [showLoader, setShowLoader] = useState(() => startedFromQuizRef.current);
@@ -71,6 +72,13 @@ const Recommendation = () => {
   const { toast } = useToast();
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
+
+  // Redirect to quiz if not completed
+  useEffect(() => {
+    if (!answers || !quizComplete) {
+      navigate("/quiz?start=true", { replace: true });
+    }
+  }, [answers, quizComplete, navigate]);
 
   // Fetch recommendation from server
   const fetchRecommendation = useCallback(async () => {
@@ -137,8 +145,12 @@ const Recommendation = () => {
     if (isSubmitted) setShowLoader(false);
   }, [isSubmitted]);
 
-  const showNeedsQuiz = !answers || !quizComplete;
   const showNoMatch = !!answers && quizComplete && !recommendation && !isLoadingRecommendation;
+
+  // Don't render anything while redirecting
+  if (!answers || !quizComplete) {
+    return null;
+  }
 
   const handleSubmit = async () => {
     if (!formRef.current) return;
@@ -215,28 +227,6 @@ const Recommendation = () => {
 
       {/* Main Content */}
       <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
-        <div className="text-center mb-8 md:mb-10 animate-fade-up">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-            We've got what we need
-          </h1>
-        </div>
-
-        {/* If user lands here without completing the quiz */}
-        {showNeedsQuiz && (
-          <Card className="border border-border shadow-elegant animate-fade-up animation-delay-100">
-            <CardContent className="p-8 md:p-10 text-center">
-              <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
-                Please answer a few questions first
-              </h2>
-              <p className="text-muted-foreground max-w-md mx-auto mb-6">
-                Your best option is generated from your answers.
-              </p>
-              <Button asChild variant="hero" size="lg">
-                <a href="/quiz?start=true">Answer a few quick questions</a>
-              </Button>
-            </CardContent>
-          </Card>
-        )}
 
         {/* Recommendation Flow */}
         {recommendation && (
@@ -483,17 +473,15 @@ const Recommendation = () => {
         )}
 
         {/* Retake Quiz CTA */}
-        {!showNeedsQuiz && (
-          <div className="text-center mt-10 animate-fade-up animation-delay-200">
-            <p className="text-muted-foreground mb-4">Not what you expected?</p>
-            <a
-              href="/quiz?start=true"
-              className="text-primary font-medium hover:underline"
-            >
-              Answer again →
-            </a>
-          </div>
-        )}
+        <div className="text-center mt-10 animate-fade-up animation-delay-200">
+          <p className="text-muted-foreground mb-4">Not what you expected?</p>
+          <a
+            href="/quiz?start=true"
+            className="text-primary font-medium hover:underline"
+          >
+            Answer again →
+          </a>
+        </div>
       </main>
     </div>
   );
