@@ -19,6 +19,15 @@ const BestPaymentApiUK = lazy(() => import("./pages/BestPaymentApiUK"));
 const About = lazy(() => import("./pages/About"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+// SEO Landing Pages
+const HiddenFees = lazy(() => import("./pages/HiddenFees"));
+const SwitchProvider = lazy(() => import("./pages/SwitchProvider"));
+const SmallBusiness = lazy(() => import("./pages/SmallBusiness"));
+const StripeAlternatives = lazy(() => import("./pages/StripeAlternatives"));
+const SupportMatters = lazy(() => import("./pages/SupportMatters"));
+const MarketplacePlatforms = lazy(() => import("./pages/MarketplacePlatforms"));
+const ChooseProvider = lazy(() => import("./pages/ChooseProvider"));
+
 const queryClient = new QueryClient();
 
 // Initialize session tracking on app load
@@ -68,6 +77,14 @@ const App = () => (
             <Route path="/stripe-vs-square-vs-paypal-uk" element={<StripeVsSquareVsPaypal />} />
             <Route path="/best-payment-api-uk" element={<BestPaymentApiUK />} />
             <Route path="/about" element={<About />} />
+            {/* SEO Landing Pages */}
+            <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
+            <Route path="/switch-payment-provider" element={<SwitchProvider />} />
+            <Route path="/best-payment-provider-small-business" element={<SmallBusiness />} />
+            <Route path="/stripe-alternatives-marketplace" element={<StripeAlternatives />} />
+            <Route path="/payment-provider-support" element={<SupportMatters />} />
+            <Route path="/marketplace-payment-provider" element={<MarketplacePlatforms />} />
+            <Route path="/choose-payment-provider" element={<ChooseProvider />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
