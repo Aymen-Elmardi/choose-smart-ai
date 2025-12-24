@@ -35,7 +35,7 @@ const INITIAL_ANSWERS: QuizAnswers = {
 };
 
 // Question data - ordered for psychological flow
-const getQuestions = (answers: QuizAnswers) => {
+const getAllQuestions = (answers: QuizAnswers) => {
   const isEarlyStage = answers.businessType === "I'm still figuring things out";
   
   return [
@@ -111,9 +111,25 @@ const getQuestions = (answers: QuizAnswers) => {
   ];
 };
 
-const QUESTION_COUNT = 7;
+// Filter questions based on conditional logic
+const getQuestions = (answers: QuizAnswers) => {
+  const allQuestions = getAllQuestions(answers);
+  
+  // Question 2 (businessType) should only show if Question 1 includes "In person" or "Both online and in person"
+  const salesChannel = answers.salesChannel;
+  const shouldShowQuestion2 = salesChannel === "In person" || salesChannel === "Both online and in person";
+  
+  return allQuestions.filter((q) => {
+    if (q.id === "businessType" && !shouldShowQuestion2) {
+      return false;
+    }
+    return true;
+  });
+};
 
-const TOTAL_STEPS = QUESTION_COUNT + 1; // Welcome + questions (lead capture moved to recommendation page)
+const getQuestionCount = (answers: QuizAnswers) => {
+  return getQuestions(answers).length;
+};
 
 const Quiz = () => {
   const navigate = useNavigate();
@@ -136,7 +152,9 @@ const Quiz = () => {
     markQuizStart();
   }, []);
 
-  const progress = ((currentStep) / (TOTAL_STEPS - 1)) * 100;
+  const questionCount = getQuestionCount(answers);
+  const totalSteps = questionCount + 1; // Welcome + questions
+  const progress = ((currentStep) / (totalSteps - 1)) * 100;
 
   const handleOptionSelect = (questionId: string, option: string, multiSelect?: boolean) => {
     const updatedAnswers = { ...answers };
@@ -153,7 +171,7 @@ const Quiz = () => {
       setAnswers(updatedAnswers);
       
       // Check if this is the last question
-      if (currentStep === QUESTION_COUNT) {
+      if (currentStep === questionCount) {
         // OPTIMISTIC: Navigate immediately, save in background
         navigate("/recommendation?fromQuiz=true");
         // Save async after navigation starts
@@ -170,12 +188,12 @@ const Quiz = () => {
     if (currentStep === 0) {
       // OPTIMISTIC: Advance immediately
       setCurrentStep(1);
-    } else if (currentStep <= QUESTION_COUNT) {
+    } else if (currentStep <= questionCount) {
       const questions = getQuestions(answers);
       const question = questions[currentStep - 1];
       if (question?.multiSelect) {
         // Check if this is the last question
-        if (currentStep === QUESTION_COUNT) {
+        if (currentStep === questionCount) {
           // OPTIMISTIC: Navigate immediately, save in background
           navigate("/recommendation?fromQuiz=true");
           sessionStorage.setItem("quizAnswers", JSON.stringify(answers));
@@ -196,7 +214,7 @@ const Quiz = () => {
 
   const canProceed = () => {
     if (currentStep === 0) return true;
-    if (currentStep > QUESTION_COUNT) return true;
+    if (currentStep > questionCount) return true;
     
     const questions = getQuestions(answers);
     const question = questions[currentStep - 1];
@@ -246,7 +264,7 @@ const Quiz = () => {
         <div className="max-w-2xl w-full animate-fade-up" key={currentStep}>
           <div className="text-center mb-8">
             <p className="text-sm text-muted-foreground mb-2">
-              Question {currentStep} of {QUESTION_COUNT}
+              Question {currentStep} of {questionCount}
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
               {question.question}
