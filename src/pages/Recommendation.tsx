@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { CreditCard, Check, MessageCircle, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,7 @@ import LeadCaptureForm, { LeadCaptureFormRef } from "@/components/LeadCaptureFor
 import { supabase } from "@/integrations/supabase/client";
 import QuizLoadingTransition from "@/components/QuizLoadingTransition";
 import { getRecommendation, type QuizAnswers, type Provider, type Market } from "@/lib/recommendationLogic";
-
+import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
 const readStoredAnswers = (): QuizAnswers | null => {
   try {
     const raw = sessionStorage.getItem("quizAnswers");
@@ -62,17 +62,57 @@ const Recommendation = () => {
   const [market] = useState<Market>(() => readStoredMarket());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [recommendation, setRecommendation] = useState<Provider | null>(null);
+  const [alternatives, setAlternatives] = useState<Provider[]>([]);
+  const [isLoadingRecommendation, setIsLoadingRecommendation] = useState(true);
   const formRef = useRef<LeadCaptureFormRef>(null);
   const { toast } = useToast();
 
+  const quizComplete = answers ? isQuizComplete(answers) : false;
+
+  // Fetch recommendation from server
+  const fetchRecommendation = useCallback(async () => {
+    if (!answers || !quizComplete) {
+      setIsLoadingRecommendation(false);
+      return;
+    }
+
+    try {
+      const { primary, alternatives: alts, fromServer } = await fetchServerRecommendation(answers);
+      
+      if (primary) {
+        setRecommendation(primary);
+        setAlternatives(alts);
+      } else if (!fromServer) {
+        // Fallback to client-side logic if server is unavailable
+        const clientRec = getRecommendation(answers, market);
+        setRecommendation(clientRec);
+      }
+    } catch (err) {
+      console.error("Recommendation fetch error:", err);
+      // Fallback to client-side logic
+      const clientRec = getRecommendation(answers, market);
+      setRecommendation(clientRec);
+    } finally {
+      setIsLoadingRecommendation(false);
+    }
+  }, [answers, quizComplete, market]);
+
   // Handle the loading transition from quiz
   useEffect(() => {
-    if (!startedFromQuizRef.current) return;
+    if (!startedFromQuizRef.current) {
+      // Not from quiz - fetch immediately
+      fetchRecommendation();
+      return;
+    }
 
     // Remove the query param to clean up URL
     const newParams = new URLSearchParams(window.location.search);
     newParams.delete("fromQuiz");
     setSearchParams(newParams, { replace: true });
+
+    // Fetch recommendation while showing loader
+    fetchRecommendation();
 
     // Show loader for 2 seconds then fade to content
     const timer = window.setTimeout(() => {
@@ -88,19 +128,15 @@ const Recommendation = () => {
       window.clearTimeout(timer);
       window.clearTimeout(hardFallback);
     };
-  }, [setSearchParams]);
+  }, [setSearchParams, fetchRecommendation]);
 
   // Ensure the loader exits immediately after a successful submission
   useEffect(() => {
     if (isSubmitted) setShowLoader(false);
   }, [isSubmitted]);
 
-  const quizComplete = answers ? isQuizComplete(answers) : false;
-
-  const recommendation = answers && quizComplete ? getRecommendation(answers, market) : null;
-
   const showNeedsQuiz = !answers || !quizComplete;
-  const showNoMatch = !!answers && quizComplete && !recommendation;
+  const showNoMatch = !!answers && quizComplete && !recommendation && !isLoadingRecommendation;
 
   const handleSubmit = async () => {
     if (!formRef.current) return;

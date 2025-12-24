@@ -2,3 +2,6 @@ project_id = "yftyxqnshmsstwkdceny"
 
 [functions.send-lead-email]
 verify_jwt = false
+
+[functions.quiz-recommendation]
+verify_jwt = false
