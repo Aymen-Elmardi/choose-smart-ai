@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const MarketplacePlatforms = () => {
   useEffect(() => {
-    document.title = "Marketplace Payment Provider UK — Why Standard Options Don't Work";
+    document.title = "Marketplace Payments — Why Most Providers Don't Work";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -38,6 +38,10 @@ const MarketplacePlatforms = () => {
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               If you're building a marketplace, franchise, or multi-vendor platform, you've probably already discovered that most payment providers aren't built for what you're doing. You need to split funds between parties, manage payouts on different schedules, and handle compliance for sellers you don't fully control. Standard tools make this harder than it should be. That friction isn't your fault — it's a mismatch. Choosing the wrong provider here creates real problems later: blocked funds, compliance issues, or having to rebuild your payments layer from scratch. This page is here to help you understand what actually matters for platform payments before you commit.
+            </p>
+            
+            <p className="text-base text-muted-foreground/80 mb-8">
+              Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

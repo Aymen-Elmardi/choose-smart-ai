@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const SmallBusiness = () => {
   useEffect(() => {
-    document.title = "Payment Provider for Small Business UK — How to Avoid the Wrong Fit";
+    document.title = "Small Business Payment Provider — Avoiding a Bad Fit";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -38,6 +38,10 @@ const SmallBusiness = () => {
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               When you're running a small business, choosing a payment provider often happens in a hurry. You go with what a friend uses, or what shows up first in a search, or whatever lets you start accepting payments fastest. That's understandable — but it's also how many businesses end up with a provider that doesn't quite fit. Fees turn out to be higher than expected. Support is hard to reach. And by the time you realise, switching feels like more trouble than it's worth. If you're still choosing, it's worth taking a bit more time to get this right.
+            </p>
+            
+            <p className="text-base text-muted-foreground/80 mb-8">
+              Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

@@ -15,7 +15,7 @@ import {
 
 const StripeVsSquareVsPaypal = () => {
   useEffect(() => {
-    document.title = "Stripe vs Square vs PayPal UK — Which One Actually Fits Your Business?";
+    document.title = "Stripe vs Square vs PayPal — Which Actually Fits?";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", "These are the most-searched providers, but many businesses pick one and regret it. See what actually differs — beyond fees.");
@@ -40,6 +40,9 @@ const StripeVsSquareVsPaypal = () => {
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                 You're comparing the obvious options — which makes sense. But many businesses pick one of these and later wish they hadn't. Not because these providers are bad, but because they're different in ways that matter more than fees. How they handle support. How easy it is to leave. How well they fit your actual business model. If you're still deciding, it's worth understanding those differences before you commit.
+              </p>
+              <p className="text-base text-muted-foreground/80 mb-8 max-w-2xl mx-auto">
+                Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
               </p>
               <div className="flex flex-col items-center">
                 <Button size="xl" asChild>
