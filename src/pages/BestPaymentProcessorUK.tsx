@@ -18,7 +18,7 @@ const BestPaymentProcessorUK = () => {
     window.scrollTo(0, 0);
     
     // Set SEO meta tags
-    document.title = "Best Payment Processor UK 2025 — How to Avoid the Wrong Choice";
+    document.title = "Choosing a Payment Processor? What UK Businesses Get Wrong";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -49,6 +49,9 @@ const BestPaymentProcessorUK = () => {
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                 Most businesses choose a payment provider based on a quick search or a friend's suggestion — and end up stuck with something that doesn't fit. The fees look fine until you see the extras. The setup seems easy until you need help. And switching later is more painful than it should be. This guide is here to help you slow down and get it right the first time.
+              </p>
+              <p className="text-base text-muted-foreground/80 mb-8 max-w-2xl mx-auto">
+                Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
               </p>
               <div className="flex flex-col items-center">
                 <Button size="xl" asChild>

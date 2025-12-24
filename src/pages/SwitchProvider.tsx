@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const SwitchProvider = () => {
   useEffect(() => {
-    document.title = "How to Switch Payment Providers — Without Getting Penalised";
+    document.title = "Switching Payment Providers — What to Check First";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -38,6 +38,10 @@ const SwitchProvider = () => {
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               You want to leave your current provider, but you're not sure what will happen if you try. Will they hold your funds? Is there an exit fee buried somewhere? Will the switch disrupt your business? These worries are common — and often the reason businesses stay with a provider that's clearly not working. If you're in that position, this page is for you. You can switch, but it helps to understand what to check first.
+            </p>
+            
+            <p className="text-base text-muted-foreground/80 mb-8">
+              Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

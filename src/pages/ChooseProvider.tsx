@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const ChooseProvider = () => {
   useEffect(() => {
-    document.title = "How to Choose a Payment Provider — Without Regretting It Later";
+    document.title = "How to Pick a Payment Provider Without Regret";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -38,6 +38,10 @@ const ChooseProvider = () => {
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               It's easy to pick the first provider that looks reasonable — a friend's recommendation, the one with the lowest rate, or just the name you've heard of. But that's how businesses end up locked into something that doesn't fit. Hidden costs appear. Support is slow or absent. Switching feels like too much hassle. If you're still deciding, this is the right time to slow down and think it through.
+            </p>
+            
+            <p className="text-base text-muted-foreground/80 mb-8">
+              Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

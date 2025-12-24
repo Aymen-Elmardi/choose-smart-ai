@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const HiddenFees = () => {
   useEffect(() => {
-    document.title = "Payment Provider Hidden Fees — What UK Businesses Aren't Told Upfront";
+    document.title = "Hidden Fees in Payment Processing — What's Not Disclosed";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -38,6 +38,10 @@ const HiddenFees = () => {
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               You compared the rates, picked a provider, and signed up — then noticed charges you weren't expecting. A monthly minimum. A PCI fee. A penalty for leaving early. This happens constantly, and it's not always because providers are being dishonest. Payment pricing is genuinely confusing. But the result is the same: you end up paying more than you planned, and switching feels like a headache. If you're still choosing, it's worth understanding what's often left out of the pitch.
+            </p>
+            
+            <p className="text-base text-muted-foreground/80 mb-8">
+              Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
