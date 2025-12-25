@@ -83,7 +83,7 @@ const SupportMatters = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span><strong>Fast response times:</strong> Hours, not days — especially for urgent issues</span>
+                <span><strong>Fast response times:</strong> Hours, not days, especially for urgent issues</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -127,7 +127,7 @@ const SupportMatters = () => {
                 <h3 className="text-lg font-semibold text-foreground">Finding the right balance</h3>
               </div>
               <p className="text-muted-foreground">
-                You don't need enterprise-level support for a small business. But you do need confidence that someone will help when it matters. The right provider matches support quality to your business needs — without charging unnecessarily for it.
+                You don't need enterprise-level support for a small business. But you do need confidence that someone will help when it matters. The right provider matches support quality to your business needs without charging unnecessarily for it.
               </p>
             </div>
 

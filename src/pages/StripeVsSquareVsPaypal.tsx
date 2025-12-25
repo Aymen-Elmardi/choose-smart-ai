@@ -15,7 +15,7 @@ import {
 
 const StripeVsSquareVsPaypal = () => {
   useEffect(() => {
-    document.title = "Stripe vs Square vs PayPal — Which Actually Fits?";
+    document.title = "Stripe vs Square vs PayPal: Which Actually Fits?";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", "These are the most-searched providers, but many businesses pick one and regret it. See what actually differs — beyond fees.");
@@ -36,7 +36,7 @@ const StripeVsSquareVsPaypal = () => {
                 The three names everyone searches — but which one is right for you?
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Stripe vs Square vs PayPal — A Practical Comparison for UK Businesses
+                Stripe vs Square vs PayPal: A Practical Comparison for UK Businesses
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                 You're comparing the obvious options — which makes sense. But many businesses pick one of these and later wish they hadn't. Not because these providers are bad, but because they're different in ways that matter more than fees. How they handle support. How easy it is to leave. How well they fit your actual business model. If you're still deciding, it's worth understanding those differences before you commit.
@@ -425,7 +425,7 @@ const StripeVsSquareVsPaypal = () => {
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-lg text-muted-foreground">
-                There's no single "best" provider — Stripe, Square, and PayPal each serve different business models. The right choice depends on how you sell, your volume, and your growth plans. We help you make the right decision instantly.
+                There's no single "best" provider. Stripe, Square, and PayPal each serve different business models. The right choice depends on how you sell, your volume, and your growth plans. We help you make the right decision instantly.
               </p>
             </div>
           </div>

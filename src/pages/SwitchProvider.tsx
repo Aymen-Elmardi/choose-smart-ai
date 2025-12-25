@@ -33,7 +33,7 @@ const SwitchProvider = () => {
         <div className="section-container max-w-3xl">
           <article className="prose prose-lg max-w-none">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Switching Payment Providers — How to Do It Without Getting Stuck
+              Switching Payment Providers: How to Do It Without Getting Stuck
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">

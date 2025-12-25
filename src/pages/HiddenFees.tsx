@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const HiddenFees = () => {
   useEffect(() => {
-    document.title = "Hidden Fees in Payment Processing — What's Not Disclosed";
+    document.title = "Hidden Fees in Payment Processing: What's Not Disclosed";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -33,11 +33,11 @@ const HiddenFees = () => {
         <div className="section-container max-w-3xl">
           <article className="prose prose-lg max-w-none">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Hidden Fees in Payment Processing — What You're Not Being Told
+              Hidden Fees in Payment Processing: What You're Not Being Told
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              You compared the rates, picked a provider, and signed up — then noticed charges you weren't expecting. A monthly minimum. A PCI fee. A penalty for leaving early. This happens constantly, and it's not always because providers are being dishonest. Payment pricing is genuinely confusing. But the result is the same: you end up paying more than you planned, and switching feels like a headache. If you're still choosing, it's worth understanding what's often left out of the pitch.
+              You compared the rates, picked a provider, and signed up. Then you noticed charges you weren't expecting. A monthly minimum. A PCI fee. A penalty for leaving early. This happens constantly, and it's not always because providers are being dishonest. Payment pricing is genuinely confusing. But the result is the same: you end up paying more than you planned, and switching feels like a headache. If you're still choosing, it's worth understanding what's often left out of the pitch.
             </p>
             
             <p className="text-base text-muted-foreground/80 mb-8">
@@ -87,7 +87,7 @@ const HiddenFees = () => {
               How to avoid unexpected costs
             </h2>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              The best approach is to understand your business model first, then match it to a provider whose pricing structure works for you — not just the one with the lowest advertised rate.
+              The best approach is to understand your business model first, then match it to a provider whose pricing structure works for you. Not just the one with the lowest advertised rate.
             </p>
             
             <ul className="space-y-3 text-muted-foreground mb-8">
@@ -105,7 +105,7 @@ const HiddenFees = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span>Consider your average transaction size — it affects which pricing model suits you</span>
+                <span>Consider your average transaction size, as it affects which pricing model suits you</span>
               </li>
             </ul>
 
