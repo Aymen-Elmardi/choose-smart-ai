@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { markQuizStart } from "@/hooks/useEnrichmentData";
+import { markQuizStart, initializeSessionTracking } from "@/hooks/useEnrichmentData";
 import type { Market } from "@/lib/recommendationLogic";
 
 // Types - aligned with engine expectations
@@ -325,8 +325,9 @@ const Quiz = () => {
     return isFromUS ? "US" : "UK";
   });
 
-  // Scroll to top and mark quiz start when component mounts
+  // Initialize session tracking and mark quiz start when component mounts
   useEffect(() => {
+    initializeSessionTracking();
     window.scrollTo(0, 0);
     markQuizStart();
   }, []);

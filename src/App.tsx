@@ -4,7 +4,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
 
 // Eager load the homepage for best FCP
 import Index from "./pages/Index";
@@ -23,15 +22,13 @@ import StripeVsSquareVsPaypal from "./pages/StripeVsSquareVsPaypal";
 import BestPaymentApiUK from "./pages/BestPaymentApiUK";
 import About from "./pages/About";
 
-// Lazy load quiz flow (requires client-side state)
+// Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
+// Quiz pages self-initialize session tracking when loaded
 const Quiz = lazy(() => import("./pages/Quiz"));
 const Recommendation = lazy(() => import("./pages/Recommendation"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
-
-// Initialize session tracking on app load
-initializeSessionTracking();
 
 // Minimal loading fallback to avoid layout shift
 const PageLoader = () => (
@@ -69,15 +66,19 @@ const App = () => (
         <ScrollToHash />
         <Suspense fallback={<PageLoader />}>
           <Routes>
+            {/* Homepage routes */}
             <Route path="/" element={<Index />} />
             <Route path="/us" element={<IndexUS />} />
+            
+            {/* Quiz routes - lazy loaded to isolate quiz logic from SEO bundle */}
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/recommendation" element={<Recommendation />} />
+            
+            {/* SEO Content Pages */}
             <Route path="/best-payment-processor-uk" element={<BestPaymentProcessorUK />} />
             <Route path="/stripe-vs-square-vs-paypal-uk" element={<StripeVsSquareVsPaypal />} />
             <Route path="/best-payment-api-uk" element={<BestPaymentApiUK />} />
             <Route path="/about" element={<About />} />
-            {/* SEO Landing Pages */}
             <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
             <Route path="/switch-payment-provider" element={<SwitchProvider />} />
             <Route path="/best-payment-provider-small-business" element={<SmallBusiness />} />
@@ -85,6 +86,7 @@ const App = () => (
             <Route path="/payment-provider-support" element={<SupportMatters />} />
             <Route path="/marketplace-payment-provider" element={<MarketplacePlatforms />} />
             <Route path="/choose-payment-provider" element={<ChooseProvider />} />
+            
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
