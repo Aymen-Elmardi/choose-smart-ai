@@ -15,7 +15,7 @@ import {
 
 const BestPaymentApiUK = () => {
   useEffect(() => {
-    document.title = "Best Payment API UK — Compare Without the Marketing Spin";
+    document.title = "Best Payment API UK: Compare Without the Marketing Spin";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", "Developers often pick Stripe by default — but it's not always the best fit. Compare UK payment APIs based on real trade-offs: fees, support, docs, and how easy they are to leave.");
@@ -40,7 +40,7 @@ const BestPaymentApiUK = () => {
               </h1>
               <div className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto space-y-4 text-left">
                 <p>
-                  Most developers pick Stripe by default — it's well-documented, widely supported, and works well for a lot of use cases. But it's not always the right choice, and switching later can be painful.
+                  Most developers pick Stripe by default. It's well-documented, widely supported, and works well for a lot of use cases. But it's not always the right choice, and switching later can be painful.
                 </p>
                 <p>
                   Some projects need faster activation, simpler pricing, better marketplace support, or a provider with actual human support when things go wrong. The marketing materials don't always make these trade-offs clear.
@@ -424,7 +424,7 @@ const BestPaymentApiUK = () => {
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-lg text-muted-foreground">
-                Developers often default to Stripe because it's familiar — but the best payment API depends on the specifics of your project. A retail POS app, a marketplace, and a subscription SaaS all have different requirements. We help you choose the right provider from day one.
+                Developers often default to Stripe because it's familiar, but the best payment API depends on the specifics of your project. A retail POS app, a marketplace, and a subscription SaaS all have different requirements. We help you choose the right provider from day one.
               </p>
             </div>
           </div>

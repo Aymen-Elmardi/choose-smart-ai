@@ -48,7 +48,7 @@ const BestPaymentProcessorUK = () => {
                 Best Payment Processor for UK Businesses (2025)
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                Most businesses choose a payment provider based on a quick search or a friend's suggestion — and end up stuck with something that doesn't fit. The fees look fine until you see the extras. The setup seems easy until you need help. And switching later is more painful than it should be. This guide is here to help you slow down and get it right the first time.
+                Most businesses choose a payment provider based on a quick search or a friend's suggestion, and end up stuck with something that doesn't fit. The fees look fine until you see the extras. The setup seems easy until you need help. And switching later is more painful than it should be. This guide is here to help you slow down and get it right the first time.
               </p>
               <p className="text-base text-muted-foreground/80 mb-8 max-w-2xl mx-auto">
                 Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.

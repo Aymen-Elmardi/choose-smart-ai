@@ -48,7 +48,7 @@ const SmallBusiness = () => {
               What small businesses actually need
             </h2>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Most small businesses need simplicity, fair pricing, and reliable support. Features that matter to enterprise companies — like complex reporting or multi-currency treasury — often aren't relevant yet.
+              Most small businesses need simplicity, fair pricing, and reliable support. Features that matter to enterprise companies, like complex reporting or multi-currency treasury, often aren't relevant yet.
             </p>
 
             <div className="bg-muted/50 rounded-lg p-6 my-8">
@@ -102,7 +102,7 @@ const SmallBusiness = () => {
               Common mistakes to avoid
             </h2>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Many small businesses choose based on a recommendation from another business — without considering whether their needs are actually similar. What works for a café won't necessarily work for an online retailer.
+              Many small businesses choose based on a recommendation from another business without considering whether their needs are actually similar. What works for a café won't necessarily work for an online retailer.
             </p>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               Another common mistake is focusing purely on transaction fees while ignoring other costs like terminal rental, monthly fees, or chargeback charges that can add up quickly.

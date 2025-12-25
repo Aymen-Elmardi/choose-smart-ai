@@ -37,7 +37,7 @@ const StripeAlternatives = () => {
             </h1>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Many platforms start with Stripe — but hit problems as they scale. Seller onboarding becomes friction-heavy, fees eat into margins, and support can feel distant when things go wrong. If you're wondering whether there's a better fit, you're not alone.
+              Many platforms start with Stripe, but hit problems as they scale. Seller onboarding becomes friction-heavy, fees eat into margins, and support can feel distant when things go wrong. If you're wondering whether there's a better fit, you're not alone.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
