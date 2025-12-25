@@ -10,23 +10,23 @@ import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
 import Index from "./pages/Index";
 import IndexUS from "./pages/IndexUS";
 
-// Lazy load other routes for code splitting
+// Eager load SEO pages for Googlebot crawlability (no session/state dependencies)
+import HiddenFees from "./pages/HiddenFees";
+import SwitchProvider from "./pages/SwitchProvider";
+import SmallBusiness from "./pages/SmallBusiness";
+import StripeAlternatives from "./pages/StripeAlternatives";
+import SupportMatters from "./pages/SupportMatters";
+import MarketplacePlatforms from "./pages/MarketplacePlatforms";
+import ChooseProvider from "./pages/ChooseProvider";
+import BestPaymentProcessorUK from "./pages/BestPaymentProcessorUK";
+import StripeVsSquareVsPaypal from "./pages/StripeVsSquareVsPaypal";
+import BestPaymentApiUK from "./pages/BestPaymentApiUK";
+import About from "./pages/About";
+
+// Lazy load quiz flow (requires client-side state)
 const Quiz = lazy(() => import("./pages/Quiz"));
 const Recommendation = lazy(() => import("./pages/Recommendation"));
-const BestPaymentProcessorUK = lazy(() => import("./pages/BestPaymentProcessorUK"));
-const StripeVsSquareVsPaypal = lazy(() => import("./pages/StripeVsSquareVsPaypal"));
-const BestPaymentApiUK = lazy(() => import("./pages/BestPaymentApiUK"));
-const About = lazy(() => import("./pages/About"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-
-// SEO Landing Pages
-const HiddenFees = lazy(() => import("./pages/HiddenFees"));
-const SwitchProvider = lazy(() => import("./pages/SwitchProvider"));
-const SmallBusiness = lazy(() => import("./pages/SmallBusiness"));
-const StripeAlternatives = lazy(() => import("./pages/StripeAlternatives"));
-const SupportMatters = lazy(() => import("./pages/SupportMatters"));
-const MarketplacePlatforms = lazy(() => import("./pages/MarketplacePlatforms"));
-const ChooseProvider = lazy(() => import("./pages/ChooseProvider"));
 
 const queryClient = new QueryClient();
 
