@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import QuizLoadingTransition from "@/components/QuizLoadingTransition";
 import { getRecommendation, type QuizAnswers, type Provider, type Market } from "@/lib/recommendationLogic";
 import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
+import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
 const readStoredAnswers = (): QuizAnswers | null => {
   try {
     const raw = sessionStorage.getItem("quizAnswers");
@@ -75,8 +76,9 @@ const Recommendation = () => {
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
 
-  // Redirect to quiz if not completed
+  // Initialize session tracking and redirect to quiz if not completed
   useEffect(() => {
+    initializeSessionTracking();
     if (!answers || !quizComplete) {
       navigate("/quiz?start=true", { replace: true });
     }
