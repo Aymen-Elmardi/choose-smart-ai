@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const SmallBusiness = () => {
   useEffect(() => {
-    document.title = "Small Business Payment Provider — Avoiding a Bad Fit";
+    document.title = "Best Payment Providers for Small Businesses | UK & EU";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const SmallBusiness = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Most small businesses pick based on a recommendation or a low rate — then realise it's not right. Here's how to avoid that."
+      "Compare payment providers for small businesses across the UK and EU. Find the best fit for online, in-person, or growing businesses."
     );
 
     return () => {

@@ -333,14 +333,10 @@ const Quiz = () => {
 
   // Update SEO metadata based on location selection
   useEffect(() => {
-    const isEU = answers.location === "EU";
+    // Update title
+    document.title = "Choose the Right Payment Provider for Your Business | UK & EU Quiz";
     
-    // Update title - UK version for now
-    document.title = isEU
-      ? "Find the Right Payment Provider for Your EU Business"
-      : "Which Payment Provider Should I Use for My Business?";
-    
-    // Update meta description - now with provider coverage
+    // Update meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement("meta");
@@ -349,9 +345,7 @@ const Quiz = () => {
     }
     metaDescription.setAttribute(
       "content",
-      isEU
-        ? "Compare leading UK & EU payment providers in one place. Find a provider that fits your business — no pressure, no surprises."
-        : "Compare 20+ UK & EU payment providers. Find the best fit for your business — without hidden fees or long-term contracts. Free 2-minute quiz."
+      "Answer a few quick questions and get matched with the payment provider that fits your business. UK & EU focused. No sales pressure."
     );
 
     // Cleanup: restore original title on unmount

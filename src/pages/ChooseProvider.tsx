@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const ChooseProvider = () => {
   useEffect(() => {
-    document.title = "How to Pick a Payment Provider Without Regret";
+    document.title = "How to Choose the Right Payment Provider | UK & EU Guide";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const ChooseProvider = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Most businesses choose too fast and pay for it later. A short framework for picking the right provider — before you're locked in."
+      "Confused by Stripe, Worldpay, Square or others? Learn how to choose the right payment provider based on your business model, not just price."
     );
 
     return () => {
