@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const StripeAlternatives = () => {
   useEffect(() => {
-    document.title = "Outgrowing Stripe? Marketplace Payment Alternatives for UK & EU Platforms";
+    document.title = "Stripe Alternatives for Marketplaces | UK & EU Comparison";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const StripeAlternatives = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Stripe Connect not working for you? Explore alternatives built for marketplaces — with simpler onboarding, better pricing at scale, and fewer compliance headaches."
+      "Stripe isn't always the best fit for marketplaces. Compare alternatives built for split payments, payouts, and platform businesses."
     );
 
     return () => {

@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const MarketplacePlatforms = () => {
   useEffect(() => {
-    document.title = "Marketplace Payments — Why Most Providers Don't Work";
+    document.title = "Best Payment Providers for Marketplaces & Platforms | UK & EU";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -17,7 +17,7 @@ const MarketplacePlatforms = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Most payment providers aren't built for platforms. If you need split payments, seller payouts, or multi-party compliance, this matters."
+      "Running a marketplace or platform? Discover payment providers that support split payments, payouts, and scale across the UK and EU."
     );
 
     return () => {
