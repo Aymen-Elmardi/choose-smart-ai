@@ -12,8 +12,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const StripeVsSquareVsPaypal = () => {
+  useCanonical();
+  
   useEffect(() => {
     document.title = "Stripe vs Square vs PayPal: Which Actually Fits?";
     const metaDescription = document.querySelector('meta[name="description"]');

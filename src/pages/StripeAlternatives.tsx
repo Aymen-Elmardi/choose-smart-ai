@@ -4,8 +4,11 @@ import { ArrowRight, Check, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const StripeAlternatives = () => {
+  useCanonical();
+  
   useEffect(() => {
     document.title = "Stripe Alternatives for Marketplaces | UK & EU Comparison";
     

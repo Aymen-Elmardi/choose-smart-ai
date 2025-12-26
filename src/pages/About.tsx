@@ -1,7 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const About = () => {
+  useCanonical();
   return (
     <div className="min-h-screen bg-background">
       <Header />

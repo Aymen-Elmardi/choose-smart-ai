@@ -4,8 +4,11 @@ import { ArrowRight, AlertTriangle, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const HiddenFees = () => {
+  useCanonical();
+  
   useEffect(() => {
     document.title = "Hidden Fees in Payment Processing: What's Not Disclosed";
     
