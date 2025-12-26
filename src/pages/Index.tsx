@@ -7,8 +7,10 @@ import ValuePropsSection from "@/components/ValuePropsSection";
 import ExamplesSection from "@/components/ExamplesSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const Index = () => {
+  useCanonical();
   return (
     <div className="min-h-screen bg-background">
       <Header />

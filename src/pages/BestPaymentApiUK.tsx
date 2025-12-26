@@ -12,8 +12,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const BestPaymentApiUK = () => {
+  useCanonical();
+  
   useEffect(() => {
     document.title = "Best Payment API UK: Compare Without the Marketing Spin";
     const metaDescription = document.querySelector('meta[name="description"]');

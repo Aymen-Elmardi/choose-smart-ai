@@ -4,8 +4,11 @@ import { ArrowRight, Check, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const SwitchProvider = () => {
+  useCanonical();
+  
   useEffect(() => {
     document.title = "Switching Payment Providers — What to Check First";
     

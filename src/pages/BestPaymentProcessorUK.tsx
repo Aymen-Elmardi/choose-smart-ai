@@ -12,8 +12,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useEffect } from "react";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const BestPaymentProcessorUK = () => {
+  useCanonical();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
     

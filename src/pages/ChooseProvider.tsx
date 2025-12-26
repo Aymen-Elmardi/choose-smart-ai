@@ -4,8 +4,11 @@ import { ArrowRight, Check, Scale, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const ChooseProvider = () => {
+  useCanonical();
+  
   useEffect(() => {
     document.title = "How to Choose the Right Payment Provider | UK & EU Guide";
     

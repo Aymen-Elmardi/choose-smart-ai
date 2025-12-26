@@ -4,8 +4,11 @@ import { ArrowRight, Check, HeadphonesIcon, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const SupportMatters = () => {
+  useCanonical();
+  
   useEffect(() => {
     document.title = "Payment Provider Support Issues? Why It Matters More Than Fees";
     
