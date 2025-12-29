@@ -26,7 +26,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 border-t border-background/10 text-center text-sm text-background/50">
-          © {new Date().getFullYear()} ChosePayments. All rights reserved.
+          © 2026 ChosePayments. All rights reserved.
         </div>
       </div>
     </footer>
