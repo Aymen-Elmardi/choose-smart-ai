@@ -18,10 +18,10 @@ const StripeVsSquareVsPaypal = () => {
   useCanonical();
   
   useEffect(() => {
-    document.title = "Stripe vs Square vs PayPal: Which Actually Fits?";
+    document.title = "Stripe vs Square vs PayPal UK – Which One Breaks First?";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "These are the most-searched providers, but many businesses pick one and regret it. See what actually differs — beyond fees.");
+      metaDescription.setAttribute("content", "Most UK businesses pick Stripe, Square, or PayPal by default — and regret it later. This guide explains when each one fails, who should avoid them, and what to do instead.");
     }
     window.scrollTo(0, 0);
   }, []);
@@ -34,31 +34,22 @@ const StripeVsSquareVsPaypal = () => {
         {/* SECTION 1 — Hero Section */}
         <section className="section-padding pt-24 md:pt-32">
           <div className="section-container">
-            <div className="max-w-4xl mx-auto text-center">
-              <p className="text-muted-foreground mb-4">
-                The three names everyone searches — but which one is right for you?
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Stripe vs Square vs PayPal: A Practical Comparison for UK Businesses
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 text-center">
+                Stripe vs Square vs PayPal UK – Which One Breaks First for Your Business?
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                You're comparing the obvious options — which makes sense. But many businesses pick one of these and later wish they hadn't. Not because these providers are bad, but because they're different in ways that matter more than fees. How they handle support. How easy it is to leave. How well they fit your actual business model. If you're still deciding, it's worth understanding those differences before you commit.
-              </p>
-              <p className="text-base text-muted-foreground/80 mb-8 max-w-2xl mx-auto">
-                Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
-              </p>
-              <div className="flex flex-col items-center">
-                <Button size="xl" asChild>
-                  <Link to="/quiz?start=true">
-                    Answer a few quick questions
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
-                <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
+              <div className="text-lg md:text-xl text-muted-foreground space-y-4 max-w-3xl mx-auto">
+                <p>Most comparisons between Stripe, Square, and PayPal focus on features and pricing.</p>
+                <p>That's not where businesses get burned.</p>
+                <p className="font-semibold text-foreground">The real problem is fit.</p>
+                <p>Stripe breaks down when your setup becomes operationally messy.</p>
+                <p>Square struggles once you move beyond simple retail.</p>
+                <p>PayPal becomes expensive and restrictive the moment you scale or need support.</p>
+                <p>If you're a UK business choosing between these three, the wrong choice won't show up immediately — it shows up months later, when switching becomes painful.</p>
+                <p>This page isn't here to rank them.</p>
+                <p>It's here to explain who should <em>not</em> use each one, and what kind of business they quietly fail.</p>
+                <p className="text-muted-foreground/80">If none of them feel right after reading this, there's a reason.</p>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
-                Independent guidance. We're paid by providers — not by you.
-              </p>
             </div>
           </div>
         </section>
@@ -428,7 +419,10 @@ const StripeVsSquareVsPaypal = () => {
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-lg text-muted-foreground">
-                There's no single "best" provider. Stripe, Square, and PayPal each serve different business models. The right choice depends on how you sell, your volume, and your growth plans. We help you make the right decision instantly.
+                There's no single "best" provider. Stripe, Square, and PayPal each serve different business models. The right choice depends on how you sell, your volume, and your growth plans.
+              </p>
+              <p className="text-lg text-muted-foreground mt-4">
+                If none of these feel like a clean fit, we use a <Link to="/assessment" className="text-primary hover:underline">short assessment</Link> to sanity-check payment decisions before businesses lock themselves in.
               </p>
             </div>
           </div>
