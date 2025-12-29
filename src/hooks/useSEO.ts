@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const BASE_URL = "https://chosepayments.com";
@@ -7,6 +7,9 @@ interface SEOProps {
   title: string;
   description: string;
 }
+
+// Use useLayoutEffect for SSR/prerendering to ensure meta tags are set before paint
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 /**
  * Sets SEO meta tags for the current page including:
@@ -18,7 +21,8 @@ interface SEOProps {
 export const useSEO = ({ title, description }: SEOProps) => {
   const location = useLocation();
 
-  useEffect(() => {
+  // Set meta tags immediately (synchronously) for prerendering
+  const updateMetaTags = () => {
     // Set title
     document.title = title;
 
@@ -51,6 +55,11 @@ export const useSEO = ({ title, description }: SEOProps) => {
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.setAttribute("href", canonicalUrl);
+  };
+
+  // Run synchronously on mount for prerendering
+  useIsomorphicLayoutEffect(() => {
+    updateMetaTags();
 
     return () => {
       document.title = "ChosePayments";
