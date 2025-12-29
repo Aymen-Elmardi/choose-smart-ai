@@ -21,6 +21,9 @@ const Header = () => {
             <Link to="/#why-us" className="text-muted-foreground hover:text-foreground transition-colors">
               Why Us
             </Link>
+            <Link to="/insights" className="text-muted-foreground hover:text-foreground transition-colors">
+              Insights
+            </Link>
             <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
               About
             </Link>
