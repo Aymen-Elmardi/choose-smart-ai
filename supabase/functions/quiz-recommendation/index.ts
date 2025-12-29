@@ -815,6 +815,48 @@ const getRecommendations = (answers: QuizAnswers): RecommendationResult | null =
 };
 
 // ============================================================================
+// RATE LIMITING
+// ============================================================================
+
+const rateLimitStore = new Map<string, { count: number; timestamp: number }>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 30; // Max 30 requests per minute per IP (quiz may have retries)
+
+// Get client IP from request
+const getClientIp = (req: Request): string => {
+  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+         req.headers.get("x-real-ip") ||
+         "unknown";
+};
+
+// Check rate limit by IP
+const checkRateLimit = (clientIp: string): boolean => {
+  const now = Date.now();
+  const record = rateLimitStore.get(clientIp);
+  
+  // Clean up old entries
+  if (rateLimitStore.size > 1000) {
+    for (const [key, value] of rateLimitStore.entries()) {
+      if (now - value.timestamp > RATE_LIMIT_WINDOW_MS) {
+        rateLimitStore.delete(key);
+      }
+    }
+  }
+  
+  if (!record || now - record.timestamp > RATE_LIMIT_WINDOW_MS) {
+    rateLimitStore.set(clientIp, { count: 1, timestamp: now });
+    return true;
+  }
+  
+  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return false;
+  }
+  
+  record.count++;
+  return true;
+};
+
+// ============================================================================
 // HTTP HANDLER
 // ============================================================================
 
@@ -824,21 +866,47 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Rate limiting check
+  const clientIp = getClientIp(req);
+  
+  if (!checkRateLimit(clientIp)) {
+    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
+    return new Response(
+      JSON.stringify({ success: false, error: "Too many requests. Please try again later." }),
+      {
+        status: 429,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
+  }
+
   const startTime = performance.now();
 
   try {
     const body = await req.json();
+    
+    // Basic input validation
+    if (!body || typeof body !== 'object') {
+      return new Response(
+        JSON.stringify({ success: false, error: "Invalid request body" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+    
     const answers: QuizAnswers = {
-      salesChannel: body.salesChannel || "",
-      businessType: body.businessType || "",
-      priorities: Array.isArray(body.priorities) ? body.priorities : [],
-      location: body.location || "",
-      monthlyVolume: body.monthlyVolume || "",
-      avgTransaction: body.avgTransaction || "",
-      features: Array.isArray(body.features) ? body.features : [],
+      salesChannel: String(body.salesChannel || "").slice(0, 100),
+      businessType: String(body.businessType || "").slice(0, 100),
+      priorities: Array.isArray(body.priorities) ? body.priorities.slice(0, 10).map((p: unknown) => String(p).slice(0, 100)) : [],
+      location: String(body.location || "").slice(0, 100),
+      monthlyVolume: String(body.monthlyVolume || "").slice(0, 50),
+      avgTransaction: String(body.avgTransaction || "").slice(0, 50),
+      features: Array.isArray(body.features) ? body.features.slice(0, 10).map((f: unknown) => String(f).slice(0, 100)) : [],
     };
 
-    console.log("Quiz recommendation request received:", JSON.stringify(answers));
+    console.log(`Quiz recommendation request from IP ${clientIp}:`, JSON.stringify(answers));
 
     const result = getRecommendations(answers);
 
