@@ -1,22 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const InternationalSales = () => {
-  useCanonical();
-
-  useEffect(() => {
-    document.title = "Why International Sales Trigger Additional Checks | ChosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Learn why selling internationally can trigger additional verification from payment providers.");
-    }
-    return () => {
-      document.title = "ChosePayments";
-    };
-  }, []);
+  useSEO({
+    title: "Why International Sales Trigger Additional Checks | ChosePayments",
+    description: "Learn why selling internationally can trigger additional verification from payment providers."
+  });
 
   return (
     <div className="min-h-screen bg-background">

@@ -1,22 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const SourceOfFunds = () => {
-  useCanonical();
-
-  useEffect(() => {
-    document.title = "Why Payment Providers Ask for Bank Statements or Source of Funds | ChosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Learn why payment providers request bank statements and source of funds documentation.");
-    }
-    return () => {
-      document.title = "ChosePayments";
-    };
-  }, []);
+  useSEO({
+    title: "Why Payment Providers Ask for Bank Statements or Source of Funds | ChosePayments",
+    description: "Learn why payment providers request bank statements and source of funds documentation."
+  });
 
   return (
     <div className="min-h-screen bg-background">

@@ -1,22 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const SalesIncrease = () => {
-  useCanonical();
-
-  useEffect(() => {
-    document.title = "Why Payment Providers Ask for More Documents When Your Sales Increase | ChosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Learn why sudden sales growth triggers additional document requests from payment providers.");
-    }
-    return () => {
-      document.title = "ChosePayments";
-    };
-  }, []);
+  useSEO({
+    title: "Why Payment Providers Ask for More Documents When Your Sales Increase | ChosePayments",
+    description: "Learn why sudden sales growth triggers additional document requests from payment providers."
+  });
 
   return (
     <div className="min-h-screen bg-background">
