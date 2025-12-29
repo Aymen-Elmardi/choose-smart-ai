@@ -22,6 +22,16 @@ import StripeVsSquareVsPaypal from "./pages/StripeVsSquareVsPaypal";
 import BestPaymentApiUK from "./pages/BestPaymentApiUK";
 import About from "./pages/About";
 
+// Insights blog pages
+import Insights from "./pages/Insights";
+import ProofOfBusinessActivity from "./pages/insights/ProofOfBusinessActivity";
+import SalesIncrease from "./pages/insights/SalesIncrease";
+import MarketplaceSellerInfo from "./pages/insights/MarketplaceSellerInfo";
+import SourceOfFunds from "./pages/insights/SourceOfFunds";
+import IndustryVerification from "./pages/insights/IndustryVerification";
+import InternationalSales from "./pages/insights/InternationalSales";
+import ContractsInvoices from "./pages/insights/ContractsInvoices";
+
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
 const Quiz = lazy(() => import("./pages/Quiz"));
@@ -86,6 +96,16 @@ const App = () => (
             <Route path="/payment-provider-support" element={<SupportMatters />} />
             <Route path="/marketplace-payment-provider" element={<MarketplacePlatforms />} />
             <Route path="/choose-payment-provider" element={<ChooseProvider />} />
+            
+            {/* Insights Blog */}
+            <Route path="/insights" element={<Insights />} />
+            <Route path="/insights/proof-of-business-activity" element={<ProofOfBusinessActivity />} />
+            <Route path="/insights/sales-increase" element={<SalesIncrease />} />
+            <Route path="/insights/marketplace-seller-info" element={<MarketplaceSellerInfo />} />
+            <Route path="/insights/source-of-funds" element={<SourceOfFunds />} />
+            <Route path="/insights/industry-verification" element={<IndustryVerification />} />
+            <Route path="/insights/international-sales" element={<InternationalSales />} />
+            <Route path="/insights/contracts-invoices" element={<ContractsInvoices />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
