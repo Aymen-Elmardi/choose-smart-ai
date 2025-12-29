@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const insights = [
   {
@@ -43,18 +42,10 @@ const insights = [
 ];
 
 const Insights = () => {
-  useCanonical();
-
-  useEffect(() => {
-    document.title = "Insights | ChosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Insights on payment provider requirements, verification processes, and what to expect when setting up payments for your business.");
-    }
-    return () => {
-      document.title = "ChosePayments";
-    };
-  }, []);
+  useSEO({
+    title: "Insights | ChosePayments",
+    description: "Insights on payment provider requirements, verification processes, and what to expect when setting up payments for your business."
+  });
 
   return (
     <div className="min-h-screen bg-background">

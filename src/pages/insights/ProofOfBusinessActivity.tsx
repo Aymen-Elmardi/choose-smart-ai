@@ -1,22 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const ProofOfBusinessActivity = () => {
-  useCanonical();
-
-  useEffect(() => {
-    document.title = "Why Your Payment Provider Asked for Proof of Business Activity | ChosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Understanding why payment providers ask for proof of business activity and how to prepare your documentation.");
-    }
-    return () => {
-      document.title = "ChosePayments";
-    };
-  }, []);
+  useSEO({
+    title: "Why Your Payment Provider Asked for Proof of Business Activity | ChosePayments",
+    description: "Understanding why payment providers ask for proof of business activity and how to prepare your documentation."
+  });
 
   return (
     <div className="min-h-screen bg-background">

@@ -1,22 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const IndustryVerification = () => {
-  useCanonical();
-
-  useEffect(() => {
-    document.title = "Why Some Industries Are Asked for Extra Verification | ChosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Understanding why certain industries face additional verification requirements from payment providers.");
-    }
-    return () => {
-      document.title = "ChosePayments";
-    };
-  }, []);
+  useSEO({
+    title: "Why Some Industries Are Asked for Extra Verification | ChosePayments",
+    description: "Understanding why certain industries face additional verification requirements from payment providers."
+  });
 
   return (
     <div className="min-h-screen bg-background">

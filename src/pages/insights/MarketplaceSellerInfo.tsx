@@ -1,22 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const MarketplaceSellerInfo = () => {
-  useCanonical();
-
-  useEffect(() => {
-    document.title = "Why Marketplaces Are Asked for Seller and Payout Information | ChosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Understanding why marketplace businesses face additional verification for seller and payout information.");
-    }
-    return () => {
-      document.title = "ChosePayments";
-    };
-  }, []);
+  useSEO({
+    title: "Why Marketplaces Are Asked for Seller and Payout Information | ChosePayments",
+    description: "Understanding why marketplace businesses face additional verification for seller and payout information."
+  });
 
   return (
     <div className="min-h-screen bg-background">

@@ -1,22 +1,13 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const ContractsInvoices = () => {
-  useCanonical();
-
-  useEffect(() => {
-    document.title = "Why Providers Ask for Contracts, Invoices, or Customer Agreements | ChosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Understanding why payment providers request contracts, invoices, and customer agreements.");
-    }
-    return () => {
-      document.title = "ChosePayments";
-    };
-  }, []);
+  useSEO({
+    title: "Why Providers Ask for Contracts, Invoices, or Customer Agreements | ChosePayments",
+    description: "Understanding why payment providers request contracts, invoices, and customer agreements."
+  });
 
   return (
     <div className="min-h-screen bg-background">
