@@ -11,9 +11,18 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// Rate limiting: in-memory store
+const rateLimitStore = new Map<string, { count: number; timestamp: number }>();
+const emailRateLimitStore = new Map<string, { count: number; timestamp: number }>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 5; // Max 5 requests per minute per IP
+const EMAIL_RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const EMAIL_RATE_LIMIT_MAX = 3; // Max 3 emails per hour to same address
+
 interface ConfirmationEmailRequest {
   email: string;
   firstName: string;
+  _honeypot?: string; // Honeypot field - should be empty
 }
 
 // HTML escape function
@@ -33,6 +42,74 @@ const extractFirstName = (fullName: string): string => {
   return firstName || trimmed;
 };
 
+// Validate email format
+const isValidEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email) && email.length <= 254 && email.length >= 5;
+};
+
+// Get client IP from request
+const getClientIp = (req: Request): string => {
+  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+         req.headers.get("x-real-ip") ||
+         "unknown";
+};
+
+// Check rate limit by IP
+const checkRateLimit = (clientIp: string): boolean => {
+  const now = Date.now();
+  const record = rateLimitStore.get(clientIp);
+  
+  // Clean up old entries
+  if (rateLimitStore.size > 1000) {
+    for (const [key, value] of rateLimitStore.entries()) {
+      if (now - value.timestamp > RATE_LIMIT_WINDOW_MS) {
+        rateLimitStore.delete(key);
+      }
+    }
+  }
+  
+  if (!record || now - record.timestamp > RATE_LIMIT_WINDOW_MS) {
+    rateLimitStore.set(clientIp, { count: 1, timestamp: now });
+    return true;
+  }
+  
+  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return false;
+  }
+  
+  record.count++;
+  return true;
+};
+
+// Check email rate limit (prevent email bombing)
+const checkEmailRateLimit = (email: string): boolean => {
+  const now = Date.now();
+  const normalizedEmail = email.toLowerCase().trim();
+  const record = emailRateLimitStore.get(normalizedEmail);
+  
+  // Clean up old entries
+  if (emailRateLimitStore.size > 5000) {
+    for (const [key, value] of emailRateLimitStore.entries()) {
+      if (now - value.timestamp > EMAIL_RATE_LIMIT_WINDOW_MS) {
+        emailRateLimitStore.delete(key);
+      }
+    }
+  }
+  
+  if (!record || now - record.timestamp > EMAIL_RATE_LIMIT_WINDOW_MS) {
+    emailRateLimitStore.set(normalizedEmail, { count: 1, timestamp: now });
+    return true;
+  }
+  
+  if (record.count >= EMAIL_RATE_LIMIT_MAX) {
+    return false;
+  }
+  
+  record.count++;
+  return true;
+};
+
 const handler = async (req: Request): Promise<Response> => {
   console.log("Received request to send-confirmation-email");
 
@@ -40,8 +117,36 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Rate limiting check
+  const clientIp = getClientIp(req);
+  console.log(`Request from IP: ${clientIp}`);
+  
+  if (!checkRateLimit(clientIp)) {
+    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
+    return new Response(
+      JSON.stringify({ success: false, error: "Too many requests. Please try again later." }),
+      {
+        status: 429,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
+  }
+
   try {
     const rawData = await req.json();
+    
+    // Honeypot check - if filled, it's a bot
+    if (rawData._honeypot) {
+      console.warn(`Honeypot triggered from IP: ${clientIp}`);
+      // Return success to not alert the bot
+      return new Response(
+        JSON.stringify({ success: true }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
     
     // Validate required fields
     if (!rawData.email || !rawData.firstName) {
@@ -57,6 +162,30 @@ const handler = async (req: Request): Promise<Response> => {
 
     const email = String(rawData.email).trim().slice(0, 254);
     const firstName = extractFirstName(String(rawData.firstName).trim().slice(0, 100));
+    
+    // Validate email format
+    if (!isValidEmail(email)) {
+      console.warn(`Invalid email format: ${email}`);
+      return new Response(
+        JSON.stringify({ success: false, error: "Please provide a valid email address." }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+    
+    // Check email rate limit
+    if (!checkEmailRateLimit(email)) {
+      console.warn(`Email rate limit exceeded for: ${email}`);
+      return new Response(
+        JSON.stringify({ success: false, error: "Too many emails sent to this address. Please try again later." }),
+        {
+          status: 429,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
 
     console.log(`Sending confirmation email to: ${email}`);
 
