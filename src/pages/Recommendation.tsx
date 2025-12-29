@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { CreditCard, Check, MessageCircle, ArrowRight, Loader2, ChevronDown, CheckCircle2, Mail } from "lucide-react";
+import { CreditCard, Check, MessageCircle, ArrowRight, Loader2, CheckCircle2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import LeadCaptureForm, { LeadCaptureFormRef } from "@/components/LeadCaptureForm";
@@ -68,7 +68,7 @@ const Recommendation = () => {
   const [isProviderNotified, setIsProviderNotified] = useState(false);
   const [isConfirmationSent, setIsConfirmationSent] = useState(false);
   const [recommendation, setRecommendation] = useState<Provider | null>(null);
-  const [alternatives, setAlternatives] = useState<Provider[]>([]);
+  const [, setAlternatives] = useState<Provider[]>([]); // kept for backend compatibility
   const [isLoadingRecommendation, setIsLoadingRecommendation] = useState(true);
   const [backgroundError, setBackgroundError] = useState<string | null>(null);
   const formRef = useRef<LeadCaptureFormRef>(null);
@@ -344,44 +344,6 @@ const Recommendation = () => {
                   </CardContent>
                 </Card>
 
-                {/* Alternative Recommendations */}
-                {alternatives.length > 0 && (
-                  <Collapsible className="mt-6 animate-fade-up animation-delay-150">
-                    <CollapsibleTrigger className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mx-auto">
-                      <span>See {alternatives.length} alternative option{alternatives.length > 1 ? 's' : ''}</span>
-                      <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="mt-4 space-y-4">
-                      {alternatives.slice(0, 2).map((alt, index) => (
-                        <Card key={index} className="border border-border/50 bg-muted/30">
-                          <CardContent className="p-6">
-                            <div className="flex items-start gap-4">
-                              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
-                                <CreditCard className="w-5 h-5 text-muted-foreground" />
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <h4 className="text-lg font-semibold text-foreground mb-1">
-                                  {alt.name}
-                                </h4>
-                                <p className="text-sm text-muted-foreground mb-3">
-                                  {alt.description}
-                                </p>
-                                <ul className="space-y-1.5">
-                                  {alt.reasons.slice(0, 3).map((reason, rIndex) => (
-                                    <li key={rIndex} className="flex items-start gap-2 text-sm">
-                                      <Check className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" />
-                                      <span className="text-foreground/80">{reason}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </CollapsibleContent>
-                  </Collapsible>
-                )}
 
                 {/* Lead Capture Form - Below Recommendation */}
                 <div className="mt-10 animate-fade-up animation-delay-150">
