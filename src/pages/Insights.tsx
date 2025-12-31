@@ -78,6 +78,11 @@ const insights = [
     title: "Why Payment Providers Ask for Source of Funds",
     slug: "why-payment-providers-ask-for-source-of-funds",
     description: "Understand why payment providers request source of funds documentation and how to respond effectively."
+  },
+  {
+    title: "Why Payment Accounts Get Flagged After Sudden Growth",
+    slug: "why-payment-accounts-get-flagged-after-growth",
+    description: "Understand why sudden business growth triggers payment account reviews and how to handle them."
   }
 ];
 
