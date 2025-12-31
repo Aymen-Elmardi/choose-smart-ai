@@ -31,6 +31,12 @@ import SourceOfFunds from "./pages/insights/SourceOfFunds";
 import IndustryVerification from "./pages/insights/IndustryVerification";
 import InternationalSales from "./pages/insights/InternationalSales";
 import ContractsInvoices from "./pages/insights/ContractsInvoices";
+import WhyStripeFreezes from "./pages/insights/WhyStripeFreezes";
+import WhyAccountsFlaggedAfterGrowth from "./pages/insights/WhyAccountsFlaggedAfterGrowth";
+import WhyAccountsFrozenWithoutWarning from "./pages/insights/WhyAccountsFrozenWithoutWarning";
+import WhyMarketplacesGetScrutiny from "./pages/insights/WhyMarketplacesGetScrutiny";
+import WhyProvidersReUnderwrite from "./pages/insights/WhyProvidersReUnderwrite";
+import WhySomeBusinessesNeverApproved from "./pages/insights/WhySomeBusinessesNeverApproved";
 
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
@@ -106,6 +112,12 @@ const App = () => (
             <Route path="/insights/industry-verification" element={<IndustryVerification />} />
             <Route path="/insights/international-sales" element={<InternationalSales />} />
             <Route path="/insights/contracts-invoices" element={<ContractsInvoices />} />
+            <Route path="/insights/why-stripe-freezes-accounts-uk" element={<WhyStripeFreezes />} />
+            <Route path="/insights/why-accounts-get-flagged-after-growth" element={<WhyAccountsFlaggedAfterGrowth />} />
+            <Route path="/insights/why-payment-accounts-get-frozen-without-warning" element={<WhyAccountsFrozenWithoutWarning />} />
+            <Route path="/insights/why-marketplaces-get-extra-scrutiny" element={<WhyMarketplacesGetScrutiny />} />
+            <Route path="/insights/why-providers-re-underwrite-accounts" element={<WhyProvidersReUnderwrite />} />
+            <Route path="/insights/why-some-businesses-never-get-approved" element={<WhySomeBusinessesNeverApproved />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

@@ -38,6 +38,36 @@ const insights = [
     title: "Why Providers Ask for Contracts, Invoices, or Customer Agreements",
     slug: "contracts-invoices",
     description: "Understanding why payment providers request contracts and customer agreements."
+  },
+  {
+    title: "Why Stripe Freezes Accounts in the UK",
+    slug: "why-stripe-freezes-accounts-uk",
+    description: "Stripe does not freeze accounts at random. Learn the common triggers and how to prevent them."
+  },
+  {
+    title: "Why Your Payment Account Gets Flagged After Sudden Growth",
+    slug: "why-accounts-get-flagged-after-growth",
+    description: "Rapid growth is one of the most common reasons payment accounts are reviewed."
+  },
+  {
+    title: "Why PayPal and Stripe Freeze Accounts Without Warning",
+    slug: "why-payment-accounts-get-frozen-without-warning",
+    description: "Payment providers are not always able to warn merchants before taking action."
+  },
+  {
+    title: "Why Marketplaces Get Extra Scrutiny From Payment Providers",
+    slug: "why-marketplaces-get-extra-scrutiny",
+    description: "Marketplaces introduce additional layers of risk for payment providers."
+  },
+  {
+    title: "Why Payment Providers Re-Underwrite Existing Accounts",
+    slug: "why-providers-re-underwrite-accounts",
+    description: "Approval is not a one-time event. Learn why providers periodically re-underwrite accounts."
+  },
+  {
+    title: "Why Some Businesses Never Get Approved for Payments",
+    slug: "why-some-businesses-never-get-approved",
+    description: "Not all businesses are declined because they are doing something wrong."
   }
 ];
 
