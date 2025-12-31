@@ -45,11 +45,11 @@ const MarketplaceSellerInfo = () => {
             </p>
             
             <p>
-              If this information is missing or unclear, accounts can be delayed or restricted.
+              If this information is missing or unclear, accounts can be delayed or restricted. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">payment provider approval differences</Link> for marketplaces can help you prepare.
             </p>
             
             <p>
-              Choosing a provider that understands marketplaces from day one reduces this friction.
+              <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing a UK payment processor</Link> that understands marketplaces from day one reduces this friction.
             </p>
             
             <p className="mt-12 pt-8 border-t border-border">

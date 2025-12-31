@@ -45,11 +45,11 @@ const ContractsInvoices = () => {
             </p>
             
             <p>
-              This helps them assess refund risk and chargeback exposure.
+              This helps them assess refund risk and chargeback exposure. The <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> vary in how strictly they enforce documentation.
             </p>
             
             <p>
-              Clear documentation protects both you and the provider.
+              Clear documentation protects both you and the provider. Understanding <Link to="/best-payment-processor-uk" className="text-primary hover:underline">UK payment processor approval criteria</Link> helps you prepare the right documents upfront.
             </p>
             
             <p className="mt-12 pt-8 border-t border-border">

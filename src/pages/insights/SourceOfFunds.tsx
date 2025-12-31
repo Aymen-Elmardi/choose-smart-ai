@@ -39,11 +39,11 @@ const SourceOfFunds = () => {
             </p>
             
             <p>
-              This usually happens for new businesses or when volumes change.
+              This usually happens for new businesses or when volumes change. Different providers have varying requirements — understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help you prepare.
             </p>
             
             <p>
-              Having clean separation between personal and business finances helps a lot here.
+              Having clean separation between personal and business finances helps a lot here. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start can reduce these friction points.
             </p>
             
             <p className="mt-12 pt-8 border-t border-border">

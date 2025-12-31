@@ -25,7 +25,7 @@ const WhyStripeFreezes = () => {
             </p>
             
             <p>
-              Common triggers include a sudden increase in transaction volume, changes in the type of customers you serve, or new products that fall into higher-risk categories. Stripe regularly re-evaluates accounts as businesses grow, especially when card usage patterns change.
+              Common triggers include a sudden increase in transaction volume, changes in the type of customers you serve, or new products that fall into higher-risk categories. Stripe regularly re-evaluates accounts as businesses grow, especially when card usage patterns change. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> differently can help you prepare.
             </p>
             
             <p>
@@ -37,7 +37,7 @@ const WhyStripeFreezes = () => {
             </p>
             
             <p>
-              If your business is growing or changing, understanding approval and risk signals early can prevent interruptions later.
+              If your business is growing or changing, understanding approval and risk signals early can prevent interruptions later. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start reduces this risk significantly.
             </p>
             
             <p className="text-foreground font-medium mt-8">
