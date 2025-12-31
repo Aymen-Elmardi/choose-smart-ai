@@ -38,6 +38,7 @@ import WhyMarketplacesGetScrutiny from "./pages/insights/WhyMarketplacesGetScrut
 import WhyProvidersReUnderwrite from "./pages/insights/WhyProvidersReUnderwrite";
 import WhySomeBusinessesNeverApproved from "./pages/insights/WhySomeBusinessesNeverApproved";
 import WhyPaymentProvidersAskForDirectorDocuments from "./pages/insights/WhyPaymentProvidersAskForDirectorDocuments";
+import WhyPaymentProvidersAskForSourceOfFunds from "./pages/insights/WhyPaymentProvidersAskForSourceOfFunds";
 
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
@@ -120,6 +121,7 @@ const App = () => (
             <Route path="/insights/why-providers-re-underwrite-accounts" element={<WhyProvidersReUnderwrite />} />
             <Route path="/insights/why-some-businesses-never-get-approved" element={<WhySomeBusinessesNeverApproved />} />
             <Route path="/insights/why-payment-providers-ask-for-director-documents" element={<WhyPaymentProvidersAskForDirectorDocuments />} />
+            <Route path="/insights/why-payment-providers-ask-for-source-of-funds" element={<WhyPaymentProvidersAskForSourceOfFunds />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
