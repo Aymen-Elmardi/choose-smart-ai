@@ -40,11 +40,11 @@ const ProofOfBusinessActivity = () => {
             </p>
             
             <p>
-              Many businesses get stuck because their website is vague, unfinished, or does not clearly explain how money flows.
+              Many businesses get stuck because their website is vague, unfinished, or does not clearly explain how money flows. The <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> vary in how strictly they assess business clarity.
             </p>
             
             <p>
-              The safest way to avoid this is to make sure your business model is easy to understand before you apply to a provider.
+              The safest way to avoid this is to make sure your business model is easy to understand before you apply to a provider. Our guide on <Link to="/best-payment-processor-uk" className="text-primary hover:underline">which UK payment processors are likely to approve you</Link> can help you find the right fit.
             </p>
             
             <p className="mt-12 pt-8 border-t border-border">

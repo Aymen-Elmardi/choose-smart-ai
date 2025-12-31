@@ -40,11 +40,11 @@ const IndustryVerification = () => {
             </p>
             
             <p>
-              Providers may ask for more documents to understand delivery, refund policies, or customer agreements.
+              Providers may ask for more documents to understand delivery, refund policies, or customer agreements. The <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> differ by industry.
             </p>
             
             <p>
-              The right provider can make a big difference depending on your industry.
+              The right provider can make a big difference depending on your industry. Our guide on <Link to="/best-payment-processor-uk" className="text-primary hover:underline">which UK payment processors are likely to approve you</Link> covers industry-specific considerations.
             </p>
             
             <p className="mt-12 pt-8 border-t border-border">

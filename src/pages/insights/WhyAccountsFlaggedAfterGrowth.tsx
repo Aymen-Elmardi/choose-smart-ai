@@ -29,7 +29,7 @@ const WhyAccountsFlaggedAfterGrowth = () => {
             </p>
             
             <p>
-              From a provider's perspective, fast growth can increase exposure if something goes wrong. Even healthy businesses can be flagged if growth outpaces the risk assumptions made at onboarding.
+              From a provider's perspective, fast growth can increase exposure if something goes wrong. Even healthy businesses can be flagged if growth outpaces the risk assumptions made at onboarding. The <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> vary significantly in how they handle scaling businesses.
             </p>
             
             <p>
@@ -37,7 +37,7 @@ const WhyAccountsFlaggedAfterGrowth = () => {
             </p>
             
             <p>
-              Businesses that anticipate these checks can often avoid freezes entirely by choosing providers aligned with their scale and business model.
+              Businesses that anticipate these checks can often avoid freezes entirely by <Link to="/best-payment-processor-uk" className="text-primary hover:underline">choosing the right payment processor in the UK</Link> aligned with their scale and business model.
             </p>
             
             <p className="text-foreground font-medium mt-8">

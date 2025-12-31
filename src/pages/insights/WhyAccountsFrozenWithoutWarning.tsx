@@ -29,7 +29,7 @@ const WhyAccountsFrozenWithoutWarning = () => {
             </p>
             
             <p>
-              Triggers often include spikes in disputes, delayed fulfilment, mismatched product descriptions, or unusual payment patterns. In some cases, providers are legally required to act immediately.
+              Triggers often include spikes in disputes, delayed fulfilment, mismatched product descriptions, or unusual payment patterns. In some cases, providers are legally required to act immediately. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">payment provider approval differences</Link> can help you anticipate these situations.
             </p>
             
             <p>
@@ -37,7 +37,7 @@ const WhyAccountsFrozenWithoutWarning = () => {
             </p>
             
             <p>
-              The best protection is not reacting after a freeze, but choosing a provider whose approval model matches your business from the start.
+              The best protection is not reacting after a freeze, but <Link to="/best-payment-processor-uk" className="text-primary hover:underline">choosing a UK payment processor</Link> whose approval model matches your business from the start.
             </p>
             
             <p className="text-foreground font-medium mt-8">

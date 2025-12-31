@@ -45,11 +45,11 @@ const InternationalSales = () => {
             </p>
             
             <p>
-              Even small amounts of international sales can trigger this.
+              Even small amounts of international sales can trigger this. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">payment provider approval differences</Link> helps you anticipate these requirements.
             </p>
             
             <p>
-              Being upfront about international activity avoids surprises later.
+              Being upfront about international activity avoids surprises later. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> that supports international sales from the start is essential.
             </p>
             
             <p className="mt-12 pt-8 border-t border-border">
