@@ -18,10 +18,10 @@ const BestPaymentApiUK = () => {
   useCanonical();
   
   useEffect(() => {
-    document.title = "Best Payment API UK: Compare Without the Marketing Spin";
+    document.title = "Best Payment API in the UK (2026): Which Providers Actually Approve Businesses?";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Developers often pick Stripe by default — but it's not always the best fit. Compare UK payment APIs based on real trade-offs: fees, support, docs, and how easy they are to leave.");
+      metaDescription.setAttribute("content", "Not all payment APIs approve the same businesses. Learn which UK payment APIs are most likely to onboard you — and which ones commonly reject accounts.");
     }
     window.scrollTo(0, 0);
   }, []);
@@ -39,7 +39,7 @@ const BestPaymentApiUK = () => {
                 Picking a payment API is easy. Switching later isn't.
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Best Payment APIs for UK Developers (2025 Guide)
+                Best Payment APIs in the UK — and Which Ones Will Actually Approve You
               </h1>
               <div className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto space-y-4 text-left">
                 <p>
