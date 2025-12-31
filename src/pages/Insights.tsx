@@ -68,6 +68,11 @@ const insights = [
     title: "Why Some Businesses Never Get Approved for Payments",
     slug: "why-some-businesses-never-get-approved",
     description: "Not all businesses are declined because they are doing something wrong."
+  },
+  {
+    title: "Why Payment Providers Ask for a Director's Passport or Proof of Address",
+    slug: "why-payment-providers-ask-for-director-documents",
+    description: "Understand why payment providers request director documents and how to respond effectively."
   }
 ];
 
