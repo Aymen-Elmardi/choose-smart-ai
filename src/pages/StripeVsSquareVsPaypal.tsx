@@ -18,10 +18,10 @@ const StripeVsSquareVsPaypal = () => {
   useCanonical();
   
   useEffect(() => {
-    document.title = "Stripe vs Square vs PayPal UK – Which One Breaks First?";
+    document.title = "Stripe vs Square vs PayPal (UK): Which One Will Actually Approve You?";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Most UK businesses pick Stripe, Square, or PayPal by default — and regret it later. This guide explains when each one fails, who should avoid them, and what to do instead.");
+      metaDescription.setAttribute("content", "UK businesses often get rejected or frozen by Stripe, Square, or PayPal. This guide explains which provider is most likely to approve your business — and why.");
     }
     window.scrollTo(0, 0);
   }, []);
@@ -36,7 +36,7 @@ const StripeVsSquareVsPaypal = () => {
           <div className="section-container">
             <div className="max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 text-center">
-                Stripe vs Square vs PayPal UK – Which One Breaks First for Your Business?
+                Stripe vs Square vs PayPal: Which Payment Provider Will Approve Your Business in the UK?
               </h1>
               <div className="text-lg md:text-xl text-muted-foreground space-y-4 max-w-3xl mx-auto">
                 <p>Most comparisons between Stripe, Square, and PayPal focus on features and pricing.</p>
