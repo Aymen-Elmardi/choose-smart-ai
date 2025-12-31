@@ -83,6 +83,11 @@ const insights = [
     title: "Why Payment Accounts Get Flagged After Sudden Growth",
     slug: "why-payment-accounts-get-flagged-after-growth",
     description: "Understand why sudden business growth triggers payment account reviews and how to handle them."
+  },
+  {
+    title: "Why Payment Providers Re-Underwrite Existing Accounts",
+    slug: "why-providers-re-underwrite-existing-accounts",
+    description: "Understand why payment providers re-underwrite existing accounts and how to handle these reviews."
   }
 ];
 
