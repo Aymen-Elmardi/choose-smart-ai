@@ -73,6 +73,11 @@ const insights = [
     title: "Why Payment Providers Ask for a Director's Passport or Proof of Address",
     slug: "why-payment-providers-ask-for-director-documents",
     description: "Understand why payment providers request director documents and how to respond effectively."
+  },
+  {
+    title: "Why Payment Providers Ask for Source of Funds",
+    slug: "why-payment-providers-ask-for-source-of-funds",
+    description: "Understand why payment providers request source of funds documentation and how to respond effectively."
   }
 ];
 
