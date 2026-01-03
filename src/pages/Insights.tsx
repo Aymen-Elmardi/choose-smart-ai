@@ -88,6 +88,11 @@ const insights = [
     title: "Why Payment Providers Re-Underwrite Existing Accounts",
     slug: "why-providers-re-underwrite-existing-accounts",
     description: "Understand why payment providers re-underwrite existing accounts and how to handle these reviews."
+  },
+  {
+    title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
+    slug: "why-payment-accounts-get-flagged-without-changes",
+    description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction."
   }
 ];
 
