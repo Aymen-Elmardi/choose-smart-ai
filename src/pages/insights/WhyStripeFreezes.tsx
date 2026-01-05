@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
+import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 
 const WhyStripeFreezes = () => {
   useSEO({
@@ -15,6 +16,11 @@ const WhyStripeFreezes = () => {
       
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
+          <InsightsBreadcrumb 
+            category={{ name: "Payment Risk", slug: "payment-risk" }}
+            currentTitle="Why Stripe Freezes Accounts"
+          />
+          
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
             Why Stripe Freezes Accounts in the UK
           </h1>

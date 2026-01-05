@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
+import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 
 const ProofOfBusinessActivity = () => {
   useSEO({
@@ -15,6 +16,11 @@ const ProofOfBusinessActivity = () => {
       
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
+          <InsightsBreadcrumb 
+            category={{ name: "Practical Guides", slug: "guides" }}
+            currentTitle="Proof of Business Activity"
+          />
+          
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
             Why Your Payment Provider Asked for Proof of Business Activity
           </h1>

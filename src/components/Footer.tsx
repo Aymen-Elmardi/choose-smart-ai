@@ -1,4 +1,5 @@
 import { CreditCard } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -13,9 +14,12 @@ const Footer = () => {
           </div>
           
           <nav className="flex flex-wrap justify-center gap-8 text-sm">
-            <a href="#" className="text-background/70 hover:text-background transition-colors">
+            <Link to="/about" className="text-background/70 hover:text-background transition-colors">
               About
-            </a>
+            </Link>
+            <Link to="/insights" className="text-background/70 hover:text-background transition-colors">
+              Insights
+            </Link>
             <a href="mailto:hello@chosepayments.com" className="text-background/70 hover:text-background transition-colors">
               Contact
             </a>
