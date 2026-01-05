@@ -105,7 +105,7 @@ const Guides = () => {
           <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border">
             <p className="text-muted-foreground">
               Not sure which provider is right for your business? Take our{" "}
-              <Link to="/quiz" className="text-primary hover:underline">
+              <Link to="/quiz?start=true" className="text-primary hover:underline">
                 short assessment
               </Link>{" "}
               to get a personalised recommendation.

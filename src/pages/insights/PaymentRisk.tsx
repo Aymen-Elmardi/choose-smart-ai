@@ -105,7 +105,7 @@ const PaymentRisk = () => {
           <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border">
             <p className="text-muted-foreground">
               Want to assess your current payment risk? Take our{" "}
-              <Link to="/quiz" className="text-primary hover:underline">
+              <Link to="/quiz?start=true" className="text-primary hover:underline">
                 short assessment
               </Link>{" "}
               to identify potential issues before they become problems.
