@@ -24,6 +24,9 @@ import About from "./pages/About";
 
 // Insights blog pages
 import Insights from "./pages/Insights";
+import PaymentRisk from "./pages/insights/PaymentRisk";
+import Guides from "./pages/insights/Guides";
+import CaseStudies from "./pages/insights/CaseStudies";
 import ProofOfBusinessActivity from "./pages/insights/ProofOfBusinessActivity";
 import SalesIncrease from "./pages/insights/SalesIncrease";
 import MarketplaceSellerInfo from "./pages/insights/MarketplaceSellerInfo";
@@ -110,6 +113,9 @@ const App = () => (
             
             {/* Insights Blog */}
             <Route path="/insights" element={<Insights />} />
+            <Route path="/insights/payment-risk" element={<PaymentRisk />} />
+            <Route path="/insights/guides" element={<Guides />} />
+            <Route path="/insights/case-studies" element={<CaseStudies />} />
             <Route path="/insights/proof-of-business-activity" element={<ProofOfBusinessActivity />} />
             <Route path="/insights/sales-increase" element={<SalesIncrease />} />
             <Route path="/insights/marketplace-seller-info" element={<MarketplaceSellerInfo />} />

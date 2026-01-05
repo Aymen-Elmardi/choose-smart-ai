@@ -2,8 +2,42 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
+import { AlertTriangle, FileText, Building2, ArrowRight } from "lucide-react";
 
-const insights = [
+const featuredInsight = {
+  title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
+  slug: "why-payment-accounts-get-flagged-without-changes",
+  description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction."
+};
+
+const categories = [
+  {
+    title: "Payment Risk & Account Freezes",
+    slug: "payment-risk",
+    description: "Understand why accounts get flagged, frozen, or reviewed. Learn the triggers and how to reduce risk.",
+    icon: AlertTriangle,
+    iconBg: "bg-destructive/10",
+    iconColor: "text-destructive"
+  },
+  {
+    title: "Practical Guides",
+    slug: "guides",
+    description: "Step-by-step explanations of verification requests, documentation requirements, and how to respond.",
+    icon: FileText,
+    iconBg: "bg-primary/10",
+    iconColor: "text-primary"
+  },
+  {
+    title: "Case Studies",
+    slug: "case-studies",
+    description: "Real-world examples of how businesses navigate payment challenges and compliance requirements.",
+    icon: Building2,
+    iconBg: "bg-secondary/50",
+    iconColor: "text-foreground"
+  }
+];
+
+const allInsights = [
   {
     title: "Why Your Payment Provider Asked for Proof of Business Activity",
     slug: "proof-of-business-activity",
@@ -99,7 +133,7 @@ const insights = [
 const Insights = () => {
   useSEO({
     title: "Insights | ChosePayments",
-    description: "Insights on payment provider requirements, verification processes, and what to expect when setting up payments for your business."
+    description: "Practical guidance on payment provider requirements, verification processes, account freezes, and risk management for UK and EU businesses."
   });
 
   return (
@@ -108,28 +142,101 @@ const Insights = () => {
       
       <main className="pt-24 pb-16">
         <div className="section-container max-w-4xl mx-auto">
+          {/* Introduction */}
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Insights
           </h1>
-          <p className="text-lg text-muted-foreground mb-12">
-            Practical guidance on payment provider requirements and verification processes.
+          <p className="text-lg text-muted-foreground mb-6 max-w-2xl">
+            Practical guidance for businesses navigating payment provider requirements in the UK and EU.
           </p>
-          
-          <div className="space-y-6">
-            {insights.map((insight) => (
-              <Link
-                key={insight.slug}
-                to={`/insights/${insight.slug}`}
-                className="block p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
-              >
-                <h2 className="text-xl font-semibold text-foreground mb-2">
-                  {insight.title}
-                </h2>
-                <p className="text-muted-foreground">
-                  {insight.description}
-                </p>
-              </Link>
-            ))}
+          <p className="text-muted-foreground mb-12 max-w-2xl">
+            Payment providers operate under strict regulatory requirements. Understanding their processes helps you avoid account freezes, respond effectively to verification requests, and choose the right provider for your business model.
+          </p>
+
+          {/* Featured Insight */}
+          <div className="mb-12">
+            <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4">
+              Featured Insight
+            </h2>
+            <Link
+              to={`/insights/${featuredInsight.slug}`}
+              className="block p-6 rounded-xl border-2 border-primary/30 bg-primary/5 hover:border-primary/50 transition-colors"
+            >
+              <h3 className="text-xl font-semibold text-foreground mb-2">
+                {featuredInsight.title}
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                {featuredInsight.description}
+              </p>
+              <span className="inline-flex items-center gap-2 text-primary font-medium">
+                Read more <ArrowRight className="w-4 h-4" />
+              </span>
+            </Link>
+          </div>
+
+          {/* Categories */}
+          <div className="mb-16">
+            <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4">
+              Browse by Category
+            </h2>
+            <div className="grid gap-4 md:grid-cols-3">
+              {categories.map((category) => {
+                const Icon = category.icon;
+                return (
+                  <Link
+                    key={category.slug}
+                    to={`/insights/${category.slug}`}
+                    className="block p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
+                  >
+                    <div className={`w-10 h-10 rounded-lg ${category.iconBg} flex items-center justify-center mb-4`}>
+                      <Icon className={`w-5 h-5 ${category.iconColor}`} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">
+                      {category.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {category.description}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* All Insights */}
+          <div>
+            <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4">
+              All Insights
+            </h2>
+            <div className="space-y-4">
+              {allInsights.map((insight) => (
+                <Link
+                  key={insight.slug}
+                  to={`/insights/${insight.slug}`}
+                  className="block p-5 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
+                >
+                  <h3 className="text-lg font-semibold text-foreground mb-1">
+                    {insight.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {insight.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border text-center">
+            <p className="text-muted-foreground mb-4">
+              Not sure which payment provider is right for your business?
+            </p>
+            <Link
+              to="/quiz"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+            >
+              Take our short assessment <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </main>
