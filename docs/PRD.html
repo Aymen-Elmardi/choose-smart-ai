@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChosePayments - Product Requirements Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #fff;
+      padding: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    @media print {
+      body {
+        padding: 20px;
+        font-size: 11px;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      h2 {
+        page-break-after: avoid;
+      }
+      table {
+        page-break-inside: avoid;
+      }
+    }
+    
+    /* Header */
+    .header {
+      text-align: center;
+      padding-bottom: 30px;
+      border-bottom: 3px solid #2563eb;
+      margin-bottom: 40px;
+    }
+    
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+    
+    .header .subtitle {
+      font-size: 18px;
+      color: #64748b;
+      font-weight: 500;
+    }
+    
+    .header .meta {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    
+    /* Section headers */
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin: 40px 0 20px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #334155;
+      margin: 24px 0 12px 0;
+    }
+    
+    h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #475569;
+      margin: 16px 0 8px 0;
+    }
+    
+    /* Paragraphs */
+    p {
+      margin-bottom: 12px;
+      color: #475569;
+    }
+    
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px 0;
+      font-size: 13px;
+    }
+    
+    th {
+      background: #f1f5f9;
+      font-weight: 600;
+      text-align: left;
+      padding: 10px 12px;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+    }
+    
+    td {
+      padding: 10px 12px;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+    }
+    
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    
+    /* Info boxes */
+    .info-box {
+      background: #f0f9ff;
+      border-left: 4px solid #2563eb;
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .info-box.warning {
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+    }
+    
+    .info-box p {
+      margin: 0;
+      color: #1e40af;
+    }
+    
+    .info-box.warning p {
+      color: #92400e;
+    }
+    
+    /* Code blocks */
+    code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #7c3aed;
+    }
+    
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 12px;
+      margin: 16px 0;
+    }
+    
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+    
+    /* Lists */
+    ul, ol {
+      margin: 12px 0 12px 24px;
+      color: #475569;
+    }
+    
+    li {
+      margin-bottom: 6px;
+    }
+    
+    /* Badge styles for risk matrix */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    
+    .badge-green {
+      background: #dcfce7;
+      color: #166534;
+    }
+    
+    .badge-amber {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    
+    .badge-red {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    
+    /* Two column layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    
+    /* Checkmarks and X */
+    .check { color: #16a34a; }
+    .cross { color: #dc2626; }
+    
+    /* Flow diagram placeholder */
+    .diagram {
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 40px;
+      text-align: center;
+      color: #64748b;
+      margin: 20px 0;
+    }
+    
+    /* Footer */
+    .footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+    
+    /* TOC */
+    .toc {
+      background: #f8fafc;
+      padding: 24px;
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+    
+    .toc h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    
+    .toc ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .toc li {
+      padding: 6px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .toc li:last-child {
+      border-bottom: none;
+    }
+    
+    .toc a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>ChosePayments</h1>
+    <div class="subtitle">Product Requirements Document</div>
+    <div class="meta">Version 1.0 • January 2026 • Internal Document</div>
+  </div>
+
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ul>
+      <li><a href="#overview">1. Product Overview</a></li>
+      <li><a href="#tech">2. Tech Stack</a></li>
+      <li><a href="#quiz">3. Payment Provider Quiz</a></li>
+      <li><a href="#providers">4. Provider Registry</a></li>
+      <li><a href="#risk">5. Industry Risk Matrix</a></li>
+      <li><a href="#algorithm">6. Scoring Algorithm</a></li>
+      <li><a href="#example">7. Scoring Example</a></li>
+      <li><a href="#fallback">8. Client-Side Fallback</a></li>
+      <li><a href="#leads">9. Lead Capture & Emails</a></li>
+      <li><a href="#content">10. Content Hub</a></li>
+      <li><a href="#files">11. File Reference</a></li>
+    </ul>
+  </div>
+
+  <h2 id="overview">1. Product Overview</h2>
+  
+  <table>
+    <tr>
+      <th style="width: 30%;">Attribute</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td><strong>Product</strong></td>
+      <td>ChosePayments</td>
+    </tr>
+    <tr>
+      <td><strong>Domain</strong></td>
+      <td>chosepayments.co.uk</td>
+    </tr>
+    <tr>
+      <td><strong>Purpose</strong></td>
+      <td>Help UK and US businesses find the optimal payment provider through an intelligent quiz and recommendation engine</td>
+    </tr>
+    <tr>
+      <td><strong>Business Model</strong></td>
+      <td>Lead generation – capture qualified leads and connect them with payment providers</td>
+    </tr>
+    <tr>
+      <td><strong>Authentication</strong></td>
+      <td>None required (stateless)</td>
+    </tr>
+    <tr>
+      <td><strong>Database</strong></td>
+      <td>None (leads sent via email)</td>
+    </tr>
+  </table>
+
+  <h2 id="tech">2. Tech Stack</h2>
+  
+  <table>
+    <tr>
+      <th>Layer</th>
+      <th>Technology</th>
+    </tr>
+    <tr>
+      <td>Frontend</td>
+      <td>React 18, TypeScript, Vite</td>
+    </tr>
+    <tr>
+      <td>Styling</td>
+      <td>Tailwind CSS, shadcn/ui components</td>
+    </tr>
+    <tr>
+      <td>Routing</td>
+      <td>React Router v6</td>
+    </tr>
+    <tr>
+      <td>Backend</td>
+      <td>Lovable Cloud (Supabase Edge Functions)</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>Resend API</td>
+    </tr>
+    <tr>
+      <td>Font</td>
+      <td>DM Sans</td>
+    </tr>
+  </table>
+
+  <h2 id="quiz">3. Payment Provider Quiz</h2>
+  
+  <p>A 9-question wizard at <code>/quiz</code> that collects business information to generate personalized recommendations.</p>
+  
+  <table>
+    <tr>
+      <th>Step</th>
+      <th>Question</th>
+      <th>Data Collected</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Where do you sell?</td>
+      <td>Sales channel (online / in-person / both)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Terminal type (if in-person)</td>
+      <td>Portable / countertop / mobile</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Business type</td>
+      <td>Industry category</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Location</td>
+      <td>UK or US</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Monthly volume</td>
+      <td>Revenue tier</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Top priority</td>
+      <td>Easy setup / Low fees / Scalability / International</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Features needed</td>
+      <td>Multi-select capabilities</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Contact preference</td>
+      <td>Time of day</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Contact details</td>
+      <td>Name, email, phone, business name</td>
+    </tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <h2 id="providers">4. Provider Registry</h2>
+  
+  <p>The recommendation engine evaluates 20+ payment providers. Each provider has defined capabilities:</p>
+  
+  <table>
+    <tr>
+      <th>Provider</th>
+      <th>Payment Types</th>
+      <th>Terminal</th>
+      <th>Marketplace</th>
+      <th>Regions</th>
+      <th>Min Volume</th>
+    </tr>
+    <tr>
+      <td><strong>Stripe</strong></td>
+      <td>Card, Bank, Wallet</td>
+      <td class="cross">✗</td>
+      <td class="check">✓</td>
+      <td>UK, US, EU</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>Square</strong></td>
+      <td>Card, Wallet</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td>UK, US</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>PayPal</strong></td>
+      <td>Card, Bank, Wallet</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>UK, US, EU</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>Adyen</strong></td>
+      <td>Card, Bank, Wallet</td>
+      <td class="check">✓</td>
+      <td class="check">✓</td>
+      <td>UK, US, EU</td>
+      <td>£50k</td>
+    </tr>
+    <tr>
+      <td><strong>Worldpay</strong></td>
+      <td>Card, Bank</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td>UK, EU</td>
+      <td>£10k</td>
+    </tr>
+    <tr>
+      <td><strong>SumUp</strong></td>
+      <td>Card</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td>UK, EU</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>Zettle</strong></td>
+      <td>Card</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td>UK, EU</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>Braintree</strong></td>
+      <td>Card, Bank, Wallet</td>
+      <td class="cross">✗</td>
+      <td class="check">✓</td>
+      <td>UK, US, EU</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>Checkout.com</strong></td>
+      <td>Card, Bank, Wallet</td>
+      <td class="cross">✗</td>
+      <td class="check">✓</td>
+      <td>UK, US, EU</td>
+      <td>£25k</td>
+    </tr>
+    <tr>
+      <td><strong>Mollie</strong></td>
+      <td>Card, Bank, Wallet</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>UK, EU</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>GoCardless</strong></td>
+      <td>Bank (Direct Debit)</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>UK, EU</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>Klarna</strong></td>
+      <td>BNPL</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>UK, US, EU</td>
+      <td>£5k</td>
+    </tr>
+    <tr>
+      <td><strong>Revolut Business</strong></td>
+      <td>Card, Bank</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td>UK, EU</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>Airwallex</strong></td>
+      <td>Card, Bank</td>
+      <td class="cross">✗</td>
+      <td class="check">✓</td>
+      <td>UK, US, EU</td>
+      <td>£10k</td>
+    </tr>
+    <tr>
+      <td><strong>Datman</strong></td>
+      <td>Card, Bank</td>
+      <td class="check">✓</td>
+      <td class="check">✓</td>
+      <td>UK</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>OPP</strong></td>
+      <td>Card, Bank</td>
+      <td class="check">✓</td>
+      <td class="check">✓</td>
+      <td>UK</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>Fiserv (Clover)</strong></td>
+      <td>Card</td>
+      <td class="check">✓</td>
+      <td class="cross">✗</td>
+      <td>US</td>
+      <td>£0</td>
+    </tr>
+    <tr>
+      <td><strong>Authorize.Net</strong></td>
+      <td>Card, Bank</td>
+      <td class="cross">✗</td>
+      <td class="cross">✗</td>
+      <td>US</td>
+      <td>£0</td>
+    </tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <h2 id="risk">5. Industry Risk Matrix</h2>
+  
+  <p>Each provider has a risk appetite per industry. This determines whether they will accept, review, or decline the business.</p>
+  
+  <div class="info-box">
+    <p><strong>Legend:</strong> 
+      <span class="badge badge-green">Green</span> = Accepts &nbsp;
+      <span class="badge badge-amber">Amber</span> = Case-by-case &nbsp;
+      <span class="badge badge-red">Red</span> = Declines
+    </p>
+  </div>
+  
+  <table>
+    <tr>
+      <th>Provider</th>
+      <th>eCommerce</th>
+      <th>Retail</th>
+      <th>Hospitality</th>
+      <th>Marketplace</th>
+      <th>SaaS</th>
+      <th>Travel</th>
+      <th>Gambling</th>
+      <th>Adult</th>
+      <th>Crypto</th>
+    </tr>
+    <tr>
+      <td><strong>Stripe</strong></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+      <td><span class="badge badge-red">R</span></td>
+      <td><span class="badge badge-red">R</span></td>
+      <td><span class="badge badge-red">R</span></td>
+    </tr>
+    <tr>
+      <td><strong>Square</strong></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-red">R</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+      <td><span class="badge badge-red">R</span></td>
+      <td><span class="badge badge-red">R</span></td>
+      <td><span class="badge badge-red">R</span></td>
+    </tr>
+    <tr>
+      <td><strong>PayPal</strong></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+      <td><span class="badge badge-red">R</span></td>
+      <td><span class="badge badge-red">R</span></td>
+      <td><span class="badge badge-red">R</span></td>
+    </tr>
+    <tr>
+      <td><strong>Adyen</strong></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+      <td><span class="badge badge-red">R</span></td>
+      <td><span class="badge badge-red">R</span></td>
+    </tr>
+    <tr>
+      <td><strong>Datman</strong></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+    </tr>
+    <tr>
+      <td><strong>OPP</strong></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-green">G</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+      <td><span class="badge badge-amber">A</span></td>
+    </tr>
+  </table>
+
+  <h2 id="algorithm">6. Scoring Algorithm</h2>
+  
+  <h3>Step 1: Hard Elimination</h3>
+  
+  <p>Providers are <strong>removed</strong> from consideration if any of these conditions are true:</p>
+  
+  <table>
+    <tr>
+      <th>Rule</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>Missing Payment Type</td>
+      <td>Provider doesn't support required payment method (card, bank, wallet, BNPL)</td>
+    </tr>
+    <tr>
+      <td>Region Mismatch</td>
+      <td>Provider doesn't operate in user's region (UK, US, EU)</td>
+    </tr>
+    <tr>
+      <td>Red Risk Level</td>
+      <td>Provider has "red" risk rating for user's industry</td>
+    </tr>
+    <tr>
+      <td>Hard Exclusion</td>
+      <td>Provider explicitly excludes user's business type</td>
+    </tr>
+    <tr>
+      <td>Volume Too Low</td>
+      <td>User's monthly volume is below 50% of provider's minimum requirement</td>
+    </tr>
+  </table>
+
+  <h3>Step 2: Scoring Surviving Providers</h3>
+  
+  <h4>Base Score</h4>
+  <p>All providers start with <strong>50 points</strong></p>
+  
+  <h4>Business Model Fit (up to +65 points)</h4>
+  <table>
+    <tr>
+      <th>Condition</th>
+      <th>Points</th>
+    </tr>
+    <tr>
+      <td>Needs marketplace + provider supports it</td>
+      <td>+30</td>
+    </tr>
+    <tr>
+      <td>Needs split payments + provider supports it</td>
+      <td>+25</td>
+    </tr>
+    <tr>
+      <td>Needs subscriptions + provider supports it</td>
+      <td>+10</td>
+    </tr>
+    <tr>
+      <td>Needs marketplace but provider doesn't support</td>
+      <td>−20</td>
+    </tr>
+  </table>
+  
+  <h4>Channel Fit (up to +25 points)</h4>
+  <table>
+    <tr>
+      <th>Condition</th>
+      <th>Points</th>
+    </tr>
+    <tr>
+      <td>In-person channel + provider has terminals</td>
+      <td>+15</td>
+    </tr>
+    <tr>
+      <td>Online channel + provider is online-focused</td>
+      <td>+10</td>
+    </tr>
+    <tr>
+      <td>In-person needed but no terminal support</td>
+      <td>−15</td>
+    </tr>
+  </table>
+  
+  <h4>Volume Alignment (up to +10 points)</h4>
+  <table>
+    <tr>
+      <th>Condition</th>
+      <th>Points</th>
+    </tr>
+    <tr>
+      <td>Volume ≥ provider minimum</td>
+      <td>+10</td>
+    </tr>
+    <tr>
+      <td>Volume is 50-100% of minimum</td>
+      <td>+5</td>
+    </tr>
+  </table>
+  
+  <h4>Priority Alignment (up to +65 points)</h4>
+  <table>
+    <tr>
+      <th>Priority Selected</th>
+      <th>Matching Strength</th>
+      <th>Points</th>
+    </tr>
+    <tr>
+      <td>Easy setup</td>
+      <td>Provider has "quick setup" strength</td>
+      <td>+20</td>
+    </tr>
+    <tr>
+      <td>Low fees</td>
+      <td>Provider has "competitive rates" strength</td>
+      <td>+20</td>
+    </tr>
+    <tr>
+      <td>Scalability</td>
+      <td>Provider has "enterprise scale" strength</td>
+      <td>+15</td>
+    </tr>
+    <tr>
+      <td>International</td>
+      <td>Provider supports 3+ regions</td>
+      <td>+10</td>
+    </tr>
+  </table>
+  
+  <h4>Risk Comfort (±10 points)</h4>
+  <table>
+    <tr>
+      <th>Risk Level for Industry</th>
+      <th>Points</th>
+    </tr>
+    <tr>
+      <td>Green (accepts)</td>
+      <td>+10</td>
+    </tr>
+    <tr>
+      <td>Amber (case-by-case)</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Red (declines)</td>
+      <td>−5 (shouldn't reach here)</td>
+    </tr>
+  </table>
+  
+  <h4>Special Bonuses (up to +35 points)</h4>
+  <table>
+    <tr>
+      <th>Condition</th>
+      <th>Points</th>
+    </tr>
+    <tr>
+      <td>OPP provider + high-risk industry</td>
+      <td>+25</td>
+    </tr>
+    <tr>
+      <td>Datman provider + UK region</td>
+      <td>+10</td>
+    </tr>
+    <tr>
+      <td>Strong regional match</td>
+      <td>+5</td>
+    </tr>
+  </table>
+
+  <div class="page-break"></div>
+
+  <h2 id="example">7. Scoring Example</h2>
+  
+  <div class="info-box">
+    <p><strong>Quiz Answers:</strong> Online only • Marketplace business • UK • £25,000/month • Priority: Scalability • Features: Split payments, Multi-currency</p>
+  </div>
+  
+  <h3>Step 1: Elimination</h3>
+  <ul>
+    <li><span class="cross">✗</span> Square – No marketplace support</li>
+    <li><span class="cross">✗</span> SumUp – No marketplace support</li>
+    <li><span class="cross">✗</span> Zettle – No marketplace support</li>
+    <li><span class="check">✓</span> 15 providers remain</li>
+  </ul>
+  
+  <h3>Step 2: Score Top Providers</h3>
+  <table>
+    <tr>
+      <th>Provider</th>
+      <th>Base</th>
+      <th>Marketplace</th>
+      <th>Splits</th>
+      <th>Channel</th>
+      <th>Volume</th>
+      <th>Priority</th>
+      <th>Risk</th>
+      <th>Bonus</th>
+      <th><strong>Total</strong></th>
+    </tr>
+    <tr>
+      <td><strong>Stripe</strong></td>
+      <td>50</td>
+      <td>+30</td>
+      <td>+25</td>
+      <td>+10</td>
+      <td>+10</td>
+      <td>+15</td>
+      <td>+10</td>
+      <td>0</td>
+      <td><strong>150</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Braintree</strong></td>
+      <td>50</td>
+      <td>+30</td>
+      <td>+25</td>
+      <td>+10</td>
+      <td>+10</td>
+      <td>+10</td>
+      <td>+10</td>
+      <td>0</td>
+      <td><strong>145</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Adyen</strong></td>
+      <td>50</td>
+      <td>+30</td>
+      <td>+25</td>
+      <td>+10</td>
+      <td>0</td>
+      <td>+15</td>
+      <td>+10</td>
+      <td>0</td>
+      <td><strong>140</strong></td>
+    </tr>
+  </table>
+  
+  <p><strong>Result:</strong> Stripe (primary), Braintree (alternative 1), Adyen (alternative 2)</p>
+
+  <h2 id="fallback">8. Client-Side Fallback</h2>
+  
+  <p>When the server is unavailable, <code>src/lib/recommendationLogic.ts</code> provides simpler rule-based logic:</p>
+  
+  <h3>UK Logic</h3>
+  <pre><code>IF marketplace → Datman or Adyen
+IF in-person only → Square or SumUp
+IF high volume (>£50k) → Adyen
+IF priority = easy_setup → Square
+IF priority = low_fees → SumUp or Stripe
+DEFAULT → Stripe</code></pre>
+  
+  <h3>US Logic</h3>
+  <pre><code>IF marketplace → Stripe
+IF in-person only → Square or Clover
+IF high volume → Stripe or Fiserv
+DEFAULT → Stripe</code></pre>
+
+  <div class="page-break"></div>
+
+  <h2 id="leads">9. Lead Capture & Emails</h2>
+  
+  <h3>Lead Flow</h3>
+  <ol>
+    <li>User completes quiz</li>
+    <li>Form captures: name, email, phone, business name</li>
+    <li>Enrichment data attached (UTM params, referrer, session ID)</li>
+    <li>Two emails sent via Resend API</li>
+  </ol>
+  
+  <h3>Edge Functions</h3>
+  <table>
+    <tr>
+      <th>Function</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td><code>quiz-recommendation</code></td>
+      <td>Scores providers and returns recommendation</td>
+    </tr>
+    <tr>
+      <td><code>send-lead-email</code></td>
+      <td>Notifies team of new lead</td>
+    </tr>
+    <tr>
+      <td><code>send-confirmation-email</code></td>
+      <td>Sends thank-you email to user</td>
+    </tr>
+  </table>
+  
+  <h3>Security</h3>
+  <ul>
+    <li>HTML sanitization on all inputs</li>
+    <li>Rate limiting: 3 emails/minute/IP</li>
+    <li>No raw SQL execution</li>
+  </ul>
+
+  <h2 id="content">10. Content Hub</h2>
+  
+  <h3>Structure</h3>
+  <pre><code>/insights                    → Hub page
+├── /insights/payment-risk   → Category: Why accounts get flagged
+├── /insights/guides         → Category: Practical how-to guides
+└── /insights/case-studies   → Category: Coming soon</code></pre>
+  
+  <h3>Articles (18 total)</h3>
+  
+  <div class="two-col">
+    <div>
+      <h4>Payment Risk</h4>
+      <ul>
+        <li>Why Accounts Get Flagged Without Changes</li>
+        <li>Why Accounts Get Flagged After Growth</li>
+        <li>Why Accounts Are Frozen Without Warning</li>
+        <li>Why Providers Re-Underwrite Accounts</li>
+        <li>Why Some Businesses Are Never Approved</li>
+        <li>Why Stripe Freezes Accounts</li>
+        <li>Why Marketplaces Get Extra Scrutiny</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Guides</h4>
+      <ul>
+        <li>Proof of Business Activity</li>
+        <li>Sales Increase Documentation</li>
+        <li>Marketplace Seller Info</li>
+        <li>Source of Funds</li>
+        <li>Industry Verification</li>
+        <li>International Sales</li>
+        <li>Contracts and Invoices</li>
+        <li>Director Documents</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="files">11. File Reference</h2>
+  
+  <table>
+    <tr>
+      <th>Purpose</th>
+      <th>File Path</th>
+    </tr>
+    <tr>
+      <td>Quiz UI</td>
+      <td><code>src/pages/Quiz.tsx</code></td>
+    </tr>
+    <tr>
+      <td>Recommendation page</td>
+      <td><code>src/pages/Recommendation.tsx</code></td>
+    </tr>
+    <tr>
+      <td>Client fallback logic</td>
+      <td><code>src/lib/recommendationLogic.ts</code></td>
+    </tr>
+    <tr>
+      <td>Server engine</td>
+      <td><code>supabase/functions/quiz-recommendation/index.ts</code></td>
+    </tr>
+    <tr>
+      <td>Lead capture form</td>
+      <td><code>src/components/LeadCaptureForm.tsx</code></td>
+    </tr>
+    <tr>
+      <td>Lead email</td>
+      <td><code>supabase/functions/send-lead-email/index.ts</code></td>
+    </tr>
+    <tr>
+      <td>Confirmation email</td>
+      <td><code>supabase/functions/send-confirmation-email/index.ts</code></td>
+    </tr>
+    <tr>
+      <td>Insights hub</td>
+      <td><code>src/pages/Insights.tsx</code></td>
+    </tr>
+    <tr>
+      <td>Enrichment hook</td>
+      <td><code>src/hooks/useEnrichmentData.ts</code></td>
+    </tr>
+    <tr>
+      <td>SEO hook</td>
+      <td><code>src/hooks/useSEO.ts</code></td>
+    </tr>
+    <tr>
+      <td>Design tokens</td>
+      <td><code>src/index.css</code>, <code>tailwind.config.ts</code></td>
+    </tr>
+    <tr>
+      <td>Sitemap</td>
+      <td><code>public/sitemap.xml</code></td>
+    </tr>
+  </table>
+
+  <div class="info-box warning">
+    <p><strong>Required Secret:</strong> <code>RESEND_API_KEY</code> must be configured in Lovable Cloud for email functionality.</p>
+  </div>
+
+  <div class="footer">
+    <p>ChosePayments PRD v1.0 • Generated January 2026 • Internal Document</p>
+  </div>
+
+</body>
+</html>
