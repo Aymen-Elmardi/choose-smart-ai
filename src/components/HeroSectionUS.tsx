@@ -5,7 +5,7 @@ import heroImage from "@/assets/hero-illustration.png";
 
 // US market quiz link with state
 const USQuizLink = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <Link to="/quiz?start=true" state={{ market: "US" }} className={className}>
+  <Link to="/assessment?start=true" state={{ market: "US" }} className={className}>
     {children}
   </Link>
 );

@@ -310,7 +310,7 @@ const PaymentProviderVsAcquirerVsBank = () => {
 
               <section className="mb-12">
                 <Link 
-                  to="/quiz" 
+                  to="/assessment" 
                   className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
                 >
                   Start a short assessment →

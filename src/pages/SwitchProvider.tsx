@@ -137,7 +137,7 @@ const SwitchProvider = () => {
                 Answer a few questions and we'll guide you to the right provider for your business.
               </p>
               <Button size="lg" asChild>
-                <Link to="/quiz?start=true">
+                <Link to="/assessment?start=true">
                   Take the quiz
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>

@@ -232,7 +232,7 @@ const VisaMastercardControl = () => {
               </p>
               <p>
                 <Link 
-                  to="/quiz?start=true" 
+                  to="/assessment?start=true" 
                   className="text-primary hover:underline font-medium"
                 >
                   Start a short assessment →

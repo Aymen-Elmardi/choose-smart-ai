@@ -619,7 +619,7 @@ const Quiz = () => {
 
   if (!question) {
     // Safety: redirect if question not found
-    navigate("/quiz?start=true", { replace: true });
+    navigate("/assessment?start=true", { replace: true });
     return null;
   }
 

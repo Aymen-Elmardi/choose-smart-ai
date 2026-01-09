@@ -22,7 +22,7 @@ const HeroSection = () => {
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <div className="flex flex-col items-start">
                 <Button variant="hero" size="xl" asChild>
-                  <Link to="/quiz?start=true">
+                  <Link to="/assessment?start=true">
                     Answer a few quick questions
                     <ArrowRight className="w-5 h-5" />
                   </Link>
