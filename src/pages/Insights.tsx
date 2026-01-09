@@ -137,6 +137,11 @@ const allInsights = [
     title: "What Is an Acquirer and Why Your Payment Provider Needs One",
     slug: "what-is-an-acquirer",
     description: "Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business."
+  },
+  {
+    title: "Payment Provider vs Acquirer vs Bank. What Actually Happens to Your Money",
+    slug: "payment-provider-vs-acquirer-vs-bank",
+    description: "Learn who does what in card payments, how long each step takes, and why money moves slower than transactions."
   }
 ];
 
