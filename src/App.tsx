@@ -49,6 +49,7 @@ import VisaMastercardControl from "./pages/insights/VisaMastercardControl";
 import WhatIsAnAcquirer from "./pages/insights/WhatIsAnAcquirer";
 import PaymentProviderVsAcquirerVsBank from "./pages/insights/PaymentProviderVsAcquirerVsBank";
 import WhyCardApprovalSpeedAffectsCheckoutAbandonment from "./pages/insights/WhyCardApprovalSpeedAffectsCheckoutAbandonment";
+import SameDaySettlementAndInstantPayouts from "./pages/insights/SameDaySettlementAndInstantPayouts";
 
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
@@ -142,6 +143,7 @@ const App = () => (
             <Route path="/insights/what-is-an-acquirer" element={<WhatIsAnAcquirer />} />
             <Route path="/insights/payment-provider-vs-acquirer-vs-bank" element={<PaymentProviderVsAcquirerVsBank />} />
             <Route path="/insights/why-card-approval-speed-affects-checkout-abandonment" element={<WhyCardApprovalSpeedAffectsCheckoutAbandonment />} />
+            <Route path="/insights/same-day-settlement-and-instant-payouts" element={<SameDaySettlementAndInstantPayouts />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

@@ -171,6 +171,12 @@ const PaymentProviderVsAcquirerVsBank = () => {
                 <p className="text-lg leading-relaxed mb-6">
                   Even after settlement, money does not reach your bank immediately.
                 </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  Because of these delays, some providers now offer same-day settlement or instant payout options. For smaller businesses, this can make a meaningful difference to cash flow, payroll timing, and supplier payments.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  We explain how these options work and when they actually help here: <Link to="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:text-primary/80 underline">Same-Day Settlement and Instant Payouts. What Businesses Should Know</Link>.
+                </p>
                 <p className="text-lg leading-relaxed mb-4">
                   Typical timelines:
                 </p>

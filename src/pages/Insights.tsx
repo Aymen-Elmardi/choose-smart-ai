@@ -147,6 +147,11 @@ const allInsights = [
     title: "Why Card Approval Speed Affects Checkout Abandonment",
     slug: "why-card-approval-speed-affects-checkout-abandonment",
     description: "Learn why card approval speed matters for conversion rates and how delays cause checkout abandonment and lost revenue."
+  },
+  {
+    title: "Same-Day Settlement and Instant Payouts. What Businesses Should Know",
+    slug: "same-day-settlement-and-instant-payouts",
+    description: "Learn how same-day settlement and instant payouts work, when they help businesses, and the trade-offs involved."
   }
 ];
 
