@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -312,9 +312,8 @@ const getQuestionCount = (answers: QuizAnswers) => {
 const Quiz = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [searchParams] = useSearchParams();
-  const shouldStartDirectly = searchParams.get("start") === "true";
-  const [currentStep, setCurrentStep] = useState(shouldStartDirectly ? 1 : 0);
+  // Always start at Question 1 (no intro screen)
+  const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_ANSWERS);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -356,8 +355,8 @@ const Quiz = () => {
   }, [answers.location]);
 
   const questionCount = getQuestionCount(answers);
-  const totalSteps = questionCount + 1; // Welcome + questions
-  const progress = (currentStep / (totalSteps - 1)) * 100;
+  // Progress: questions only (no welcome step)
+  const progress = (currentStep / questionCount) * 100;
 
   const handleOptionSelect = (
     questionId: string,
@@ -485,9 +484,7 @@ const Quiz = () => {
   };
 
   const handleNext = () => {
-    if (currentStep === 0) {
-      setCurrentStep(1);
-    } else if (currentStep <= questionCount) {
+    if (currentStep <= questionCount) {
       const questions = getQuestions(answers);
       const question = questions[currentStep - 1];
       if (question?.multiSelect) {
@@ -505,13 +502,15 @@ const Quiz = () => {
   };
 
   const handleBack = () => {
-    if (currentStep > 0) {
+    if (currentStep === 1) {
+      // On first question, go back to the previous page
+      navigate(-1);
+    } else if (currentStep > 1) {
       setCurrentStep((prev) => prev - 1);
     }
   };
 
   const canProceed = () => {
-    if (currentStep === 0) return true;
     if (currentStep > questionCount) return true;
 
     const questions = getQuestions(answers);
@@ -526,92 +525,6 @@ const Quiz = () => {
     }
     return !!answer;
   };
-
-  // Welcome Screen
-  if (currentStep === 0) {
-    return (
-      <div className="min-h-screen bg-background flex flex-col">
-        <QuizHeader progress={0} />
-        <div className="flex-1 flex items-center justify-center p-6">
-          <div className="max-w-lg text-center animate-fade-up">
-            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-              <CreditCard className="w-8 h-8 text-primary" />
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Let's Find the Best Payment Provider for Your Business
-            </h1>
-            <p className="text-lg text-muted-foreground mb-6">
-              Answer a few quick questions so we can recommend the perfect fit.
-            </p>
-            <p className="text-sm text-muted-foreground mb-6">
-              Most businesses choose a payment provider too early — and regret it later. This helps you get it right first time.
-            </p>
-            <Button variant="hero" size="xl" onClick={handleNext}>
-              Start Quiz
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-            <p className="text-sm text-muted-foreground/80 mt-4 font-light">
-              We assess fit across 20+ UK & EU payment providers — based on how your business actually operates.
-            </p>
-
-            {/* SEO Content Block - Pain Points */}
-            <div className="mt-12 pt-8 border-t border-border/50 text-left">
-              <h2 className="text-xl font-semibold text-foreground mb-4">
-                Choosing a payment provider shouldn't come with surprises.
-              </h2>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                Many businesses switch providers expecting savings — only to discover hidden fees, long contracts, or poor support later.
-                Our quiz focuses on best fit, not sales pressure. No contracts, no surprises.
-              </p>
-              <ul className="text-sm text-muted-foreground space-y-2">
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>No hidden fees</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>No long-term lock-ins</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>Clear support expectations</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>Providers matched to your business model</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Why Businesses Use Us Section */}
-            <div className="mt-8 pt-6 border-t border-border/50 text-left">
-              <h3 className="text-lg font-semibold text-foreground mb-3">
-                Why businesses use us
-              </h3>
-              <ul className="text-sm text-muted-foreground space-y-2">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>We're not tied to one provider</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>We don't sell contracts</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>We recommend based on your answers — not commissions</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <span>You decide if you want an introduction</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   // Question Screens
   const questions = getQuestions(answers);
