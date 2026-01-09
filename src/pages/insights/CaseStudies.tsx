@@ -57,7 +57,7 @@ const CaseStudies = () => {
           <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border">
             <p className="text-muted-foreground">
               Want to understand your payment risk profile? Take our{" "}
-              <Link to="/assessment?start=true" className="text-primary hover:underline">
+              <Link to="/assessment?start=true" replace className="text-primary hover:underline">
                 short assessment
               </Link>{" "}
               to get started.

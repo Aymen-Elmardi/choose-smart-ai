@@ -49,7 +49,7 @@ const IndustryVerification = () => {
             
             <p className="mt-12 pt-8 border-t border-border">
               If you want to avoid these issues before choosing a payment provider, you can start a{" "}
-              <Link to="/assessment?start=true" className="text-primary hover:underline">
+              <Link to="/assessment?start=true" replace className="text-primary hover:underline">
                 short assessment
               </Link>.
             </p>

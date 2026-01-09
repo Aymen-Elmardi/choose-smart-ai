@@ -304,7 +304,8 @@ const SameDaySettlementAndInstantPayouts = () => {
 
               <section className="mb-12">
                 <Link 
-                  to="/assessment" 
+                  to="/assessment"
+                  replace 
                   className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
                 >
                   Start a short assessment →
