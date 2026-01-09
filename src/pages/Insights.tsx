@@ -142,6 +142,11 @@ const allInsights = [
     title: "Payment Provider vs Acquirer vs Bank. What Actually Happens to Your Money",
     slug: "payment-provider-vs-acquirer-vs-bank",
     description: "Learn who does what in card payments, how long each step takes, and why money moves slower than transactions."
+  },
+  {
+    title: "Why Card Approval Speed Affects Checkout Abandonment",
+    slug: "why-card-approval-speed-affects-checkout-abandonment",
+    description: "Learn why card approval speed matters for conversion rates and how delays cause checkout abandonment and lost revenue."
   }
 ];
 
