@@ -127,6 +127,11 @@ const allInsights = [
     title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
     slug: "why-payment-accounts-get-flagged-without-changes",
     description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction."
+  },
+  {
+    title: "Visa and Mastercard Control Card Payments. What Businesses Can and Cannot Do",
+    slug: "visa-mastercard-control-card-payments",
+    description: "Learn how Visa and Mastercard control the card payment system and what UK and EU businesses can realistically do."
   }
 ];
 
