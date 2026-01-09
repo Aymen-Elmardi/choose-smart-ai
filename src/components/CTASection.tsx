@@ -27,7 +27,7 @@ const CTASection = () => {
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                 asChild
               >
-                <Link to="/assessment?start=true">
+                <Link to="/assessment?start=true" replace>
                   Answer a few quick questions
                   <ArrowRight className="w-5 h-5" />
                 </Link>

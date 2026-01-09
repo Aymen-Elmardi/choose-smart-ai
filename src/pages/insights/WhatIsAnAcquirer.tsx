@@ -133,7 +133,7 @@ const WhatIsAnAcquirer = () => {
               </p>
               <p>
                 If you want help understanding which providers are likely to align with your business, you can{" "}
-                <Link to="/assessment" className="text-primary hover:underline">
+                <Link to="/assessment" replace className="text-primary hover:underline">
                   start a short assessment
                 </Link>{" "}
                 to avoid unnecessary friction later.

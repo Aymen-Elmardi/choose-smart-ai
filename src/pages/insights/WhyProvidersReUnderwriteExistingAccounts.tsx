@@ -188,6 +188,7 @@ const WhyProvidersReUnderwriteExistingAccounts = () => {
             
             <Link 
               to="/assessment?start=true"
+              replace
               className="inline-block mt-4 text-primary hover:text-primary/80 font-medium underline underline-offset-4"
             >
               Start a short assessment →
