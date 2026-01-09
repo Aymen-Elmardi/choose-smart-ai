@@ -27,7 +27,7 @@ const CTASectionUS = () => {
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                 asChild
               >
-                <Link to="/quiz?start=true" state={{ market: "US" }}>
+                <Link to="/assessment?start=true" state={{ market: "US" }}>
                   Answer a few quick questions
                   <ArrowRight className="w-5 h-5" />
                 </Link>

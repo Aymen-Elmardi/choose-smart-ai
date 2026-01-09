@@ -134,11 +134,11 @@ const WhyPaymentAccountsGetFlaggedWithoutChanges = () => {
             </h2>
             
             <p>
-              If you want to sense check whether your current setup still aligns with your provider's expectations, you can use our <Link to="/quiz?start=true" className="text-primary hover:underline">short assessment</Link>. It helps identify mismatches before they turn into surprises.
+              If you want to sense check whether your current setup still aligns with your provider's expectations, you can use our <Link to="/assessment?start=true" className="text-primary hover:underline">short assessment</Link>. It helps identify mismatches before they turn into surprises.
             </p>
             
             <Link 
-              to="/quiz?start=true"
+              to="/assessment?start=true"
               className="inline-block mt-4 text-primary hover:text-primary/80 font-medium underline underline-offset-4"
             >
               Start a short assessment →

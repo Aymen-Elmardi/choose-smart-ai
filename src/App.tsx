@@ -100,7 +100,7 @@ const App = () => (
             <Route path="/us" element={<IndexUS />} />
             
             {/* Quiz routes - lazy loaded to isolate quiz logic from SEO bundle */}
-            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/assessment" element={<Quiz />} />
             <Route path="/recommendation" element={<Recommendation />} />
             
             {/* SEO Content Pages */}

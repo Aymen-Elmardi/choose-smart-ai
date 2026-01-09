@@ -28,14 +28,14 @@ const Header = () => {
               About
             </Link>
             <Button variant="hero" size="default" asChild>
-              <Link to="/quiz?start=true">
+              <Link to="/assessment?start=true">
                 Answer a few quick questions
               </Link>
             </Button>
           </nav>
 
           <Button variant="hero" size="sm" className="md:hidden" asChild>
-            <Link to="/quiz?start=true">
+            <Link to="/assessment?start=true">
               Get Started
             </Link>
           </Button>

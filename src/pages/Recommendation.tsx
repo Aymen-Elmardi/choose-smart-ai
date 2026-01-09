@@ -80,7 +80,7 @@ const Recommendation = () => {
   useEffect(() => {
     initializeSessionTracking();
     if (!answers || !quizComplete) {
-      navigate("/quiz?start=true", { replace: true });
+      navigate("/assessment?start=true", { replace: true });
     }
   }, [answers, quizComplete, navigate]);
 
@@ -526,7 +526,7 @@ const Recommendation = () => {
         <div className="text-center mt-10 animate-fade-up animation-delay-200">
           <p className="text-muted-foreground mb-4">Not what you expected?</p>
           <a
-            href="/quiz?start=true"
+            href="/assessment?start=true"
             className="text-primary font-medium hover:underline"
           >
             Answer again →

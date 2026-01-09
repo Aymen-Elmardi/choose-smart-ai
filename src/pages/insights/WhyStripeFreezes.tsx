@@ -51,7 +51,7 @@ const WhyStripeFreezes = () => {
             </p>
             
             <Link 
-              to="/quiz?start=true"
+              to="/assessment?start=true"
               className="inline-block mt-4 text-primary hover:text-primary/80 font-medium underline underline-offset-4"
             >
               Take our short assessment →

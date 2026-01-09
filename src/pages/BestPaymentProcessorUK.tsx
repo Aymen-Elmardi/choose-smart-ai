@@ -58,7 +58,7 @@ const BestPaymentProcessorUK = () => {
               </p>
               <div className="flex flex-col items-center">
                 <Button size="xl" asChild>
-                  <Link to="/quiz?start=true">
+                  <Link to="/assessment?start=true">
                     Answer a few quick questions
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
@@ -324,7 +324,7 @@ const BestPaymentProcessorUK = () => {
                     className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                     asChild
                   >
-                    <Link to="/quiz?start=true">
+                    <Link to="/assessment?start=true">
                       Answer a few quick questions
                       <ArrowRight className="w-5 h-5 ml-2" />
                     </Link>
