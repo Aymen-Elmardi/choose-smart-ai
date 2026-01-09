@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -503,8 +503,8 @@ const Quiz = () => {
 
   const handleBack = () => {
     if (currentStep === 1) {
-      // On first question, go back to the previous page
-      navigate(-1);
+      // On first question, navigate to homepage (never exit to external referrer)
+      navigate("/", { replace: true });
     } else if (currentStep > 1) {
       setCurrentStep((prev) => prev - 1);
     }
@@ -532,7 +532,7 @@ const Quiz = () => {
 
   if (!question) {
     // Safety: redirect if question not found
-    navigate("/assessment?start=true", { replace: true });
+    navigate("/quiz", { replace: true });
     return null;
   }
 
@@ -689,20 +689,20 @@ const QuizHeader = ({
             Back
           </Button>
         ) : (
-          <a href="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
               <CreditCard className="w-4 h-4 text-primary-foreground" />
             </div>
             <span className="font-bold text-foreground">ChosePayments</span>
-          </a>
+          </Link>
         )}
 
-        <a
-          href="/"
+        <Link
+          to="/"
           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           Exit
-        </a>
+        </Link>
       </div>
     </div>
 
