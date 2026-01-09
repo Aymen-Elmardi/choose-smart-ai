@@ -46,6 +46,7 @@ import WhyPaymentAccountsGetFlaggedAfterGrowth from "./pages/insights/WhyPayment
 import WhyProvidersReUnderwriteExistingAccounts from "./pages/insights/WhyProvidersReUnderwriteExistingAccounts";
 import WhyPaymentAccountsGetFlaggedWithoutChanges from "./pages/insights/WhyPaymentAccountsGetFlaggedWithoutChanges";
 import VisaMastercardControl from "./pages/insights/VisaMastercardControl";
+import WhatIsAnAcquirer from "./pages/insights/WhatIsAnAcquirer";
 
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
@@ -136,6 +137,7 @@ const App = () => (
             <Route path="/insights/why-providers-re-underwrite-existing-accounts" element={<WhyProvidersReUnderwriteExistingAccounts />} />
             <Route path="/insights/why-payment-accounts-get-flagged-without-changes" element={<WhyPaymentAccountsGetFlaggedWithoutChanges />} />
             <Route path="/insights/visa-mastercard-control-card-payments" element={<VisaMastercardControl />} />
+            <Route path="/insights/what-is-an-acquirer" element={<WhatIsAnAcquirer />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

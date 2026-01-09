@@ -132,6 +132,11 @@ const allInsights = [
     title: "Visa and Mastercard Control Card Payments. What Businesses Can and Cannot Do",
     slug: "visa-mastercard-control-card-payments",
     description: "Learn how Visa and Mastercard control the card payment system and what UK and EU businesses can realistically do."
+  },
+  {
+    title: "What Is an Acquirer and Why Your Payment Provider Needs One",
+    slug: "what-is-an-acquirer",
+    description: "Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business."
   }
 ];
 
