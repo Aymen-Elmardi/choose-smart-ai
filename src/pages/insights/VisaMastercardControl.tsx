@@ -78,13 +78,20 @@ const VisaMastercardControl = () => {
                 When a provider asks for documents or reviews your account, it is often responding to network level obligations.
               </p>
               <p>
-                These obligations include anti money laundering requirements, fraud prevention thresholds, and ongoing merchant monitoring.
+                These obligations include anti money laundering requirements, fraud prevention thresholds, and ongoing merchant monitoring. This includes{" "}
+                <Link to="/insights/why-payment-providers-ask-for-source-of-funds" className="text-primary hover:underline">
+                  source of funds checks
+                </Link>{" "}
+                that may seem intrusive but are required by the system.
               </p>
               <p>
                 A provider can disagree internally. They can sometimes advocate on your behalf. But they cannot simply bypass the system.
               </p>
               <p>
-                Complaints, escalation tickets, or switching providers rarely change this reality.
+                Complaints, escalation tickets, or switching providers rarely change this reality. In fact,{" "}
+                <Link to="/insights/why-payment-accounts-get-flagged-without-changes" className="text-primary hover:underline">
+                  accounts can be flagged even when nothing changes
+                </Link>.
               </p>
               <p className="font-medium text-foreground">
                 The rules are upstream.
@@ -111,7 +118,12 @@ const VisaMastercardControl = () => {
               </p>
               <p>Specifically:</p>
               <ul className="list-disc list-inside space-y-2 pl-2">
-                <li>Whether your business model fits your provider's risk appetite</li>
+                <li>
+                  Whether your business model fits your provider's risk appetite — especially for{" "}
+                  <Link to="/insights/why-marketplaces-get-extra-scrutiny" className="text-primary hover:underline">
+                    marketplace and platform models
+                  </Link>
+                </li>
                 <li>Whether your growth pattern matches their expectations</li>
                 <li>Whether your documentation profile is compatible with their processes</li>
               </ul>
@@ -133,7 +145,12 @@ const VisaMastercardControl = () => {
               <p>Common triggers include:</p>
               <ul className="list-disc list-inside space-y-2 pl-2">
                 <li>Rapid increase in volume</li>
-                <li>Expansion into new countries</li>
+                <li>
+                  Expansion into new countries —{" "}
+                  <Link to="/insights/why-international-sales-trigger-reviews" className="text-primary hover:underline">
+                    international sales often trigger reviews
+                  </Link>
+                </li>
                 <li>New product or service lines</li>
                 <li>Higher average transaction values</li>
                 <li>Increased chargeback exposure</li>
@@ -142,7 +159,10 @@ const VisaMastercardControl = () => {
                 From the outside, this can feel like punishment for growth.
               </p>
               <p>
-                From the system's perspective, it is recalibration.
+                From the system's perspective, it is recalibration. This process is known as{" "}
+                <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">
+                  re-underwriting after growth
+                </Link>.
               </p>
               <p className="font-medium text-foreground">
                 The system is designed to reassess risk when behaviour changes, not when everything is static.
@@ -203,6 +223,12 @@ const VisaMastercardControl = () => {
               </p>
               <p>
                 A short assessment can surface potential mismatches before they turn into account issues.
+              </p>
+              <p>
+                For more context, explore our{" "}
+                <Link to="/insights" className="text-primary hover:underline">
+                  related payment system explanations
+                </Link>.
               </p>
               <p>
                 <Link 
