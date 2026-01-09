@@ -51,6 +51,12 @@ const PaymentProviderVsAcquirerVsBank = () => {
                 <p className="text-lg leading-relaxed mb-6">
                   This step usually takes 1–3 seconds.
                 </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  That speed matters more than most businesses realise. Even small delays at the approval stage can increase checkout abandonment, especially on mobile or high-value transactions.
+                </p>
+                <p className="text-lg leading-relaxed mb-6">
+                  If you want to understand why approval speed directly affects conversion and lost revenue, see: <Link to="/insights/why-card-approval-speed-affects-checkout-abandonment" className="text-primary hover:text-primary/80 underline">Why Card Approval Speed Affects Checkout Abandonment</Link>.
+                </p>
                 <p className="text-lg leading-relaxed mb-4">
                   Here's what happens:
                 </p>
