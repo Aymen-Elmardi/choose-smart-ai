@@ -22,7 +22,7 @@ import StripeVsSquareVsPaypal from "./pages/StripeVsSquareVsPaypal";
 import BestPaymentApiUK from "./pages/BestPaymentApiUK";
 import About from "./pages/About";
 
-// Insights blog pages
+// Insights blog pages - eager loaded for SEO
 import Insights from "./pages/Insights";
 import PaymentRisk from "./pages/insights/PaymentRisk";
 import Guides from "./pages/insights/Guides";
