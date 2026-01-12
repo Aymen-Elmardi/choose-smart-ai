@@ -65,8 +65,8 @@ const PageLoader = () => (
   <div className="min-h-screen bg-background" />
 );
 
-// Component to handle scroll-to-hash on navigation
-const ScrollToHash = () => {
+// Component to handle scroll-to-top and scroll-to-hash on navigation
+const ScrollToTop = () => {
   const { hash, pathname } = useLocation();
 
   useEffect(() => {
@@ -78,9 +78,9 @@ const ScrollToHash = () => {
           element.scrollIntoView({ behavior: "smooth" });
         }
       }, 100);
-    } else if (pathname === "/") {
-      // Scroll to top when navigating to homepage without hash
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Scroll to top when navigating to any page without hash
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [hash, pathname]);
 
@@ -93,7 +93,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToHash />
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <Routes>
             {/* Homepage routes */}
