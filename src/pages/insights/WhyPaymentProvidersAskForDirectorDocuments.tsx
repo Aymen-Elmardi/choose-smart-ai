@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
+import ChecklistEmailModal from "@/components/ChecklistEmailModal";
 
 const WhyPaymentProvidersAskForDirectorDocuments = () => {
+  const [isChecklistModalOpen, setIsChecklistModalOpen] = useState(false);
+
   useSEO({
     title: "Why Payment Providers Ask for a Director's Passport or Proof of Address",
     description: "Understand why payment providers request director documents like passports and proof of address. Learn what triggers these requests and how to respond effectively."
@@ -29,7 +33,15 @@ const WhyPaymentProvidersAskForDirectorDocuments = () => {
             </p>
             
             <p>
-              This page explains why these requests happen, what triggers them, and what you should expect next.
+              This page explains why these requests happen, what triggers them, and what you should expect next. If you want, you can{" "}
+              <button
+                type="button"
+                onClick={() => setIsChecklistModalOpen(true)}
+                className="text-primary hover:underline font-medium cursor-pointer bg-transparent border-none p-0 inline"
+              >
+                receive a simple checklist
+              </button>{" "}
+              that explains what providers typically ask for and how to prepare.
             </p>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -185,6 +197,11 @@ const WhyPaymentProvidersAskForDirectorDocuments = () => {
       </main>
       
       <Footer />
+      
+      <ChecklistEmailModal 
+        open={isChecklistModalOpen} 
+        onOpenChange={setIsChecklistModalOpen} 
+      />
     </div>
   );
 };
