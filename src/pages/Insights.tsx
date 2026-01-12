@@ -152,6 +152,11 @@ const allInsights = [
     title: "Same-Day Settlement and Instant Payouts. What Businesses Should Know",
     slug: "same-day-settlement-and-instant-payouts",
     description: "Learn how same-day settlement and instant payouts work, when they help businesses, and the trade-offs involved."
+  },
+  {
+    title: "What To Do When a Payment Provider Asks for More Documents",
+    slug: "what-to-do-when-provider-asks-for-documents",
+    description: "Learn why document requests happen, what they usually mean, and how to respond with confidence."
   }
 ];
 
