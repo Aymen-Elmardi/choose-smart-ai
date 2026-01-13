@@ -5,21 +5,25 @@ import heroImage from "@/assets/hero-illustration.png";
 
 const HeroSection = () => {
   return (
-    <section className="gradient-hero pt-24 pb-16 md:pt-32 md:pb-24">
+    <section className="bg-[hsl(220,15%,8%)] pt-24 pb-16 md:pt-32 md:pb-24">
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-up">
-            <p className="text-muted-foreground mb-4">
-              Most businesses overpay on card fees without realising it.
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight text-balance">
-              Find the Best Payment Provider for Your Business in{" "}
-              <span className="text-primary">60 Seconds</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[hsl(220,10%,95%)] leading-tight text-balance">
+              Most payment problems start long before money moves.
+              <span className="block mt-2 text-[hsl(215,15%,60%)]">They start when the wrong provider approves you.</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl">
-              Most businesses choose the wrong provider and overpay. Tell us a bit about your business and get a personalised match.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 space-y-4 text-lg md:text-xl text-[hsl(220,10%,55%)] max-w-xl leading-relaxed">
+              <p>
+                ChosePayments helps businesses avoid payment providers that look fine at signup but fail under growth, international sales, or scrutiny.
+              </p>
+              <p>
+                We don't rank providers.
+                <br />
+                We rule out the ones most likely to cause problems later.
+              </p>
+            </div>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <div className="flex flex-col items-start">
                 <Button variant="hero" size="xl" asChild>
                   <Link to="/assessment?start=true" replace>
@@ -27,23 +31,23 @@ const HeroSection = () => {
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </Button>
-                <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
+                <span className="text-sm text-[hsl(220,10%,45%)] mt-2">Takes under 1 minute • No spam</span>
               </div>
-              <Button variant="hero-outline" size="xl" asChild>
+              <Button variant="hero-outline" size="xl" asChild className="border-[hsl(215,15%,25%)] text-[hsl(220,10%,70%)] hover:bg-[hsl(215,15%,15%)] hover:text-[hsl(220,10%,85%)]">
                 <a href="#how-it-works">How it Works</a>
               </Button>
             </div>
-            <div className="mt-8 flex items-center gap-6 text-sm text-muted-foreground">
+            <div className="mt-8 flex items-center gap-6 text-sm text-[hsl(220,10%,45%)]">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-500" />
+                <div className="w-2 h-2 rounded-full bg-[hsl(215,20%,40%)]" />
                 Free & unbiased
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-500" />
+                <div className="w-2 h-2 rounded-full bg-[hsl(215,20%,40%)]" />
                 No signup required
               </div>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
+            <p className="mt-4 text-sm text-[hsl(220,10%,40%)]">
               We're compensated by payment providers when a relevant introduction is made. Your details are only shared for that purpose.
             </p>
           </div>
