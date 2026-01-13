@@ -157,6 +157,11 @@ const allInsights = [
     title: "What To Do When a Payment Provider Asks for More Documents",
     slug: "what-to-do-when-provider-asks-for-documents",
     description: "Learn why document requests happen, what they usually mean, and how to respond with confidence."
+  },
+  {
+    title: "What Is TRA Exemption and How It Reduces Payment Friction",
+    slug: "tra-exemption-reduces-payment-friction",
+    description: "Learn how TRA Exemption reduces checkout friction, improves approval rates, and affects conversion for UK and EU businesses."
   }
 ];
 

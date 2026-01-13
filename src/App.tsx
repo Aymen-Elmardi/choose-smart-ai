@@ -50,6 +50,7 @@ import WhatIsAnAcquirer from "./pages/insights/WhatIsAnAcquirer";
 import PaymentProviderVsAcquirerVsBank from "./pages/insights/PaymentProviderVsAcquirerVsBank";
 import WhyCardApprovalSpeedAffectsCheckoutAbandonment from "./pages/insights/WhyCardApprovalSpeedAffectsCheckoutAbandonment";
 import SameDaySettlementAndInstantPayouts from "./pages/insights/SameDaySettlementAndInstantPayouts";
+import TRAExemption from "./pages/insights/TRAExemption";
 import WhatToDoWhenProviderAsksForDocuments from "./pages/insights/WhatToDoWhenProviderAsksForDocuments";
 
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
@@ -146,6 +147,7 @@ const App = () => (
             <Route path="/insights/why-card-approval-speed-affects-checkout-abandonment" element={<WhyCardApprovalSpeedAffectsCheckoutAbandonment />} />
             <Route path="/insights/same-day-settlement-and-instant-payouts" element={<SameDaySettlementAndInstantPayouts />} />
             <Route path="/insights/what-to-do-when-provider-asks-for-documents" element={<WhatToDoWhenProviderAsksForDocuments />} />
+            <Route path="/insights/tra-exemption-reduces-payment-friction" element={<TRAExemption />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
