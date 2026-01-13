@@ -1,50 +1,39 @@
-import { ClipboardList, Sparkles, Handshake } from "lucide-react";
-
 const steps = [
   {
-    icon: ClipboardList,
     step: "01",
-    title: "Tell Us About Your Business",
-    description: "Answer a few quick questions (under 60 seconds) about your business type, volume, and needs.",
+    title: "Describe your business",
+    description: "Answer a few questions about your model, volume, and where you operate.",
   },
   {
-    icon: Sparkles,
     step: "02",
-    title: "See Your Best Option",
-    description: "Our algorithm analyzes your responses and matches you with the right payment provider for your situation.",
+    title: "See which providers to avoid",
+    description: "We identify providers likely to cause friction based on your profile.",
   },
   {
-    icon: Handshake,
     step: "03",
-    title: "Connect With Your Provider",
-    description: "Connect directly with the provider that fits your needs — no middlemen, no pushy sales calls.",
+    title: "Get matched",
+    description: "Connect with a provider suited to your business — no middlemen.",
   },
 ];
 
 const HowItWorksSection = () => {
   return (
-    <section id="how-it-works" className="section-padding bg-background">
+    <section id="how-it-works" className="py-20 md:py-28 bg-[hsl(220,15%,6%)] border-t border-[hsl(220,10%,12%)]">
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            How ChosePayments Helps You Choose Smarter
+        <div className="max-w-2xl mb-14">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[hsl(220,10%,75%)] leading-snug">
+            How it works
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 relative">
-          {/* Connection line */}
-          <div className="hidden md:block absolute top-20 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
-          
-          {steps.map((step, index) => (
-            <div key={step.title} className="relative text-center">
-              <div className="relative z-10">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-primary flex items-center justify-center mb-6 shadow-lg">
-                  <step.icon className="w-8 h-8 text-primary-foreground" />
-                </div>
-                <div className="text-sm font-bold text-primary mb-2">STEP {step.step}</div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+        <div className="grid md:grid-cols-3 gap-10">
+          {steps.map((step) => (
+            <div key={step.title} className="relative">
+              <div className="text-xs font-medium text-[hsl(220,10%,30%)] mb-3 uppercase tracking-wider">
+                Step {step.step}
               </div>
+              <h3 className="text-base font-medium text-[hsl(220,10%,60%)] mb-3">{step.title}</h3>
+              <p className="text-sm text-[hsl(220,10%,40%)] leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>
