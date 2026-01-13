@@ -4,28 +4,38 @@ import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
   return (
-    <section className="py-20 md:py-28 bg-[hsl(220,15%,8%)]">
+    <section className="section-padding">
       <div className="section-container">
-        <div className="max-w-2xl">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[hsl(220,10%,75%)] leading-snug">
-            Find out which providers to avoid before you apply.
-          </h2>
-          <p className="mt-4 text-sm text-[hsl(220,10%,40%)] max-w-xl">
-            Answer a few questions about your business. We'll show you which providers are likely to cause problems — and which ones are worth considering.
-          </p>
-          <div className="mt-10">
-            <Button 
-              size="lg" 
-              asChild
-              className="bg-[hsl(220,10%,18%)] text-[hsl(220,10%,70%)] hover:bg-[hsl(220,10%,22%)] hover:text-[hsl(220,10%,85%)] border border-[hsl(220,10%,25%)]"
-            >
-              <Link to="/assessment?start=true" replace>
-                Start Assessment
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-            </Button>
-            <p className="text-xs text-[hsl(220,10%,30%)] mt-4">
-              Takes under 1 minute • No signup required
+        <div className="relative overflow-hidden rounded-3xl bg-primary p-10 md:p-16 text-center">
+          {/* Background decoration */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-1/2 -right-1/4 w-96 h-96 rounded-full bg-primary-foreground/10 blur-3xl" />
+            <div className="absolute -bottom-1/2 -left-1/4 w-96 h-96 rounded-full bg-primary-foreground/10 blur-3xl" />
+          </div>
+          
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+              Ready to Find the Right Payment Provider?
+            </h2>
+            <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+              Tell us a bit about your business and get a tailored match in under 60 seconds.
+            </p>
+            <div className="flex flex-col items-center">
+              <Button 
+                variant="secondary" 
+                size="xl" 
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                asChild
+              >
+                <Link to="/assessment?start=true" replace>
+                  Answer a few quick questions
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              <span className="text-sm text-primary-foreground/70 mt-3">Takes under 1 minute • No spam</span>
+            </div>
+            <p className="text-sm text-primary-foreground/60 mt-6">
+              We're compensated by payment providers when a relevant introduction is made. Your details are only shared for that purpose.
             </p>
           </div>
         </div>

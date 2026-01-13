@@ -1,46 +1,60 @@
+import { ShoppingCart, Coffee, RefreshCw, Store } from "lucide-react";
+
 const examples = [
   {
-    businessType: "Ecommerce",
-    note: "High chargeback exposure requires specific provider capabilities",
+    icon: ShoppingCart,
+    businessType: "Ecommerce Store",
+    recommendation: "Stripe",
+    color: "bg-indigo-500",
   },
   {
-    businessType: "Subscription",
-    note: "Recurring billing triggers different underwriting criteria",
+    icon: Coffee,
+    businessType: "Coffee Shop",
+    recommendation: "Square",
+    color: "bg-emerald-500",
   },
   {
+    icon: RefreshCw,
+    businessType: "Subscription Platform",
+    recommendation: "Braintree",
+    color: "bg-blue-500",
+  },
+  {
+    icon: Store,
     businessType: "Marketplace",
-    note: "Split payments and seller payouts add compliance complexity",
-  },
-  {
-    businessType: "High-volume retail",
-    note: "Growth patterns often trigger re-underwriting reviews",
+    recommendation: "Adyen",
+    color: "bg-amber-500",
   },
 ];
 
 const ExamplesSection = () => {
   return (
-    <section className="py-20 md:py-28 bg-[hsl(220,15%,6%)] border-t border-[hsl(220,10%,12%)]">
+    <section className="section-padding bg-background">
       <div className="section-container">
-        <div className="max-w-2xl mb-14">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[hsl(220,10%,75%)] leading-snug">
-            Different businesses, different risks
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            Get the Right Provider for YOUR Business
           </h2>
-          <p className="mt-4 text-sm text-[hsl(220,10%,40%)]">
-            Your business model determines which providers will work long-term.
-          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {examples.map((example) => (
             <div
               key={example.businessType}
-              className="p-5 border-l border-[hsl(220,10%,18%)]"
+              className="p-6 rounded-2xl bg-card border border-border/50 shadow-card hover:shadow-lg transition-all hover:-translate-y-1 text-center"
             >
-              <p className="text-base font-medium text-[hsl(220,10%,55%)] mb-2">{example.businessType}</p>
-              <p className="text-xs text-[hsl(220,10%,35%)] leading-relaxed">{example.note}</p>
+              <div className={`w-14 h-14 mx-auto rounded-xl ${example.color} flex items-center justify-center mb-4`}>
+                <example.icon className="w-7 h-7 text-primary-foreground" />
+              </div>
+              <p className="text-muted-foreground text-sm mb-1">{example.businessType}</p>
+              <p className="text-xl font-bold text-foreground">→ {example.recommendation}</p>
             </div>
           ))}
         </div>
+
+        <p className="text-center mt-10 text-muted-foreground">
+          Your results are personalized based on your business profile.
+        </p>
       </div>
     </section>
   );

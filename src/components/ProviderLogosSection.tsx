@@ -2,22 +2,26 @@ const providers = ["Stripe", "Square", "PayPal", "Adyen", "Datman"];
 
 const ProviderLogosSection = () => {
   return (
-    <section className="py-10 md:py-14 bg-[hsl(220,15%,6%)] border-t border-[hsl(220,10%,12%)]">
+    <section className="py-8 md:py-12 bg-background">
       <div className="section-container">
-        <p className="text-xs text-[hsl(220,10%,35%)] text-center mb-6 uppercase tracking-wider">
-          We help businesses choose between providers like
+        <p className="text-sm text-muted-foreground text-center mb-6">
+          We help businesses choose between payment providers like:
         </p>
         
-        <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-10 md:gap-14">
+        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12">
           {providers.map((name) => (
             <span 
               key={name}
-              className="text-sm sm:text-base font-medium tracking-tight text-[hsl(220,10%,30%)] select-none"
+              className="text-base sm:text-lg md:text-xl font-semibold tracking-tight text-muted-foreground/60 select-none"
             >
               {name}
             </span>
           ))}
         </div>
+        
+        <p className="text-xs text-muted-foreground/60 text-center mt-6">
+          Logos shown for identification purposes only.
+        </p>
       </div>
     </section>
   );
