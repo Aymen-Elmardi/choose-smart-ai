@@ -1,51 +1,40 @@
-import { Scale, Clock, PiggyBank, MapPin } from "lucide-react";
-
 const valueProps = [
   {
-    icon: Scale,
-    title: "Unbiased Recommendations",
-    description: "We're not tied to any single provider. Our only goal is helping you find the best fit.",
+    title: "Unbiased",
+    description: "We're not tied to any single provider. We surface risk, not sales pitches.",
   },
   {
-    icon: Clock,
-    title: "Save Time",
-    description: "No more digging through endless Stripe vs PayPal comparison guides. Get answers in seconds.",
+    title: "Experience-based",
+    description: "Our recommendations come from patterns we've seen across hundreds of businesses.",
   },
   {
-    icon: PiggyBank,
-    title: "Save Money",
-    description: "Avoid overpaying for the wrong plan. We help you find transparent pricing that fits your volume.",
+    title: "UK & US focused",
+    description: "Tailored for businesses operating in the UK and United States.",
   },
   {
-    icon: MapPin,
-    title: "Made for UK and USA",
-    description: "Tailored recommendations for UK and USA businesses. Global support coming soon.",
+    title: "No signup required",
+    description: "Get useful information before you share anything personal.",
   },
 ];
 
 const ValuePropsSection = () => {
   return (
-    <section id="why-us" className="section-padding bg-card">
+    <section id="why-us" className="py-20 md:py-28 bg-[hsl(220,15%,8%)]">
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Why Businesses Use ChosePayments
+        <div className="max-w-2xl mb-14">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[hsl(220,10%,75%)] leading-snug">
+            Why businesses use ChosePayments
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-3xl">
           {valueProps.map((prop) => (
             <div
               key={prop.title}
-              className="flex gap-5 p-6 rounded-2xl bg-background border border-border/50 shadow-card hover:shadow-lg transition-all hover:-translate-y-1"
+              className="border-l border-[hsl(220,10%,18%)] pl-6"
             >
-              <div className="w-12 h-12 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center">
-                <prop.icon className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">{prop.title}</h3>
-                <p className="text-muted-foreground text-sm">{prop.description}</p>
-              </div>
+              <h3 className="text-base font-medium text-[hsl(220,10%,60%)] mb-2">{prop.title}</h3>
+              <p className="text-sm text-[hsl(220,10%,40%)] leading-relaxed">{prop.description}</p>
             </div>
           ))}
         </div>
