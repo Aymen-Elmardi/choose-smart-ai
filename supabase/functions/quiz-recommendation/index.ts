@@ -542,6 +542,34 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     exclusions: ["gambling", "adult", "crypto"],
     strengths: ["international-transfers", "low-fx-fees", "multi-currency"],
   },
+  // High-risk / Complex Merchant Specialist
+  {
+    id: "shift4",
+    name: "Shift4",
+    description: "Built for more complex payment setups. Better suited for businesses with higher approval requirements and sophisticated payment flows.",
+    paymentTypes: ["online", "in-person", "marketplace", "subscriptions"],
+    terminalSupport: ["wired", "portable-sim"],
+    marketplaceCapability: true,
+    splitPaymentsSupport: true,
+    regions: ["both"],
+    minimumMonthlyVolume: 10000,
+    riskAppetite: {
+      "ecommerce": "green",
+      "marketplace": "green",
+      "travel": "green",
+      "hospitality": "green",
+      "retail": "green",
+      "nutraceuticals": "green",
+      "cbd": "green",
+      "crypto": "amber",
+      "gambling": "amber",
+      "adult": "red",
+      "high-risk": "green",
+      "complex": "green",
+    },
+    exclusions: ["adult"],
+    strengths: ["high-risk", "complex-payments", "approval-reliability", "international", "enterprise", "scalable", "split-payments"],
+  },
 ];
 
 // ============================================================================
@@ -757,6 +785,42 @@ const scoreProviders = (
     if (provider.id === "datman" && needsMarketplace && location === "UK") {
       score += 15;
       matchReasons.push("UK specialist for marketplace revenue sharing");
+    }
+    
+    // Shift4 scoring for complex/high-risk cases
+    if (provider.id === "shift4") {
+      // Strong preference (+3) conditions
+      if (needsMarketplace) {
+        score += 25;
+        matchReasons.push("Built for marketplace and platform business models");
+      }
+      if (needsInternational) {
+        score += 20;
+        matchReasons.push("Strong cross-border and multi-region capabilities");
+      }
+      if (needsSplitPayments) {
+        score += 20;
+        matchReasons.push("Advanced multi-party settlement support");
+      }
+      if (isHighVolume) {
+        score += 15;
+        matchReasons.push("Designed for high-volume transaction processing");
+      }
+      
+      // Moderate preference (+2) conditions
+      if (needsInPerson && needsOnline) {
+        score += 15;
+        matchReasons.push("Unified online and in-person payment solutions");
+      }
+      if (wantsScalability) {
+        score += 15;
+        matchReasons.push("Enterprise-grade scalability and reliability");
+      }
+      
+      // De-prioritise (-2) conditions: very small, fee-sensitive, simple use cases
+      if (isLowVolume && wantsLowFees && !needsMarketplace && !needsSplitPayments && !needsInternational) {
+        score -= 30; // Significantly deprioritise for simple low-volume cases
+      }
     }
     
     // Region-specific bonuses
