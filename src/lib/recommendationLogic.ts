@@ -70,6 +70,37 @@ export const getUKRecommendation = (answers: QuizAnswers): Provider | null => {
   const isUK = location === "UK";
   const wantsBothChannels = salesChannel === "Both online and in person";
 
+  // Complexity and risk flags for Shift4 routing
+  const hasComplexityFlags = 
+    isMarketplace || 
+    hasMultipleSellers || 
+    acceptsInternational || 
+    volumeOver50k;
+  const needsReliableApproval = priorities.includes("Flexibility / future-proofing") || 
+    priorities.includes("Ability to scale");
+  const isComplexCase = hasComplexityFlags && (needsReliableApproval || volumeOver50k);
+  const isSimpleLowVolumeFocused = isLowVolume && wantsLowestFees && !isMarketplace && !hasMultipleSellers && !acceptsInternational;
+
+  // SHIFT4 - Complex cases, marketplaces, international, high volume where mainstream may struggle
+  if (isComplexCase && !isSimpleLowVolumeFocused) {
+    // Check for marketplace + international or high volume complexity
+    if ((isMarketplace && acceptsInternational) || 
+        (isMarketplace && volumeOver50k) || 
+        (hasMultipleSellers && acceptsInternational)) {
+      return {
+        name: "Shift4",
+        description:
+          "Built for more complex payment setups. Better suited for businesses with higher approval requirements and sophisticated payment flows.",
+        reasons: [
+          isMarketplace ? "Your marketplace model benefits from specialist support" : "",
+          acceptsInternational ? "Strong cross-border and multi-region capabilities" : "",
+          volumeOver50k ? "Designed for high-volume transaction processing" : "",
+          hasMultipleSellers ? "Advanced multi-party settlement support" : "",
+        ].filter(Boolean),
+      };
+    }
+  }
+
   // DATMAN - UK Marketplaces with high volume
   if (isMarketplace && volumeOver20k && isUK && (isDeveloperFriendly || wantsLowestFees)) {
     return {
@@ -232,6 +263,36 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   const isEarlyStage = businessType === "Early-stage / just getting started";
   const isUS = location === "US";
   const wantsBothChannels = salesChannel === "Both online and in person";
+
+  // Complexity and risk flags for Shift4 routing (same as UK logic)
+  const hasComplexityFlags = 
+    isMarketplace || 
+    hasMultipleSellers || 
+    acceptsInternational || 
+    volumeOver50k;
+  const needsReliableApproval = priorities.includes("Flexibility / future-proofing") || 
+    priorities.includes("Ability to scale");
+  const isComplexCase = hasComplexityFlags && (needsReliableApproval || volumeOver50k);
+  const isSimpleLowVolumeFocused = isLowVolume && wantsLowestFees && !isMarketplace && !hasMultipleSellers && !acceptsInternational;
+
+  // SHIFT4 - Complex cases, marketplaces, international, high volume where mainstream may struggle
+  if (isComplexCase && !isSimpleLowVolumeFocused) {
+    if ((isMarketplace && acceptsInternational) || 
+        (isMarketplace && volumeOver50k) || 
+        (hasMultipleSellers && acceptsInternational)) {
+      return {
+        name: "Shift4",
+        description:
+          "Built for more complex payment setups. Better suited for businesses with higher approval requirements and sophisticated payment flows.",
+        reasons: [
+          isMarketplace ? "Your marketplace model benefits from specialist support" : "",
+          acceptsInternational ? "Strong cross-border and multi-region capabilities" : "",
+          volumeOver50k ? "Designed for high-volume transaction processing" : "",
+          hasMultipleSellers ? "Advanced multi-party settlement support" : "",
+        ].filter(Boolean),
+      };
+    }
+  }
 
   // DATMAN (US) - Marketplaces with high volume, revenue splitting, or multiple sellers
   // Maps from: UK Datman (marketplace with high volume)
