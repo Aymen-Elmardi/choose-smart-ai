@@ -4,34 +4,25 @@ import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-foreground">
       <div className="section-container">
-        <div className="relative overflow-hidden rounded-3xl bg-primary p-10 md:p-16 text-center">
-          {/* Background decoration */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-1/2 -right-1/4 w-96 h-96 rounded-full bg-primary-foreground/10 blur-3xl" />
-            <div className="absolute -bottom-1/2 -left-1/4 w-96 h-96 rounded-full bg-primary-foreground/10 blur-3xl" />
-          </div>
-          
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
-              Ready to Find the Right Payment Provider?
-            </h2>
-            <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-              Tell us a bit about your business and get a tailored match in under 60 seconds.
-            </p>
-            <Button 
-              variant="secondary" 
-              size="xl" 
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-              asChild
-            >
-              <Link to="/assessment?start=true" replace>
-                Answer a few quick questions
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
-          </div>
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="heading-lg text-background mb-6">
+            Ready to Find the Right Payment Provider?
+          </h2>
+          <p className="text-lg md:text-xl text-background/70 max-w-2xl mx-auto mb-10">
+            Tell us a bit about your business and get a tailored match in under 60 seconds.
+          </p>
+          <Button 
+            variant="hero"
+            size="xl" 
+            asChild
+          >
+            <Link to="/assessment?start=true" replace>
+              Answer a few quick questions
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

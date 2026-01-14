@@ -25,26 +25,26 @@ const valueProps = [
 
 const ValuePropsSection = () => {
   return (
-    <section id="why-us" className="section-padding bg-card">
+    <section id="why-us" className="section-padding bg-secondary">
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="heading-lg text-foreground">
             Why Businesses Use ChosePayments
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {valueProps.map((prop) => (
             <div
               key={prop.title}
-              className="flex gap-5 p-6 rounded-2xl bg-background border border-border/50 shadow-card hover:shadow-lg transition-all hover:-translate-y-1"
+              className="flex gap-5 p-6"
             >
-              <div className="w-12 h-12 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center">
-                <prop.icon className="w-6 h-6 text-primary" />
+              <div className="w-10 h-10 shrink-0 flex items-center justify-center">
+                <prop.icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">{prop.title}</h3>
-                <p className="text-muted-foreground text-sm">{prop.description}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{prop.description}</p>
               </div>
             </div>
           ))}

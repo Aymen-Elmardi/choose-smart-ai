@@ -20,10 +20,10 @@ const problems = [
 
 const ProblemSection = () => {
   return (
-    <section className="section-padding bg-card">
+    <section className="section-padding bg-secondary">
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-up">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
+          <h2 className="heading-lg text-foreground">
             Payment Processing Doesn't Have to Be Complicated
           </h2>
         </div>
@@ -32,18 +32,18 @@ const ProblemSection = () => {
           {problems.map((problem, index) => (
             <div
               key={problem.title}
-              className={`text-center p-8 rounded-2xl bg-background border border-border/50 shadow-card hover:shadow-lg transition-shadow animate-fade-up-delay-${index + 1}`}
+              className={`text-center p-8 animate-fade-up-delay-${index + 1}`}
             >
-              <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <problem.icon className="w-7 h-7 text-primary" />
+              <div className="w-12 h-12 mx-auto flex items-center justify-center mb-6">
+                <problem.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">{problem.title}</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-3">{problem.title}</h3>
               <p className="text-muted-foreground">{problem.description}</p>
             </div>
           ))}
         </div>
 
-        <p className="text-center mt-12 text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-center mt-16 text-lg text-muted-foreground max-w-2xl mx-auto">
           We simplify the entire decision so you don't pay more than you need to or choose the wrong provider.
         </p>
       </div>

@@ -25,26 +25,21 @@ const HowItWorksSection = () => {
   return (
     <section id="how-it-works" className="section-padding bg-background">
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="heading-lg text-foreground">
             How ChosePayments Helps You Choose Smarter
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 relative">
-          {/* Connection line */}
-          <div className="hidden md:block absolute top-20 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
-          
-          {steps.map((step, index) => (
-            <div key={step.title} className="relative text-center">
-              <div className="relative z-10">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-primary flex items-center justify-center mb-6 shadow-lg">
-                  <step.icon className="w-8 h-8 text-primary-foreground" />
-                </div>
-                <div className="text-sm font-bold text-primary mb-2">STEP {step.step}</div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+        <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+          {steps.map((step) => (
+            <div key={step.title} className="text-center">
+              <div className="w-14 h-14 mx-auto flex items-center justify-center mb-6">
+                <step.icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
               </div>
+              <div className="text-sm font-bold text-primary mb-3 tracking-wide">STEP {step.step}</div>
+              <h3 className="text-lg font-semibold text-foreground mb-3">{step.title}</h3>
+              <p className="text-muted-foreground">{step.description}</p>
             </div>
           ))}
         </div>
