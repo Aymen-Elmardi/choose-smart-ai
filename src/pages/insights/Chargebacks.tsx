@@ -260,6 +260,23 @@ const Chargebacks = () => {
               These not only reduce fraud, they also protect your account reputation with payment providers.
             </p>
 
+            {/* Inline Lead Capture CTA */}
+            <div className="my-10 p-6 bg-muted/50 rounded-lg border border-border">
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+                Want help reducing chargebacks before they become a problem?
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                Some businesses benefit from dedicated fraud prevention tools. If you'd like an introduction or guidance on whether these tools make sense for your business, leave your email and we'll point you in the right direction.
+              </p>
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                variant="outline"
+                className="font-medium"
+              >
+                Get guidance on fraud prevention tools
+              </Button>
+            </div>
+
             <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
               4. Keep Proof (Even If You Never Use It)
             </h3>
