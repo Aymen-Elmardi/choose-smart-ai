@@ -10,8 +10,8 @@ const steps = [
   {
     icon: Sparkles,
     step: "02",
-    title: "See Your Best Option",
-    description: "Our algorithm analyzes your responses and matches you with the right payment provider for your situation.",
+    title: "See Your Top 3 Matches",
+    description: "Our engine analyzes 25+ providers and ranks your best matches based on your specific needs.",
   },
   {
     icon: Handshake,

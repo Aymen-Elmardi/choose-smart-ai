@@ -8,8 +8,8 @@ const valueProps = [
   },
   {
     icon: Clock,
-    title: "Save Time",
-    description: "No more digging through endless Stripe vs PayPal comparison guides. Get answers in seconds.",
+    title: "Save 3+ Hours",
+    description: "Skip the research. Get matched to your ideal provider in 60 seconds.",
   },
   {
     icon: PiggyBank,

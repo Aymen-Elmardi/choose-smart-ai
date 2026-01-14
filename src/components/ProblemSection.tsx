@@ -24,7 +24,7 @@ const ProblemSection = () => {
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
           <h2 className="heading-lg text-foreground">
-            Payment Processing Doesn't Have to Be Complicated
+            The Fastest Way to Find Your Perfect Payment Provider
           </h2>
         </div>
 

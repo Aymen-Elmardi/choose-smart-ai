@@ -246,10 +246,10 @@ const Insights = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-              Insights
+              Payment Provider Guides & Comparisons
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Practical guidance for businesses navigating payment provider requirements in the UK and EU.
+              Everything you need to choose, switch, and optimize your payment provider. Trusted by thousands of UK businesses.
             </p>
           </div>
 

@@ -8,21 +8,17 @@ const HeroSection = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
           <h1 className="heading-xl text-foreground text-balance">
-            Most payment problems start long before money moves.
-            <span className="block mt-3 text-muted-foreground font-bold">They start when the wrong provider approves you.</span>
+            Find the Payment Provider That Actually Fits Your Business
           </h1>
-          <div className="mt-8 space-y-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              ChosePayments helps businesses avoid payment providers that look fine at signup but fail under growth, international sales, or scrutiny.
-            </p>
-            <p>
-              We don't rank providers. We rule out the ones most likely to cause problems later.
+              Compare Stripe, PayPal, Square, and 20+ UK providers in 60 seconds. Free, unbiased, no signup required.
             </p>
           </div>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="xl" asChild>
               <Link to="/assessment?start=true" replace>
-                Answer a few quick questions
+                Get My Recommendation
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
@@ -30,10 +26,12 @@ const HeroSection = () => {
               <a href="#how-it-works">How it Works</a>
             </Button>
           </div>
-          <div className="mt-10 flex items-center gap-8 text-sm text-muted-foreground justify-center">
-            <span>Free & unbiased</span>
+          <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground justify-center flex-wrap">
+            <span>25+ providers</span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-            <span>No signup required</span>
+            <span>5,000+ businesses helped</span>
+            <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
+            <span>60 seconds</span>
           </div>
         </div>
       </div>
