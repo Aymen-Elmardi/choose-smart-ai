@@ -16,11 +16,14 @@ const Footer = () => {
             <Link to="/insights" className="text-muted-foreground hover:text-foreground transition-colors">
               Insights
             </Link>
-            <a href="mailto:hello@chosepayments.com" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
               Contact
-            </a>
+            </Link>
             <Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
+              Terms of Service
             </Link>
           </nav>
         </div>

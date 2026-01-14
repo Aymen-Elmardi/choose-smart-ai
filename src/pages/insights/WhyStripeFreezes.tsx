@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
+import FAQSchema from "@/components/FAQSchema";
 
 const WhyStripeFreezes = () => {
   useSEO({
@@ -10,9 +11,29 @@ const WhyStripeFreezes = () => {
     description: "Stripe does not freeze accounts at random. Learn the common triggers for Stripe account freezes in the UK and how to prevent them before they happen."
   });
 
+  const faqs = [
+    {
+      question: "Why does Stripe freeze accounts in the UK?",
+      answer: "Stripe freezes accounts when automated risk systems detect activity that no longer matches the information originally provided at signup. This includes sudden volume increases, customer type changes, or products in higher risk categories."
+    },
+    {
+      question: "What triggers a Stripe account freeze?",
+      answer: "Common triggers include sudden increase in transaction volume, changes in customer types, new products in higher risk categories, incomplete or outdated business information, and changes to business structure or ownership."
+    },
+    {
+      question: "How can I prevent my Stripe account from being frozen?",
+      answer: "Keep your business information up to date, notify Stripe before significant volume increases, understand which products may be considered higher risk, and choose a payment provider aligned with your business model from the start."
+    },
+    {
+      question: "Are Stripe account freezes random?",
+      answer: "No, Stripe account freezes are not random. They are triggered by specific risk signals and are designed to protect card networks and customers. Understanding these signals can help you prevent freezes."
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <FAQSchema faqs={faqs} />
       
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">

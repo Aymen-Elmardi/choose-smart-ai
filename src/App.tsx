@@ -22,6 +22,8 @@ import StripeVsSquareVsPaypal from "./pages/StripeVsSquareVsPaypal";
 import BestPaymentApiUK from "./pages/BestPaymentApiUK";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Contact from "./pages/Contact";
 
 // Insights blog pages - eager loaded for SEO
 import Insights from "./pages/Insights";
@@ -113,6 +115,8 @@ const App = () => (
             <Route path="/best-payment-api-uk" element={<BestPaymentApiUK />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
             <Route path="/switch-payment-provider" element={<SwitchProvider />} />
             <Route path="/best-payment-provider-small-business" element={<SmallBusiness />} />

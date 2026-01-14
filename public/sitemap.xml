@@ -6,7 +6,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://chosepayments.com/quiz</loc>
+    <loc>https://chosepayments.com/assessment</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -24,6 +24,16 @@
     <loc>https://chosepayments.com/privacy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/terms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://chosepayments.com/choose-payment-provider</loc>
