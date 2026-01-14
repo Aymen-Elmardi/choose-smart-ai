@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
+import { Button } from "@/components/ui/button";
+import FraudPreventionModal from "@/components/FraudPreventionModal";
 
 const Chargebacks = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useSEO({
     title: "Chargebacks Explained: Costs, Causes, and How to Reduce Them (UK & EU)",
     description: "Chargebacks cost merchants billions every year and put payment accounts at risk. Learn why they happen, how much they really cost, and how to reduce them."
