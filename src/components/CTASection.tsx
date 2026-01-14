@@ -20,23 +20,17 @@ const CTASection = () => {
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-8">
               Tell us a bit about your business and get a tailored match in under 60 seconds.
             </p>
-            <div className="flex flex-col items-center">
-              <Button 
-                variant="secondary" 
-                size="xl" 
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-                asChild
-              >
-                <Link to="/assessment?start=true" replace>
-                  Answer a few quick questions
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
-              <span className="text-sm text-primary-foreground/70 mt-3">Takes under 1 minute • No spam</span>
-            </div>
-            <p className="text-sm text-primary-foreground/60 mt-6">
-              We're compensated by payment providers when a relevant introduction is made. Your details are only shared for that purpose.
-            </p>
+            <Button 
+              variant="secondary" 
+              size="xl" 
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+              asChild
+            >
+              <Link to="/assessment?start=true" replace>
+                Answer a few quick questions
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
