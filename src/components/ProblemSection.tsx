@@ -44,7 +44,7 @@ const ProblemSection = () => {
         </div>
 
         <p className="text-center mt-12 text-lg text-muted-foreground max-w-2xl mx-auto">
-          We simplify the entire decision so you don't pay more than you need to.
+          We simplify the entire decision so you don't pay more than you need to or choose the wrong provider.
         </p>
       </div>
     </section>
