@@ -112,6 +112,7 @@ const App = () => (
             <Route path="/stripe-vs-square-vs-paypal-uk" element={<StripeVsSquareVsPaypal />} />
             <Route path="/best-payment-api-uk" element={<BestPaymentApiUK />} />
             <Route path="/about" element={<About />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
             <Route path="/switch-payment-provider" element={<SwitchProvider />} />
             <Route path="/best-payment-provider-small-business" element={<SmallBusiness />} />
