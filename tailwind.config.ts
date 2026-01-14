@@ -15,11 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          '"Frutiger"',
-          '"Frutiger Neue"',
           '"Inter"',
-          '"Source Sans 3"',
-          '"IBM Plex Sans"',
           'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',
@@ -64,14 +60,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        trust: {
-          blue: "hsl(var(--trust-blue))",
-          "blue-light": "hsl(var(--trust-blue-light))",
-        },
-        slate: {
-          dark: "hsl(var(--slate-dark))",
-          medium: "hsl(var(--slate-medium))",
-          light: "hsl(var(--slate-light))",
+        enterprise: {
+          dark: "hsl(var(--enterprise-dark))",
+          muted: "hsl(var(--enterprise-muted))",
+          light: "hsl(var(--enterprise-light))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
