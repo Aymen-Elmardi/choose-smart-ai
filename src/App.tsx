@@ -21,6 +21,7 @@ import BestPaymentProcessorUK from "./pages/BestPaymentProcessorUK";
 import StripeVsSquareVsPaypal from "./pages/StripeVsSquareVsPaypal";
 import BestPaymentApiUK from "./pages/BestPaymentApiUK";
 import About from "./pages/About";
+import Privacy from "./pages/Privacy";
 
 // Insights blog pages - eager loaded for SEO
 import Insights from "./pages/Insights";
