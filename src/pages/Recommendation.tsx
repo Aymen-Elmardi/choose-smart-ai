@@ -522,16 +522,18 @@ const Recommendation = () => {
           </>
         )}
 
-        {/* Retake Quiz CTA */}
-        <div className="text-center mt-10 animate-fade-up animation-delay-200">
-          <p className="text-muted-foreground mb-4">Not what you expected?</p>
-          <a
-            href="/assessment?start=true"
-            className="text-primary font-medium hover:underline"
-          >
-            Answer again →
-          </a>
-        </div>
+        {/* Retake Quiz CTA - only show after loading completes and not submitted */}
+        {!isLoadingRecommendation && !isSubmitted && (
+          <div className="text-center mt-10 animate-fade-up animation-delay-200">
+            <p className="text-muted-foreground mb-4">Not what you expected?</p>
+            <a
+              href="/assessment?start=true"
+              className="text-primary font-medium hover:underline"
+            >
+              Answer again →
+            </a>
+          </div>
+        )}
       </main>
     </div>
   );
