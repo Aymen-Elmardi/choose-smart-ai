@@ -1,12 +1,15 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useInView } from "@/hooks/useInView";
 
 const CTASection = () => {
+  const { ref, isInView } = useInView<HTMLElement>({ threshold: 0.2 });
+
   return (
-    <section className="section-padding bg-foreground">
+    <section className="section-padding bg-foreground" ref={ref}>
       <div className="section-container">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className={`max-w-3xl mx-auto text-center reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-background mb-6">
             Compare Payment Providers in 60 Seconds
           </h2>

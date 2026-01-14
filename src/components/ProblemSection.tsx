@@ -1,4 +1,5 @@
 import { HelpCircle, EyeOff, Target } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
 
 const problems = [
   {
@@ -19,10 +20,12 @@ const problems = [
 ];
 
 const ProblemSection = () => {
+  const { ref, isInView } = useInView<HTMLElement>({ threshold: 0.15 });
+
   return (
-    <section className="section-padding bg-secondary">
+    <section className="section-padding bg-secondary" ref={ref}>
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
+        <div className={`text-center max-w-3xl mx-auto mb-16 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
             The Fastest Way to Find Your Perfect Payment Provider
           </h2>
@@ -32,7 +35,7 @@ const ProblemSection = () => {
           {problems.map((problem, index) => (
             <div
               key={problem.title}
-              className={`text-center p-8 animate-fade-up-delay-${index + 1}`}
+              className={`text-center p-8 reveal stagger-${index + 1} ${isInView ? "visible" : ""}`}
             >
               <div className="w-12 h-12 mx-auto flex items-center justify-center mb-6">
                 <problem.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
@@ -43,7 +46,7 @@ const ProblemSection = () => {
           ))}
         </div>
 
-        <p className="text-center mt-16 text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className={`text-center mt-16 text-lg text-muted-foreground max-w-2xl mx-auto reveal stagger-4 ${isInView ? "visible" : ""}`}>
           We simplify the entire decision so you don't pay more than you need to or choose the wrong provider.
         </p>
       </div>
