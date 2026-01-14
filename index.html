@@ -12,6 +12,15 @@
     <!-- Preconnect to Google Fonts for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS prefetch for third-party domains -->
+    <link rel="dns-prefetch" href="https://www.clarity.ms" />
+    <link rel="dns-prefetch" href="https://embed.tawk.to" />
+
+    <!-- Async font loading with font-display: swap for better LCP -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -28,26 +37,38 @@
     <meta name="twitter:description" content="Compare payment providers and get a personalized recommendation for your business in 60 seconds." />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-    <!-- Microsoft Clarity -->
+    <!-- Deferred Microsoft Clarity - loads after page is interactive -->
     <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "uybbw4kt5g");
+      function loadClarity() {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "uybbw4kt5g");
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadClarity);
+      } else {
+        window.addEventListener('load', loadClarity);
+      }
     </script>
 
-    <!-- Tawk.to Live Chat -->
+    <!-- Deferred Tawk.to Live Chat - loads after page is interactive -->
     <script type="text/javascript">
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
+      function loadTawk() {
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
         s1.async=true;
         s1.src='https://embed.tawk.to/696124b6f5b60819810808f3/1jehneqen';
         s1.charset='UTF-8';
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
-      })();
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadTawk);
+      } else {
+        window.addEventListener('load', loadTawk);
+      }
     </script>
     <script type="application/ld+json">
     {
