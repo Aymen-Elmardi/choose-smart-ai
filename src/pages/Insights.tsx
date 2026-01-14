@@ -162,6 +162,11 @@ const allInsights = [
     title: "What Is TRA Exemption and How It Reduces Payment Friction",
     slug: "tra-exemption-reduces-payment-friction",
     description: "Learn how TRA Exemption reduces checkout friction, improves approval rates, and affects conversion for UK and EU businesses."
+  },
+  {
+    title: "Chargebacks: Why They Happen, How Much They Really Cost, and How Merchants Can Avoid Them",
+    slug: "chargebacks-what-they-are-and-how-to-avoid-them",
+    description: "Chargebacks cost merchants billions every year and put payment accounts at risk. Learn why they happen, how much they really cost, and how to reduce them."
   }
 ];
 

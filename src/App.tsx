@@ -52,6 +52,7 @@ import WhyCardApprovalSpeedAffectsCheckoutAbandonment from "./pages/insights/Why
 import SameDaySettlementAndInstantPayouts from "./pages/insights/SameDaySettlementAndInstantPayouts";
 import TRAExemption from "./pages/insights/TRAExemption";
 import WhatToDoWhenProviderAsksForDocuments from "./pages/insights/WhatToDoWhenProviderAsksForDocuments";
+import Chargebacks from "./pages/insights/Chargebacks";
 
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
