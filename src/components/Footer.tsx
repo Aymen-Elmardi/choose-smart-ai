@@ -19,9 +19,9 @@ const Footer = () => {
             <a href="mailto:hello@chosepayments.com" className="text-muted-foreground hover:text-foreground transition-colors">
               Contact
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy
-            </a>
+            </Link>
           </nav>
         </div>
         
