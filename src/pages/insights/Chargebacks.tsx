@@ -6,9 +6,33 @@ import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import { Button } from "@/components/ui/button";
 import FraudPreventionModal from "@/components/FraudPreventionModal";
+import FAQSchema from "@/components/FAQSchema";
 
 const Chargebacks = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const faqs = [
+    {
+      question: "What is a chargeback?",
+      answer: "A chargeback happens when a customer contacts their bank and disputes a payment. The bank pulls the money back from your payment provider and asks you to prove the transaction was legitimate. Unlike refunds which are handled between you and the customer, chargebacks are handled by the bank often without warning."
+    },
+    {
+      question: "How much do chargebacks cost businesses?",
+      answer: "For every £1 lost to a chargeback, businesses often lose £4 to £5 in total impact once fees, admin time, and future risk are included. Direct costs include the transaction amount, dispute fees of £15 to £50, and the product or service already delivered."
+    },
+    {
+      question: "What causes chargebacks?",
+      answer: "The three main causes are: stolen card details (real fraud), business mistakes like duplicate charges or delivery delays, and customers not recognising the charge on their bank statement. The last one is often overlooked but very common."
+    },
+    {
+      question: "How can I reduce chargebacks?",
+      answer: "Key strategies include: making your business name familiar on bank statements, making refunds easier than chargebacks, reducing fraud at checkout with security checks, and keeping proof of transactions and deliveries."
+    },
+    {
+      question: "What happens if I get too many chargebacks?",
+      answer: "If chargebacks rise suddenly or stay high over time, payment providers may delay payouts, hold reserves from your funds, increase processing fees, or suspend or close your account entirely."
+    }
+  ];
   useSEO({
     title: "Chargebacks Explained: Costs, Causes, and How to Reduce Them (UK & EU)",
     description: "Chargebacks cost merchants billions every year and put payment accounts at risk. Learn why they happen, how much they really cost, and how to reduce them."
@@ -17,6 +41,7 @@ const Chargebacks = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
+      <FAQSchema faqs={faqs} />
       <main className="flex-grow pt-24 pb-16">
         <article className="container max-w-3xl mx-auto px-4">
           <InsightsBreadcrumb 

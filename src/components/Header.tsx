@@ -1,7 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navLinks = [
+    { to: "/#how-it-works", label: "How it Works" },
+    { to: "/#why-us", label: "Why Us" },
+    { to: "/insights", label: "Insights" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Contact" },
+  ];
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <div className="section-container">
@@ -11,18 +24,15 @@ const Header = () => {
           </Link>
           
           <nav className="hidden md:flex items-center gap-8">
-            <Link to="/#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium">
-              How it Works
-            </Link>
-            <Link to="/#why-us" className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium">
-              Why Us
-            </Link>
-            <Link to="/insights" className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium">
-              Insights
-            </Link>
-            <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium">
-              About
-            </Link>
+            {navLinks.map((link) => (
+              <Link 
+                key={link.to}
+                to={link.to} 
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+              >
+                {link.label}
+              </Link>
+            ))}
             <Button variant="hero" size="default" asChild>
               <Link to="/assessment?start=true" replace>
                 Get Started
@@ -30,11 +40,38 @@ const Header = () => {
             </Button>
           </nav>
 
-          <Button variant="hero" size="sm" className="md:hidden" asChild>
-            <Link to="/assessment?start=true" replace>
-              Get Started
-            </Link>
-          </Button>
+          {/* Mobile Navigation */}
+          <div className="md:hidden flex items-center gap-3">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Open menu">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[280px] pt-12">
+                <nav className="flex flex-col gap-4">
+                  {navLinks.map((link) => (
+                    <SheetClose asChild key={link.to}>
+                      <Link 
+                        to={link.to}
+                        className="text-foreground hover:text-primary transition-colors text-lg font-medium py-2"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                  <SheetClose asChild>
+                    <Button variant="hero" className="mt-4" asChild>
+                      <Link to="/assessment?start=true" replace onClick={() => setIsOpen(false)}>
+                        Get Started
+                      </Link>
+                    </Button>
+                  </SheetClose>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>

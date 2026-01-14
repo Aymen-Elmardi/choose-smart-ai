@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import { useSEO } from "@/hooks/useSEO";
+import FAQSchema from "@/components/FAQSchema";
 
 const WhatIsAnAcquirer = () => {
   useSEO({
@@ -10,9 +11,29 @@ const WhatIsAnAcquirer = () => {
     description: "Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business approval and account reviews."
   });
 
+  const faqs = [
+    {
+      question: "What is an acquirer in payment processing?",
+      answer: "An acquirer is a regulated financial institution that connects your business to card networks like Visa and Mastercard. They sponsor merchants into card networks, set risk rules, settle card payments, and carry legal responsibility if something goes wrong."
+    },
+    {
+      question: "Why do payment providers need acquirers?",
+      answer: "Most payment providers are not banks. They build technology and interfaces but cannot access card networks directly without an acquirer backing them. Every payment provider has one or more acquirers behind it."
+    },
+    {
+      question: "Who actually approves my business for payments?",
+      answer: "While initial onboarding may feel instant, approval involves acquirers who continuously monitor transaction patterns, volume growth, disputes, and regulatory updates. This is why accounts can be flagged months or years after launch."
+    },
+    {
+      question: "Why does switching payment providers sometimes not fix the problem?",
+      answer: "If the new provider uses the same acquirer, the same risk rules still apply. Problems can follow you between providers because the underlying acquirer relationship remains the same."
+    }
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <FAQSchema faqs={faqs} />
       
       <main className="flex-grow">
         <article className="py-16 md:py-24">
