@@ -376,10 +376,6 @@ const Chargebacks = () => {
       />
     </div>
   );
-};
 
-export default Chargebacks;
-  );
-};
 
 export default Chargebacks;
