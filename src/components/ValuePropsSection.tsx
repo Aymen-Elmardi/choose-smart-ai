@@ -1,4 +1,5 @@
 import { Scale, Clock, PiggyBank, MapPin } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
 
 const valueProps = [
   {
@@ -24,20 +25,22 @@ const valueProps = [
 ];
 
 const ValuePropsSection = () => {
+  const { ref, isInView } = useInView<HTMLElement>({ threshold: 0.15 });
+
   return (
-    <section id="why-us" className="section-padding bg-secondary">
+    <section id="why-us" className="section-padding bg-secondary" ref={ref}>
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
             Why Businesses Use ChosePayments
           </h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {valueProps.map((prop) => (
+          {valueProps.map((prop, index) => (
             <div
               key={prop.title}
-              className="flex gap-5 p-6"
+              className={`flex gap-5 p-6 hover-lift rounded-xl reveal stagger-${index + 1} ${isInView ? "visible" : ""}`}
             >
               <div className="w-10 h-10 shrink-0 flex items-center justify-center">
                 <prop.icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
