@@ -1,282 +1,385 @@
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
-import { AlertTriangle, FileText, Building2, ArrowRight } from "lucide-react";
+import { Search, ArrowRight, Clock } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
-const featuredInsight = {
+type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer";
+
+interface Insight {
+  title: string;
+  slug: string;
+  description: string;
+  category: InsightCategory;
+  readTime: string;
+}
+
+const featuredInsight: Insight = {
   title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
   slug: "why-payment-accounts-get-flagged-without-changes",
-  description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction."
+  description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction.",
+  category: "risk",
+  readTime: "6 min read"
 };
 
-const categories = [
-  {
-    title: "Payment Risk & Account Freezes",
-    slug: "payment-risk",
-    description: "Understand why accounts get flagged, frozen, or reviewed. Learn the triggers and how to reduce risk.",
-    icon: AlertTriangle,
-    iconBg: "bg-destructive/10",
-    iconColor: "text-destructive"
-  },
-  {
-    title: "Practical Guides",
-    slug: "guides",
-    description: "Step-by-step explanations of verification requests, documentation requirements, and how to respond.",
-    icon: FileText,
-    iconBg: "bg-primary/10",
-    iconColor: "text-primary"
-  },
-  {
-    title: "Case Studies",
-    slug: "case-studies",
-    description: "Real-world examples of how businesses navigate payment challenges and compliance requirements.",
-    icon: Building2,
-    iconBg: "bg-secondary/50",
-    iconColor: "text-foreground"
-  }
+const filterTabs: { label: string; value: InsightCategory }[] = [
+  { label: "All", value: "all" },
+  { label: "Risk & Freezes", value: "risk" },
+  { label: "Guides", value: "guides" },
+  { label: "Compliance", value: "compliance" },
+  { label: "Explainers", value: "explainer" }
 ];
 
-const allInsights = [
+const allInsights: Insight[] = [
   {
     title: "Why Your Payment Provider Asked for Proof of Business Activity",
     slug: "proof-of-business-activity",
-    description: "Understanding why payment providers ask for proof of business activity and how to prepare."
+    description: "Understanding why payment providers ask for proof of business activity and how to prepare.",
+    category: "compliance",
+    readTime: "4 min read"
   },
   {
     title: "Why Payment Providers Ask for More Documents When Your Sales Increase",
     slug: "sales-increase",
-    description: "Learn why sudden sales growth triggers additional document requests."
+    description: "Learn why sudden sales growth triggers additional document requests.",
+    category: "compliance",
+    readTime: "5 min read"
   },
   {
     title: "Why Marketplaces Are Asked for Seller and Payout Information",
     slug: "marketplace-seller-info",
-    description: "Why marketplace businesses face additional verification for seller and payout information."
+    description: "Why marketplace businesses face additional verification for seller and payout information.",
+    category: "compliance",
+    readTime: "4 min read"
   },
   {
     title: "Why Payment Providers Ask for Bank Statements or Source of Funds",
     slug: "source-of-funds",
-    description: "Learn why providers request bank statements and source of funds documentation."
+    description: "Learn why providers request bank statements and source of funds documentation.",
+    category: "compliance",
+    readTime: "5 min read"
   },
   {
     title: "Why Some Industries Are Asked for Extra Verification",
     slug: "industry-verification",
-    description: "Understanding why certain industries face additional verification requirements."
+    description: "Understanding why certain industries face additional verification requirements.",
+    category: "compliance",
+    readTime: "4 min read"
   },
   {
     title: "Why International Sales Trigger Additional Checks",
     slug: "international-sales",
-    description: "Learn why selling internationally can trigger additional verification."
+    description: "Learn why selling internationally can trigger additional verification.",
+    category: "compliance",
+    readTime: "4 min read"
   },
   {
     title: "Why Providers Ask for Contracts, Invoices, or Customer Agreements",
     slug: "contracts-invoices",
-    description: "Understanding why payment providers request contracts and customer agreements."
+    description: "Understanding why payment providers request contracts and customer agreements.",
+    category: "compliance",
+    readTime: "5 min read"
   },
   {
     title: "Why Stripe Freezes Accounts in the UK",
     slug: "why-stripe-freezes-accounts-uk",
-    description: "Stripe does not freeze accounts at random. Learn the common triggers and how to prevent them."
+    description: "Stripe does not freeze accounts at random. Learn the common triggers and how to prevent them.",
+    category: "risk",
+    readTime: "7 min read"
   },
   {
     title: "Why Your Payment Account Gets Flagged After Sudden Growth",
     slug: "why-accounts-get-flagged-after-growth",
-    description: "Rapid growth is one of the most common reasons payment accounts are reviewed."
+    description: "Rapid growth is one of the most common reasons payment accounts are reviewed.",
+    category: "risk",
+    readTime: "5 min read"
   },
   {
     title: "Why PayPal and Stripe Freeze Accounts Without Warning",
     slug: "why-payment-accounts-get-frozen-without-warning",
-    description: "Payment providers are not always able to warn merchants before taking action."
+    description: "Payment providers are not always able to warn merchants before taking action.",
+    category: "risk",
+    readTime: "6 min read"
   },
   {
     title: "Why Marketplaces Get Extra Scrutiny From Payment Providers",
     slug: "why-marketplaces-get-extra-scrutiny",
-    description: "Marketplaces introduce additional layers of risk for payment providers."
+    description: "Marketplaces introduce additional layers of risk for payment providers.",
+    category: "risk",
+    readTime: "5 min read"
   },
   {
     title: "Why Payment Providers Re-Underwrite Existing Accounts",
     slug: "why-providers-re-underwrite-accounts",
-    description: "Approval is not a one-time event. Learn why providers periodically re-underwrite accounts."
+    description: "Approval is not a one-time event. Learn why providers periodically re-underwrite accounts.",
+    category: "risk",
+    readTime: "5 min read"
   },
   {
     title: "Why Some Businesses Never Get Approved for Payments",
     slug: "why-some-businesses-never-get-approved",
-    description: "Not all businesses are declined because they are doing something wrong."
+    description: "Not all businesses are declined because they are doing something wrong.",
+    category: "risk",
+    readTime: "6 min read"
   },
   {
     title: "Why Payment Providers Ask for a Director's Passport or Proof of Address",
     slug: "why-payment-providers-ask-for-director-documents",
-    description: "Understand why payment providers request director documents and how to respond effectively."
+    description: "Understand why payment providers request director documents and how to respond effectively.",
+    category: "compliance",
+    readTime: "4 min read"
   },
   {
     title: "Why Payment Providers Ask for Source of Funds",
     slug: "why-payment-providers-ask-for-source-of-funds",
-    description: "Understand why payment providers request source of funds documentation and how to respond effectively."
+    description: "Understand why payment providers request source of funds documentation and how to respond effectively.",
+    category: "compliance",
+    readTime: "5 min read"
   },
   {
     title: "Why Payment Accounts Get Flagged After Sudden Growth",
     slug: "why-payment-accounts-get-flagged-after-growth",
-    description: "Understand why sudden business growth triggers payment account reviews and how to handle them."
+    description: "Understand why sudden business growth triggers payment account reviews and how to handle them.",
+    category: "risk",
+    readTime: "5 min read"
   },
   {
     title: "Why Payment Providers Re-Underwrite Existing Accounts",
     slug: "why-providers-re-underwrite-existing-accounts",
-    description: "Understand why payment providers re-underwrite existing accounts and how to handle these reviews."
-  },
-  {
-    title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
-    slug: "why-payment-accounts-get-flagged-without-changes",
-    description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction."
+    description: "Understand why payment providers re-underwrite existing accounts and how to handle these reviews.",
+    category: "risk",
+    readTime: "5 min read"
   },
   {
     title: "Visa and Mastercard Control Card Payments. What Businesses Can and Cannot Do",
     slug: "visa-mastercard-control-card-payments",
-    description: "Learn how Visa and Mastercard control the card payment system and what UK and EU businesses can realistically do."
+    description: "Learn how Visa and Mastercard control the card payment system and what UK and EU businesses can realistically do.",
+    category: "explainer",
+    readTime: "8 min read"
   },
   {
     title: "What Is an Acquirer and Why Your Payment Provider Needs One",
     slug: "what-is-an-acquirer",
-    description: "Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business."
+    description: "Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business.",
+    category: "explainer",
+    readTime: "6 min read"
   },
   {
     title: "Payment Provider vs Acquirer vs Bank. What Actually Happens to Your Money",
     slug: "payment-provider-vs-acquirer-vs-bank",
-    description: "Learn who does what in card payments, how long each step takes, and why money moves slower than transactions."
+    description: "Learn who does what in card payments, how long each step takes, and why money moves slower than transactions.",
+    category: "explainer",
+    readTime: "7 min read"
   },
   {
     title: "Why Card Approval Speed Affects Checkout Abandonment",
     slug: "why-card-approval-speed-affects-checkout-abandonment",
-    description: "Learn why card approval speed matters for conversion rates and how delays cause checkout abandonment and lost revenue."
+    description: "Learn why card approval speed matters for conversion rates and how delays cause checkout abandonment and lost revenue.",
+    category: "explainer",
+    readTime: "5 min read"
   },
   {
     title: "Same-Day Settlement and Instant Payouts. What Businesses Should Know",
     slug: "same-day-settlement-and-instant-payouts",
-    description: "Learn how same-day settlement and instant payouts work, when they help businesses, and the trade-offs involved."
+    description: "Learn how same-day settlement and instant payouts work, when they help businesses, and the trade-offs involved.",
+    category: "explainer",
+    readTime: "6 min read"
   },
   {
     title: "What To Do When a Payment Provider Asks for More Documents",
     slug: "what-to-do-when-provider-asks-for-documents",
-    description: "Learn why document requests happen, what they usually mean, and how to respond with confidence."
+    description: "Learn why document requests happen, what they usually mean, and how to respond with confidence.",
+    category: "guides",
+    readTime: "6 min read"
   },
   {
     title: "What Is TRA Exemption and How It Reduces Payment Friction",
     slug: "tra-exemption-reduces-payment-friction",
-    description: "Learn how TRA Exemption reduces checkout friction, improves approval rates, and affects conversion for UK and EU businesses."
+    description: "Learn how TRA Exemption reduces checkout friction, improves approval rates, and affects conversion for UK and EU businesses.",
+    category: "explainer",
+    readTime: "7 min read"
   },
   {
     title: "Chargebacks: Why They Happen, How Much They Really Cost, and How Merchants Can Avoid Them",
     slug: "chargebacks-what-they-are-and-how-to-avoid-them",
-    description: "Chargebacks cost merchants billions every year and put payment accounts at risk. Learn why they happen, how much they really cost, and how to reduce them."
+    description: "Chargebacks cost merchants billions every year and put payment accounts at risk. Learn why they happen, how much they really cost, and how to reduce them.",
+    category: "guides",
+    readTime: "8 min read"
   }
 ];
 
+const categoryLabels: Record<InsightCategory, string> = {
+  all: "All",
+  risk: "Risk Alert",
+  guides: "Guide",
+  compliance: "Compliance",
+  explainer: "Explainer"
+};
+
 const Insights = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState<InsightCategory>("all");
+
   useSEO({
     title: "Insights | ChosePayments",
     description: "Practical guidance on payment provider requirements, verification processes, account freezes, and risk management for UK and EU businesses."
   });
 
+  const filteredInsights = useMemo(() => {
+    return allInsights.filter((insight) => {
+      const matchesSearch = 
+        insight.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        insight.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesFilter = activeFilter === "all" || insight.category === activeFilter;
+      return matchesSearch && matchesFilter;
+    });
+  }, [searchQuery, activeFilter]);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-24 pb-16">
-        <div className="section-container max-w-4xl mx-auto">
-          {/* Introduction */}
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Insights
-          </h1>
-          <p className="text-lg text-muted-foreground mb-6 max-w-2xl">
-            Practical guidance for businesses navigating payment provider requirements in the UK and EU.
-          </p>
-          <p className="text-muted-foreground mb-12 max-w-2xl">
-            Payment providers operate under strict regulatory requirements. Understanding their processes helps you avoid account freezes, respond effectively to verification requests, and choose the right provider for your business model.
-          </p>
+      <main className="pt-32 pb-24">
+        <div className="section-container max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
+              Insights
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Practical guidance for businesses navigating payment provider requirements in the UK and EU.
+            </p>
+          </div>
 
-          {/* Featured Insight */}
+          {/* Search and Filters */}
           <div className="mb-12">
-            <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4">
-              Featured Insight
-            </h2>
-            <Link
-              to={`/insights/${featuredInsight.slug}`}
-              className="block p-6 rounded-xl border-2 border-primary/30 bg-primary/5 hover:border-primary/50 transition-colors"
-            >
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                {featuredInsight.title}
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                {featuredInsight.description}
-              </p>
-              <span className="inline-flex items-center gap-2 text-primary font-medium">
-                Read more <ArrowRight className="w-4 h-4" />
-              </span>
-            </Link>
-          </div>
-
-          {/* Categories */}
-          <div className="mb-16">
-            <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4">
-              Browse by Category
-            </h2>
-            <div className="grid gap-4 md:grid-cols-3">
-              {categories.map((category) => {
-                const Icon = category.icon;
-                return (
-                  <Link
-                    key={category.slug}
-                    to={`/insights/${category.slug}`}
-                    className="block p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
-                  >
-                    <div className={`w-10 h-10 rounded-lg ${category.iconBg} flex items-center justify-center mb-4`}>
-                      <Icon className={`w-5 h-5 ${category.iconColor}`} />
-                    </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
-                      {category.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {category.description}
-                    </p>
-                  </Link>
-                );
-              })}
+            <div className="relative max-w-md mx-auto mb-8">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder="Search insights..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-12 h-12 rounded-full border-border bg-background"
+              />
             </div>
-          </div>
 
-          {/* All Insights */}
-          <div>
-            <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4">
-              All Insights
-            </h2>
-            <div className="space-y-4">
-              {allInsights.map((insight) => (
-                <Link
-                  key={insight.slug}
-                  to={`/insights/${insight.slug}`}
-                  className="block p-5 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
+            <div className="flex flex-wrap justify-center gap-2">
+              {filterTabs.map((tab) => (
+                <button
+                  key={tab.value}
+                  onClick={() => setActiveFilter(tab.value)}
+                  className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
+                    activeFilter === tab.value
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                  }`}
                 >
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {insight.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {insight.description}
-                  </p>
-                </Link>
+                  {tab.label}
+                </button>
               ))}
             </div>
           </div>
 
+          {/* Featured Insight */}
+          <div className="mb-16">
+            <Link
+              to={`/insights/${featuredInsight.slug}`}
+              className="block p-8 md:p-12 rounded-2xl border border-border bg-card hover:border-primary/50 transition-all group"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                  Featured
+                </span>
+                <span className="px-3 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
+                  {categoryLabels[featuredInsight.category]}
+                </span>
+                <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <Clock className="w-3 h-3" />
+                  {featuredInsight.readTime}
+                </span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                {featuredInsight.title}
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6 max-w-3xl">
+                {featuredInsight.description}
+              </p>
+              <span className="inline-flex items-center gap-2 text-primary font-medium">
+                Read article <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+          </div>
+
+          {/* Insights Grid */}
+          <div className="mb-16">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+                {activeFilter === "all" ? "All Insights" : filterTabs.find(t => t.value === activeFilter)?.label}
+              </h2>
+              <span className="text-sm text-muted-foreground">
+                {filteredInsights.length} article{filteredInsights.length !== 1 ? "s" : ""}
+              </span>
+            </div>
+
+            {filteredInsights.length > 0 ? (
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {filteredInsights.map((insight) => (
+                  <Link
+                    key={insight.slug}
+                    to={`/insights/${insight.slug}`}
+                    className="block p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-all group"
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                        {categoryLabels[insight.category]}
+                      </span>
+                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <Clock className="w-3 h-3" />
+                        {insight.readTime}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                      {insight.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">
+                      {insight.description}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">No insights found matching your search.</p>
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setActiveFilter("all");
+                  }}
+                  className="mt-4 text-primary font-medium hover:underline"
+                >
+                  Clear filters
+                </button>
+              </div>
+            )}
+          </div>
+
           {/* CTA */}
-          <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border text-center">
-            <p className="text-muted-foreground mb-4">
+          <div className="p-8 md:p-12 rounded-2xl bg-muted/30 border border-border text-center">
+            <h2 className="text-2xl font-bold text-foreground mb-3">
               Not sure which payment provider is right for your business?
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+              Take our short assessment to get personalized recommendations based on your business model.
             </p>
             <Link
               to="/assessment?start=true"
               replace
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
             >
-              Take our short assessment <ArrowRight className="w-4 h-4" />
+              Take the assessment <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
