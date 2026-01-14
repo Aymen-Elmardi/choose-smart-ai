@@ -8,12 +8,27 @@
   <url>
     <loc>https://chosepayments.com/quiz</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://chosepayments.com/recommendation</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/privacy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/choose-payment-provider</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://chosepayments.com/best-payment-processor-uk</loc>
@@ -27,6 +42,36 @@
   </url>
   <url>
     <loc>https://chosepayments.com/best-payment-api-uk</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/payment-provider-hidden-fees</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/switch-payment-provider</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/best-payment-provider-small-business</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/stripe-alternatives-marketplace</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/payment-provider-support</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/marketplace-payment-provider</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -167,6 +212,16 @@
   </url>
   <url>
     <loc>https://chosepayments.com/insights/what-to-do-when-provider-asks-for-documents</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/tra-exemption-reduces-payment-friction</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
