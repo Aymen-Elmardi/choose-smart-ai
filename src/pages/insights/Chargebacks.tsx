@@ -15,7 +15,10 @@ const Chargebacks = () => {
       <Header />
       <main className="flex-grow pt-24 pb-16">
         <article className="container max-w-3xl mx-auto px-4">
-          <InsightsBreadcrumb currentPage="Chargebacks" />
+          <InsightsBreadcrumb 
+            category={{ name: "Practical Guides", slug: "guides" }}
+            currentTitle="Chargebacks"
+          />
           
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
             Chargebacks: Why They Happen, How Much They Really Cost, and How Merchants Can Avoid Them
