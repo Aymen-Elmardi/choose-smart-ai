@@ -368,7 +368,17 @@ const Chargebacks = () => {
         </article>
       </main>
       <Footer />
+      
+      <FraudPreventionModal 
+        open={isModalOpen} 
+        onOpenChange={setIsModalOpen}
+        pageSource="/insights/chargebacks-what-they-are-and-how-to-avoid-them"
+      />
     </div>
+  );
+};
+
+export default Chargebacks;
   );
 };
 
