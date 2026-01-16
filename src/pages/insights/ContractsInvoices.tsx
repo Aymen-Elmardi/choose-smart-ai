@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const ContractsInvoices = () => {
   useSEO({
-    title: "Why Providers Ask for Contracts, Invoices, or Customer Agreements | ChosePayments",
+    title: "Document Requests Explained: Contracts, Invoices, and Agreements | ChosePayments",
     description: "Understanding why payment providers request contracts, invoices, and customer agreements, when these requests appear, and how to respond effectively."
   });
 
@@ -16,7 +16,7 @@ const ContractsInvoices = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Providers Ask for Contracts, Invoices, or Customer Agreements
+            Document Requests Explained: Contracts, Invoices, and Agreements
           </h1>
           
           <div className="prose prose-lg text-foreground/80 space-y-8">

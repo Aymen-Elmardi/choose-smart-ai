@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const WhyPaymentProvidersAskForSourceOfFunds = () => {
   useSEO({
-    title: "Why Payment Providers Ask for Source of Funds",
+    title: "Understanding Source of Funds Verification | ChosePayments",
     description: "Understand why payment providers request source of funds documentation. Learn what triggers these requests and how to respond effectively."
   });
 
@@ -16,7 +16,7 @@ const WhyPaymentProvidersAskForSourceOfFunds = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Payment Providers Ask for Source of Funds
+            Understanding Source of Funds Verification
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">

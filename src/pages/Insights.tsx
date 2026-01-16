@@ -18,7 +18,7 @@ interface Insight {
 
 const featuredInsights: Record<InsightCategory, Insight> = {
   all: {
-    title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
+    title: "Account Flagged Without Changes? Here's What Providers Are Reacting To",
     slug: "why-payment-accounts-get-flagged-without-changes",
     description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction.",
     category: "risk",
@@ -39,7 +39,7 @@ const featuredInsights: Record<InsightCategory, Insight> = {
     readTime: "8 min read"
   },
   compliance: {
-    title: "Why Your Payment Provider Asked for Proof of Business Activity",
+    title: "Understanding Proof of Business Activity Requests",
     slug: "proof-of-business-activity",
     description: "Understanding why payment providers ask for proof of business activity and how to prepare.",
     category: "compliance",
@@ -64,119 +64,119 @@ const filterTabs: { label: string; value: InsightCategory }[] = [
 
 const allInsights: Insight[] = [
   {
-    title: "Why Your Payment Provider Asked for Proof of Business Activity",
+    title: "Understanding Proof of Business Activity Requests",
     slug: "proof-of-business-activity",
     description: "Understanding why payment providers ask for proof of business activity and how to prepare.",
     category: "compliance",
     readTime: "4 min read"
   },
   {
-    title: "Why Payment Providers Ask for More Documents When Your Sales Increase",
+    title: "Sales Growth Triggers Document Requests — Here's How to Prepare",
     slug: "sales-increase",
     description: "Learn why sudden sales growth triggers additional document requests.",
     category: "compliance",
     readTime: "5 min read"
   },
   {
-    title: "Why Marketplaces Are Asked for Seller and Payout Information",
+    title: "Marketplace Seller Verification: What Providers Need",
     slug: "marketplace-seller-info",
     description: "Why marketplace businesses face additional verification for seller and payout information.",
     category: "compliance",
     readTime: "4 min read"
   },
   {
-    title: "Why Payment Providers Ask for Bank Statements or Source of Funds",
+    title: "Source of Funds Requests: What They Mean and How to Respond",
     slug: "source-of-funds",
     description: "Learn why providers request bank statements and source of funds documentation.",
     category: "compliance",
     readTime: "5 min read"
   },
   {
-    title: "Why Some Industries Are Asked for Extra Verification",
+    title: "High-Risk Industries Face Extra Verification — Is Yours One?",
     slug: "industry-verification",
     description: "Understanding why certain industries face additional verification requirements.",
     category: "compliance",
     readTime: "4 min read"
   },
   {
-    title: "Why International Sales Trigger Additional Checks",
+    title: "International Sales and Payment Provider Checks: What to Expect",
     slug: "international-sales",
     description: "Learn why selling internationally can trigger additional verification.",
     category: "compliance",
     readTime: "4 min read"
   },
   {
-    title: "Why Providers Ask for Contracts, Invoices, or Customer Agreements",
+    title: "Document Requests Explained: Contracts, Invoices, and Agreements",
     slug: "contracts-invoices",
     description: "Understanding why payment providers request contracts and customer agreements.",
     category: "compliance",
     readTime: "5 min read"
   },
   {
-    title: "Why Stripe Freezes Accounts in the UK",
+    title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",
     slug: "why-stripe-freezes-accounts-uk",
     description: "Stripe does not freeze accounts at random. Learn the common triggers and how to prevent them.",
     category: "risk",
     readTime: "7 min read"
   },
   {
-    title: "Why Your Payment Account Gets Flagged After Sudden Growth",
+    title: "Sudden Growth Can Trigger Account Reviews — Here's How to Handle It",
     slug: "why-accounts-get-flagged-after-growth",
     description: "Rapid growth is one of the most common reasons payment accounts are reviewed.",
     category: "risk",
     readTime: "5 min read"
   },
   {
-    title: "Why PayPal and Stripe Freeze Accounts Without Warning",
+    title: "Account Freezes Without Warning: What Triggers Them",
     slug: "why-payment-accounts-get-frozen-without-warning",
     description: "Payment providers are not always able to warn merchants before taking action.",
     category: "risk",
     readTime: "6 min read"
   },
   {
-    title: "Why Marketplaces Get Extra Scrutiny From Payment Providers",
+    title: "Marketplaces Face Extra Scrutiny — Here's What Providers Look For",
     slug: "why-marketplaces-get-extra-scrutiny",
     description: "Marketplaces introduce additional layers of risk for payment providers.",
     category: "risk",
     readTime: "5 min read"
   },
   {
-    title: "Why Payment Providers Re-Underwrite Existing Accounts",
+    title: "Re-Underwriting Explained: When Providers Review Existing Accounts",
     slug: "why-providers-re-underwrite-accounts",
     description: "Approval is not a one-time event. Learn why providers periodically re-underwrite accounts.",
     category: "risk",
     readTime: "5 min read"
   },
   {
-    title: "Why Some Businesses Never Get Approved for Payments",
+    title: "Some Businesses Struggle to Get Approved — Here's the Real Reason",
     slug: "why-some-businesses-never-get-approved",
     description: "Not all businesses are declined because they are doing something wrong.",
     category: "risk",
     readTime: "6 min read"
   },
   {
-    title: "Why Payment Providers Ask for a Director's Passport or Proof of Address",
+    title: "Director ID Verification: What Providers Ask For",
     slug: "why-payment-providers-ask-for-director-documents",
     description: "Understand why payment providers request director documents and how to respond effectively.",
     category: "compliance",
     readTime: "4 min read"
   },
   {
-    title: "Why Payment Providers Ask for Source of Funds",
+    title: "Understanding Source of Funds Verification",
     slug: "why-payment-providers-ask-for-source-of-funds",
     description: "Understand why payment providers request source of funds documentation and how to respond effectively.",
     category: "compliance",
     readTime: "5 min read"
   },
   {
-    title: "Why Payment Accounts Get Flagged After Sudden Growth",
+    title: "Growth-Related Account Flags: What Triggers Them",
     slug: "why-payment-accounts-get-flagged-after-growth",
     description: "Understand why sudden business growth triggers payment account reviews and how to handle them.",
     category: "risk",
     readTime: "5 min read"
   },
   {
-    title: "Why Payment Providers Re-Underwrite Existing Accounts",
+    title: "When Providers Re-Underwrite Existing Accounts",
     slug: "why-providers-re-underwrite-existing-accounts",
     description: "Understand why payment providers re-underwrite existing accounts and how to handle these reviews.",
     category: "risk",
@@ -204,7 +204,7 @@ const allInsights: Insight[] = [
     readTime: "7 min read"
   },
   {
-    title: "Why Card Approval Speed Affects Checkout Abandonment",
+    title: "Card Approval Speed and Checkout Abandonment: The Connection Explained",
     slug: "why-card-approval-speed-affects-checkout-abandonment",
     description: "Learn why card approval speed matters for conversion rates and how delays cause checkout abandonment and lost revenue.",
     category: "explainer",

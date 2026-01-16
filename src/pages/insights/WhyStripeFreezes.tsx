@@ -7,7 +7,7 @@ import FAQSchema from "@/components/FAQSchema";
 
 const WhyStripeFreezes = () => {
   useSEO({
-    title: "Why Stripe Freezes Accounts in the UK | ChosePayments",
+    title: "Stripe Account Freezes in the UK: Common Triggers and Prevention | ChosePayments",
     description: "Stripe does not freeze accounts at random. Learn the common triggers for Stripe account freezes in the UK and how to prevent them before they happen."
   });
 
@@ -43,7 +43,7 @@ const WhyStripeFreezes = () => {
           />
           
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Stripe Freezes Accounts in the UK
+            Stripe Account Freezes in the UK: Common Triggers and Prevention
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">

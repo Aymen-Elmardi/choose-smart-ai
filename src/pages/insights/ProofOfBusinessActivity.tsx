@@ -6,7 +6,7 @@ import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 
 const ProofOfBusinessActivity = () => {
   useSEO({
-    title: "Why Your Payment Provider Asked for Proof of Business Activity | ChosePayments",
+    title: "Understanding Proof of Business Activity Requests | ChosePayments",
     description: "Understanding why payment providers ask for proof of business activity and how to prepare your documentation."
   });
 
@@ -22,7 +22,7 @@ const ProofOfBusinessActivity = () => {
           />
           
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Your Payment Provider Asked for Proof of Business Activity
+            Understanding Proof of Business Activity Requests
           </h1>
           
           <div className="prose prose-lg text-foreground/80 space-y-6">
