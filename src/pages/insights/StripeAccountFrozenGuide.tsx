@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import FAQSchema from "@/components/FAQSchema";
-import heroImage from "@/assets/stripe-frozen-account-guide.jpg";
+
 
 const StripeAccountFrozenGuide = () => {
   useSEO({
@@ -47,15 +47,6 @@ const StripeAccountFrozenGuide = () => {
             currentTitle="Stripe Account Frozen Guide"
           />
           
-          {/* Featured Image */}
-          <div className="mb-8 rounded-lg overflow-hidden">
-            <img 
-              src={heroImage} 
-              alt="Frozen credit card representing a Stripe account freeze" 
-              className="w-full h-auto object-cover"
-              loading="eager"
-            />
-          </div>
           
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
             Stripe Account Frozen? The 5 Hidden Reasons Why (And How to Prevent the Next Freeze)
