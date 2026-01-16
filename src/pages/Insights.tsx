@@ -259,6 +259,13 @@ const allInsights: Insight[] = [
     description: "How Stripe's API-first approach and unified financial infrastructure revolutionized digital commerce.",
     category: "providers",
     readTime: "10 min read"
+  },
+  {
+    title: "Checkout.com: The High Performance Platform Built for Global Ambition",
+    slug: "checkout-com-enterprise-platform",
+    description: "How Checkout.com's modular architecture delivers superior authorization rates and granular control for high growth global merchants.",
+    category: "providers",
+    readTime: "8 min read"
   }
 ];
 
