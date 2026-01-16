@@ -69,7 +69,7 @@ const AdyenEnterprisePlatform = () => {
             {/* Introduction */}
             <section className="mb-12">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                When a business reaches a certain scale—one that demands true global reach, complex omnichannel solutions, and absolute transparency—Adyen is often the only name on the shortlist. They have fundamentally simplified global commerce for the world's largest brands.
+                When a business reaches a certain scale, one that demands true global reach, complex omnichannel solutions, and absolute transparency, Adyen is often the only name on the shortlist. They have fundamentally simplified global commerce for the world's largest brands.
               </p>
             </section>
 
@@ -81,7 +81,7 @@ const AdyenEnterprisePlatform = () => {
               </h2>
               
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                The genius of Adyen lies in its unified approach. Before Adyen, a global merchant typically needed separate providers for their payment gateway, their acquiring bank relationships in different regions, and their fraud/risk tools. This created a tangled web of contracts, reconciliation nightmares, and unnecessary latency.
+                The genius of Adyen lies in its unified approach. Before Adyen, a global merchant typically needed separate providers for their payment gateway, their acquiring bank relationships in different regions, and their fraud and risk tools. This created a tangled web of contracts, reconciliation nightmares, and unnecessary latency.
               </p>
               
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
@@ -134,7 +134,7 @@ const AdyenEnterprisePlatform = () => {
               </p>
               
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                When you onboard with Adyen, you are not handed a generic API document and left to fend for yourself. You are assigned a <strong className="text-foreground">dedicated Integration Engineer</strong>—a technical expert who knows the Adyen platform like the back of their hand.
+                When you onboard with Adyen, you are not handed a generic API document and left to fend for yourself. You are assigned a <strong className="text-foreground">dedicated Integration Engineer</strong>, a technical expert who knows the Adyen platform like the back of their hand.
               </p>
               
               <div className="p-6 rounded-xl bg-primary/5 border border-primary/20 mb-6">
@@ -144,7 +144,7 @@ const AdyenEnterprisePlatform = () => {
               </div>
               
               <p className="text-lg text-muted-foreground leading-relaxed">
-                They guide you through the process, ensuring that the implementation is not just functional, but optimized for your specific needs—whether that means fine-tuning your local payment methods in Asia or structuring your data flow for maximum risk efficiency. This high-touch, expert-led approach is what separates a successful, stable integration from a rushed, fragile one.
+                They guide you through the process, ensuring that the implementation is not just functional, but optimized for your specific needs, whether that means fine-tuning your local payment methods in Asia or structuring your data flow for maximum risk efficiency. This hands-on, expert approach is what separates a successful, stable integration from a rushed, fragile one.
               </p>
             </section>
 
@@ -183,7 +183,7 @@ const AdyenEnterprisePlatform = () => {
               
               <div className="p-6 rounded-xl bg-primary/5 border border-primary/20 mb-6">
                 <p className="text-lg text-foreground leading-relaxed font-medium">
-                  The question is not whether Adyen is a good provider—it is—but whether your business is at the stage where it can fully leverage and benefit from its enterprise-grade capabilities.
+                  The question is not whether Adyen is a good provider (it certainly is), but whether your business is at the stage where it can fully leverage and benefit from its enterprise-grade capabilities.
                 </p>
               </div>
               
