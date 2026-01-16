@@ -26,8 +26,8 @@ const AdyenEnterprisePlatform = () => {
       answer: "When you onboard with Adyen, you're assigned a dedicated Integration Engineer—a technical expert who understands your tech stack, regulatory environment, and business model. They guide you through implementation to ensure it's optimized for your specific needs."
     },
     {
-      question: "Why do major banks like Barclays use Adyen's technology?",
-      answer: "Adyen provides white-label solutions to global banks because their technology is robust enough for financial institutions to put their own brand on it. This partnership validates Adyen's security, stability, and regulatory compliance at the highest level."
+      question: "Why do major banks and platforms use Adyen's technology?",
+      answer: "Adyen provides white-label solutions to global banks and powers major platforms including some of the UK's largest food delivery services. Their technology is robust enough for financial institutions to put their own brand on it, validating Adyen's security, stability, and regulatory compliance at the highest level."
     },
     {
       question: "Is Adyen right for my business?",
@@ -161,7 +161,7 @@ const AdyenEnterprisePlatform = () => {
               
               <div className="p-6 rounded-xl bg-card border border-border mb-6">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  The fact that Adyen provides white-label solutions to global banks, such as their partnership with Barclays to power their payment gateway services, is the ultimate compliment. It means that one of the world's oldest and most respected financial institutions trusts Adyen's technology enough to put their own brand on it.
+                  Adyen provides white-label solutions to major global banks, powering their payment gateway services behind the scenes. When established financial institutions trust a platform enough to put their own brand on it, that says everything about its security and reliability. They also power some of the UK's largest food delivery platforms, handling millions of transactions daily at peak demand.
                 </p>
               </div>
               
