@@ -31,6 +31,8 @@ interface ProviderConfig {
   riskAppetite: Record<string, RiskLevel>;
   exclusions: string[]; // Hard no industries
   strengths: string[]; // For scoring and reasons
+  setupSpeed: "fast" | "standard" | "slow"; // NEW: Setup speed indicator
+  higherRiskSpecialist: boolean; // NEW: Can handle higher-risk merchants
 }
 
 interface QuizAnswers {
@@ -41,6 +43,9 @@ interface QuizAnswers {
   monthlyVolume: string;
   avgTransaction: string;
   features: string[];
+  // NEW: Risk-critical fields
+  riskProfile?: string;
+  deliveryTimeline?: string;
 }
 
 interface RecommendationResult {
@@ -48,11 +53,13 @@ interface RecommendationResult {
     name: string;
     description: string;
     reasons: string[];
+    matchScore: number;
   };
   alternatives: {
     name: string;
     description: string;
     reasons: string[];
+    matchScore: number;
   }[];
 }
 
@@ -88,7 +95,9 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "subscription-box": "green",
     },
     exclusions: ["gambling", "adult"],
-    strengths: ["developer-friendly", "international", "subscriptions", "api-first", "scalable"],
+    strengths: ["developer-friendly", "international", "subscriptions", "api-first", "scalable", "fast-setup"],
+    setupSpeed: "fast",
+    higherRiskSpecialist: false,
   },
   {
     id: "square",
@@ -111,7 +120,9 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "crypto": "red",
     },
     exclusions: ["gambling", "adult", "crypto"],
-    strengths: ["in-person", "pos-hardware", "easy-setup", "retail", "restaurants"],
+    strengths: ["in-person", "pos-hardware", "easy-setup", "retail", "restaurants", "fast-setup"],
+    setupSpeed: "fast",
+    higherRiskSpecialist: false,
   },
   {
     id: "paypal",
@@ -132,7 +143,9 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "crypto": "red",
     },
     exclusions: ["gambling", "adult", "crypto"],
-    strengths: ["trusted-brand", "buyer-protection", "easy-setup", "low-volume-friendly"],
+    strengths: ["trusted-brand", "buyer-protection", "easy-setup", "low-volume-friendly", "fast-setup"],
+    setupSpeed: "fast",
+    higherRiskSpecialist: false,
   },
   {
     id: "adyen",
@@ -155,6 +168,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["adult"],
     strengths: ["enterprise", "international", "omnichannel", "high-volume", "unified-commerce"],
+    setupSpeed: "slow",
+    higherRiskSpecialist: false,
   },
   // UK Specialists
   {
@@ -178,6 +193,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult"],
     strengths: ["marketplace", "split-payments", "revenue-share", "uk-specialist"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: false,
   },
   {
     id: "sumup",
@@ -199,7 +216,9 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "adult": "red",
     },
     exclusions: ["gambling", "adult"],
-    strengths: ["low-volume", "portable", "no-monthly-fees", "simple-pricing"],
+    strengths: ["low-volume", "portable", "no-monthly-fees", "simple-pricing", "fast-setup"],
+    setupSpeed: "fast",
+    higherRiskSpecialist: false,
   },
   {
     id: "zettle",
@@ -219,7 +238,9 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "adult": "red",
     },
     exclusions: ["gambling", "adult"],
-    strengths: ["in-person", "paypal-integration", "small-business"],
+    strengths: ["in-person", "paypal-integration", "small-business", "fast-setup"],
+    setupSpeed: "fast",
+    higherRiskSpecialist: false,
   },
   {
     id: "worldpay",
@@ -241,6 +262,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["adult"],
     strengths: ["established", "uk-presence", "traditional-merchant-services"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: false,
   },
   {
     id: "barclaycard",
@@ -263,6 +286,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult", "crypto"],
     strengths: ["bank-backed", "uk-established", "traditional"],
+    setupSpeed: "slow",
+    higherRiskSpecialist: false,
   },
   {
     id: "takepayments",
@@ -284,6 +309,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult"],
     strengths: ["uk-focused", "simple", "card-machines"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: false,
   },
   {
     id: "braintree",
@@ -305,6 +332,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult"],
     strengths: ["subscriptions", "developer-friendly", "paypal-venmo", "recurring-billing"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: false,
   },
   // EU Specialists
   {
@@ -326,7 +355,9 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "adult": "red",
     },
     exclusions: ["gambling", "adult"],
-    strengths: ["european", "local-payment-methods", "simple-integration", "transparent-pricing"],
+    strengths: ["european", "local-payment-methods", "simple-integration", "transparent-pricing", "fast-setup"],
+    setupSpeed: "fast",
+    higherRiskSpecialist: false,
   },
   {
     id: "klarna",
@@ -348,6 +379,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult", "crypto"],
     strengths: ["bnpl", "consumer-financing", "checkout-boost", "fashion-retail"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: false,
   },
   {
     id: "checkout-com",
@@ -369,6 +402,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["adult"],
     strengths: ["enterprise", "global", "high-volume", "fraud-prevention"],
+    setupSpeed: "slow",
+    higherRiskSpecialist: false,
   },
   {
     id: "trust-payments",
@@ -384,13 +419,15 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "travel": "green",
       "hospitality": "green",
       "ecommerce": "green",
-      "nutraceuticals": "amber",
+      "nutraceuticals": "green",
       "cbd": "amber",
       "gambling": "amber",
       "adult": "red",
     },
     exclusions: ["adult"],
     strengths: ["higher-risk", "travel", "specialist-industries"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: true,
   },
   {
     id: "revolut-business",
@@ -413,6 +450,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult"],
     strengths: ["multi-currency", "modern-banking", "international", "fast-setup"],
+    setupSpeed: "fast",
+    higherRiskSpecialist: false,
   },
   {
     id: "gocardless",
@@ -435,6 +474,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult"],
     strengths: ["direct-debit", "recurring", "low-fees", "subscription-focused"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: false,
   },
   {
     id: "dojo",
@@ -455,7 +496,9 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "adult": "red",
     },
     exclusions: ["gambling", "adult"],
-    strengths: ["fast-settlement", "uk-focused", "card-machines", "hospitality"],
+    strengths: ["fast-settlement", "uk-focused", "card-machines", "hospitality", "fast-setup"],
+    setupSpeed: "fast",
+    higherRiskSpecialist: false,
   },
   {
     id: "opp",
@@ -477,6 +520,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult"],
     strengths: ["marketplace-specialist", "split-payments", "flexible-payouts", "platform-focus"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: false,
   },
   {
     id: "elavon",
@@ -498,6 +543,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult"],
     strengths: ["hospitality", "global", "established", "multi-currency"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: false,
   },
   {
     id: "payoneer",
@@ -519,6 +566,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult"],
     strengths: ["cross-border", "freelancers", "international-payouts"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: false,
   },
   {
     id: "wise-business",
@@ -541,6 +590,8 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
     },
     exclusions: ["gambling", "adult", "crypto"],
     strengths: ["international-transfers", "low-fx-fees", "multi-currency"],
+    setupSpeed: "fast",
+    higherRiskSpecialist: false,
   },
   // High-risk / Complex Merchant Specialist
   {
@@ -568,7 +619,9 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "complex": "green",
     },
     exclusions: ["adult"],
-    strengths: ["high-risk", "complex-payments", "approval-reliability", "international", "enterprise", "scalable", "split-payments"],
+    strengths: ["high-risk", "complex-payments", "approval-reliability", "international", "enterprise", "scalable", "split-payments", "higher-risk"],
+    setupSpeed: "standard",
+    higherRiskSpecialist: true,
   },
 ];
 
@@ -644,6 +697,7 @@ const applyHardElimination = (
   const requiredRegion = getRequiredRegion(answers.location);
   const industry = getIndustryFromBusinessType(answers.businessType);
   const monthlyVolume = parseMonthlyVolume(answers.monthlyVolume);
+  const riskProfile = answers.riskProfile || "unknown";
   
   return providers.filter(provider => {
     // Check payment type support
@@ -659,9 +713,12 @@ const applyHardElimination = (
       if (!supportsRegion) return false;
     }
     
-    // Check industry risk - eliminate if red
+    // Check industry risk - eliminate if red (unless high risk profile and provider is specialist)
     const riskLevel = provider.riskAppetite[industry];
-    if (riskLevel === "red") return false;
+    if (riskLevel === "red") {
+      // High-risk specialists can still be considered for some red industries
+      if (!provider.higherRiskSpecialist) return false;
+    }
     
     // Check hard exclusions
     if (provider.exclusions.includes(industry)) return false;
@@ -687,7 +744,7 @@ const scoreProviders = (
   providers: ProviderConfig[],
   answers: QuizAnswers
 ): ScoredProvider[] => {
-  const { salesChannel, businessType, priorities, features, monthlyVolume, location } = answers;
+  const { salesChannel, businessType, priorities, features, monthlyVolume, location, riskProfile, deliveryTimeline } = answers;
   const volume = parseMonthlyVolume(monthlyVolume);
   const industry = getIndustryFromBusinessType(businessType);
   
@@ -706,6 +763,12 @@ const scoreProviders = (
     priorities.includes("Flexibility / future-proofing");
   const isLowVolume = volume < 10000;
   const isHighVolume = volume > 50000;
+  
+  // NEW: Risk profile flags
+  const isHighRisk = riskProfile === "high";
+  const isMediumRisk = riskProfile === "medium";
+  const needsUrgentSetup = deliveryTimeline === "urgent";
+  const hasPlannedTimeline = deliveryTimeline === "planned";
   
   return providers.map(provider => {
     let score = 50; // Base score
@@ -770,6 +833,29 @@ const scoreProviders = (
       score -= 5;
     }
     
+    // NEW: Risk profile scoring
+    if (isHighRisk && provider.higherRiskSpecialist) {
+      score += 25;
+      matchReasons.push("Specialist support for your payment processing history");
+    } else if (isHighRisk && !provider.higherRiskSpecialist) {
+      score -= 20; // Non-specialists penalized for high-risk merchants
+    }
+    if (isMediumRisk && provider.higherRiskSpecialist) {
+      score += 10;
+    }
+    
+    // NEW: Delivery timeline scoring
+    if (needsUrgentSetup && provider.setupSpeed === "fast") {
+      score += 20;
+      matchReasons.push("Quick setup - start accepting payments within days");
+    } else if (needsUrgentSetup && provider.setupSpeed === "slow") {
+      score -= 10; // Slow providers penalized for urgent timelines
+    }
+    if (hasPlannedTimeline && provider.strengths.includes("enterprise")) {
+      score += 15;
+      matchReasons.push("Enterprise-grade solution for planned rollout");
+    }
+    
     // Provider maturity bonus for complex use cases
     if (needsMarketplace && provider.strengths.includes("marketplace-specialist")) {
       score += 15;
@@ -789,6 +875,11 @@ const scoreProviders = (
     
     // Shift4 scoring for complex/high-risk cases
     if (provider.id === "shift4") {
+      // Strong preference for high-risk profile
+      if (isHighRisk) {
+        score += 25;
+        matchReasons.push("Specialist approval process for complex merchant profiles");
+      }
       // Strong preference (+3) conditions
       if (needsMarketplace) {
         score += 25;
@@ -818,7 +909,7 @@ const scoreProviders = (
       }
       
       // De-prioritise (-2) conditions: very small, fee-sensitive, simple use cases
-      if (isLowVolume && wantsLowFees && !needsMarketplace && !needsSplitPayments && !needsInternational) {
+      if (isLowVolume && wantsLowFees && !needsMarketplace && !needsSplitPayments && !needsInternational && !isHighRisk) {
         score -= 30; // Significantly deprioritise for simple low-volume cases
       }
     }
@@ -835,6 +926,18 @@ const scoreProviders = (
     
     return { provider, score, matchReasons };
   });
+};
+
+// ============================================================================
+// MATCH SCORE CALCULATION
+// ============================================================================
+
+const calculateMatchScore = (score: number, maxScore: number = 200): number => {
+  const baseScore = 50;
+  const adjustedScore = Math.max(0, score - baseScore);
+  const adjustedMax = maxScore - baseScore;
+  const percentage = Math.round((adjustedScore / adjustedMax) * 100);
+  return Math.min(99, Math.max(65, percentage)); // Clamp between 65-99%
 };
 
 // ============================================================================
@@ -864,16 +967,21 @@ const getRecommendations = (answers: QuizAnswers): RecommendationResult | null =
   // Get alternatives (next 2 highest, if available)
   const alternatives = scored.slice(1, 3);
   
+  // Calculate match scores
+  const maxScore = Math.max(...scored.map(s => s.score));
+  
   return {
     primary: {
       name: primary.provider.name,
       description: primary.provider.description,
       reasons: primary.matchReasons.slice(0, 4), // Limit to 4 reasons
+      matchScore: calculateMatchScore(primary.score, maxScore + 50),
     },
     alternatives: alternatives.map(alt => ({
       name: alt.provider.name,
       description: alt.provider.description,
       reasons: alt.matchReasons.slice(0, 3), // Limit to 3 reasons for alternatives
+      matchScore: calculateMatchScore(alt.score, maxScore + 50),
     })),
   };
 };
@@ -968,6 +1076,9 @@ const handler = async (req: Request): Promise<Response> => {
       monthlyVolume: String(body.monthlyVolume || "").slice(0, 50),
       avgTransaction: String(body.avgTransaction || "").slice(0, 50),
       features: Array.isArray(body.features) ? body.features.slice(0, 10).map((f: unknown) => String(f).slice(0, 100)) : [],
+      // NEW: Risk-critical fields
+      riskProfile: String(body.riskProfile || "unknown").slice(0, 50),
+      deliveryTimeline: String(body.deliveryTimeline || "exploring").slice(0, 50),
     };
 
     console.log(`Quiz recommendation request from IP ${clientIp}:`, JSON.stringify(answers));
@@ -1002,11 +1113,11 @@ const handler = async (req: Request): Promise<Response> => {
       }
     );
   } catch (error) {
-    console.error("Error in quiz-recommendation:", error);
+    console.error("Quiz recommendation error:", error);
     return new Response(
       JSON.stringify({ 
         success: false, 
-        error: error instanceof Error ? error.message : "Unknown error" 
+        error: "An error occurred processing your request" 
       }),
       {
         status: 500,
