@@ -16,12 +16,42 @@ interface Insight {
   readTime: string;
 }
 
-const featuredInsight: Insight = {
-  title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
-  slug: "why-payment-accounts-get-flagged-without-changes",
-  description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction.",
-  category: "risk",
-  readTime: "6 min read"
+const featuredInsights: Record<InsightCategory, Insight> = {
+  all: {
+    title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
+    slug: "why-payment-accounts-get-flagged-without-changes",
+    description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction.",
+    category: "risk",
+    readTime: "6 min read"
+  },
+  risk: {
+    title: "Stripe Account Frozen? 5 Hidden Reasons Why & How to Prevent the Next Freeze",
+    slug: "stripe-account-frozen-guide",
+    description: "Funds held by Stripe? Learn the 5 hidden risk triggers that cause freezes and how to find a stable provider.",
+    category: "risk",
+    readTime: "8 min read"
+  },
+  guides: {
+    title: "Chargebacks: Why They Happen, How Much They Really Cost, and How Merchants Can Avoid Them",
+    slug: "chargebacks-what-they-are-and-how-to-avoid-them",
+    description: "Chargebacks cost merchants billions every year and put payment accounts at risk. Learn why they happen and how to reduce them.",
+    category: "guides",
+    readTime: "8 min read"
+  },
+  compliance: {
+    title: "Why Your Payment Provider Asked for Proof of Business Activity",
+    slug: "proof-of-business-activity",
+    description: "Understanding why payment providers ask for proof of business activity and how to prepare.",
+    category: "compliance",
+    readTime: "4 min read"
+  },
+  explainer: {
+    title: "What Is an Acquirer and Why Your Payment Provider Needs One",
+    slug: "what-is-an-acquirer",
+    description: "Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business.",
+    category: "explainer",
+    readTime: "6 min read"
+  }
 };
 
 const filterTabs: { label: string; value: InsightCategory }[] = [
@@ -286,7 +316,7 @@ const Insights = () => {
           {/* Featured Insight */}
           <div className="mb-16">
             <Link
-              to={`/insights/${featuredInsight.slug}`}
+              to={`/insights/${featuredInsights[activeFilter].slug}`}
               className="block p-8 md:p-12 rounded-2xl border border-border bg-card hover:border-primary/50 transition-all group"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -294,18 +324,18 @@ const Insights = () => {
                   Featured
                 </span>
                 <span className="px-3 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
-                  {categoryLabels[featuredInsight.category]}
+                  {categoryLabels[featuredInsights[activeFilter].category]}
                 </span>
                 <span className="flex items-center gap-1 text-xs text-muted-foreground">
                   <Clock className="w-3 h-3" />
-                  {featuredInsight.readTime}
+                  {featuredInsights[activeFilter].readTime}
                 </span>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                {featuredInsight.title}
+                {featuredInsights[activeFilter].title}
               </h2>
               <p className="text-lg text-muted-foreground mb-6 max-w-3xl">
-                {featuredInsight.description}
+                {featuredInsights[activeFilter].description}
               </p>
               <span className="inline-flex items-center gap-2 text-primary font-medium">
                 Read article <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
