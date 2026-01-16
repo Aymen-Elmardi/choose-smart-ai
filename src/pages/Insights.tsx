@@ -252,6 +252,13 @@ const allInsights: Insight[] = [
     description: "How Adyen's unified approach to acquiring, gateway, and risk management is transforming global commerce for the world's largest brands.",
     category: "providers",
     readTime: "10 min read"
+  },
+  {
+    title: "Stripe: The Perfect Payment Platform for the Right Business",
+    slug: "stripe-payment-platform",
+    description: "Why Stripe's API simplicity and Connect platform make it the ideal choice for digital-first businesses and marketplaces.",
+    category: "providers",
+    readTime: "8 min read"
   }
 ];
 
