@@ -1,46 +1,40 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
+import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, AlertTriangle, Zap, Globe, ShieldCheck } from "lucide-react";
 
 const StripePaymentPlatform = () => {
+  useSEO({
+    title: "Is Stripe Right for Your Business? A Guide to Stripe's Strengths and Limits | ChosePayments",
+    description: "Stripe is built for digital-first businesses. Learn who it works best for, when it may fall short, and how to know if it's the right match for your business."
+  });
+
   const faqs = [
     {
-      question: "What makes Stripe's API easy to use?",
-      answer: "Stripe's documentation is considered the gold standard, with clear examples, sandbox environments, and a logical structure that lets developers get up and running quickly. Their API is designed to abstract complexity while still offering deep customization."
+      question: "Is Stripe a good choice for UK businesses?",
+      answer: "Stripe is an excellent choice for UK businesses that are digital-first, have technical resources, and operate in low-risk industries. Their API-first approach, comprehensive documentation, and ecosystem of tools make it particularly well-suited for SaaS companies, e-commerce platforms, and marketplaces."
     },
     {
-      question: "What is Stripe Connect and who is it for?",
-      answer: "Stripe Connect is a platform for building marketplace payment flows. It handles multi-party payments, seller onboarding, compliance, and payouts, making it ideal for businesses connecting buyers and sellers who need to split payments."
-    },
-    {
-      question: "What tools does Stripe offer beyond payments?",
-      answer: "Beyond core payments, Stripe offers Radar for fraud detection, Billing for subscriptions, Atlas for company incorporation, Identity for verification, and Treasury for banking-as-a-service. It's designed as a full financial infrastructure stack."
+      question: "Does Stripe work well for marketplaces and platforms?",
+      answer: "Yes, Stripe Connect is purpose-built for marketplaces. It handles multi-party payments, seller onboarding, compliance, and payouts. If you're connecting buyers and sellers and need to split payments, Stripe Connect is one of the most robust solutions available."
     },
     {
       question: "What type of business is Stripe best suited for?",
-      answer: "Stripe is ideal for digital-first businesses, SaaS companies, marketplaces, and tech-savvy teams who can leverage its API. It works best for businesses with predictable, low-risk transaction patterns and in-house technical resources."
+      answer: "Stripe is ideal for digital-first businesses, SaaS companies, marketplaces, and tech-savvy teams who can leverage its API. It works best for businesses with predictable, low-risk transaction patterns and in-house technical resources to implement and maintain the integration."
     },
     {
-      question: "When might a business face issues with Stripe?",
-      answer: "Businesses outside Stripe's ideal profile may face challenges. Higher-risk industries, businesses with spiky revenue patterns, or those without technical resources may experience account reviews, holds, or find the self-service model limiting."
+      question: "When might Stripe not be the right fit?",
+      answer: "Stripe may not be ideal for higher-risk industries, businesses with spiky or seasonal revenue patterns, companies needing dedicated account management, or teams without technical resources. In these cases, a provider with direct acquiring relationships and hands-on support may be better suited."
+    },
+    {
+      question: "How do I know if Stripe is the right provider for me?",
+      answer: "Consider your technical resources, risk profile, transaction patterns, and support needs. If you're a digital-first business with developers on staff and predictable revenue, Stripe is likely a good fit. If you fall outside this profile, taking a provider assessment can help match you with alternatives."
     }
   ];
-
-  useEffect(() => {
-    document.title = "Stripe: The Perfect Payment Platform for the Right Business | ChoosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Why Stripe's API simplicity and Connect platform make it the ideal choice for digital-first businesses and marketplaces. Learn if Stripe is right for you.");
-    }
-    return () => {
-      document.title = "ChoosePayments";
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -118,7 +112,7 @@ const StripePaymentPlatform = () => {
                     The Ecosystem
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Beyond payments, Stripe offers Radar (fraud), Billing (subscriptions), Atlas (company incorporation), Identity (verification), and Treasury (banking-as-a-service). If you want everything in one place and have the technical resources to implement it, this ecosystem is powerful.
+                    Beyond payments, Stripe offers Radar (fraud), Billing (subscriptions), Atlas (company incorporation), Identity (verification), and Treasury (banking-as-a-service). If you want everything in one place and have the technical resources to implement it, this ecosystem is powerful. Understanding how <Link to="/insights/what-is-an-acquirer" className="text-primary hover:underline">acquiring relationships work</Link> can help you appreciate what Stripe handles behind the scenes.
                   </p>
                 </div>
               </div>
@@ -195,7 +189,7 @@ const StripePaymentPlatform = () => {
               </div>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
-                This isn't a criticism of Stripe. It's simply recognition that their model is optimized for a specific type of business. If you fall outside that profile, you might be better served by a more specialized provider, one that uses direct acquiring relationships and offers dedicated account management.
+                This isn't a criticism of Stripe. It's simply recognition that their model is optimized for a specific type of business. If you fall outside that profile, you might be better served by a <Link to="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">more specialized provider</Link>, one that uses direct acquiring relationships and offers dedicated account management.
               </p>
             </section>
 
@@ -215,6 +209,25 @@ const StripePaymentPlatform = () => {
               </div>
             </section>
 
+            {/* FAQ Section */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-foreground mb-6">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-6">
+                {faqs.map((faq, index) => (
+                  <div key={index} className="p-6 rounded-xl bg-card border border-border">
+                    <h3 className="text-lg font-semibold text-foreground mb-3">
+                      {faq.question}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
             {/* CTA */}
             <section className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
               <div className="text-center">
@@ -229,6 +242,37 @@ const StripePaymentPlatform = () => {
                     Take the Assessment
                     <ArrowRight className="w-4 h-4" />
                   </Button>
+                </Link>
+              </div>
+            </section>
+
+            {/* Related Reading */}
+            <section className="mt-16 pt-12 border-t border-border">
+              <h2 className="text-2xl font-bold text-foreground mb-6">
+                Related Reading
+              </h2>
+              <div className="grid gap-4 md:grid-cols-2">
+                <Link 
+                  to="/insights/what-is-an-acquirer" 
+                  className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors group"
+                >
+                  <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
+                    What Is an Acquirer and Why Your Payment Provider Needs One
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Understanding the infrastructure behind payment processing.
+                  </p>
+                </Link>
+                <Link 
+                  to="/insights/adyen-enterprise-payments-platform" 
+                  className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors group"
+                >
+                  <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
+                    Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    How Adyen's approach differs from aggregator models.
+                  </p>
                 </Link>
               </div>
             </section>
