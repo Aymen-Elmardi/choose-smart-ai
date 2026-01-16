@@ -57,6 +57,7 @@ import TRAExemption from "./pages/insights/TRAExemption";
 import WhatToDoWhenProviderAsksForDocuments from "./pages/insights/WhatToDoWhenProviderAsksForDocuments";
 import Chargebacks from "./pages/insights/Chargebacks";
 import StripeAccountFrozenGuide from "./pages/insights/StripeAccountFrozenGuide";
+import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
 
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
@@ -158,6 +159,7 @@ const App = () => (
             <Route path="/insights/tra-exemption-reduces-payment-friction" element={<TRAExemption />} />
             <Route path="/insights/chargebacks-what-they-are-and-how-to-avoid-them" element={<Chargebacks />} />
             <Route path="/insights/stripe-account-frozen-guide" element={<StripeAccountFrozenGuide />} />
+            <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
