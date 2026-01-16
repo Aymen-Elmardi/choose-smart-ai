@@ -6,7 +6,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { Search, ArrowRight, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer";
+type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers";
 
 interface Insight {
   title: string;
@@ -51,11 +51,19 @@ const featuredInsights: Record<InsightCategory, Insight> = {
     description: "Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business.",
     category: "explainer",
     readTime: "6 min read"
+  },
+  providers: {
+    title: "Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook",
+    slug: "adyen-enterprise-payments-platform",
+    description: "How Adyen's unified approach to acquiring, gateway, and risk management is transforming global commerce for the world's largest brands.",
+    category: "providers",
+    readTime: "10 min read"
   }
 };
 
 const filterTabs: { label: string; value: InsightCategory }[] = [
   { label: "All", value: "all" },
+  { label: "Provider Deep Dives", value: "providers" },
   { label: "Risk & Freezes", value: "risk" },
   { label: "Guides", value: "guides" },
   { label: "Compliance", value: "compliance" },
@@ -237,6 +245,13 @@ const allInsights: Insight[] = [
     description: "Chargebacks cost merchants billions every year and put payment accounts at risk. Learn why they happen, how much they really cost, and how to reduce them.",
     category: "guides",
     readTime: "8 min read"
+  },
+  {
+    title: "Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook",
+    slug: "adyen-enterprise-payments-platform",
+    description: "How Adyen's unified approach to acquiring, gateway, and risk management is transforming global commerce for the world's largest brands.",
+    category: "providers",
+    readTime: "10 min read"
   }
 ];
 
@@ -245,7 +260,8 @@ const categoryLabels: Record<InsightCategory, string> = {
   risk: "Risk Alert",
   guides: "Guide",
   compliance: "Compliance",
-  explainer: "Explainer"
+  explainer: "Explainer",
+  providers: "Provider Deep Dive"
 };
 
 const Insights = () => {
