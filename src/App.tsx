@@ -58,6 +58,7 @@ import WhatToDoWhenProviderAsksForDocuments from "./pages/insights/WhatToDoWhenP
 import Chargebacks from "./pages/insights/Chargebacks";
 import StripeAccountFrozenGuide from "./pages/insights/StripeAccountFrozenGuide";
 import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
+import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
 
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
@@ -160,6 +161,7 @@ const App = () => (
             <Route path="/insights/chargebacks-what-they-are-and-how-to-avoid-them" element={<Chargebacks />} />
             <Route path="/insights/stripe-account-frozen-guide" element={<StripeAccountFrozenGuide />} />
             <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
+            <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
