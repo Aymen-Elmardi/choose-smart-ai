@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const MarketplaceSellerInfo = () => {
   useSEO({
-    title: "Why Marketplaces Are Asked for Seller and Payout Information | ChosePayments",
+    title: "Marketplace Seller Verification: What Providers Need | ChosePayments",
     description: "Understanding why marketplace businesses face additional verification for seller and payout information."
   });
 
@@ -16,7 +16,7 @@ const MarketplaceSellerInfo = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Marketplaces Are Asked for Seller and Payout Information
+            Marketplace Seller Verification: What Providers Need
           </h1>
           
           <div className="prose prose-lg text-foreground/80 space-y-6">

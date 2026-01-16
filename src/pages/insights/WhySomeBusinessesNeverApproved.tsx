@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const WhySomeBusinessesNeverApproved = () => {
   useSEO({
-    title: "Why Some Businesses Never Get Approved for Payments | ChosePayments",
+    title: "Some Businesses Struggle to Get Approved — Here's the Real Reason | ChosePayments",
     description: "Not all businesses are declined because they are doing something wrong. Learn why approval failures happen and how to apply correctly the first time."
   });
 
@@ -16,7 +16,7 @@ const WhySomeBusinessesNeverApproved = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Some Businesses Never Get Approved for Payments
+            Some Businesses Struggle to Get Approved — Here's the Real Reason
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">

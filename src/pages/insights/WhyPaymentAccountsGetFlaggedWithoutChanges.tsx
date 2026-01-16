@@ -6,7 +6,7 @@ import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 
 const WhyPaymentAccountsGetFlaggedWithoutChanges = () => {
   useSEO({
-    title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
+    title: "Account Flagged Without Changes? Here's What Providers Are Reacting To | ChosePayments",
     description: "Learn why payment accounts get flagged or reviewed even when nothing changed. Understand what providers are reacting to and how to reduce friction."
   });
 
@@ -22,7 +22,7 @@ const WhyPaymentAccountsGetFlaggedWithoutChanges = () => {
           />
           
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Payment Accounts Get Flagged Even When Nothing Changed
+            Account Flagged Without Changes? Here's What Providers Are Reacting To
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">

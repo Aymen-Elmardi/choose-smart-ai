@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const InternationalSales = () => {
   useSEO({
-    title: "Why International Sales Trigger Additional Checks | ChosePayments",
+    title: "International Sales and Payment Provider Checks: What to Expect | ChosePayments",
     description: "Learn why selling internationally can trigger additional verification from payment providers."
   });
 
@@ -16,7 +16,7 @@ const InternationalSales = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why International Sales Trigger Additional Checks
+            International Sales and Payment Provider Checks: What to Expect
           </h1>
           
           <div className="prose prose-lg text-foreground/80 space-y-6">

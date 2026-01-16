@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const IndustryVerification = () => {
   useSEO({
-    title: "Why Some Industries Are Asked for Extra Verification | ChosePayments",
+    title: "High-Risk Industries Face Extra Verification — Is Yours One? | ChosePayments",
     description: "Understanding why certain industries face additional verification requirements from payment providers."
   });
 
@@ -16,7 +16,7 @@ const IndustryVerification = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Some Industries Are Asked for Extra Verification
+            High-Risk Industries Face Extra Verification — Is Yours One?
           </h1>
           
           <div className="prose prose-lg text-foreground/80 space-y-6">

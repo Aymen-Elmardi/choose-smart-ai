@@ -6,7 +6,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const WhyCardApprovalSpeedAffectsCheckoutAbandonment = () => {
   useSEO({
-    title: "Why Card Approval Speed Affects Checkout Abandonment | ChosePayments",
+    title: "Card Approval Speed and Checkout Abandonment: The Connection Explained | ChosePayments",
     description: "Learn why card approval speed matters for conversion rates. Understand what slows down approvals and how delays cause checkout abandonment and lost revenue."
   });
 
@@ -18,11 +18,11 @@ const WhyCardApprovalSpeedAffectsCheckoutAbandonment = () => {
           <div className="container mx-auto px-4 max-w-3xl">
             <InsightsBreadcrumb 
               category={{ name: "Guides", slug: "guides" }}
-              currentTitle="Why Card Approval Speed Affects Checkout Abandonment"
+              currentTitle="Card Approval Speed and Checkout Abandonment"
             />
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8">
-              Why Card Approval Speed Affects Checkout Abandonment
+              Card Approval Speed and Checkout Abandonment: The Connection Explained
             </h1>
 
             <div className="prose prose-lg max-w-none text-muted-foreground">

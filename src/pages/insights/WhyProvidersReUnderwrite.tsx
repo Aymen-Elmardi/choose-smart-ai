@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const WhyProvidersReUnderwrite = () => {
   useSEO({
-    title: "Why Payment Providers Re-Underwrite Existing Accounts | ChosePayments",
+    title: "Re-Underwriting Explained: When Providers Review Existing Accounts | ChosePayments",
     description: "Approval is not a one-time event. Learn why payment providers periodically re-underwrite accounts and how to prepare for ongoing reviews."
   });
 
@@ -16,7 +16,7 @@ const WhyProvidersReUnderwrite = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Payment Providers Re-Underwrite Existing Accounts
+            Re-Underwriting Explained: When Providers Review Existing Accounts
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">

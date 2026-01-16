@@ -6,7 +6,7 @@ import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 
 const SourceOfFunds = () => {
   useSEO({
-    title: "Why Payment Providers Ask for Bank Statements or Source of Funds | ChosePayments",
+    title: "Source of Funds Requests: What They Mean and How to Respond | ChosePayments",
     description: "Learn why payment providers request bank statements and source of funds documentation."
   });
 
@@ -22,7 +22,7 @@ const SourceOfFunds = () => {
           />
           
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Payment Providers Ask for Bank Statements or Source of Funds
+            Source of Funds Requests: What They Mean and How to Respond
           </h1>
           
           <div className="prose prose-lg text-foreground/80 space-y-6">

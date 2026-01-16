@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const WhyAccountsFrozenWithoutWarning = () => {
   useSEO({
-    title: "Why PayPal and Stripe Freeze Accounts Without Warning | ChosePayments",
+    title: "Account Freezes Without Warning: What Triggers Them | ChosePayments",
     description: "Payment providers are not always able to warn merchants before taking action. Learn why account freezes happen suddenly and how to protect your business."
   });
 
@@ -16,7 +16,7 @@ const WhyAccountsFrozenWithoutWarning = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why PayPal and Stripe Freeze Accounts Without Warning
+            Account Freezes Without Warning: What Triggers Them
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">

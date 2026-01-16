@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const WhyPaymentProvidersAskForDirectorDocuments = () => {
   useSEO({
-    title: "Why Payment Providers Ask for a Director's Passport or Proof of Address",
+    title: "Director ID Verification: What Providers Ask For | ChosePayments",
     description: "Understand why payment providers request director documents like passports and proof of address. Learn what triggers these requests and how to respond effectively."
   });
 
@@ -16,7 +16,7 @@ const WhyPaymentProvidersAskForDirectorDocuments = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Why Payment Providers Ask for a Director's Passport or Proof of Address
+            Director ID Verification: What Providers Ask For
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
