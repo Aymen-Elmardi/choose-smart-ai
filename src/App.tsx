@@ -56,6 +56,7 @@ import SameDaySettlementAndInstantPayouts from "./pages/insights/SameDaySettleme
 import TRAExemption from "./pages/insights/TRAExemption";
 import WhatToDoWhenProviderAsksForDocuments from "./pages/insights/WhatToDoWhenProviderAsksForDocuments";
 import Chargebacks from "./pages/insights/Chargebacks";
+import StripeAccountFrozenGuide from "./pages/insights/StripeAccountFrozenGuide";
 
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
@@ -156,6 +157,7 @@ const App = () => (
             <Route path="/insights/what-to-do-when-provider-asks-for-documents" element={<WhatToDoWhenProviderAsksForDocuments />} />
             <Route path="/insights/tra-exemption-reduces-payment-friction" element={<TRAExemption />} />
             <Route path="/insights/chargebacks-what-they-are-and-how-to-avoid-them" element={<Chargebacks />} />
+            <Route path="/insights/stripe-account-frozen-guide" element={<StripeAccountFrozenGuide />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
