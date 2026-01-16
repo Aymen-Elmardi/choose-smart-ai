@@ -16,6 +16,16 @@ interface ContactEmailRequest {
   message: string;
 }
 
+// HTML escape function to prevent XSS in email content
+const escapeHtml = (str: string): string => {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+};
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -52,12 +62,12 @@ const handler = async (req: Request): Promise<Response> => {
       subject: `New contact form message from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Business:</strong> ${businessName}</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Business:</strong> ${escapeHtml(businessName)}</p>
         <hr />
         <h3>Message:</h3>
-        <p>${message.replace(/\n/g, "<br />")}</p>
+        <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
       `,
     });
 
@@ -69,7 +79,7 @@ const handler = async (req: Request): Promise<Response> => {
       to: [email],
       subject: "We received your message",
       html: `
-        <h2>Thank you for contacting ChosePayments, ${name}!</h2>
+        <h2>Thank you for contacting ChosePayments, ${escapeHtml(name)}!</h2>
         <p>We have received your message and will get back to you as soon as possible, usually within one working day.</p>
         <p>In the meantime, you might find our <a href="https://chosepayments.com/insights">payment insights</a> helpful.</p>
         <br />
