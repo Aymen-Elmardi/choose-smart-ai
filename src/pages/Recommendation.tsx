@@ -198,28 +198,53 @@ const Recommendation = () => {
     
     // STEP 1: Generate PDF Report
     let generatedReportUrl = "";
+    let reportHtml = "";
     try {
+      const reportPayload = {
+        // User Contact Details
+        fullName: formData.fullName,
+        email: formData.email,
+        businessName: formData.businessName,
+        
+        // All 11 Assessment Answers
+        salesChannel: answers.salesChannel || "",
+        terminalType: answers.terminalType || "",
+        businessType: answers.businessType || "",
+        monthlyVolume: answers.monthlyVolume || "",
+        avgTransaction: answers.avgTransaction || "",
+        priorities: answers.priorities || [],
+        riskProfile: answers.riskProfile || "",
+        deliveryTimeline: answers.deliveryTimeline || "",
+        industry: answers.industry || "",
+        location: answers.location || "",
+        contactTime: answers.contactTime || "",
+        
+        // Recommendation Context
+        recommendedProvider: recommendation?.name || "",
+        matchScore: matchScore,
+        matchDrivers: recommendation?.reasons || [],
+        alternativeProviders: alternatives.map(alt => alt.name),
+        
+        // Meta
+        market: market,
+      };
+
       const { data: reportData, error: reportError } = await supabase.functions.invoke("generate-payment-report", {
-        body: {
-          fullName: formData.fullName,
-          businessName: formData.businessName,
-          answers: answers,
-          recommendation: recommendation ? {
-            name: recommendation.name,
-            description: recommendation.description,
-            reasons: recommendation.reasons,
-          } : null,
-          matchScore: matchScore,
-          alternatives: alternatives.map(alt => ({ name: alt.name, reasons: alt.reasons.slice(0, 2) })),
-          market: market,
-        },
+        body: reportPayload,
       });
 
-      if (!reportError && reportData?.success && reportData?.reportUrl) {
-        generatedReportUrl = reportData.reportUrl;
-        setReportUrl(generatedReportUrl);
-        setIsReportGenerated(true);
-        formRef.current.setReportUrl(generatedReportUrl);
+      if (!reportError && reportData?.success) {
+        // The report HTML is returned as base64 - we can use it for download
+        if (reportData.reportHtml) {
+          reportHtml = reportData.reportHtml;
+          // Create a data URL for the HTML report that can be downloaded/printed as PDF
+          const decodedHtml = atob(reportData.reportHtml);
+          const blob = new Blob([decodedHtml], { type: 'text/html' });
+          generatedReportUrl = URL.createObjectURL(blob);
+          setReportUrl(generatedReportUrl);
+          setIsReportGenerated(true);
+          formRef.current.setReportUrl(generatedReportUrl);
+        }
       }
     } catch (reportErr) {
       console.error("Report generation error:", reportErr);
@@ -275,6 +300,7 @@ const Recommendation = () => {
             firstName: firstName,
             reportUrl: generatedReportUrl,
             providerName: recommendation?.name || "our team",
+            matchScore: matchScore,
           },
         });
 
