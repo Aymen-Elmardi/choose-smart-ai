@@ -14,25 +14,25 @@ export interface ArticleMetadata {
 // Crisis Intervention articles (high-intent, urgent problem solving)
 export const crisisArticles: ArticleMetadata[] = [
   {
-    slug: "rejected-by-stripe-square-high-risk-strategy",
+    slug: "rejected-high-risk-strategy",
     title: "Rejected by Stripe or Square? A Strategic Recovery Plan for High-Risk Merchants",
     cluster: "crisis",
     category: "Crisis Intervention",
     keywords: ["rejected", "declined", "high-risk", "stripe", "square", "approval"]
   },
   {
-    slug: "stripe-funds-frozen-recovery",
-    title: "Stripe Funds Frozen: Emergency Recovery Steps",
+    slug: "stripe-account-frozen",
+    title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze",
     cluster: "crisis",
     category: "Crisis Intervention",
-    keywords: ["frozen", "funds held", "stripe", "reserve", "emergency"]
+    keywords: ["frozen", "funds held", "stripe", "reserve", "emergency", "freeze"]
   },
   {
-    slug: "hidden-fee-crisis-interchange-rolling-reserves",
-    title: "Hidden Fee Crisis: Understanding Interchange++ and Rolling Reserves",
+    slug: "hidden-fee-crisis",
+    title: "The Hidden Fee Crisis: How Your 'Low Rate' Payment Processor is Costing You Thousands",
     cluster: "crisis",
     category: "Crisis Intervention",
-    keywords: ["hidden fees", "interchange", "rolling reserve", "fees", "pricing"]
+    keywords: ["hidden fees", "interchange", "rolling reserve", "fees", "pricing", "effective rate"]
   }
 ];
 
