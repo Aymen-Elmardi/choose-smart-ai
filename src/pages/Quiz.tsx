@@ -486,7 +486,7 @@ const Quiz = () => {
 
       // Check if this answer triggers a micro-insight
       const hasInsight = getActiveMicroInsight(questionId, option) !== null;
-      const advanceDelay = hasInsight ? 2500 : 0; // 2.5s delay to read insight
+      const advanceDelay = hasInsight ? 4000 : 0; // 4s delay to read insight
 
       const advanceToNext = () => {
         if (isLastQuestion) {
