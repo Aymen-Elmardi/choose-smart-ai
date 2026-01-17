@@ -125,21 +125,27 @@ const Recommendation = () => {
     newParams.delete("fromQuiz");
     setSearchParams(newParams, { replace: true });
 
-    // Fetch recommendation while showing loader
-    fetchRecommendation();
+    // Track when we started for minimum transition time
+    const startTime = Date.now();
+    const MIN_LOADER_TIME = 800; // Minimum 800ms for smooth UX
 
-    // Show loader for 2 seconds then fade to content
-    const timer = window.setTimeout(() => {
-      setShowLoader(false);
-    }, 2000);
+    // Fetch recommendation and hide loader when ready
+    fetchRecommendation().then(() => {
+      const elapsed = Date.now() - startTime;
+      const remaining = Math.max(0, MIN_LOADER_TIME - elapsed);
+      
+      // Hide loader after minimum time or immediately if enough time passed
+      setTimeout(() => {
+        setShowLoader(false);
+      }, remaining);
+    });
 
     // Hard fallback so the loader can never loop indefinitely
     const hardFallback = window.setTimeout(() => {
       setShowLoader(false);
-    }, 3000);
+    }, 5000);
 
     return () => {
-      window.clearTimeout(timer);
       window.clearTimeout(hardFallback);
     };
   }, [setSearchParams, fetchRecommendation]);
