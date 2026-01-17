@@ -41,6 +41,8 @@ interface QuizAnswers {
   monthlyVolume: string;
   avgTransaction: string;
   features: string[];
+  industry?: string;
+  deliveryTimeline?: string;
 }
 
 interface RecommendationResult {
@@ -687,7 +689,7 @@ const scoreProviders = (
   providers: ProviderConfig[],
   answers: QuizAnswers
 ): ScoredProvider[] => {
-  const { salesChannel, businessType, priorities, features, monthlyVolume, location } = answers;
+  const { salesChannel, businessType, priorities, features, monthlyVolume, location, deliveryTimeline } = answers;
   const volume = parseMonthlyVolume(monthlyVolume);
   const industry = getIndustryFromBusinessType(businessType);
   
@@ -706,6 +708,10 @@ const scoreProviders = (
     priorities.includes("Flexibility / future-proofing");
   const isLowVolume = volume < 10000;
   const isHighVolume = volume > 50000;
+  
+  // Delivery timeline risk assessment
+  const hasLongDeliveryTimeline = deliveryTimeline === "More than 30 days";
+  const hasMediumDeliveryTimeline = deliveryTimeline === "Within 8-30 Days";
   
   return providers.map(provider => {
     let score = 50; // Base score
@@ -768,6 +774,39 @@ const scoreProviders = (
       score += 10;
     } else if (riskLevel === "amber") {
       score -= 5;
+    }
+    
+    // Delivery timeline scoring - "Future Delivery Risk" handling
+    // Long delivery timelines (>30 days) are high-risk for automated/low-risk providers
+    if (hasLongDeliveryTimeline) {
+      // Penalize automated, low-risk-averse providers (they may freeze funds)
+      if (provider.id === "square" || provider.id === "paypal" || provider.id === "sumup" || provider.id === "zettle") {
+        score -= 25;
+      }
+      // Stripe can handle but may impose reserves
+      if (provider.id === "stripe") {
+        score -= 15;
+      }
+      // Enterprise/specialized providers handle this well
+      if (provider.id === "adyen" || provider.id === "checkout-com" || provider.id === "shift4" || provider.id === "trust-payments") {
+        score += 20;
+        matchReasons.push("Equipped to manage future delivery risk without freezing funds");
+      }
+      // Worldpay/Elavon have experience with travel/events
+      if (provider.id === "worldpay" || provider.id === "elavon") {
+        score += 15;
+        matchReasons.push("Experience with extended delivery timelines and rolling reserves");
+      }
+    }
+    
+    // Medium delivery timelines (8-30 days) - slight adjustment
+    if (hasMediumDeliveryTimeline) {
+      if (provider.id === "square" || provider.id === "paypal" || provider.id === "sumup") {
+        score -= 10;
+      }
+      if (provider.id === "adyen" || provider.id === "shift4" || provider.id === "worldpay") {
+        score += 10;
+      }
     }
     
     // Provider maturity bonus for complex use cases

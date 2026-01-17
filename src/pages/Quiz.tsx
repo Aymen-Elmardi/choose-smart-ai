@@ -50,6 +50,11 @@ const MICRO_INSIGHTS: MicroInsightConfig[] = [
     triggerAnswer: "UK and EU",
     text: "Cross-border payments can carry heavy surcharges. We'll prioritize providers with local acquiring in both regions.",
   },
+  {
+    questionId: "deliveryTimeline",
+    triggerAnswer: "More than 30 days",
+    text: "Long delivery timelines increase 'Future Delivery Risk.' We'll match you with providers who can manage this without freezing your funds.",
+  },
 ];
 
 // Helper to get active micro-insight for current question and answer
@@ -86,6 +91,7 @@ interface QuizAnswers {
   terminalType: string;
   // Lead capture fields
   industry: string;
+  deliveryTimeline: string;
   buyingIntent: string;
   contactTime: string;
 }
@@ -103,6 +109,7 @@ const INITIAL_ANSWERS: QuizAnswers = {
   needsMarketplace: false,
   terminalType: "",
   industry: "",
+  deliveryTimeline: "",
   buyingIntent: "",
   contactTime: "",
 };
@@ -227,7 +234,19 @@ const getQuestions = (answers: QuizAnswers): Question[] => {
     dropdownOptions: INDUSTRY_OPTIONS,
   });
 
-  // Q7: Buying Intent (always)
+  // Q7: Delivery Timeline (always)
+  questions.push({
+    id: "deliveryTimeline",
+    question: "How long after a customer pays do they receive the product or service?",
+    options: [
+      "Instant/Same Day",
+      "Within 1-7 Days",
+      "Within 8-30 Days",
+      "More than 30 days",
+    ],
+  });
+
+  // Q8: Buying Intent (always)
   questions.push({
     id: "buyingIntent",
     question: "When are you looking to move forward?",
@@ -238,14 +257,14 @@ const getQuestions = (answers: QuizAnswers): Question[] => {
     ],
   });
 
-  // Q8: Business Location (always)
+  // Q9: Business Location (always)
   questions.push({
     id: "location",
     question: "Where is your business based?",
     options: ["UK", "EU", "UK and EU"],
   });
 
-  // Q9: Best Time to Contact (always)
+  // Q10: Best Time to Contact (always)
   questions.push({
     id: "contactTime",
     question: "When is the best time to contact you?",
@@ -552,6 +571,7 @@ const Quiz = () => {
       features: [], // Not collecting features in this flow
       // Additional metadata for lead capture
       industry: ans.industry,
+      deliveryTimeline: ans.deliveryTimeline,
       buyingIntent: ans.buyingIntent,
       contactTime: ans.contactTime,
       terminalType: ans.terminalType,
