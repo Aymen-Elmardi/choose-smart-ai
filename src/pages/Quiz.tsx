@@ -478,22 +478,34 @@ const Quiz = () => {
 
     setAnswers(updatedAnswers);
 
-    // For single-select questions, auto-advance
+    // For single-select questions, auto-advance (with delay if insight shown)
     if (!multiSelect) {
       const questions = getQuestions(updatedAnswers);
       const currentQuestionIndex = questions.findIndex((q) => q.id === questionId);
       const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
-      if (isLastQuestion) {
-        // OPTIMISTIC: Navigate immediately, save in background
-        navigate("/recommendation?fromQuiz=true");
-        // Prepare engine-compatible answers
-        const engineAnswers = prepareEngineAnswers(updatedAnswers);
-        sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
-        sessionStorage.setItem("quizMarket", market);
+      // Check if this answer triggers a micro-insight
+      const hasInsight = getActiveMicroInsight(questionId, option) !== null;
+      const advanceDelay = hasInsight ? 2500 : 0; // 2.5s delay to read insight
+
+      const advanceToNext = () => {
+        if (isLastQuestion) {
+          // OPTIMISTIC: Navigate immediately, save in background
+          navigate("/recommendation?fromQuiz=true");
+          // Prepare engine-compatible answers
+          const engineAnswers = prepareEngineAnswers(updatedAnswers);
+          sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
+          sessionStorage.setItem("quizMarket", market);
+        } else {
+          // OPTIMISTIC: Advance immediately
+          setCurrentStep((prev) => prev + 1);
+        }
+      };
+
+      if (advanceDelay > 0) {
+        setTimeout(advanceToNext, advanceDelay);
       } else {
-        // OPTIMISTIC: Advance immediately
-        setCurrentStep((prev) => prev + 1);
+        advanceToNext();
       }
     }
   };
