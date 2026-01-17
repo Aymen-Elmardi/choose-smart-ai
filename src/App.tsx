@@ -61,6 +61,11 @@ import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
 import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
 import CheckoutComEnterprisePlatform from "./pages/insights/CheckoutComEnterprisePlatform";
 
+// Crisis Intervention articles
+import CrisisHiddenFeeCrisis from "./pages/insights/crisis/HiddenFeeCrisis";
+import CrisisRejectedHighRisk from "./pages/insights/crisis/RejectedHighRiskStrategy";
+import CrisisStripeAccountFrozen from "./pages/insights/crisis/StripeAccountFrozen";
+
 // Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
 const Quiz = lazy(() => import("./pages/Quiz"));
@@ -164,6 +169,11 @@ const App = () => (
             <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
             <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
             <Route path="/insights/checkout-com-enterprise-platform" element={<CheckoutComEnterprisePlatform />} />
+            
+            {/* Crisis Intervention articles */}
+            <Route path="/insights/crisis/hidden-fee-crisis" element={<CrisisHiddenFeeCrisis />} />
+            <Route path="/insights/crisis/rejected-high-risk-strategy" element={<CrisisRejectedHighRisk />} />
+            <Route path="/insights/crisis/stripe-account-frozen" element={<CrisisStripeAccountFrozen />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

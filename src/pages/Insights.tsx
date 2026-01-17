@@ -6,7 +6,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { Search, ArrowRight, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers";
+type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis";
 
 interface Insight {
   title: string;
@@ -14,6 +14,8 @@ interface Insight {
   description: string;
   category: InsightCategory;
   readTime: string;
+  /** If true, the article uses /insights/crisis/ or /insights/provider/ URL structure */
+  isSubfolder?: boolean;
 }
 
 const featuredInsights: Record<InsightCategory, Insight> = {
@@ -23,6 +25,14 @@ const featuredInsights: Record<InsightCategory, Insight> = {
     description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction.",
     category: "risk",
     readTime: "6 min read"
+  },
+  crisis: {
+    title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze",
+    slug: "crisis/stripe-account-frozen",
+    description: "Funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider.",
+    category: "crisis",
+    readTime: "8 min read",
+    isSubfolder: true
   },
   risk: {
     title: "Stripe Account Frozen? 5 Hidden Reasons Why & How to Prevent the Next Freeze",
@@ -63,6 +73,7 @@ const featuredInsights: Record<InsightCategory, Insight> = {
 
 const filterTabs: { label: string; value: InsightCategory }[] = [
   { label: "All", value: "all" },
+  { label: "Crisis Intervention", value: "crisis" },
   { label: "Provider Deep Dives", value: "providers" },
   { label: "Risk & Freezes", value: "risk" },
   { label: "Guides", value: "guides" },
@@ -71,6 +82,32 @@ const filterTabs: { label: string; value: InsightCategory }[] = [
 ];
 
 const allInsights: Insight[] = [
+  // Crisis Intervention articles (new)
+  {
+    title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze",
+    slug: "crisis/stripe-account-frozen",
+    description: "Funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider.",
+    category: "crisis",
+    readTime: "8 min read",
+    isSubfolder: true
+  },
+  {
+    title: "Rejected by Stripe or Square? A Strategic Recovery Plan for High-Risk Merchants",
+    slug: "crisis/rejected-high-risk-strategy",
+    description: "Rejected by a major payment provider? Learn why the 'high-risk' label isn't a judgment—and how to find a provider that actually wants your business.",
+    category: "crisis",
+    readTime: "7 min read",
+    isSubfolder: true
+  },
+  {
+    title: "The Hidden Fee Crisis: How Your 'Low Rate' Processor is Costing You Thousands",
+    slug: "crisis/hidden-fee-crisis",
+    description: "Your headline rate isn't your real cost. Learn how to calculate your Effective Rate and uncover the 5 hidden fees quietly draining your profits.",
+    category: "crisis",
+    readTime: "6 min read",
+    isSubfolder: true
+  },
+  // Existing articles
   {
     title: "Understanding Proof of Business Activity Requests",
     slug: "proof-of-business-activity",
@@ -271,6 +308,7 @@ const allInsights: Insight[] = [
 
 const categoryLabels: Record<InsightCategory, string> = {
   all: "All",
+  crisis: "Crisis Intervention",
   risk: "Risk Alert",
   guides: "Guide",
   compliance: "Compliance",
