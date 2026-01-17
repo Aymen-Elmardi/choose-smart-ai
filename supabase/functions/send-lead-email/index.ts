@@ -1,7 +1,6 @@
 // ChosePayments Lead Email Function - Production Version
-// Last updated: 2025-01-16
+// Last updated: 2024-12-17
 // Recipient: hello@chosepayments.com (HARDCODED - DO NOT CHANGE)
-// Now includes all 11 quiz answers, match score, and report URL
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
@@ -19,44 +18,22 @@ const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
 const RATE_LIMIT_MAX_REQUESTS = 3; // Max 3 requests per minute per IP
 
 interface LeadEmailRequest {
-  // Contact Details (5 fields)
   fullName: string;
   email: string;
   phone?: string;
   businessName?: string;
   businessWebsite?: string;
-  
-  // All 11 Assessment Answers
-  salesChannel: string;
-  terminalType?: string;
+  recommendedProvider: string | null;
+  reasons?: string[];
+  logicPath: string;
   businessType: string;
+  salesChannel: string;
   monthlyVolume: string;
   avgTransaction: string;
+  international: string;
+  recurring: string;
   priorities: string[];
-  riskProfile: string;          // NEW - Q7
-  deliveryTimeline: string;     // NEW - Q8
-  industry: string;
-  location: string;
-  contactTime: string;
-  
-  // Legacy fields (for backwards compatibility)
-  international?: string;
-  recurring?: string;
-  region?: string;
-  logicPath?: string;
-  reasons?: string[];
-  
-  // Recommendation Context (NEW)
-  recommendedProvider: string | null;
-  matchScore?: number;
-  matchDrivers?: string[];
-  alternativeProviders?: string[];
-  
-  // Report Reference (NEW)
-  reportUrl?: string;
-  reportGeneratedAt?: string;
-  
-  // Meta
+  region: string;
   market: string;
   enrichment: EnrichmentData | null;
 }
@@ -127,28 +104,6 @@ const formatValue = (value: unknown): string => {
   if (typeof value === "boolean") return value ? "Yes" : "No";
   if (typeof value === "number") return value.toString();
   return escapeHtml(sanitizeString(value, 500));
-};
-
-// Map risk profile to display text
-const getRiskProfileDisplay = (riskProfile: string): string => {
-  switch (riskProfile) {
-    case 'low': return '🟢 Low Risk - Clean processing history';
-    case 'medium': return '🟡 Medium Risk - Minor processing challenges';
-    case 'high': return '🔴 High Risk - Significant processing challenges';
-    case 'unknown': return '⚪ Not Disclosed';
-    default: return riskProfile || 'Not provided';
-  }
-};
-
-// Map delivery timeline to display text
-const getTimelineDisplay = (timeline: string): string => {
-  switch (timeline) {
-    case 'urgent': return '🚀 Urgent - 1-2 days';
-    case 'standard': return '📅 Standard - 1-2 weeks';
-    case 'planned': return '📋 Planned - 1-3 months';
-    case 'exploring': return '🔍 Exploring options';
-    default: return timeline || 'Not provided';
-  }
 };
 
 // Check rate limit
@@ -224,52 +179,26 @@ const handler = async (req: Request): Promise<Response> => {
     
     // Sanitize all input data
     const data: LeadEmailRequest = {
-      // Contact Details
       fullName: sanitizeString(rawData.fullName, 100),
       email: sanitizeString(rawData.email, 254),
       phone: sanitizeString(rawData.phone, 20),
       businessName: sanitizeString(rawData.businessName, 200),
       businessWebsite: sanitizeString(rawData.businessWebsite, 500),
-      
-      // All 11 Assessment Answers
-      salesChannel: sanitizeString(rawData.salesChannel, 100),
-      terminalType: sanitizeString(rawData.terminalType, 100),
-      businessType: sanitizeString(rawData.businessType, 100),
-      monthlyVolume: sanitizeString(rawData.monthlyVolume, 50),
-      avgTransaction: sanitizeString(rawData.avgTransaction, 50),
-      priorities: Array.isArray(rawData.priorities)
-        ? rawData.priorities.slice(0, 10).map((p: unknown) => sanitizeString(p, 100))
-        : [],
-      riskProfile: sanitizeString(rawData.riskProfile, 50),
-      deliveryTimeline: sanitizeString(rawData.deliveryTimeline, 50),
-      industry: sanitizeString(rawData.industry, 100),
-      location: sanitizeString(rawData.location, 100),
-      contactTime: sanitizeString(rawData.contactTime, 50),
-      
-      // Legacy fields
-      international: sanitizeString(rawData.international, 20),
-      recurring: sanitizeString(rawData.recurring, 20),
-      region: sanitizeString(rawData.region, 50),
-      logicPath: sanitizeString(rawData.logicPath, 200),
+      recommendedProvider: sanitizeString(rawData.recommendedProvider, 100) || null,
       reasons: Array.isArray(rawData.reasons) 
         ? rawData.reasons.slice(0, 10).map((r: unknown) => sanitizeString(r, 200))
         : [],
-      
-      // Recommendation Context
-      recommendedProvider: sanitizeString(rawData.recommendedProvider, 100) || null,
-      matchScore: typeof rawData.matchScore === 'number' ? rawData.matchScore : undefined,
-      matchDrivers: Array.isArray(rawData.matchDrivers)
-        ? rawData.matchDrivers.slice(0, 5).map((d: unknown) => sanitizeString(d, 200))
+      logicPath: sanitizeString(rawData.logicPath, 200),
+      businessType: sanitizeString(rawData.businessType, 100),
+      salesChannel: sanitizeString(rawData.salesChannel, 100),
+      monthlyVolume: sanitizeString(rawData.monthlyVolume, 50),
+      avgTransaction: sanitizeString(rawData.avgTransaction, 50),
+      international: sanitizeString(rawData.international, 20),
+      recurring: sanitizeString(rawData.recurring, 20),
+      priorities: Array.isArray(rawData.priorities)
+        ? rawData.priorities.slice(0, 10).map((p: unknown) => sanitizeString(p, 100))
         : [],
-      alternativeProviders: Array.isArray(rawData.alternativeProviders)
-        ? rawData.alternativeProviders.slice(0, 3).map((p: unknown) => sanitizeString(p, 100))
-        : [],
-      
-      // Report Reference
-      reportUrl: sanitizeString(rawData.reportUrl, 500),
-      reportGeneratedAt: sanitizeString(rawData.reportGeneratedAt, 50),
-      
-      // Meta
+      region: sanitizeString(rawData.region, 50),
       market: sanitizeString(rawData.market, 10) || "UK",
       enrichment: rawData.enrichment || null,
     };
@@ -357,46 +286,9 @@ const handler = async (req: Request): Promise<Response> => {
     th { background: #f9fafb; font-weight: 600; color: #374151; width: 40%; }
     td { color: #4b5563; }
     .highlight { background: #eff6ff; }
-    .score-badge { 
-      display: inline-block; 
-      background: linear-gradient(135deg, #3b82f6, #2563eb); 
-      color: white; 
-      padding: 8px 16px; 
-      border-radius: 20px; 
-      font-weight: 600;
-      font-size: 18px;
-    }
     .reason-list { margin: 0; padding-left: 20px; }
     .reason-list li { margin: 5px 0; }
-    .driver-list { margin: 10px 0; padding-left: 20px; }
-    .driver-list li { margin: 8px 0; background: #f0f9ff; padding: 8px 12px; border-radius: 6px; list-style: none; margin-left: -20px; }
-    .alt-providers { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
-    .alt-badge { background: #f3f4f6; padding: 6px 12px; border-radius: 15px; font-size: 14px; }
-    .risk-badge { padding: 6px 12px; border-radius: 6px; display: inline-block; font-weight: 500; }
-    .risk-low { background: #ecfdf5; color: #059669; }
-    .risk-medium { background: #fffbeb; color: #d97706; }
-    .risk-high { background: #fef2f2; color: #dc2626; }
     .meta-section { background: #f3f4f6; padding: 15px; border-radius: 8px; margin-top: 30px; }
-    .report-link { 
-      display: inline-block; 
-      background: #3b82f6; 
-      color: white !important; 
-      padding: 12px 24px; 
-      border-radius: 8px; 
-      text-decoration: none; 
-      font-weight: 600;
-      margin: 15px 0;
-    }
-    .new-badge { 
-      background: #10b981; 
-      color: white; 
-      padding: 2px 8px; 
-      border-radius: 4px; 
-      font-size: 11px; 
-      font-weight: 600;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
   </style>
 </head>
 <body>
@@ -411,69 +303,32 @@ const handler = async (req: Request): Promise<Response> => {
     <tr><th>Business Website</th><td>${formatValue(data.businessWebsite)}</td></tr>
   </table>
 
-  <h2>2. Recommendation Summary</h2>
+  <h2>2. Recommendation Details</h2>
   <table>
-    <tr class="highlight">
-      <th>Recommended Provider</th>
-      <td><strong>${escapeHtml(providerName)}</strong></td>
-    </tr>
-    <tr class="highlight">
-      <th>Match Score</th>
-      <td><span class="score-badge">${data.matchScore !== undefined ? `${data.matchScore}%` : 'N/A'}</span></td>
-    </tr>
-    <tr><th>Market</th><td><strong>${formatValue(data.market)}</strong></td></tr>
+    <tr class="highlight"><th>Recommended Provider</th><td><strong>${escapeHtml(providerName)}</strong></td></tr>
+    <tr class="highlight"><th>Market</th><td><strong>${formatValue(data.market)}</strong></td></tr>
+    <tr><th>Logic Path</th><td>${formatValue(data.logicPath)}</td></tr>
   </table>
-  
-  ${data.matchDrivers && data.matchDrivers.length > 0 ? `
-  <p><strong>Match Drivers:</strong></p>
-  <ul class="driver-list">
-    ${data.matchDrivers.map(d => `<li>✓ ${escapeHtml(d)}</li>`).join("")}
-  </ul>
-  ` : ""}
-  
-  ${data.alternativeProviders && data.alternativeProviders.length > 0 ? `
-  <p><strong>Alternative Providers:</strong></p>
-  <div class="alt-providers">
-    ${data.alternativeProviders.map(p => `<span class="alt-badge">${escapeHtml(p)}</span>`).join("")}
-  </div>
-  ` : ""}
-
-  ${data.reportUrl ? `
-  <h2>3. Personalized Report <span class="new-badge">NEW</span></h2>
-  <p>A personalized payment report has been generated for this lead:</p>
-  <a href="${escapeHtml(data.reportUrl)}" class="report-link">View/Download Report</a>
-  <p style="font-size: 13px; color: #6b7280;">Generated: ${data.reportGeneratedAt || 'N/A'}</p>
-  ` : ""}
-
-  <h2>${data.reportUrl ? '4' : '3'}. Complete Quiz Answers (11 Questions)</h2>
-  <table>
-    <tr><th>Q1: Sales Channel</th><td>${formatValue(data.salesChannel)}</td></tr>
-    ${data.terminalType ? `<tr><th>Q2: Terminal Type</th><td>${formatValue(data.terminalType)}</td></tr>` : ''}
-    <tr><th>Q3: Business Type</th><td>${formatValue(data.businessType)}</td></tr>
-    <tr><th>Q4: Monthly Volume</th><td>${formatValue(data.monthlyVolume)}</td></tr>
-    <tr><th>Q5: Avg Transaction</th><td>${formatValue(data.avgTransaction)}</td></tr>
-    <tr><th>Q6: Priorities</th><td>${formatValue(data.priorities)}</td></tr>
-    <tr class="highlight">
-      <th>Q7: Risk Profile <span class="new-badge">NEW</span></th>
-      <td>${getRiskProfileDisplay(data.riskProfile)}</td>
-    </tr>
-    <tr class="highlight">
-      <th>Q8: Delivery Timeline <span class="new-badge">NEW</span></th>
-      <td>${getTimelineDisplay(data.deliveryTimeline)}</td>
-    </tr>
-    <tr><th>Q9: Industry</th><td>${formatValue(data.industry)}</td></tr>
-    <tr><th>Q10: Location</th><td>${formatValue(data.location)}</td></tr>
-    <tr><th>Q11: Contact Time</th><td>${formatValue(data.contactTime)}</td></tr>
-  </table>
-
   ${data.reasons && data.reasons.length > 0 ? `
-  <p><strong>Legacy Reasons for Recommendation:</strong></p>
+  <p><strong>Reasons for Recommendation:</strong></p>
   <ul class="reason-list">
     ${data.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join("")}
   </ul>
   ` : ""}
 
-  <h2>${data.reportUrl ? '5' : '4'}. Enrichment Data</h2>
+  <h2>3. Quiz Answers</h2>
+  <table>
+    <tr><th>Business Type</th><td>${formatValue(data.businessType)}</td></tr>
+    <tr><th>Selling Channel</th><td>${formatValue(data.salesChannel)}</td></tr>
+    <tr><th>Monthly Card Volume</th><td>${formatValue(data.monthlyVolume)}</td></tr>
+    <tr><th>Average Transaction Value</th><td>${formatValue(data.avgTransaction)}</td></tr>
+    <tr><th>Accepts International Customers</th><td>${formatValue(data.international)}</td></tr>
+    <tr><th>Needs Recurring Billing</th><td>${formatValue(data.recurring)}</td></tr>
+    <tr><th>Region</th><td>${formatValue(data.region)}</td></tr>
+    <tr><th>User Priorities</th><td>${formatValue(data.priorities)}</td></tr>
+  </table>
+
+  <h2>4. Enrichment Data</h2>
   <table>
     <tr><th>Device Type</th><td>${formatValue(enrichment.deviceType)}</td></tr>
     <tr><th>Operating System</th><td>${formatValue(enrichment.operatingSystem)}</td></tr>
@@ -505,7 +360,7 @@ const handler = async (req: Request): Promise<Response> => {
   </table>
 
   <div class="meta-section">
-    <h2 style="margin-top: 0;">${data.reportUrl ? '6' : '5'}. Meta</h2>
+    <h2 style="margin-top: 0;">5. Meta</h2>
     <table>
       <tr><th>Submission Timestamp</th><td>${submissionTimestamp}</td></tr>
       <tr><th>Session ID</th><td>${sessionId}</td></tr>
@@ -522,7 +377,7 @@ const handler = async (req: Request): Promise<Response> => {
     const emailResponse = await resend.emails.send({
       from: "ChosePayments <leads@chosepayments.com>",
       to: "hello@chosepayments.com",
-      subject: `New Lead – ${escapeHtml(providerName)} (${data.matchScore !== undefined ? `${data.matchScore}% Match` : 'Quiz Complete'})`,
+      subject: `New ChosePayments Lead – ${escapeHtml(providerName)}`,
       html: emailHtml,
     });
 

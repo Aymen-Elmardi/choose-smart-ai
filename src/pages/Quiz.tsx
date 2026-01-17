@@ -686,10 +686,10 @@ const Quiz = () => {
                         : "border-border bg-card"
                     )}
                   >
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-center gap-3">
                       <div
                         className={cn(
-                          "w-5 h-5 min-w-5 min-h-5 flex-shrink-0 rounded-full border-2 flex items-center justify-center transition-colors mt-0.5",
+                          "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors",
                           isSelected
                             ? "border-primary bg-primary"
                             : "border-muted-foreground/30"
