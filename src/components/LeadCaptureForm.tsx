@@ -18,13 +18,6 @@ interface QuizAnswers {
   monthlyVolume: string;
   avgTransaction: string;
   features: string[];
-  // Additional fields from quiz
-  industry?: string;
-  contactTime?: string;
-  terminalType?: string;
-  // NEW: Risk-critical fields
-  riskProfile?: string;
-  deliveryTimeline?: string;
 }
 
 export interface LeadFormData {
@@ -34,7 +27,7 @@ export interface LeadFormData {
   phone: string;
   businessWebsite: string;
   businessName: string;
-  // Hidden fields from quiz (11 answers total)
+  // Hidden fields from quiz
   businessType: string;
   monthlyVolume: string;
   avgTransaction: string;
@@ -43,20 +36,8 @@ export interface LeadFormData {
   recurringBilling: string;
   international: string;
   priorities: string[];
-  industry: string;
-  contactTime: string;
-  terminalType: string;
-  // NEW: Risk-critical fields
-  riskProfile: string;
-  deliveryTimeline: string;
-  // Recommendation context
   recommendedProvider: string;
   logicPath: string;
-  matchScore: number;
-  matchDrivers: string[];
-  alternativeProviders: string[];
-  // Report reference
-  reportUrl: string;
   // Enrichment data (hidden)
   enrichment: EnrichmentData | null;
 }
@@ -66,18 +47,15 @@ interface LeadCaptureFormProps {
   recommendedProvider: string | null;
   recommendationReasons?: string[];
   logicPath?: string;
-  matchScore?: number;
-  alternativeProviders?: string[];
 }
 
 export interface LeadCaptureFormRef {
   getFormData: () => LeadFormData;
   validate: () => { isValid: boolean; errors: string[] };
-  setReportUrl: (url: string) => void;
 }
 
 const LeadCaptureForm = forwardRef<LeadCaptureFormRef, LeadCaptureFormProps>(
-  ({ quizAnswers, recommendedProvider, recommendationReasons, logicPath = "standard", matchScore = 0, alternativeProviders = [] }, ref) => {
+  ({ quizAnswers, recommendedProvider, recommendationReasons, logicPath = "standard" }, ref) => {
     const { enrichmentData, updateFormSignals, refreshTimingData } = useEnrichmentData();
     
     const [formData, setFormData] = useState<LeadFormData>({
@@ -95,20 +73,8 @@ const LeadCaptureForm = forwardRef<LeadCaptureFormRef, LeadCaptureFormProps>(
       recurringBilling: quizAnswers?.features?.includes("Subscriptions / recurring billing") ? "Yes" : "No",
       international: quizAnswers?.features?.includes("International customers") ? "Yes" : "No",
       priorities: quizAnswers?.priorities || [],
-      industry: quizAnswers?.industry || "",
-      contactTime: quizAnswers?.contactTime || "",
-      terminalType: quizAnswers?.terminalType || "",
-      // NEW: Risk-critical fields
-      riskProfile: quizAnswers?.riskProfile || "",
-      deliveryTimeline: quizAnswers?.deliveryTimeline || "",
-      // Recommendation context
       recommendedProvider: recommendedProvider || "",
       logicPath: logicPath,
-      matchScore: matchScore,
-      matchDrivers: recommendationReasons || [],
-      alternativeProviders: alternativeProviders,
-      // Report reference
-      reportUrl: "",
       // Enrichment data
       enrichment: null,
     });
@@ -134,9 +100,6 @@ const LeadCaptureForm = forwardRef<LeadCaptureFormRef, LeadCaptureFormProps>(
         }
         return { isValid: errors.length === 0, errors };
       },
-      setReportUrl: (url: string) => {
-        setFormData(prev => ({ ...prev, reportUrl: url }));
-      },
     }));
 
     // NOTE: No auto-focus on page load (prevents scroll jumps + mobile keyboard opening).
@@ -155,19 +118,11 @@ const LeadCaptureForm = forwardRef<LeadCaptureFormRef, LeadCaptureFormProps>(
           recurringBilling: quizAnswers.features?.includes("Subscriptions / recurring billing") ? "Yes" : "No",
           international: quizAnswers.features?.includes("International customers") ? "Yes" : "No",
           priorities: quizAnswers.priorities,
-          industry: quizAnswers.industry || "",
-          contactTime: quizAnswers.contactTime || "",
-          terminalType: quizAnswers.terminalType || "",
-          riskProfile: quizAnswers.riskProfile || "",
-          deliveryTimeline: quizAnswers.deliveryTimeline || "",
           recommendedProvider: recommendedProvider || "",
           logicPath: logicPath,
-          matchScore: matchScore,
-          matchDrivers: recommendationReasons || [],
-          alternativeProviders: alternativeProviders,
         }));
       }
-    }, [quizAnswers, recommendedProvider, logicPath, matchScore, recommendationReasons, alternativeProviders]);
+    }, [quizAnswers, recommendedProvider, logicPath]);
 
     // Update enrichment data continuously
     useEffect(() => {

@@ -25,9 +25,6 @@ interface QuizAnswers {
   industry: string;
   buyingIntent: string;
   contactTime: string;
-  // NEW: Risk-critical fields
-  riskProfile: string;
-  deliveryTimeline: string;
 }
 
 const INITIAL_ANSWERS: QuizAnswers = {
@@ -45,9 +42,6 @@ const INITIAL_ANSWERS: QuizAnswers = {
   industry: "",
   buyingIntent: "",
   contactTime: "",
-  // NEW fields
-  riskProfile: "",
-  deliveryTimeline: "",
 };
 
 // Industry options for dropdown - neutral naming, maps to engine risk keys
@@ -162,31 +156,7 @@ const getQuestions = (answers: QuizAnswers): Question[] => {
     ],
   });
 
-  // Q7: Risk Profile (NEW)
-  questions.push({
-    id: "riskProfile",
-    question: "Has your business previously experienced any payment processing challenges?",
-    options: [
-      "No issues - new or stable processing history",
-      "Minor issues - occasional disputes or chargebacks",
-      "Significant issues - account freezes, terminations, or high chargebacks",
-      "Not sure / prefer not to say",
-    ],
-  });
-
-  // Q8: Delivery Timeline (NEW - replaces buyingIntent)
-  questions.push({
-    id: "deliveryTimeline",
-    question: "How quickly do you need to start accepting payments?",
-    options: [
-      "Immediately - within 1-2 days",
-      "Within 1-2 weeks",
-      "Within 1-3 months",
-      "No rush - exploring options",
-    ],
-  });
-
-  // Q9: Industry (dropdown, always)
+  // Q6: Industry (dropdown, always)
   questions.push({
     id: "industry",
     question: "What industry best describes your business?",
@@ -194,14 +164,25 @@ const getQuestions = (answers: QuizAnswers): Question[] => {
     dropdownOptions: INDUSTRY_OPTIONS,
   });
 
-  // Q10: Business Location (always)
+  // Q7: Buying Intent (always)
+  questions.push({
+    id: "buyingIntent",
+    question: "When are you looking to move forward?",
+    options: [
+      "Ready to move now",
+      "In the next 1–3 months",
+      "Just exploring options",
+    ],
+  });
+
+  // Q8: Business Location (always)
   questions.push({
     id: "location",
     question: "Where is your business based?",
     options: ["UK", "EU", "UK and EU"],
   });
 
-  // Q11: Best Time to Contact (always)
+  // Q9: Best Time to Contact (always)
   questions.push({
     id: "contactTime",
     question: "When is the best time to contact you?",
@@ -321,38 +302,6 @@ const mapAvgTransaction = (option: string): string => {
       return "£500+";
     default:
       return "£30–100";
-  }
-};
-
-// Map risk profile to engine format
-const mapRiskProfile = (option: string): string => {
-  switch (option) {
-    case "No issues - new or stable processing history":
-      return "low";
-    case "Minor issues - occasional disputes or chargebacks":
-      return "medium";
-    case "Significant issues - account freezes, terminations, or high chargebacks":
-      return "high";
-    case "Not sure / prefer not to say":
-      return "unknown";
-    default:
-      return "unknown";
-  }
-};
-
-// Map delivery timeline to engine format
-const mapDeliveryTimeline = (option: string): string => {
-  switch (option) {
-    case "Immediately - within 1-2 days":
-      return "urgent";
-    case "Within 1-2 weeks":
-      return "standard";
-    case "Within 1-3 months":
-      return "planned";
-    case "No rush - exploring options":
-      return "exploring";
-    default:
-      return "exploring";
   }
 };
 
@@ -531,9 +480,6 @@ const Quiz = () => {
       buyingIntent: ans.buyingIntent,
       contactTime: ans.contactTime,
       terminalType: ans.terminalType,
-      // NEW: Risk-critical fields
-      riskProfile: mapRiskProfile(ans.riskProfile),
-      deliveryTimeline: mapDeliveryTimeline(ans.deliveryTimeline),
     };
   };
 

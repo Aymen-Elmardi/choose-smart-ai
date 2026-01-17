@@ -1,18 +1,16 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { CreditCard, Check, MessageCircle, ArrowRight, Loader2, CheckCircle2, Mail, FileText, Download } from "lucide-react";
+import { CreditCard, Check, MessageCircle, ArrowRight, Loader2, CheckCircle2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import LeadCaptureForm, { LeadCaptureFormRef } from "@/components/LeadCaptureForm";
-import MatchScoreCard from "@/components/MatchScoreCard";
 import { supabase } from "@/integrations/supabase/client";
 import QuizLoadingTransition from "@/components/QuizLoadingTransition";
-import { getRecommendation, calculateMatchScore, type QuizAnswers, type Provider, type Market } from "@/lib/recommendationLogic";
+import { getRecommendation, type QuizAnswers, type Provider, type Market } from "@/lib/recommendationLogic";
 import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
 import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
-
 const readStoredAnswers = (): QuizAnswers | null => {
   try {
     const raw = sessionStorage.getItem("quizAnswers");
@@ -32,13 +30,6 @@ const readStoredAnswers = (): QuizAnswers | null => {
       features: Array.isArray(parsed.features)
         ? parsed.features.filter((f): f is string => typeof f === "string")
         : [],
-      // Additional fields
-      industry: typeof parsed.industry === "string" ? parsed.industry : "",
-      contactTime: typeof parsed.contactTime === "string" ? parsed.contactTime : "",
-      terminalType: typeof parsed.terminalType === "string" ? parsed.terminalType : "",
-      // NEW: Risk-critical fields
-      riskProfile: typeof parsed.riskProfile === "string" ? parsed.riskProfile : "",
-      deliveryTimeline: typeof parsed.deliveryTimeline === "string" ? parsed.deliveryTimeline : "",
     };
   } catch {
     return null;
@@ -76,11 +67,8 @@ const Recommendation = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isProviderNotified, setIsProviderNotified] = useState(false);
   const [isConfirmationSent, setIsConfirmationSent] = useState(false);
-  const [isReportGenerated, setIsReportGenerated] = useState(false);
-  const [reportUrl, setReportUrl] = useState<string | null>(null);
   const [recommendation, setRecommendation] = useState<Provider | null>(null);
-  const [alternatives, setAlternatives] = useState<Provider[]>([]);
-  const [matchScore, setMatchScore] = useState<number>(85);
+  const [, setAlternatives] = useState<Provider[]>([]); // kept for backend compatibility
   const [isLoadingRecommendation, setIsLoadingRecommendation] = useState(true);
   const [backgroundError, setBackgroundError] = useState<string | null>(null);
   const formRef = useRef<LeadCaptureFormRef>(null);
@@ -109,27 +97,16 @@ const Recommendation = () => {
       if (primary) {
         setRecommendation(primary);
         setAlternatives(alts);
-        // Calculate match score
-        const score = primary.matchScore || calculateMatchScore(primary, answers);
-        setMatchScore(score);
       } else if (!fromServer) {
         // Fallback to client-side logic if server is unavailable
         const clientRec = getRecommendation(answers, market);
         setRecommendation(clientRec);
-        if (clientRec) {
-          const score = clientRec.matchScore || calculateMatchScore(clientRec, answers);
-          setMatchScore(score);
-        }
       }
     } catch (err) {
       console.error("Recommendation fetch error:", err);
       // Fallback to client-side logic
       const clientRec = getRecommendation(answers, market);
       setRecommendation(clientRec);
-      if (clientRec) {
-        const score = clientRec.matchScore || calculateMatchScore(clientRec, answers);
-        setMatchScore(score);
-      }
     } finally {
       setIsLoadingRecommendation(false);
     }
@@ -192,40 +169,8 @@ const Recommendation = () => {
       return;
     }
 
-    setIsSubmitting(true);
-
     const formData = formRef.current.getFormData();
     
-    // STEP 1: Generate PDF Report
-    let generatedReportUrl = "";
-    try {
-      const { data: reportData, error: reportError } = await supabase.functions.invoke("generate-payment-report", {
-        body: {
-          fullName: formData.fullName,
-          businessName: formData.businessName,
-          answers: answers,
-          recommendation: recommendation ? {
-            name: recommendation.name,
-            description: recommendation.description,
-            reasons: recommendation.reasons,
-          } : null,
-          matchScore: matchScore,
-          alternatives: alternatives.map(alt => ({ name: alt.name, reasons: alt.reasons.slice(0, 2) })),
-          market: market,
-        },
-      });
-
-      if (!reportError && reportData?.success && reportData?.reportUrl) {
-        generatedReportUrl = reportData.reportUrl;
-        setReportUrl(generatedReportUrl);
-        setIsReportGenerated(true);
-        formRef.current.setReportUrl(generatedReportUrl);
-      }
-    } catch (reportErr) {
-      console.error("Report generation error:", reportErr);
-      // Continue without report - not a blocker
-    }
-
     // OPTIMISTIC: Show success immediately, send data in background
     setIsSubmitted(true);
     setBackgroundError(null);
@@ -233,23 +178,12 @@ const Recommendation = () => {
     // Extract first name from full name
     const firstName = formData.fullName.trim().split(/\s+/)[0] || formData.fullName;
 
-    // STEP 2: Send lead data to CRM with comprehensive payload
+    // Send data to backend in background
     const payload = {
       ...formData,
       reasons: recommendation?.reasons || [],
       recurring: formData.recurringBilling,
       market: market,
-      // Include match score and report URL
-      matchScore: matchScore,
-      matchDrivers: recommendation?.reasons || [],
-      alternativeProviders: alternatives.map(alt => alt.name),
-      reportUrl: generatedReportUrl,
-      // Include all 11 quiz answers
-      riskProfile: answers.riskProfile || "",
-      deliveryTimeline: answers.deliveryTimeline || "",
-      industry: answers.industry || "",
-      contactTime: answers.contactTime || "",
-      terminalType: answers.terminalType || "",
     };
 
     try {
@@ -267,14 +201,12 @@ const Recommendation = () => {
       // Mark provider as notified
       setIsProviderNotified(true);
 
-      // STEP 3: Send confirmation email to user with report link
+      // Send confirmation email to user
       try {
         const { data: confirmData, error: confirmError } = await supabase.functions.invoke("send-confirmation-email", {
           body: {
             email: formData.email,
             firstName: firstName,
-            reportUrl: generatedReportUrl,
-            providerName: recommendation?.name || "our team",
           },
         });
 
@@ -291,8 +223,6 @@ const Recommendation = () => {
       setBackgroundError("We're just double-checking your details. One moment.");
       // Clear the error after a few seconds
       setTimeout(() => setBackgroundError(null), 5000);
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -330,49 +260,21 @@ const Recommendation = () => {
         {recommendation && (
           <>
             {isSubmitted ? (
-              /* Post-submit: Show confirmation with report download */
+              /* Post-submit: Only show confirmation - no provider branding */
               <Card className="border border-primary/30 bg-primary/5 animate-fade-up animation-delay-100">
                 <CardContent className="p-8 md:p-10 text-center">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
                     <Check className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-2xl font-semibold text-foreground mb-3">
-                    Your report is on its way!
+                    We've identified the right option for your business.
                   </h3>
                   <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
-                    Check your inbox for your personalized payment report. {recommendation.name} will be in touch shortly to discuss next steps.
+                    Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
                   </p>
-                  
-                  {/* Report Download Button */}
-                  {reportUrl && (
-                    <div className="mb-6">
-                      <Button 
-                        variant="outline" 
-                        size="lg"
-                        onClick={() => window.open(reportUrl, '_blank')}
-                        className="gap-2"
-                      >
-                        <Download className="w-5 h-5" />
-                        Download Your Report
-                      </Button>
-                    </div>
-                  )}
                   
                   {/* Verification Indicators */}
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
-                    <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
-                      isReportGenerated 
-                        ? 'bg-primary/10 text-primary' 
-                        : 'bg-muted text-muted-foreground'
-                    }`}>
-                      {isReportGenerated ? (
-                        <FileText className="w-4 h-4" />
-                      ) : (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      )}
-                      <span>{isReportGenerated ? 'Report generated' : 'Generating report...'}</span>
-                    </div>
-                    
                     <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
                       isProviderNotified 
                         ? 'bg-primary/10 text-primary' 
@@ -383,7 +285,7 @@ const Recommendation = () => {
                       ) : (
                         <Loader2 className="w-4 h-4 animate-spin" />
                       )}
-                      <span>{isProviderNotified ? `${recommendation.name} notified` : 'Notifying provider...'}</span>
+                      <span>{isProviderNotified ? 'Provider notified' : 'Notifying provider...'}</span>
                     </div>
                     
                     <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
@@ -400,11 +302,6 @@ const Recommendation = () => {
                     </div>
                   </div>
                   
-                  {/* Expected contact timeframe */}
-                  <p className="mt-6 text-sm text-muted-foreground">
-                    Expect a call from {recommendation.name} within 24-48 hours
-                  </p>
-                  
                   {backgroundError && (
                     <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
                       {backgroundError}
@@ -413,47 +310,49 @@ const Recommendation = () => {
                 </CardContent>
               </Card>
             ) : (
-              /* Pre-submit: Show match score card and form */
+              /* Pre-submit: Show provider details and form */
               <>
-                {/* Report Ready Header */}
-                <div className="text-center mb-8 animate-fade-up">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4">
-                    <FileText className="w-8 h-8 text-primary" />
-                  </div>
-                  <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-                    Your Personalized Payment Risk & Pricing Report is Ready
-                  </h1>
-                  <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-                    Based on your 11 assessment answers, we've generated a detailed report including your risk profile, pricing estimates, and match score.
-                  </p>
-                </div>
+                <Card className="border-2 border-primary/20 shadow-elegant animate-fade-up animation-delay-100">
+                  <CardContent className="p-8 md:p-10">
+                    <div className="text-center mb-8">
+                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4">
+                        <CreditCard className="w-8 h-8 text-primary" />
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                        {recommendation.name}
+                      </h2>
+                      <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+                        {recommendation.description}
+                      </p>
+                    </div>
 
-                {/* Match Score Card */}
-                <div className="mb-8 animate-fade-up animation-delay-100">
-                  <MatchScoreCard 
-                    matchScore={matchScore}
-                    providerName={recommendation.name}
-                    matchDrivers={recommendation.reasons}
-                  />
-                </div>
-
-                {/* Provider Details */}
-                <Card className="border border-border/50 mb-8 animate-fade-up animation-delay-150">
-                  <CardContent className="p-6 md:p-8">
-                    <p className="text-muted-foreground text-center">
-                      {recommendation.description}
-                    </p>
+                    <div className="bg-muted/50 rounded-xl p-6 md:p-8">
+                      <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
+                        Why {recommendation.name} is right for you
+                      </h3>
+                      <ul className="space-y-3">
+                        {recommendation.reasons.map((reason, index) => (
+                          <li key={index} className="flex items-start gap-3">
+                            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
+                              <Check className="w-3 h-3 text-primary" />
+                            </div>
+                            <span className="text-foreground">{reason}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </CardContent>
                 </Card>
 
-                {/* Lead Capture Form - Report Gate */}
-                <div className="animate-fade-up animation-delay-200">
+
+                {/* Lead Capture Form - Below Recommendation */}
+                <div className="mt-10 animate-fade-up animation-delay-150">
                   <div className="text-center mb-6">
                     <h3 className="text-xl font-semibold text-foreground mb-2">
-                      Enter your details to receive your report
+                      Get connected to {recommendation.name}
                     </h3>
                     <p className="text-muted-foreground max-w-md mx-auto">
-                      Your personalized PDF report will be sent to your email within 60 seconds. We'll also share your details with <strong>{recommendation.name}</strong> so they can reach out to discuss your specific needs.
+                      If you'd like us to connect you to this provider, just share your contact details below. We already have your business information from your answers.
                     </p>
                   </div>
 
@@ -465,17 +364,7 @@ const Recommendation = () => {
                         recommendedProvider={recommendation.name}
                         recommendationReasons={recommendation.reasons}
                         logicPath="recommendation"
-                        matchScore={matchScore}
-                        alternativeProviders={alternatives.map(alt => alt.name)}
                       />
-
-                      {/* Disclosure Notice */}
-                      <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-                        <p className="text-sm text-muted-foreground flex items-start gap-2">
-                          <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                          <span>By submitting, you agree that we may share your details with your matched provider to help you get started faster.</span>
-                        </p>
-                      </div>
 
                       {/* Primary CTA */}
                       <div className="mt-8 text-center">
@@ -488,15 +377,18 @@ const Recommendation = () => {
                           {isSubmitting ? (
                             <>
                               <Loader2 className="w-5 h-5 animate-spin" />
-                              Generating Report...
+                              Sending...
                             </>
                           ) : (
                             <>
-                              Send My Report
+                              Connect me to this provider
                               <ArrowRight className="w-5 h-5" />
                             </>
                           )}
                         </Button>
+                        <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
+                          We'll share your details along with the context from your answers, so the provider can respond more accurately.
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -510,17 +402,17 @@ const Recommendation = () => {
         {showNoMatch && (
           <>
             {isSubmitted ? (
-              /* Post-submit: Show confirmation */
+              /* Post-submit: Only show confirmation - no provider branding */
               <Card className="border border-primary/30 bg-primary/5 animate-fade-up animation-delay-100">
                 <CardContent className="p-8 md:p-10 text-center">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
                     <Check className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-2xl font-semibold text-foreground mb-3">
-                    We've received your details
+                    We've identified the right option for your business.
                   </h3>
                   <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
-                    One of our payment experts will review your requirements and be in touch within 24 hours.
+                    Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
                   </p>
                   
                   {/* Verification Indicators */}
@@ -535,7 +427,7 @@ const Recommendation = () => {
                       ) : (
                         <Loader2 className="w-4 h-4 animate-spin" />
                       )}
-                      <span>{isProviderNotified ? 'Expert notified' : 'Notifying expert...'}</span>
+                      <span>{isProviderNotified ? 'Provider notified' : 'Notifying provider...'}</span>
                     </div>
                     
                     <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
@@ -585,7 +477,7 @@ const Recommendation = () => {
                       Let us help you find the right fit
                     </h3>
                     <p className="text-muted-foreground max-w-md mx-auto">
-                      Share your details and one of our experts will reach out to discuss your specific requirements.
+                      If you'd like us to connect you with a payment expert, just share your contact details below. We already have your business information from your answers.
                     </p>
                   </div>
 
@@ -596,8 +488,6 @@ const Recommendation = () => {
                         quizAnswers={answers}
                         recommendedProvider={null}
                         logicPath="fallback"
-                        matchScore={0}
-                        alternativeProviders={[]}
                       />
 
                       {/* Fallback CTA */}
@@ -621,7 +511,7 @@ const Recommendation = () => {
                           )}
                         </Button>
                         <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
-                          We'll share your details along with the context from your answers.
+                          We'll share your details along with the context from your answers, so the provider can respond more accurately.
                         </p>
                       </div>
                     </CardContent>
