@@ -199,6 +199,18 @@ const InterchangePlusPlus = () => {
         <li>Whether you genuinely qualify for Interchange++ pricing.</li>
         <li>How to present your business to a provider to ensure you get the best possible margin.</li>
       </ol>
+
+      <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
+        Stop Guessing. Get Your Personalized Risk & Pricing Report.
+      </h2>
+
+      <p className="mb-4">
+        If you want to understand if Interchange++ is realistic for your business, and which providers will actually approve you for it, the next step isn't reading another pricing table.
+      </p>
+
+      <p className="mb-8">
+        It's completing a 60-second assessment that reflects how your business actually operates. That is the only place where transparent pricing decisions begin.
+      </p>
     </InsightsArticleLayout>
   );
 };
