@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { markQuizStart, initializeSessionTracking } from "@/hooks/useEnrichmentData";
 import type { Market } from "@/lib/recommendationLogic";
-import MicroInsight from "@/components/MicroInsight";
+import InsightTransition from "@/components/InsightTransition";
 
 // Micro-insights configuration - displayed based on user selections
 type MicroInsightConfig = {
@@ -399,6 +399,11 @@ const Quiz = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_ANSWERS);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  
+  // Insight transition state
+  const [showInsightTransition, setShowInsightTransition] = useState(false);
+  const [pendingInsightText, setPendingInsightText] = useState<string | null>(null);
+  const [pendingAdvance, setPendingAdvance] = useState<(() => void) | null>(null);
 
   // Detect market based on referrer path (if coming from /us page)
   const [market] = useState<Market>(() => {
@@ -498,11 +503,10 @@ const Quiz = () => {
 
     setAnswers(updatedAnswers);
 
-    // For single-select questions, auto-advance (with delay if insight shown)
+    // For single-select questions, auto-advance (with insight transition if applicable)
     if (!multiSelect) {
       // Check if this answer triggers a micro-insight
-      const hasInsight = getActiveMicroInsight(questionId, option) !== null;
-      const advanceDelay = hasInsight ? 4000 : 0; // 4s delay to read insight
+      const insightText = getActiveMicroInsight(questionId, option);
 
       const advanceToNext = () => {
         // Recalculate questions based on the updated answers to ensure correct navigation
@@ -525,8 +529,11 @@ const Quiz = () => {
         }
       };
 
-      if (advanceDelay > 0) {
-        setTimeout(advanceToNext, advanceDelay);
+      if (insightText) {
+        // Show insight transition screen instead of inline delay
+        setPendingInsightText(insightText);
+        setPendingAdvance(() => advanceToNext);
+        setShowInsightTransition(true);
       } else {
         advanceToNext();
       }
@@ -625,6 +632,16 @@ const Quiz = () => {
     return !!answer;
   };
 
+  // Handle insight transition continue
+  const handleInsightContinue = useCallback(() => {
+    setShowInsightTransition(false);
+    if (pendingAdvance) {
+      pendingAdvance();
+      setPendingAdvance(null);
+    }
+    setPendingInsightText(null);
+  }, [pendingAdvance]);
+
   // Question Screens
   const questions = getQuestions(answers);
   const question = questions[currentStep - 1];
@@ -636,6 +653,17 @@ const Quiz = () => {
   }
 
   const currentAnswer = answers[question.id as keyof QuizAnswers];
+
+  // Show insight transition screen if active
+  if (showInsightTransition && pendingInsightText) {
+    return (
+      <InsightTransition
+        text={pendingInsightText}
+        onContinue={handleInsightContinue}
+        autoAdvanceDelay={4000}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -750,11 +778,7 @@ const Quiz = () => {
             </div>
           )}
 
-          {/* Micro-Insight display */}
-          {(() => {
-            const insightText = getActiveMicroInsight(question.id, currentAnswer as string | string[]);
-            return insightText ? <MicroInsight text={insightText} /> : null;
-          })()}
+          {/* Micro-insights are now shown in InsightTransition screen */}
 
           {question.multiSelect && (
             <div className="mt-8 text-center">
