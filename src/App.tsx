@@ -56,7 +56,7 @@ import SameDaySettlementAndInstantPayouts from "./pages/insights/SameDaySettleme
 import TRAExemption from "./pages/insights/TRAExemption";
 import WhatToDoWhenProviderAsksForDocuments from "./pages/insights/WhatToDoWhenProviderAsksForDocuments";
 import Chargebacks from "./pages/insights/Chargebacks";
-import StripeAccountFrozenGuide from "./pages/insights/StripeAccountFrozenGuide";
+
 import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
 import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
 import CheckoutComEnterprisePlatform from "./pages/insights/CheckoutComEnterprisePlatform";
@@ -169,7 +169,7 @@ const App = () => (
             <Route path="/insights/what-to-do-when-provider-asks-for-documents" element={<WhatToDoWhenProviderAsksForDocuments />} />
             <Route path="/insights/tra-exemption-reduces-payment-friction" element={<TRAExemption />} />
             <Route path="/insights/chargebacks-what-they-are-and-how-to-avoid-them" element={<Chargebacks />} />
-            <Route path="/insights/stripe-account-frozen-guide" element={<StripeAccountFrozenGuide />} />
+            
             <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
             <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
             <Route path="/insights/checkout-com-enterprise-platform" element={<CheckoutComEnterprisePlatform />} />
