@@ -499,15 +499,16 @@ const Quiz = () => {
 
     // For single-select questions, auto-advance (with delay if insight shown)
     if (!multiSelect) {
-      const questions = getQuestions(updatedAnswers);
-      const currentQuestionIndex = questions.findIndex((q) => q.id === questionId);
-      const isLastQuestion = currentQuestionIndex === questions.length - 1;
-
       // Check if this answer triggers a micro-insight
       const hasInsight = getActiveMicroInsight(questionId, option) !== null;
       const advanceDelay = hasInsight ? 4000 : 0; // 4s delay to read insight
 
       const advanceToNext = () => {
+        // Recalculate questions based on the updated answers to ensure correct navigation
+        const questions = getQuestions(updatedAnswers);
+        const currentQuestionIndex = questions.findIndex((q) => q.id === questionId);
+        const isLastQuestion = currentQuestionIndex === questions.length - 1;
+        
         if (isLastQuestion) {
           // OPTIMISTIC: Navigate immediately, save in background
           navigate("/recommendation?fromQuiz=true");
@@ -516,8 +517,10 @@ const Quiz = () => {
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
           sessionStorage.setItem("quizMarket", market);
         } else {
-          // OPTIMISTIC: Advance immediately
-          setCurrentStep((prev) => prev + 1);
+          // Find the next question index in the updated question list
+          const nextQuestionIndex = currentQuestionIndex + 1;
+          // Set step to the next question's position (1-indexed)
+          setCurrentStep(nextQuestionIndex + 1);
         }
       };
 
