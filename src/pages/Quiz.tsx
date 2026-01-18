@@ -176,15 +176,15 @@ const getQuestions = (answers: QuizAnswers): Question[] => {
   }
 
   // Q3: Business Type (always)
+  // If user already selected marketplace in salesChannel, show "Platform" instead of "Marketplace or platform"
+  const businessTypeOptions = answers.needsMarketplace
+    ? ["Solo business", "Multi-location business", "Franchise", "Platform"]
+    : ["Solo business", "Multi-location business", "Franchise", "Marketplace or platform"];
+  
   questions.push({
     id: "businessType",
     question: "Which best describes your business?",
-    options: [
-      "Solo business",
-      "Multi-location business",
-      "Franchise",
-      "Marketplace or platform",
-    ],
+    options: businessTypeOptions,
   });
 
   // Q4: Monthly Volume (always)
@@ -365,6 +365,7 @@ const mapBusinessType = (businessType: string): string => {
     case "Franchise":
       return "Other / mixed";
     case "Marketplace or platform":
+    case "Platform":
       return "Marketplace / platform";
     default:
       return "Other / mixed";
@@ -468,7 +469,7 @@ const Quiz = () => {
     // Handle business type - set marketplace flag if applicable
     else if (questionId === "businessType") {
       updatedAnswers.businessType = option;
-      if (option === "Marketplace or platform") {
+      if (option === "Marketplace or platform" || option === "Platform") {
         updatedAnswers.needsMarketplace = true;
       }
     }
