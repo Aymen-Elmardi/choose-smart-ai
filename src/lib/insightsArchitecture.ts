@@ -19,6 +19,13 @@ export const pricingArticles: ArticleMetadata[] = [
     cluster: "pricing",
     category: "Pricing Models",
     keywords: ["interchange++", "interchange plus", "IC++", "pricing", "blended", "fees", "transparent"]
+  },
+  {
+    slug: "blended-vs-interchange",
+    title: "Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy",
+    cluster: "pricing",
+    category: "Pricing Models",
+    keywords: ["blended", "interchange++", "IC++", "pricing strategy", "predictability", "optimization", "underwriting"]
   }
 ];
 
