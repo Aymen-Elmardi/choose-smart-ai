@@ -100,6 +100,14 @@ const allInsights: Insight[] = [
     readTime: "8 min read",
     isSubfolder: true
   },
+  {
+    title: "Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy",
+    slug: "pricing-models/blended-vs-interchange",
+    description: "Discover the strategic trade off between blended pricing and Interchange++. Learn which model fits your business and why the wrong choice costs more than a higher rate.",
+    category: "pricing",
+    readTime: "9 min read",
+    isSubfolder: true
+  },
   // Crisis Intervention articles
   {
     title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze",
