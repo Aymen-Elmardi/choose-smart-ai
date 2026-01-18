@@ -28,7 +28,7 @@ const InterchangePlusPlus = () => {
       </p>
 
       <p className="mb-8">
-        In practice, most businesses who believe they are on Interchange++ are not actually receiving its full benefits—and many were never eligible for it in the first place.
+        In practice, most businesses who believe they are on Interchange++ are not actually receiving its full benefits. Many were never eligible for it in the first place.
       </p>
 
       <p className="mb-8">
@@ -46,7 +46,7 @@ const InterchangePlusPlus = () => {
 
       <ol className="list-decimal pl-6 mb-6 space-y-3">
         <li>
-          <strong>Interchange Fees:</strong> The non-negotiable fees set by the card networks (Visa and Mastercard) and paid to the card-issuing bank.
+          <strong>Interchange Fees:</strong> The non-negotiable fees set by the card networks (Visa and Mastercard) and paid to the card issuing bank.
         </li>
         <li>
           <strong>Scheme Fees:</strong> The fees paid to the card networks themselves for using their infrastructure.
@@ -94,13 +94,13 @@ const InterchangePlusPlus = () => {
 
       <ul className="list-disc pl-6 mb-6 space-y-2">
         <li>
-          <strong>Transaction Volatility:</strong> Do you have sudden spikes in volume that look like "bust-out" fraud?
+          <strong>Transaction Volatility:</strong> Do you have sudden spikes in volume that look like "bust out" fraud?
         </li>
         <li>
-          <strong>Future Delivery Risk:</strong> How long is the gap between payment and delivery? (Longer gaps = higher risk of chargebacks).
+          <strong>Future Delivery Risk:</strong> How long is the gap between payment and delivery? Longer gaps mean higher risk of chargebacks.
         </li>
         <li>
-          <strong>Industry Classification (MCC):</strong> Is your business category considered "high-risk" by the card networks?
+          <strong>Industry Classification (MCC):</strong> Is your business category considered high risk by the card networks?
         </li>
         <li>
           <strong>Refund Exposure:</strong> What is your historical ratio of refunds to successful sales?
@@ -122,13 +122,13 @@ const InterchangePlusPlus = () => {
 
       <ul className="list-disc pl-6 mb-8 space-y-3">
         <li>
-          <strong>The "Fallback" Rate:</strong> The provider offers IC++ for standard cards but applies a high blended rate for "non-qualified" cards (like international or corporate cards).
+          <strong>The Fallback Rate:</strong> The provider offers IC++ for standard cards but applies a high blended rate for non-qualified cards like international or corporate cards.
         </li>
         <li>
-          <strong>Hidden Minimums:</strong> A low margin is advertised, but a "minimum monthly fee" effectively doubles your rate if your volume dips.
+          <strong>Hidden Minimums:</strong> A low margin is advertised, but a minimum monthly fee effectively doubles your rate if your volume dips.
         </li>
         <li>
-          <strong>Reporting Gaps:</strong> The fees look transparent on the quote, but the monthly settlement reports are so complex that it's impossible to verify if the "pass-through" costs are actually accurate.
+          <strong>Reporting Gaps:</strong> The fees look transparent on the quote, but the monthly settlement reports are so complex that it's impossible to verify if the pass through costs are actually accurate.
         </li>
       </ul>
 
@@ -183,7 +183,7 @@ const InterchangePlusPlus = () => {
       </h2>
 
       <p className="mb-4">
-        There is no universal checklist for Interchange++ eligibility. Most providers won't give you a straight answer until you've already submitted a full application—at which point you're already committed.
+        There is no universal checklist for Interchange++ eligibility. Most providers won't give you a straight answer until you've already submitted a full application, at which point you're already committed.
       </p>
 
       <p className="mb-4">
@@ -191,7 +191,7 @@ const InterchangePlusPlus = () => {
       </p>
 
       <p className="mb-4">
-        We don't just compare rates. We perform a <strong>pre-underwriting audit</strong> of your business to determine:
+        We don't just compare rates. We perform a <strong>pre underwriting audit</strong> of your business to determine:
       </p>
 
       <ol className="list-decimal pl-6 mb-8 space-y-2">
