@@ -6,7 +6,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { Search, ArrowRight, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis";
+type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis" | "pricing";
 
 interface Insight {
   title: string;
@@ -31,6 +31,14 @@ const featuredInsights: Record<InsightCategory, Insight> = {
     slug: "crisis/stripe-account-frozen",
     description: "Funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider.",
     category: "crisis",
+    readTime: "8 min read",
+    isSubfolder: true
+  },
+  pricing: {
+    title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",
+    slug: "pricing-models/interchange-plus-plus",
+    description: "The expert guide to Interchange++ pricing: what it really is, why it's an underwriting outcome not a menu option, and how to know if you actually qualify.",
+    category: "pricing",
     readTime: "8 min read",
     isSubfolder: true
   },
@@ -74,6 +82,7 @@ const featuredInsights: Record<InsightCategory, Insight> = {
 const filterTabs: { label: string; value: InsightCategory }[] = [
   { label: "All", value: "all" },
   { label: "Crisis Intervention", value: "crisis" },
+  { label: "Pricing Models", value: "pricing" },
   { label: "Provider Deep Dives", value: "providers" },
   { label: "Risk & Freezes", value: "risk" },
   { label: "Guides", value: "guides" },
@@ -82,7 +91,16 @@ const filterTabs: { label: string; value: InsightCategory }[] = [
 ];
 
 const allInsights: Insight[] = [
-  // Crisis Intervention articles (new)
+  // Pricing Models articles
+  {
+    title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",
+    slug: "pricing-models/interchange-plus-plus",
+    description: "The expert guide to Interchange++ pricing: what it really is, why it's an underwriting outcome not a menu option, and how to know if you actually qualify.",
+    category: "pricing",
+    readTime: "8 min read",
+    isSubfolder: true
+  },
+  // Crisis Intervention articles
   {
     title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze",
     slug: "crisis/stripe-account-frozen",
@@ -309,6 +327,7 @@ const allInsights: Insight[] = [
 const categoryLabels: Record<InsightCategory, string> = {
   all: "All",
   crisis: "Crisis Intervention",
+  pricing: "Pricing Models",
   risk: "Risk Alert",
   guides: "Guide",
   compliance: "Compliance",

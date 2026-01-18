@@ -1,7 +1,7 @@
 // Content Architecture: Hub-and-Spoke Model for /insights
 // This file defines the content clusters, linking rules, and article metadata
 
-export type ContentCluster = "hub" | "crisis" | "provider";
+export type ContentCluster = "hub" | "crisis" | "provider" | "pricing";
 
 export interface ArticleMetadata {
   slug: string;
@@ -10,6 +10,17 @@ export interface ArticleMetadata {
   category: string;
   keywords: string[]; // For internal linking automation
 }
+
+// Pricing Models articles (technical authority content)
+export const pricingArticles: ArticleMetadata[] = [
+  {
+    slug: "interchange-plus-plus",
+    title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",
+    cluster: "pricing",
+    category: "Pricing Models",
+    keywords: ["interchange++", "interchange plus", "IC++", "pricing", "blended", "fees", "transparent"]
+  }
+];
 
 // Crisis Intervention articles (high-intent, urgent problem solving)
 export const crisisArticles: ArticleMetadata[] = [
@@ -97,6 +108,9 @@ export const getRelatedArticles = (currentSlug: string, cluster: ContentCluster)
     case "provider":
       articles = providerArticles;
       break;
+    case "pricing":
+      articles = pricingArticles;
+      break;
     default:
       articles = hubArticles;
   }
@@ -106,7 +120,7 @@ export const getRelatedArticles = (currentSlug: string, cluster: ContentCluster)
 
 // Find articles that match keywords for internal linking
 export const findRelatedByKeyword = (keyword: string): ArticleMetadata[] => {
-  const allArticles = [...hubArticles, ...crisisArticles, ...providerArticles];
+  const allArticles = [...hubArticles, ...crisisArticles, ...providerArticles, ...pricingArticles];
   
   return allArticles.filter(article => 
     article.keywords.some(k => k.toLowerCase().includes(keyword.toLowerCase()))
@@ -120,6 +134,8 @@ export const buildInsightUrl = (slug: string, cluster: ContentCluster): string =
       return `/insights/crisis/${slug}`;
     case "provider":
       return `/insights/provider/${slug}`;
+    case "pricing":
+      return `/insights/pricing-models/${slug}`;
     default:
       return `/insights/${slug}`;
   }
