@@ -8,8 +8,8 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { to: "/#how-it-works", label: "How It Works" },
     { to: "/insights", label: "Insights" },
+    { to: "/#how-it-works", label: "How It Works" },
     { to: "/#why-us", label: "Why Us" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
@@ -23,8 +23,8 @@ const Header = () => {
             <span className="text-xl font-bold text-foreground tracking-tight">ChosePayments</span>
           </Link>
           
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          <nav className="hidden md:flex items-center gap-6">
+            {navLinks.slice(0, 2).map((link) => (
               <Link 
                 key={link.to}
                 to={link.to} 
@@ -34,16 +34,26 @@ const Header = () => {
               </Link>
             ))}
             <Link 
+              to="/assessment?start=true"
+              className="text-foreground hover:text-foreground/80 transition-colors text-sm font-semibold"
+            >
+              Assessment
+            </Link>
+            <Link 
               to="/onboard-with-us"
-              className="text-sm font-medium text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary pb-0.5"
+              className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
             >
               Onboard With Us
             </Link>
-            <Button variant="hero" size="default" asChild>
-              <Link to="/assessment?start=true" replace>
-                Get Started
+            {navLinks.slice(2).map((link) => (
+              <Link 
+                key={link.to}
+                to={link.to} 
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+              >
+                {link.label}
               </Link>
-            </Button>
+            ))}
           </nav>
 
           {/* Mobile Navigation */}
@@ -56,7 +66,7 @@ const Header = () => {
               </SheetTrigger>
               <SheetContent side="right" className="w-[280px] pt-12">
                 <nav className="flex flex-col gap-4">
-                  {navLinks.map((link) => (
+                  {navLinks.slice(0, 2).map((link) => (
                     <SheetClose asChild key={link.to}>
                       <Link 
                         to={link.to}
@@ -69,20 +79,33 @@ const Header = () => {
                   ))}
                   <SheetClose asChild>
                     <Link 
+                      to="/assessment?start=true"
+                      className="text-foreground font-semibold text-lg py-2"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Assessment
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link 
                       to="/onboard-with-us"
-                      className="text-primary font-medium text-lg py-2 border-b border-primary/30 w-fit"
+                      className="text-foreground hover:text-primary transition-colors text-lg font-medium py-2"
                       onClick={() => setIsOpen(false)}
                     >
                       Onboard With Us
                     </Link>
                   </SheetClose>
-                  <SheetClose asChild>
-                    <Button variant="hero" className="mt-4" asChild>
-                      <Link to="/assessment?start=true" replace onClick={() => setIsOpen(false)}>
-                        Get Started
+                  {navLinks.slice(2).map((link) => (
+                    <SheetClose asChild key={link.to}>
+                      <Link 
+                        to={link.to}
+                        className="text-foreground hover:text-primary transition-colors text-lg font-medium py-2"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {link.label}
                       </Link>
-                    </Button>
-                  </SheetClose>
+                    </SheetClose>
+                  ))}
                 </nav>
               </SheetContent>
             </Sheet>
