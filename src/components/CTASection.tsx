@@ -14,7 +14,7 @@ const CTASection = () => {
             Compare Payment Providers in 60 Seconds
           </h2>
           <p className="text-lg md:text-xl text-background/70 max-w-2xl mx-auto mb-10">
-            Join 5,000+ UK businesses who found their ideal payment provider match.
+            We've helped 100s of businesses choose the right payment provider for their business.
           </p>
           <Button 
             variant="hero"
