@@ -24,6 +24,7 @@ import About from "./pages/About";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Contact from "./pages/Contact";
+import OnboardWithUs from "./pages/OnboardWithUs";
 
 // Insights blog pages - eager loaded for SEO
 import Insights from "./pages/Insights";
@@ -131,6 +132,7 @@ const App = () => (
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/onboard-with-us" element={<OnboardWithUs />} />
             <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
             <Route path="/switch-payment-provider" element={<SwitchProvider />} />
             <Route path="/best-payment-provider-small-business" element={<SmallBusiness />} />

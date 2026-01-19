@@ -13,6 +13,7 @@ const Header = () => {
     { to: "/insights", label: "Insights" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
+    { to: "/onboard-with-us", label: "Onboard with us" },
   ];
 
   return (
