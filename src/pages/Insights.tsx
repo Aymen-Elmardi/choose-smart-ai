@@ -329,6 +329,13 @@ const allInsights: Insight[] = [
     description: "How Checkout.com's modular architecture delivers superior authorization rates and granular control for high growth global merchants.",
     category: "providers",
     readTime: "8 min read"
+  },
+  {
+    title: "How Businesses Earn Recurring Commission by Referring Payment Providers",
+    slug: "referral-commission-guide",
+    description: "Learn how platforms, agencies, and consultants can earn ongoing revenue share by making qualified payment provider introductions.",
+    category: "guides",
+    readTime: "7 min read"
   }
 ];
 
