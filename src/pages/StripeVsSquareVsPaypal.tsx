@@ -233,7 +233,7 @@ const StripeVsSquareVsPaypal = () => {
           <div className="section-container">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-10 text-center">
-                Fees Comparison (2025 UK Overview)
+                Fees Comparison (2026 UK Overview)
               </h2>
               
               <div className="grid md:grid-cols-3 gap-8">
