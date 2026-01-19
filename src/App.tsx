@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import AppErrorBoundary from "@/components/AppErrorBoundary";
 
 // Eager load the homepage for best FCP
 import Index from "./pages/Index";
@@ -114,83 +115,85 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            {/* Homepage routes */}
-            <Route path="/" element={<Index />} />
-            <Route path="/us" element={<IndexUS />} />
-            
-            {/* Quiz routes - lazy loaded to isolate quiz logic from SEO bundle */}
-            <Route path="/assessment" element={<Quiz />} />
-            <Route path="/recommendation" element={<Recommendation />} />
-            
-            {/* SEO Content Pages */}
-            <Route path="/best-payment-processor-uk" element={<BestPaymentProcessorUK />} />
-            <Route path="/stripe-vs-square-vs-paypal-uk" element={<StripeVsSquareVsPaypal />} />
-            <Route path="/best-payment-api-uk" element={<BestPaymentApiUK />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/onboard-with-us" element={<OnboardWithUs />} />
-            <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
-            <Route path="/switch-payment-provider" element={<SwitchProvider />} />
-            <Route path="/best-payment-provider-small-business" element={<SmallBusiness />} />
-            <Route path="/stripe-alternatives-marketplace" element={<StripeAlternatives />} />
-            <Route path="/payment-provider-support" element={<SupportMatters />} />
-            <Route path="/marketplace-payment-provider" element={<MarketplacePlatforms />} />
-            <Route path="/choose-payment-provider" element={<ChooseProvider />} />
-            
-            {/* Insights Blog */}
-            <Route path="/insights" element={<Insights />} />
-            <Route path="/insights/payment-risk" element={<PaymentRisk />} />
-            <Route path="/insights/guides" element={<Guides />} />
-            <Route path="/insights/case-studies" element={<CaseStudies />} />
-            <Route path="/insights/proof-of-business-activity" element={<ProofOfBusinessActivity />} />
-            <Route path="/insights/sales-increase" element={<SalesIncrease />} />
-            <Route path="/insights/marketplace-seller-info" element={<MarketplaceSellerInfo />} />
-            <Route path="/insights/source-of-funds" element={<SourceOfFunds />} />
-            <Route path="/insights/industry-verification" element={<IndustryVerification />} />
-            <Route path="/insights/international-sales" element={<InternationalSales />} />
-            <Route path="/insights/contracts-invoices" element={<ContractsInvoices />} />
-            <Route path="/insights/why-stripe-freezes-accounts-uk" element={<WhyStripeFreezes />} />
-            <Route path="/insights/why-accounts-get-flagged-after-growth" element={<WhyAccountsFlaggedAfterGrowth />} />
-            <Route path="/insights/why-payment-accounts-get-frozen-without-warning" element={<WhyAccountsFrozenWithoutWarning />} />
-            <Route path="/insights/why-marketplaces-get-extra-scrutiny" element={<WhyMarketplacesGetScrutiny />} />
-            <Route path="/insights/why-providers-re-underwrite-accounts" element={<WhyProvidersReUnderwrite />} />
-            <Route path="/insights/why-some-businesses-never-get-approved" element={<WhySomeBusinessesNeverApproved />} />
-            <Route path="/insights/why-payment-providers-ask-for-director-documents" element={<WhyPaymentProvidersAskForDirectorDocuments />} />
-            <Route path="/insights/why-payment-providers-ask-for-source-of-funds" element={<WhyPaymentProvidersAskForSourceOfFunds />} />
-            <Route path="/insights/why-payment-accounts-get-flagged-after-growth" element={<WhyPaymentAccountsGetFlaggedAfterGrowth />} />
-            <Route path="/insights/why-providers-re-underwrite-existing-accounts" element={<WhyProvidersReUnderwriteExistingAccounts />} />
-            <Route path="/insights/why-payment-accounts-get-flagged-without-changes" element={<WhyPaymentAccountsGetFlaggedWithoutChanges />} />
-            <Route path="/insights/visa-mastercard-control-card-payments" element={<VisaMastercardControl />} />
-            <Route path="/insights/what-is-an-acquirer" element={<WhatIsAnAcquirer />} />
-            <Route path="/insights/payment-provider-vs-acquirer-vs-bank" element={<PaymentProviderVsAcquirerVsBank />} />
-            <Route path="/insights/why-card-approval-speed-affects-checkout-abandonment" element={<WhyCardApprovalSpeedAffectsCheckoutAbandonment />} />
-            <Route path="/insights/same-day-settlement-and-instant-payouts" element={<SameDaySettlementAndInstantPayouts />} />
-            <Route path="/insights/what-to-do-when-provider-asks-for-documents" element={<WhatToDoWhenProviderAsksForDocuments />} />
-            <Route path="/insights/tra-exemption-reduces-payment-friction" element={<TRAExemption />} />
-            <Route path="/insights/chargebacks-what-they-are-and-how-to-avoid-them" element={<Chargebacks />} />
-            
-            <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
-            <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
-            <Route path="/insights/checkout-com-enterprise-platform" element={<CheckoutComEnterprisePlatform />} />
-            <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
-            
-            {/* Crisis Intervention articles */}
-            <Route path="/insights/crisis/hidden-fee-crisis" element={<CrisisHiddenFeeCrisis />} />
-            <Route path="/insights/crisis/rejected-high-risk-strategy" element={<CrisisRejectedHighRisk />} />
-            <Route path="/insights/crisis/stripe-account-frozen" element={<CrisisStripeAccountFrozen />} />
-            
-            {/* Pricing Models articles */}
-            <Route path="/insights/pricing-models/interchange-plus-plus" element={<InterchangePlusPlus />} />
-            <Route path="/insights/pricing-models/blended-vs-interchange" element={<BlendedVsInterchange />} />
-            
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        <AppErrorBoundary>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              {/* Homepage routes */}
+              <Route path="/" element={<Index />} />
+              <Route path="/us" element={<IndexUS />} />
+              
+              {/* Quiz routes - lazy loaded to isolate quiz logic from SEO bundle */}
+              <Route path="/assessment" element={<Quiz />} />
+              <Route path="/recommendation" element={<Recommendation />} />
+              
+              {/* SEO Content Pages */}
+              <Route path="/best-payment-processor-uk" element={<BestPaymentProcessorUK />} />
+              <Route path="/stripe-vs-square-vs-paypal-uk" element={<StripeVsSquareVsPaypal />} />
+              <Route path="/best-payment-api-uk" element={<BestPaymentApiUK />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/onboard-with-us" element={<OnboardWithUs />} />
+              <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
+              <Route path="/switch-payment-provider" element={<SwitchProvider />} />
+              <Route path="/best-payment-provider-small-business" element={<SmallBusiness />} />
+              <Route path="/stripe-alternatives-marketplace" element={<StripeAlternatives />} />
+              <Route path="/payment-provider-support" element={<SupportMatters />} />
+              <Route path="/marketplace-payment-provider" element={<MarketplacePlatforms />} />
+              <Route path="/choose-payment-provider" element={<ChooseProvider />} />
+              
+              {/* Insights Blog */}
+              <Route path="/insights" element={<Insights />} />
+              <Route path="/insights/payment-risk" element={<PaymentRisk />} />
+              <Route path="/insights/guides" element={<Guides />} />
+              <Route path="/insights/case-studies" element={<CaseStudies />} />
+              <Route path="/insights/proof-of-business-activity" element={<ProofOfBusinessActivity />} />
+              <Route path="/insights/sales-increase" element={<SalesIncrease />} />
+              <Route path="/insights/marketplace-seller-info" element={<MarketplaceSellerInfo />} />
+              <Route path="/insights/source-of-funds" element={<SourceOfFunds />} />
+              <Route path="/insights/industry-verification" element={<IndustryVerification />} />
+              <Route path="/insights/international-sales" element={<InternationalSales />} />
+              <Route path="/insights/contracts-invoices" element={<ContractsInvoices />} />
+              <Route path="/insights/why-stripe-freezes-accounts-uk" element={<WhyStripeFreezes />} />
+              <Route path="/insights/why-accounts-get-flagged-after-growth" element={<WhyAccountsFlaggedAfterGrowth />} />
+              <Route path="/insights/why-payment-accounts-get-frozen-without-warning" element={<WhyAccountsFrozenWithoutWarning />} />
+              <Route path="/insights/why-marketplaces-get-extra-scrutiny" element={<WhyMarketplacesGetScrutiny />} />
+              <Route path="/insights/why-providers-re-underwrite-accounts" element={<WhyProvidersReUnderwrite />} />
+              <Route path="/insights/why-some-businesses-never-get-approved" element={<WhySomeBusinessesNeverApproved />} />
+              <Route path="/insights/why-payment-providers-ask-for-director-documents" element={<WhyPaymentProvidersAskForDirectorDocuments />} />
+              <Route path="/insights/why-payment-providers-ask-for-source-of-funds" element={<WhyPaymentProvidersAskForSourceOfFunds />} />
+              <Route path="/insights/why-payment-accounts-get-flagged-after-growth" element={<WhyPaymentAccountsGetFlaggedAfterGrowth />} />
+              <Route path="/insights/why-providers-re-underwrite-existing-accounts" element={<WhyProvidersReUnderwriteExistingAccounts />} />
+              <Route path="/insights/why-payment-accounts-get-flagged-without-changes" element={<WhyPaymentAccountsGetFlaggedWithoutChanges />} />
+              <Route path="/insights/visa-mastercard-control-card-payments" element={<VisaMastercardControl />} />
+              <Route path="/insights/what-is-an-acquirer" element={<WhatIsAnAcquirer />} />
+              <Route path="/insights/payment-provider-vs-acquirer-vs-bank" element={<PaymentProviderVsAcquirerVsBank />} />
+              <Route path="/insights/why-card-approval-speed-affects-checkout-abandonment" element={<WhyCardApprovalSpeedAffectsCheckoutAbandonment />} />
+              <Route path="/insights/same-day-settlement-and-instant-payouts" element={<SameDaySettlementAndInstantPayouts />} />
+              <Route path="/insights/what-to-do-when-provider-asks-for-documents" element={<WhatToDoWhenProviderAsksForDocuments />} />
+              <Route path="/insights/tra-exemption-reduces-payment-friction" element={<TRAExemption />} />
+              <Route path="/insights/chargebacks-what-they-are-and-how-to-avoid-them" element={<Chargebacks />} />
+              
+              <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
+              <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
+              <Route path="/insights/checkout-com-enterprise-platform" element={<CheckoutComEnterprisePlatform />} />
+              <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
+              
+              {/* Crisis Intervention articles */}
+              <Route path="/insights/crisis/hidden-fee-crisis" element={<CrisisHiddenFeeCrisis />} />
+              <Route path="/insights/crisis/rejected-high-risk-strategy" element={<CrisisRejectedHighRisk />} />
+              <Route path="/insights/crisis/stripe-account-frozen" element={<CrisisStripeAccountFrozen />} />
+              
+              {/* Pricing Models articles */}
+              <Route path="/insights/pricing-models/interchange-plus-plus" element={<InterchangePlusPlus />} />
+              <Route path="/insights/pricing-models/blended-vs-interchange" element={<BlendedVsInterchange />} />
+              
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </AppErrorBoundary>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
