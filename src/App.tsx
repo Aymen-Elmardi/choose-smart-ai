@@ -60,6 +60,7 @@ import Chargebacks from "./pages/insights/Chargebacks";
 import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
 import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
 import CheckoutComEnterprisePlatform from "./pages/insights/CheckoutComEnterprisePlatform";
+import ReferralCommissionGuide from "./pages/insights/ReferralCommissionGuide";
 
 // Crisis Intervention articles
 import CrisisHiddenFeeCrisis from "./pages/insights/crisis/HiddenFeeCrisis";
@@ -173,6 +174,7 @@ const App = () => (
             <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
             <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
             <Route path="/insights/checkout-com-enterprise-platform" element={<CheckoutComEnterprisePlatform />} />
+            <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
             
             {/* Crisis Intervention articles */}
             <Route path="/insights/crisis/hidden-fee-crisis" element={<CrisisHiddenFeeCrisis />} />
