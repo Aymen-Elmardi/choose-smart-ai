@@ -8,12 +8,11 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { to: "/#how-it-works", label: "How it Works" },
-    { to: "/#why-us", label: "Why Us" },
+    { to: "/#how-it-works", label: "How It Works" },
     { to: "/insights", label: "Insights" },
+    { to: "/#why-us", label: "Why Us" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
-    { to: "/onboard-with-us", label: "Onboard with us" },
   ];
 
   return (
@@ -34,6 +33,12 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
+            <Link 
+              to="/onboard-with-us"
+              className="text-sm font-medium text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary pb-0.5"
+            >
+              Onboard With Us
+            </Link>
             <Button variant="hero" size="default" asChild>
               <Link to="/assessment?start=true" replace>
                 Get Started
@@ -62,6 +67,15 @@ const Header = () => {
                       </Link>
                     </SheetClose>
                   ))}
+                  <SheetClose asChild>
+                    <Link 
+                      to="/onboard-with-us"
+                      className="text-primary font-medium text-lg py-2 border-b border-primary/30 w-fit"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Onboard With Us
+                    </Link>
+                  </SheetClose>
                   <SheetClose asChild>
                     <Button variant="hero" className="mt-4" asChild>
                       <Link to="/assessment?start=true" replace onClick={() => setIsOpen(false)}>
