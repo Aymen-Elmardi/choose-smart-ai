@@ -47,7 +47,7 @@ const MICRO_INSIGHTS: MicroInsightConfig[] = [
   },
   {
     questionId: "location",
-    triggerAnswer: "UK and EU",
+    triggerAnswer: "UK & EU",
     text: "Cross-border payments can carry heavy surcharges. We'll prioritize providers with local acquiring in both regions.",
   },
   {
@@ -261,7 +261,7 @@ const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "location",
     question: "Where is your business based?",
-    options: ["UK", "EU", "UK and EU"],
+    options: ["UK", "EU", "UK & EU"],
   });
 
   // Q10: Best Time to Contact (always)
@@ -576,7 +576,7 @@ const Quiz = () => {
       salesChannel: engineSalesChannel,
       businessType: mapBusinessType(ans.businessType),
       priorities: ans.priorities.map(mapPriority),
-      location: ans.location === "UK and EU" ? "UK & EU" : ans.location,
+      location: ans.location,
       monthlyVolume: mapMonthlyVolume(ans.monthlyVolume),
       avgTransaction: mapAvgTransaction(ans.avgTransaction),
       features: [], // Not collecting features in this flow
