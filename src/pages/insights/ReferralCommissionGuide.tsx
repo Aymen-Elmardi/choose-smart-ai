@@ -13,7 +13,7 @@ const ReferralCommissionGuide = () => {
     document.title = "How to Earn Recurring Commission by Referring Payment Providers | ChosePayments";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "If you advise other businesses, you're probably already influencing their payment choices. Here's how referral commission works — and how to do it without burning trust.");
+      metaDescription.setAttribute("content", "If you advise other businesses, you're probably already influencing their payment choices. Here's how referral commission works and how to do it without burning trust.");
     }
     return () => {
       document.title = "ChosePayments";
@@ -46,7 +46,7 @@ const ReferralCommissionGuide = () => {
               How Businesses Earn Recurring Commission by Referring Payment Providers
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              If you run an agency, consultancy, platform, or any business that advises other businesses — you're probably already influencing one of the most valuable decisions they make: which payment provider to use.
+              If you run an agency, consultancy, platform, or any business that advises other businesses, you're probably already influencing one of the most valuable decisions they make: which payment provider to use.
             </p>
           </header>
 
@@ -64,7 +64,7 @@ const ReferralCommissionGuide = () => {
             </blockquote>
             
             <p className="text-lg leading-relaxed">
-              What most people don't realise is that payment providers often pay <strong>recurring commission</strong> to businesses that introduce merchants to them — provided those introductions are qualified and appropriate.
+              What most people don't realise is that payment providers often pay <strong>recurring commission</strong> to businesses that introduce merchants to them, provided those introductions are qualified and appropriate.
             </p>
             
             <p className="text-lg leading-relaxed">
@@ -78,7 +78,7 @@ const ReferralCommissionGuide = () => {
             </h2>
             
             <p className="text-lg leading-relaxed">
-              Payment referral commission is typically structured as an ongoing revenue share. You introduce a business to a provider. If they're approved and start processing, you receive a small percentage of the provider's revenue from that merchant — usually monthly or quarterly.
+              Payment referral commission is typically structured as an ongoing revenue share. You introduce a business to a provider. If they're approved and start processing, you receive a small percentage of the provider's revenue from that merchant, usually monthly or quarterly.
             </p>
             
             <p className="text-lg leading-relaxed">
@@ -88,7 +88,7 @@ const ReferralCommissionGuide = () => {
             <div className="bg-muted/50 rounded-lg p-6 my-8">
               <p className="text-foreground font-medium mb-2">A business you refer processes £150,000/month</p>
               <p className="text-muted-foreground mb-2">The provider earns roughly £1,500 in fees</p>
-              <p className="text-primary font-semibold">You receive £150–£400/month, recurring</p>
+              <p className="text-primary font-semibold">You receive £150 to £400 per month, recurring</p>
             </div>
             
             <p className="text-lg leading-relaxed">
@@ -112,7 +112,7 @@ const ReferralCommissionGuide = () => {
             <ul className="space-y-3 my-6">
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                <span><strong>Digital agencies</strong> — ecommerce, web development, growth marketing</span>
+                <span><strong>Digital agencies</strong> in ecommerce, web development, or growth marketing</span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
@@ -132,12 +132,12 @@ const ReferralCommissionGuide = () => {
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                <span><strong>Industry-specific service providers</strong> — hospitality, retail, marketplaces</span>
+                <span><strong>Industry-specific service providers</strong> in hospitality, retail, or marketplaces</span>
               </li>
             </ul>
             
             <p className="text-lg leading-relaxed">
-              If your business already influences how clients operate or grow, you're likely eligible. The key requirement is credibility and context — not sales volume.
+              If your business already influences how clients operate or grow, you're likely eligible. The key requirement is credibility and context, not sales volume.
             </p>
 
             {/* Section: Why Providers Pay */}
@@ -196,7 +196,7 @@ const ReferralCommissionGuide = () => {
             </ul>
             
             <p className="text-lg leading-relaxed">
-              Payment providers are not interchangeable. Each has different risk tolerances, underwriting rules, and ideal customer profiles. A referral that's perfect for one provider might be rejected — or frozen — by another.
+              Payment providers are not interchangeable. Each has different risk tolerances, underwriting rules, and ideal customer profiles. A referral that's perfect for one provider might be rejected or frozen by another.
             </p>
 
             {/* Section: Getting It Right */}
@@ -216,7 +216,7 @@ const ReferralCommissionGuide = () => {
             </ul>
             
             <p className="text-lg leading-relaxed">
-              Then matching them to a provider that fits — not just the one you have a relationship with.
+              Then matching them to a provider that fits, not just the one you have a relationship with.
             </p>
             
             <p className="text-lg leading-relaxed">
@@ -238,7 +238,7 @@ const ReferralCommissionGuide = () => {
               </p>
               
               <p className="text-lg leading-relaxed mb-6">
-                For businesses referring other businesses, this means better recommendations, fewer client headaches, and sustainable recurring commission — without needing to become a payments expert yourself.
+                For businesses referring other businesses, this means better recommendations, fewer client headaches, and sustainable recurring commission without needing to become a payments expert yourself.
               </p>
               
               <Link to="/assessment">
@@ -258,7 +258,7 @@ const ReferralCommissionGuide = () => {
             </p>
             
             <p className="text-lg leading-relaxed">
-              When you're transparent about how you're compensated — and when clients see that your recommendation actually worked for them — you've created something more valuable than a one-off commission. You've built a reputation.
+              When you're transparent about how you're compensated, and when clients see that your recommendation actually worked for them, you've created something more valuable than a one-off commission. You've built a reputation.
             </p>
 
             {/* Final Takeaway */}
@@ -268,7 +268,7 @@ const ReferralCommissionGuide = () => {
               </h2>
               
               <p className="text-lg leading-relaxed">
-                If your business already helps other businesses operate, scale, or make technical decisions — you're already influencing payment choices. The opportunity isn't selling payments. It's guiding businesses to the right provider and being fairly compensated for doing it well.
+                If your business already helps other businesses operate, scale, or make technical decisions, you're already influencing payment choices. The opportunity isn't selling payments. It's guiding businesses to the right provider and being fairly compensated for doing it well.
               </p>
               
               <p className="text-lg leading-relaxed mt-4">
