@@ -5,7 +5,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const RejectedHighRiskStrategy = () => {
   useSEO({
     title: "Rejected by Stripe or Square? A Strategic Recovery Plan for High-Risk Merchants | ChosePayments",
-    description: "Rejected by a major payment provider? Learn why the 'high-risk' label isn't a judgment—and how to find a provider that actually wants your business."
+    description: "Rejected by a major payment provider? Learn why the 'high-risk' label is not a judgment and how to find a provider that actually wants your business."
   });
 
   return (
