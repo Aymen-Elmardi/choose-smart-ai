@@ -6,7 +6,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const SameDaySettlementAndInstantPayouts = () => {
   useSEO({
-    title: "Same-Day Settlement and Instant Payouts – What Businesses Should Know | ChosePayments",
+    title: "Same-Day Settlement and Instant Payouts: What Businesses Should Know | ChosePayments",
     description: "Learn how same-day settlement and instant payouts work, when they help businesses, and the trade-offs involved with faster access to funds."
   });
 
@@ -22,7 +22,7 @@ const SameDaySettlementAndInstantPayouts = () => {
             />
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8">
-              Same-Day Settlement and Instant Payouts. What Businesses Should Know
+              Same-Day Settlement and Instant Payouts: What Businesses Should Know
             </h1>
 
             <div className="prose prose-lg max-w-none text-muted-foreground">

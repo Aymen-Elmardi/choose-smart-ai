@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const SalesIncrease = () => {
   useSEO({
-    title: "Sales Growth Triggers Document Requests — Here's How to Prepare | ChosePayments",
+    title: "Sales Growth Triggers Document Requests: How to Prepare | ChosePayments",
     description: "Learn why sudden sales growth triggers additional document requests from payment providers."
   });
 
@@ -16,7 +16,7 @@ const SalesIncrease = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Sales Growth Triggers Document Requests — Here's How to Prepare
+            Sales Growth Triggers Document Requests: How to Prepare
           </h1>
           
           <div className="prose prose-lg text-foreground/80 space-y-6">
