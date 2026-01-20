@@ -4,6 +4,26 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import ChecklistEmailModal from "@/components/ChecklistEmailModal";
+import HowToSchema from "@/components/HowToSchema";
+
+const howToSteps = [
+  {
+    name: "Read the request carefully",
+    text: "Understand exactly what is being asked for. If anything is unclear, ask for clarification before sending documents.",
+  },
+  {
+    name: "Acknowledge promptly",
+    text: "Respond quickly, even if you need time to gather information. A short acknowledgement shows cooperation and prevents escalation.",
+  },
+  {
+    name: "Submit only what is requested",
+    text: "Provide clear, complete files and avoid adding unnecessary explanations. Payment reviews are procedural, not personal.",
+  },
+  {
+    name: "Confirm your timeline",
+    text: "If a deadline is mentioned, confirm when you expect to submit everything. Clear communication helps keep the review moving.",
+  },
+];
 
 const WhatToDoWhenProviderAsksForDocuments = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,6 +35,12 @@ const WhatToDoWhenProviderAsksForDocuments = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <HowToSchema
+        name="How to Respond When Your Payment Provider Requests Documents"
+        description="Step-by-step guide for responding to payment provider document requests confidently and efficiently."
+        steps={howToSteps}
+        totalTime="PT15M"
+      />
       <Header />
       
       <main className="pt-24 pb-16">

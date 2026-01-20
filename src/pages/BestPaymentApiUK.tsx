@@ -13,21 +13,61 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
+import FinancialProductSchema from "@/components/FinancialProductSchema";
+
+const providers = [
+  {
+    name: "Stripe API",
+    description: "Industry-leading payment API with best-in-class documentation and SDKs for all major languages",
+    provider: "Stripe",
+    fees: "1.4–2.9% + 20p",
+  },
+  {
+    name: "Checkout.com API",
+    description: "Enterprise-level payment API with highly configurable webhooks and custom pricing",
+    provider: "Checkout.com",
+    fees: "Custom",
+  },
+  {
+    name: "Square API",
+    description: "Retail-focused payment API with excellent POS integration and mobile SDKs",
+    provider: "Square",
+    fees: "1.75–2.5%",
+  },
+  {
+    name: "PayPal API",
+    description: "Simple payment API for quick integration with limited customisation options",
+    provider: "PayPal",
+    fees: "2.99% + fixed fee",
+  },
+  {
+    name: "Datman API",
+    description: "Marketplace-focused API with split payment capabilities for multi-merchant platforms",
+    provider: "Datman",
+    fees: "Custom",
+  },
+];
 
 const BestPaymentApiUK = () => {
   useCanonical();
   
+  useSEO({
+    title: "Best Payment API in the UK (2026): Which Providers Actually Approve Businesses?",
+    description: "Not all payment APIs approve the same businesses. Learn which UK payment APIs are most likely to onboard you — and which ones commonly reject accounts.",
+    keywords: ["payment API UK", "best payment gateway API", "Stripe API alternatives", "developer payment integration"],
+  });
+
   useEffect(() => {
-    document.title = "Best Payment API in the UK (2026): Which Providers Actually Approve Businesses?";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Not all payment APIs approve the same businesses. Learn which UK payment APIs are most likely to onboard you — and which ones commonly reject accounts.");
-    }
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
+      <FinancialProductSchema 
+        products={providers}
+        listName="Best Payment APIs UK 2026"
+      />
       <Header />
       
       <main>
