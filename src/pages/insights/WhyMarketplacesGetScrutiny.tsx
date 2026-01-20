@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const WhyMarketplacesGetScrutiny = () => {
   useSEO({
-    title: "Marketplaces Face Extra Scrutiny — Here's What Providers Look For | ChosePayments",
+    title: "Marketplaces Face Extra Scrutiny: What Providers Look For | ChosePayments",
     description: "Marketplaces introduce additional layers of risk for payment providers. Learn why marketplace businesses face deeper reviews and how to choose the right payment infrastructure."
   });
 
@@ -16,7 +16,7 @@ const WhyMarketplacesGetScrutiny = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Marketplaces Face Extra Scrutiny — Here's What Providers Look For
+            Marketplaces Face Extra Scrutiny: What Providers Look For
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
