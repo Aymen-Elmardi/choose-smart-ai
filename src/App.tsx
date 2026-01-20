@@ -1,10 +1,11 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import AppErrorBoundary from "@/components/AppErrorBoundary";
+import { useVersionCheck, lazyWithRetry } from "@/hooks/useVersionCheck";
 
 // Eager load the homepage for best FCP
 import Index from "./pages/Index";
@@ -73,11 +74,11 @@ import CrisisStripeAccountFrozen from "./pages/insights/crisis/StripeAccountFroz
 import InterchangePlusPlus from "./pages/insights/pricing/InterchangePlusPlus";
 import BlendedVsInterchange from "./pages/insights/pricing/BlendedVsInterchange";
 
-// Lazy load quiz flow - ensures quiz logic is code-split from SEO pages
+// Lazy load quiz flow with retry - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
-const Quiz = lazy(() => import("./pages/Quiz"));
-const Recommendation = lazy(() => import("./pages/Recommendation"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+const Quiz = lazyWithRetry(() => import("./pages/Quiz"));
+const Recommendation = lazyWithRetry(() => import("./pages/Recommendation"));
+const NotFound = lazyWithRetry(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -89,6 +90,9 @@ const PageLoader = () => (
 // Component to handle scroll-to-top and scroll-to-hash on navigation
 const ScrollToTop = () => {
   const { hash, pathname } = useLocation();
+
+  // Check for version updates on navigation
+  useVersionCheck();
 
   useEffect(() => {
     if (hash) {
