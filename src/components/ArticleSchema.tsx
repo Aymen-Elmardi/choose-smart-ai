@@ -7,6 +7,7 @@ interface ArticleSchemaProps {
   modifiedTime?: string;
   author?: string;
   image?: string;
+  sources?: Array<{ name: string; url: string }>;
 }
 
 const BASE_URL = "https://chosepayments.com";
@@ -22,6 +23,7 @@ const ArticleSchema = ({
   modifiedTime,
   author = "ChosePayments",
   image = "https://chosepayments.com/og-default.png",
+  sources,
 }: ArticleSchemaProps) => {
   useEffect(() => {
     const script = document.createElement("script");
@@ -54,6 +56,13 @@ const ArticleSchema = ({
         "@type": "WebPage",
         "@id": typeof window !== "undefined" ? window.location.href : BASE_URL,
       },
+      ...(sources && sources.length > 0 && {
+        "citation": sources.map(source => ({
+          "@type": "CreativeWork",
+          "name": source.name,
+          "url": source.url
+        }))
+      }),
     };
 
     script.textContent = JSON.stringify(schemaData);
@@ -72,7 +81,7 @@ const ArticleSchema = ({
         scriptToRemove.remove();
       }
     };
-  }, [title, description, publishedTime, modifiedTime, author, image]);
+  }, [title, description, publishedTime, modifiedTime, author, image, sources]);
 
   return null;
 };
