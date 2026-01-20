@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import { Source } from "@/components/SourcesCitation";
+
+const rejectedSources: Source[] = [
+  { name: "High-Risk Merchant Category Codes (MCCs)", url: "https://www.merchantscout.com/high-risk-mcc-categories", type: "industry" },
+  { name: "The Ultimate Guide to High-Risk MCC Codes", url: "https://www.commercegate.com/ultimate-guide-high-risk-mcc-codes/", type: "industry" },
+  { name: "Visa Merchant Data Standards Manual", url: "https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf", type: "official" },
+  { name: "Mastercard Transaction Processing Rules", url: "https://www.mastercard.us/content/dam/public/mastercardcom/na/global-site/documents/transaction-processing-rules.pdf", type: "official" },
+];
 
 const RejectedHighRiskStrategy = () => {
   return (
@@ -11,6 +19,7 @@ const RejectedHighRiskStrategy = () => {
       currentSlug="rejected-high-risk-strategy"
       ctaVariant="default"
       keywords={["Stripe rejected", "Square rejected", "high-risk merchant", "payment provider rejection"]}
+      sources={rejectedSources}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Rejected by Stripe or Square? Why Your 'High-Risk' Business Needs a Risk-Aligned Payment Strategy

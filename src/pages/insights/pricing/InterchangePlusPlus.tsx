@@ -1,5 +1,14 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import { Source } from "@/components/SourcesCitation";
+
+const interchangeSources: Source[] = [
+  { name: "Visa USA Interchange Reimbursement Fees", url: "https://usa.visa.com/content/dam/VCOM/download/merchants/visa-usa-interchange-reimbursement-fees.pdf", type: "official" },
+  { name: "Mastercard Interchange Fees and Rates", url: "https://www.mastercard.com/us/en/business/support/merchant-interchange-rates.html", type: "official" },
+  { name: "Visa Rules and Policy", url: "https://usa.visa.com/support/consumer/visa-rules.html", type: "official" },
+  { name: "Mastercard Rules", url: "https://www.mastercard.us/content/dam/public/mastercardcom/na/global-site/documents/mastercard-rules.pdf", type: "official" },
+  { name: "Visa Merchant Data Standards Manual", url: "https://usa.visa.com/content/dam/VCOM/download/merchants/visa-merchant-data-standards-manual.pdf", type: "official" },
+];
 
 const InterchangePlusPlus = () => {
   return (
@@ -10,6 +19,7 @@ const InterchangePlusPlus = () => {
       cluster="hub"
       showRelated={false}
       keywords={["interchange plus plus", "IC++ explained", "payment pricing models", "merchant fees"]}
+      sources={interchangeSources}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Interchange++ Pricing: The "Secret" to Lower Fees (And Why Most Businesses Never Qualify)

@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import { Source } from "@/components/SourcesCitation";
+
+const blendedSources: Source[] = [
+  { name: "Visa USA Interchange Reimbursement Fees", url: "https://usa.visa.com/content/dam/VCOM/download/merchants/visa-usa-interchange-reimbursement-fees.pdf", type: "official" },
+  { name: "Mastercard Interchange Programs", url: "https://www.mastercard.us/content/dam/public/mastercardcom/na/us/en/documents/merchant-rates-2024-2025.pdf", type: "official" },
+  { name: "Stripe Payment Industry Ecosystem", url: "https://stripe.com/resources/more/the-payment-industry-ecosystem-explained", type: "industry" },
+  { name: "Merchant Category Codes Guide", url: "https://stripe.com/guides/merchant-category-codes", type: "industry" },
+];
 
 const BlendedVsInterchange = () => {
   return (
@@ -11,6 +19,7 @@ const BlendedVsInterchange = () => {
       showRelated={true}
       currentSlug="blended-vs-interchange"
       keywords={["blended pricing", "interchange plus plus", "IC++ pricing", "payment processing pricing"]}
+      sources={blendedSources}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy

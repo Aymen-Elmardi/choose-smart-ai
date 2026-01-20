@@ -4,6 +4,14 @@ import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import HowToSchema from "@/components/HowToSchema";
+import SourcesCitation, { Source } from "@/components/SourcesCitation";
+
+const proofOfBusinessSources: Source[] = [
+  { name: "FCA Payment Services Regulations", url: "https://www.fca.org.uk/firms/", type: "regulatory" },
+  { name: "Know Your Customer Laws (KYC)", url: "https://remedypayments.com/know-your-customer-laws-kyc-for-merchant-accounts/", type: "industry" },
+  { name: "KYC Requirements for Banks", url: "https://resources.fenergo.com/blogs/understanding-kyc-requirements-for-banks", type: "industry" },
+  { name: "What KYC is and Why It Matters", url: "https://plaid.com/resources/banking/what-is-kyc/", type: "educational" },
+];
 
 const howToSteps = [
   {
@@ -86,6 +94,8 @@ const ProofOfBusinessActivity = () => {
               </Link>.
             </p>
           </div>
+          
+          <SourcesCitation sources={proofOfBusinessSources} />
         </article>
       </main>
       
