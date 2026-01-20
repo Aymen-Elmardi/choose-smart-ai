@@ -72,7 +72,7 @@ const SourcesCitation = ({ sources, title = "Sources & References" }: SourcesCit
               <a
                 href={source.url}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="text-primary hover:underline text-sm font-medium"
               >
                 {source.name}
