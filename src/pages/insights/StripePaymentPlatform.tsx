@@ -5,7 +5,14 @@ import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
+import SourcesCitation from "@/components/SourcesCitation";
 import { ArrowRight, CheckCircle2, Zap, Globe, Layers, Shield, CreditCard, Building } from "lucide-react";
+
+const stripeSources = [
+  { name: "Stripe Official Documentation", url: "https://stripe.com/docs", type: "official" as const },
+  { name: "Stripe Connect Documentation", url: "https://stripe.com/docs/connect", type: "official" as const },
+  { name: "Stripe Radar – Fraud Prevention", url: "https://stripe.com/radar", type: "official" as const }
+];
 
 const StripePaymentPlatform = () => {
   useSEO({
@@ -262,6 +269,8 @@ const StripePaymentPlatform = () => {
                 ))}
               </div>
             </section>
+
+            <SourcesCitation sources={stripeSources} />
 
             {/* CTA */}
             <section className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
