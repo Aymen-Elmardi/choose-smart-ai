@@ -4,6 +4,14 @@ import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import HowToSchema from "@/components/HowToSchema";
+import SourcesCitation, { Source } from "@/components/SourcesCitation";
+
+const sourceOfFundsSources: Source[] = [
+  { name: "FCA Payment Services Regulations", url: "https://www.fca.org.uk/firms/payment-services-regulations-e-money-regulations", type: "regulatory" },
+  { name: "AML Requirements for Payment Processors", url: "https://amlsquare.com/blog/aml-requirements-for-payment-processors-complete-guide/", type: "industry" },
+  { name: "FINRA Anti-Money Laundering (AML)", url: "https://www.finra.org/rules-guidance/key-topics/aml", type: "regulatory" },
+  { name: "FDIC Bank Secrecy Act (BSA/AML)", url: "https://www.fdic.gov/banker-resource-center/anti-money-laundering-countering-financing-terrorism-amlcft", type: "regulatory" },
+];
 
 const howToSteps = [
   {
@@ -81,6 +89,8 @@ const SourceOfFunds = () => {
               </Link>.
             </p>
           </div>
+          
+          <SourcesCitation sources={sourceOfFundsSources} />
         </article>
       </main>
       

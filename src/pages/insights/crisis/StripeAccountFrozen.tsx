@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import { Source } from "@/components/SourcesCitation";
+
+const stripeFrozenSources: Source[] = [
+  { name: "Visa Rules and Policy", url: "https://usa.visa.com/support/consumer/visa-rules.html", type: "official" },
+  { name: "Mastercard Rules", url: "https://www.mastercard.com/us/en/business/support/rules.html", type: "official" },
+  { name: "Chargeback Management Guide", url: "https://www.chargebackgurus.com/blog/security-and-compliance-in-chargeback-management", type: "industry" },
+  { name: "PCI Security Standards", url: "https://www.pcisecuritystandards.org/standards/", type: "regulatory" },
+];
 
 const StripeAccountFrozen = () => {
   return (
@@ -11,6 +19,7 @@ const StripeAccountFrozen = () => {
       currentSlug="stripe-account-frozen"
       ctaVariant="default"
       keywords={["Stripe account frozen", "Stripe funds frozen", "account freeze recovery", "payment account suspended"]}
+      sources={stripeFrozenSources}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Stripe Account Frozen? The 5 Hidden Reasons Why (And How to Prevent the Next Freeze)

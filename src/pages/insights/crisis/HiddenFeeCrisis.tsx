@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import { Source } from "@/components/SourcesCitation";
+
+const hiddenFeeSources: Source[] = [
+  { name: "Visa USA Interchange Reimbursement Fees", url: "https://usa.visa.com/content/dam/VCOM/download/merchants/visa-usa-interchange-reimbursement-fees.pdf", type: "official" },
+  { name: "Mastercard Interchange Fees Explained", url: "https://www.mastercard.com/us/en/business/support/merchant-interchange-rates.html", type: "official" },
+  { name: "Visa Credit Card Processing Fees", url: "https://usa.visa.com/support/small-business/regulations-fees.html", type: "official" },
+  { name: "Stripe Payment Settlement Explained", url: "https://stripe.com/resources/more/payment-settlement-explained-how-it-works-and-how-long-it-takes", type: "industry" },
+];
 
 const HiddenFeeCrisis = () => {
   return (
@@ -11,6 +19,7 @@ const HiddenFeeCrisis = () => {
       currentSlug="hidden-fee-crisis"
       ctaVariant="default"
       keywords={["hidden payment fees", "effective rate", "payment processing costs", "merchant fees"]}
+      sources={hiddenFeeSources}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         The Hidden Fee Crisis: How Your 'Low Rate' Payment Processor is Quietly Costing You Thousands

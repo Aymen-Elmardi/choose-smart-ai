@@ -6,6 +6,7 @@ import InsightsCTA from "@/components/InsightsCTA";
 import RelatedArticles from "@/components/RelatedArticles";
 import ArticleSchema from "@/components/ArticleSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
+import SourcesCitation, { Source } from "@/components/SourcesCitation";
 import { ContentCluster } from "@/lib/insightsArchitecture";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -25,6 +26,7 @@ interface InsightsArticleLayoutProps {
   publishedTime?: string;
   modifiedTime?: string;
   keywords?: string[];
+  sources?: Source[];
 }
 
 /**
@@ -62,6 +64,7 @@ const InsightsArticleLayout = ({
   publishedTime = "2026-01-01",
   modifiedTime,
   keywords,
+  sources,
 }: InsightsArticleLayoutProps) => {
   // Set SEO meta tags
   useSEO({
@@ -106,6 +109,11 @@ const InsightsArticleLayout = ({
             {children}
           </div>
           
+          {/* Sources & References */}
+          {sources && sources.length > 0 && (
+            <SourcesCitation sources={sources} />
+          )}
+
           {/* Related Articles (for spoke articles) */}
           {shouldShowRelated && currentSlug && (
             <RelatedArticles
