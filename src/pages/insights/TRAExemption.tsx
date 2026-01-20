@@ -3,6 +3,13 @@ import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import { Link } from "react-router-dom";
+import SourcesCitation from "@/components/SourcesCitation";
+
+const traSources = [
+  { name: "European Banking Authority – Strong Customer Authentication", url: "https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money/regulatory-technical-standards-on-strong-customer-authentication-and-secure-communication-under-psd2", type: "regulatory" as const },
+  { name: "FCA – Payment Services Regulations", url: "https://www.fca.org.uk/firms/strong-customer-authentication", type: "regulatory" as const },
+  { name: "PSD2 Directive (EU) 2015/2366", url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015L2366", type: "regulatory" as const }
+];
 
 const TRAExemption = () => {
   useSEO({
@@ -153,6 +160,8 @@ const TRAExemption = () => {
             <p className="text-muted-foreground mb-8">
               If payments feel more complicated than they should, it is often not your checkout design. It is how risk is being handled behind the scenes.
             </p>
+
+            <SourcesCitation sources={traSources} />
 
             <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border">
               <p className="text-muted-foreground mb-4">

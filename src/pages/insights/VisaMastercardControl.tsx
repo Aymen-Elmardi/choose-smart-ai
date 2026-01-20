@@ -3,6 +3,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
+import SourcesCitation from "@/components/SourcesCitation";
+
+const visaMastercardSources = [
+  { name: "Visa Core Rules and Visa Product and Service Rules", url: "https://usa.visa.com/dam/VCOM/download/about-visa/visa-rules-public.pdf", type: "official" as const },
+  { name: "Mastercard Rules Manual", url: "https://www.mastercard.us/en-us/business/overview/support/rules.html", type: "official" as const },
+  { name: "Bank of England – Payment Systems", url: "https://www.bankofengland.co.uk/payment-and-settlement", type: "regulatory" as const }
+];
 
 const VisaMastercardControl = () => {
   useSEO({
@@ -241,6 +248,8 @@ const VisaMastercardControl = () => {
               </p>
             </div>
           </section>
+
+          <SourcesCitation sources={visaMastercardSources} />
 
           {/* Footer Note */}
           <div className="mt-12 pt-8 border-t border-border">

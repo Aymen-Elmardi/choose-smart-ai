@@ -7,6 +7,14 @@ import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import { Button } from "@/components/ui/button";
 import FraudPreventionModal from "@/components/FraudPreventionModal";
 import FAQSchema from "@/components/FAQSchema";
+import SourcesCitation from "@/components/SourcesCitation";
+
+const chargebackSources = [
+  { name: "Visa Dispute Management Guidelines", url: "https://usa.visa.com/support/small-business/dispute-resolution.html", type: "official" as const },
+  { name: "Mastercard Chargeback Guide", url: "https://www.mastercard.co.uk/en-gb/vision/who-we-are/terms-of-use/chargeback-guide.html", type: "official" as const },
+  { name: "UK Finance – Fraud Facts", url: "https://www.ukfinance.org.uk/", type: "industry" as const },
+  { name: "Chargebacks911 – Chargeback Statistics", url: "https://chargebacks911.com/chargeback-stats/", type: "industry" as const }
+];
 
 const Chargebacks = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -389,6 +397,8 @@ const Chargebacks = () => {
               </Link>{" "}
               to understand which payment providers are best suited to your business model.
             </p>
+
+            <SourcesCitation sources={chargebackSources} />
           </div>
         </article>
       </main>

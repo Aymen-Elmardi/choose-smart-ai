@@ -4,7 +4,14 @@ import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
+import SourcesCitation from "@/components/SourcesCitation";
 import { ArrowRight, CheckCircle2, Zap, Globe, Users, Settings } from "lucide-react";
+
+const checkoutComSources = [
+  { name: "Checkout.com Official Documentation", url: "https://www.checkout.com/docs", type: "official" as const },
+  { name: "Checkout.com – Fraud Detection", url: "https://www.checkout.com/products/fraud-detection", type: "official" as const },
+  { name: "Checkout.com – Authorization Optimization", url: "https://www.checkout.com/products/intelligent-acceptance", type: "official" as const }
+];
 
 const CheckoutComEnterprisePlatform = () => {
   useSEO({
@@ -225,6 +232,8 @@ const CheckoutComEnterprisePlatform = () => {
                 ))}
               </div>
             </section>
+
+            <SourcesCitation sources={checkoutComSources} />
 
             {/* CTA Section */}
             <section className="p-8 md:p-12 rounded-2xl bg-muted/30 border border-border text-center">
