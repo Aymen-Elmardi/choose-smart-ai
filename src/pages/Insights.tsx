@@ -142,7 +142,7 @@ const allInsights: Insight[] = [
     readTime: "4 min read"
   },
   {
-    title: "Sales Growth Triggers Document Requests — Here's How to Prepare",
+    title: "Sales Growth Triggers Document Requests: How to Prepare",
     slug: "sales-increase",
     description: "Learn why sudden sales growth triggers additional document requests.",
     category: "compliance",
@@ -163,7 +163,7 @@ const allInsights: Insight[] = [
     readTime: "5 min read"
   },
   {
-    title: "High-Risk Industries Face Extra Verification — Is Yours One?",
+    title: "High-Risk Industries Face Extra Verification: Is Yours One?",
     slug: "industry-verification",
     description: "Understanding why certain industries face additional verification requirements.",
     category: "compliance",
@@ -191,7 +191,7 @@ const allInsights: Insight[] = [
     readTime: "7 min read"
   },
   {
-    title: "Sudden Growth Can Trigger Account Reviews — Here's How to Handle It",
+    title: "Sudden Growth Can Trigger Account Reviews: How to Handle It",
     slug: "why-accounts-get-flagged-after-growth",
     description: "Rapid growth is one of the most common reasons payment accounts are reviewed.",
     category: "risk",
@@ -205,7 +205,7 @@ const allInsights: Insight[] = [
     readTime: "6 min read"
   },
   {
-    title: "Marketplaces Face Extra Scrutiny — Here's What Providers Look For",
+    title: "Marketplaces Face Extra Scrutiny: What Providers Look For",
     slug: "why-marketplaces-get-extra-scrutiny",
     description: "Marketplaces introduce additional layers of risk for payment providers.",
     category: "risk",
@@ -219,7 +219,7 @@ const allInsights: Insight[] = [
     readTime: "5 min read"
   },
   {
-    title: "Some Businesses Struggle to Get Approved — Here's the Real Reason",
+    title: "Some Businesses Struggle to Get Approved: The Real Reason",
     slug: "why-some-businesses-never-get-approved",
     description: "Not all businesses are declined because they are doing something wrong.",
     category: "risk",

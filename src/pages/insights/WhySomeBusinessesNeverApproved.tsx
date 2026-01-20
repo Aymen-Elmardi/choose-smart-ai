@@ -4,19 +4,19 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const WhySomeBusinessesNeverApproved = () => {
   useSEO({
-    title: "Some Businesses Struggle to Get Approved — Here's the Real Reason | ChosePayments",
+    title: "Some Businesses Struggle to Get Approved: The Real Reason | ChosePayments",
     description: "Not all businesses are declined because they are doing something wrong. Learn why approval failures happen and how to apply correctly the first time."
   });
 
   return (
     <InsightsArticleLayout
-      title="Some Businesses Struggle to Get Approved — Here's the Real Reason"
+      title="Some Businesses Struggle to Get Approved: The Real Reason"
       category={{ name: "Risk & Freezes", slug: "payment-risk" }}
       cluster="hub"
       currentSlug="why-some-businesses-never-get-approved"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-        Some Businesses Struggle to Get Approved — Here's the Real Reason
+        Some Businesses Struggle to Get Approved: The Real Reason
       </h1>
       
       <div className="text-muted-foreground space-y-6">

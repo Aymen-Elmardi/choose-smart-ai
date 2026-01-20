@@ -29,7 +29,7 @@ const WhyProvidersReUnderwrite = () => {
             </p>
             
             <p>
-              Re-underwriting can involve requests for updated documents, explanations of recent transactions, or confirmation of business operations. Each provider handles this differently — understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help you prepare.
+              Re-underwriting can involve requests for updated documents, explanations of recent transactions, or confirmation of business operations. Each provider handles this differently. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help you prepare.
             </p>
             
             <p>

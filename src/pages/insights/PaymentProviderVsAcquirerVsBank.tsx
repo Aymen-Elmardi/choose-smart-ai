@@ -6,7 +6,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const PaymentProviderVsAcquirerVsBank = () => {
   useSEO({
-    title: "Payment Provider vs Acquirer vs Bank – What's the Difference? | ChosePayments",
+    title: "Payment Provider vs Acquirer vs Bank: What's the Difference? | ChosePayments",
     description: "Understand who does what in card payments: payment providers, acquirers, and banks. Learn why money moves slower than transactions and what affects payout timelines."
   });
 
