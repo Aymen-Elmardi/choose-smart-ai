@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const WhyAccountsFlaggedAfterGrowth = () => {
   useSEO({
-    title: "Sudden Growth Can Trigger Account Reviews — Here's How to Handle It | ChosePayments",
+    title: "Sudden Growth Can Trigger Account Reviews: How to Handle It | ChosePayments",
     description: "Rapid growth is one of the most common reasons payment accounts are reviewed. Learn why fast-growing businesses get flagged and how to avoid payment freezes."
   });
 
@@ -16,7 +16,7 @@ const WhyAccountsFlaggedAfterGrowth = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-            Sudden Growth Can Trigger Account Reviews — Here's How to Handle It
+            Sudden Growth Can Trigger Account Reviews: How to Handle It
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
