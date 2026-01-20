@@ -1,20 +1,16 @@
 import { Link } from "react-router-dom";
-import { useSEO } from "@/hooks/useSEO";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const BlendedVsInterchange = () => {
-  useSEO({
-    title: "Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy | ChosePayments",
-    description: "Discover the strategic trade off between blended pricing and Interchange++ (IC++). Learn which model fits your business and why the wrong choice costs more than a higher rate."
-  });
-
   return (
     <InsightsArticleLayout
       title="Blended vs Interchange++"
+      description="Discover the strategic trade off between blended pricing and Interchange++ (IC++). Learn which model fits your business and why the wrong choice costs more than a higher rate."
       category={{ name: "Pricing Models", slug: "pricing" }}
       cluster="pricing"
       showRelated={true}
       currentSlug="blended-vs-interchange"
+      keywords={["blended pricing", "interchange plus plus", "IC++ pricing", "payment processing pricing"]}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy

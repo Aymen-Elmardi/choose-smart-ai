@@ -1,20 +1,16 @@
 import { Link } from "react-router-dom";
-import { useSEO } from "@/hooks/useSEO";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const HiddenFeeCrisis = () => {
-  useSEO({
-    title: "The Hidden Fee Crisis: How Your 'Low Rate' Payment Processor is Costing You Thousands | ChosePayments",
-    description: "Your headline rate isn't your real cost. Learn how to calculate your Effective Rate and uncover the 5 hidden fees quietly draining your profits."
-  });
-
   return (
     <InsightsArticleLayout
       title="The Hidden Fee Crisis"
+      description="Your headline rate isn't your real cost. Learn how to calculate your Effective Rate and uncover the 5 hidden fees quietly draining your profits."
       category={{ name: "Crisis Intervention", slug: "crisis" }}
       cluster="crisis"
       currentSlug="hidden-fee-crisis"
       ctaVariant="default"
+      keywords={["hidden payment fees", "effective rate", "payment processing costs", "merchant fees"]}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         The Hidden Fee Crisis: How Your 'Low Rate' Payment Processor is Quietly Costing You Thousands

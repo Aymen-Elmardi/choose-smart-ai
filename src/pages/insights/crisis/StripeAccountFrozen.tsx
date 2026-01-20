@@ -1,20 +1,16 @@
 import { Link } from "react-router-dom";
-import { useSEO } from "@/hooks/useSEO";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const StripeAccountFrozen = () => {
-  useSEO({
-    title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze | ChosePayments",
-    description: "Stripe funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider."
-  });
-
   return (
     <InsightsArticleLayout
       title="Stripe Account Frozen?"
+      description="Stripe funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider."
       category={{ name: "Crisis Intervention", slug: "crisis" }}
       cluster="crisis"
       currentSlug="stripe-account-frozen"
       ctaVariant="default"
+      keywords={["Stripe account frozen", "Stripe funds frozen", "account freeze recovery", "payment account suspended"]}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Stripe Account Frozen? The 5 Hidden Reasons Why (And How to Prevent the Next Freeze)

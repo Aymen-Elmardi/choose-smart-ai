@@ -1,20 +1,16 @@
 import { Link } from "react-router-dom";
-import { useSEO } from "@/hooks/useSEO";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const RejectedHighRiskStrategy = () => {
-  useSEO({
-    title: "Rejected by Stripe or Square? A Strategic Recovery Plan for High-Risk Merchants | ChosePayments",
-    description: "Rejected by a major payment provider? Learn why the 'high-risk' label is not a judgment and how to find a provider that actually wants your business."
-  });
-
   return (
     <InsightsArticleLayout
       title="Rejected by Stripe or Square?"
+      description="Rejected by a major payment provider? Learn why the 'high-risk' label is not a judgment and how to find a provider that actually wants your business."
       category={{ name: "Crisis Intervention", slug: "crisis" }}
       cluster="crisis"
       currentSlug="rejected-high-risk-strategy"
       ctaVariant="default"
+      keywords={["Stripe rejected", "Square rejected", "high-risk merchant", "payment provider rejection"]}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Rejected by Stripe or Square? Why Your 'High-Risk' Business Needs a Risk-Aligned Payment Strategy

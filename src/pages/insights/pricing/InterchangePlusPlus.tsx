@@ -1,19 +1,15 @@
 import { Link } from "react-router-dom";
-import { useSEO } from "@/hooks/useSEO";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const InterchangePlusPlus = () => {
-  useSEO({
-    title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify) | ChosePayments",
-    description: "The expert guide to Interchange++ pricing: what it really is, why it's an underwriting outcome not a menu option, and how to know if you actually qualify."
-  });
-
   return (
     <InsightsArticleLayout
       title="Interchange++ Pricing Explained"
+      description="The expert guide to Interchange++ pricing: what it really is, why it's an underwriting outcome not a menu option, and how to know if you actually qualify."
       category={{ name: "Pricing Models", slug: "pricing" }}
       cluster="hub"
       showRelated={false}
+      keywords={["interchange plus plus", "IC++ explained", "payment pricing models", "merchant fees"]}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Interchange++ Pricing: The "Secret" to Lower Fees (And Why Most Businesses Never Qualify)
