@@ -13,21 +13,49 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
+import FinancialProductSchema from "@/components/FinancialProductSchema";
+
+const providers = [
+  {
+    name: "Stripe",
+    description: "Online payment processing with advanced APIs, global payments, and subscription support",
+    provider: "Stripe",
+    fees: "1.4–2.9% + 20p",
+  },
+  {
+    name: "Square",
+    description: "Point of sale ecosystem for retail and hospitality with excellent POS hardware",
+    provider: "Square",
+    fees: "1.75% in-person, 2.5% online",
+  },
+  {
+    name: "PayPal",
+    description: "Trusted payment gateway with instant buyer recognition for low-volume sellers",
+    provider: "PayPal",
+    fees: "2.99% + fixed fee",
+  },
+];
 
 const StripeVsSquareVsPaypal = () => {
   useCanonical();
   
+  useSEO({
+    title: "Stripe vs Square vs PayPal (UK): Which One Will Actually Approve You?",
+    description: "UK businesses often get rejected or frozen by Stripe, Square, or PayPal. This guide explains which provider is most likely to approve your business — and why.",
+    keywords: ["Stripe vs Square", "Stripe vs PayPal", "payment provider comparison UK", "which payment processor"],
+  });
+
   useEffect(() => {
-    document.title = "Stripe vs Square vs PayPal (UK): Which One Will Actually Approve You?";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "UK businesses often get rejected or frozen by Stripe, Square, or PayPal. This guide explains which provider is most likely to approve your business — and why.");
-    }
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
+      <FinancialProductSchema 
+        products={providers}
+        listName="Stripe vs Square vs PayPal UK Comparison"
+      />
       <Header />
       
       <main>

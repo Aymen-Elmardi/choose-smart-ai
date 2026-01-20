@@ -3,6 +3,26 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
+import HowToSchema from "@/components/HowToSchema";
+
+const howToSteps = [
+  {
+    name: "Understand what proof of business activity means",
+    text: "Payment providers request this to confirm your business is real, active, and operating as described. It usually happens during onboarding or when account activity changes.",
+  },
+  {
+    name: "Prepare your website and checkout",
+    text: "Ensure you have a live website that clearly shows what you sell, along with screenshots of your checkout or app.",
+  },
+  {
+    name: "Gather transaction evidence",
+    text: "Collect recent invoices, customer receipts, marketing materials, or order confirmations to demonstrate active business operations.",
+  },
+  {
+    name: "Make your business model clear",
+    text: "Ensure your business model is easy to understand before applying to a provider. Vague or unfinished websites often cause problems.",
+  },
+];
 
 const ProofOfBusinessActivity = () => {
   useSEO({
@@ -12,6 +32,12 @@ const ProofOfBusinessActivity = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <HowToSchema
+        name="How to Prepare Proof of Business Activity Documentation"
+        description="Step-by-step guide to preparing and submitting proof of business activity to payment providers."
+        steps={howToSteps}
+        totalTime="PT15M"
+      />
       <Header />
       
       <main className="pt-24 pb-16">

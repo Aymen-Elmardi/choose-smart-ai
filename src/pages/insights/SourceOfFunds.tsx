@@ -3,6 +3,22 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
+import HowToSchema from "@/components/HowToSchema";
+
+const howToSteps = [
+  {
+    name: "Understand what source of funds means",
+    text: "Source of funds refers to where the money in your account comes from. Providers ask for this to comply with financial regulations and prevent money laundering.",
+  },
+  {
+    name: "Prepare your documentation",
+    text: "Gather business bank statements, personal statements for new businesses, and explanations for any large deposits.",
+  },
+  {
+    name: "Separate personal and business finances",
+    text: "Having clean separation between personal and business finances significantly reduces friction during source of funds reviews.",
+  },
+];
 
 const SourceOfFunds = () => {
   useSEO({
@@ -12,6 +28,12 @@ const SourceOfFunds = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <HowToSchema
+        name="How to Respond to Source of Funds Requests"
+        description="Understanding and preparing for payment provider source of funds documentation requirements."
+        steps={howToSteps}
+        totalTime="PT10M"
+      />
       <Header />
       
       <main className="pt-24 pb-16">

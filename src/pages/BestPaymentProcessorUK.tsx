@@ -13,31 +13,74 @@ import {
 } from "@/components/ui/table";
 import { useEffect } from "react";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
+import FinancialProductSchema from "@/components/FinancialProductSchema";
+
+const providers = [
+  {
+    name: "Stripe",
+    description: "Online payment processing for UK businesses with advanced APIs and global payments",
+    provider: "Stripe",
+    fees: "1.4–2.9% + 20p",
+    bestFor: "Online businesses",
+  },
+  {
+    name: "Square",
+    description: "Point of sale and payment processing for retail and hospitality businesses",
+    provider: "Square",
+    fees: "1.75%",
+    bestFor: "Retail & hospitality",
+  },
+  {
+    name: "Zettle",
+    description: "Mobile payment solution for small traders and mobile businesses",
+    provider: "PayPal (Zettle)",
+    fees: "1.75%",
+    bestFor: "Mobile traders",
+  },
+  {
+    name: "PayPal",
+    description: "Trusted online payment gateway for low-volume sellers",
+    provider: "PayPal",
+    fees: "2.99% + fee",
+    bestFor: "Low-volume sellers",
+  },
+  {
+    name: "Checkout.com",
+    description: "Enterprise payment platform with custom pricing for high-volume online businesses",
+    provider: "Checkout.com",
+    fees: "Custom",
+    bestFor: "High-volume online",
+  },
+  {
+    name: "Datman",
+    description: "Marketplace payment platform with split payment capabilities",
+    provider: "Datman",
+    fees: "Custom",
+    bestFor: "Marketplaces",
+  },
+];
 
 const BestPaymentProcessorUK = () => {
   useCanonical();
   
+  useSEO({
+    title: "Choosing a Payment Processor? What UK Businesses Get Wrong",
+    description: "Most UK businesses pick a payment provider too quickly and regret it. See what actually matters before you commit — not just fees.",
+    keywords: ["payment processor UK", "best payment provider", "UK business payments", "Stripe alternatives"],
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    // Set SEO meta tags
-    document.title = "Choosing a Payment Processor? What UK Businesses Get Wrong";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Most UK businesses pick a payment provider too quickly and regret it. See what actually matters before you commit — not just fees.");
-    } else {
-      const meta = document.createElement('meta');
-      meta.name = "description";
-      meta.content = "Most UK businesses pick a payment provider too quickly and regret it. See what actually matters before you commit — not just fees.";
-      document.head.appendChild(meta);
-    }
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <FinancialProductSchema 
+        products={providers}
+        listName="Best Payment Processors UK 2025"
+      />
       <Header />
-      
       
       <main className="flex-1">
         {/* SECTION 1 — Hero Section */}

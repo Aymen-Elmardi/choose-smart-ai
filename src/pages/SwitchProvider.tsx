@@ -5,31 +5,60 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
+import HowToSchema from "@/components/HowToSchema";
+
+const howToSteps = [
+  {
+    name: "Review your contract terms",
+    text: "Check your notice period and any early termination fees before initiating a switch.",
+  },
+  {
+    name: "Check equipment ownership",
+    text: "Determine whether you own your terminals or if they are leased, as this affects your switch timeline.",
+  },
+  {
+    name: "Verify settlement timing",
+    text: "Ensure no funds are held during the transition by coordinating with both old and new providers.",
+  },
+  {
+    name: "Audit integration dependencies",
+    text: "Check what systems connect to your current provider and plan migration for each integration.",
+  },
+  {
+    name: "Set up new provider first",
+    text: "Configure your new provider before cancelling the old one to ensure business continuity.",
+  },
+  {
+    name: "Run parallel operations",
+    text: "If possible, run both providers in parallel for a short period to test the new system.",
+  },
+  {
+    name: "Update recurring billing",
+    text: "Migrate any recurring billing or subscription integrations to the new provider.",
+  },
+];
 
 const SwitchProvider = () => {
   useCanonical();
   
-  useEffect(() => {
-    document.title = "Switching Payment Providers — What to Check First";
-    
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute(
-      "content",
-      "Stuck with the wrong provider? Learn how to leave without exit fees, fund holds, or unnecessary disruption."
-    );
+  useSEO({
+    title: "Switching Payment Providers — What to Check First",
+    description: "Stuck with the wrong provider? Learn how to leave without exit fees, fund holds, or unnecessary disruption.",
+  });
 
-    return () => {
-      document.title = "Payment Provider Quiz";
-    };
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
+      <HowToSchema
+        name="How to Switch Payment Providers Without Getting Stuck"
+        description="Step-by-step guide to switching payment providers without exit fees, fund holds, or business disruption."
+        steps={howToSteps}
+        totalTime="PT20M"
+      />
       <Header />
       
       <main className="section-padding pt-24">
