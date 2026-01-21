@@ -6,31 +6,38 @@ interface ArticleSchemaProps {
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
+  authorUrl?: string;
   image?: string;
   sources?: Array<{ name: string; url: string }>;
+  keywords?: string[];
+  articleBody?: string;
 }
 
 const BASE_URL = "https://chosepayments.com";
 
 /**
  * Injects Article structured data (JSON-LD) for SEO.
+ * Enhanced for E-E-A-T with keywords, articleBody, and author details.
  * Use this on all insight/blog articles.
  */
 const ArticleSchema = ({
   title,
   description,
-  publishedTime = "2026-01-01",
+  publishedTime = "2025-12-17",
   modifiedTime,
   author = "ChosePayments",
+  authorUrl = BASE_URL,
   image = "https://chosepayments.com/og-default.png",
   sources,
+  keywords,
+  articleBody,
 }: ArticleSchemaProps) => {
   useEffect(() => {
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.id = "article-schema";
 
-    const schemaData = {
+    const schemaData: Record<string, unknown> = {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": title,
@@ -39,7 +46,7 @@ const ArticleSchema = ({
       "author": {
         "@type": "Organization",
         "name": author,
-        "url": BASE_URL,
+        "url": authorUrl,
       },
       "publisher": {
         "@type": "Organization",
@@ -56,14 +63,26 @@ const ArticleSchema = ({
         "@type": "WebPage",
         "@id": typeof window !== "undefined" ? window.location.href : BASE_URL,
       },
-      ...(sources && sources.length > 0 && {
-        "citation": sources.map(source => ({
-          "@type": "CreativeWork",
-          "name": source.name,
-          "url": source.url
-        }))
-      }),
     };
+
+    // Add keywords if provided
+    if (keywords && keywords.length > 0) {
+      schemaData.keywords = keywords.join(", ");
+    }
+
+    // Add articleBody if provided (truncated to 2000 chars for schema)
+    if (articleBody) {
+      schemaData.articleBody = articleBody.slice(0, 2000);
+    }
+
+    // Add citations if sources provided
+    if (sources && sources.length > 0) {
+      schemaData.citation = sources.map(source => ({
+        "@type": "CreativeWork",
+        "name": source.name,
+        "url": source.url
+      }));
+    }
 
     script.textContent = JSON.stringify(schemaData);
 
@@ -81,7 +100,7 @@ const ArticleSchema = ({
         scriptToRemove.remove();
       }
     };
-  }, [title, description, publishedTime, modifiedTime, author, image, sources]);
+  }, [title, description, publishedTime, modifiedTime, author, authorUrl, image, sources, keywords, articleBody]);
 
   return null;
 };

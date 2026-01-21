@@ -97,6 +97,7 @@ const InsightsArticleLayout = ({
         publishedTime={publishedTime}
         modifiedTime={modifiedTime}
         sources={sources}
+        keywords={keywords}
       />
       <BreadcrumbSchema items={breadcrumbItems} />
       
