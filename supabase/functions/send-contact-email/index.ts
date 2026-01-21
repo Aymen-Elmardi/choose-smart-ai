@@ -1,18 +1,68 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
-import {
-  corsHeaders,
-  handleCorsOptions,
-  successResponse,
-  errorResponse,
-  getClientIp,
-  checkIpRateLimit,
-  escapeHtml,
-  sanitizeString,
-  isValidEmail,
-} from "../shared/index.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+// ============================================================================
+// SHARED UTILITIES (inlined for edge function bundling)
+// ============================================================================
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+};
+
+const jsonResponse = (data: unknown, status: number = 200): Response => {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "Content-Type": "application/json", ...corsHeaders },
+  });
+};
+
+const successResponse = (data: Record<string, unknown> = {}): Response => jsonResponse({ success: true, ...data }, 200);
+const errorResponse = (error: string, status: number = 400): Response => jsonResponse({ success: false, error }, status);
+
+const getClientIp = (req: Request): string => {
+  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
+};
+
+const rateLimitStore = new Map<string, { count: number; timestamp: number }>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+
+const checkIpRateLimit = (clientIp: string): boolean => {
+  const now = Date.now();
+  const record = rateLimitStore.get(clientIp);
+  if (rateLimitStore.size > 1000) {
+    for (const [key, value] of rateLimitStore.entries()) {
+      if (now - value.timestamp > RATE_LIMIT_WINDOW_MS) rateLimitStore.delete(key);
+    }
+  }
+  if (!record || now - record.timestamp > RATE_LIMIT_WINDOW_MS) {
+    rateLimitStore.set(clientIp, { count: 1, timestamp: now });
+    return true;
+  }
+  if (record.count >= RATE_LIMIT_MAX) return false;
+  record.count++;
+  return true;
+};
+
+const escapeHtml = (str: string): string => {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+};
+
+const sanitizeString = (value: unknown, maxLength: number = 500): string => {
+  if (value === null || value === undefined || value === "") return "";
+  return String(value).trim().slice(0, maxLength).replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
+};
+
+const isValidEmail = (email: string): boolean => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254 && email.length >= 5;
+};
+
+// ============================================================================
+// HANDLER
+// ============================================================================
 
 interface ContactEmailRequest {
   name: string;
@@ -24,25 +74,23 @@ interface ContactEmailRequest {
 
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
-    return handleCorsOptions();
+    return new Response(null, { headers: corsHeaders });
   }
 
   try {
     const clientIp = getClientIp(req);
-    if (!checkIpRateLimit(clientIp, 5)) {
+    if (!checkIpRateLimit(clientIp)) {
       console.log(`Rate limit exceeded for IP: ${clientIp}`);
       return errorResponse("Too many requests. Please try again later.", 429);
     }
 
     const { name, email, businessName, message, honeypot }: ContactEmailRequest = await req.json();
 
-    // Honeypot check - if filled, it's likely a bot
     if (honeypot) {
       console.log("Honeypot triggered, rejecting submission");
-      return successResponse(); // Return success to not alert bots
+      return successResponse();
     }
 
-    // Sanitize and validate inputs
     const sanitizedName = sanitizeString(name, 100);
     const sanitizedEmail = sanitizeString(email, 255);
     const sanitizedBusinessName = sanitizeString(businessName, 200);
@@ -58,8 +106,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending contact form email from:", sanitizedEmail);
 
-    // Send notification email to ChosePayments
-    const notificationEmail = await resend.emails.send({
+    await resend.emails.send({
       from: "ChosePayments Contact <onboarding@resend.dev>",
       to: ["hello@chosepayments.com"],
       reply_to: sanitizedEmail,
@@ -75,10 +122,7 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
-    console.log("Notification email sent:", notificationEmail);
-
-    // Send confirmation email to the user
-    const confirmationEmail = await resend.emails.send({
+    await resend.emails.send({
       from: "ChosePayments <onboarding@resend.dev>",
       to: [sanitizedEmail],
       subject: "We received your message",
@@ -91,8 +135,6 @@ const handler = async (req: Request): Promise<Response> => {
         <p>The ChosePayments Team</p>
       `,
     });
-
-    console.log("Confirmation email sent:", confirmationEmail);
 
     return successResponse();
   } catch (error: unknown) {

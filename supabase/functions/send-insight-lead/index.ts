@@ -1,21 +1,68 @@
-// ChosePayments Insight Lead Email Function
-// For simple lead capture from insight articles
-// Recipient: hello@chosepayments.com (HARDCODED)
-
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
-import {
-  handleCorsOptions,
-  successResponse,
-  errorResponse,
-  getClientIp,
-  checkIpRateLimit,
-  escapeHtml,
-  sanitizeString,
-  isValidEmail,
-} from "../shared/index.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+// ============================================================================
+// SHARED UTILITIES (inlined for edge function bundling)
+// ============================================================================
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+};
+
+const jsonResponse = (data: unknown, status: number = 200): Response => {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "Content-Type": "application/json", ...corsHeaders },
+  });
+};
+
+const successResponse = (data: Record<string, unknown> = {}): Response => jsonResponse({ success: true, ...data }, 200);
+const errorResponse = (error: string, status: number = 400): Response => jsonResponse({ success: false, error }, status);
+
+const getClientIp = (req: Request): string => {
+  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
+};
+
+const rateLimitStore = new Map<string, { count: number; timestamp: number }>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 3;
+
+const checkIpRateLimit = (clientIp: string): boolean => {
+  const now = Date.now();
+  const record = rateLimitStore.get(clientIp);
+  if (rateLimitStore.size > 1000) {
+    for (const [key, value] of rateLimitStore.entries()) {
+      if (now - value.timestamp > RATE_LIMIT_WINDOW_MS) rateLimitStore.delete(key);
+    }
+  }
+  if (!record || now - record.timestamp > RATE_LIMIT_WINDOW_MS) {
+    rateLimitStore.set(clientIp, { count: 1, timestamp: now });
+    return true;
+  }
+  if (record.count >= RATE_LIMIT_MAX) return false;
+  record.count++;
+  return true;
+};
+
+const escapeHtml = (str: string): string => {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+};
+
+const sanitizeString = (value: unknown, maxLength: number = 500): string => {
+  if (value === null || value === undefined || value === "") return "";
+  return String(value).trim().slice(0, maxLength).replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
+};
+
+const isValidEmail = (email: string): boolean => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254 && email.length >= 5;
+};
+
+// ============================================================================
+// HANDLER
+// ============================================================================
 
 interface InsightLeadRequest {
   email: string;
@@ -27,13 +74,13 @@ const handler = async (req: Request): Promise<Response> => {
   console.log("Received request to send-insight-lead");
 
   if (req.method === "OPTIONS") {
-    return handleCorsOptions();
+    return new Response(null, { headers: corsHeaders });
   }
 
   const clientIp = getClientIp(req);
   console.log(`Request from IP: ${clientIp}`);
 
-  if (!checkIpRateLimit(clientIp, 3)) {
+  if (!checkIpRateLimit(clientIp)) {
     console.warn(`Rate limit exceeded for IP: ${clientIp}`);
     return errorResponse("Too many requests. Please try again later.", 429);
   }
@@ -41,20 +88,17 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const rawData = await req.json();
 
-    // Validate required fields
     if (!rawData.email) {
       console.warn("Missing email");
       return errorResponse("Email is required.", 400);
     }
 
-    // Sanitize input
     const data: InsightLeadRequest = {
       email: sanitizeString(rawData.email, 254),
       pageSource: sanitizeString(rawData.pageSource, 500),
       tag: sanitizeString(rawData.tag, 100),
     };
 
-    // Validate email format
     if (!isValidEmail(data.email)) {
       console.warn(`Invalid email format: ${data.email}`);
       return errorResponse("Please provide a valid email address.", 400);
@@ -63,8 +107,6 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Insight lead received:", data.email, data.tag);
 
     const submissionTimestamp = new Date().toISOString();
-
-    // Format tag for display
     const tagDisplay = data.tag
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -86,9 +128,7 @@ const handler = async (req: Request): Promise<Response> => {
 </head>
 <body>
   <h1>New Insight Lead – ${escapeHtml(tagDisplay)}</h1>
-  
   <p><span class="tag">${escapeHtml(tagDisplay)}</span></p>
-
   <table>
     <tr><th>Email</th><td>${escapeHtml(data.email)}</td></tr>
     <tr><th>Page Source</th><td>${escapeHtml(data.pageSource || "Not provided")}</td></tr>
@@ -97,20 +137,18 @@ const handler = async (req: Request): Promise<Response> => {
     <tr><th>Client IP</th><td>${escapeHtml(clientIp)}</td></tr>
   </table>
 </body>
-</html>
-    `;
+</html>`;
 
     console.log("Sending insight lead email to: hello@chosepayments.com");
 
-    const emailResponse = await resend.emails.send({
+    await resend.emails.send({
       from: "ChosePayments <leads@chosepayments.com>",
       to: "hello@chosepayments.com",
       subject: `Insight Lead – ${escapeHtml(tagDisplay)}`,
       html: emailHtml,
     });
 
-    console.log("Email sent successfully:", emailResponse);
-
+    console.log("Email sent successfully");
     return successResponse();
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
