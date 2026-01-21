@@ -4,18 +4,18 @@ import { useInView } from "@/hooks/useInView";
 const problems = [
   {
     icon: HelpCircle,
-    title: "Paralyzed by 50+ Options",
-    description: "Stripe, PayPal, Square, acquirers, banks... you're expected to become a payments expert overnight.",
+    title: "Too Many Options",
+    description: "Stripe, PayPal, Square, acquirers, banks... the choices are overwhelming.",
   },
   {
     icon: EyeOff,
-    title: "Surprise Charges Eating Margins",
-    description: "The advertised rate is never what you actually pay. Hidden fees add up fast.",
+    title: "Hidden Fees",
+    description: "The effective rate you pay often differs from the advertised rate.",
   },
   {
     icon: Target,
-    title: "Generic Advice That Doesn't Fit",
-    description: "Every 'best provider' list ignores that your business is unique.",
+    title: "Different Needs",
+    description: "Each business type requires something different from their payment provider.",
   },
 ];
 
@@ -47,7 +47,7 @@ const ProblemSection = () => {
         </div>
 
         <p className={`text-center mt-16 text-lg text-muted-foreground max-w-2xl mx-auto reveal stagger-4 ${isInView ? "visible" : ""}`}>
-          Most businesses pick too fast and regret it within 6 months. You don't have to.
+          We simplify the entire decision so you don't pay more than you need to or choose the wrong provider.
         </p>
       </div>
     </section>
