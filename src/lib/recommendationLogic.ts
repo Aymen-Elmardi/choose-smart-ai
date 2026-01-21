@@ -1,22 +1,10 @@
 // Recommendation logic for UK and US markets
+// Client-side fallback when server engine is unavailable
 
-export interface QuizAnswers {
-  salesChannel: string;
-  businessType: string;
-  priorities: string[];
-  location: string;
-  monthlyVolume: string;
-  avgTransaction: string;
-  features: string[];
-}
+// Re-export types from canonical source
+export type { QuizAnswers, Provider, Market } from "@/types/quiz";
 
-export interface Provider {
-  name: string;
-  description: string;
-  reasons: string[];
-}
-
-export type Market = "UK" | "US";
+import type { QuizAnswers, Provider } from "@/types/quiz";
 
 // UK Recommendation Logic (existing)
 export const getUKRecommendation = (answers: QuizAnswers): Provider | null => {
@@ -24,7 +12,7 @@ export const getUKRecommendation = (answers: QuizAnswers): Provider | null => {
     businessType,
     salesChannel,
     monthlyVolume,
-    features,
+    features = [],
     priorities,
     location,
   } = answers;
@@ -42,7 +30,6 @@ export const getUKRecommendation = (answers: QuizAnswers): Provider | null => {
   const wantsGlobalReach = priorities.includes("International payments");
   const wantsEasySetup = priorities.includes("Easy setup");
   const wantsLowestFees = priorities.includes("Keeping fees low");
-  const wantsFlexibility = priorities.includes("Flexibility / future-proofing");
 
   // Handle both numeric ranges and early-stage expectation-based options
   const isLowVolume = 
@@ -83,7 +70,6 @@ export const getUKRecommendation = (answers: QuizAnswers): Provider | null => {
 
   // SHIFT4 - Complex cases, marketplaces, international, high volume where mainstream may struggle
   if (isComplexCase && !isSimpleLowVolumeFocused) {
-    // Check for marketplace + international or high volume complexity
     if ((isMarketplace && acceptsInternational) || 
         (isMarketplace && volumeOver50k) || 
         (hasMultipleSellers && acceptsInternational)) {
@@ -218,12 +204,11 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
     businessType,
     salesChannel,
     monthlyVolume,
-    features,
+    features = [],
     priorities,
-    location,
   } = answers;
 
-  // Derive feature flags from features array (same as UK)
+  // Derive feature flags from features array
   const acceptsInternational = features.includes("International customers");
   const needsRecurring = features.includes("Subscriptions / recurring billing");
   const hasMultipleSellers = features.includes("Multiple sellers");
@@ -236,9 +221,7 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   const wantsGlobalReach = priorities.includes("International payments");
   const wantsEasySetup = priorities.includes("Easy setup");
   const wantsLowestFees = priorities.includes("Keeping fees low");
-  const wantsFlexibility = priorities.includes("Flexibility / future-proofing");
 
-  // Handle both numeric ranges and early-stage expectation-based options (same as UK)
   const isLowVolume = 
     monthlyVolume === "< £5k" || 
     monthlyVolume === "Just testing / very low volume" ||
@@ -261,10 +244,9 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   const isMarketplace = businessType === "Marketplace / platform";
   const isSubscription = needsRecurring;
   const isEarlyStage = businessType === "Early-stage / just getting started";
-  const isUS = location === "US";
   const wantsBothChannels = salesChannel === "Both online and in person";
 
-  // Complexity and risk flags for Shift4 routing (same as UK logic)
+  // Complexity and risk flags
   const hasComplexityFlags = 
     isMarketplace || 
     hasMultipleSellers || 
@@ -275,7 +257,7 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   const isComplexCase = hasComplexityFlags && (needsReliableApproval || volumeOver50k);
   const isSimpleLowVolumeFocused = isLowVolume && wantsLowestFees && !isMarketplace && !hasMultipleSellers && !acceptsInternational;
 
-  // SHIFT4 - Complex cases, marketplaces, international, high volume where mainstream may struggle
+  // SHIFT4 - Complex cases
   if (isComplexCase && !isSimpleLowVolumeFocused) {
     if ((isMarketplace && acceptsInternational) || 
         (isMarketplace && volumeOver50k) || 
@@ -294,8 +276,7 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
     }
   }
 
-  // DATMAN (US) - Marketplaces with high volume, revenue splitting, or multiple sellers
-  // Maps from: UK Datman (marketplace with high volume)
+  // DATMAN (US) - Marketplaces with high volume
   if (isMarketplace && volumeOver20k && (isDeveloperFriendly || wantsLowestFees || hasMultipleSellers)) {
     return {
       name: "Datman",
@@ -311,7 +292,6 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   }
 
   // FISERV (Clover) - High volume international marketplaces
-  // Maps from: UK Adyen (high volume international marketplaces)
   if (isMarketplace && volumeOver50k && acceptsInternational) {
     return {
       name: "Fiserv (Clover)",
@@ -327,7 +307,6 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   }
 
   // STRIPE (US) - Online businesses with developer needs or global reach
-  // Maps from: UK Stripe (online, developer-friendly, international, recurring)
   if (sellsOnline && (acceptsInternational || needsRecurring || isDeveloperFriendly || wantsGlobalReach)) {
     return {
       name: "Stripe",
@@ -344,7 +323,6 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   }
 
   // SQUARE (US) - Physical businesses or in-person focused
-  // Maps from: UK Square (physical businesses, in-person)
   if (isRestaurantOrRetail || sellsInPerson || wantsBothChannels) {
     return {
       name: "Square",
@@ -361,7 +339,6 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   }
 
   // SQUARE (US) - Low volume, in-person, simplicity focused
-  // Maps from: UK SumUp (low volume, in-person, easy setup)
   if (isLowVolume && sellsInPerson && wantsEasySetup) {
     return {
       name: "Square",
@@ -377,7 +354,6 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   }
 
   // STRIPE (US) - Subscriptions or developer control
-  // Maps from: UK Braintree (subscriptions, developer-friendly, medium volume online)
   if (isSubscription || needsRecurring || isDeveloperFriendly || (isMediumVolume && sellsOnline)) {
     return {
       name: "Stripe",
@@ -394,7 +370,6 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   }
 
   // AUTHORIZE.NET - Early stage, trust-focused, or low-complexity
-  // Maps from: UK PayPal (low volume, easy setup, early stage)
   if (isLowVolume || wantsEasySetup || isEarlyStage || businessType === "Other / mixed") {
     return {
       name: "Authorize.Net",
@@ -404,7 +379,7 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
         "Trusted by US businesses for over 20 years",
         "Straightforward setup and integration",
         isLowVolume || isEarlyStage ? "Great for businesses just starting out" : "",
-        "Wide compatibility with existing systems",
+        "Works with most existing merchant accounts",
       ].filter(Boolean),
     };
   }
@@ -412,8 +387,11 @@ export const getUSRecommendation = (answers: QuizAnswers): Provider | null => {
   return null;
 };
 
-// Main recommendation function that routes to the correct market logic
-export const getRecommendation = (answers: QuizAnswers, market: Market = "UK"): Provider | null => {
+/**
+ * Get recommendation based on quiz answers and market
+ * Uses client-side fallback logic when server is unavailable
+ */
+export const getRecommendation = (answers: QuizAnswers, market: "UK" | "US" = "UK"): Provider | null => {
   if (market === "US") {
     return getUSRecommendation(answers);
   }

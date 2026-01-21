@@ -1,6 +1,6 @@
 // Client-side service for calling the server-side quiz recommendation engine
 import { supabase } from "@/integrations/supabase/client";
-import type { QuizAnswers, Provider } from "./recommendationLogic";
+import type { QuizAnswers, Provider } from "@/types/quiz";
 
 interface ServerRecommendation {
   primary: {
