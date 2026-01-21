@@ -4,18 +4,21 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
+import {
+  handleCorsOptions,
+  successResponse,
+  errorResponse,
+  getClientIp,
+  checkIpRateLimit,
+  escapeHtml,
+  sanitizeString,
+  isValidEmail,
+  isValidName,
+  formatValue,
+  sanitizeArray,
+} from "../shared/index.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
-
-// Rate limiting: simple in-memory store (resets on function cold start)
-const rateLimitStore = new Map<string, { count: number; timestamp: number }>();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 3; // Max 3 requests per minute per IP
 
 interface LeadEmailRequest {
   fullName: string;
@@ -68,115 +71,30 @@ interface EnrichmentData {
   devicePixelRatio: number;
 }
 
-// HTML escape function to prevent XSS and injection attacks
-const escapeHtml = (str: string): string => {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
-    .replace(/\n/g, ' ')
-    .replace(/\r/g, '');
-};
-
-// Sanitize and validate string input
-const sanitizeString = (value: unknown, maxLength: number = 500): string => {
-  if (value === null || value === undefined || value === "") return "";
-  const str = String(value).trim().slice(0, maxLength);
-  // Remove control characters except newlines (which we escape in escapeHtml)
-  return str.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '');
-};
-
-// Validate email format
-const isValidEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email) && email.length <= 254;
-};
-
-// Format value with HTML escaping
-const formatValue = (value: unknown): string => {
-  if (value === null || value === undefined || value === "") return "Not provided";
-  if (Array.isArray(value)) {
-    if (value.length === 0) return "None";
-    return value.map(v => escapeHtml(sanitizeString(v, 200))).join(", ");
-  }
-  if (typeof value === "boolean") return value ? "Yes" : "No";
-  if (typeof value === "number") return value.toString();
-  return escapeHtml(sanitizeString(value, 500));
-};
-
-// Check rate limit
-const checkRateLimit = (clientIp: string): boolean => {
-  const now = Date.now();
-  const record = rateLimitStore.get(clientIp);
-  
-  // Clean up old entries periodically
-  if (rateLimitStore.size > 1000) {
-    for (const [key, value] of rateLimitStore.entries()) {
-      if (now - value.timestamp > RATE_LIMIT_WINDOW_MS) {
-        rateLimitStore.delete(key);
-      }
-    }
-  }
-  
-  if (!record || now - record.timestamp > RATE_LIMIT_WINDOW_MS) {
-    rateLimitStore.set(clientIp, { count: 1, timestamp: now });
-    return true;
-  }
-  
-  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
-    return false;
-  }
-  
-  record.count++;
-  return true;
-};
-
-// Get client IP from request
-const getClientIp = (req: Request): string => {
-  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-         req.headers.get("x-real-ip") ||
-         "unknown";
-};
-
 const handler = async (req: Request): Promise<Response> => {
   console.log("Received request to send-lead-email");
 
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return handleCorsOptions();
   }
 
-  // Rate limiting check
   const clientIp = getClientIp(req);
   console.log(`Request from IP: ${clientIp}`);
-  
-  if (!checkRateLimit(clientIp)) {
+
+  if (!checkIpRateLimit(clientIp, 3)) {
     console.warn(`Rate limit exceeded for IP: ${clientIp}`);
-    return new Response(
-      JSON.stringify({ success: false, error: "Too many requests. Please try again later." }),
-      {
-        status: 429,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
-    );
+    return errorResponse("Too many requests. Please try again later.", 429);
   }
 
   try {
     const rawData = await req.json();
-    
+
     // Validate required fields
     if (!rawData.fullName || !rawData.email) {
       console.warn("Missing required fields");
-      return new Response(
-        JSON.stringify({ success: false, error: "Name and email are required." }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
-        }
-      );
+      return errorResponse("Name and email are required.", 400);
     }
-    
+
     // Sanitize all input data
     const data: LeadEmailRequest = {
       fullName: sanitizeString(rawData.fullName, 100),
@@ -185,9 +103,7 @@ const handler = async (req: Request): Promise<Response> => {
       businessName: sanitizeString(rawData.businessName, 200),
       businessWebsite: sanitizeString(rawData.businessWebsite, 500),
       recommendedProvider: sanitizeString(rawData.recommendedProvider, 100) || null,
-      reasons: Array.isArray(rawData.reasons) 
-        ? rawData.reasons.slice(0, 10).map((r: unknown) => sanitizeString(r, 200))
-        : [],
+      reasons: sanitizeArray(rawData.reasons, 10, 200),
       logicPath: sanitizeString(rawData.logicPath, 200),
       businessType: sanitizeString(rawData.businessType, 100),
       salesChannel: sanitizeString(rawData.salesChannel, 100),
@@ -195,36 +111,22 @@ const handler = async (req: Request): Promise<Response> => {
       avgTransaction: sanitizeString(rawData.avgTransaction, 50),
       international: sanitizeString(rawData.international, 20),
       recurring: sanitizeString(rawData.recurring, 20),
-      priorities: Array.isArray(rawData.priorities)
-        ? rawData.priorities.slice(0, 10).map((p: unknown) => sanitizeString(p, 100))
-        : [],
+      priorities: sanitizeArray(rawData.priorities, 10, 100),
       region: sanitizeString(rawData.region, 50),
       market: sanitizeString(rawData.market, 10) || "UK",
       enrichment: rawData.enrichment || null,
     };
-    
+
     // Validate email format
     if (!isValidEmail(data.email)) {
       console.warn(`Invalid email format: ${data.email}`);
-      return new Response(
-        JSON.stringify({ success: false, error: "Please provide a valid email address." }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
-        }
-      );
+      return errorResponse("Please provide a valid email address.", 400);
     }
-    
-    // Validate name is not suspicious (basic check)
-    if (data.fullName.length < 2 || /^[0-9]+$/.test(data.fullName)) {
+
+    // Validate name is not suspicious
+    if (!isValidName(data.fullName)) {
       console.warn(`Suspicious name detected: ${data.fullName}`);
-      return new Response(
-        JSON.stringify({ success: false, error: "Please provide a valid name." }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
-        }
-      );
+      return errorResponse("Please provide a valid name.", 400);
     }
 
     console.log("Sanitized lead data received for:", data.email);
@@ -251,26 +153,30 @@ const handler = async (req: Request): Promise<Response> => {
       utmContent: sanitizeString(rawEnrichment.utmContent, 200),
       landingPageUrl: sanitizeString(rawEnrichment.landingPageUrl, 500),
       firstVisitTimestamp: sanitizeString(rawEnrichment.firstVisitTimestamp, 50),
-      sessionDurationSeconds: typeof rawEnrichment.sessionDurationSeconds === 'number' 
-        ? Math.min(rawEnrichment.sessionDurationSeconds, 999999) : 0,
-      timeToCompleteQuizSeconds: typeof rawEnrichment.timeToCompleteQuizSeconds === 'number'
-        ? Math.min(rawEnrichment.timeToCompleteQuizSeconds, 999999) : 0,
-      quizDropOffPoints: Array.isArray(rawEnrichment.quizDropOffPoints)
-        ? rawEnrichment.quizDropOffPoints.slice(0, 20).map((p: unknown) => sanitizeString(p, 50))
-        : [],
-      scrollDepthBeforeForm: typeof rawEnrichment.scrollDepthBeforeForm === 'number'
-        ? Math.min(Math.max(rawEnrichment.scrollDepthBeforeForm, 0), 100) : 0,
+      sessionDurationSeconds:
+        typeof rawEnrichment.sessionDurationSeconds === "number"
+          ? Math.min(rawEnrichment.sessionDurationSeconds, 999999)
+          : 0,
+      timeToCompleteQuizSeconds:
+        typeof rawEnrichment.timeToCompleteQuizSeconds === "number"
+          ? Math.min(rawEnrichment.timeToCompleteQuizSeconds, 999999)
+          : 0,
+      quizDropOffPoints: sanitizeArray(rawEnrichment.quizDropOffPoints, 20, 50),
+      scrollDepthBeforeForm:
+        typeof rawEnrichment.scrollDepthBeforeForm === "number"
+          ? Math.min(Math.max(rawEnrichment.scrollDepthBeforeForm, 0), 100)
+          : 0,
       viewedRecommendationCard: Boolean(rawEnrichment.viewedRecommendationCard),
       optionalPhoneProvided: Boolean(rawEnrichment.optionalPhoneProvided),
       optionalBusinessWebsiteProvided: Boolean(rawEnrichment.optionalBusinessWebsiteProvided),
       optionalBusinessNameProvided: Boolean(rawEnrichment.optionalBusinessNameProvided),
       skippedOptionalFields: Boolean(rawEnrichment.skippedOptionalFields),
       networkSpeedEstimate: sanitizeString(rawEnrichment.networkSpeedEstimate, 20),
-      devicePixelRatio: typeof rawEnrichment.devicePixelRatio === 'number'
-        ? Math.min(rawEnrichment.devicePixelRatio, 10) : 1,
-      jsErrors: Array.isArray(rawEnrichment.jsErrors)
-        ? rawEnrichment.jsErrors.slice(0, 10).map((e: unknown) => sanitizeString(e, 200))
-        : [],
+      devicePixelRatio:
+        typeof rawEnrichment.devicePixelRatio === "number"
+          ? Math.min(rawEnrichment.devicePixelRatio, 10)
+          : 1,
+      jsErrors: sanitizeArray(rawEnrichment.jsErrors, 10, 200),
     };
 
     const emailHtml = `
@@ -309,12 +215,16 @@ const handler = async (req: Request): Promise<Response> => {
     <tr class="highlight"><th>Market</th><td><strong>${formatValue(data.market)}</strong></td></tr>
     <tr><th>Logic Path</th><td>${formatValue(data.logicPath)}</td></tr>
   </table>
-  ${data.reasons && data.reasons.length > 0 ? `
+  ${
+    data.reasons && data.reasons.length > 0
+      ? `
   <p><strong>Reasons for Recommendation:</strong></p>
   <ul class="reason-list">
-    ${data.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join("")}
+    ${data.reasons.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}
   </ul>
-  ` : ""}
+  `
+      : ""
+  }
 
   <h2>3. Quiz Answers</h2>
   <table>
@@ -383,20 +293,11 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Email sent successfully:", emailResponse);
 
-    return new Response(JSON.stringify({ success: true, emailResponse }), {
-      status: 200,
-      headers: { "Content-Type": "application/json", ...corsHeaders },
-    });
+    return successResponse({ emailResponse });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
     console.error("Error in send-lead-email function:", error);
-    return new Response(
-      JSON.stringify({ success: false, error: errorMessage }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
-    );
+    return errorResponse(errorMessage, 500);
   }
 };
 

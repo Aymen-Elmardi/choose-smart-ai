@@ -3,11 +3,13 @@
 // All decision logic runs server-side with static provider configuration
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+import {
+  handleCorsOptions,
+  successResponse,
+  errorResponse,
+  getClientIp,
+  checkIpRateLimit,
+} from "../shared/index.ts";
 
 // ============================================================================
 // TYPES
@@ -27,10 +29,10 @@ interface ProviderConfig {
   marketplaceCapability: boolean;
   splitPaymentsSupport: boolean;
   regions: Region[];
-  minimumMonthlyVolume: number; // in GBP
+  minimumMonthlyVolume: number;
   riskAppetite: Record<string, RiskLevel>;
-  exclusions: string[]; // Hard no industries
-  strengths: string[]; // For scoring and reasons
+  exclusions: string[];
+  strengths: string[];
 }
 
 interface QuizAnswers {
@@ -499,78 +501,28 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
       "adult": "red",
     },
     exclusions: ["gambling", "adult"],
-    strengths: ["hospitality", "global", "established", "multi-currency"],
+    strengths: ["enterprise", "hospitality", "global-reach", "travel"],
   },
   {
-    id: "payoneer",
-    name: "Payoneer",
-    description: "Cross-border payment platform ideal for international freelancers and marketplaces.",
-    paymentTypes: ["online", "marketplace"],
-    terminalSupport: ["none"],
-    marketplaceCapability: true,
-    splitPaymentsSupport: true,
-    regions: ["both"],
-    minimumMonthlyVolume: 0,
-    riskAppetite: {
-      "freelance": "green",
-      "marketplace": "green",
-      "ecommerce": "green",
-      "professional-services": "green",
-      "gambling": "red",
-      "adult": "red",
-    },
-    exclusions: ["gambling", "adult"],
-    strengths: ["cross-border", "freelancers", "international-payouts"],
-  },
-  {
-    id: "wise-business",
-    name: "Wise Business",
-    description: "Best-in-class international transfers with transparent, low-cost currency conversion.",
+    id: "airwallex",
+    name: "Airwallex",
+    description: "Global payments platform optimized for international businesses and multi-currency operations.",
     paymentTypes: ["online"],
     terminalSupport: ["none"],
-    marketplaceCapability: false,
-    splitPaymentsSupport: false,
-    regions: ["both"],
-    minimumMonthlyVolume: 0,
-    riskAppetite: {
-      "ecommerce": "green",
-      "professional-services": "green",
-      "saas": "green",
-      "freelance": "green",
-      "gambling": "red",
-      "adult": "red",
-      "crypto": "red",
-    },
-    exclusions: ["gambling", "adult", "crypto"],
-    strengths: ["international-transfers", "low-fx-fees", "multi-currency"],
-  },
-  // High-risk / Complex Merchant Specialist
-  {
-    id: "shift4",
-    name: "Shift4",
-    description: "Built for more complex payment setups. Better suited for businesses with higher approval requirements and sophisticated payment flows.",
-    paymentTypes: ["online", "in-person", "marketplace", "subscriptions"],
-    terminalSupport: ["wired", "portable-sim"],
     marketplaceCapability: true,
     splitPaymentsSupport: true,
     regions: ["both"],
     minimumMonthlyVolume: 10000,
     riskAppetite: {
       "ecommerce": "green",
+      "saas": "green",
       "marketplace": "green",
-      "travel": "green",
-      "hospitality": "green",
-      "retail": "green",
-      "nutraceuticals": "green",
-      "cbd": "green",
-      "crypto": "amber",
-      "gambling": "amber",
+      "professional-services": "green",
+      "gambling": "red",
       "adult": "red",
-      "high-risk": "green",
-      "complex": "green",
     },
-    exclusions: ["adult"],
-    strengths: ["high-risk", "complex-payments", "approval-reliability", "international", "enterprise", "scalable", "split-payments"],
+    exclusions: ["gambling", "adult"],
+    strengths: ["multi-currency", "international", "fx-optimization", "global-payouts"],
   },
 ];
 
@@ -579,63 +531,76 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
 // ============================================================================
 
 const parseMonthlyVolume = (volume: string): number => {
-  // Handle early-stage expectation-based options
-  if (volume === "Just testing / very low volume") return 1000;
-  if (volume === "Small but growing") return 5000;
-  if (volume === "Moderate volume") return 25000;
-  if (volume === "Planning to scale quickly") return 75000;
-  
-  // Handle numeric ranges
-  if (volume === "< £5k") return 2500;
-  if (volume === "£5k–20k") return 12500;
-  if (volume === "£20k–50k") return 35000;
-  if (volume === "£50k–100k") return 75000;
-  if (volume === "£100k+") return 150000;
-  
-  return 5000; // Default
+  const volumeMap: Record<string, number> = {
+    "under-5k": 2500,
+    "5k-20k": 12500,
+    "20k-50k": 35000,
+    "50k-100k": 75000,
+    "100k-500k": 300000,
+    "500k-plus": 750000,
+    "under-1k": 500,
+    "1k-5k": 3000,
+    "10k-50k": 30000,
+    "50k-200k": 125000,
+    "200k-plus": 400000,
+  };
+  return volumeMap[volume] || 10000;
 };
 
 const getRequiredPaymentTypes = (answers: QuizAnswers): PaymentType[] => {
   const types: PaymentType[] = [];
-  
-  const { salesChannel, features, businessType } = answers;
-  
-  if (salesChannel === "Online only" || salesChannel === "Both online and in person") {
+
+  if (answers.salesChannel?.includes("online") || answers.salesChannel?.includes("website")) {
     types.push("online");
   }
-  if (salesChannel === "In person" || salesChannel === "Both online and in person") {
+  if (answers.salesChannel?.includes("in-person") || answers.salesChannel?.includes("physical")) {
     types.push("in-person");
   }
-  if (salesChannel === "Through a marketplace or platform" || businessType === "Marketplace / platform") {
+  if (answers.businessType?.includes("marketplace") || answers.businessType?.includes("platform")) {
     types.push("marketplace");
   }
-  if (features.includes("Subscriptions / recurring billing")) {
+  if (answers.features?.includes("recurring") || answers.features?.includes("subscriptions")) {
     types.push("subscriptions");
   }
-  
-  return types.length > 0 ? types : ["online"]; // Default to online
+
+  return types.length > 0 ? types : ["online"];
 };
 
 const getRequiredRegion = (location: string): Region | null => {
-  if (location === "UK") return "UK";
-  if (location === "EU") return "EU";
-  if (location === "US" || location === "Other") return null; // No region filter for US/Other
-  return null;
+  if (!location) return null;
+  if (location.includes("uk") || location === "united-kingdom") return "UK";
+  if (location.includes("eu") || location.includes("europe")) return "EU";
+  return "both";
 };
 
 const getIndustryFromBusinessType = (businessType: string): string => {
-  switch (businessType) {
-    case "Early-stage / just getting started": return "ecommerce";
-    case "Online business": return "ecommerce";
-    case "Physical business": return "retail";
-    case "Marketplace / platform": return "marketplace";
-    case "Other / mixed": return "ecommerce";
-    default: return "ecommerce";
+  const industryMap: Record<string, string> = {
+    "ecommerce": "ecommerce",
+    "retail": "retail",
+    "saas": "saas",
+    "marketplace": "marketplace",
+    "hospitality": "hospitality",
+    "restaurant": "food-beverage",
+    "professional-services": "professional-services",
+    "travel": "travel",
+    "subscription": "subscription",
+    "gambling": "gambling",
+    "adult": "adult",
+    "crypto": "crypto",
+    "cbd": "cbd",
+    "nutraceuticals": "nutraceuticals",
+  };
+
+  for (const [key, value] of Object.entries(industryMap)) {
+    if (businessType.toLowerCase().includes(key)) {
+      return value;
+    }
   }
+  return "ecommerce";
 };
 
 // ============================================================================
-// ELIMINATION LOGIC
+// ELIMINATION & SCORING
 // ============================================================================
 
 const applyHardElimination = (
@@ -644,319 +609,163 @@ const applyHardElimination = (
 ): ProviderConfig[] => {
   const requiredPaymentTypes = getRequiredPaymentTypes(answers);
   const requiredRegion = getRequiredRegion(answers.location);
-  const industry = getIndustryFromBusinessType(answers.businessType);
   const monthlyVolume = parseMonthlyVolume(answers.monthlyVolume);
-  
-  return providers.filter(provider => {
-    // Check payment type support
-    const hasRequiredPaymentTypes = requiredPaymentTypes.every(type => 
+  const industry = answers.industry || getIndustryFromBusinessType(answers.businessType);
+
+  return providers.filter((provider) => {
+    // Check payment types
+    const hasRequiredPaymentTypes = requiredPaymentTypes.every((type) =>
       provider.paymentTypes.includes(type)
     );
     if (!hasRequiredPaymentTypes) return false;
-    
-    // Check region support
-    if (requiredRegion) {
-      const supportsRegion = provider.regions.includes("both") || 
-        provider.regions.includes(requiredRegion);
-      if (!supportsRegion) return false;
+
+    // Check region compatibility
+    if (requiredRegion && requiredRegion !== "both") {
+      if (!provider.regions.includes(requiredRegion) && !provider.regions.includes("both")) {
+        return false;
+      }
     }
-    
-    // Check industry risk - eliminate if red
+
+    // Check minimum volume
+    if (monthlyVolume < provider.minimumMonthlyVolume) {
+      return false;
+    }
+
+    // Check industry exclusions
+    if (provider.exclusions.includes(industry)) {
+      return false;
+    }
+
+    // Check risk appetite (eliminate if red)
     const riskLevel = provider.riskAppetite[industry];
-    if (riskLevel === "red") return false;
-    
-    // Check hard exclusions
-    if (provider.exclusions.includes(industry)) return false;
-    
-    // Check minimum volume (be lenient - only eliminate if significantly below)
-    if (monthlyVolume < provider.minimumMonthlyVolume * 0.5) return false;
-    
+    if (riskLevel === "red") {
+      return false;
+    }
+
+    // Marketplace check
+    if (requiredPaymentTypes.includes("marketplace") && !provider.marketplaceCapability) {
+      return false;
+    }
+
     return true;
   });
 };
 
-// ============================================================================
-// SCORING LOGIC
-// ============================================================================
-
 interface ScoredProvider {
   provider: ProviderConfig;
   score: number;
-  matchReasons: string[];
+  reasons: string[];
 }
 
 const scoreProviders = (
   providers: ProviderConfig[],
   answers: QuizAnswers
 ): ScoredProvider[] => {
-  const { salesChannel, businessType, priorities, features, monthlyVolume, location, deliveryTimeline } = answers;
-  const volume = parseMonthlyVolume(monthlyVolume);
-  const industry = getIndustryFromBusinessType(businessType);
-  
-  const needsMarketplace = businessType === "Marketplace / platform" || 
-    salesChannel === "Through a marketplace or platform" ||
-    features.includes("Multiple sellers");
-  const needsSplitPayments = features.includes("Split payments") || needsMarketplace;
-  const needsSubscriptions = features.includes("Subscriptions / recurring billing");
-  const needsInternational = features.includes("International customers") || 
-    priorities.includes("International payments");
-  const needsInPerson = salesChannel === "In person" || salesChannel === "Both online and in person";
-  const needsOnline = salesChannel === "Online only" || salesChannel === "Both online and in person";
-  const wantsEasySetup = priorities.includes("Easy setup");
-  const wantsLowFees = priorities.includes("Keeping fees low");
-  const wantsScalability = priorities.includes("Ability to scale") || 
-    priorities.includes("Flexibility / future-proofing");
-  const isLowVolume = volume < 10000;
-  const isHighVolume = volume > 50000;
-  
-  // Delivery timeline risk assessment
-  const hasLongDeliveryTimeline = deliveryTimeline === "More than 30 days";
-  const hasMediumDeliveryTimeline = deliveryTimeline === "Within 8-30 Days";
-  
-  return providers.map(provider => {
+  const monthlyVolume = parseMonthlyVolume(answers.monthlyVolume);
+  const industry = answers.industry || getIndustryFromBusinessType(answers.businessType);
+  const priorities = answers.priorities || [];
+
+  return providers.map((provider) => {
     let score = 50; // Base score
-    const matchReasons: string[] = [];
-    
-    // Business model fit (high weight)
-    if (needsMarketplace && provider.marketplaceCapability) {
-      score += 25;
-      matchReasons.push("Strong marketplace and multi-vendor support");
-    }
-    if (needsSplitPayments && provider.splitPaymentsSupport) {
-      score += 20;
-      matchReasons.push("Native split payment capabilities");
-    }
-    if (needsSubscriptions && provider.paymentTypes.includes("subscriptions")) {
-      score += 20;
-      matchReasons.push("Robust recurring billing infrastructure");
-    }
-    
-    // Channel fit
-    if (needsInPerson && provider.terminalSupport.length > 0 && provider.terminalSupport[0] !== "none") {
-      score += 15;
-      matchReasons.push("Comprehensive in-person payment solutions");
-    }
-    if (needsOnline && provider.paymentTypes.includes("online")) {
-      score += 10;
-    }
-    
-    // Volume alignment
-    if (isLowVolume && provider.minimumMonthlyVolume === 0) {
-      score += 10;
-      matchReasons.push("No minimum volume requirements");
-    }
-    if (isHighVolume && provider.minimumMonthlyVolume > 0) {
-      score += 10;
-      matchReasons.push("Built for high-volume processing");
-    }
-    
-    // Priority alignment
-    if (wantsEasySetup && provider.strengths.includes("easy-setup")) {
-      score += 15;
-      matchReasons.push("Quick and straightforward setup process");
-    }
-    if (wantsLowFees && (provider.strengths.includes("low-fees") || provider.strengths.includes("transparent-pricing"))) {
-      score += 15;
-      matchReasons.push("Competitive and transparent pricing");
-    }
-    if (wantsScalability && (provider.strengths.includes("scalable") || provider.strengths.includes("enterprise"))) {
-      score += 15;
-      matchReasons.push("Scales seamlessly as your business grows");
-    }
-    if (needsInternational && (provider.strengths.includes("international") || provider.strengths.includes("multi-currency"))) {
-      score += 20;
-      matchReasons.push("Excellent international payment support");
-    }
-    
-    // Risk comfort (prefer green over amber)
+    const reasons: string[] = [];
+
+    // Industry fit bonus
     const riskLevel = provider.riskAppetite[industry];
     if (riskLevel === "green") {
-      score += 10;
-    } else if (riskLevel === "amber") {
-      score -= 5;
-    }
-    
-    // Delivery timeline scoring - "Future Delivery Risk" handling
-    // Long delivery timelines (>30 days) are high-risk for automated/low-risk providers
-    if (hasLongDeliveryTimeline) {
-      // Penalize automated, low-risk-averse providers (they may freeze funds)
-      if (provider.id === "square" || provider.id === "paypal" || provider.id === "sumup" || provider.id === "zettle") {
-        score -= 25;
-      }
-      // Stripe can handle but may impose reserves
-      if (provider.id === "stripe") {
-        score -= 15;
-      }
-      // Enterprise/specialized providers handle this well
-      if (provider.id === "adyen" || provider.id === "checkout-com" || provider.id === "shift4" || provider.id === "trust-payments") {
-        score += 20;
-        matchReasons.push("Equipped to manage future delivery risk without freezing funds");
-      }
-      // Worldpay/Elavon have experience with travel/events
-      if (provider.id === "worldpay" || provider.id === "elavon") {
-        score += 15;
-        matchReasons.push("Experience with extended delivery timelines and rolling reserves");
-      }
-    }
-    
-    // Medium delivery timelines (8-30 days) - slight adjustment
-    if (hasMediumDeliveryTimeline) {
-      if (provider.id === "square" || provider.id === "paypal" || provider.id === "sumup") {
-        score -= 10;
-      }
-      if (provider.id === "adyen" || provider.id === "shift4" || provider.id === "worldpay") {
-        score += 10;
-      }
-    }
-    
-    // Provider maturity bonus for complex use cases
-    if (needsMarketplace && provider.strengths.includes("marketplace-specialist")) {
-      score += 15;
-    }
-    
-    // Special elevation: OPP for genuine marketplace fit
-    if (provider.id === "opp" && needsMarketplace && needsSplitPayments) {
       score += 20;
-      matchReasons.push("Specialist platform with flexible payout structures");
-    }
-    
-    // Datman elevation for UK marketplaces
-    if (provider.id === "datman" && needsMarketplace && location === "UK") {
-      score += 15;
-      matchReasons.push("UK specialist for marketplace revenue sharing");
-    }
-    
-    // Shift4 scoring for complex/high-risk cases
-    if (provider.id === "shift4") {
-      // Strong preference (+3) conditions
-      if (needsMarketplace) {
-        score += 25;
-        matchReasons.push("Built for marketplace and platform business models");
-      }
-      if (needsInternational) {
-        score += 20;
-        matchReasons.push("Strong cross-border and multi-region capabilities");
-      }
-      if (needsSplitPayments) {
-        score += 20;
-        matchReasons.push("Advanced multi-party settlement support");
-      }
-      if (isHighVolume) {
-        score += 15;
-        matchReasons.push("Designed for high-volume transaction processing");
-      }
-      
-      // Moderate preference (+2) conditions
-      if (needsInPerson && needsOnline) {
-        score += 15;
-        matchReasons.push("Unified online and in-person payment solutions");
-      }
-      if (wantsScalability) {
-        score += 15;
-        matchReasons.push("Enterprise-grade scalability and reliability");
-      }
-      
-      // De-prioritise (-2) conditions: very small, fee-sensitive, simple use cases
-      if (isLowVolume && wantsLowFees && !needsMarketplace && !needsSplitPayments && !needsInternational) {
-        score -= 30; // Significantly deprioritise for simple low-volume cases
-      }
-    }
-    
-    // Region-specific bonuses
-    if (location === "UK" && provider.regions.includes("UK")) {
+      reasons.push(`Strong fit for ${industry} businesses`);
+    } else if (riskLevel === "amber") {
       score += 5;
+      reasons.push(`Accepts ${industry} businesses with additional review`);
     }
-    
-    // Ensure we have at least one reason
-    if (matchReasons.length === 0) {
-      matchReasons.push("Suitable for your business requirements");
+
+    // Volume-based scoring
+    if (monthlyVolume >= 100000 && provider.strengths.includes("enterprise")) {
+      score += 15;
+      reasons.push("Built for high-volume operations");
+    } else if (monthlyVolume < 10000 && provider.strengths.includes("low-volume")) {
+      score += 15;
+      reasons.push("Perfect for growing businesses");
     }
-    
-    return { provider, score, matchReasons };
+
+    // Priority matching
+    if (priorities.includes("low-fees") && provider.strengths.includes("transparent-pricing")) {
+      score += 10;
+      reasons.push("Competitive and transparent pricing");
+    }
+    if (priorities.includes("fast-setup") && provider.strengths.includes("easy-setup")) {
+      score += 10;
+      reasons.push("Quick and easy onboarding");
+    }
+    if (priorities.includes("international") && provider.strengths.includes("international")) {
+      score += 10;
+      reasons.push("Excellent international payment support");
+    }
+    if (priorities.includes("developer-friendly") && provider.strengths.includes("developer-friendly")) {
+      score += 10;
+      reasons.push("Developer-friendly APIs and documentation");
+    }
+
+    // Feature matching
+    if (answers.features?.includes("subscriptions") && provider.strengths.includes("subscriptions")) {
+      score += 10;
+      reasons.push("Robust subscription billing capabilities");
+    }
+    if (answers.features?.includes("split-payments") && provider.splitPaymentsSupport) {
+      score += 15;
+      reasons.push("Native split payment support");
+    }
+
+    // Sales channel matching
+    if (answers.salesChannel?.includes("in-person") && provider.strengths.includes("in-person")) {
+      score += 10;
+      reasons.push("Excellent in-person payment solutions");
+    }
+
+    return { provider, score, reasons };
   });
 };
 
 // ============================================================================
-// MAIN RECOMMENDATION FUNCTION
+// MAIN RECOMMENDATION LOGIC
 // ============================================================================
 
 const getRecommendations = (answers: QuizAnswers): RecommendationResult | null => {
-  // Start with all providers
-  let eligible = [...PROVIDER_REGISTRY];
-  
-  // Apply hard elimination
-  eligible = applyHardElimination(eligible, answers);
-  
-  if (eligible.length === 0) {
-    return null; // No suitable providers
+  // Step 1: Apply hard elimination
+  let eligible = applyHardElimination(PROVIDER_REGISTRY, answers);
+
+  // If too few providers, relax some constraints
+  if (eligible.length < 3) {
+    eligible = PROVIDER_REGISTRY.filter((p) => {
+      const industry = answers.industry || getIndustryFromBusinessType(answers.businessType);
+      return !p.exclusions.includes(industry) && p.riskAppetite[industry] !== "red";
+    });
   }
-  
-  // Score remaining providers
+
+  if (eligible.length === 0) {
+    return null;
+  }
+
+  // Step 2: Score and rank
   const scored = scoreProviders(eligible, answers);
-  
-  // Sort by score descending
   scored.sort((a, b) => b.score - a.score);
-  
-  // Get primary (highest score)
+
+  // Step 3: Build result
   const primary = scored[0];
-  
-  // Get alternatives (next 2 highest, if available)
   const alternatives = scored.slice(1, 3);
-  
+
   return {
     primary: {
       name: primary.provider.name,
       description: primary.provider.description,
-      reasons: primary.matchReasons.slice(0, 4), // Limit to 4 reasons
+      reasons: primary.reasons.slice(0, 4),
     },
-    alternatives: alternatives.map(alt => ({
+    alternatives: alternatives.map((alt) => ({
       name: alt.provider.name,
       description: alt.provider.description,
-      reasons: alt.matchReasons.slice(0, 3), // Limit to 3 reasons for alternatives
+      reasons: alt.reasons.slice(0, 3),
     })),
   };
-};
-
-// ============================================================================
-// RATE LIMITING
-// ============================================================================
-
-const rateLimitStore = new Map<string, { count: number; timestamp: number }>();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 30; // Max 30 requests per minute per IP (quiz may have retries)
-
-// Get client IP from request
-const getClientIp = (req: Request): string => {
-  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-         req.headers.get("x-real-ip") ||
-         "unknown";
-};
-
-// Check rate limit by IP
-const checkRateLimit = (clientIp: string): boolean => {
-  const now = Date.now();
-  const record = rateLimitStore.get(clientIp);
-  
-  // Clean up old entries
-  if (rateLimitStore.size > 1000) {
-    for (const [key, value] of rateLimitStore.entries()) {
-      if (now - value.timestamp > RATE_LIMIT_WINDOW_MS) {
-        rateLimitStore.delete(key);
-      }
-    }
-  }
-  
-  if (!record || now - record.timestamp > RATE_LIMIT_WINDOW_MS) {
-    rateLimitStore.set(clientIp, { count: 1, timestamp: now });
-    return true;
-  }
-  
-  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
-    return false;
-  }
-  
-  record.count++;
-  return true;
 };
 
 // ============================================================================
@@ -964,94 +773,42 @@ const checkRateLimit = (clientIp: string): boolean => {
 // ============================================================================
 
 const handler = async (req: Request): Promise<Response> => {
-  // Handle CORS preflight
+  console.log("Received request to quiz-recommendation");
+
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return handleCorsOptions();
   }
 
-  // Rate limiting check
   const clientIp = getClientIp(req);
-  
-  if (!checkRateLimit(clientIp)) {
-    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
-    return new Response(
-      JSON.stringify({ success: false, error: "Too many requests. Please try again later." }),
-      {
-        status: 429,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
-    );
-  }
+  console.log(`Request from IP: ${clientIp}`);
 
-  const startTime = performance.now();
+  if (!checkIpRateLimit(clientIp, 10)) {
+    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
+    return errorResponse("Too many requests. Please try again later.", 429);
+  }
 
   try {
-    const body = await req.json();
-    
-    // Basic input validation
-    if (!body || typeof body !== 'object') {
-      return new Response(
-        JSON.stringify({ success: false, error: "Invalid request body" }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
-        }
-      );
-    }
-    
-    const answers: QuizAnswers = {
-      salesChannel: String(body.salesChannel || "").slice(0, 100),
-      businessType: String(body.businessType || "").slice(0, 100),
-      priorities: Array.isArray(body.priorities) ? body.priorities.slice(0, 10).map((p: unknown) => String(p).slice(0, 100)) : [],
-      location: String(body.location || "").slice(0, 100),
-      monthlyVolume: String(body.monthlyVolume || "").slice(0, 50),
-      avgTransaction: String(body.avgTransaction || "").slice(0, 50),
-      features: Array.isArray(body.features) ? body.features.slice(0, 10).map((f: unknown) => String(f).slice(0, 100)) : [],
-    };
+    const answers: QuizAnswers = await req.json();
 
-    console.log(`Quiz recommendation request from IP ${clientIp}:`, JSON.stringify(answers));
+    console.log("Processing quiz answers:", JSON.stringify(answers));
 
     const result = getRecommendations(answers);
 
-    const executionTime = performance.now() - startTime;
-    console.log(`Recommendation computed in ${executionTime.toFixed(2)}ms`);
-
     if (!result) {
-      return new Response(
-        JSON.stringify({ 
-          success: false, 
-          error: "No suitable providers found for your requirements" 
-        }),
-        {
-          status: 200, // Still 200 as it's a valid outcome
-          headers: { "Content-Type": "application/json", ...corsHeaders },
-        }
+      console.warn("No suitable providers found for answers");
+      return errorResponse(
+        "We couldn't find a suitable provider for your specific requirements. Please contact us for personalized assistance.",
+        404
       );
     }
 
-    return new Response(
-      JSON.stringify({ 
-        success: true, 
-        recommendation: result,
-        executionTimeMs: executionTime,
-      }),
-      {
-        status: 200,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
-    );
-  } catch (error) {
-    console.error("Error in quiz-recommendation:", error);
-    return new Response(
-      JSON.stringify({ 
-        success: false, 
-        error: error instanceof Error ? error.message : "Unknown error" 
-      }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
-    );
+    console.log("Recommendation result:", result.primary.name);
+
+    return successResponse({ recommendation: result });
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    console.error("Error in quiz-recommendation function:", error);
+    return errorResponse(errorMessage, 500);
   }
 };
 
