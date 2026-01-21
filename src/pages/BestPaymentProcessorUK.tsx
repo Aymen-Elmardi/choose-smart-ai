@@ -14,7 +14,8 @@ import {
 import { useEffect } from "react";
 import { useCanonical } from "@/hooks/useCanonical";
 import { useSEO } from "@/hooks/useSEO";
-import FinancialProductSchema from "@/components/FinancialProductSchema";
+import ComparisonTableSchema from "@/components/ComparisonTableSchema";
+import FAQSchema from "@/components/FAQSchema";
 
 const providers = [
   {
@@ -61,6 +62,37 @@ const providers = [
   },
 ];
 
+const faqs = [
+  {
+    question: "What is the best payment processor for small businesses in the UK?",
+    answer: "For small UK businesses, Square or Zettle are excellent choices for in-person payments with simple 1.75% fees and no monthly costs. For online-only businesses, Stripe offers powerful features starting at 1.4% + 20p per transaction.",
+  },
+  {
+    question: "How do I choose between Stripe and Square in the UK?",
+    answer: "Choose Stripe if you primarily sell online and need advanced customisation, subscription billing, or marketplace features. Choose Square if you have a physical retail location and want an integrated POS system with hardware.",
+  },
+  {
+    question: "What payment processor fees should UK businesses expect?",
+    answer: "UK businesses typically pay 1.4-2.9% per transaction depending on the provider and card type. In-person payments are usually cheaper (1.75%) than online payments (2.5-2.9%). International cards and Amex usually incur higher fees.",
+  },
+  {
+    question: "Can I negotiate payment processing fees in the UK?",
+    answer: "Yes, once you process over £50,000-£100,000 monthly, most providers will negotiate custom rates. Enterprise providers like Checkout.com and Adyen offer bespoke pricing from the start for high-volume merchants.",
+  },
+  {
+    question: "What is the difference between a payment processor and a merchant account?",
+    answer: "Payment processors like Stripe and Square are aggregators that let you accept payments immediately using their merchant account. Traditional merchant accounts are dedicated accounts from banks, offering lower fees but requiring credit checks and longer setup.",
+  },
+  {
+    question: "How long do payment processor payouts take in the UK?",
+    answer: "Payout times vary: Square offers next-day payouts, Stripe typically takes 3-5 business days, and PayPal offers instant transfers for a fee. Traditional merchant accounts usually settle in 2-3 business days.",
+  },
+  {
+    question: "What happens if my payment processor freezes my account?",
+    answer: "Account freezes can halt your business operations. To reduce risk, choose a provider that matches your business type, maintain good chargeback ratios, and consider having a backup payment method. Our assessment helps identify providers less likely to freeze your specific business type.",
+  },
+];
+
 const BestPaymentProcessorUK = () => {
   useCanonical();
   
@@ -76,10 +108,12 @@ const BestPaymentProcessorUK = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <FinancialProductSchema 
-        products={providers}
+      <ComparisonTableSchema 
+        items={providers}
         listName="Best Payment Processors UK 2025"
+        listDescription="Comprehensive comparison of the best payment processors for UK businesses, including fees, features, and recommendations by business type."
       />
+      <FAQSchema faqs={faqs} />
       <Header />
       
       <main className="flex-1">
