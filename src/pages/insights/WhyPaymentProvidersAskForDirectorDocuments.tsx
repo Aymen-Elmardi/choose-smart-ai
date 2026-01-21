@@ -166,7 +166,7 @@ const WhyPaymentProvidersAskForDirectorDocuments = () => {
             </p>
             
             <p>
-              Understanding this process helps businesses respond calmly and avoid unnecessary disruption. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> can also reduce how often these checks occur.
+              Understanding this process helps businesses respond calmly and avoid unnecessary disruption. <Link to="/assessment" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> can also reduce how often these checks occur.
             </p>
             
             <p>
