@@ -8,39 +8,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useEnrichmentData, EnrichmentData } from "@/hooks/useEnrichmentData";
+import { useEnrichmentData } from "@/hooks/useEnrichmentData";
+import type { QuizAnswers, LeadFormData } from "@/types/quiz";
 
-interface QuizAnswers {
-  salesChannel: string;
-  businessType: string;
-  priorities: string[];
-  location: string;
-  monthlyVolume: string;
-  avgTransaction: string;
-  features: string[];
-}
-
-export interface LeadFormData {
-  // Visible fields
-  fullName: string;
-  email: string;
-  phone: string;
-  businessWebsite: string;
-  businessName: string;
-  // Hidden fields from quiz
-  businessType: string;
-  monthlyVolume: string;
-  avgTransaction: string;
-  region: string;
-  salesChannel: string;
-  recurringBilling: string;
-  international: string;
-  priorities: string[];
-  recommendedProvider: string;
-  logicPath: string;
-  // Enrichment data (hidden)
-  enrichment: EnrichmentData | null;
-}
+// Re-export for backward compatibility
+export type { LeadFormData } from "@/types/quiz";
 
 interface LeadCaptureFormProps {
   quizAnswers: QuizAnswers | null;
@@ -55,7 +27,7 @@ export interface LeadCaptureFormRef {
 }
 
 const LeadCaptureForm = forwardRef<LeadCaptureFormRef, LeadCaptureFormProps>(
-  ({ quizAnswers, recommendedProvider, recommendationReasons, logicPath = "standard" }, ref) => {
+  ({ quizAnswers, recommendedProvider, logicPath = "standard" }, ref) => {
     const { enrichmentData, updateFormSignals, refreshTimingData } = useEnrichmentData();
     
     const [formData, setFormData] = useState<LeadFormData>({
@@ -101,9 +73,6 @@ const LeadCaptureForm = forwardRef<LeadCaptureFormRef, LeadCaptureFormProps>(
         return { isValid: errors.length === 0, errors };
       },
     }));
-
-    // NOTE: No auto-focus on page load (prevents scroll jumps + mobile keyboard opening).
-    // Fields only receive focus when the user taps/clicks them.
 
     // Update hidden fields when quiz answers change
     useEffect(() => {
