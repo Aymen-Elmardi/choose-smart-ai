@@ -4,23 +4,27 @@ import { useInView } from "@/hooks/useInView";
 const valueProps = [
   {
     icon: Scale,
-    title: "Unbiased Recommendations",
-    description: "We're not tied to any single provider. Our only goal is helping you find the best fit.",
+    title: "100% Unbiased",
+    description: "We're not tied to any provider. No kickbacks, no hidden agendas.",
+    value: "Independent advice",
   },
   {
     icon: Clock,
-    title: "Save 3+ Hours",
-    description: "Skip the research. Get matched to your ideal provider in 60 seconds.",
+    title: "3+ Hours Saved",
+    description: "Skip weeks of research. Get matched in 60 seconds.",
+    value: "Time back",
   },
   {
     icon: PiggyBank,
-    title: "Save Money",
-    description: "Avoid overpaying for the wrong plan. We help you find transparent pricing that fits your volume.",
+    title: "Avg 0.3% Saved Per Transaction",
+    description: "Avoid hidden fees and overpaying for features you don't need.",
+    value: "Real money saved",
   },
   {
     icon: MapPin,
-    title: "Made for UK and EU",
-    description: "Tailored recommendations for UK and EU businesses. Global support coming soon.",
+    title: "UK & EU Specialists",
+    description: "Tailored for UK and EU regulations, compliance, and pricing.",
+    value: "Local expertise",
   },
 ];
 
@@ -32,8 +36,11 @@ const ValuePropsSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-16 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            Why Businesses Use ChosePayments
+            Everything You Need, Nothing You Don't
           </h2>
+          <p className="mt-4 text-muted-foreground text-lg">
+            The value you get. Your cost: Free.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
