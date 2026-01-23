@@ -36,10 +36,10 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
   }
 
   return (
-    <section className="mt-16 -mx-4 sm:mx-0">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary to-primary/90 p-8 md:p-12">
+    <section className="mt-16">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary to-primary/90 p-6 sm:p-8 md:p-12">
         {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full blur-2xl transform -translate-x-1/2 translate-y-1/2" />
         </div>
