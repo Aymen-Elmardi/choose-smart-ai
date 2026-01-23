@@ -1,9 +1,11 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ProviderLogosSection from "@/components/ProviderLogosSection";
+import SuccessPreviewSection from "@/components/SuccessPreviewSection";
 import ProblemSection from "@/components/ProblemSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ValuePropsSection from "@/components/ValuePropsSection";
+import SocialProofSection from "@/components/SocialProofSection";
 import ExamplesSection from "@/components/ExamplesSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -26,9 +28,11 @@ const Index = () => {
       <main>
         <HeroSection />
         <ProviderLogosSection />
+        <SuccessPreviewSection />
         <ProblemSection />
         <HowItWorksSection />
         <ValuePropsSection />
+        <SocialProofSection />
         <ExamplesSection />
         <CTASection />
       </main>

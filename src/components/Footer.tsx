@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom";
+import { Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-background border-t border-border py-12">
       <div className="section-container">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             <span className="text-xl font-bold text-foreground tracking-tight">ChosePayments</span>
+            <a 
+              href="https://linkedin.com/company/chosepayments" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
           </div>
           
           <nav className="flex flex-wrap justify-center gap-8 text-sm">
