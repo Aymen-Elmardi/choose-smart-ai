@@ -39,6 +39,11 @@ export default defineConfig(({ mode }) => {
   );
 
   return {
+    // Expose the current build timestamp to the client bundle so we can detect
+    // when a cached tab is running an older build than the server.
+    define: {
+      __APP_BUILD_TIME__: JSON.stringify(buildTime),
+    },
     server: {
       host: "::",
       port: 8080,

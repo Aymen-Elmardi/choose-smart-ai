@@ -67,9 +67,9 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
           <Button 
             asChild 
             size="lg" 
-            className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg hover:shadow-xl transition-all"
+            className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg hover:shadow-xl transition-all w-full sm:w-auto h-auto sm:h-12 py-3 sm:py-0 whitespace-normal sm:whitespace-nowrap"
           >
-            <Link to="/assessment" className="flex items-center gap-2">
+            <Link to="/assessment" className="flex items-center justify-center gap-2 flex-wrap sm:flex-nowrap text-center">
               Get Your Personalized Risk & Pricing Report
               <ArrowRight className="w-5 h-5" />
             </Link>

@@ -2,6 +2,10 @@ import { useCallback, useEffect, useRef, lazy, ComponentType } from "react";
 import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
 
+// Provided by Vite `define` (vite.config.ts). Kept local to this module to avoid
+// TS moduleDetection quirks.
+declare const __APP_BUILD_TIME__: string;
+
 const VERSION_CHECK_KEY = "__app_version__";
 const VERSION_FORCE_RELOAD_KEY = "__cp_version_force_reload_once__";
 const VERSION_CACHE_BUST_PARAM = "__v";
@@ -55,7 +59,21 @@ export function useVersionCheck() {
 
         const data = await response.json();
         const serverVersion = data.version;
+        const clientVersion =
+          typeof __APP_BUILD_TIME__ !== "undefined" ? __APP_BUILD_TIME__ : undefined;
         const storedVersion = sessionStorage.getItem(VERSION_CHECK_KEY);
+
+        // If this tab is running a stale cached build (very common cause of
+        // "mixed version" UI after publishing), force a one-time reload.
+        if (clientVersion && clientVersion !== serverVersion) {
+          const alreadyForced = sessionStorage.getItem(VERSION_FORCE_RELOAD_KEY) === "1";
+          if (!alreadyForced) {
+            sessionStorage.setItem(VERSION_FORCE_RELOAD_KEY, "1");
+            sessionStorage.setItem(VERSION_CHECK_KEY, serverVersion);
+            forceReloadWithCacheBust(serverVersion);
+            return;
+          }
+        }
 
         if (!storedVersion) {
           sessionStorage.setItem(VERSION_CHECK_KEY, serverVersion);
