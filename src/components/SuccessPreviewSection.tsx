@@ -31,8 +31,8 @@ const SuccessPreviewSection = () => {
     <section className="section-padding bg-background" ref={ref}>
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
-          <h2 className="heading-lg text-foreground">
-            Here's What You'll Get
+        <h2 className="heading-lg text-foreground">
+            Your Free Report Includes
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
             In 60 seconds, you'll receive everything you need to make a confident decision.
