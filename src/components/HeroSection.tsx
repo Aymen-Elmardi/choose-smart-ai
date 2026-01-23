@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
           <p className="text-sm font-medium text-primary mb-4 tracking-wide uppercase">
-            UK's Independent Payment Advisor
+            Independent Payment Advisor
           </p>
           <h1 className="heading-xl text-foreground text-balance">
             Find the Payment Provider That Actually Fits Your Business
