@@ -76,6 +76,13 @@ export const providerArticles: ArticleMetadata[] = [
     cluster: "provider",
     category: "Provider Deep Dive",
     keywords: ["checkout.com", "enterprise", "authorization", "global"]
+  },
+  {
+    slug: "shift4-payments-platform",
+    title: "Shift4 Payments: The Global Payments Giant Most Businesses Have Never Heard Of",
+    cluster: "provider",
+    category: "Provider Deep Dive",
+    keywords: ["shift4", "hospitality", "gaming", "entertainment", "enterprise", "POS"]
   }
 ];
 
