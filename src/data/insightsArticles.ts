@@ -365,6 +365,13 @@ export const allInsights: Insight[] = [
     description: "How Checkout.com's modular architecture delivers superior authorization rates and granular control for high growth global merchants.",
     category: "providers",
     readTime: "8 min read"
+  },
+  {
+    title: "Shift4 Payments: The Global Payments Giant Most Businesses Have Never Heard Of",
+    slug: "shift4-payments-platform",
+    description: "Learn what Shift4 offers, who they serve best, and why they matter for businesses choosing a long term payment partner.",
+    category: "providers",
+    readTime: "9 min read"
   }
 ];
 
