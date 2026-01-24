@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ComparisonTableSchema from "@/components/ComparisonTableSchema";
 import {
   Table,
   TableBody,
@@ -8,6 +9,27 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
+const comparisonItems = [
+  {
+    name: "Adyen",
+    description: "End-to-end global payments with deep acquiring control. Best for large enterprises, global brands, and omnichannel retailers.",
+    provider: "Adyen",
+    bestFor: "Large enterprises, global brands, omnichannel retailers",
+  },
+  {
+    name: "Shift4",
+    description: "High-risk and complex commerce done at scale. Best for hospitality, gaming, and large merchants needing flexibility.",
+    provider: "Shift4 Payments",
+    bestFor: "High-risk verticals, hospitality, gaming, large merchants",
+  },
+  {
+    name: "Checkout.com",
+    description: "Clean, modern API-first payments for fast-growing online businesses. Best for SaaS, marketplaces, and fintechs.",
+    provider: "Checkout.com",
+    bestFor: "Digital-first businesses, SaaS, marketplaces, fintechs",
+  },
+];
 
 const comparisonData = [
   {
@@ -87,12 +109,27 @@ const EnterpriseProviderComparison = () => {
       cluster="provider"
       currentSlug="enterprise-provider-comparison"
       publishedTime="2026-01-24"
+      keywords={[
+        "enterprise payment providers",
+        "Adyen vs Shift4 vs Checkout.com",
+        "payment provider comparison UK",
+        "enterprise payments comparison",
+        "high-risk payment providers",
+        "global payment processors",
+        "payment provider underwriting",
+        "best enterprise payment gateway",
+      ]}
       sources={[
         { name: "Adyen official website", url: "https://www.adyen.com", type: "official" },
         { name: "Shift4 Payments official website", url: "https://www.shift4.com", type: "official" },
         { name: "Checkout.com official website", url: "https://www.checkout.com", type: "official" },
       ]}
     >
+      <ComparisonTableSchema
+        items={comparisonItems}
+        listName="Enterprise Payment Providers: Strength Comparison"
+        listDescription="A founder-level comparison of Adyen, Shift4, and Checkout.com focusing on risk appetite, underwriting depth, and operational fit."
+      />
       {/* Introduction */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
@@ -114,12 +151,12 @@ const EnterpriseProviderComparison = () => {
         <h2 className="text-2xl font-semibold text-foreground mb-6">
           Strength Comparison Table
         </h2>
-        <div className="border border-border rounded-lg overflow-hidden">
+        <div className="border border-border rounded-lg overflow-hidden max-h-[500px] overflow-y-auto">
           <Table>
-            <TableHeader>
+            <TableHeader className="sticky top-0 z-10 bg-muted">
               <TableRow className="bg-muted/50">
-                <TableHead className="font-semibold text-foreground w-[20%]">Area</TableHead>
-                <TableHead className="font-semibold text-foreground w-[26%]">
+                <TableHead className="font-semibold text-foreground w-[20%] bg-muted">Area</TableHead>
+                <TableHead className="font-semibold text-foreground w-[26%] bg-muted">
                   <Link 
                     to="/insights/adyen-enterprise-platform" 
                     className="text-primary hover:underline"
@@ -127,7 +164,7 @@ const EnterpriseProviderComparison = () => {
                     Adyen
                   </Link>
                 </TableHead>
-                <TableHead className="font-semibold text-foreground w-[26%]">
+                <TableHead className="font-semibold text-foreground w-[26%] bg-muted">
                   <Link 
                     to="/insights/shift4-payments-platform" 
                     className="text-primary hover:underline"
@@ -135,7 +172,7 @@ const EnterpriseProviderComparison = () => {
                     Shift4
                   </Link>
                 </TableHead>
-                <TableHead className="font-semibold text-foreground w-[28%]">
+                <TableHead className="font-semibold text-foreground w-[28%] bg-muted">
                   <Link 
                     to="/insights/checkout-com-enterprise-platform" 
                     className="text-primary hover:underline"
