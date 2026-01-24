@@ -83,6 +83,13 @@ export const providerArticles: ArticleMetadata[] = [
     cluster: "provider",
     category: "Provider Deep Dive",
     keywords: ["shift4", "hospitality", "gaming", "entertainment", "enterprise", "POS"]
+  },
+  {
+    slug: "enterprise-provider-comparison",
+    title: "Enterprise Payment Providers: Strength Comparison",
+    cluster: "provider",
+    category: "Provider Deep Dive",
+    keywords: ["comparison", "adyen", "shift4", "checkout.com", "enterprise", "risk appetite", "underwriting"]
   }
 ];
 
