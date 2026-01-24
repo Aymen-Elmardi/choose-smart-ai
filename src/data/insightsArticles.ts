@@ -372,6 +372,13 @@ export const allInsights: Insight[] = [
     description: "Learn what Shift4 offers, who they serve best, and why they matter for businesses choosing a long term payment partner.",
     category: "providers",
     readTime: "9 min read"
+  },
+  {
+    title: "Enterprise Payment Providers: Strength Comparison",
+    slug: "enterprise-provider-comparison",
+    description: "A founder-level comparison of Adyen, Shift4, and Checkout.com. No marketing fluff, just real differences in risk appetite, underwriting, and operational fit.",
+    category: "providers",
+    readTime: "5 min read"
   }
 ];
 
