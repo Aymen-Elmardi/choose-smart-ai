@@ -225,7 +225,7 @@ const AdyenEnterprisePlatform = () => {
             <ArticleActions
               slug="adyen-enterprise-payments-platform"
               title="Adyen: The Single Platform That Rewrote Enterprise Payments"
-              className="mt-8 pt-6 border-t border-border"
+              className="mt-8 mb-12 pt-6 border-t border-border"
             />
 
             {/* CTA Section */}

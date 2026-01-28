@@ -282,7 +282,7 @@ const ReferralCommissionGuide = () => {
           <ArticleActions
             slug="referral-commission-guide"
             title="How to Earn Recurring Commission by Referring Payment Providers"
-            className="mt-8 pt-6 border-t border-border"
+            className="mt-8 mb-12 pt-6 border-t border-border"
           />
 
           {/* CTA Section */}

@@ -168,7 +168,7 @@ const TRAExemption = () => {
             <ArticleActions
               slug="tra-exemption"
               title="What Is TRA Exemption and How It Reduces Payment Friction"
-              className="mt-8 pt-6 border-t border-border"
+              className="mt-8 mb-12 pt-6 border-t border-border"
             />
 
             <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border">

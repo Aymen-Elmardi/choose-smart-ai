@@ -117,7 +117,7 @@ const InsightsArticleLayout = ({
             <ArticleActions
               slug={currentSlug}
               title={title}
-              className="mt-8 pt-6 border-t border-border"
+              className="mt-8 mb-10 pt-6 border-t border-border"
             />
           )}
           
