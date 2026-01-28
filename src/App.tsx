@@ -49,6 +49,7 @@ import WhySomeBusinessesNeverApproved from "./pages/insights/WhySomeBusinessesNe
 import WhyPaymentProvidersAskForDirectorDocuments from "./pages/insights/WhyPaymentProvidersAskForDirectorDocuments";
 import WhyPaymentProvidersAskForSourceOfFunds from "./pages/insights/WhyPaymentProvidersAskForSourceOfFunds";
 import WhyPaymentAccountsGetFlaggedAfterGrowth from "./pages/insights/WhyPaymentAccountsGetFlaggedAfterGrowth";
+import WhyPaymentProvidersRejectGrowingBusinesses from "./pages/insights/WhyPaymentProvidersRejectGrowingBusinesses";
 import WhyProvidersReUnderwriteExistingAccounts from "./pages/insights/WhyProvidersReUnderwriteExistingAccounts";
 import WhyPaymentAccountsGetFlaggedWithoutChanges from "./pages/insights/WhyPaymentAccountsGetFlaggedWithoutChanges";
 import VisaMastercardControl from "./pages/insights/VisaMastercardControl";
@@ -180,6 +181,7 @@ const App = () => (
               <Route path="/insights/what-to-do-when-provider-asks-for-documents" element={<WhatToDoWhenProviderAsksForDocuments />} />
               <Route path="/insights/tra-exemption-reduces-payment-friction" element={<TRAExemption />} />
               <Route path="/insights/chargebacks-what-they-are-and-how-to-avoid-them" element={<Chargebacks />} />
+              <Route path="/insights/why-payment-providers-reject-growing-businesses" element={<WhyPaymentProvidersRejectGrowingBusinesses />} />
               
               <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
               <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
