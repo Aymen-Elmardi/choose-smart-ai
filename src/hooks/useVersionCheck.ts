@@ -34,6 +34,8 @@ function forceReloadWithCacheBust(serverVersion: string) {
 export function useVersionCheck() {
   const { pathname } = useLocation();
   const lastCheckRef = useRef<number>(0);
+  // Keep ref to maintain hook count consistency (even though toast is removed)
+  const _unusedRef = useRef<boolean>(false);
 
   const runCheck = useCallback(
     async (force = false) => {
