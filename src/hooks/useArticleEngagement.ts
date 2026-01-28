@@ -57,43 +57,39 @@ export const useArticleEngagement = (articleSlug: string) => {
     fetchEngagement();
   }, [articleSlug, visitorId]);
 
-  // Toggle like
+  // Add like (likes are permanent for security - no delete allowed)
   const toggleLike = useCallback(async () => {
     if (!visitorId || !articleSlug) return;
 
-    const wasLiked = state.isLiked;
+    // If already liked, do nothing (likes are permanent)
+    if (state.isLiked) return;
 
     // Optimistic update
     setState((prev) => ({
       ...prev,
-      isLiked: !wasLiked,
-      likeCount: wasLiked ? prev.likeCount - 1 : prev.likeCount + 1,
+      isLiked: true,
+      likeCount: prev.likeCount + 1,
     }));
 
     try {
-      if (wasLiked) {
-        // Remove like
-        await supabase
-          .from("article_engagement")
-          .delete()
-          .eq("article_slug", articleSlug)
-          .eq("visitor_id", visitorId)
-          .eq("action_type", "like");
-      } else {
-        // Add like
-        await supabase.from("article_engagement").insert({
+      // Add like using upsert to handle race conditions
+      const { error } = await supabase.from("article_engagement").upsert(
+        {
           article_slug: articleSlug,
           visitor_id: visitorId,
           action_type: "like",
-        });
-      }
+        },
+        { onConflict: "article_slug,visitor_id,action_type" }
+      );
+
+      if (error) throw error;
     } catch (error) {
       // Revert on error
-      console.error("Error toggling like:", error);
+      console.error("Error adding like:", error);
       setState((prev) => ({
         ...prev,
-        isLiked: wasLiked,
-        likeCount: wasLiked ? prev.likeCount + 1 : prev.likeCount - 1,
+        isLiked: false,
+        likeCount: prev.likeCount - 1,
       }));
     }
   }, [articleSlug, visitorId, state.isLiked]);
