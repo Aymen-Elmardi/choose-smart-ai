@@ -7,6 +7,7 @@ import RelatedArticles from "@/components/RelatedArticles";
 import ArticleSchema from "@/components/ArticleSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
+import ArticleActions from "@/components/ArticleActions";
 import { ContentCluster } from "@/lib/insightsArchitecture";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -110,6 +111,15 @@ const InsightsArticleLayout = ({
           <div className="prose prose-lg max-w-none">
             {children}
           </div>
+          
+          {/* Share & Like Actions */}
+          {currentSlug && (
+            <ArticleActions
+              slug={currentSlug}
+              title={title}
+              className="mt-8 pt-6 border-t border-border"
+            />
+          )}
           
           {/* Sources & References */}
           {sources && sources.length > 0 && (
