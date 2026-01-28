@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import { Source } from "@/components/SourcesCitation";
+
+const articleSources: Source[] = [
+  { name: "Global Payments: Reasons You Might Be Denied for a Merchant Account", url: "https://www.globalpayments.com/insights/reasons-you-might-be-denied-for-a-merchant-account", type: "industry" },
+  { name: "Stripe: How to Get a Merchant Account", url: "https://stripe.com/resources/more/how-to-get-a-merchant-account", type: "official" },
+  { name: "Chargeback Gurus: What Does It Mean to Be High-Risk?", url: "https://www.chargebackgurus.com/en/chargebacks/high-risk-merchants-explained", type: "industry" },
+  { name: "Beacon Payments: How to Qualify for a Merchant Account", url: "https://www.beaconpayments.com/blog/how-to-qualify-for-a-merchant-account-approval-tips-for-high-risk-and-niche-businesses", type: "industry" },
+];
 
 const WhyPaymentProvidersRejectGrowingBusinesses = () => {
   return (
@@ -10,6 +18,7 @@ const WhyPaymentProvidersRejectGrowingBusinesses = () => {
       cluster="hub"
       currentSlug="why-payment-providers-reject-growing-businesses"
       keywords={["payment rejection", "account approval", "growing business", "underwriting", "payment provider"]}
+      sources={articleSources}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
         Why Payment Providers Reject Growing Businesses
