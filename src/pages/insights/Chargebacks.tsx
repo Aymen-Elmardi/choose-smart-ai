@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import FraudPreventionModal from "@/components/FraudPreventionModal";
 import FAQSchema from "@/components/FAQSchema";
 import SourcesCitation from "@/components/SourcesCitation";
+import ArticleActions from "@/components/ArticleActions";
 
 const chargebackSources = [
   { name: "Visa Dispute Management Guidelines", url: "https://usa.visa.com/support/small-business/dispute-resolution.html", type: "official" as const },
@@ -399,6 +400,13 @@ const Chargebacks = () => {
             </p>
 
             <SourcesCitation sources={chargebackSources} />
+
+            {/* Share & Like Actions */}
+            <ArticleActions
+              slug="chargebacks-what-they-are-and-how-to-avoid-them"
+              title="Chargebacks Explained: Costs, Causes, and How to Reduce Them"
+              className="mt-8 pt-6 border-t border-border"
+            />
           </div>
         </article>
       </main>

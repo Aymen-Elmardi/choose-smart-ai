@@ -4,6 +4,7 @@ import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import { Link } from "react-router-dom";
 import SourcesCitation from "@/components/SourcesCitation";
+import ArticleActions from "@/components/ArticleActions";
 
 const traSources = [
   { name: "European Banking Authority – Strong Customer Authentication", url: "https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money/regulatory-technical-standards-on-strong-customer-authentication-and-secure-communication-under-psd2", type: "regulatory" as const },
@@ -162,6 +163,13 @@ const TRAExemption = () => {
             </p>
 
             <SourcesCitation sources={traSources} />
+
+            {/* Share & Like Actions */}
+            <ArticleActions
+              slug="tra-exemption"
+              title="What Is TRA Exemption and How It Reduces Payment Friction"
+              className="mt-8 pt-6 border-t border-border"
+            />
 
             <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border">
               <p className="text-muted-foreground mb-4">

@@ -5,6 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import HowToSchema from "@/components/HowToSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
+import ArticleActions from "@/components/ArticleActions";
 
 const sourceOfFundsSources: Source[] = [
   { name: "FCA Payment Services Regulations", url: "https://www.fca.org.uk/firms/payment-services-regulations-e-money-regulations", type: "regulatory" },
@@ -91,6 +92,13 @@ const SourceOfFunds = () => {
           </div>
           
           <SourcesCitation sources={sourceOfFundsSources} />
+
+          {/* Share & Like Actions */}
+          <ArticleActions
+            slug="source-of-funds"
+            title="Source of Funds: What It Means and How to Respond"
+            className="mt-8 pt-6 border-t border-border"
+          />
         </article>
       </main>
       

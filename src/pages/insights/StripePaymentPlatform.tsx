@@ -6,6 +6,7 @@ import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import SourcesCitation from "@/components/SourcesCitation";
+import ArticleActions from "@/components/ArticleActions";
 import { ArrowRight, CheckCircle2, Zap, Globe, Layers, Shield, CreditCard, Building } from "lucide-react";
 
 const stripeSources = [
@@ -271,6 +272,13 @@ const StripePaymentPlatform = () => {
             </section>
 
             <SourcesCitation sources={stripeSources} />
+
+            {/* Share & Like Actions */}
+            <ArticleActions
+              slug="stripe-payment-platform"
+              title="Stripe: The Engine That Built the Modern Internet Economy"
+              className="mt-8 pt-6 border-t border-border"
+            />
 
             {/* CTA */}
             <section className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">

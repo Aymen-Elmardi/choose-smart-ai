@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useCanonical } from "@/hooks/useCanonical";
+import ArticleActions from "@/components/ArticleActions";
 
 const ReferralCommissionGuide = () => {
   useCanonical();
@@ -276,6 +277,13 @@ const ReferralCommissionGuide = () => {
               </p>
             </div>
           </div>
+
+          {/* Share & Like Actions */}
+          <ArticleActions
+            slug="referral-commission-guide"
+            title="How to Earn Recurring Commission by Referring Payment Providers"
+            className="mt-8 pt-6 border-t border-border"
+          />
 
           {/* CTA Section */}
           <div className="mt-16 p-8 bg-foreground text-background rounded-2xl text-center">
