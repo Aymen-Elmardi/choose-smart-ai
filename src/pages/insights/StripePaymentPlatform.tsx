@@ -277,7 +277,7 @@ const StripePaymentPlatform = () => {
             <ArticleActions
               slug="stripe-payment-platform"
               title="Stripe: The Engine That Built the Modern Internet Economy"
-              className="mt-8 pt-6 border-t border-border"
+              className="mt-8 mb-12 pt-6 border-t border-border"
             />
 
             {/* CTA */}

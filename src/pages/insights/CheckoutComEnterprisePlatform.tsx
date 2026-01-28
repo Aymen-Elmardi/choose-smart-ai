@@ -240,7 +240,7 @@ const CheckoutComEnterprisePlatform = () => {
             <ArticleActions
               slug="checkout-com-enterprise-platform"
               title="Checkout.com: The High-Performance Platform Built for Global Ambition"
-              className="mt-8 pt-6 border-t border-border"
+              className="mt-8 mb-12 pt-6 border-t border-border"
             />
 
             {/* CTA Section */}

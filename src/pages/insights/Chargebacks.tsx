@@ -405,7 +405,7 @@ const Chargebacks = () => {
             <ArticleActions
               slug="chargebacks-what-they-are-and-how-to-avoid-them"
               title="Chargebacks Explained: Costs, Causes, and How to Reduce Them"
-              className="mt-8 pt-6 border-t border-border"
+              className="mt-8 mb-12 pt-6 border-t border-border"
             />
           </div>
         </article>
