@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, lazy, ComponentType } from "react";
 import { useLocation } from "react-router-dom";
-import { toast } from "sonner";
 
 // Provided by Vite `define` (vite.config.ts). Kept local to this module to avoid
 // TS moduleDetection quirks.
@@ -35,7 +34,6 @@ function forceReloadWithCacheBust(serverVersion: string) {
 export function useVersionCheck() {
   const { pathname } = useLocation();
   const lastCheckRef = useRef<number>(0);
-  const toastShownRef = useRef<boolean>(false);
 
   const runCheck = useCallback(
     async (force = false) => {
@@ -89,21 +87,8 @@ export function useVersionCheck() {
             forceReloadWithCacheBust(serverVersion);
             return;
           }
-
-          if (!toastShownRef.current) {
-            toastShownRef.current = true;
-            toast.info("A new version is available", {
-              description: "Refresh to get the latest updates.",
-              duration: Infinity,
-              action: {
-                label: "Refresh",
-                onClick: () => {
-                  sessionStorage.setItem(VERSION_CHECK_KEY, serverVersion);
-                  forceReloadWithCacheBust(serverVersion);
-                },
-              },
-            });
-          }
+          // Silently update stored version without notification
+          sessionStorage.setItem(VERSION_CHECK_KEY, serverVersion);
         }
       } catch {
         // ignore
