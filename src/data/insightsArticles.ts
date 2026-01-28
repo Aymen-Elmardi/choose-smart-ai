@@ -279,6 +279,13 @@ export const allInsights: Insight[] = [
     category: "risk",
     readTime: "6 min read"
   },
+  {
+    title: "Why Payment Providers Reject Growing Businesses",
+    slug: "why-payment-providers-reject-growing-businesses",
+    description: "Understand why payment providers reject growing businesses and what you can fix before applying to improve your chances of approval.",
+    category: "risk",
+    readTime: "7 min read"
+  },
   // Explainer articles
   {
     title: "Visa and Mastercard Control Card Payments. What Businesses Can and Cannot Do",
