@@ -5,6 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import SourcesCitation from "@/components/SourcesCitation";
+import ArticleActions from "@/components/ArticleActions";
 import { ArrowRight, CheckCircle2, Building2, Shield, Globe, Users } from "lucide-react";
 
 const adyenSources = [
@@ -219,6 +220,13 @@ const AdyenEnterprisePlatform = () => {
             </section>
 
             <SourcesCitation sources={adyenSources} />
+
+            {/* Share & Like Actions */}
+            <ArticleActions
+              slug="adyen-enterprise-payments-platform"
+              title="Adyen: The Single Platform That Rewrote Enterprise Payments"
+              className="mt-8 pt-6 border-t border-border"
+            />
 
             {/* CTA Section */}
             <section className="p-8 md:p-12 rounded-2xl bg-muted/30 border border-border text-center">

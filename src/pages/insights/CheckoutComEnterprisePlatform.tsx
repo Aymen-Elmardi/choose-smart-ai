@@ -5,6 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import SourcesCitation from "@/components/SourcesCitation";
+import ArticleActions from "@/components/ArticleActions";
 import { ArrowRight, CheckCircle2, Zap, Globe, Users, Settings } from "lucide-react";
 
 const checkoutComSources = [
@@ -234,6 +235,13 @@ const CheckoutComEnterprisePlatform = () => {
             </section>
 
             <SourcesCitation sources={checkoutComSources} />
+
+            {/* Share & Like Actions */}
+            <ArticleActions
+              slug="checkout-com-enterprise-platform"
+              title="Checkout.com: The High-Performance Platform Built for Global Ambition"
+              className="mt-8 pt-6 border-t border-border"
+            />
 
             {/* CTA Section */}
             <section className="p-8 md:p-12 rounded-2xl bg-muted/30 border border-border text-center">

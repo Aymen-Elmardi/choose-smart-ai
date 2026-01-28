@@ -5,6 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import HowToSchema from "@/components/HowToSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
+import ArticleActions from "@/components/ArticleActions";
 
 const proofOfBusinessSources: Source[] = [
   { name: "FCA Payment Services Regulations", url: "https://www.fca.org.uk/firms/", type: "regulatory" },
@@ -96,6 +97,13 @@ const ProofOfBusinessActivity = () => {
           </div>
           
           <SourcesCitation sources={proofOfBusinessSources} />
+
+          {/* Share & Like Actions */}
+          <ArticleActions
+            slug="proof-of-business-activity"
+            title="Proof of Business Activity: What It Means and How to Respond"
+            className="mt-8 pt-6 border-t border-border"
+          />
         </article>
       </main>
       

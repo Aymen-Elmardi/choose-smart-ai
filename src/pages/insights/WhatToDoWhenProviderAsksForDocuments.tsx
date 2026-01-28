@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import ChecklistEmailModal from "@/components/ChecklistEmailModal";
 import HowToSchema from "@/components/HowToSchema";
+import ArticleActions from "@/components/ArticleActions";
 
 const howToSteps = [
   {
@@ -173,6 +174,13 @@ const WhatToDoWhenProviderAsksForDocuments = () => {
             <p>
               If you want clarity on which payment providers are better suited to your business, <Link to="/assessment?start=true" replace className="text-primary hover:text-primary/80 font-medium underline underline-offset-4">start a short assessment</Link>.
             </p>
+
+            {/* Share & Like Actions */}
+            <ArticleActions
+              slug="what-to-do-when-provider-asks-for-documents"
+              title="What to Do When Your Payment Provider Asks for Documents"
+              className="mt-8 pt-6 border-t border-border"
+            />
           </div>
         </article>
       </main>
