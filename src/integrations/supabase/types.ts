@@ -40,7 +40,14 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      article_engagement_counts: {
+        Row: {
+          action_type: string | null
+          article_slug: string | null
+          count: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never

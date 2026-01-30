@@ -12,6 +12,7 @@ interface EngagementState {
 
 /**
  * Hook for managing article likes and tracking share clicks.
+ * Uses edge function for secure, rate-limited engagement recording.
  */
 export const useArticleEngagement = (articleSlug: string) => {
   const visitorId = useVisitorId();
@@ -21,31 +22,33 @@ export const useArticleEngagement = (articleSlug: string) => {
     isLoading: true,
   });
 
-  // Fetch initial state
+  // Fetch initial state using the public view for counts and edge function for own status
   useEffect(() => {
     if (!visitorId || !articleSlug) return;
 
     const fetchEngagement = async () => {
       try {
-        // Get like count
-        const { count } = await supabase
-          .from("article_engagement")
-          .select("*", { count: "exact", head: true })
+        // Get aggregated like count from the public view (no PII exposure)
+        const { data: countData, error: countError } = await supabase
+          .from("article_engagement_counts")
+          .select("count")
           .eq("article_slug", articleSlug)
-          .eq("action_type", "like");
-
-        // Check if current visitor has liked
-        const { data: existingLike } = await supabase
-          .from("article_engagement")
-          .select("id")
-          .eq("article_slug", articleSlug)
-          .eq("visitor_id", visitorId)
           .eq("action_type", "like")
           .maybeSingle();
 
+        if (countError) {
+          console.error("Error fetching engagement count:", countError);
+        }
+
+        // Check if current visitor has liked by trying to fetch via edge function
+        // We'll use localStorage as the source of truth for "isLiked" status
+        // since the RLS policy now restricts direct table access
+        const likedKey = `liked_${articleSlug}`;
+        const hasLiked = localStorage.getItem(likedKey) === "true";
+
         setState({
-          likeCount: count || 0,
-          isLiked: !!existingLike,
+          likeCount: countData?.count || 0,
+          isLiked: hasLiked,
           isLoading: false,
         });
       } catch (error) {
@@ -56,6 +59,34 @@ export const useArticleEngagement = (articleSlug: string) => {
 
     fetchEngagement();
   }, [articleSlug, visitorId]);
+
+  // Record engagement via secure edge function
+  const recordEngagement = useCallback(
+    async (actionType: ActionType): Promise<boolean> => {
+      if (!visitorId || !articleSlug) return false;
+
+      try {
+        const { error } = await supabase.functions.invoke("record-engagement", {
+          body: {
+            article_slug: articleSlug,
+            visitor_id: visitorId,
+            action_type: actionType,
+          },
+        });
+
+        if (error) {
+          console.error("Error recording engagement:", error);
+          return false;
+        }
+
+        return true;
+      } catch (error) {
+        console.error("Error recording engagement:", error);
+        return false;
+      }
+    },
+    [articleSlug, visitorId]
+  );
 
   // Add like (likes are permanent for security - no delete allowed)
   const toggleLike = useCallback(async () => {
@@ -71,48 +102,31 @@ export const useArticleEngagement = (articleSlug: string) => {
       likeCount: prev.likeCount + 1,
     }));
 
-    try {
-      // Add like using upsert to handle race conditions
-      const { error } = await supabase.from("article_engagement").upsert(
-        {
-          article_slug: articleSlug,
-          visitor_id: visitorId,
-          action_type: "like",
-        },
-        { onConflict: "article_slug,visitor_id,action_type" }
-      );
+    // Store in localStorage for persistence
+    const likedKey = `liked_${articleSlug}`;
+    localStorage.setItem(likedKey, "true");
 
-      if (error) throw error;
-    } catch (error) {
+    const success = await recordEngagement("like");
+
+    if (!success) {
       // Revert on error
-      console.error("Error adding like:", error);
       setState((prev) => ({
         ...prev,
         isLiked: false,
         likeCount: prev.likeCount - 1,
       }));
+      localStorage.removeItem(likedKey);
     }
-  }, [articleSlug, visitorId, state.isLiked]);
+  }, [articleSlug, visitorId, state.isLiked, recordEngagement]);
 
   // Record share click
   const recordShare = useCallback(
     async (platform: "twitter" | "linkedin" | "facebook") => {
-      if (!visitorId || !articleSlug) return;
-
       const actionType: ActionType = `share_${platform}` as ActionType;
-
-      try {
-        await supabase.from("article_engagement").insert({
-          article_slug: articleSlug,
-          visitor_id: visitorId,
-          action_type: actionType,
-        });
-      } catch (error) {
-        // Silent fail for share tracking - don't block the share action
-        console.error("Error recording share:", error);
-      }
+      // Fire and forget for share tracking - don't block the share action
+      recordEngagement(actionType);
     },
-    [articleSlug, visitorId]
+    [recordEngagement]
   );
 
   return {
