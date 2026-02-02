@@ -90,6 +90,13 @@ export const providerArticles: ArticleMetadata[] = [
     cluster: "provider",
     category: "Provider Deep Dive",
     keywords: ["comparison", "adyen", "shift4", "checkout.com", "enterprise", "risk appetite", "underwriting"]
+  },
+  {
+    slug: "fiserv-payments-platform",
+    title: "Fiserv and the First Data Legacy: Who It Actually Fits, and Where It Doesn't",
+    cluster: "provider",
+    category: "Provider Deep Dive",
+    keywords: ["fiserv", "first data", "clover", "enterprise", "acquiring", "POS", "bank infrastructure"]
   }
 ];
 
