@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
 
@@ -114,7 +115,7 @@ const CreditCardPaymentsExplained = () => {
         Cardholders can dispute transactions weeks or even months later. Providers are financially exposed until disputes are resolved.
       </p>
       <p className="text-muted-foreground mb-6">
-        This is why card payments dominate chargeback statistics and monitoring programs.
+        This is why card payments dominate <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback statistics and monitoring programs</Link>.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">2. Fraud Liability</h3>
@@ -132,10 +133,10 @@ const CreditCardPaymentsExplained = () => {
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">4. Regulatory Thresholds</h3>
       <p className="text-muted-foreground mb-4">
-        Card networks enforce strict limits on dispute ratios, fraud rates, and processing behaviour. Providers must police merchants to avoid penalties.
+        <Link to="/insights/visa-mastercard-control-card-payments" className="text-primary hover:underline">Card networks enforce strict limits</Link> on dispute ratios, fraud rates, and processing behaviour. Providers must police merchants to avoid penalties.
       </p>
       <p className="text-muted-foreground mb-12">
-        This is why card payments trigger underwriting reviews far more often than bank-based payment methods.
+        This is why card payments trigger <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">underwriting reviews</Link> far more often than bank-based payment methods.
       </p>
 
       {/* Affects Merchant Approval */}
@@ -248,7 +249,7 @@ const CreditCardPaymentsExplained = () => {
       </ul>
 
       <p className="text-muted-foreground mb-12">
-        Most of these outcomes are preventable with the right setup.
+        Most of these outcomes are preventable with <Link to="/insights/payment-risk" className="text-primary hover:underline">the right setup</Link>.
       </p>
 
       {/* Managing Card Risk */}
@@ -371,7 +372,7 @@ const CreditCardPaymentsExplained = () => {
       </p>
 
       <p className="text-muted-foreground">
-        If you want to understand how credit card payments will affect your approval, stability, and growth, start with a short assessment before choosing a provider.
+        If you want to understand how credit card payments will affect your approval, stability, and growth, <Link to="/assessment" className="text-primary hover:underline">start with a short assessment</Link> before choosing a provider.
       </p>
     </InsightsArticleLayout>
   );
