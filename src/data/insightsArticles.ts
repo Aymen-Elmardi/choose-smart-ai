@@ -329,6 +329,13 @@ export const allInsights: Insight[] = [
     category: "explainer",
     readTime: "7 min read"
   },
+  {
+    title: "Credit Card Payments Explained: How They Affect Approval, Risk, and Business Growth",
+    slug: "credit-card-payments-explained",
+    description: "Credit card payments carry more risk and scrutiny than any other payment method. Learn how providers judge card-heavy businesses and how to avoid account freezes.",
+    category: "explainer",
+    readTime: "9 min read"
+  },
   // Guides
   {
     title: "What To Do When a Payment Provider Asks for More Documents",
