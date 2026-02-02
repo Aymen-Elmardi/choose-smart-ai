@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="flex items-center gap-4">
             <span className="text-xl font-bold text-foreground tracking-tight">ChosePayments</span>
             <a 
-              href="https://linkedin.com/company/chosepayments" 
+              href="https://www.linkedin.com/company/chosepayments" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
