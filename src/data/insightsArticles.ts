@@ -386,6 +386,13 @@ export const allInsights: Insight[] = [
     description: "A founder-level comparison of Adyen, Shift4, and Checkout.com. No marketing fluff, just real differences in risk appetite, underwriting, and operational fit.",
     category: "providers",
     readTime: "5 min read"
+  },
+  {
+    title: "Fiserv and the First Data Legacy: Who It Actually Fits, and Where It Doesn't",
+    slug: "fiserv-payments-platform",
+    description: "Fiserv operates across acquiring, issuing, bank infrastructure, and Clover POS. Learn where it performs well, where friction appears, and which business profiles benefit most.",
+    category: "providers",
+    readTime: "9 min read"
   }
 ];
 
