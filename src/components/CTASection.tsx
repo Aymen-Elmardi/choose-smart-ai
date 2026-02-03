@@ -35,10 +35,10 @@ const CTASection = () => {
           </div>
           
           <h2 className="heading-lg text-background mb-6">
-            Ready to Find Your Perfect Provider?
+            Ready to Understand Your Provider Fit?
           </h2>
           <p className="text-lg md:text-xl text-background/70 max-w-2xl mx-auto mb-10">
-            Join 5,000+ UK businesses who found their match.
+            Get your risk assessment in 60 seconds. No sales pressure, no provider influence.
           </p>
           <Button 
             variant="hero"
@@ -46,7 +46,7 @@ const CTASection = () => {
             asChild
           >
             <Link to="/assessment?start=true" replace>
-              Yes, Show My Matches
+              Get My Risk Assessment
               <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>
