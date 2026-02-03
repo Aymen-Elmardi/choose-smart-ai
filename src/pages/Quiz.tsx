@@ -50,12 +50,10 @@ const Quiz = () => {
     markQuizStart();
   }, []);
 
-  // Update SEO metadata based on location selection
+  // Update SEO metadata
   useEffect(() => {
-    // Update title
-    document.title = "Choose the Right Payment Provider for Your Business | UK & EU Quiz";
+    document.title = "Payment Provider Risk Assessment | ChosePayments";
     
-    // Update meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement("meta");
@@ -64,14 +62,13 @@ const Quiz = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Answer a few quick questions and get matched with the payment provider that fits your business. UK & EU focused. No sales pressure."
+      "Understand your payment provider risk fit. Answer a few quick questions and get strategic guidance on which providers match your business — not just a list."
     );
 
-    // Cleanup: restore original title on unmount
     return () => {
-      document.title = "ChosePayments - Find the Best Payment Provider in 60 Seconds";
+      document.title = "ChosePayments - Payment Provider Risk Assessment";
     };
-  }, [answers.location]);
+  }, []);
 
   const questionCount = getQuestionCount(answers);
   // Progress: questions only (no welcome step)
