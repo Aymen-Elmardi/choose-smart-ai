@@ -1,32 +1,19 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Network, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const MarketplacePlatforms = () => {
   useCanonical();
   
-  useEffect(() => {
-    document.title = "Best Payment Providers for Marketplaces & Platforms | UK & EU";
-    
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute(
-      "content",
-      "Running a marketplace or platform? Discover payment providers that support split payments, payouts, and scale across the UK and EU."
-    );
-
-    return () => {
-      document.title = "Payment Provider Quiz";
-    };
-  }, []);
+  useSEO({
+    title: "Marketplace Payment Risk Assessment: Why Platforms Get Extra Scrutiny",
+    description: "Building a marketplace? Understand why payment providers scrutinise platforms differently — and which providers actually fit your compliance and payout needs.",
+    keywords: ["marketplace payment risk", "platform payment assessment", "split payments UK", "marketplace compliance"],
+  });
 
   return (
     <div className="min-h-screen bg-background">

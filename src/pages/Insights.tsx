@@ -23,8 +23,9 @@ const Insights = () => {
   const [activeFilter, setActiveFilter] = useState<InsightCategory>("all");
 
   useSEO({
-    title: "Insights | ChosePayments",
-    description: "Practical guidance on payment provider requirements, verification processes, account freezes, and risk management for UK and EU businesses."
+    title: "Expert Insights: What Payment Providers Don't Tell You | ChosePayments",
+    description: "Insider knowledge on payment provider risk, underwriting criteria, account freezes, and why businesses get rejected. Strategic guidance from industry experts.",
+    keywords: ["payment provider insights", "payment risk", "underwriting criteria", "account freezes", "provider rejection"],
   });
 
   const filteredInsights = useMemo(() => {
@@ -40,10 +41,10 @@ const Insights = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
-              Payment Provider Guides & Comparisons
+              Expert Insights: What Payment Providers Don't Tell You
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to choose, switch, and optimize your payment provider. Trusted by thousands of UK businesses.
+              Insider knowledge on provider risk, underwriting criteria, and account management. Strategic guidance from industry experts.
             </p>
           </div>
 
@@ -169,16 +170,16 @@ const Insights = () => {
           <div className="mt-20 text-center">
             <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-background border border-primary/20 rounded-2xl p-10 md:p-14">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                Not sure which provider is right for you?
+                Not sure which provider fits your risk profile?
               </h2>
               <p className="text-muted-foreground text-lg mb-6 max-w-2xl mx-auto">
-                Answer a few questions about your business and get a personalized recommendation in under 60 seconds.
+                Get your personalized risk assessment in under 60 seconds. We'll tell you which providers actually match your business — or why now isn't the right time.
               </p>
               <Link
                 to="/assessment"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors"
               >
-                Start Free Assessment
+                Get Your Risk Assessment
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

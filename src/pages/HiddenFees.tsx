@@ -1,32 +1,19 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, AlertTriangle, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const HiddenFees = () => {
   useCanonical();
   
-  useEffect(() => {
-    document.title = "Hidden Fees in Payment Processing: What's Not Disclosed";
-    
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute(
-      "content",
-      "The rate you're quoted often isn't the rate you pay. Learn which fees get buried — and how to spot them before you sign up."
-    );
-
-    return () => {
-      document.title = "Payment Provider Quiz";
-    };
-  }, []);
+  useSEO({
+    title: "Hidden Payment Fees: What Your Provider Isn't Telling You",
+    description: "The rate you're quoted often isn't the rate you pay. Insider knowledge on hidden fees, rolling reserves, and why effective rates differ from advertised rates.",
+    keywords: ["hidden payment fees", "payment processing costs", "effective rate", "rolling reserve", "provider pricing"],
+  });
 
   return (
     <div className="min-h-screen bg-background">

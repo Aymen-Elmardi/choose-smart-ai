@@ -8,20 +8,20 @@ const HeroSection = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
           <p className="text-sm font-medium text-primary mb-4 tracking-wide uppercase">
-            Independent Payment Advisor
+            Independent Payment Advisory
           </p>
           <h1 className="heading-xl text-foreground text-balance">
-            Find the Payment Provider That Actually Fits Your Business
+            Understand Your Payment Provider Fit Before You Commit
           </h1>
           <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              Compare Stripe, PayPal, Square, and 20+ UK providers in 60 seconds. Free, unbiased, no signup required.
+              Most businesses choose too quickly and regret it. We help you understand which providers actually fit your risk profile — not just compare features and fees.
             </p>
           </div>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="xl" asChild>
               <Link to="/assessment?start=true" replace>
-                Get My Recommendation
+                Get Your Risk Assessment
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
@@ -30,9 +30,9 @@ const HeroSection = () => {
             </Button>
           </div>
           <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground justify-center flex-wrap">
-            <span>25+ providers</span>
+            <span>Independent advisory</span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-            <span>5,000+ businesses helped</span>
+            <span>No provider influence</span>
             <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
             <span>60 seconds</span>
           </div>

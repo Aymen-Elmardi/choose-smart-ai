@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import SuccessPreviewSection from "@/components/SuccessPreviewSection";
+import WhyDifferentSection from "@/components/WhyDifferentSection";
 import ProblemSection from "@/components/ProblemSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ValuePropsSection from "@/components/ValuePropsSection";
@@ -15,10 +16,10 @@ const Index = () => {
   useCanonical();
   
   useSEO({
-    title: "Find the Best UK Payment Provider in 60 Seconds | ChosePayments",
-    description: "Compare Stripe, PayPal, Square and 20+ UK payment providers. Get a free, personalized recommendation based on your business type. No cost, no obligation.",
+    title: "Payment Provider Risk Assessment | Independent Advisory | ChosePayments",
+    description: "Understand your payment provider fit before you commit. Independent risk assessment for UK businesses — not a comparison site. Expert guidance in 60 seconds.",
     ogType: "website",
-    keywords: ["payment provider UK", "payment processor comparison", "best payment gateway UK", "Stripe alternatives UK", "business payment solutions"],
+    keywords: ["payment provider assessment", "payment risk fit", "independent payment advisory UK", "payment provider guidance", "business payment strategy"],
   });
 
   return (
@@ -27,6 +28,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <SuccessPreviewSection />
+        <WhyDifferentSection />
         <ProblemSection />
         <HowItWorksSection />
         <ValuePropsSection />
