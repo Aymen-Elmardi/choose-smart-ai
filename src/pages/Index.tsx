@@ -14,12 +14,19 @@ import { useSEO } from "@/hooks/useSEO";
 
 const Index = () => {
   useCanonical();
-  
+
   useSEO({
     title: "Payment Provider Risk Assessment | Independent Advisory | ChosePayments",
-    description: "Understand your payment provider fit before you commit. Independent risk assessment for UK businesses — not a comparison site. Expert guidance in 60 seconds.",
+    description:
+      "Understand your payment provider fit before you commit. Independent risk assessment for UK businesses  not a comparison site. Expert guidance in 60 seconds.",
     ogType: "website",
-    keywords: ["payment provider assessment", "payment risk fit", "independent payment advisory UK", "payment provider guidance", "business payment strategy"],
+    keywords: [
+      "payment provider assessment",
+      "payment risk fit",
+      "independent payment advisory UK",
+      "payment provider guidance",
+      "business payment strategy",
+    ],
   });
 
   return (
