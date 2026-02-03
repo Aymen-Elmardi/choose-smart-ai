@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import SuccessPreviewSection from "@/components/SuccessPreviewSection";
+import WhyDifferentSection from "@/components/WhyDifferentSection";
 import ProblemSection from "@/components/ProblemSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ValuePropsSection from "@/components/ValuePropsSection";
@@ -9,6 +10,7 @@ import ExamplesSection from "@/components/ExamplesSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 import { useSEO } from "@/hooks/useSEO";
 
 const Index = () => {
