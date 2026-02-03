@@ -30,7 +30,7 @@ const HowItWorksSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-20 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            How ChosePayments Helps You Choose Smarter
+            How ChosePayments Assesses Your Provider Fit
           </h2>
         </div>
 
