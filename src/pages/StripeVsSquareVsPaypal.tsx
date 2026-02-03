@@ -76,9 +76,9 @@ const StripeVsSquareVsPaypal = () => {
   useCanonical();
   
   useSEO({
-    title: "Stripe vs Square vs PayPal (UK): Which One Will Actually Approve You?",
-    description: "UK businesses often get rejected or frozen by Stripe, Square, or PayPal. This guide explains which provider is most likely to approve your business — and why.",
-    keywords: ["Stripe vs Square", "Stripe vs PayPal", "payment provider comparison UK", "which payment processor"],
+    title: "Stripe vs Square vs PayPal: Risk Assessment & Underwriting Fit (UK)",
+    description: "Which provider will actually approve your business? A risk-based assessment of Stripe, Square, and PayPal — not just features and fees, but who they reject and why.",
+    keywords: ["Stripe risk assessment", "Square approval criteria", "PayPal underwriting", "payment provider fit UK"],
   });
 
   useEffect(() => {

@@ -97,9 +97,9 @@ const BestPaymentProcessorUK = () => {
   useCanonical();
   
   useSEO({
-    title: "Choosing a Payment Processor? What UK Businesses Get Wrong",
-    description: "Most UK businesses pick a payment provider too quickly and regret it. See what actually matters before you commit — not just fees.",
-    keywords: ["payment processor UK", "best payment provider", "UK business payments", "Stripe alternatives"],
+    title: "Payment Processor Risk Assessment: What UK Businesses Get Wrong",
+    description: "Choosing a payment processor isn't about fees — it's about fit. Understand which providers approve your business type and why the wrong choice costs you later.",
+    keywords: ["payment processor risk UK", "payment provider assessment", "UK business payment fit", "provider approval criteria"],
   });
 
   useEffect(() => {
