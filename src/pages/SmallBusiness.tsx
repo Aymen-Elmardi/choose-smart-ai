@@ -9,24 +9,11 @@ import { useCanonical } from "@/hooks/useCanonical";
 const SmallBusiness = () => {
   useCanonical();
   
-  useEffect(() => {
-    document.title = "Best Payment Providers for Small Businesses | UK & EU";
-    
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute(
-      "content",
-      "Compare payment providers for small businesses across the UK and EU. Find the best fit for online, in-person, or growing businesses."
-    );
-
-    return () => {
-      document.title = "Payment Provider Quiz";
-    };
-  }, []);
+  useSEO({
+    title: "Small Business Payment Risk: Finding a Provider That Won't Freeze You",
+    description: "Most small businesses choose a payment provider too quickly — and regret it. Understand your risk profile and find a provider that actually fits your business.",
+    keywords: ["small business payment risk", "payment provider fit", "UK small business payments", "provider approval"],
+  });
 
   return (
     <div className="min-h-screen bg-background">

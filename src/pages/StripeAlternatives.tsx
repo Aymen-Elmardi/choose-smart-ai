@@ -9,24 +9,11 @@ import { useCanonical } from "@/hooks/useCanonical";
 const StripeAlternatives = () => {
   useCanonical();
   
-  useEffect(() => {
-    document.title = "Stripe Alternatives for Marketplaces | UK & EU Comparison";
-    
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute(
-      "content",
-      "Stripe isn't always the best fit for marketplaces. Compare alternatives built for split payments, payouts, and platform businesses."
-    );
-
-    return () => {
-      document.title = "Payment Provider Quiz";
-    };
-  }, []);
+  useSEO({
+    title: "Stripe Alternatives for Marketplaces: Risk Assessment & Provider Fit",
+    description: "Stripe Connect isn't always the right fit. Understand which marketplace payment providers match your risk profile, onboarding needs, and operational reality.",
+    keywords: ["Stripe alternatives", "marketplace payment risk", "Stripe Connect assessment", "platform payment fit"],
+  });
 
   return (
     <div className="min-h-screen bg-background">
