@@ -82,24 +82,33 @@ const About = () => {
               </p>
             </section>
 
-            <section>
+            {/* Independence Guarantee Callout */}
+            <section className="bg-primary/5 border border-primary/20 rounded-xl p-8">
               <h2 className="text-2xl font-semibold text-foreground mb-4">
-                Independence and Regulatory Transparency
+                Our Independence Guarantee
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                ChosePayments is an independent advisory platform. To maintain absolute clarity regarding our role:
-              </p>
-              <ul className="list-disc list-inside text-muted-foreground leading-relaxed mt-4 space-y-2">
-                <li>We are not a payment institution, bank, acquirer, card scheme, or processor.</li>
-                <li>We do not process payments, hold merchant funds, or make final approval decisions.</li>
-                <li>We do not provide legal, tax, or financial advice.</li>
-              </ul>
-              <p className="text-muted-foreground leading-relaxed mt-4">
-                All final underwriting and approval decisions remain with the respective payment providers and financial institutions. Our insights are grounded in real world operational experience, intended to inform and guide, not to replace professional legal or financial counsel.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mt-4">
-                Our integrity is non negotiable: No provider can pay to influence our assessments or suppress information.
-              </p>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p className="font-medium text-foreground">
+                  No provider can pay to influence our assessments or suppress information.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary">✓</span>
+                    <span>We are not a payment institution, bank, acquirer, card scheme, or processor.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary">✓</span>
+                    <span>We do not process payments, hold merchant funds, or make final approval decisions.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary">✓</span>
+                    <span>We say "not yet" when that's the right answer — many assessments result in no introduction.</span>
+                  </li>
+                </ul>
+                <p className="text-sm text-muted-foreground/80 mt-4">
+                  All final underwriting and approval decisions remain with the respective payment providers and financial institutions. Our insights are grounded in real-world operational experience, intended to inform and guide, not to replace professional legal or financial counsel.
+                </p>
+              </div>
             </section>
 
             <section>
