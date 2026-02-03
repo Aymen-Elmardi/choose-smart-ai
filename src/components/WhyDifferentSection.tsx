@@ -29,11 +29,10 @@ const WhyDifferentSection = () => {
           <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">
             Why ChosePayments is Different
           </p>
-          <h2 className="heading-lg text-foreground">
-            Not a Comparison Site. Not a Lead Marketplace.
-          </h2>
+          <h2 className="heading-lg text-foreground">Not a Comparison Site. Not a Lead Marketplace.</h2>
           <p className="text-muted-foreground mt-4 text-lg">
-            We're the strategic layer between your business and payment providers — helping you understand fit before you commit.
+            We're the strategic layer between your business and payment providers, helping you understand fit before you
+            commit.
           </p>
         </div>
 
