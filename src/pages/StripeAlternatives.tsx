@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const StripeAlternatives = () => {
   useCanonical();
