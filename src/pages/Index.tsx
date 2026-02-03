@@ -29,6 +29,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <SuccessPreviewSection />
+        <WhyDifferentSection />
         <ProblemSection />
         <HowItWorksSection />
         <ValuePropsSection />
