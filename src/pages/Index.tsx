@@ -11,7 +11,6 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
 import { useSEO } from "@/hooks/useSEO";
-import { useSEO } from "@/hooks/useSEO";
 
 const Index = () => {
   useCanonical();
