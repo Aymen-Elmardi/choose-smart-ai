@@ -7,15 +7,14 @@ const HeroSection = () => {
     <section className="bg-background pt-28 pb-20 md:pt-40 md:pb-32">
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
-          <p className="text-sm font-medium text-primary mb-4 tracking-wide uppercase">
-            Independent Payment Advisory
-          </p>
+          <p className="text-sm font-medium text-primary mb-4 tracking-wide uppercase">Independent Payment Advisory</p>
           <h1 className="heading-xl text-foreground text-balance">
             Understand Your Payment Provider Fit Before You Commit
           </h1>
           <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              Most businesses choose too quickly and regret it. We help you understand which providers actually fit your risk profile — not just compare features and fees.
+              Most businesses choose too quickly and regret it. We help you understand which providers actually fit your
+              risk profile not just compare features and fees.
             </p>
           </div>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
