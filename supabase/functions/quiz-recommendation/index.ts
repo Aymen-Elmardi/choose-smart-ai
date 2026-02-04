@@ -113,6 +113,60 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
 ];
 
 // ============================================================================
+// INPUT VALIDATION
+// ============================================================================
+
+const MAX_STRING_LENGTH = 200;
+const MAX_ARRAY_LENGTH = 20;
+
+const isValidString = (value: unknown): value is string => 
+  typeof value === "string" && value.length <= MAX_STRING_LENGTH;
+
+const isValidOptionalString = (value: unknown): value is string | undefined => 
+  value === undefined || isValidString(value);
+
+const isValidStringArray = (value: unknown): value is string[] => {
+  if (!Array.isArray(value) || value.length > MAX_ARRAY_LENGTH) return false;
+  return value.every((item) => isValidString(item));
+};
+
+const isValidOptionalStringArray = (value: unknown): value is string[] | undefined =>
+  value === undefined || isValidStringArray(value);
+
+const validateQuizAnswers = (data: unknown): QuizAnswers | null => {
+  if (!data || typeof data !== "object") return null;
+  
+  const obj = data as Record<string, unknown>;
+  
+  // Required fields
+  if (!isValidString(obj.salesChannel)) return null;
+  if (!isValidString(obj.businessType)) return null;
+  if (!isValidString(obj.location)) return null;
+  if (!isValidString(obj.monthlyVolume)) return null;
+  if (!isValidString(obj.avgTransaction)) return null;
+  
+  // Required array
+  if (!isValidStringArray(obj.priorities)) return null;
+  if (!isValidStringArray(obj.features)) return null;
+  
+  // Optional fields
+  if (!isValidOptionalString(obj.industry)) return null;
+  if (!isValidOptionalString(obj.deliveryTimeline)) return null;
+  
+  return {
+    salesChannel: obj.salesChannel as string,
+    businessType: obj.businessType as string,
+    priorities: obj.priorities as string[],
+    location: obj.location as string,
+    monthlyVolume: obj.monthlyVolume as string,
+    avgTransaction: obj.avgTransaction as string,
+    features: obj.features as string[],
+    industry: obj.industry as string | undefined,
+    deliveryTimeline: obj.deliveryTimeline as string | undefined,
+  };
+};
+
+// ============================================================================
 // HELPER FUNCTIONS
 // ============================================================================
 
