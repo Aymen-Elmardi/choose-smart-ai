@@ -14,7 +14,7 @@ const HeroSection = () => {
           <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
               Most businesses choose too quickly and regret it. We help you understand which providers actually fit your
-              risk profile not just compare features and fees.
+              risk profile, not just compare features and fees.
             </p>
           </div>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">

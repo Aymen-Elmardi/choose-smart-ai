@@ -5,7 +5,7 @@ import { useSEO } from "@/hooks/useSEO";
 const About = () => {
   useSEO({
     title: "Independent Payment Advisory | Why ChosePayments is Different",
-    description: "We're not a comparison site. ChosePayments provides expert risk assessment and strategic guidance — helping businesses avoid payment provider mismatch before it costs them.",
+    description: "We're not a comparison site. ChosePayments provides expert risk assessment and strategic guidance, helping businesses avoid payment provider mismatch before it costs them.",
     keywords: ["independent payment advisory", "payment risk assessment", "payment strategy", "ChosePayments"],
   });
 
@@ -63,7 +63,7 @@ const About = () => {
                 How ChosePayments Works: Operational Intelligence
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                We utilize a targeted assessment designed to understand how your business actually operates, moving beyond surface level marketing.
+                We utilize a targeted assessment designed to understand how your business actually operates, moving beyond surface-level marketing.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4 font-medium">
                 Our analysis focuses on:
@@ -102,7 +102,7 @@ const About = () => {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-primary">✓</span>
-                    <span>We say "not yet" when that's the right answer — many assessments result in no introduction.</span>
+                    <span>We say "not yet" when that's the right answer. Many assessments result in no introduction.</span>
                   </li>
                 </ul>
                 <p className="text-sm text-muted-foreground/80 mt-4">
@@ -136,7 +136,7 @@ const About = () => {
                 The Expertise Behind the Platform
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                I built ChosePayments after years of working deep within the payments ecosystem. This platform is the distillation of practical, hands on experience, not theoretical models. I have seen where the friction points are, and I built this to help you avoid them.
+                I built ChosePayments after years of working deep within the payments ecosystem. This platform is the distillation of practical, hands-on experience, not theoretical models. I have seen where the friction points are, and I built this to help you avoid them.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 For a detailed look at my professional background, you can connect with me on{" "}

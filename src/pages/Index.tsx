@@ -18,7 +18,7 @@ const Index = () => {
   useSEO({
     title: "Payment Provider Risk Assessment | Independent Advisory | ChosePayments",
     description:
-      "Understand your payment provider fit before you commit. Independent risk assessment for UK businesses  not a comparison site. Expert guidance in 60 seconds.",
+      "Understand your payment provider fit before you commit. Independent risk assessment for UK businesses, not a comparison site. Expert guidance in 60 seconds.",
     ogType: "website",
     keywords: [
       "payment provider assessment",

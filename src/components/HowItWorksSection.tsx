@@ -6,19 +6,19 @@ const steps = [
     icon: ClipboardList,
     step: "01",
     title: "Tell Us About Your Business",
-    description: "Answer a few quick questions about your business type, volume, and operational reality — we need the full picture.",
+    description: "Answer a few quick questions about your business type, volume, and operational reality. We need the full picture.",
   },
   {
     icon: Sparkles,
     step: "02",
     title: "See Your Risk Assessment",
-    description: "We analyze your profile against provider underwriting criteria and risk appetites — not just features and fees.",
+    description: "We analyze your profile against provider underwriting criteria and risk appetites, not just features and fees.",
   },
   {
     icon: Handshake,
     step: "03",
     title: "Get Strategic Guidance",
-    description: "Connect with providers that actually fit your business — or understand why now isn't the right time.",
+    description: "Connect with providers that actually fit your business, or understand why now isn't the right time.",
   },
 ];
 
