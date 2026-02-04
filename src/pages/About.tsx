@@ -102,7 +102,7 @@ const About = () => {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-primary">✓</span>
-                    <span>We say "not yet" when that's the right answer — many assessments result in no introduction.</span>
+                    <span>We say "not yet" when that's the right answer. Many assessments result in no introduction.</span>
                   </li>
                 </ul>
                 <p className="text-sm text-muted-foreground/80 mt-4">
