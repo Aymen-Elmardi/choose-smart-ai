@@ -61,6 +61,7 @@ import TRAExemption from "./pages/insights/TRAExemption";
 import WhatToDoWhenProviderAsksForDocuments from "./pages/insights/WhatToDoWhenProviderAsksForDocuments";
 import Chargebacks from "./pages/insights/Chargebacks";
 import CreditCardPaymentsExplained from "./pages/insights/CreditCardPaymentsExplained";
+import OpenBankingPaymentsUK from "./pages/insights/OpenBankingPaymentsUK";
 
 import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
 import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
