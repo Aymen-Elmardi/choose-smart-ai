@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import InsightsCTA from "@/components/InsightsCTA";
 import RelatedArticles from "@/components/RelatedArticles";
+import ConceptLinks from "@/components/ConceptLinks";
 import ArticleSchema from "@/components/ArticleSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
@@ -126,7 +127,15 @@ const InsightsArticleLayout = ({
             <SourcesCitation sources={sources} />
           )}
 
-          {/* Related Articles (for spoke articles) */}
+          {/* Concept-based Related Articles (SEO cross-linking) */}
+          {currentSlug && (
+            <ConceptLinks
+              currentSlug={currentSlug}
+              limit={3}
+            />
+          )}
+
+          {/* Legacy Related Articles (for spoke articles in same cluster) */}
           {shouldShowRelated && currentSlug && (
             <RelatedArticles
               currentSlug={currentSlug}
