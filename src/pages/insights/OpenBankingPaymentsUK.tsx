@@ -258,8 +258,6 @@ const OpenBankingPaymentsUK = () => {
         </p>
       </div>
 
-      <SourcesCitation sources={sources} />
-
       <footer className="mt-12 pt-8 border-t border-border">
         <p className="text-sm text-muted-foreground italic">
           This content is informational and explains general payment system behaviour in the UK. It does not provide legal or financial advice and does not represent any bank or payment provider.
