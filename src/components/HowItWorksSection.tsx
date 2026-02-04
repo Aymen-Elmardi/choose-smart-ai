@@ -6,7 +6,7 @@ const steps = [
     icon: ClipboardList,
     step: "01",
     title: "Tell Us About Your Business",
-    description: "Answer a few quick questions about your business type, volume, and operational reality — we need the full picture.",
+    description: "Answer a few quick questions about your business type, volume, and operational reality. We need the full picture.",
   },
   {
     icon: Sparkles,
