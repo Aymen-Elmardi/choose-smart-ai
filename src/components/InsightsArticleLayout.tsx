@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import InsightsCTA from "@/components/InsightsCTA";
 import RelatedArticles from "@/components/RelatedArticles";
+import ConceptLinks from "@/components/ConceptLinks";
 import ArticleSchema from "@/components/ArticleSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
