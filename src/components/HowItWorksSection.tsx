@@ -12,7 +12,7 @@ const steps = [
     icon: Sparkles,
     step: "02",
     title: "See Your Risk Assessment",
-    description: "We analyze your profile against provider underwriting criteria and risk appetites — not just features and fees.",
+    description: "We analyze your profile against provider underwriting criteria and risk appetites, not just features and fees.",
   },
   {
     icon: Handshake,
