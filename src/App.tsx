@@ -63,6 +63,7 @@ import Chargebacks from "./pages/insights/Chargebacks";
 import CreditCardPaymentsExplained from "./pages/insights/CreditCardPaymentsExplained";
 import OpenBankingPaymentsUK from "./pages/insights/OpenBankingPaymentsUK";
 import ApplePayGooglePayExplained from "./pages/insights/ApplePayGooglePayExplained";
+import LowValueTransactionExemption from "./pages/insights/LowValueTransactionExemption";
 
 import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
 import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
