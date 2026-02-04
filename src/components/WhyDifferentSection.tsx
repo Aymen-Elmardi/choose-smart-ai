@@ -15,7 +15,7 @@ const differentiators = [
   {
     icon: MessageCircle,
     title: "Insider Knowledge",
-    description: "Built by people who've worked inside payment operations — we know what providers actually look for.",
+    description: "Built by people who've worked inside payment operations. We know what providers actually look for.",
   },
 ];
 

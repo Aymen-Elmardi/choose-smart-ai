@@ -18,7 +18,7 @@ const steps = [
     icon: Handshake,
     step: "03",
     title: "Get Strategic Guidance",
-    description: "Connect with providers that actually fit your business — or understand why now isn't the right time.",
+    description: "Connect with providers that actually fit your business, or understand why now isn't the right time.",
   },
 ];
 

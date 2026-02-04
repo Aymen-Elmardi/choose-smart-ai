@@ -136,7 +136,7 @@ const About = () => {
                 The Expertise Behind the Platform
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                I built ChosePayments after years of working deep within the payments ecosystem. This platform is the distillation of practical, hands on experience, not theoretical models. I have seen where the friction points are, and I built this to help you avoid them.
+                I built ChosePayments after years of working deep within the payments ecosystem. This platform is the distillation of practical, hands-on experience, not theoretical models. I have seen where the friction points are, and I built this to help you avoid them.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 For a detailed look at my professional background, you can connect with me on{" "}
