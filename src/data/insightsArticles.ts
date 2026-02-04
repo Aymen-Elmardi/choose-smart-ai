@@ -350,6 +350,13 @@ export const allInsights: Insight[] = [
     category: "explainer",
     readTime: "7 min read"
   },
+  {
+    title: "Low Value Transaction (LVT) Exemption: How Small Payments Unlock Higher Approval Rates",
+    slug: "low-value-transaction-exemption",
+    description: "Learn how the Low Value Transaction exemption under SCA rules can improve card approval rates, reduce checkout friction, and boost conversion for small purchases.",
+    category: "explainer",
+    readTime: "8 min read"
+  },
   // Guides
   {
     title: "What To Do When a Payment Provider Asks for More Documents",
