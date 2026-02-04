@@ -3,29 +3,29 @@ import { Source } from "@/components/SourcesCitation";
 
 const sources: Source[] = [
   {
-    title: "Apple Pay Security and Privacy Overview",
-    publisher: "Apple",
+    name: "Apple Pay Security and Privacy Overview",
     url: "https://support.apple.com/en-gb/HT203027",
+    type: "official",
   },
   {
-    title: "Google Pay Security and Tokenisation",
-    publisher: "Google",
+    name: "Google Pay Security and Tokenisation",
     url: "https://payments.google.com/payments/apis-secure/u/0/docs/overview",
+    type: "official",
   },
   {
-    title: "Visa Token Service",
-    publisher: "Visa",
+    name: "Visa Token Service",
     url: "https://www.visa.co.uk/pay-with-visa/visa-token-service.html",
+    type: "industry",
   },
   {
-    title: "Digital Enablement Service",
-    publisher: "Mastercard",
+    name: "Mastercard Digital Enablement Service",
     url: "https://www.mastercard.co.uk/en-gb/business/overview/digital-payments.html",
+    type: "industry",
   },
   {
-    title: "Card and Wallet Payments Overview",
-    publisher: "UK Finance",
+    name: "UK Finance Card and Wallet Payments Overview",
     url: "https://www.ukfinance.org.uk",
+    type: "industry",
   },
 ];
 
