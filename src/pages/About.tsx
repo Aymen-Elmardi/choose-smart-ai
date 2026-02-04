@@ -63,7 +63,7 @@ const About = () => {
                 How ChosePayments Works: Operational Intelligence
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                We utilize a targeted assessment designed to understand how your business actually operates, moving beyond surface level marketing.
+                We utilize a targeted assessment designed to understand how your business actually operates, moving beyond surface-level marketing.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4 font-medium">
                 Our analysis focuses on:
