@@ -336,6 +336,13 @@ export const allInsights: Insight[] = [
     category: "explainer",
     readTime: "9 min read"
   },
+  {
+    title: "Open Banking Payments in the UK: Faster Settlement, Lower Risk, Fewer Chargebacks",
+    slug: "open-banking-payments-uk",
+    description: "Learn how Open Banking payments work in the UK, why providers see them as lower risk than cards, and where they can improve payment performance for growing businesses.",
+    category: "explainer",
+    readTime: "8 min read"
+  },
   // Guides
   {
     title: "What To Do When a Payment Provider Asks for More Documents",
