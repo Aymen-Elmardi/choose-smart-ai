@@ -62,6 +62,7 @@ import WhatToDoWhenProviderAsksForDocuments from "./pages/insights/WhatToDoWhenP
 import Chargebacks from "./pages/insights/Chargebacks";
 import CreditCardPaymentsExplained from "./pages/insights/CreditCardPaymentsExplained";
 import OpenBankingPaymentsUK from "./pages/insights/OpenBankingPaymentsUK";
+import ApplePayGooglePayExplained from "./pages/insights/ApplePayGooglePayExplained";
 
 import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
 import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
@@ -186,6 +187,7 @@ const App = () => (
               <Route path="/insights/chargebacks-what-they-are-and-how-to-avoid-them" element={<Chargebacks />} />
               <Route path="/insights/credit-card-payments-explained" element={<CreditCardPaymentsExplained />} />
               <Route path="/insights/open-banking-payments-uk" element={<OpenBankingPaymentsUK />} />
+              <Route path="/insights/apple-pay-google-pay-explained" element={<ApplePayGooglePayExplained />} />
               <Route path="/insights/why-payment-providers-reject-growing-businesses" element={<WhyPaymentProvidersRejectGrowingBusinesses />} />
               
               <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
