@@ -235,8 +235,21 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const answers: QuizAnswers = await req.json();
-    console.log("Processing quiz answers:", JSON.stringify(answers));
+    let rawBody: unknown;
+    try {
+      rawBody = await req.json();
+    } catch {
+      console.warn("Failed to parse JSON body");
+      return errorResponse("Invalid JSON format", 400);
+    }
+
+    const answers = validateQuizAnswers(rawBody);
+    if (!answers) {
+      console.warn("Invalid quiz answers structure");
+      return errorResponse("Invalid quiz data. Please ensure all required fields are provided.", 400);
+    }
+    
+    console.log("Processing quiz answers");
 
     const result = getRecommendations(answers);
 
