@@ -127,7 +127,15 @@ const InsightsArticleLayout = ({
             <SourcesCitation sources={sources} />
           )}
 
-          {/* Related Articles (for spoke articles) */}
+          {/* Concept-based Related Articles (SEO cross-linking) */}
+          {currentSlug && (
+            <ConceptLinks
+              currentSlug={currentSlug}
+              limit={3}
+            />
+          )}
+
+          {/* Legacy Related Articles (for spoke articles in same cluster) */}
           {shouldShowRelated && currentSlug && (
             <RelatedArticles
               currentSlug={currentSlug}
