@@ -189,6 +189,7 @@ const App = () => (
               <Route path="/insights/credit-card-payments-explained" element={<CreditCardPaymentsExplained />} />
               <Route path="/insights/open-banking-payments-uk" element={<OpenBankingPaymentsUK />} />
               <Route path="/insights/apple-pay-google-pay-explained" element={<ApplePayGooglePayExplained />} />
+              <Route path="/insights/low-value-transaction-exemption" element={<LowValueTransactionExemption />} />
               <Route path="/insights/why-payment-providers-reject-growing-businesses" element={<WhyPaymentProvidersRejectGrowingBusinesses />} />
               
               <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />

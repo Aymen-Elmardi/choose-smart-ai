@@ -4,29 +4,29 @@ import { Source } from "@/components/SourcesCitation";
 
 const sources: Source[] = [
   {
-    title: "European Banking Authority: Strong Customer Authentication",
+    name: "European Banking Authority: Strong Customer Authentication",
     url: "https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money/strong-customer-authentication-and-common-and-secure-open-standards-communication",
-    publisher: "European Banking Authority"
+    type: "regulatory"
   },
   {
-    title: "UK Financial Conduct Authority: Strong Customer Authentication",
+    name: "UK Financial Conduct Authority: Strong Customer Authentication",
     url: "https://www.fca.org.uk/firms/strong-customer-authentication",
-    publisher: "Financial Conduct Authority"
+    type: "regulatory"
   },
   {
-    title: "Visa: Strong Customer Authentication",
+    name: "Visa: Strong Customer Authentication",
     url: "https://www.visa.co.uk/support/consumer/security/sca.html",
-    publisher: "Visa"
+    type: "official"
   },
   {
-    title: "Mastercard: SCA Guidance",
+    name: "Mastercard: SCA Guidance",
     url: "https://www.mastercard.co.uk/en-gb/business/overview/safety-and-security/strong-customer-authentication.html",
-    publisher: "Mastercard"
+    type: "official"
   },
   {
-    title: "Stripe: SCA and Exemptions",
+    name: "Stripe: SCA and Exemptions",
     url: "https://stripe.com/docs/strong-customer-authentication",
-    publisher: "Stripe"
+    type: "industry"
   }
 ];
 
