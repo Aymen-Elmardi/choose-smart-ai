@@ -64,6 +64,7 @@ import CreditCardPaymentsExplained from "./pages/insights/CreditCardPaymentsExpl
 import OpenBankingPaymentsUK from "./pages/insights/OpenBankingPaymentsUK";
 import ApplePayGooglePayExplained from "./pages/insights/ApplePayGooglePayExplained";
 import LowValueTransactionExemption from "./pages/insights/LowValueTransactionExemption";
+import PaymentProviderRiskModels from "./pages/insights/PaymentProviderRiskModels";
 
 import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
 import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
