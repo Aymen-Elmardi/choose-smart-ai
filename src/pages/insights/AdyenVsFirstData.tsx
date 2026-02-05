@@ -30,7 +30,7 @@ const AdyenVsFirstData = () => {
       title="Adyen vs First Data: Two Very Different Ways to Process Payments"
       description="A strategic comparison of Adyen's unified global platform versus First Data's bank led acquiring infrastructure. Learn which payment model fits your business before you apply."
       category={{ name: "Provider Deep Dive", slug: "providers" }}
-      cluster="providers"
+      cluster="provider"
       currentSlug="adyen-vs-first-data"
       publishedTime="2026-02-05"
       sources={sources}

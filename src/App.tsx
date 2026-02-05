@@ -199,6 +199,7 @@ const App = () => (
               <Route path="/insights/shift4-payments-platform" element={<Shift4PaymentsPlatform />} />
               <Route path="/insights/enterprise-provider-comparison" element={<EnterpriseProviderComparison />} />
               <Route path="/insights/fiserv-payments-platform" element={<FiservPaymentsPlatform />} />
+              <Route path="/insights/adyen-vs-first-data" element={<AdyenVsFirstData />} />
               <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
               
               {/* Crisis Intervention articles */}
