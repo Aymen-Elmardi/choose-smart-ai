@@ -421,6 +421,13 @@ export const allInsights: Insight[] = [
     description: "Fiserv operates across acquiring, issuing, bank infrastructure, and Clover POS. Learn where it performs well, where friction appears, and which business profiles benefit most.",
     category: "providers",
     readTime: "9 min read"
+  },
+  {
+    title: "Adyen vs First Data: Two Very Different Ways to Process Payments",
+    slug: "adyen-vs-first-data",
+    description: "A strategic comparison of Adyen's unified global platform versus First Data's bank led acquiring infrastructure. Learn which payment model fits your business.",
+    category: "providers",
+    readTime: "9 min read"
   }
 ];
 
