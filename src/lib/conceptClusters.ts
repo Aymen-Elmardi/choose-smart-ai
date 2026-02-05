@@ -307,6 +307,13 @@ export const conceptArticles: ConceptArticle[] = [
     shortTitle: "Enterprise Provider Comparison",
     concepts: ["provider-behaviour", "approval"],
     keywords: ["comparison", "enterprise", "adyen", "checkout.com", "shift4"]
+  },
+  {
+    slug: "payment-provider-risk-models",
+    title: "Payment Provider Risk Models Explained",
+    shortTitle: "Risk Models Explained",
+    concepts: ["risk", "approval", "provider-behaviour"],
+    keywords: ["risk model", "risk scoring", "underwriting", "static risk", "behavioural risk", "merchant risk"]
   }
 ];
 

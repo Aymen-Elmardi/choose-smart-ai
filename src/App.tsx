@@ -64,6 +64,7 @@ import CreditCardPaymentsExplained from "./pages/insights/CreditCardPaymentsExpl
 import OpenBankingPaymentsUK from "./pages/insights/OpenBankingPaymentsUK";
 import ApplePayGooglePayExplained from "./pages/insights/ApplePayGooglePayExplained";
 import LowValueTransactionExemption from "./pages/insights/LowValueTransactionExemption";
+import PaymentProviderRiskModels from "./pages/insights/PaymentProviderRiskModels";
 
 import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
 import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
@@ -191,6 +192,7 @@ const App = () => (
               <Route path="/insights/open-banking-payments-uk" element={<OpenBankingPaymentsUK />} />
               <Route path="/insights/apple-pay-google-pay-explained" element={<ApplePayGooglePayExplained />} />
               <Route path="/insights/low-value-transaction-exemption" element={<LowValueTransactionExemption />} />
+              <Route path="/insights/payment-provider-risk-models" element={<PaymentProviderRiskModels />} />
               <Route path="/insights/why-payment-providers-reject-growing-businesses" element={<WhyPaymentProvidersRejectGrowingBusinesses />} />
               
               <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
