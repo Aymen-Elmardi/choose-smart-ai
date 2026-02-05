@@ -4,29 +4,24 @@ import { Link } from "react-router-dom";
 const AdyenVsFirstData = () => {
   const sources = [
     {
-      title: "Adyen Platform Overview",
-      url: "https://www.adyen.com/platform",
-      description: "How the unified global acquiring, gateway, risk, and settlement model works"
+      name: "Adyen Platform Overview",
+      url: "https://www.adyen.com/platform"
     },
     {
-      title: "Adyen Underwriting and Risk Approach",
-      url: "https://www.adyen.com/knowledge-hub/underwriting",
-      description: "Centralized underwriting and merchant risk assessment philosophy"
+      name: "Adyen Underwriting and Risk Approach",
+      url: "https://www.adyen.com/knowledge-hub/underwriting"
     },
     {
-      title: "Fiserv Merchant Acquiring",
-      url: "https://www.fiserv.com/en/solutions/merchant-acquiring.html",
-      description: "Bank led acquiring infrastructure and reseller based distribution"
+      name: "Fiserv Merchant Acquiring",
+      url: "https://www.fiserv.com/en/solutions/merchant-acquiring.html"
     },
     {
-      title: "Fiserv First Data Acquisition",
-      url: "https://investors.fiserv.com/news-releases/news-release-details/fiserv-completes-acquisition-first-data",
-      description: "Structural merger and combined acquiring footprint"
+      name: "Fiserv First Data Acquisition",
+      url: "https://investors.fiserv.com/news-releases/news-release-details/fiserv-completes-acquisition-first-data"
     },
     {
-      title: "First Data Review",
-      url: "https://www.merchantmaverick.com/reviews/first-data/",
-      description: "Independent analysis of pricing opacity and reseller driven contracts"
+      name: "First Data Review (Merchant Maverick)",
+      url: "https://www.merchantmaverick.com/reviews/first-data/"
     }
   ];
 
