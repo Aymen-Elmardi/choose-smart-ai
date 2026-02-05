@@ -351,6 +351,13 @@ export const allInsights: Insight[] = [
     readTime: "7 min read"
   },
   {
+    title: "Payment Provider Risk Models Explained in Plain English",
+    slug: "payment-provider-risk-models",
+    description: "Learn why two similar businesses get very different outcomes from payment providers. Understand how risk models work and how to position your business for approval.",
+    category: "explainer",
+    readTime: "10 min read"
+  },
+  {
     title: "Low Value Transaction (LVT) Exemption: How Small Payments Unlock Higher Approval Rates",
     slug: "low-value-transaction-exemption",
     description: "Learn how the Low Value Transaction exemption under SCA rules can improve card approval rates, reduce checkout friction, and boost conversion for small purchases.",
