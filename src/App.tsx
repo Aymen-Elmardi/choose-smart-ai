@@ -71,6 +71,7 @@ import CheckoutComEnterprisePlatform from "./pages/insights/CheckoutComEnterpris
 import Shift4PaymentsPlatform from "./pages/insights/Shift4PaymentsPlatform";
 import EnterpriseProviderComparison from "./pages/insights/EnterpriseProviderComparison";
 import FiservPaymentsPlatform from "./pages/insights/FiservPaymentsPlatform";
+import AdyenVsFirstData from "./pages/insights/AdyenVsFirstData";
 import ReferralCommissionGuide from "./pages/insights/ReferralCommissionGuide";
 
 // Crisis Intervention articles
