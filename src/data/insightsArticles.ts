@@ -364,6 +364,13 @@ export const allInsights: Insight[] = [
     category: "explainer",
     readTime: "8 min read"
   },
+  {
+    title: "The Only Payment Method With a 100% Success Rate (On Part of Your Transactions)",
+    slug: "wallet-payments-guaranteed-success",
+    description: "Wallet payments are the only method that can reach a 100% success rate. Learn why wallet spend never fails, how refund-to-wallet strategies reduce chargebacks, and when wallets make sense for your business.",
+    category: "explainer",
+    readTime: "8 min read"
+  },
   // Guides
   {
     title: "What To Do When a Payment Provider Asks for More Documents",
