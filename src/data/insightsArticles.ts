@@ -62,11 +62,11 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
     readTime: "4 min read"
   },
   explainer: {
-    title: "What Is an Acquirer and Why Your Payment Provider Needs One",
-    slug: "what-is-an-acquirer",
-    description: "Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business.",
+    title: "The Only Payment Method With a 100% Success Rate (On Part of Your Transactions)",
+    slug: "wallet-payments-guaranteed-success",
+    description: "Wallet payments are the only method that can reach a 100% success rate. Learn why wallet spend never fails and when wallets make sense for your business.",
     category: "explainer",
-    readTime: "6 min read"
+    readTime: "7 min read"
   },
   providers: {
     title: "Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook",
