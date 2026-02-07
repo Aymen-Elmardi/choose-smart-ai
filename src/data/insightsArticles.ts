@@ -1,7 +1,7 @@
 // Insights article data - extracted from Insights.tsx for reusability
 // Used by the Insights page, sitemap generation, and search
 
-export type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis" | "pricing";
+export type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis" | "pricing" | "fees";
 
 export interface Insight {
   title: string;
@@ -74,6 +74,13 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
     description: "How Adyen's unified approach to acquiring, gateway, and risk management is transforming global commerce for the world's largest brands.",
     category: "providers",
     readTime: "10 min read"
+  },
+  fees: {
+    title: "Provider Fee Comparisons",
+    slug: "",
+    description: "Detailed breakdowns of fees charged by different payment providers.",
+    category: "fees",
+    readTime: "5 min read"
   }
 };
 
@@ -84,6 +91,7 @@ export const filterTabs: { label: string; value: InsightCategory }[] = [
   { label: "All", value: "all" },
   { label: "Crisis Intervention", value: "crisis" },
   { label: "Pricing Models", value: "pricing" },
+  { label: "Fees & Costs", value: "fees" },
   { label: "Provider Deep Dives", value: "providers" },
   { label: "Risk & Freezes", value: "risk" },
   { label: "Guides", value: "guides" },
@@ -98,6 +106,7 @@ export const categoryLabels: Record<InsightCategory, string> = {
   all: "All",
   crisis: "Crisis Intervention",
   pricing: "Pricing Models",
+  fees: "Fees & Costs",
   risk: "Risk Alert",
   guides: "Guide",
   compliance: "Compliance",
