@@ -55,11 +55,16 @@ const StripeFees = () => {
       title="Stripe Fees Explained Clearly: What Businesses Actually Pay"
       description="A complete breakdown of Stripe's pricing for UK businesses. Understand card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs."
       category={{ name: "Fees & Costs", slug: "fees" }}
-      readTime="7 min read"
-      publishDate="2026-02-07"
+      currentSlug="stripe-fees-explained"
+      publishedTime="2026-02-07"
       sources={sources}
+      keywords={["Stripe fees", "Stripe pricing UK", "Stripe Connect fees", "payment processing costs", "Stripe chargebacks"]}
     >
       <FAQSchema faqs={faqs} />
+
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+        Stripe Fees Explained Clearly: What Businesses Actually Pay
+      </h1>
 
       <p className="text-lg text-muted-foreground mb-8">
         Stripe is one of the most widely used payment platforms in the world. Its pricing looks simple at first glance, but many businesses discover later that their real costs are higher than expected.
@@ -274,7 +279,7 @@ const StripeFees = () => {
         </ul>
 
         <p className="text-muted-foreground">
-          Other providers may offer lower effective rates, especially once volume increases, but often require upfront underwriting and more setup. For a deeper comparison, see our <Link to="/insights/stripe-payment-platform" className="text-primary hover:underline">Stripe platform deep dive</Link> or explore <Link to="/stripe-alternatives" className="text-primary hover:underline">Stripe alternatives</Link>.
+          Other providers may offer lower effective rates, especially once volume increases, but often require upfront underwriting and more setup. For a deeper comparison, see our <Link to="/insights/stripe-payment-platform" className="text-primary hover:underline">Stripe platform deep dive</Link> or explore <Link to="/stripe-alternatives-marketplace" className="text-primary hover:underline">Stripe alternatives</Link>.
         </p>
       </section>
 
@@ -300,7 +305,7 @@ const StripeFees = () => {
         </p>
 
         <p className="text-muted-foreground">
-          If you want to understand whether Stripe is cost effective for your business or whether another provider would be a better fit, you can <Link to="/quiz" className="text-primary hover:underline">start a short assessment</Link>. It looks at how you operate and what providers typically charge for businesses like yours.
+          If you want to understand whether Stripe is cost effective for your business or whether another provider would be a better fit, you can <Link to="/assessment" className="text-primary hover:underline">start a short assessment</Link>. It looks at how you operate and what providers typically charge for businesses like yours.
         </p>
       </section>
 
