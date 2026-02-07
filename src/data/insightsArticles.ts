@@ -99,6 +99,7 @@ export const categoryLabels: Record<InsightCategory, string> = {
   all: "All",
   crisis: "Crisis Intervention",
   pricing: "Pricing Models",
+  fees: "Fees & Costs",
   risk: "Risk Alert",
   guides: "Guide",
   compliance: "Compliance",
