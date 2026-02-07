@@ -218,6 +218,9 @@ const App = () => (
               <Route path="/insights/pricing-models/interchange-plus-plus" element={<InterchangePlusPlus />} />
               <Route path="/insights/pricing-models/blended-vs-interchange" element={<BlendedVsInterchange />} />
               
+              {/* Fees & Costs articles */}
+              <Route path="/insights/stripe-fees-explained" element={<StripeFees />} />
+              
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
