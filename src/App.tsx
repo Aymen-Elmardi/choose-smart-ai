@@ -85,6 +85,9 @@ import CrisisStripeAccountFrozen from "./pages/insights/crisis/StripeAccountFroz
 import InterchangePlusPlus from "./pages/insights/pricing/InterchangePlusPlus";
 import BlendedVsInterchange from "./pages/insights/pricing/BlendedVsInterchange";
 
+// Fees & Costs articles
+import StripeFees from "./pages/insights/StripeFees";
+
 // Lazy load quiz flow with retry - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
 const Quiz = lazyWithRetry(() => import("./pages/Quiz"));
