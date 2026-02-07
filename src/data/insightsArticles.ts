@@ -84,6 +84,7 @@ export const filterTabs: { label: string; value: InsightCategory }[] = [
   { label: "All", value: "all" },
   { label: "Crisis Intervention", value: "crisis" },
   { label: "Pricing Models", value: "pricing" },
+  { label: "Fees & Costs", value: "fees" },
   { label: "Provider Deep Dives", value: "providers" },
   { label: "Risk & Freezes", value: "risk" },
   { label: "Guides", value: "guides" },
