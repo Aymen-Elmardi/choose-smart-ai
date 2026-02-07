@@ -74,6 +74,13 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
     description: "How Adyen's unified approach to acquiring, gateway, and risk management is transforming global commerce for the world's largest brands.",
     category: "providers",
     readTime: "10 min read"
+  },
+  fees: {
+    title: "Provider Fee Comparisons",
+    slug: "",
+    description: "Detailed breakdowns of fees charged by different payment providers.",
+    category: "fees",
+    readTime: "5 min read"
   }
 };
 
