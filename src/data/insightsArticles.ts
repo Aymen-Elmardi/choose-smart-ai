@@ -76,11 +76,11 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
     readTime: "10 min read"
   },
   fees: {
-    title: "Provider Fee Comparisons",
-    slug: "",
-    description: "Detailed breakdowns of fees charged by different payment providers.",
+    title: "Stripe Fees Explained Clearly: What Businesses Actually Pay",
+    slug: "stripe-fees-explained",
+    description: "A complete breakdown of Stripe's pricing for UK businesses. Understand card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs.",
     category: "fees",
-    readTime: "5 min read"
+    readTime: "7 min read"
   }
 };
 
@@ -118,6 +118,14 @@ export const categoryLabels: Record<InsightCategory, string> = {
  * All insights articles - the complete content library
  */
 export const allInsights: Insight[] = [
+  // Fees & Costs articles
+  {
+    title: "Stripe Fees Explained Clearly: What Businesses Actually Pay",
+    slug: "stripe-fees-explained",
+    description: "A complete breakdown of Stripe's pricing for UK businesses. Understand card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs.",
+    category: "fees",
+    readTime: "7 min read"
+  },
   // Pricing Models articles
   {
     title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",
