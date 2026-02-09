@@ -75,7 +75,7 @@ export const providerArticles: ArticleMetadata[] = [
     title: "Checkout.com: The High Performance Platform Built for Global Ambition",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["checkout.com", "enterprise", "authorization", "global"]
+    keywords: ["checkout.com", "checkout.com api", "enterprise", "authorization", "global"]
   },
   {
     slug: "shift4-payments-platform",
