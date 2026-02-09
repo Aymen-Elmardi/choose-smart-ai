@@ -271,7 +271,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Stripe: The Modern Internet Economy Engine",
     shortTitle: "Stripe Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["stripe", "API", "developer", "platform"]
+    keywords: ["stripe", "stripe pricing", "API", "developer", "platform"]
   },
   {
     slug: "checkout-com-enterprise-platform",
