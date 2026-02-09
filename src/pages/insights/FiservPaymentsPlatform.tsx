@@ -91,7 +91,7 @@ const FiservPaymentsPlatform = () => {
       cluster="provider"
       currentSlug="fiserv-payments-platform"
       publishedTime="2026-02-02"
-      keywords={["fiserv", "first data", "clover", "enterprise", "acquiring", "POS", "merchant services"]}
+      keywords={["fiserv", "first data", "fiserv first data", "first data payment processing", "first data services", "first data platforms", "first data systems", "what is first data payment gateway", "clover", "enterprise", "acquiring", "POS", "merchant services"]}
       sources={fiservSources}
     >
       {/* Hero Section */}
