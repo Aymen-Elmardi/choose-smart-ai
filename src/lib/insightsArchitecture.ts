@@ -96,7 +96,7 @@ export const providerArticles: ArticleMetadata[] = [
     title: "Fiserv and the First Data Legacy: Who It Actually Fits, and Where It Doesn't",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["fiserv", "first data", "clover", "enterprise", "acquiring", "POS", "bank infrastructure"]
+    keywords: ["fiserv", "first data", "fiserv first data", "first data payment processing", "clover", "enterprise", "acquiring", "POS", "bank infrastructure"]
   }
 ];
 
