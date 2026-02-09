@@ -27,7 +27,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",
     shortTitle: "Why Stripe Freezes Accounts",
     concepts: ["risk", "provider-behaviour"],
-    keywords: ["freeze", "frozen", "stripe", "account freeze", "funds held"]
+    keywords: ["freeze", "frozen", "stripe", "account freeze", "funds held", "stripe frozen"]
   },
   {
     slug: "crisis/stripe-account-frozen",
