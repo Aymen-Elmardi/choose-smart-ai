@@ -9,7 +9,7 @@ const SameDaySettlementAndInstantPayouts = () => {
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"
       currentSlug="same-day-settlement-and-instant-payouts"
-      keywords={["same-day settlement", "instant payouts", "payment timing", "cash flow"]}
+      keywords={["same-day settlement", "same day settlement advice", "instant payouts", "payment timing", "cash flow", "faster payouts"]}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Same-Day Settlement and Instant Payouts: What Businesses Should Know

@@ -64,8 +64,12 @@ const providers = [
 
 const faqs = [
   {
-    question: "What is the best payment processor for small businesses in the UK?",
-    answer: "For small UK businesses, Square or Zettle are excellent choices for in-person payments with simple 1.75% fees and no monthly costs. For online-only businesses, Stripe offers powerful features starting at 1.4% + 20p per transaction.",
+    question: "What is the best payment system for small businesses in the UK?",
+    answer: "The best small business payment system in the UK depends on how you sell. Square or Zettle are excellent for in-person payments with simple 1.75% fees and no monthly costs. For online-only businesses, Stripe offers powerful features starting at 1.4% + 20p per transaction. The cheapest option is not always the best fit.",
+  },
+  {
+    question: "What is the cheapest payment processor for UK businesses?",
+    answer: "Square and Zettle offer the cheapest in-person rates at 1.75% with no monthly fees. For online payments, Stripe starts at 1.4% + 20p for UK cards. However, the cheapest business payment solutions in the UK are not always the right choice. Hidden fees, account freezes, and poor support can cost more than a slightly higher rate.",
   },
   {
     question: "How do I choose between Stripe and Square in the UK?",

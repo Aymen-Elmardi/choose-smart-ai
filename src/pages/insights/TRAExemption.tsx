@@ -41,7 +41,7 @@ const TRAExemption = () => {
           
           <article className="prose prose-slate dark:prose-invert max-w-none">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-              What Is TRA Exemption and How It Reduces Payment Friction
+              What Is TRA Exemption and How TRA Exemptions Reduce Payment Friction
             </h1>
 
             <p className="text-lg text-muted-foreground mb-6">

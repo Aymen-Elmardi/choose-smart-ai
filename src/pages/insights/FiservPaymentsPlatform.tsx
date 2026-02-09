@@ -219,6 +219,27 @@ const FiservPaymentsPlatform = () => {
         </ul>
       </section>
 
+      {/* FAQ Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-foreground mb-6">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-6">
+          <div className="p-6 rounded-xl bg-card border border-border">
+            <h3 className="text-lg font-semibold text-foreground mb-3">What is First Data?</h3>
+            <p className="text-muted-foreground">First Data was one of the world's largest merchant acquirers and payment processing companies before being acquired by Fiserv in 2019 for $22 billion. The First Data brand now operates as part of Fiserv's merchant services division, powering first data payment processing for millions of merchants through banks and resellers globally.</p>
+          </div>
+          <div className="p-6 rounded-xl bg-card border border-border">
+            <h3 className="text-lg font-semibold text-foreground mb-3">Is Fiserv the same as First Data?</h3>
+            <p className="text-muted-foreground">Yes and no. Fiserv acquired First Data in 2019 and merged the two companies. First Data's merchant acquiring and payment gateway services now operate under the Fiserv brand, but many businesses and banks still refer to the first data systems and infrastructure by the original name. The underlying technology and services remain largely the same.</p>
+          </div>
+          <div className="p-6 rounded-xl bg-card border border-border">
+            <h3 className="text-lg font-semibold text-foreground mb-3">What is First Data payment gateway?</h3>
+            <p className="text-muted-foreground">The First Data payment gateway (now part of Fiserv) provides card processing, settlement, and reconciliation services to merchants. It is typically accessed through banks, ISOs, or resellers rather than directly. The first data platforms support both in-person payments through Clover POS and online transactions through API integrations.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom Line */}
       <section className="mb-12 bg-muted/50 rounded-lg p-6 border border-border">
         <h2 className="text-2xl font-bold text-foreground mb-4">

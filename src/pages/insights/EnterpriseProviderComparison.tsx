@@ -111,6 +111,8 @@ const EnterpriseProviderComparison = () => {
       publishedTime="2026-01-24"
       keywords={[
         "enterprise payment providers",
+        "enterprise payment approval platforms comparison",
+        "enterprise payment api global coverage comparison",
         "Adyen vs Shift4 vs Checkout.com",
         "payment provider comparison UK",
         "enterprise payments comparison",

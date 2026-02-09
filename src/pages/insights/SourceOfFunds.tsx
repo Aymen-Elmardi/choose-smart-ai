@@ -32,7 +32,14 @@ const howToSteps = [
 const SourceOfFunds = () => {
   useSEO({
     title: "Source of Funds Requests: What They Mean and How to Respond | ChosePayments",
-    description: "Learn why payment providers request bank statements and source of funds documentation."
+    description: "Wondering why your bank is asking for source of funds? Learn why payment providers request bank statements and source of funds documentation, and how to respond.",
+    keywords: [
+      "source of funds",
+      "why is bank asking for source of funds",
+      "bank statement request",
+      "AML compliance",
+      "payment verification",
+    ],
   });
 
   return (

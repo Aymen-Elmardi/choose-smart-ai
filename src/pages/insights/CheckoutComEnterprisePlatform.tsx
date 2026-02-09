@@ -17,7 +17,15 @@ const checkoutComSources = [
 const CheckoutComEnterprisePlatform = () => {
   useSEO({
     title: "Checkout.com: The High-Performance Platform Built for Global Ambition | ChosePayments",
-    description: "Discover why Checkout.com's modular architecture delivers superior authorization rates and granular control for high-growth global merchants. Learn about local acquiring and customizable risk engines."
+    description: "Discover why Checkout.com's modular architecture delivers superior authorization rates and granular control for high-growth global merchants. Learn about the Checkout.com API, local acquiring, and customizable risk engines.",
+    keywords: [
+      "checkout.com",
+      "checkout.com api",
+      "checkout.com enterprise",
+      "checkout.com payments",
+      "payment platform",
+      "global payments",
+    ],
   });
 
   const faqItems = [

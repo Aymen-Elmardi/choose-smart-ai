@@ -172,6 +172,26 @@ const AdyenEnterprisePlatform = () => {
               </p>
             </section>
 
+            {/* Marketplace Section */}
+            <section className="mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+                <Globe className="w-8 h-8 text-primary" />
+                Adyen Marketplace and Platform Capabilities
+              </h2>
+              
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                For businesses running an Adyen marketplace or multi-sided platform, Adyen provides purpose-built tools for managing complex payment flows. Their platform supports split payments, seller onboarding, and compliance management across multiple geographies from a single integration.
+              </p>
+              
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                This is particularly valuable for marketplace operators who need to manage payouts to hundreds or thousands of sellers while maintaining regulatory compliance. Adyen handles KYC for sub-merchants, manages fund flows, and provides consolidated reporting across the entire platform.
+              </p>
+
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Businesses considering an Adyen alternative for marketplace payments should understand that Adyen's approach differs from competitors. Rather than bolting marketplace features onto a basic payment gateway, Adyen built platform capabilities directly into its acquiring infrastructure, which can result in higher approval rates and lower costs for cross-border marketplace transactions.
+              </p>
+            </section>
+
             {/* Industry Achievements */}
             <section className="mb-12">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
