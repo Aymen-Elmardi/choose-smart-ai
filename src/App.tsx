@@ -89,6 +89,7 @@ import BlendedVsInterchange from "./pages/insights/pricing/BlendedVsInterchange"
 import StripeFees from "./pages/insights/StripeFees";
 import CheckoutComFees from "./pages/insights/CheckoutComFees";
 import FiservCloverFees from "./pages/insights/FiservCloverFees";
+import AdyenFees from "./pages/insights/AdyenFees";
 
 // Lazy load quiz flow with retry - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
