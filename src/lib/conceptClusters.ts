@@ -306,7 +306,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Enterprise Payment Providers: Strength Comparison",
     shortTitle: "Enterprise Provider Comparison",
     concepts: ["provider-behaviour", "approval"],
-    keywords: ["comparison", "enterprise", "adyen", "checkout.com", "shift4"]
+    keywords: ["comparison", "enterprise", "enterprise payment approval platforms comparison", "enterprise payment api global coverage comparison", "adyen", "checkout.com", "shift4"]
   },
   {
     slug: "payment-provider-risk-models",
