@@ -299,7 +299,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Adyen vs First Data: Two Different Payment Models",
     shortTitle: "Adyen vs First Data",
     concepts: ["provider-behaviour", "approval"],
-    keywords: ["adyen", "first data", "fiserv", "comparison", "platform model", "bank acquiring"]
+    keywords: ["adyen", "first data", "fiserv", "fiserv first data", "comparison", "platform model", "bank acquiring"]
   },
   {
     slug: "enterprise-provider-comparison",
