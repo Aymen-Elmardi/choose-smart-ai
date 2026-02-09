@@ -218,7 +218,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Same Day Settlement and Instant Payouts",
     shortTitle: "Same Day Settlement",
     concepts: ["payment-methods"],
-    keywords: ["settlement", "payout", "instant payout", "same day", "cash flow"]
+    keywords: ["settlement", "payout", "instant payout", "same day", "same day settlement advice", "cash flow"]
   },
   {
     slug: "visa-mastercard-control-card-payments",
