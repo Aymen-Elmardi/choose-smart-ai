@@ -61,7 +61,7 @@ export const providerArticles: ArticleMetadata[] = [
     title: "Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["adyen", "enterprise", "platform", "acquiring"]
+    keywords: ["adyen", "enterprise", "platform", "acquiring", "adyen payments", "adyen payment gateway", "adyen marketplace", "adyen unified commerce"]
   },
   {
     slug: "stripe-payment-platform",
