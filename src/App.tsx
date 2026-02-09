@@ -91,6 +91,7 @@ import StripeFees from "./pages/insights/StripeFees";
 import CheckoutComFees from "./pages/insights/CheckoutComFees";
 import FiservCloverFees from "./pages/insights/FiservCloverFees";
 import AdyenFees from "./pages/insights/AdyenFees";
+import PayPalFees from "./pages/insights/PayPalFees";
 
 // Lazy load quiz flow with retry - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
@@ -228,6 +229,7 @@ const App = () => (
               <Route path="/insights/checkout-com-fees-explained" element={<CheckoutComFees />} />
               <Route path="/insights/fiserv-clover-pricing-explained" element={<FiservCloverFees />} />
               <Route path="/insights/adyen-pricing-explained" element={<AdyenFees />} />
+              <Route path="/insights/paypal-fees-explained" element={<PayPalFees />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

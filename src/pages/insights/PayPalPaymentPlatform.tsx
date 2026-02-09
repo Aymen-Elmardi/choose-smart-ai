@@ -231,6 +231,21 @@ const PayPalPaymentPlatform = () => {
         If the answer to those questions is yes, PayPal may be a valuable addition even if it is not your primary processor.
       </p>
 
+      {/* Pricing Deep Dive Callout */}
+      <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-12">
+        <h3 className="text-lg font-semibold text-foreground mb-2">Want to understand PayPal's fees in detail?</h3>
+        <p className="text-muted-foreground mb-3">
+          See how PayPal's blended pricing compares to Adyen's interchange-plus model, with a real cost comparison on £10,000 in monthly volume.
+        </p>
+        <Link
+          to="/insights/paypal-fees-explained"
+          className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline"
+        >
+          Read: PayPal Pricing Explained
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+
       {/* Final Thought */}
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Final Thought</h2>
       <p className="text-foreground/90 mb-4">
