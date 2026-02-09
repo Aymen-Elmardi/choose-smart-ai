@@ -159,7 +159,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Source of Funds Requests: What They Mean",
     shortTitle: "Source of Funds Explained",
     concepts: ["provider-behaviour"],
-    keywords: ["source of funds", "bank statement", "AML", "money origin"]
+    keywords: ["source of funds", "bank statement", "AML", "money origin", "why is bank asking for source of funds"]
   },
   {
     slug: "why-payment-providers-ask-for-source-of-funds",
