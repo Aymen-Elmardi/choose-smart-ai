@@ -285,7 +285,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Shift4: The Global Payments Giant",
     shortTitle: "Shift4 Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["shift4", "hospitality", "entertainment", "POS"]
+    keywords: ["shift4", "shift4 payments", "what does shift4 do", "hospitality", "entertainment", "POS"]
   },
   {
     slug: "fiserv-payments-platform",
