@@ -292,7 +292,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Fiserv and the First Data Legacy",
     shortTitle: "Fiserv Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["fiserv", "first data", "clover", "bank infrastructure"]
+    keywords: ["fiserv", "first data", "fiserv first data", "first data payment processing", "clover", "bank infrastructure"]
   },
   {
     slug: "adyen-vs-first-data",
