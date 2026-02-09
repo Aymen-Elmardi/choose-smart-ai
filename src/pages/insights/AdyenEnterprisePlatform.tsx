@@ -17,7 +17,19 @@ const adyenSources = [
 const AdyenEnterprisePlatform = () => {
   useSEO({
     title: "Adyen: The Single Platform That Rewrote Enterprise Payments | ChosePayments",
-    description: "Discover why Adyen's single-platform approach to payments is the choice of enterprise brands. Learn about Interchange++ pricing, dedicated Integration Engineers, and omnichannel capabilities."
+    description: "Discover why Adyen's single-platform approach to payments is the choice of enterprise brands. Learn about Interchange++ pricing, dedicated Integration Engineers, and omnichannel capabilities.",
+    keywords: [
+      "adyen payments",
+      "adyen payment gateway",
+      "adyen platform",
+      "adyen marketplace",
+      "adyen unified commerce",
+      "what does adyen do",
+      "is adyen a payment processor",
+      "adyen alternative",
+      "adyen enterprise",
+      "adyen acquiring",
+    ],
   });
 
   const faqItems = [
