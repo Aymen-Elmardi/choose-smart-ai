@@ -88,6 +88,7 @@ import BlendedVsInterchange from "./pages/insights/pricing/BlendedVsInterchange"
 // Fees & Costs articles
 import StripeFees from "./pages/insights/StripeFees";
 import CheckoutComFees from "./pages/insights/CheckoutComFees";
+import FiservCloverFees from "./pages/insights/FiservCloverFees";
 
 // Lazy load quiz flow with retry - ensures quiz logic is code-split from SEO pages
 // Quiz pages self-initialize session tracking when loaded
@@ -222,6 +223,7 @@ const App = () => (
               {/* Fees & Costs articles */}
               <Route path="/insights/stripe-fees-explained" element={<StripeFees />} />
               <Route path="/insights/checkout-com-fees-explained" element={<CheckoutComFees />} />
+              <Route path="/insights/fiserv-clover-pricing-explained" element={<FiservCloverFees />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
