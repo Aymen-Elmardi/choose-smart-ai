@@ -75,6 +75,7 @@ import EnterpriseProviderComparison from "./pages/insights/EnterpriseProviderCom
 import FiservPaymentsPlatform from "./pages/insights/FiservPaymentsPlatform";
 import AdyenVsFirstData from "./pages/insights/AdyenVsFirstData";
 import ReferralCommissionGuide from "./pages/insights/ReferralCommissionGuide";
+import PayPalPaymentPlatform from "./pages/insights/PayPalPaymentPlatform";
 
 // Crisis Intervention articles
 import CrisisHiddenFeeCrisis from "./pages/insights/crisis/HiddenFeeCrisis";
