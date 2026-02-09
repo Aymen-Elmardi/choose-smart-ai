@@ -309,6 +309,13 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["comparison", "enterprise", "enterprise payment approval platforms comparison", "enterprise payment api global coverage comparison", "adyen", "checkout.com", "shift4"]
   },
   {
+    slug: "paypal-payment-platform",
+    title: "PayPal: From Online Payments Pioneer to Global Consumer Network",
+    shortTitle: "PayPal Platform",
+    concepts: ["provider-behaviour"],
+    keywords: ["paypal", "paypal payments", "paypal business", "paypal checkout", "paypal wallet", "paypal conversion"]
+  },
+  {
     slug: "payment-provider-risk-models",
     title: "Payment Provider Risk Models Explained",
     shortTitle: "Risk Models Explained",

@@ -75,6 +75,7 @@ import EnterpriseProviderComparison from "./pages/insights/EnterpriseProviderCom
 import FiservPaymentsPlatform from "./pages/insights/FiservPaymentsPlatform";
 import AdyenVsFirstData from "./pages/insights/AdyenVsFirstData";
 import ReferralCommissionGuide from "./pages/insights/ReferralCommissionGuide";
+import PayPalPaymentPlatform from "./pages/insights/PayPalPaymentPlatform";
 
 // Crisis Intervention articles
 import CrisisHiddenFeeCrisis from "./pages/insights/crisis/HiddenFeeCrisis";
@@ -211,6 +212,7 @@ const App = () => (
               <Route path="/insights/fiserv-payments-platform" element={<FiservPaymentsPlatform />} />
               <Route path="/insights/adyen-vs-first-data" element={<AdyenVsFirstData />} />
               <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
+              <Route path="/insights/paypal-payment-platform" element={<PayPalPaymentPlatform />} />
               
               {/* Crisis Intervention articles */}
               <Route path="/insights/crisis/hidden-fee-crisis" element={<CrisisHiddenFeeCrisis />} />
