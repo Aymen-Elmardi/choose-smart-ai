@@ -48,7 +48,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Chargebacks: Why They Happen and How to Avoid Them",
     shortTitle: "Understanding Chargebacks",
     concepts: ["risk"],
-    keywords: ["chargeback", "dispute", "fraud", "chargeback rate", "dispute rate"]
+    keywords: ["chargeback", "dispute", "fraud", "chargeback rate", "dispute rate", "too many chargebacks", "what is a chargeback fee", "how do chargebacks work"]
   },
   {
     slug: "why-payment-accounts-get-flagged-without-changes",
