@@ -19,6 +19,13 @@ export const feesArticles: ArticleMetadata[] = [
     cluster: "pricing",
     category: "Fees & Costs",
     keywords: ["adyen pricing", "adyen fees", "adyen costs", "adyen interchange plus", "adyen vs stripe pricing", "adyen local acquiring", "enterprise payment pricing", "adyen payment gateway fees"]
+  },
+  {
+    slug: "paypal-fees-explained",
+    title: "PayPal Pricing Explained and How It Compares to Adyen for UK Businesses",
+    cluster: "pricing",
+    category: "Fees & Costs",
+    keywords: ["paypal fees", "paypal pricing", "paypal fees uk", "paypal merchant fees", "paypal vs adyen", "paypal transaction fees", "paypal blended pricing", "paypal cost comparison"]
   }
 ];
 

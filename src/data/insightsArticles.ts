@@ -147,6 +147,13 @@ export const allInsights: Insight[] = [
     category: "fees",
     readTime: "9 min read"
   },
+  {
+    title: "PayPal Pricing Explained and How It Compares to Adyen for UK Businesses",
+    slug: "paypal-fees-explained",
+    description: "A clear breakdown of PayPal's blended pricing model for UK businesses, how fees compare to Adyen's interchange-plus model, and when each provider makes financial sense.",
+    category: "fees",
+    readTime: "8 min read"
+  },
   // Pricing Models articles
   {
     title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",
