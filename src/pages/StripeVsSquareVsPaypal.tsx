@@ -137,7 +137,7 @@ const StripeVsSquareVsPaypal = () => {
           <div className="section-container">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center">
-                Stripe vs Square vs PayPal — Quick Comparison
+                Stripe vs PayPal vs Square: Quick Comparison for UK Businesses
               </h2>
               <div className="rounded-xl border border-border overflow-hidden">
                 <Table>
