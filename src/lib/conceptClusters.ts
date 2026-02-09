@@ -27,7 +27,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",
     shortTitle: "Why Stripe Freezes Accounts",
     concepts: ["risk", "provider-behaviour"],
-    keywords: ["freeze", "frozen", "stripe", "account freeze", "funds held"]
+    keywords: ["freeze", "frozen", "stripe", "account freeze", "funds held", "stripe frozen"]
   },
   {
     slug: "crisis/stripe-account-frozen",
@@ -48,7 +48,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Chargebacks: Why They Happen and How to Avoid Them",
     shortTitle: "Understanding Chargebacks",
     concepts: ["risk"],
-    keywords: ["chargeback", "dispute", "fraud", "chargeback rate", "dispute rate"]
+    keywords: ["chargeback", "dispute", "fraud", "chargeback rate", "dispute rate", "too many chargebacks", "what is a chargeback fee", "how do chargebacks work"]
   },
   {
     slug: "why-payment-accounts-get-flagged-without-changes",
@@ -107,7 +107,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "TRA Exemption: How It Reduces Payment Friction",
     shortTitle: "TRA Exemption Explained",
     concepts: ["approval", "payment-methods"],
-    keywords: ["TRA", "transaction risk analysis", "exemption", "approval rate", "SCA"]
+    keywords: ["TRA", "tra exemption", "tra exemptions", "transaction risk analysis", "exemption", "approval rate", "SCA"]
   },
   {
     slug: "low-value-transaction-exemption",
@@ -159,14 +159,14 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Source of Funds Requests: What They Mean",
     shortTitle: "Source of Funds Explained",
     concepts: ["provider-behaviour"],
-    keywords: ["source of funds", "bank statement", "AML", "money origin"]
+    keywords: ["source of funds", "bank statement", "AML", "money origin", "why is bank asking for source of funds"]
   },
   {
     slug: "why-payment-providers-ask-for-source-of-funds",
     title: "Understanding Source of Funds Verification",
     shortTitle: "Source of Funds Verification",
     concepts: ["provider-behaviour"],
-    keywords: ["source of funds", "verification", "AML", "compliance"]
+    keywords: ["source of funds", "verification", "AML", "compliance", "why is bank asking for source of funds"]
   },
   {
     slug: "why-payment-providers-ask-for-director-documents",
@@ -218,14 +218,14 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Same Day Settlement and Instant Payouts",
     shortTitle: "Same Day Settlement",
     concepts: ["payment-methods"],
-    keywords: ["settlement", "payout", "instant payout", "same day", "cash flow"]
+    keywords: ["settlement", "payout", "instant payout", "same day", "same day settlement advice", "cash flow"]
   },
   {
     slug: "visa-mastercard-control-card-payments",
     title: "Visa and Mastercard Control Card Payments",
     shortTitle: "Visa and Mastercard Control",
     concepts: ["payment-methods", "provider-behaviour"],
-    keywords: ["visa", "mastercard", "card scheme", "network rules", "scheme fees"]
+    keywords: ["visa", "mastercard", "visa transaction controls", "card scheme", "network rules", "scheme fees"]
   },
   {
     slug: "what-is-an-acquirer",
@@ -264,49 +264,49 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Adyen: The Single Platform Approach",
     shortTitle: "Adyen Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["adyen", "enterprise", "single platform", "acquiring"]
+    keywords: ["adyen", "adyen payments", "adyen payment gateway", "adyen marketplace", "adyen unified commerce", "enterprise", "single platform", "acquiring"]
   },
   {
     slug: "stripe-payment-platform",
     title: "Stripe: The Modern Internet Economy Engine",
     shortTitle: "Stripe Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["stripe", "API", "developer", "platform"]
+    keywords: ["stripe", "stripe pricing", "API", "developer", "platform"]
   },
   {
     slug: "checkout-com-enterprise-platform",
     title: "Checkout.com: High Performance for Global Ambition",
     shortTitle: "Checkout.com Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["checkout.com", "enterprise", "global", "authorization"]
+    keywords: ["checkout.com", "checkout.com api", "enterprise", "global", "authorization"]
   },
   {
     slug: "shift4-payments-platform",
     title: "Shift4: The Global Payments Giant",
     shortTitle: "Shift4 Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["shift4", "hospitality", "entertainment", "POS"]
+    keywords: ["shift4", "shift4 payments", "what does shift4 do", "hospitality", "entertainment", "POS"]
   },
   {
     slug: "fiserv-payments-platform",
     title: "Fiserv and the First Data Legacy",
     shortTitle: "Fiserv Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["fiserv", "first data", "clover", "bank infrastructure"]
+    keywords: ["fiserv", "first data", "fiserv first data", "first data payment processing", "clover", "bank infrastructure"]
   },
   {
     slug: "adyen-vs-first-data",
     title: "Adyen vs First Data: Two Different Payment Models",
     shortTitle: "Adyen vs First Data",
     concepts: ["provider-behaviour", "approval"],
-    keywords: ["adyen", "first data", "fiserv", "comparison", "platform model", "bank acquiring"]
+    keywords: ["adyen", "first data", "fiserv", "fiserv first data", "comparison", "platform model", "bank acquiring"]
   },
   {
     slug: "enterprise-provider-comparison",
     title: "Enterprise Payment Providers: Strength Comparison",
     shortTitle: "Enterprise Provider Comparison",
     concepts: ["provider-behaviour", "approval"],
-    keywords: ["comparison", "enterprise", "adyen", "checkout.com", "shift4"]
+    keywords: ["comparison", "enterprise", "enterprise payment approval platforms comparison", "enterprise payment api global coverage comparison", "adyen", "checkout.com", "shift4"]
   },
   {
     slug: "payment-provider-risk-models",

@@ -68,7 +68,7 @@ const Shift4PaymentsPlatform = () => {
       cluster="provider"
       currentSlug="shift4-payments-platform"
       publishedTime="2026-01-24"
-      keywords={["shift4", "payments", "enterprise", "hospitality", "gaming", "entertainment", "POS"]}
+      keywords={["shift4", "shift4 payments", "what does shift4 do", "payments", "enterprise", "hospitality", "gaming", "entertainment", "POS", "payment processor"]}
       sources={shift4Sources}
     >
       {/* Hero Section */}
@@ -216,6 +216,23 @@ const Shift4PaymentsPlatform = () => {
         <p className="text-muted-foreground">
           Choosing a provider like Shift4 is less about speed on day one and more about avoiding disruption as the business grows.
         </p>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-foreground mb-6">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-6">
+          <div className="p-6 rounded-xl bg-card border border-border">
+            <h3 className="text-lg font-semibold text-foreground mb-3">What does Shift4 do?</h3>
+            <p className="text-muted-foreground">Shift4 Payments is a global payment technology company that provides end-to-end payment processing, point-of-sale systems, and commerce tools for businesses. Shift4 payments power over 200,000 merchants globally, specialising in hospitality, gaming, entertainment, and travel industries.</p>
+          </div>
+          <div className="p-6 rounded-xl bg-card border border-border">
+            <h3 className="text-lg font-semibold text-foreground mb-3">Is Shift4 a payment processor?</h3>
+            <p className="text-muted-foreground">Yes, Shift4 is a payment processor, but it offers much more than basic transaction processing. It provides integrated POS systems, security infrastructure including tokenisation and encryption, ecommerce platforms, and industry-specific solutions designed for complex, high-volume businesses.</p>
+          </div>
+        </div>
       </section>
 
       {/* Related Articles */}

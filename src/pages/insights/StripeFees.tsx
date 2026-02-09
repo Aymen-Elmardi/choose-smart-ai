@@ -58,7 +58,7 @@ const StripeFees = () => {
       currentSlug="stripe-fees-explained"
       publishedTime="2026-02-07"
       sources={sources}
-      keywords={["Stripe fees", "Stripe pricing UK", "Stripe Connect fees", "payment processing costs", "Stripe chargebacks"]}
+      keywords={["Stripe fees", "Stripe pricing", "Stripe pricing UK", "Stripe Connect fees", "payment processing costs", "Stripe chargebacks", "stripe fees explained"]}
     >
       <FAQSchema faqs={faqs} />
 

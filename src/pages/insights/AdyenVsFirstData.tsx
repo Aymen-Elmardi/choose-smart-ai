@@ -36,6 +36,9 @@ const AdyenVsFirstData = () => {
       sources={sources}
       keywords={[
         "Adyen vs First Data",
+        "first data",
+        "first data payment processing",
+        "fiserv first data",
         "payment provider comparison",
         "global payment platform",
         "bank acquiring",

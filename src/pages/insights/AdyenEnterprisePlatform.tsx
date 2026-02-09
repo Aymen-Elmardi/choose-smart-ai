@@ -17,13 +17,33 @@ const adyenSources = [
 const AdyenEnterprisePlatform = () => {
   useSEO({
     title: "Adyen: The Single Platform That Rewrote Enterprise Payments | ChosePayments",
-    description: "Discover why Adyen's single-platform approach to payments is the choice of enterprise brands. Learn about Interchange++ pricing, dedicated Integration Engineers, and omnichannel capabilities."
+    description: "Discover why Adyen's single-platform approach to payments is the choice of enterprise brands. Learn about Interchange++ pricing, dedicated Integration Engineers, and omnichannel capabilities.",
+    keywords: [
+      "adyen payments",
+      "adyen payment gateway",
+      "adyen platform",
+      "adyen marketplace",
+      "adyen unified commerce",
+      "what does adyen do",
+      "is adyen a payment processor",
+      "adyen alternative",
+      "adyen enterprise",
+      "adyen acquiring",
+    ],
   });
 
   const faqItems = [
     {
-      question: "What is Adyen's single platform advantage?",
-      answer: "Adyen built a unified platform that acts as the gateway, acquirer, and risk engine across nearly every major market. This eliminates the need for separate providers and contracts, leading to higher authorization rates, true omnichannel capabilities, and simplified reconciliation."
+      question: "What does Adyen do?",
+      answer: "Adyen is a global payment processor and technology company that provides a single, unified platform handling payment gateway, acquiring, risk management, and settlement across nearly every major market. It serves enterprise brands with omnichannel capabilities spanning online, in-app, and in-store payments."
+    },
+    {
+      question: "Is Adyen a payment processor?",
+      answer: "Yes, Adyen is a payment processor, but it is much more than that. Unlike traditional processors that only handle transaction routing, Adyen acts as the gateway, acquirer, and risk engine in one platform. This vertical integration gives merchants higher authorization rates and simplified operations."
+    },
+    {
+      question: "What is Adyen unified commerce?",
+      answer: "Adyen unified commerce means all payment channels, whether online, in-app, or in-store via POS terminals, flow through a single system. This gives merchants a single view of every customer interaction, simplifies reconciliation, and enables experiences like buy-online-return-in-store."
     },
     {
       question: "What is Interchange++ pricing?",
@@ -31,11 +51,7 @@ const AdyenEnterprisePlatform = () => {
     },
     {
       question: "How does Adyen's integration support work?",
-      answer: "When you onboard with Adyen, you're assigned a dedicated Integration Engineer—a technical expert who understands your tech stack, regulatory environment, and business model. They guide you through implementation to ensure it's optimized for your specific needs."
-    },
-    {
-      question: "Why do major banks and platforms use Adyen's technology?",
-      answer: "Adyen provides white-label solutions to global banks and powers major platforms including some of the UK's largest food delivery services. Their technology is robust enough for financial institutions to put their own brand on it, validating Adyen's security, stability, and regulatory compliance at the highest level."
+      answer: "When you onboard with Adyen, you're assigned a dedicated Integration Engineer, a technical expert who understands your tech stack, regulatory environment, and business model. They guide you through implementation to ensure it's optimized for your specific needs."
     },
     {
       question: "Is Adyen right for my business?",
@@ -153,6 +169,26 @@ const AdyenEnterprisePlatform = () => {
               
               <p className="text-lg text-muted-foreground leading-relaxed">
                 They guide you through the process, ensuring that the implementation is not just functional, but optimized for your specific needs, whether that means fine-tuning your local payment methods in Asia or structuring your data flow for maximum risk efficiency. This hands-on, expert approach is what separates a successful, stable integration from a rushed, fragile one.
+              </p>
+            </section>
+
+            {/* Marketplace Section */}
+            <section className="mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
+                <Globe className="w-8 h-8 text-primary" />
+                Adyen Marketplace and Platform Capabilities
+              </h2>
+              
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                For businesses running an Adyen marketplace or multi-sided platform, Adyen provides purpose-built tools for managing complex payment flows. Their platform supports split payments, seller onboarding, and compliance management across multiple geographies from a single integration.
+              </p>
+              
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                This is particularly valuable for marketplace operators who need to manage payouts to hundreds or thousands of sellers while maintaining regulatory compliance. Adyen handles KYC for sub-merchants, manages fund flows, and provides consolidated reporting across the entire platform.
+              </p>
+
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Businesses considering an Adyen alternative for marketplace payments should understand that Adyen's approach differs from competitors. Rather than bolting marketplace features onto a basic payment gateway, Adyen built platform capabilities directly into its acquiring infrastructure, which can result in higher approval rates and lower costs for cross-border marketplace transactions.
               </p>
             </section>
 

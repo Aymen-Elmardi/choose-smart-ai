@@ -16,7 +16,7 @@ const VisaMastercardControl = () => {
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"
       currentSlug="visa-mastercard-control"
-      keywords={["Visa", "Mastercard", "card networks", "payment rules"]}
+      keywords={["Visa", "Mastercard", "visa transaction controls", "card networks", "payment rules", "card scheme rules"]}
       sources={visaMastercardSources}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">

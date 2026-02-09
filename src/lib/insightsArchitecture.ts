@@ -18,7 +18,7 @@ export const pricingArticles: ArticleMetadata[] = [
     title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",
     cluster: "pricing",
     category: "Pricing Models",
-    keywords: ["interchange++", "interchange plus", "IC++", "pricing", "blended", "fees", "transparent"]
+    keywords: ["interchange++", "interchange plus", "IC++", "pricing", "blended", "fees", "transparent", "stripe pricing"]
   },
   {
     slug: "blended-vs-interchange",
@@ -61,7 +61,7 @@ export const providerArticles: ArticleMetadata[] = [
     title: "Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["adyen", "enterprise", "platform", "acquiring"]
+    keywords: ["adyen", "enterprise", "platform", "acquiring", "adyen payments", "adyen payment gateway", "adyen marketplace", "adyen unified commerce"]
   },
   {
     slug: "stripe-payment-platform",
@@ -75,28 +75,28 @@ export const providerArticles: ArticleMetadata[] = [
     title: "Checkout.com: The High Performance Platform Built for Global Ambition",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["checkout.com", "enterprise", "authorization", "global"]
+    keywords: ["checkout.com", "checkout.com api", "enterprise", "authorization", "global"]
   },
   {
     slug: "shift4-payments-platform",
     title: "Shift4 Payments: The Global Payments Giant Most Businesses Have Never Heard Of",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["shift4", "hospitality", "gaming", "entertainment", "enterprise", "POS"]
+    keywords: ["shift4", "shift4 payments", "what does shift4 do", "hospitality", "gaming", "entertainment", "enterprise", "POS"]
   },
   {
     slug: "enterprise-provider-comparison",
     title: "Enterprise Payment Providers: Strength Comparison",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["comparison", "adyen", "shift4", "checkout.com", "enterprise", "risk appetite", "underwriting"]
+    keywords: ["comparison", "adyen", "shift4", "checkout.com", "enterprise", "enterprise payment approval platforms comparison", "risk appetite", "underwriting"]
   },
   {
     slug: "fiserv-payments-platform",
     title: "Fiserv and the First Data Legacy: Who It Actually Fits, and Where It Doesn't",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["fiserv", "first data", "clover", "enterprise", "acquiring", "POS", "bank infrastructure"]
+    keywords: ["fiserv", "first data", "fiserv first data", "first data payment processing", "clover", "enterprise", "acquiring", "POS", "bank infrastructure"]
   }
 ];
 
