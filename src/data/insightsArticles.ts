@@ -133,6 +133,13 @@ export const allInsights: Insight[] = [
     category: "fees",
     readTime: "8 min read"
   },
+  {
+    title: "Fiserv and Clover Pricing Explained: Why It Works for Resellers and Multi Location Businesses",
+    slug: "fiserv-clover-pricing-explained",
+    description: "A clear breakdown of Fiserv and Clover pricing for resellers, ISVs, and multi-location businesses. Understand how negotiated fees, hardware bundles, and value added services create real business value.",
+    category: "fees",
+    readTime: "9 min read"
+  },
   // Pricing Models articles
   {
     title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",
