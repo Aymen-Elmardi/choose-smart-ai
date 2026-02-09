@@ -410,6 +410,13 @@ export const allInsights: Insight[] = [
     readTime: "8 min read"
   },
   {
+    title: "Payment Acronyms Merchants Actually Need to Understand (And Which Ones You Can Ignore)",
+    slug: "payment-acronyms-explained",
+    description: "A clear guide to the payment acronyms that affect approval, cash flow, and costs. Learn which terms matter for your business and which ones you can safely ignore.",
+    category: "explainer",
+    readTime: "10 min read"
+  },
+  {
     title: "The Only Payment Method With a 100% Success Rate (On Part of Your Transactions)",
     slug: "wallet-payments-guaranteed-success",
     description: "Wallet payments are the only method that can reach a 100% success rate. Learn why wallet spend never fails, how refund-to-wallet strategies reduce chargebacks, and when wallets make sense for your business.",

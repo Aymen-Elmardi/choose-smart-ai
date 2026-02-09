@@ -316,6 +316,13 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["paypal", "paypal payments", "paypal business", "paypal checkout", "paypal wallet", "paypal conversion"]
   },
   {
+    slug: "payment-acronyms-explained",
+    title: "Payment Acronyms Merchants Need to Understand",
+    shortTitle: "Payment Acronyms Explained",
+    concepts: ["approval", "risk", "payment-methods"],
+    keywords: ["acronyms", "MCC", "SCA", "TRA", "MATCH list", "chargeback ratio", "settlement", "payout", "rolling reserve", "interchange", "PCI DSS", "3DS"]
+  },
+  {
     slug: "payment-provider-risk-models",
     title: "Payment Provider Risk Models Explained",
     shortTitle: "Risk Models Explained",
