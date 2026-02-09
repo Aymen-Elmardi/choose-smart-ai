@@ -244,6 +244,17 @@ const CheckoutComEnterprisePlatform = () => {
 
             <SourcesCitation sources={checkoutComSources} />
 
+            {/* Pricing Deep Dive Link */}
+            <section className="mt-10 p-5 rounded-xl border border-primary/20 bg-primary/5">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Want to understand Checkout.com's pricing in detail?</h3>
+              <p className="text-muted-foreground mb-3">
+                Our dedicated pricing guide breaks down Checkout.com's negotiated pricing model, including card processing fees, international costs, and when this platform makes financial sense.
+              </p>
+              <Link to="/insights/checkout-com-fees-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
+                Read: Checkout.com Fees Explained <ArrowRight className="w-4 h-4" />
+              </Link>
+            </section>
+
             {/* Share & Like Actions */}
             <ArticleActions
               slug="checkout-com-enterprise-platform"

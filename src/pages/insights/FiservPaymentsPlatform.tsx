@@ -240,6 +240,17 @@ const FiservPaymentsPlatform = () => {
         </div>
       </section>
 
+      {/* Pricing Deep Dive Link */}
+      <section className="mb-12 p-5 rounded-xl border border-primary/20 bg-primary/5">
+        <h3 className="text-lg font-semibold text-foreground mb-2">Want to understand Fiserv and Clover pricing in detail?</h3>
+        <p className="text-muted-foreground mb-3">
+          Our dedicated pricing guide breaks down how negotiated fees, hardware bundles, and value added services create real business value for resellers and multi-location businesses.
+        </p>
+        <Link to="/insights/fiserv-clover-pricing-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
+          Read: Fiserv and Clover Pricing Explained <ArrowRight className="w-4 h-4" />
+        </Link>
+      </section>
+
       {/* Bottom Line */}
       <section className="mb-12 bg-muted/50 rounded-lg p-6 border border-border">
         <h2 className="text-2xl font-bold text-foreground mb-4">

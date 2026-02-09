@@ -257,6 +257,17 @@ const AdyenEnterprisePlatform = () => {
 
             <SourcesCitation sources={adyenSources} />
 
+            {/* Pricing Deep Dive Link */}
+            <section className="mt-10 p-5 rounded-xl border border-primary/20 bg-primary/5">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Want to understand Adyen's pricing in detail?</h3>
+              <p className="text-muted-foreground mb-3">
+                Our dedicated pricing guide breaks down Adyen's interchange plus model, what affects your rate, and when Adyen pricing makes sense compared to other providers.
+              </p>
+              <Link to="/insights/adyen-pricing-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
+                Read: Adyen Pricing Explained <ArrowRight className="w-4 h-4" />
+              </Link>
+            </section>
+
             {/* Share & Like Actions */}
             <ArticleActions
               slug="adyen-enterprise-payments-platform"
