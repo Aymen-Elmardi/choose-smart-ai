@@ -82,7 +82,7 @@ export const providerArticles: ArticleMetadata[] = [
     title: "Shift4 Payments: The Global Payments Giant Most Businesses Have Never Heard Of",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["shift4", "hospitality", "gaming", "entertainment", "enterprise", "POS"]
+    keywords: ["shift4", "shift4 payments", "what does shift4 do", "hospitality", "gaming", "entertainment", "enterprise", "POS"]
   },
   {
     slug: "enterprise-provider-comparison",
