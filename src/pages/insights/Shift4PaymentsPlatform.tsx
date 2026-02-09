@@ -68,7 +68,7 @@ const Shift4PaymentsPlatform = () => {
       cluster="provider"
       currentSlug="shift4-payments-platform"
       publishedTime="2026-01-24"
-      keywords={["shift4", "payments", "enterprise", "hospitality", "gaming", "entertainment", "POS"]}
+      keywords={["shift4", "shift4 payments", "what does shift4 do", "payments", "enterprise", "hospitality", "gaming", "entertainment", "POS", "payment processor"]}
       sources={shift4Sources}
     >
       {/* Hero Section */}
