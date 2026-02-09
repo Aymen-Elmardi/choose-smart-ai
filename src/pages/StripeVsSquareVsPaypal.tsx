@@ -76,9 +76,22 @@ const StripeVsSquareVsPaypal = () => {
   useCanonical();
   
   useSEO({
-    title: "Stripe vs Square vs PayPal: Risk Assessment & Underwriting Fit (UK)",
-    description: "Which provider will actually approve your business? A risk-based assessment of Stripe, Square, and PayPal — not just features and fees, but who they reject and why.",
-    keywords: ["Stripe risk assessment", "Square approval criteria", "PayPal underwriting", "payment provider fit UK"],
+    title: "Stripe vs Square vs PayPal UK: Fees, Risk & Which One Fits (2026)",
+    description: "Stripe vs PayPal vs Square for UK businesses. Compare fees, risk appetite, and approval criteria. Find out which provider actually fits your business model.",
+    keywords: [
+      "stripe vs square vs paypal",
+      "stripe vs paypal",
+      "paypal vs stripe vs square",
+      "square vs stripe vs paypal",
+      "stripe vs paypal uk",
+      "stripe vs square uk",
+      "stripe vs paypal fees uk",
+      "stripe vs square fees uk",
+      "payment provider comparison UK",
+      "Stripe risk assessment",
+      "Square approval criteria",
+      "PayPal underwriting",
+    ],
   });
 
   useEffect(() => {
