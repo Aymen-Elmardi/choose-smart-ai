@@ -159,7 +159,7 @@ export const getRelatedArticles = (currentSlug: string, cluster: ContentCluster)
 
 // Find articles that match keywords for internal linking
 export const findRelatedByKeyword = (keyword: string): ArticleMetadata[] => {
-  const allArticles = [...hubArticles, ...crisisArticles, ...providerArticles, ...pricingArticles];
+  const allArticles = [...hubArticles, ...crisisArticles, ...providerArticles, ...pricingArticles, ...feesArticles];
   
   return allArticles.filter(article => 
     article.keywords.some(k => k.toLowerCase().includes(keyword.toLowerCase()))
