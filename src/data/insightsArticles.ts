@@ -126,6 +126,13 @@ export const allInsights: Insight[] = [
     category: "fees",
     readTime: "7 min read"
   },
+  {
+    title: "Checkout.com Fees Explained: What Businesses Actually Pay",
+    slug: "checkout-com-fees-explained",
+    description: "A clear breakdown of Checkout.com's negotiated pricing model, including card processing fees, international costs, chargebacks, and when this enterprise platform makes financial sense.",
+    category: "fees",
+    readTime: "8 min read"
+  },
   // Pricing Models articles
   {
     title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",
