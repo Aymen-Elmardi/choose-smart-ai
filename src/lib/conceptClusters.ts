@@ -264,7 +264,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Adyen: The Single Platform Approach",
     shortTitle: "Adyen Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["adyen", "enterprise", "single platform", "acquiring"]
+    keywords: ["adyen", "adyen payments", "adyen payment gateway", "adyen marketplace", "adyen unified commerce", "enterprise", "single platform", "acquiring"]
   },
   {
     slug: "stripe-payment-platform",
