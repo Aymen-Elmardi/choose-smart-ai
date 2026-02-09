@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const PayPalPaymentPlatform = () => {
   const sources = [
