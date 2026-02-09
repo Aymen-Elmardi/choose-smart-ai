@@ -89,7 +89,7 @@ export const providerArticles: ArticleMetadata[] = [
     title: "Enterprise Payment Providers: Strength Comparison",
     cluster: "provider",
     category: "Provider Deep Dive",
-    keywords: ["comparison", "adyen", "shift4", "checkout.com", "enterprise", "risk appetite", "underwriting"]
+    keywords: ["comparison", "adyen", "shift4", "checkout.com", "enterprise", "enterprise payment approval platforms comparison", "risk appetite", "underwriting"]
   },
   {
     slug: "fiserv-payments-platform",
