@@ -284,7 +284,8 @@ const PaymentAcronymsExplained = () => {
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">LTV Exemption (Low Transaction Value)</h3>
       <p className="text-muted-foreground mb-2">
-        Often used interchangeably with LVT, this refers to the same SCA exemption for small value payments.
+        Often used interchangeably with LVT, this refers to the same{" "}
+        <Link to="/insights/low-value-transaction-exemption" className="text-primary hover:underline">SCA exemption for small value payments</Link>.
       </p>
       <p className="text-muted-foreground mb-6">
         The terminology varies between providers, but the principle is the same. Payments below the threshold can be processed without full authentication, reducing friction for the buyer.
