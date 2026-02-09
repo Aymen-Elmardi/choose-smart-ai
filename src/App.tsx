@@ -212,6 +212,7 @@ const App = () => (
               <Route path="/insights/fiserv-payments-platform" element={<FiservPaymentsPlatform />} />
               <Route path="/insights/adyen-vs-first-data" element={<AdyenVsFirstData />} />
               <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
+              <Route path="/insights/paypal-payment-platform" element={<PayPalPaymentPlatform />} />
               
               {/* Crisis Intervention articles */}
               <Route path="/insights/crisis/hidden-fee-crisis" element={<CrisisHiddenFeeCrisis />} />

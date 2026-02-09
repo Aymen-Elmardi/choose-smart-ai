@@ -108,6 +108,13 @@ export const providerArticles: ArticleMetadata[] = [
     cluster: "provider",
     category: "Provider Deep Dive",
     keywords: ["fiserv", "first data", "fiserv first data", "first data payment processing", "clover", "enterprise", "acquiring", "POS", "bank infrastructure"]
+  },
+  {
+    slug: "paypal-payment-platform",
+    title: "PayPal: From Online Payments Pioneer to Global Consumer Network",
+    cluster: "provider",
+    category: "Provider Deep Dive",
+    keywords: ["paypal", "paypal payments", "paypal business", "paypal merchant", "paypal checkout", "paypal wallet", "paypal fees", "paypal ecommerce", "paypal international"]
   }
 ];
 
