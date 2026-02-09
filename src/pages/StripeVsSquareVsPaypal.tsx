@@ -114,7 +114,7 @@ const StripeVsSquareVsPaypal = () => {
           <div className="section-container">
             <div className="max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 text-center">
-                Stripe vs Square vs PayPal: Which Payment Provider Will Approve Your Business in the UK?
+                Stripe vs PayPal vs Square UK: Which Payment Provider Will Actually Approve Your Business?
               </h1>
               <div className="text-lg md:text-xl text-muted-foreground space-y-4 max-w-3xl mx-auto">
                 <p>Most comparisons between Stripe, Square, and PayPal focus on features and pricing.</p>
