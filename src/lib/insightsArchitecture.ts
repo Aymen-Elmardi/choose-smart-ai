@@ -18,7 +18,7 @@ export const pricingArticles: ArticleMetadata[] = [
     title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",
     cluster: "pricing",
     category: "Pricing Models",
-    keywords: ["interchange++", "interchange plus", "IC++", "pricing", "blended", "fees", "transparent"]
+    keywords: ["interchange++", "interchange plus", "IC++", "pricing", "blended", "fees", "transparent", "stripe pricing"]
   },
   {
     slug: "blended-vs-interchange",
