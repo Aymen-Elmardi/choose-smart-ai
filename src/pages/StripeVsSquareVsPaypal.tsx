@@ -43,6 +43,18 @@ const providers = [
 
 const faqs = [
   {
+    question: "Which is better, Stripe or PayPal for UK businesses?",
+    answer: "It depends on how you sell. Stripe is better for online businesses that need advanced APIs, global payments, and subscription billing. PayPal is easier to set up and offers instant buyer trust, making it suitable for low-volume sellers. For UK businesses comparing Stripe vs PayPal, the key difference is that Stripe offers lower fees on UK cards (1.4% + 20p vs 2.99%) but requires more setup.",
+  },
+  {
+    question: "How do Stripe and Square fees compare in the UK?",
+    answer: "Square charges a flat 1.75% for in-person payments and 2.5% online. Stripe charges 1.4% + 20p for UK cards online and up to 2.9% + 20p for international cards. For Stripe vs Square fees in the UK, Square is typically cheaper for in-person retail, while Stripe is more competitive for online-only businesses.",
+  },
+  {
+    question: "Is PayPal better than Stripe for small businesses?",
+    answer: "PayPal is easier to start with and offers instant buyer recognition, which helps small businesses build trust quickly. However, PayPal becomes expensive at scale due to higher transaction fees. Most growing UK businesses find Stripe more cost-effective long term for online payments.",
+  },
+  {
     question: "Which is cheaper: Stripe, Square, or PayPal for UK businesses?",
     answer: "Square is typically cheapest for in-person payments at 1.75%. Stripe offers competitive rates for online payments starting at 1.4% + 20p for UK cards. PayPal is generally the most expensive at 2.99% + fixed fee, but offers instant buyer trust.",
   },
@@ -55,20 +67,8 @@ const faqs = [
     answer: "Square offers next-day payouts as standard. PayPal offers instant transfers for a fee. Stripe typically takes 3-5 business days for standard payouts, with instant payouts available for an additional fee.",
   },
   {
-    question: "Is PayPal good for high-volume UK businesses?",
-    answer: "PayPal becomes expensive at scale due to higher transaction fees and limited customisation. High-volume businesses should consider Stripe for online or dedicated merchant accounts for better rates.",
-  },
-  {
-    question: "Which provider is best for UK marketplaces?",
-    answer: "Stripe Connect is purpose-built for marketplaces with split payments and seller onboarding. Square and PayPal have limited marketplace capabilities. Specialised providers like Datman may be better for complex marketplace setups.",
-  },
-  {
     question: "Do Stripe, Square, and PayPal freeze accounts?",
     answer: "All three providers can freeze accounts for suspected fraud, policy violations, or unusual activity. Stripe and PayPal are known to be more aggressive with automated risk systems. Understanding each provider's risk appetite for your business type is crucial before signing up.",
-  },
-  {
-    question: "Can I switch from PayPal to Stripe easily?",
-    answer: "Switching providers requires updating your checkout integration and potentially migrating customer payment methods. Stripe offers migration tools for subscriptions. Plan for 2-4 weeks for a smooth transition.",
   },
 ];
 
