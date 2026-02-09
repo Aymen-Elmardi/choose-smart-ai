@@ -140,6 +140,13 @@ export const allInsights: Insight[] = [
     category: "fees",
     readTime: "9 min read"
   },
+  {
+    title: "Adyen Pricing Explained: How Fees Really Work and When Adyen Is Worth It",
+    slug: "adyen-pricing-explained",
+    description: "A clear breakdown of Adyen's interchange plus pricing model, how fees are structured, what affects your rate, and when Adyen pricing makes sense compared to Stripe and other providers.",
+    category: "fees",
+    readTime: "9 min read"
+  },
   // Pricing Models articles
   {
     title: "Interchange++ Pricing Explained (And Why Most Businesses Never Qualify)",

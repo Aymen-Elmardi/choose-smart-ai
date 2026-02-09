@@ -11,6 +11,17 @@ export interface ArticleMetadata {
   keywords: string[]; // For internal linking automation
 }
 
+// Fees & Costs articles
+export const feesArticles: ArticleMetadata[] = [
+  {
+    slug: "adyen-pricing-explained",
+    title: "Adyen Pricing Explained: How Fees Really Work and When Adyen Is Worth It",
+    cluster: "pricing",
+    category: "Fees & Costs",
+    keywords: ["adyen pricing", "adyen fees", "adyen costs", "adyen interchange plus", "adyen vs stripe pricing", "adyen local acquiring", "enterprise payment pricing", "adyen payment gateway fees"]
+  }
+];
+
 // Pricing Models articles (technical authority content)
 export const pricingArticles: ArticleMetadata[] = [
   {
@@ -148,7 +159,7 @@ export const getRelatedArticles = (currentSlug: string, cluster: ContentCluster)
 
 // Find articles that match keywords for internal linking
 export const findRelatedByKeyword = (keyword: string): ArticleMetadata[] => {
-  const allArticles = [...hubArticles, ...crisisArticles, ...providerArticles, ...pricingArticles];
+  const allArticles = [...hubArticles, ...crisisArticles, ...providerArticles, ...pricingArticles, ...feesArticles];
   
   return allArticles.filter(article => 
     article.keywords.some(k => k.toLowerCase().includes(keyword.toLowerCase()))
