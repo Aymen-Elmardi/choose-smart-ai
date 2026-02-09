@@ -107,7 +107,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "TRA Exemption: How It Reduces Payment Friction",
     shortTitle: "TRA Exemption Explained",
     concepts: ["approval", "payment-methods"],
-    keywords: ["TRA", "transaction risk analysis", "exemption", "approval rate", "SCA"]
+    keywords: ["TRA", "tra exemption", "tra exemptions", "transaction risk analysis", "exemption", "approval rate", "SCA"]
   },
   {
     slug: "low-value-transaction-exemption",
