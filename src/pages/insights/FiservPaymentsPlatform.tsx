@@ -100,7 +100,7 @@ const FiservPaymentsPlatform = () => {
           Fiserv and the First Data Legacy: Who It Actually Fits, and Where It Doesn't
         </h1>
         <p className="text-xl text-muted-foreground leading-relaxed">
-          Fiserv sits very high up the payments stack. It is not just a payment processor. It operates across acquiring, issuing technology, bank infrastructure, and point-of-sale through Clover. When Fiserv acquired First Data in 2019, it absorbed one of the largest global merchant acquirers into an already bank-centric technology business.
+          Fiserv sits very high up the payments stack. It is not just a payment processor. It operates across acquiring, issuing technology, bank infrastructure, and point-of-sale through Clover. When Fiserv acquired First Data in 2019, it absorbed one of the largest global merchant acquirers into an already bank-centric technology business. Today, Fiserv First Data represents one of the largest first data payment processing networks in the world.
         </p>
       </header>
 
