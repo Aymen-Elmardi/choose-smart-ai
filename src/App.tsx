@@ -205,6 +205,7 @@ const App = () => (
               <Route path="/insights/payment-provider-risk-models" element={<PaymentProviderRiskModels />} />
               <Route path="/insights/wallet-payments-guaranteed-success" element={<WalletPaymentsGuaranteedSuccess />} />
               <Route path="/insights/why-payment-providers-reject-growing-businesses" element={<WhyPaymentProvidersRejectGrowingBusinesses />} />
+              <Route path="/insights/payment-acronyms-explained" element={<PaymentAcronymsExplained />} />
               
               <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
               <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
