@@ -278,7 +278,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Checkout.com: High Performance for Global Ambition",
     shortTitle: "Checkout.com Platform",
     concepts: ["provider-behaviour"],
-    keywords: ["checkout.com", "enterprise", "global", "authorization"]
+    keywords: ["checkout.com", "checkout.com api", "enterprise", "global", "authorization"]
   },
   {
     slug: "shift4-payments-platform",
