@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
-import { Shield, Globe, Building2, Zap, CreditCard, BarChart3, CheckCircle, AlertTriangle } from "lucide-react";
+import { Shield, Globe, Building2, Zap, CreditCard, BarChart3, CheckCircle, AlertTriangle, ArrowRight } from "lucide-react";
 
 const fiservSources: Source[] = [
   {
@@ -238,6 +238,17 @@ const FiservPaymentsPlatform = () => {
             <p className="text-muted-foreground">The First Data payment gateway (now part of Fiserv) provides card processing, settlement, and reconciliation services to merchants. It is typically accessed through banks, ISOs, or resellers rather than directly. The first data platforms support both in-person payments through Clover POS and online transactions through API integrations.</p>
           </div>
         </div>
+      </section>
+
+      {/* Pricing Deep Dive Link */}
+      <section className="mb-12 p-5 rounded-xl border border-primary/20 bg-primary/5">
+        <h3 className="text-lg font-semibold text-foreground mb-2">Want to understand Fiserv and Clover pricing in detail?</h3>
+        <p className="text-muted-foreground mb-3">
+          Our dedicated pricing guide breaks down how negotiated fees, hardware bundles, and value added services create real business value for resellers and multi-location businesses.
+        </p>
+        <Link to="/insights/fiserv-clover-pricing-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
+          Read: Fiserv and Clover Pricing Explained <ArrowRight className="w-4 h-4" />
+        </Link>
       </section>
 
       {/* Bottom Line */}

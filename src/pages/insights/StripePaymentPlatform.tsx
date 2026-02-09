@@ -273,6 +273,17 @@ const StripePaymentPlatform = () => {
 
             <SourcesCitation sources={stripeSources} />
 
+            {/* Pricing Deep Dive Link */}
+            <section className="mt-10 p-5 rounded-xl border border-primary/20 bg-primary/5">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Want to understand Stripe's pricing in detail?</h3>
+              <p className="text-muted-foreground mb-3">
+                Our dedicated pricing guide breaks down Stripe's card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs.
+              </p>
+              <Link to="/insights/stripe-fees-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
+                Read: Stripe Fees Explained <ArrowRight className="w-4 h-4" />
+              </Link>
+            </section>
+
             {/* Share & Like Actions */}
             <ArticleActions
               slug="stripe-payment-platform"
