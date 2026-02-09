@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
-import { Shield, Globe, Building2, Zap, CreditCard, BarChart3, CheckCircle, AlertTriangle } from "lucide-react";
+import { Shield, Globe, Building2, Zap, CreditCard, BarChart3, CheckCircle, AlertTriangle, ArrowRight } from "lucide-react";
 
 const fiservSources: Source[] = [
   {
