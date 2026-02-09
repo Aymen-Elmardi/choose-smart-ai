@@ -225,7 +225,7 @@ export const conceptArticles: ConceptArticle[] = [
     title: "Visa and Mastercard Control Card Payments",
     shortTitle: "Visa and Mastercard Control",
     concepts: ["payment-methods", "provider-behaviour"],
-    keywords: ["visa", "mastercard", "card scheme", "network rules", "scheme fees"]
+    keywords: ["visa", "mastercard", "visa transaction controls", "card scheme", "network rules", "scheme fees"]
   },
   {
     slug: "what-is-an-acquirer",
