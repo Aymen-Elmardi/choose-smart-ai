@@ -97,9 +97,21 @@ const BestPaymentProcessorUK = () => {
   useCanonical();
   
   useSEO({
-    title: "Payment Processor Risk Assessment: What UK Businesses Get Wrong",
-    description: "Choosing a payment processor isn't about fees — it's about fit. Understand which providers approve your business type and why the wrong choice costs you later.",
-    keywords: ["payment processor risk UK", "payment provider assessment", "UK business payment fit", "provider approval criteria"],
+    title: "Best Payment Processor for UK Small Businesses (2025)",
+    description: "Find the best small business payment system in the UK. Compare cheapest business payment solutions, fees, and which providers actually approve your business type.",
+    keywords: [
+      "best payment processor UK",
+      "best small business payment systems",
+      "best small business payment solution",
+      "best payment solutions for small businesses",
+      "cheapest business payment solutions uk",
+      "cheap business payment solutions uk",
+      "payment processor price comparison uk",
+      "recommend business payment solutions in uk",
+      "payment processor risk UK",
+      "payment provider assessment",
+      "UK business payment fit",
+    ],
   });
 
   useEffect(() => {
