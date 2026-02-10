@@ -144,6 +144,15 @@ const InsightsArticleLayout = ({
             />
           )}
           
+          {/* Inline advisory note */}
+          <p className="mt-10 text-muted-foreground text-base leading-relaxed">
+            If you're making a payment provider decision where getting it wrong is expensive, we offer{" "}
+            <a href="/assessment" className="text-primary hover:underline font-medium">
+              independent advisory support
+            </a>{" "}
+            before you apply.
+          </p>
+
           {/* Standardized CTA Block */}
           {showCTA && <InsightsCTA variant={ctaVariant} />}
         </article>
