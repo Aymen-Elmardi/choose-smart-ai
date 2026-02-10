@@ -38,9 +38,6 @@ const ValuePropsSection = () => {
           <h2 className="heading-lg text-foreground">
             Everything You Need, Nothing You Don't
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
-            The value you get. Your cost: Free.
-          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
