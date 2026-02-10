@@ -94,6 +94,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "monthlyVolume",
     question: "Roughly how much do you expect to process per month?",
+    subtext: "This helps us understand approval thresholds, reserve risk, and provider appetite.",
     options: [
       "Just getting started",
       "Under £10k",
