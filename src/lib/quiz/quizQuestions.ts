@@ -153,7 +153,20 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
     ],
   });
 
-  // Q9: Buying Intent (always)
+  // Q9: Previous Restriction (always)
+  questions.push({
+    id: "previousRestriction",
+    question: "Have you previously had a payment account restricted, terminated, or placed under review?",
+    subtext: "This is common and helps us anticipate provider-specific onboarding requirements.",
+    options: [
+      "No",
+      "Yes, but it was resolved",
+      "Yes, and it is still ongoing",
+      "Prefer not to say",
+    ],
+  });
+
+  // Q10: Buying Intent (always)
   questions.push({
     id: "buyingIntent",
     question: "When are you looking to move forward?",

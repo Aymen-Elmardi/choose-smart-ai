@@ -26,6 +26,7 @@ export interface QuizAnswers {
   deliveryTimeline?: string;
   buyingIntent?: string;
   contactTime?: string;
+  previousRestriction?: string;
 }
 
 /**
@@ -47,6 +48,7 @@ export const INITIAL_QUIZ_ANSWERS: QuizAnswers = {
   deliveryTimeline: "",
   buyingIntent: "",
   contactTime: "",
+  previousRestriction: "",
 };
 
 /**

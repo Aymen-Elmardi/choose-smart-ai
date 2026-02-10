@@ -214,6 +214,7 @@ const Quiz = () => {
       buyingIntent: ans.buyingIntent,
       contactTime: ans.contactTime,
       terminalType: ans.terminalType,
+      previousRestriction: ans.previousRestriction,
     };
   };
 
