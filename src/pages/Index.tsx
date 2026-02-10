@@ -39,7 +39,7 @@ const Index = () => {
         <ProblemSection />
         <HowItWorksSection />
         <ValuePropsSection />
-        <SocialProofSection />
+        {/* <SocialProofSection /> */}
         <ExamplesSection />
         <CTASection />
       </main>
