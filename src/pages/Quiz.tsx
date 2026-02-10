@@ -52,7 +52,7 @@ const Quiz = () => {
 
   // Update SEO metadata
   useEffect(() => {
-    document.title = "Payment Provider Risk Assessment | ChosePayments";
+    document.title = "Payment Advisory Assessment | ChosePayments";
     
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -62,11 +62,11 @@ const Quiz = () => {
     }
     metaDescription.setAttribute(
       "content",
-      "Understand your payment provider risk fit. Answer a few quick questions and get strategic guidance on which providers match your business — not just a list."
+      "Complete a short assessment and receive independent payment advice tailored to your business. No automated recommendations. Human-reviewed guidance."
     );
 
     return () => {
-      document.title = "ChosePayments - Payment Provider Risk Assessment";
+      document.title = "ChosePayments - Independent Payment Advisory";
     };
   }, []);
 

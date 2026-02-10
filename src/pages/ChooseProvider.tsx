@@ -160,10 +160,10 @@ const ChooseProvider = () => {
             </ul>
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
-              Get matched to the right provider
+              Get independent payment advice
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Rather than spending hours researching, you can answer a few questions about your business and get matched to providers that actually fit. It takes under two minutes and gives you a clear starting point.
+              Rather than spending hours researching, you can answer a few questions about your business and receive independent guidance from a payments advisor. It takes under two minutes and gives you a clear starting point.
             </p>
           </article>
 
@@ -171,14 +171,14 @@ const ChooseProvider = () => {
           <div className="mt-12 pt-8 border-t border-border">
             <div className="text-center">
               <h2 className="text-2xl font-semibold text-foreground mb-4">
-                Find the right payment provider for your business
+                Apply for independent payment advice
               </h2>
               <p className="text-muted-foreground mb-6">
-                Answer a few questions and we'll guide you to the right provider for your business.
+                Tell us about your business and we'll come back with honest guidance.
               </p>
               <Button size="lg" asChild>
                 <Link to="/assessment?start=true" replace>
-                  Take the quiz
+                  Apply for Payment Advisory
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>

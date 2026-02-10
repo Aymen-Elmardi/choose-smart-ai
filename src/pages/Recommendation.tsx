@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { CreditCard, Check, MessageCircle, ArrowRight, Loader2, CheckCircle2, Mail } from "lucide-react";
+import { CreditCard, Check, ArrowRight, Loader2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import LeadCaptureForm, { LeadCaptureFormRef } from "@/components/LeadCaptureForm";
 import { supabase } from "@/integrations/supabase/client";
-
-import { getRecommendation, type QuizAnswers, type Provider, type Market } from "@/lib/recommendationLogic";
-import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
+import type { QuizAnswers } from "@/types/quiz";
 import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
+
 const readStoredAnswers = (): QuizAnswers | null => {
   try {
     const raw = sessionStorage.getItem("quizAnswers");
@@ -46,6 +46,8 @@ const isQuizComplete = (a: QuizAnswers) =>
       a.priorities?.length
   );
 
+type Market = "UK" | "US";
+
 const readStoredMarket = (): Market => {
   try {
     const raw = sessionStorage.getItem("quizMarket");
@@ -65,14 +67,17 @@ const Recommendation = () => {
   const [market] = useState<Market>(() => readStoredMarket());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isProviderNotified, setIsProviderNotified] = useState(false);
   const [isConfirmationSent, setIsConfirmationSent] = useState(false);
-  const [recommendation, setRecommendation] = useState<Provider | null>(null);
-  const [, setAlternatives] = useState<Provider[]>([]); // kept for backend compatibility
-  const [isLoadingRecommendation, setIsLoadingRecommendation] = useState(true);
   const [backgroundError, setBackgroundError] = useState<string | null>(null);
-  const formRef = useRef<LeadCaptureFormRef>(null);
   const { toast } = useToast();
+
+  // Form state
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    companyName: "",
+    notes: "",
+  });
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
 
@@ -84,39 +89,10 @@ const Recommendation = () => {
     }
   }, [answers, quizComplete, navigate]);
 
-  // Fetch recommendation from server
-  const fetchRecommendation = useCallback(async () => {
-    if (!answers || !quizComplete) {
-      setIsLoadingRecommendation(false);
-      return;
-    }
-
-    try {
-      const { primary, alternatives: alts, fromServer } = await fetchServerRecommendation(answers);
-      
-      if (primary) {
-        setRecommendation(primary);
-        setAlternatives(alts);
-      } else if (!fromServer) {
-        // Fallback to client-side logic if server is unavailable
-        const clientRec = getRecommendation(answers, market);
-        setRecommendation(clientRec);
-      }
-    } catch (err) {
-      console.error("Recommendation fetch error:", err);
-      // Fallback to client-side logic
-      const clientRec = getRecommendation(answers, market);
-      setRecommendation(clientRec);
-    } finally {
-      setIsLoadingRecommendation(false);
-    }
-  }, [answers, quizComplete, market]);
-
   // Handle the loading transition from quiz
   useEffect(() => {
     if (!startedFromQuizRef.current) {
-      // Not from quiz - fetch immediately
-      fetchRecommendation();
+      setShowLoader(false);
       return;
     }
 
@@ -125,110 +101,90 @@ const Recommendation = () => {
     newParams.delete("fromQuiz");
     setSearchParams(newParams, { replace: true });
 
-    // Track when we started for minimum transition time
-    const startTime = Date.now();
-    const MIN_LOADER_TIME = 800; // Minimum 800ms for smooth UX
-
-    // Fetch recommendation and hide loader when ready
-    fetchRecommendation().then(() => {
-      const elapsed = Date.now() - startTime;
-      const remaining = Math.max(0, MIN_LOADER_TIME - elapsed);
-      
-      // Hide loader after minimum time or immediately if enough time passed
-      setTimeout(() => {
-        setShowLoader(false);
-      }, remaining);
-    });
-
-    // Hard fallback so the loader can never loop indefinitely
-    const hardFallback = window.setTimeout(() => {
+    // Brief loader for smooth transition
+    const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 5000);
+    }, 800);
 
-    return () => {
-      window.clearTimeout(hardFallback);
-    };
-  }, [setSearchParams, fetchRecommendation]);
+    return () => clearTimeout(timer);
+  }, [setSearchParams]);
 
   // Ensure the loader exits immediately after a successful submission
   useEffect(() => {
     if (isSubmitted) setShowLoader(false);
   }, [isSubmitted]);
 
-  const showNoMatch = !!answers && quizComplete && !recommendation && !isLoadingRecommendation;
-
   // Don't render anything while redirecting
   if (!answers || !quizComplete) {
     return null;
   }
 
-  const handleSubmit = async () => {
-    if (!formRef.current) return;
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
 
-    const validation = formRef.current.validate();
-    if (!validation.isValid) {
-      toast({
-        title: "Please fill in required fields",
-        description: validation.errors.join(". "),
-        variant: "destructive",
-      });
+  const handleSubmit = async () => {
+    // Validate
+    if (!formData.fullName.trim()) {
+      toast({ title: "Please enter your name", variant: "destructive" });
+      return;
+    }
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      toast({ title: "Please enter a valid email address", variant: "destructive" });
       return;
     }
 
-    const formData = formRef.current.getFormData();
-    
-    // OPTIMISTIC: Show success immediately, send data in background
+    setIsSubmitting(true);
+
+    // OPTIMISTIC: Show success immediately
     setIsSubmitted(true);
     setBackgroundError(null);
 
-    // Extract first name from full name
     const firstName = formData.fullName.trim().split(/\s+/)[0] || formData.fullName;
 
-    // Send data to backend in background
     const payload = {
-      ...formData,
-      reasons: recommendation?.reasons || [],
-      recurring: formData.recurringBilling,
+      fullName: formData.fullName,
+      email: formData.email,
+      businessName: formData.companyName,
+      notes: formData.notes,
+      // Quiz context
+      businessType: answers.businessType,
+      monthlyVolume: answers.monthlyVolume,
+      avgTransaction: answers.avgTransaction,
+      region: answers.location,
+      salesChannel: answers.salesChannel,
+      priorities: answers.priorities,
+      features: answers.features,
       market: market,
+      recommendedProvider: "Advisory Review",
+      logicPath: "advisory",
     };
 
     try {
-      // Send lead email to provider
       const { data, error } = await supabase.functions.invoke("send-lead-email", {
         body: payload,
       });
 
       if (error) throw error;
+      if (!data?.success) throw new Error(data?.error || "Failed to send");
 
-      if (!data?.success) {
-        throw new Error(data?.error || "Failed to send email");
-      }
-
-      // Mark provider as notified
-      setIsProviderNotified(true);
-
-      // Send confirmation email to user
+      // Send confirmation email
       try {
         const { data: confirmData, error: confirmError } = await supabase.functions.invoke("send-confirmation-email", {
-          body: {
-            email: formData.email,
-            firstName: firstName,
-          },
+          body: { email: formData.email, firstName },
         });
-
         if (!confirmError && confirmData?.success) {
           setIsConfirmationSent(true);
         }
       } catch (confirmErr) {
-        // Don't fail the whole flow if confirmation email fails
         console.error("Confirmation email error:", confirmErr);
       }
     } catch (error) {
-      console.error("Error submitting lead:", error);
-      // Show calm inline message for background errors
-      setBackgroundError("We're just double-checking your details. One moment.");
-      // Clear the error after a few seconds
+      console.error("Error submitting application:", error);
+      setBackgroundError("We're just confirming your details. One moment.");
       setTimeout(() => setBackgroundError(null), 5000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -244,13 +200,10 @@ const Recommendation = () => {
             </div>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-            Analysing your answers
+            Thank you for completing the assessment
           </h2>
           <p className="text-muted-foreground text-lg mb-4">
-            Matching your business with the most suitable payment providers
-          </p>
-          <p className="text-sm text-muted-foreground/70">
-            This usually takes a few seconds
+            Preparing your application
           </p>
         </div>
       </div>
@@ -282,281 +235,167 @@ const Recommendation = () => {
       {/* Main Content */}
       <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
 
-        {/* Recommendation Flow */}
-        {recommendation && (
-          <>
-            {isSubmitted ? (
-              /* Post-submit: Only show confirmation - no provider branding */
-              <Card className="border border-primary/30 bg-primary/5 animate-fade-up animation-delay-100">
-                <CardContent className="p-8 md:p-10 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                    <Check className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-3">
-                    We've identified the right option for your business.
-                  </h3>
-                  <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
-                    Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
-                  </p>
-                  
-                  {/* Verification Indicators */}
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
-                    <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
-                      isProviderNotified 
-                        ? 'bg-primary/10 text-primary' 
-                        : 'bg-muted text-muted-foreground'
-                    }`}>
-                      {isProviderNotified ? (
-                        <CheckCircle2 className="w-4 h-4" />
-                      ) : (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      )}
-                      <span>{isProviderNotified ? 'Provider notified' : 'Notifying provider...'}</span>
-                    </div>
-                    
-                    <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
-                      isConfirmationSent 
-                        ? 'bg-primary/10 text-primary' 
-                        : 'bg-muted text-muted-foreground'
-                    }`}>
-                      {isConfirmationSent ? (
-                        <Mail className="w-4 h-4" />
-                      ) : (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      )}
-                      <span>{isConfirmationSent ? 'Confirmation sent' : 'Sending confirmation...'}</span>
-                    </div>
-                  </div>
-                  
-                  {backgroundError && (
-                    <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
-                      {backgroundError}
-                    </p>
+        {isSubmitted ? (
+          /* Post-submit confirmation */
+          <Card className="border border-primary/30 bg-primary/5 animate-fade-up">
+            <CardContent className="p-8 md:p-10 text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                <Check className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-2xl font-semibold text-foreground mb-3">
+                Your application has been received.
+              </h3>
+              <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
+                We'll review your answers and come back with independent guidance on which payment options are most likely to work for your business.
+                Expect to hear from us within 24 to 48 hours.
+              </p>
+              
+              {/* Confirmation indicator */}
+              <div className="flex items-center justify-center gap-2 mt-6">
+                <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
+                  isConfirmationSent 
+                    ? 'bg-primary/10 text-primary' 
+                    : 'bg-muted text-muted-foreground'
+                }`}>
+                  {isConfirmationSent ? (
+                    <Mail className="w-4 h-4" />
+                  ) : (
+                    <Loader2 className="w-4 h-4 animate-spin" />
                   )}
-                </CardContent>
-              </Card>
-            ) : (
-              /* Pre-submit: Show provider details and form */
-              <>
-                <Card className="border-2 border-primary/20 shadow-elegant animate-fade-up animation-delay-100">
-                  <CardContent className="p-8 md:p-10">
-                    <div className="text-center mb-8">
-                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4">
-                        <CreditCard className="w-8 h-8 text-primary" />
-                      </div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-                        {recommendation.name}
-                      </h2>
-                      <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-                        {recommendation.description}
-                      </p>
-                    </div>
+                  <span>{isConfirmationSent ? 'Confirmation sent to your email' : 'Sending confirmation...'}</span>
+                </div>
+              </div>
+              
+              {backgroundError && (
+                <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
+                  {backgroundError}
+                </p>
+              )}
+            </CardContent>
+          </Card>
+        ) : (
+          /* Pre-submit: Assessment complete message + application form */
+          <>
+            {/* Context message */}
+            <div className="text-center mb-10 animate-fade-up">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                Thanks for completing the assessment.
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
+                Based on your answers, we'll review your situation and come back with independent guidance on which payment options are most likely to work for your business.
+              </p>
+              <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+                Please leave your details below so we can follow up.
+              </p>
+            </div>
 
-                    <div className="bg-muted/50 rounded-xl p-6 md:p-8">
-                      <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                        Why {recommendation.name} is right for you
-                      </h3>
-                      <ul className="space-y-3">
-                        {recommendation.reasons.map((reason, index) => (
-                          <li key={index} className="flex items-start gap-3">
-                            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                              <Check className="w-3 h-3 text-primary" />
-                            </div>
-                            <span className="text-foreground">{reason}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-
-
-                {/* Lead Capture Form - Below Recommendation */}
-                <div className="mt-10 animate-fade-up animation-delay-150">
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-semibold text-foreground mb-2">
-                      Get connected to {recommendation.name}
-                    </h3>
-                    <p className="text-muted-foreground max-w-md mx-auto">
-                      If you'd like us to connect you to this provider, just share your contact details below. We already have your business information from your answers.
-                    </p>
+            {/* Application Form */}
+            <Card className="border border-border/50 animate-fade-up animation-delay-100">
+              <CardContent className="p-6 md:p-8">
+                <div className="space-y-5">
+                  {/* Name */}
+                  <div className="space-y-2">
+                    <Label htmlFor="fullName" className="text-sm font-medium text-foreground">
+                      Name <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="fullName"
+                      type="text"
+                      autoComplete="name"
+                      placeholder="Your full name"
+                      value={formData.fullName}
+                      onChange={(e) => handleInputChange("fullName", e.target.value)}
+                      className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                      required
+                    />
                   </div>
 
-                  <Card className="border border-border/50">
-                    <CardContent className="p-6 md:p-8">
-                      <LeadCaptureForm
-                        ref={formRef}
-                        quizAnswers={answers}
-                        recommendedProvider={recommendation.name}
-                        recommendationReasons={recommendation.reasons}
-                        logicPath="recommendation"
-                      />
+                  {/* Email */}
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-sm font-medium text-foreground">
+                      Email <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      autoComplete="email"
+                      placeholder="you@company.com"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                      required
+                    />
+                  </div>
 
-                      {/* Primary CTA */}
-                      <div className="mt-8 text-center">
-                        <Button 
-                          variant="hero" 
-                          size="xl" 
-                          onClick={handleSubmit}
-                          disabled={isSubmitting}
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <Loader2 className="w-5 h-5 animate-spin" />
-                              Sending...
-                            </>
-                          ) : (
-                            <>
-                              Connect me to this provider
-                              <ArrowRight className="w-5 h-5" />
-                            </>
-                          )}
-                        </Button>
-                        <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
-                          We'll share your details along with the context from your answers, so the provider can respond more accurately.
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  {/* Company Name */}
+                  <div className="space-y-2">
+                    <Label htmlFor="companyName" className="text-sm font-medium text-foreground">
+                      Company Name
+                    </Label>
+                    <Input
+                      id="companyName"
+                      type="text"
+                      autoComplete="organization"
+                      placeholder="Your company name"
+                      value={formData.companyName}
+                      onChange={(e) => handleInputChange("companyName", e.target.value)}
+                      className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                    />
+                  </div>
+
+                  {/* Notes */}
+                  <div className="space-y-2">
+                    <Label htmlFor="notes" className="text-sm font-medium text-foreground">
+                      Anything else we should know?
+                    </Label>
+                    <Textarea
+                      id="notes"
+                      placeholder="Optional. Add any context that might help us advise you better."
+                      value={formData.notes}
+                      onChange={(e) => handleInputChange("notes", e.target.value)}
+                      className="min-h-[100px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
+                    />
+                  </div>
                 </div>
-              </>
-            )}
+
+                {/* Submit CTA */}
+                <div className="mt-8 text-center">
+                  <Button 
+                    variant="hero" 
+                    size="xl" 
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Apply for Payment Advisory
+                        <ArrowRight className="w-5 h-5" />
+                      </>
+                    )}
+                  </Button>
+                  <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
+                    Your answers from the assessment will be included so we have full context.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </>
         )}
 
-        {/* No Match Fallback Flow */}
-        {showNoMatch && (
-          <>
-            {isSubmitted ? (
-              /* Post-submit: Only show confirmation - no provider branding */
-              <Card className="border border-primary/30 bg-primary/5 animate-fade-up animation-delay-100">
-                <CardContent className="p-8 md:p-10 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                    <Check className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-3">
-                    We've identified the right option for your business.
-                  </h3>
-                  <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
-                    Based on your answers, we're preparing an introduction to a suitable payment provider. We'll be in touch within 24 hours.
-                  </p>
-                  
-                  {/* Verification Indicators */}
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
-                    <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
-                      isProviderNotified 
-                        ? 'bg-primary/10 text-primary' 
-                        : 'bg-muted text-muted-foreground'
-                    }`}>
-                      {isProviderNotified ? (
-                        <CheckCircle2 className="w-4 h-4" />
-                      ) : (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      )}
-                      <span>{isProviderNotified ? 'Provider notified' : 'Notifying provider...'}</span>
-                    </div>
-                    
-                    <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
-                      isConfirmationSent 
-                        ? 'bg-primary/10 text-primary' 
-                        : 'bg-muted text-muted-foreground'
-                    }`}>
-                      {isConfirmationSent ? (
-                        <Mail className="w-4 h-4" />
-                      ) : (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      )}
-                      <span>{isConfirmationSent ? 'Confirmation sent' : 'Sending confirmation...'}</span>
-                    </div>
-                  </div>
-                  
-                  {backgroundError && (
-                    <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
-                      {backgroundError}
-                    </p>
-                  )}
-                </CardContent>
-              </Card>
-            ) : (
-              /* Pre-submit: Show fallback message and form */
-              <>
-                <Card className="border-2 border-border shadow-elegant animate-fade-up animation-delay-100">
-                  <CardContent className="p-8 md:p-10">
-                    <div className="text-center">
-                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-muted mb-4">
-                        <MessageCircle className="w-8 h-8 text-muted-foreground" />
-                      </div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                        We couldn't find an exact match
-                      </h2>
-                      <p className="text-muted-foreground text-lg max-w-md mx-auto">
-                        Based on your answers, we'd like to help you personally. Speak directly with one of our payment experts.
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Lead Capture Form - Below Fallback Message */}
-                <div className="mt-10 animate-fade-up animation-delay-150">
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-semibold text-foreground mb-2">
-                      Let us help you find the right fit
-                    </h3>
-                    <p className="text-muted-foreground max-w-md mx-auto">
-                      If you'd like us to connect you with a payment expert, just share your contact details below. We already have your business information from your answers.
-                    </p>
-                  </div>
-
-                  <Card className="border border-border/50">
-                    <CardContent className="p-6 md:p-8">
-                      <LeadCaptureForm
-                        ref={formRef}
-                        quizAnswers={answers}
-                        recommendedProvider={null}
-                        logicPath="fallback"
-                      />
-
-                      {/* Fallback CTA */}
-                      <div className="mt-8 text-center">
-                        <Button 
-                          variant="hero" 
-                          size="xl" 
-                          onClick={handleSubmit}
-                          disabled={isSubmitting}
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <Loader2 className="w-5 h-5 animate-spin" />
-                              Sending...
-                            </>
-                          ) : (
-                            <>
-                              Speak to one of our experts
-                              <ArrowRight className="w-5 h-5" />
-                            </>
-                          )}
-                        </Button>
-                        <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
-                          We'll share your details along with the context from your answers, so the provider can respond more accurately.
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </>
-            )}
-          </>
-        )}
-
-        {/* Retake Quiz CTA - only show after loading completes and not submitted */}
-        {!isLoadingRecommendation && !isSubmitted && (
+        {/* Retake assessment link - only pre-submit */}
+        {!isSubmitted && (
           <div className="text-center mt-10 animate-fade-up animation-delay-200">
-            <p className="text-muted-foreground mb-4">Not what you expected?</p>
+            <p className="text-muted-foreground mb-4">Need to change your answers?</p>
             <a
               href="/assessment?start=true"
               className="text-primary font-medium hover:underline"
             >
-              Answer again →
+              Retake assessment →
             </a>
           </div>
         )}
