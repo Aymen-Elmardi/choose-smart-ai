@@ -120,7 +120,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "priorities",
     question: "What matters most to you right now?",
-    subtext: "Select up to 2",
+    subtext: "This helps us match provider strengths to what you actually need.",
     multiSelect: true,
     maxSelect: 2,
     options: [
