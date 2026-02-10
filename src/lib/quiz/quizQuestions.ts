@@ -107,6 +107,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "avgTransaction",
     question: "What's your typical transaction size?",
+    subtext: "Transaction size influences fraud screening sensitivity and chargeback exposure.",
     options: [
       "Under £20",
       "£20–£100",
