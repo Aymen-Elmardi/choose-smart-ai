@@ -68,6 +68,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
     questions.push({
       id: "terminalType",
       question: "Do you need a card terminal?",
+      subtext: "Terminal type affects onboarding requirements and hardware compatibility.",
       options: [
         "Fixed terminal (countertop)",
         "Portable terminal (SIM or Wi-Fi)",
