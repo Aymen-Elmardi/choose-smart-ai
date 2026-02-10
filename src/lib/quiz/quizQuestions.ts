@@ -144,6 +144,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "deliveryTimeline",
     question: "How long after a customer pays do they receive the product or service?",
+    subtext: "Longer delivery windows increase chargeback exposure and trigger stricter reserve requirements.",
     options: [
       "Instant/Same Day",
       "Within 1-7 Days",
