@@ -177,6 +177,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "contactTime",
     question: "When is the best time to contact you?",
+    subtext: "We'll reach out during your preferred window.",
     options: getContactTimeOptions(answers.location),
   });
 
