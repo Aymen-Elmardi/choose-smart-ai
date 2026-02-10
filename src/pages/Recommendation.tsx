@@ -373,7 +373,7 @@ const Recommendation = () => {
                       </>
                     ) : (
                       <>
-                        Apply for Payment Advisory
+                        Submit My Assessment
                         <ArrowRight className="w-5 h-5" />
                       </>
                     )}
