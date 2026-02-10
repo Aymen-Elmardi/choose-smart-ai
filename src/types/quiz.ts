@@ -47,6 +47,7 @@ export const INITIAL_QUIZ_ANSWERS: QuizAnswers = {
   deliveryTimeline: "",
   buyingIntent: "",
   contactTime: "",
+  previousRestriction: "",
 };
 
 /**
