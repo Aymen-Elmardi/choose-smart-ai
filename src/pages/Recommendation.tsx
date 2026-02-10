@@ -243,11 +243,11 @@ const Recommendation = () => {
                 <Check className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-2xl font-semibold text-foreground mb-3">
-                Your application has been received.
+                Thanks. Your assessment has been received.
               </h3>
               <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
-                We'll review your answers and come back with independent guidance on which payment options are most likely to work for your business.
-                Expect to hear from us within 24 to 48 hours.
+                We now have enough context to review your situation properly.
+                If this looks like a case we can help with, we'll follow up with next steps.
               </p>
               
               {/* Confirmation indicator */}
