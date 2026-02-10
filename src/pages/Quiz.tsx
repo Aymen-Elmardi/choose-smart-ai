@@ -215,7 +215,7 @@ const Quiz = () => {
       contactTime: ans.contactTime,
       terminalType: ans.terminalType,
       previousRestriction: ans.previousRestriction,
-  };
+    };
 
   const handleNext = () => {
     if (currentStep <= questionCount) {
