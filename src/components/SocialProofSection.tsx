@@ -15,7 +15,7 @@ const testimonials = [
     result: "Zero account issues in 18 months",
   },
   {
-    quote: "The quiz took 45 seconds. Would've taken me weeks to research this myself.",
+    quote: "The assessment took under a minute. The follow-up advice saved me weeks of research.",
     businessType: "Retail Chain",
     location: "Birmingham",
     result: "20+ hours saved",
