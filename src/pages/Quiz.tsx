@@ -216,6 +216,7 @@ const Quiz = () => {
       terminalType: ans.terminalType,
       previousRestriction: ans.previousRestriction,
     };
+  };
 
   const handleNext = () => {
     if (currentStep <= questionCount) {
