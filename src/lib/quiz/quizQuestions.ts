@@ -169,6 +169,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "location",
     question: "Where is your business based?",
+    subtext: "Cross-border activity changes approval rules, settlement timing, and risk review.",
     options: ["UK", "EU", "UK & EU"],
   });
 
