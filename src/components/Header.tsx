@@ -41,7 +41,7 @@ const Header = () => {
             </Link>
             <Button variant="hero" size="default" asChild>
               <Link to="/assessment?start=true" replace>
-                Get Started
+                Get Independent Advice
               </Link>
             </Button>
           </nav>
