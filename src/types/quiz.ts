@@ -26,7 +26,7 @@ export interface QuizAnswers {
   deliveryTimeline?: string;
   buyingIntent?: string;
   contactTime?: string;
-}
+  previousRestriction?: string;
 
 /**
  * Initial empty state for QuizAnswers
