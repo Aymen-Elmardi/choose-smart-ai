@@ -66,7 +66,7 @@ const Quiz = () => {
     );
 
     return () => {
-      document.title = "ChosePayments - Payment Provider Risk Assessment";
+      document.title = "ChosePayments - Independent Payment Advisory";
     };
   }, []);
 
