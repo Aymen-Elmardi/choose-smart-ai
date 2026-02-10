@@ -56,9 +56,6 @@ const SuccessPreviewSection = () => {
           </div>
         </div>
 
-        <p className={`text-center mt-10 text-sm text-muted-foreground reveal stagger-4 ${isInView ? "visible" : ""}`}>
-          Completely free. No signup required. No automated recommendations.
-        </p>
       </div>
     </section>
   );
