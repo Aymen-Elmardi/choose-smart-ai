@@ -86,6 +86,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "businessType",
     question: "Which best describes your business?",
+    subtext: "Different models are underwritten very differently by providers.",
     options: businessTypeOptions,
   });
 
