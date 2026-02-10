@@ -278,7 +278,7 @@ const BestPaymentProcessorUK = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-primary mt-1">•</span>
-                      Free software tools
+                      Included software tools
                     </li>
                   </ul>
                 </div>

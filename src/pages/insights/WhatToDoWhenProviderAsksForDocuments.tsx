@@ -31,7 +31,7 @@ const WhatToDoWhenProviderAsksForDocuments = () => {
 
   useSEO({
     title: "What To Do When a Payment Provider Asks for More Documents | ChosePayments",
-    description: "Learn why payment providers request additional documents, what these requests mean, and how to respond confidently. Get a free document checklist."
+    description: "Learn why payment providers request additional documents, what these requests mean, and how to respond confidently. Includes a document checklist."
   });
 
   return (

@@ -399,7 +399,7 @@ const StripeVsSquareVsPaypal = () => {
                       </li>
                       <li className="flex items-start gap-2">
                         <Check className="w-4 h-4 text-primary mt-1 shrink-0" />
-                        <span className="text-muted-foreground text-sm">Free software tools</span>
+                        <span className="text-muted-foreground text-sm">Included software tools</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <Check className="w-4 h-4 text-primary mt-1 shrink-0" />
