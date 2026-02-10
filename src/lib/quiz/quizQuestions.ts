@@ -157,6 +157,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "buyingIntent",
     question: "When are you looking to move forward?",
+    subtext: "Timing helps us prioritise your case and prepare the right guidance.",
     options: [
       "Ready to move now",
       "In the next 1–3 months",
