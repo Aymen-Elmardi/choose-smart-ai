@@ -298,6 +298,19 @@ const Quiz = () => {
       <QuizHeader progress={progress} showBack onBack={handleBack} />
       <div className="flex-1 flex items-center justify-center p-6">
         <div className="max-w-2xl w-full animate-fade-up" key={currentStep}>
+          {currentStep === 1 && (
+            <div className="text-center mb-10">
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                A short assessment to understand your payment risk and approval reality
+              </h1>
+              <p className="text-muted-foreground max-w-xl mx-auto text-base leading-relaxed">
+                This assessment helps us understand how your business will be viewed by payment providers, where approval friction typically appears, and what mistakes to avoid.
+              </p>
+              <p className="text-muted-foreground max-w-xl mx-auto text-sm mt-3">
+                There are no instant recommendations. Every case is reviewed manually.
+              </p>
+            </div>
+          )}
           <div className="text-center mb-8">
             <p className="text-sm text-muted-foreground mb-2">
               Question {currentStep} of {questionCount}
