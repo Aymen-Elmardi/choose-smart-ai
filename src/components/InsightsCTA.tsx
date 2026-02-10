@@ -75,7 +75,7 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
           
           {/* Trust indicator */}
           <p className="mt-6 text-sm text-white/60">
-            Takes 2 minutes • No payment required • Human-reviewed guidance
+            Takes 2 minutes • Human-reviewed guidance
           </p>
         </div>
       </div>
