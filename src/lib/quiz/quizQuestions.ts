@@ -54,6 +54,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "salesChannel",
     question: "How will you accept payments?",
+    subtext: "This determines which providers can support your setup and how risk is assessed.",
     options: [
       "Online only",
       "In person only",
@@ -67,6 +68,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
     questions.push({
       id: "terminalType",
       question: "Do you need a card terminal?",
+      subtext: "Terminal type affects onboarding requirements and hardware compatibility.",
       options: [
         "Fixed terminal (countertop)",
         "Portable terminal (SIM or Wi-Fi)",
@@ -84,6 +86,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "businessType",
     question: "Which best describes your business?",
+    subtext: "Different models are underwritten very differently by providers.",
     options: businessTypeOptions,
   });
 
@@ -91,6 +94,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "monthlyVolume",
     question: "Roughly how much do you expect to process per month?",
+    subtext: "This helps us understand approval thresholds, reserve risk, and provider appetite.",
     options: [
       "Just getting started",
       "Under £10k",
@@ -103,6 +107,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "avgTransaction",
     question: "What's your typical transaction size?",
+    subtext: "Transaction size influences fraud screening sensitivity and chargeback exposure.",
     options: [
       "Under £20",
       "£20–£100",
@@ -115,7 +120,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "priorities",
     question: "What matters most to you right now?",
-    subtext: "Select up to 2",
+    subtext: "Select up to 2. This helps us match provider strengths to what you actually need.",
     multiSelect: true,
     maxSelect: 2,
     options: [
@@ -130,6 +135,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "industry",
     question: "What industry best describes your business?",
+    subtext: "Industry classification directly affects which providers will accept your application.",
     type: "dropdown",
     dropdownOptions: INDUSTRY_OPTIONS,
   });
@@ -138,6 +144,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "deliveryTimeline",
     question: "How long after a customer pays do they receive the product or service?",
+    subtext: "Longer delivery windows increase chargeback exposure and trigger stricter reserve requirements.",
     options: [
       "Instant/Same Day",
       "Within 1-7 Days",
@@ -150,6 +157,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "buyingIntent",
     question: "When are you looking to move forward?",
+    subtext: "Timing helps us prioritise your case and prepare the right guidance.",
     options: [
       "Ready to move now",
       "In the next 1–3 months",
@@ -161,6 +169,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "location",
     question: "Where is your business based?",
+    subtext: "Cross-border activity changes approval rules, settlement timing, and risk review.",
     options: ["UK", "EU", "UK & EU"],
   });
 
@@ -168,6 +177,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "contactTime",
     question: "When is the best time to contact you?",
+    subtext: "We'll reach out during your preferred window.",
     options: getContactTimeOptions(answers.location),
   });
 
