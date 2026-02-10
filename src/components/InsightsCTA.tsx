@@ -8,9 +8,7 @@ interface InsightsCTAProps {
 
 /**
  * Standardized Call-to-Action block for all /insights articles.
- * High-contrast design with compelling copy to drive assessment conversions.
- * 
- * Usage: Add to the end of every article in the insights section.
+ * Repositioned as advisory-led rather than automated recommendation.
  */
 const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
   if (variant === "compact") {
@@ -19,15 +17,15 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-1">
-              Not sure if your setup is optimized?
+              Not sure if your setup is right for your business?
             </h3>
             <p className="text-sm text-muted-foreground">
-              Get a personalized risk and pricing analysis in 2 minutes.
+              Apply for independent payment advice tailored to your situation.
             </p>
           </div>
           <Button asChild className="shrink-0">
             <Link to="/assessment">
-              Take Assessment <ArrowRight className="w-4 h-4 ml-2" />
+              Get Independent Advice <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>
         </div>
@@ -48,19 +46,19 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-white/90 text-sm font-medium mb-6">
             <Shield className="w-4 h-4" />
-            Free Risk Assessment
+            Independent Payment Advisory
           </div>
           
           {/* Headline */}
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 max-w-2xl">
-            Stop Gambling with Your Revenue. Get the Expert Hand-Hold.
+            Work With an Independent Payments Advisor
           </h2>
           
           {/* Body text */}
           <p className="text-lg text-white/85 mb-8 max-w-2xl leading-relaxed">
-            Your payment setup is too critical to leave to chance. Our Personalized Risk & Pricing 
-            Report analyzes your business's unique risk profile and matches you with a provider 
-            built for your success.
+            Your payment setup is too important to leave to guesswork. Tell us about your business and
+            we'll review your situation independently, then come back with honest guidance on which
+            options are most likely to work.
           </p>
           
           {/* CTA Button */}
@@ -70,14 +68,14 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
             className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg hover:shadow-xl transition-all w-full sm:w-auto h-auto sm:h-12 py-3 sm:py-0 whitespace-normal sm:whitespace-nowrap"
           >
             <Link to="/assessment" className="flex items-center justify-center gap-2 flex-wrap sm:flex-nowrap text-center">
-              Get Your Personalized Risk & Pricing Report
+              Apply for Payment Advisory
               <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>
           
           {/* Trust indicator */}
           <p className="mt-6 text-sm text-white/60">
-            Takes 2 minutes • No payment required • Instant results
+            Takes 2 minutes • No payment required • Human-reviewed guidance
           </p>
         </div>
       </div>

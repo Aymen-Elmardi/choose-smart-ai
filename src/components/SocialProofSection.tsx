@@ -33,7 +33,7 @@ const SocialProofSection = () => {
             What Businesses Say
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
-            Real results from businesses who found their perfect match.
+            Real results from businesses who received independent payment advice.
           </p>
         </div>
 

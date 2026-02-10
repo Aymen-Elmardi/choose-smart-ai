@@ -15,22 +15,21 @@ const HeroSectionUS = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center animate-fade-up">
           <p className="text-sm font-medium text-primary mb-4 tracking-wide uppercase">
-            Independent Payment Advisor
+            Independent Payment Advisory
           </p>
           <h1 className="heading-xl text-foreground text-balance">
-            Find the Best Payment Provider for Your Business in{" "}
-            <span className="text-primary">60 Seconds</span>
+            Get Independent Payment Advice for Your US Business
           </h1>
           <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              Many US businesses choose the wrong payment provider and overpay. Answer a few questions and get a personalised match based on how you operate.
+              Many US businesses choose the wrong payment provider and overpay. Tell us about your business and we'll review your situation with independent guidance.
             </p>
           </div>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
             <div className="flex flex-col items-center">
               <Button variant="hero" size="xl" asChild>
                 <USQuizLink>
-                  Answer a few quick questions
+                  Apply for Payment Advisory
                   <ArrowRight className="w-5 h-5" />
                 </USQuizLink>
               </Button>
@@ -43,16 +42,13 @@ const HeroSectionUS = () => {
           <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground justify-center flex-wrap">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-green-500" />
-              Free & unbiased
+              Independent advisory
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-green-500" />
-              No signup required
+              Human-led guidance
             </div>
           </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            We're compensated by payment providers when a relevant introduction is made. Your details are only shared for that purpose.
-          </p>
         </div>
       </div>
     </section>

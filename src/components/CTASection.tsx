@@ -35,10 +35,10 @@ const CTASection = () => {
           </div>
           
           <h2 className="heading-lg text-background mb-6">
-            Ready to Understand Your Provider Fit?
+            Ready for Independent Payment Advice?
           </h2>
           <p className="text-lg md:text-xl text-background/70 max-w-2xl mx-auto mb-10">
-            Get your risk assessment in 60 seconds. No sales pressure, no provider influence.
+            Tell us about your business and we'll come back with honest, independent guidance. No sales pressure.
           </p>
           <Button 
             variant="hero"
@@ -46,7 +46,7 @@ const CTASection = () => {
             asChild
           >
             <Link to="/assessment?start=true" replace>
-              Get My Risk Assessment
+              Apply for Payment Advisory
               <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>

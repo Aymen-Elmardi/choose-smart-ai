@@ -79,7 +79,7 @@ const Header = () => {
                   <SheetClose asChild>
                     <Button variant="hero" className="mt-4" asChild>
                       <Link to="/assessment?start=true" replace onClick={() => setIsOpen(false)}>
-                        Get Started
+                        Get Independent Advice
                       </Link>
                     </Button>
                   </SheetClose>

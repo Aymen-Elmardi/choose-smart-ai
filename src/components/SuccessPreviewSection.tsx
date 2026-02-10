@@ -3,24 +3,24 @@ import { useInView } from "@/hooks/useInView";
 
 const deliverables = [
   {
-    title: "Personalized Risk & Pricing Report",
-    description: "Tailored to your business type, volume, and industry",
+    title: "Independent Situation Review",
+    description: "We review your business type, volume, and risk profile with no provider bias",
   },
   {
-    title: "Top 3 Provider Matches",
-    description: "Ranked by fit, not by who pays us the most",
+    title: "Honest Payment Guidance",
+    description: "Clear advice on which payment options are most likely to work for your business",
   },
   {
-    title: "Fee Comparison for Your Volume",
-    description: "See exactly what you'd pay with each provider",
+    title: "Risk and Fit Assessment",
+    description: "Understand where your business sits from an underwriting perspective",
   },
   {
-    title: "Integration Requirements Checklist",
-    description: "Know what you need before you commit",
+    title: "Practical Next Steps",
+    description: "Know exactly what to do next, whether that's applying or addressing gaps first",
   },
   {
-    title: "Direct Provider Contact",
-    description: "No middlemen, no sales calls from us",
+    title: "Human Follow-Up",
+    description: "A real person reviews your answers and responds with tailored advice",
   },
 ];
 
@@ -32,10 +32,10 @@ const SuccessPreviewSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
         <h2 className="heading-lg text-foreground">
-            Your Free Report Includes
+            What You Get From Our Advisory
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
-            In 60 seconds, you'll receive everything you need to make a confident decision.
+            Complete the assessment and a payments advisor will review your situation independently.
           </p>
         </div>
 
@@ -57,7 +57,7 @@ const SuccessPreviewSection = () => {
         </div>
 
         <p className={`text-center mt-10 text-sm text-muted-foreground reveal stagger-4 ${isInView ? "visible" : ""}`}>
-          Completely free. No signup required. No spam.
+          Completely free. No signup required. No automated recommendations.
         </p>
       </div>
     </section>

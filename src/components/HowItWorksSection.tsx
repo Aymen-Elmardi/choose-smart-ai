@@ -6,19 +6,19 @@ const steps = [
     icon: ClipboardList,
     step: "01",
     title: "Tell Us About Your Business",
-    description: "Answer a few quick questions about your business type, volume, and operational reality. We need the full picture.",
+    description: "Answer a few quick questions about your business type, volume, and operational reality. This gives us the context we need.",
   },
   {
     icon: Sparkles,
     step: "02",
-    title: "See Your Risk Assessment",
-    description: "We analyze your profile against provider underwriting criteria and risk appetites, not just features and fees.",
+    title: "We Review Your Situation",
+    description: "A payments advisor reviews your answers independently, assessing your risk profile and operational fit.",
   },
   {
     icon: Handshake,
     step: "03",
-    title: "Get Strategic Guidance",
-    description: "Connect with providers that actually fit your business, or understand why now isn't the right time.",
+    title: "Receive Independent Guidance",
+    description: "We come back with honest advice on which payment options are most likely to work for your business.",
   },
 ];
 
@@ -30,7 +30,7 @@ const HowItWorksSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-20 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            How ChosePayments Assesses Your Provider Fit
+            How Our Payment Advisory Works
           </h2>
         </div>
 

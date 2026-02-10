@@ -5,25 +5,25 @@ const examples = [
   {
     icon: ShoppingCart,
     businessType: "Ecommerce Store",
-    recommendation: "Stripe",
+    advisory: "Online payment strategy",
     color: "bg-indigo-500",
   },
   {
     icon: Coffee,
     businessType: "Coffee Shop",
-    recommendation: "Square",
+    advisory: "In-person payment setup",
     color: "bg-emerald-500",
   },
   {
     icon: RefreshCw,
     businessType: "Subscription Platform",
-    recommendation: "Braintree",
+    advisory: "Recurring billing guidance",
     color: "bg-blue-500",
   },
   {
     icon: Store,
     businessType: "Marketplace",
-    recommendation: "Adyen",
+    advisory: "Multi-seller payment advice",
     color: "bg-amber-500",
   },
 ];
@@ -36,7 +36,7 @@ const ExamplesSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Get the Right Provider for YOUR Business
+            Tailored Advisory for Every Business Type
           </h2>
         </div>
 
@@ -49,14 +49,14 @@ const ExamplesSection = () => {
               <div className={`w-14 h-14 mx-auto rounded-xl ${example.color} flex items-center justify-center mb-4`}>
                 <example.icon className="w-7 h-7 text-primary-foreground" />
               </div>
-              <p className="text-muted-foreground text-sm mb-1">{example.businessType}</p>
-              <p className="text-xl font-bold text-foreground">→ {example.recommendation}</p>
+              <p className="text-lg font-bold text-foreground mb-1">{example.businessType}</p>
+              <p className="text-sm text-muted-foreground">{example.advisory}</p>
             </div>
           ))}
         </div>
 
         <p className={`text-center mt-10 text-muted-foreground reveal stagger-4 ${isInView ? "visible" : ""}`}>
-          Your results are personalized based on your business profile.
+          Every business is different. Our advice is tailored to your specific situation.
         </p>
       </div>
     </section>

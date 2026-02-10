@@ -11,7 +11,7 @@ const valueProps = [
   {
     icon: Clock,
     title: "3+ Hours Saved",
-    description: "Skip weeks of research. Get matched in 60 seconds.",
+    description: "Skip weeks of research. Get clarity in minutes.",
     value: "Time back",
   },
   {
