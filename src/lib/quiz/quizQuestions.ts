@@ -135,6 +135,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
   questions.push({
     id: "industry",
     question: "What industry best describes your business?",
+    subtext: "Industry classification directly affects which providers will accept your application.",
     type: "dropdown",
     dropdownOptions: INDUSTRY_OPTIONS,
   });
