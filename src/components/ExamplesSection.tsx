@@ -1,29 +1,29 @@
-import { ShoppingCart, Coffee, RefreshCw, Store } from "lucide-react";
+import { ShoppingCart, RefreshCw, Store, Building2 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const examples = [
   {
     icon: ShoppingCart,
-    businessType: "Ecommerce Store",
-    advisory: "Online payment strategy",
+    businessType: "High-Volume Ecommerce",
+    advisory: "Gateway audit and acceptance optimisation",
     color: "bg-indigo-500",
   },
   {
-    icon: Coffee,
-    businessType: "Coffee Shop",
-    advisory: "In-person payment setup",
+    icon: RefreshCw,
+    businessType: "SaaS and Subscription Platforms",
+    advisory: "Recurring billing and churn reduction strategy",
     color: "bg-emerald-500",
   },
   {
-    icon: RefreshCw,
-    businessType: "Subscription Platform",
-    advisory: "Recurring billing guidance",
+    icon: Store,
+    businessType: "Marketplace Operators",
+    advisory: "Multi-seller payout and compliance review",
     color: "bg-blue-500",
   },
   {
-    icon: Store,
-    businessType: "Marketplace",
-    advisory: "Multi-seller payment advice",
+    icon: Building2,
+    businessType: "Omnichannel Retailers",
+    advisory: "Unified payment infrastructure advisory",
     color: "bg-amber-500",
   },
 ];
@@ -36,7 +36,7 @@ const ExamplesSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Tailored Advisory for Every Business Type
+            Who We Work With
           </h2>
         </div>
 
@@ -56,7 +56,7 @@ const ExamplesSection = () => {
         </div>
 
         <p className={`text-center mt-10 text-muted-foreground reveal stagger-4 ${isInView ? "visible" : ""}`}>
-          Every business is different. Our advice is tailored to your specific situation.
+          We work with organisations processing substantial volumes. If you are an early-stage startup or processing under £1M, our premium review may not be the right fit.
         </p>
       </div>
     </section>

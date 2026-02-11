@@ -1,21 +1,21 @@
-import { HelpCircle, EyeOff, Target } from "lucide-react";
+import { TrendingDown, EyeOff, ShieldAlert } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const problems = [
   {
-    icon: HelpCircle,
-    title: "Paralyzed by 50+ Options",
-    description: "Stripe, PayPal, Square, acquirers, banks... you're expected to become a payments expert overnight.",
+    icon: TrendingDown,
+    title: "Revenue Leaking Through Declines",
+    description: "Poor authorisation rates and checkout friction quietly erode margins, undoing marketing and sales effort.",
   },
   {
     icon: EyeOff,
-    title: "Surprise Charges Eating Margins",
-    description: "The advertised rate is never what you actually pay. Hidden fees add up fast.",
+    title: "Hidden Fees Compounding at Scale",
+    description: "At high volumes, opaque pricing structures cost six or seven figures annually.",
   },
   {
-    icon: Target,
-    title: "Generic Advice That Doesn't Fit",
-    description: "Every 'best provider' list ignores that your business is unique.",
+    icon: ShieldAlert,
+    title: "Compliance Exposure Growing Silently",
+    description: "PCI, SCA, and scheme rule changes create risk that surfaces without warning.",
   },
 ];
 
@@ -27,7 +27,7 @@ const ProblemSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-16 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            The Fastest Way to Find Your Perfect Payment Provider
+            The Hidden Costs of an Unaudited Payment Stack
           </h2>
         </div>
 
@@ -47,7 +47,7 @@ const ProblemSection = () => {
         </div>
 
         <p className={`text-center mt-16 text-lg text-muted-foreground max-w-2xl mx-auto reveal stagger-4 ${isInView ? "visible" : ""}`}>
-          Most businesses pick too fast and regret it within 6 months. You don't have to.
+          At scale, your payment gateway is not a backend detail. It is the engine of your revenue.
         </p>
       </div>
     </section>

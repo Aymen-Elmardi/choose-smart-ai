@@ -1,30 +1,26 @@
-import { Scale, Clock, PiggyBank, MapPin } from "lucide-react";
+import { TrendingUp, Receipt, Target, MapPin } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const valueProps = [
   {
-    icon: Scale,
-    title: "100% Unbiased",
-    description: "We're not tied to any provider. No kickbacks, no hidden agendas.",
-    value: "Independent advice",
+    icon: TrendingUp,
+    title: "Processing £1M+ Annually",
+    description: "Our methodology is designed for merchants where transaction volume justifies a strategic review.",
   },
   {
-    icon: Clock,
-    title: "3+ Hours Saved",
-    description: "Skip weeks of research. Get clarity in minutes.",
-    value: "Time back",
+    icon: Receipt,
+    title: "Fixed-Scope, Clear Pricing",
+    description: "One flat fee, clearly defined scope. No retainers, no ongoing commitments.",
   },
   {
-    icon: PiggyBank,
-    title: "Avg 0.3% Saved Per Transaction",
-    description: "Avoid hidden fees and overpaying for features you don't need.",
-    value: "Real money saved",
+    icon: Target,
+    title: "Outcome-Driven Methodology",
+    description: "Every recommendation is tied to measurable impact: revenue captured, costs reduced, risk mitigated.",
   },
   {
     icon: MapPin,
-    title: "UK & EU Specialists",
-    description: "Tailored for UK and EU regulations, compliance, and pricing.",
-    value: "Local expertise",
+    title: "UK and EU Specialists",
+    description: "Deep expertise in UK and EU regulatory frameworks, scheme rules, and acquirer relationships.",
   },
 ];
 
@@ -36,7 +32,7 @@ const ValuePropsSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-16 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            Everything You Need, Nothing You Don't
+            Built for Businesses Where Payments Are Mission-Critical
           </h2>
         </div>
 

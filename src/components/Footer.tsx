@@ -39,7 +39,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          © 2026 ChosePayments. All rights reserved. | Based in the United Kingdom | Independent Payment Advisory
+          © 2026 ChosePayments. All rights reserved. | Based in the United Kingdom | Payment Strategy Advisory
         </div>
       </div>
     </footer>

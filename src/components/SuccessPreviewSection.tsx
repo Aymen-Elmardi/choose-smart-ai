@@ -3,24 +3,24 @@ import { useInView } from "@/hooks/useInView";
 
 const deliverables = [
   {
-    title: "Independent Situation Review",
-    description: "We review your business type, volume, and risk profile with no provider bias",
+    title: "Infrastructure and Redundancy Assessment",
+    description: "Audit your gateway, processor, and acquirer setup for single points of failure",
   },
   {
-    title: "Honest Payment Guidance",
-    description: "Clear advice on which payment options are most likely to work for your business",
+    title: "Fee Analysis and Negotiation Strategy",
+    description: "Benchmark your rates against industry data and identify savings opportunities",
   },
   {
-    title: "Risk and Fit Assessment",
-    description: "Understand where your business sits from an underwriting perspective",
+    title: "Risk Profiling and Compliance Review",
+    description: "Evaluate PCI, SCA, and fraud exposure across your payment stack",
   },
   {
-    title: "Practical Next Steps",
-    description: "Know exactly what to do next, whether that's applying or addressing gaps first",
+    title: "Acceptance Rate Optimisation",
+    description: "Identify checkout friction, decline patterns, and authorisation improvements",
   },
   {
-    title: "Human Follow-Up",
-    description: "A real person reviews your answers and responds with tailored advice",
+    title: "Architecture Recommendations",
+    description: "Provider mix, routing strategy, and scalability guidance tailored to your business model",
   },
 ];
 
@@ -31,11 +31,11 @@ const SuccessPreviewSection = () => {
     <section className="section-padding bg-background" ref={ref}>
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
-        <h2 className="heading-lg text-foreground">
-            What You Get From Our Advisory
+          <h2 className="heading-lg text-foreground">
+            What the Payment Strategy Review Includes
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
-            Complete the assessment and a payments advisor will review your situation independently.
+            A fixed-scope, fee-based engagement designed for established merchants.
           </p>
         </div>
 
@@ -55,7 +55,6 @@ const SuccessPreviewSection = () => {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );
