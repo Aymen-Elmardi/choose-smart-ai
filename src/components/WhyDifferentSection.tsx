@@ -1,21 +1,21 @@
-import { Shield, Ban, MessageCircle } from "lucide-react";
+import { Shield, TrendingUp, MessageCircle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const differentiators = [
   {
     icon: Shield,
-    title: "Independent Advisory",
-    description: "No provider can pay to influence our assessments. We recommend based on fit, not commission.",
+    title: "No Provider Influence",
+    description: "Recommendations based on operational fit and risk profile, not commission.",
   },
   {
-    icon: Ban,
-    title: "We Say 'Not Yet' When Appropriate",
-    description: "Sometimes the right answer is to wait, restructure, or address risk factors first. We'll tell you.",
+    icon: TrendingUp,
+    title: "Built for Scale",
+    description: "Designed for businesses where even a 0.1% improvement in acceptance rates has six-figure impact.",
   },
   {
     icon: MessageCircle,
-    title: "Insider Knowledge",
-    description: "Built by people who've worked inside payment operations. We know what providers actually look for.",
+    title: "Insider Expertise",
+    description: "Built by professionals who have worked inside payment operations and underwriting teams.",
   },
 ];
 
@@ -27,12 +27,11 @@ const WhyDifferentSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-16 reveal ${isInView ? "visible" : ""}`}>
           <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">
-            Why ChosePayments is Different
+            Why ChosePayments
           </p>
           <h2 className="heading-lg text-foreground">Not a Comparison Site. Not a Lead Marketplace.</h2>
           <p className="text-muted-foreground mt-4 text-lg">
-            We're the strategic layer between your business and payment providers, helping you understand fit before you
-            commit.
+            We partner with established merchants to turn payment infrastructure from a cost centre into a competitive advantage.
           </p>
         </div>
 

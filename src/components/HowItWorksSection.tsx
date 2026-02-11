@@ -1,24 +1,24 @@
-import { ClipboardList, Sparkles, Handshake } from "lucide-react";
+import { ClipboardList, Sparkles, FileText } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const steps = [
   {
     icon: ClipboardList,
     step: "01",
-    title: "Tell Us About Your Business",
-    description: "Answer a few quick questions about your business type, volume, and operational reality. This gives us the context we need.",
+    title: "Submit Your Business Profile",
+    description: "Provide details about your transaction volumes, business model, and current payment stack.",
   },
   {
     icon: Sparkles,
     step: "02",
-    title: "We Review Your Situation",
-    description: "A payments advisor reviews your answers independently, assessing your risk profile and operational fit.",
+    title: "We Conduct the Review",
+    description: "Our team analyses your infrastructure, fees, risk exposure, and acceptance performance.",
   },
   {
-    icon: Handshake,
+    icon: FileText,
     step: "03",
-    title: "Receive Independent Guidance",
-    description: "We come back with honest advice on which payment options are most likely to work for your business.",
+    title: "Receive Your Strategy Report",
+    description: "A detailed report with actionable recommendations, benchmarking data, and a clear roadmap.",
   },
 ];
 
@@ -30,7 +30,7 @@ const HowItWorksSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-20 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            How Our Payment Advisory Works
+            How the Payment Strategy Review Works
           </h2>
         </div>
 

@@ -5,8 +5,8 @@ import WhyDifferentSection from "@/components/WhyDifferentSection";
 import ProblemSection from "@/components/ProblemSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ValuePropsSection from "@/components/ValuePropsSection";
-import SocialProofSection from "@/components/SocialProofSection";
 import ExamplesSection from "@/components/ExamplesSection";
+import InsightsPreviewSection from "@/components/InsightsPreviewSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
@@ -16,16 +16,16 @@ const Index = () => {
   useCanonical();
 
   useSEO({
-    title: "Independent Payment Advisory | ChosePayments",
+    title: "Payment Strategy Review for High-Volume Merchants | ChosePayments",
     description:
-      "Get independent payment advice for your business. We review your situation and provide honest, human-led guidance on which payment options are most likely to work.",
+      "Fixed-scope payment infrastructure audit for merchants processing £1M+. Fee benchmarking, acceptance optimisation, risk profiling, and architecture recommendations.",
     ogType: "website",
     keywords: [
-      "independent payment advisory",
-      "payment advice UK",
-      "payment provider guidance",
-      "business payment strategy",
-      "payment consultant",
+      "payment strategy review",
+      "payment infrastructure audit",
+      "enterprise payment consulting",
+      "payment fee optimisation",
+      "payment advisory UK",
     ],
   });
 
@@ -39,8 +39,8 @@ const Index = () => {
         <ProblemSection />
         <HowItWorksSection />
         <ValuePropsSection />
-        {/* <SocialProofSection /> */}
         <ExamplesSection />
+        <InsightsPreviewSection />
         <CTASection />
       </main>
       <Footer />
