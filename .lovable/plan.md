@@ -1,186 +1,134 @@
 
 
-# GSC Keyword Optimization Plan
+# Homepage Rewrite: Enterprise Payment Advisory Positioning
 
-## Summary
+## Overview
 
-Your site has **1,534 impressions** across **138 queries** but only **5 clicks** so far. The good news: Google is already indexing and showing your pages for relevant keywords. The opportunity is to strengthen keyword presence in existing articles to improve rankings from page 2-4 into page 1 positions.
+Transform the homepage from a general "independent payment advisory" site into a high-trust, enterprise-grade Payment Strategy Review service targeting merchants processing over GBP 1M annually. This is a significant content and messaging overhaul across 8+ components while preserving the existing layout structure and design system.
 
-## Key Findings from GSC Data
+## Section-by-Section Changes
 
-### High Impression Keywords (Biggest Opportunities)
+### 1. SEO Metadata (Index.tsx)
 
-| Keyword | Impressions | Position | Target Article |
-|---------|------------|----------|---------------|
-| stripe vs square vs paypal (+ variations) | ~252 combined | 83-91 | `/stripe-vs-square-vs-paypal-uk` |
-| first data | 33 | 6 | `/insights/fiserv-payments-platform` |
-| adyen payments / platform / gateway | ~85 combined | 43-58 | `/insights/adyen-enterprise-payments-platform` |
-| tra exemption(s) | 47 | 44-62 | `/insights/tra-exemption-reduces-payment-friction` |
-| best small business payment systems/solutions | ~36 combined | 63-87 | `/best-payment-processor-uk` + `/small-business` |
-| too many chargebacks | 9 | 59 | `/insights/chargebacks-what-they-are-and-how-to-avoid-them` |
-| adyen marketplace | 18 | 66 | `/insights/adyen-enterprise-payments-platform` |
-| checkout.com / checkout.com api | 8 | 9-94 | `/insights/checkout-com-enterprise-platform` |
-| shift4 payments / what does shift4 do | 10 | 47-64 | `/insights/shift4-payments-platform` |
-| stripe pricing | 3 | 52 | `/insights/stripe-fees-explained` |
-| same day settlement advice | 6 | 87 | `/insights/same-day-settlement-and-instant-payouts` |
-| what is a chargeback fee | 5 | 78 | `/insights/chargebacks-what-they-are-and-how-to-avoid-them` |
-| visa transaction controls | 4 | 92 | `/insights/visa-mastercard-control-card-payments` |
-| why is bank asking for source of funds | 2 | 74 | `/insights/source-of-funds` |
-| is adyen a payment processor | 2 | 41 | `/insights/adyen-enterprise-payments-platform` |
-| fiserv first data | 6 | 76 | `/insights/fiserv-payments-platform` |
+Update title, description, and keywords to target enterprise payment strategy terms:
+- Title: "Payment Strategy Review for High-Volume Merchants | ChosePayments"
+- Description focused on revenue protection, fee optimization, and risk reduction for established merchants
+- Keywords targeting enterprise payment consulting, payment infrastructure audit, etc.
 
-### Pages Already Ranking Well (Position less than 15, protect and strengthen)
+### 2. Header (Header.tsx)
 
-| Page | Position | Action |
-|------|----------|--------|
-| `/insights` (hub) | 3.1 | Keep strong |
-| `/best-payment-api-uk` | 9.5 | Add missing keyword variations |
-| `/insights/adyen-vs-first-data` | 5.9 | Add "first data" keyword density |
-| `/insights/stripe-payment-platform` | 8.9 | Strengthen |
-| `/insights/proof-of-business-activity` | 4.6 | Good, maintain |
-| Homepage `/` | 1.8 | Good, maintain |
+- Change primary CTA from "Get Independent Advice" to "Book a Payment Strategy Review"
+- Update the "Onboard With Us" link text to "Partner With Us" for enterprise tone
+- Assessment link updated to `/assessment?start=true` (URL stays the same, label changes)
 
-## Optimization Plan: Article-by-Article Changes
+### 3. Hero Section (HeroSection.tsx)
 
-### 1. Stripe vs Square vs PayPal UK (Highest impression page, 428 impressions, position 64)
+Complete content rewrite:
+- **Eyebrow**: "Payment Strategy Review" (replacing "Independent Payment Advisory")
+- **Headline**: "Your Payment Infrastructure Is Either Protecting Revenue or Quietly Losing It"
+- **Subhead**: Enterprise-focused pitch about the fixed-scope Payment Strategy Review for merchants processing GBP 1M+ annually
+- **Primary CTA**: "Book Your Payment Strategy Review"
+- **Secondary CTA**: "How It Works" (unchanged)
+- **Trust indicators**: Replace current ones with "For merchants processing GBP 1M+" / "Fixed-scope engagement" / "Outcome-driven methodology"
 
-This is your biggest opportunity. Variations of this query total ~252 impressions.
+### 4. Success Preview Section (SuccessPreviewSection.tsx) -- becomes "What the Review Covers"
 
-**Changes:**
-- Add these exact keyword phrases naturally into headings and body: "stripe vs paypal", "paypal vs stripe vs square", "square vs stripe vs paypal", "stripe vs paypal uk", "stripe vs square uk", "stripe vs paypal fees uk", "stripe vs square fees uk"
-- Add a FAQ section with FAQSchema targeting: "Which is better, Stripe or PayPal for UK businesses?", "How do Stripe and Square fees compare in the UK?", "Is PayPal better than Stripe for small businesses?"
-- Update meta description to include "stripe vs paypal vs square" variation
-- Add `keywords` array to useSEO call with all variations
+Rewrite deliverables to reflect the paid service scope:
+- **Heading**: "What the Payment Strategy Review Includes"
+- **Subhead**: "A fixed-scope, fee-based engagement designed for established merchants."
+- Items become:
+  1. "Infrastructure and Redundancy Assessment" -- Audit your gateway, processor, and acquirer setup for single points of failure
+  2. "Fee Analysis and Negotiation Strategy" -- Benchmark your rates against industry data and identify savings opportunities
+  3. "Risk Profiling and Compliance Review" -- Evaluate PCI, SCA, and fraud exposure across your payment stack
+  4. "Acceptance Rate Optimization" -- Identify checkout friction, decline patterns, and authorization improvements
+  5. "Architecture Recommendations" -- Provider mix, routing strategy, and scalability guidance tailored to your business model
 
-### 2. Adyen Enterprise Payments Platform (367 impressions, position 26)
+### 5. Why Different Section (WhyDifferentSection.tsx)
 
-**Changes:**
-- Naturally incorporate: "adyen payments", "adyen payment gateway", "adyen platform", "adyen marketplace", "adyen unified commerce", "what does adyen do", "is adyen a payment processor", "adyen alternative"
-- Add FAQ section: "What does Adyen do?", "Is Adyen a payment processor?", "What is Adyen unified commerce?"
-- Expand marketplace section to capture "adyen marketplace" (18 impressions)
-- Update keywords array
+Rewrite with enterprise authority:
+- **Eyebrow**: "Why ChosePayments"
+- **Heading**: "Not a Comparison Site. Not a Lead Marketplace."
+- **Subhead**: "We partner with established merchants to turn payment infrastructure from a cost center into a competitive advantage."
+- Differentiators become:
+  1. "No Provider Influence" -- Recommendations based on operational fit and risk profile, not commission
+  2. "Built for Scale" -- Designed for businesses where even a 0.1% improvement in acceptance rates has six-figure impact
+  3. "Insider Expertise" -- Built by professionals who have worked inside payment operations and underwriting teams
 
-### 3. Fiserv Payments Platform (107 impressions, position 31)
+### 6. Problem Section (ProblemSection.tsx) -- becomes Risk/Cost Messaging
 
-**Changes:**
-- Add phrases: "first data", "fiserv first data", "first data payment processing", "first data services", "first data platforms", "first data systems", "what is first data payment gateway"
-- The keyword "first data" alone has 33 impressions at position 6, which is very close to top results
-- Add FAQ: "What is First Data?", "Is Fiserv the same as First Data?", "What is First Data payment gateway?"
-- Update keywords array
+Rewrite to focus on enterprise pain points:
+- **Heading**: "The Hidden Costs of an Unaudited Payment Stack"
+- Items become:
+  1. "Revenue Leaking Through Declines" -- Poor authorization rates and checkout friction quietly erode margins, undoing marketing and sales effort
+  2. "Hidden Fees Compounding at Scale" -- At high volumes, opaque pricing structures cost six or seven figures annually
+  3. "Compliance Exposure Growing Silently" -- PCI, SCA, and scheme rule changes create risk that surfaces without warning
+- **Bottom line**: "At scale, your payment gateway is not a backend detail. It is the engine of your revenue."
 
-### 4. TRA Exemption Article (67 impressions, position 41)
+### 7. How It Works Section (HowItWorksSection.tsx)
 
-**Changes:**
-- Add both "tra exemption" and "tra exemptions" (plural) naturally in headings and body
-- The combined impressions are 47 at positions 44-62. Strengthening keyword density could push to page 1
-- Update keywords array
+Rewrite steps for the paid engagement:
+1. "Submit Your Business Profile" -- Provide details about your transaction volumes, business model, and current payment stack
+2. "We Conduct the Review" -- Our team analyzes your infrastructure, fees, risk exposure, and acceptance performance
+3. "Receive Your Strategy Report" -- A detailed report with actionable recommendations, benchmarking data, and a clear roadmap
 
-### 5. Chargebacks Article (39 impressions, position 69)
+### 8. Value Props Section (ValuePropsSection.tsx) -- becomes "Built for Established Merchants"
 
-**Changes:**
-- Add: "too many chargebacks", "what is a chargeback fee", "how do chargebacks work"
-- Add FAQ section targeting these exact queries
-- Update keywords array
+Rewrite to filter audience and emphasize scale:
+- **Heading**: "Built for Businesses Where Payments Are Mission-Critical"
+- Items:
+  1. "Processing GBP 1M+ Annually" -- Our methodology is designed for merchants where transaction volume justifies a strategic review
+  2. "Fixed-Scope, Clear Pricing" -- One flat fee, clearly defined scope. No retainers, no ongoing commitments
+  3. "Outcome-Driven Methodology" -- Every recommendation is tied to measurable impact: revenue captured, costs reduced, risk mitigated
+  4. "UK and EU Specialists" -- Deep expertise in UK and EU regulatory frameworks, scheme rules, and acquirer relationships
 
-### 6. Best Payment Processor UK (98 impressions, position 52)
+### 9. Examples Section (ExamplesSection.tsx) -- becomes audience qualifier
 
-**Changes:**
-- Add: "best small business payment systems", "best small business payment solution", "best payment solutions for small businesses", "cheapest business payment solutions uk", "cheap business payment solutions uk", "payment processor price comparison uk", "recommend business payment solutions in uk"
-- Add FAQ: "What is the best payment system for small businesses in the UK?", "What is the cheapest payment processor for UK businesses?"
-- Update keywords array
+Rewrite to show enterprise verticals, not small business types:
+- **Heading**: "Who We Work With"
+- Cards become: "High-Volume Ecommerce" / "SaaS and Subscription Platforms" / "Marketplace Operators" / "Omnichannel Retailers"
+- **Bottom note**: "We work with organizations processing substantial volumes. If you are an early-stage startup or processing under GBP 1M, our premium review may not be the right fit."
 
-### 7. Enterprise Provider Comparison (47 impressions, position 14)
+### 10. CTA Section (CTASection.tsx) -- Final CTA
 
-**Changes:**
-- Add: "enterprise payment approval platforms comparison", "enterprise payment api global coverage comparison"
-- These are already position 14 and 2 respectively. Small keyword reinforcement could push to top 5
-- Update keywords array
+- Remove avatar stack (social proof excluded per brand guidelines)
+- **Heading**: "Ready to Optimize Your Payment Infrastructure?"
+- **Subtext**: "Book a fixed-scope Payment Strategy Review. One engagement. Clear deliverables. Measurable outcomes."
+- **CTA**: "Book Your Payment Strategy Review"
 
-### 8. Shift4 Payments Platform (30 impressions, position 40)
+### 11. New Section: Insights Preview (new component)
 
-**Changes:**
-- Add: "shift4 payments", "what does shift4 do"
-- Add FAQ: "What does Shift4 do?", "Is Shift4 a payment processor?"
-- Update keywords array
+Add a new `InsightsPreviewSection.tsx` component placed between Value Props and CTA:
+- **Heading**: "Insights and Resources"
+- Display 3 featured insight articles with title, category badge, and read time
+- Links to the `/insights` page
+- Clean, understated design -- secondary to the main service pitch
 
-### 9. Checkout.com Enterprise Platform (7 impressions, position 7)
+### 12. Footer (Footer.tsx)
 
-**Changes:**
-- Add: "checkout.com", "checkout.com api"
-- Already ranking well at position 7. Light keyword reinforcement
-- Update keywords array
-
-### 10. Source of Funds (20 impressions, position 13)
-
-**Changes:**
-- Add: "why is bank asking for source of funds"
-- Update keywords array
-
-### 11. Same Day Settlement (17 impressions, position 42)
-
-**Changes:**
-- Add: "same day settlement advice"
-- Update keywords array
-
-### 12. Visa Mastercard Control (11 impressions, position 40)
-
-**Changes:**
-- Add: "visa transaction controls"
-- Update keywords array
-
-### 13. Stripe Fees Explained (6 impressions, position 64)
-
-**Changes:**
-- Add: "stripe pricing"
-- Update keywords array
-
-### 14. Best Payment API UK (197 impressions, position 9.5)
-
-**Changes:**
-- Already in a strong position. Add: "checkout.com api" as a related mention
-- Light keyword reinforcement to protect ranking
-
-### 15. Concept Clusters Update
-
-Update `conceptClusters.ts` keywords arrays to include the new GSC-discovered keyword variations for better internal linking signals.
+- Update copyright tagline from "Independent Payment Advisory" to "Payment Strategy Advisory"
 
 ## Technical Details
 
-### Files to modify (18 files total):
+### Files to modify:
+1. `src/pages/Index.tsx` -- Update SEO metadata, add InsightsPreviewSection import, reorder sections
+2. `src/components/HeroSection.tsx` -- Full content rewrite
+3. `src/components/Header.tsx` -- CTA label changes
+4. `src/components/SuccessPreviewSection.tsx` -- Full content rewrite
+5. `src/components/WhyDifferentSection.tsx` -- Content rewrite
+6. `src/components/ProblemSection.tsx` -- Content rewrite
+7. `src/components/HowItWorksSection.tsx` -- Content rewrite
+8. `src/components/ValuePropsSection.tsx` -- Content rewrite
+9. `src/components/ExamplesSection.tsx` -- Content rewrite and icon changes
+10. `src/components/CTASection.tsx` -- Remove avatars, rewrite content
+11. `src/components/Footer.tsx` -- Tagline update
 
-1. `src/pages/StripeVsSquareVsPaypal.tsx` - Add FAQ schema, keyword variations, update meta
-2. `src/pages/insights/AdyenEnterprisePlatform.tsx` - Add FAQ, marketplace content, keyword phrases
-3. `src/pages/insights/FiservPaymentsPlatform.tsx` - Add "first data" keyword density, FAQ
-4. `src/pages/insights/TRAExemption.tsx` - Strengthen "tra exemption/exemptions" usage
-5. `src/pages/insights/Chargebacks.tsx` - Add FAQ, keyword phrases
-6. `src/pages/BestPaymentProcessorUK.tsx` - Add "small business" keyword variations, FAQ
-7. `src/pages/insights/EnterpriseProviderComparison.tsx` - Add enterprise keyword phrases
-8. `src/pages/insights/Shift4PaymentsPlatform.tsx` - Add FAQ, keyword phrases
-9. `src/pages/insights/CheckoutComEnterprisePlatform.tsx` - Light keyword reinforcement
-10. `src/pages/insights/SourceOfFunds.tsx` - Add "bank asking" phrase
-11. `src/pages/insights/SameDaySettlementAndInstantPayouts.tsx` - Add "advice" keyword
-12. `src/pages/insights/VisaMastercardControl.tsx` - Add "transaction controls"
-13. `src/pages/insights/StripeFees.tsx` - Add "stripe pricing"
-14. `src/pages/BestPaymentApiUK.tsx` - Light reinforcement
-15. `src/lib/conceptClusters.ts` - Update keywords arrays with GSC terms
-16. `src/lib/insightsArchitecture.ts` - Update keywords arrays with GSC terms
-17. `src/pages/insights/AdyenVsFirstData.tsx` - Strengthen "first data" presence
-18. `src/pages/insights/WhyPaymentProvidersAskForSourceOfFunds.tsx` - Add "bank asking" phrase
+### New file:
+- `src/components/InsightsPreviewSection.tsx` -- Displays 3 featured articles from the existing `insightsArticles` data
 
-### Approach for each article:
-
-1. Add GSC keywords naturally into existing body text (no keyword stuffing)
-2. Add/update `keywords` arrays in layout props and SEO hooks
-3. Add FAQ sections with `FAQSchema` where queries are question-format
-4. Update meta descriptions to include high-volume keyword variations
-5. All changes maintain the existing plain English, advisory tone
-
-### Priority order (by impact):
-
-1. Stripe vs Square vs PayPal (252 impressions, biggest gap)
-2. Adyen Enterprise Platform (85+ impressions, strong content already)
-3. Fiserv Platform ("first data" at position 6, near page 1)
-4. Best Payment Processor UK (98 impressions, many keyword variations)
-5. TRA Exemption (47 impressions, moderate position)
-6. Everything else in parallel
+### No changes to:
+- Design system, colors, typography, or layout patterns
+- URL structure or routing
+- Any insight article pages
+- Quiz/assessment flow
+- UI component library
 
