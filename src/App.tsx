@@ -7,98 +7,94 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import AppErrorBoundary from "@/components/AppErrorBoundary";
 import { useVersionCheck, lazyWithRetry } from "@/hooks/useVersionCheck";
 
-// Eager load the homepage for best FCP
+// Eager load ONLY the homepage for best FCP
 import Index from "./pages/Index";
-import IndexUS from "./pages/IndexUS";
 
-// Eager load SEO pages for Googlebot crawlability (no session/state dependencies)
-import HiddenFees from "./pages/HiddenFees";
-import SwitchProvider from "./pages/SwitchProvider";
-import SmallBusiness from "./pages/SmallBusiness";
-import StripeAlternatives from "./pages/StripeAlternatives";
-import SupportMatters from "./pages/SupportMatters";
-import MarketplacePlatforms from "./pages/MarketplacePlatforms";
-import ChooseProvider from "./pages/ChooseProvider";
-import BestPaymentProcessorUK from "./pages/BestPaymentProcessorUK";
-import StripeVsSquareVsPaypal from "./pages/StripeVsSquareVsPaypal";
-import BestPaymentApiUK from "./pages/BestPaymentApiUK";
-import About from "./pages/About";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
-import Contact from "./pages/Contact";
-import OnboardWithUs from "./pages/OnboardWithUs";
-
-// Insights blog pages - eager loaded for SEO
-import Insights from "./pages/Insights";
-import PaymentRisk from "./pages/insights/PaymentRisk";
-import Guides from "./pages/insights/Guides";
-import CaseStudies from "./pages/insights/CaseStudies";
-import ProofOfBusinessActivity from "./pages/insights/ProofOfBusinessActivity";
-import SalesIncrease from "./pages/insights/SalesIncrease";
-import MarketplaceSellerInfo from "./pages/insights/MarketplaceSellerInfo";
-import SourceOfFunds from "./pages/insights/SourceOfFunds";
-import IndustryVerification from "./pages/insights/IndustryVerification";
-import InternationalSales from "./pages/insights/InternationalSales";
-import ContractsInvoices from "./pages/insights/ContractsInvoices";
-import WhyStripeFreezes from "./pages/insights/WhyStripeFreezes";
-import WhyAccountsFlaggedAfterGrowth from "./pages/insights/WhyAccountsFlaggedAfterGrowth";
-import WhyAccountsFrozenWithoutWarning from "./pages/insights/WhyAccountsFrozenWithoutWarning";
-import WhyMarketplacesGetScrutiny from "./pages/insights/WhyMarketplacesGetScrutiny";
-import WhyProvidersReUnderwrite from "./pages/insights/WhyProvidersReUnderwrite";
-import WhySomeBusinessesNeverApproved from "./pages/insights/WhySomeBusinessesNeverApproved";
-import WhyPaymentProvidersAskForDirectorDocuments from "./pages/insights/WhyPaymentProvidersAskForDirectorDocuments";
-import WhyPaymentProvidersAskForSourceOfFunds from "./pages/insights/WhyPaymentProvidersAskForSourceOfFunds";
-import WhyPaymentAccountsGetFlaggedAfterGrowth from "./pages/insights/WhyPaymentAccountsGetFlaggedAfterGrowth";
-import WhyPaymentProvidersRejectGrowingBusinesses from "./pages/insights/WhyPaymentProvidersRejectGrowingBusinesses";
-import WhyProvidersReUnderwriteExistingAccounts from "./pages/insights/WhyProvidersReUnderwriteExistingAccounts";
-import WhyPaymentAccountsGetFlaggedWithoutChanges from "./pages/insights/WhyPaymentAccountsGetFlaggedWithoutChanges";
-import VisaMastercardControl from "./pages/insights/VisaMastercardControl";
-import WhatIsAnAcquirer from "./pages/insights/WhatIsAnAcquirer";
-import PaymentProviderVsAcquirerVsBank from "./pages/insights/PaymentProviderVsAcquirerVsBank";
-import WhyCardApprovalSpeedAffectsCheckoutAbandonment from "./pages/insights/WhyCardApprovalSpeedAffectsCheckoutAbandonment";
-import SameDaySettlementAndInstantPayouts from "./pages/insights/SameDaySettlementAndInstantPayouts";
-import TRAExemption from "./pages/insights/TRAExemption";
-import WhatToDoWhenProviderAsksForDocuments from "./pages/insights/WhatToDoWhenProviderAsksForDocuments";
-import Chargebacks from "./pages/insights/Chargebacks";
-import CreditCardPaymentsExplained from "./pages/insights/CreditCardPaymentsExplained";
-import OpenBankingPaymentsUK from "./pages/insights/OpenBankingPaymentsUK";
-import ApplePayGooglePayExplained from "./pages/insights/ApplePayGooglePayExplained";
-import LowValueTransactionExemption from "./pages/insights/LowValueTransactionExemption";
-import PaymentProviderRiskModels from "./pages/insights/PaymentProviderRiskModels";
-import WalletPaymentsGuaranteedSuccess from "./pages/insights/WalletPaymentsGuaranteedSuccess";
-import PaymentAcronymsExplained from "./pages/insights/PaymentAcronymsExplained";
-
-import AdyenEnterprisePlatform from "./pages/insights/AdyenEnterprisePlatform";
-import StripePaymentPlatform from "./pages/insights/StripePaymentPlatform";
-import CheckoutComEnterprisePlatform from "./pages/insights/CheckoutComEnterprisePlatform";
-import Shift4PaymentsPlatform from "./pages/insights/Shift4PaymentsPlatform";
-import EnterpriseProviderComparison from "./pages/insights/EnterpriseProviderComparison";
-import FiservPaymentsPlatform from "./pages/insights/FiservPaymentsPlatform";
-import AdyenVsFirstData from "./pages/insights/AdyenVsFirstData";
-import ReferralCommissionGuide from "./pages/insights/ReferralCommissionGuide";
-import PayPalPaymentPlatform from "./pages/insights/PayPalPaymentPlatform";
-
-// Crisis Intervention articles
-import CrisisHiddenFeeCrisis from "./pages/insights/crisis/HiddenFeeCrisis";
-import CrisisRejectedHighRisk from "./pages/insights/crisis/RejectedHighRiskStrategy";
-import CrisisStripeAccountFrozen from "./pages/insights/crisis/StripeAccountFrozen";
-
-// Pricing Models articles
-import InterchangePlusPlus from "./pages/insights/pricing/InterchangePlusPlus";
-import BlendedVsInterchange from "./pages/insights/pricing/BlendedVsInterchange";
-
-// Fees & Costs articles
-import StripeFees from "./pages/insights/StripeFees";
-import CheckoutComFees from "./pages/insights/CheckoutComFees";
-import FiservCloverFees from "./pages/insights/FiservCloverFees";
-import AdyenFees from "./pages/insights/AdyenFees";
-import PayPalFees from "./pages/insights/PayPalFees";
-
-// Lazy load quiz flow with retry - ensures quiz logic is code-split from SEO pages
-// Quiz pages self-initialize session tracking when loaded
+// Lazy load everything else — massive bundle reduction
+const IndexUS = lazyWithRetry(() => import("./pages/IndexUS"));
 const Quiz = lazyWithRetry(() => import("./pages/Quiz"));
 const Recommendation = lazyWithRetry(() => import("./pages/Recommendation"));
 const NotFound = lazyWithRetry(() => import("./pages/NotFound"));
+
+// SEO Content Pages - lazy loaded
+const HiddenFees = lazyWithRetry(() => import("./pages/HiddenFees"));
+const SwitchProvider = lazyWithRetry(() => import("./pages/SwitchProvider"));
+const SmallBusiness = lazyWithRetry(() => import("./pages/SmallBusiness"));
+const StripeAlternatives = lazyWithRetry(() => import("./pages/StripeAlternatives"));
+const SupportMatters = lazyWithRetry(() => import("./pages/SupportMatters"));
+const MarketplacePlatforms = lazyWithRetry(() => import("./pages/MarketplacePlatforms"));
+const ChooseProvider = lazyWithRetry(() => import("./pages/ChooseProvider"));
+const BestPaymentProcessorUK = lazyWithRetry(() => import("./pages/BestPaymentProcessorUK"));
+const StripeVsSquareVsPaypal = lazyWithRetry(() => import("./pages/StripeVsSquareVsPaypal"));
+const BestPaymentApiUK = lazyWithRetry(() => import("./pages/BestPaymentApiUK"));
+const About = lazyWithRetry(() => import("./pages/About"));
+const Privacy = lazyWithRetry(() => import("./pages/Privacy"));
+const Terms = lazyWithRetry(() => import("./pages/Terms"));
+const Contact = lazyWithRetry(() => import("./pages/Contact"));
+const OnboardWithUs = lazyWithRetry(() => import("./pages/OnboardWithUs"));
+
+// Insights pages - lazy loaded
+const Insights = lazyWithRetry(() => import("./pages/Insights"));
+const PaymentRisk = lazyWithRetry(() => import("./pages/insights/PaymentRisk"));
+const Guides = lazyWithRetry(() => import("./pages/insights/Guides"));
+const CaseStudies = lazyWithRetry(() => import("./pages/insights/CaseStudies"));
+const ProofOfBusinessActivity = lazyWithRetry(() => import("./pages/insights/ProofOfBusinessActivity"));
+const SalesIncrease = lazyWithRetry(() => import("./pages/insights/SalesIncrease"));
+const MarketplaceSellerInfo = lazyWithRetry(() => import("./pages/insights/MarketplaceSellerInfo"));
+const SourceOfFunds = lazyWithRetry(() => import("./pages/insights/SourceOfFunds"));
+const IndustryVerification = lazyWithRetry(() => import("./pages/insights/IndustryVerification"));
+const InternationalSales = lazyWithRetry(() => import("./pages/insights/InternationalSales"));
+const ContractsInvoices = lazyWithRetry(() => import("./pages/insights/ContractsInvoices"));
+const WhyStripeFreezes = lazyWithRetry(() => import("./pages/insights/WhyStripeFreezes"));
+const WhyAccountsFlaggedAfterGrowth = lazyWithRetry(() => import("./pages/insights/WhyAccountsFlaggedAfterGrowth"));
+const WhyAccountsFrozenWithoutWarning = lazyWithRetry(() => import("./pages/insights/WhyAccountsFrozenWithoutWarning"));
+const WhyMarketplacesGetScrutiny = lazyWithRetry(() => import("./pages/insights/WhyMarketplacesGetScrutiny"));
+const WhyProvidersReUnderwrite = lazyWithRetry(() => import("./pages/insights/WhyProvidersReUnderwrite"));
+const WhySomeBusinessesNeverApproved = lazyWithRetry(() => import("./pages/insights/WhySomeBusinessesNeverApproved"));
+const WhyPaymentProvidersAskForDirectorDocuments = lazyWithRetry(() => import("./pages/insights/WhyPaymentProvidersAskForDirectorDocuments"));
+const WhyPaymentProvidersAskForSourceOfFunds = lazyWithRetry(() => import("./pages/insights/WhyPaymentProvidersAskForSourceOfFunds"));
+const WhyPaymentAccountsGetFlaggedAfterGrowth = lazyWithRetry(() => import("./pages/insights/WhyPaymentAccountsGetFlaggedAfterGrowth"));
+const WhyPaymentProvidersRejectGrowingBusinesses = lazyWithRetry(() => import("./pages/insights/WhyPaymentProvidersRejectGrowingBusinesses"));
+const WhyProvidersReUnderwriteExistingAccounts = lazyWithRetry(() => import("./pages/insights/WhyProvidersReUnderwriteExistingAccounts"));
+const WhyPaymentAccountsGetFlaggedWithoutChanges = lazyWithRetry(() => import("./pages/insights/WhyPaymentAccountsGetFlaggedWithoutChanges"));
+const VisaMastercardControl = lazyWithRetry(() => import("./pages/insights/VisaMastercardControl"));
+const WhatIsAnAcquirer = lazyWithRetry(() => import("./pages/insights/WhatIsAnAcquirer"));
+const PaymentProviderVsAcquirerVsBank = lazyWithRetry(() => import("./pages/insights/PaymentProviderVsAcquirerVsBank"));
+const WhyCardApprovalSpeedAffectsCheckoutAbandonment = lazyWithRetry(() => import("./pages/insights/WhyCardApprovalSpeedAffectsCheckoutAbandonment"));
+const SameDaySettlementAndInstantPayouts = lazyWithRetry(() => import("./pages/insights/SameDaySettlementAndInstantPayouts"));
+const TRAExemption = lazyWithRetry(() => import("./pages/insights/TRAExemption"));
+const WhatToDoWhenProviderAsksForDocuments = lazyWithRetry(() => import("./pages/insights/WhatToDoWhenProviderAsksForDocuments"));
+const Chargebacks = lazyWithRetry(() => import("./pages/insights/Chargebacks"));
+const CreditCardPaymentsExplained = lazyWithRetry(() => import("./pages/insights/CreditCardPaymentsExplained"));
+const OpenBankingPaymentsUK = lazyWithRetry(() => import("./pages/insights/OpenBankingPaymentsUK"));
+const ApplePayGooglePayExplained = lazyWithRetry(() => import("./pages/insights/ApplePayGooglePayExplained"));
+const LowValueTransactionExemption = lazyWithRetry(() => import("./pages/insights/LowValueTransactionExemption"));
+const PaymentProviderRiskModels = lazyWithRetry(() => import("./pages/insights/PaymentProviderRiskModels"));
+const WalletPaymentsGuaranteedSuccess = lazyWithRetry(() => import("./pages/insights/WalletPaymentsGuaranteedSuccess"));
+const PaymentAcronymsExplained = lazyWithRetry(() => import("./pages/insights/PaymentAcronymsExplained"));
+
+const AdyenEnterprisePlatform = lazyWithRetry(() => import("./pages/insights/AdyenEnterprisePlatform"));
+const StripePaymentPlatform = lazyWithRetry(() => import("./pages/insights/StripePaymentPlatform"));
+const CheckoutComEnterprisePlatform = lazyWithRetry(() => import("./pages/insights/CheckoutComEnterprisePlatform"));
+const Shift4PaymentsPlatform = lazyWithRetry(() => import("./pages/insights/Shift4PaymentsPlatform"));
+const EnterpriseProviderComparison = lazyWithRetry(() => import("./pages/insights/EnterpriseProviderComparison"));
+const FiservPaymentsPlatform = lazyWithRetry(() => import("./pages/insights/FiservPaymentsPlatform"));
+const AdyenVsFirstData = lazyWithRetry(() => import("./pages/insights/AdyenVsFirstData"));
+const ReferralCommissionGuide = lazyWithRetry(() => import("./pages/insights/ReferralCommissionGuide"));
+const PayPalPaymentPlatform = lazyWithRetry(() => import("./pages/insights/PayPalPaymentPlatform"));
+
+const CrisisHiddenFeeCrisis = lazyWithRetry(() => import("./pages/insights/crisis/HiddenFeeCrisis"));
+const CrisisRejectedHighRisk = lazyWithRetry(() => import("./pages/insights/crisis/RejectedHighRiskStrategy"));
+const CrisisStripeAccountFrozen = lazyWithRetry(() => import("./pages/insights/crisis/StripeAccountFrozen"));
+
+const InterchangePlusPlus = lazyWithRetry(() => import("./pages/insights/pricing/InterchangePlusPlus"));
+const BlendedVsInterchange = lazyWithRetry(() => import("./pages/insights/pricing/BlendedVsInterchange"));
+
+const StripeFees = lazyWithRetry(() => import("./pages/insights/StripeFees"));
+const CheckoutComFees = lazyWithRetry(() => import("./pages/insights/CheckoutComFees"));
+const FiservCloverFees = lazyWithRetry(() => import("./pages/insights/FiservCloverFees"));
+const AdyenFees = lazyWithRetry(() => import("./pages/insights/AdyenFees"));
+const PayPalFees = lazyWithRetry(() => import("./pages/insights/PayPalFees"));
 
 const queryClient = new QueryClient();
 
@@ -116,7 +112,6 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     if (hash) {
-      // Small delay to ensure DOM is ready after navigation
       setTimeout(() => {
         const element = document.getElementById(hash.slice(1));
         if (element) {
@@ -124,7 +119,6 @@ const ScrollToTop = () => {
         }
       }, 100);
     } else {
-      // Scroll to top when navigating to any page without hash
       window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [hash, pathname]);
@@ -142,11 +136,11 @@ const App = () => (
         <AppErrorBoundary>
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              {/* Homepage routes */}
+              {/* Homepage - eager loaded */}
               <Route path="/" element={<Index />} />
               <Route path="/us" element={<IndexUS />} />
               
-              {/* Quiz routes - lazy loaded to isolate quiz logic from SEO bundle */}
+              {/* Quiz routes */}
               <Route path="/assessment" element={<Quiz />} />
               <Route path="/recommendation" element={<Recommendation />} />
               

@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section className="bg-background pt-28 pb-12 md:pt-40 md:pb-20">
       <div className="section-container">
-        <div className="max-w-4xl mx-auto text-center animate-fade-up">
+        <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm font-medium text-primary mb-4 tracking-wide uppercase">Independent Payment Advisory</p>
           <h1 className="heading-xl text-foreground text-balance">
             Independent Payment Advice for Your Business
