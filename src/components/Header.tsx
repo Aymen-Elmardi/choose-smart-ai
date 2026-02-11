@@ -73,7 +73,7 @@ const Header = () => {
                       className="text-primary font-medium text-lg py-2 border-b border-primary/30 w-fit"
                       onClick={() => setIsOpen(false)}
                     >
-                      Onboard With Us
+                      Partner With Us
                     </Link>
                   </SheetClose>
                   <SheetClose asChild>
