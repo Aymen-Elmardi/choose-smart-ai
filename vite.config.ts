@@ -59,12 +59,19 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
+      // Enable minification optimizations
+      cssMinify: true,
       rollupOptions: {
         output: {
           // Ensure unique chunk names based on content hash for cache busting
           chunkFileNames: "assets/[name]-[hash].js",
           entryFileNames: "assets/[name]-[hash].js",
           assetFileNames: "assets/[name]-[hash].[ext]",
+          // Manual chunks to separate vendor code from app code
+          manualChunks: {
+            "react-vendor": ["react", "react-dom"],
+            "router": ["react-router-dom"],
+          },
         },
       },
     },
