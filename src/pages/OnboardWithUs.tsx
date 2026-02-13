@@ -4,131 +4,182 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
 import { useCanonical } from "@/hooks/useCanonical";
-import { CheckCircle2 } from "lucide-react";
+import { Check } from "lucide-react";
+
+const managedItems = [
+  { title: "Approval Probability Analysis", description: "Assessing which providers are most likely to approve your business based on risk profile and sector." },
+  { title: "Pricing Structure Review", description: "Benchmarking fee models against industry data to identify the most cost-effective arrangement." },
+  { title: "Reserve and Risk Assessment", description: "Evaluating rolling reserve requirements and risk exposure across candidate providers." },
+  { title: "Underwriting Oversight", description: "Managing the underwriting process directly, handling requests and clarifications on your behalf." },
+  { title: "Application Sequencing", description: "Determining the optimal order and timing of provider applications to maximise approval outcomes." },
+  { title: "Written Recommendation", description: "Delivering a clear, documented recommendation with reasoning and next steps." },
+];
+
+const forItems = [
+  "Businesses processing £1M+ annually",
+  "Complex or high-risk merchant categories",
+  "Companies that have been declined before",
+  "Organisations needing multi-provider setups",
+];
+
+const notForItems = [
+  "Early-stage startups under £100K volume",
+  "Businesses seeking the cheapest option only",
+  "Those wanting a self-service comparison tool",
+  "Single-product, low-complexity merchants",
+];
+
+const steps = [
+  { number: "01", title: "Review", description: "We assess your business model, transaction profile, and current payment infrastructure." },
+  { number: "02", title: "Strategic Evaluation", description: "We identify the providers best suited to your risk profile, sector, and growth trajectory." },
+  { number: "03", title: "Managed Introductions", description: "We submit applications on your behalf, positioning your business for approval." },
+  { number: "04", title: "Underwriting Oversight", description: "We manage all provider communication, documentation requests, and follow-ups." },
+  { number: "05", title: "Final Recommendation", description: "You receive a clear recommendation with a documented rationale and integration guidance." },
+];
 
 const OnboardWithUs = () => {
   useSEO({
-    title: "Onboard With Us | Managed Payment Provider Selection",
-    description: "Let ChosePayments handle the entire payment provider selection and onboarding process on your behalf. One submission, no repetition, clear recommendations."
+    title: "Managed Payment Provider Selection | ChosePayments",
+    description: "Independent oversight for high-stakes payment decisions. We manage the entire provider selection and onboarding process on your behalf."
   });
   useCanonical();
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-24 pb-16">
-        {/* Hero Section */}
-        <section className="section-container mb-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Onboard with us. We'll handle the payment providers for you.
+      <main>
+        {/* Hero – Minimal & Authoritative */}
+        <section className="pt-32 pb-20 md:pt-44 md:pb-28">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6">
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-6">
+              Independent Advisory
+            </p>
+            <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-[1.15] tracking-tight max-w-2xl">
+              Managed Payment Provider Selection
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              If you'd rather not deal with multiple providers, forms, or back-and-forth, we can manage the entire process on your behalf.
+            <p className="mt-4 text-lg text-muted-foreground font-medium max-w-xl">
+              Independent oversight for high-stakes payment decisions.
             </p>
-          </div>
-        </section>
-
-        {/* What This Option Means */}
-        <section className="section-container mb-16">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-6">
-              What this option means
-            </h2>
-            <p className="text-muted-foreground mb-8 text-lg">
-              This option allows you to submit your details once.
+            <p className="mt-6 text-muted-foreground leading-relaxed max-w-xl">
+              We manage the entire provider selection and onboarding process on your behalf. One submission, no repetition, no provider influence. You receive a clear recommendation backed by operational analysis.
             </p>
-            <div className="bg-muted/30 rounded-xl p-8 border border-border">
-              <p className="text-foreground font-medium mb-6">We will:</p>
-              <ul className="space-y-4">
-                {[
-                  "Review your business and payment setup in more depth",
-                  "Identify which providers are most likely to approve you and perform well",
-                  "Submit your details to those providers directly",
-                  "Handle questions, follow-ups, and clarification requests",
-                  "Come back to you with a clear recommendation"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <p className="text-muted-foreground mt-8 text-lg">
-              You don't need to speak to multiple providers or repeat yourself.
-            </p>
-          </div>
-        </section>
-
-        {/* How This Differs */}
-        <section className="section-container mb-16">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-6">
-              How this differs from the assessment
-            </h2>
-            <div className="space-y-6 text-muted-foreground text-lg">
-              <p>
-                The assessment stays exactly the same.
-              </p>
-              <p>
-                The difference is what happens next.
-              </p>
-              <div className="bg-muted/30 rounded-xl p-8 border border-border space-y-4">
-                <div className="flex items-start gap-3">
-                  <span className="text-primary font-semibold">→</span>
-                  <span>The assessment helps us understand your situation</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-primary font-semibold">→</span>
-                  <span>Onboarding with us means we take responsibility for the process after that</span>
-                </div>
-              </div>
-              <p>
-                We may ask for additional information or documents only if required.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Who This Is For */}
-        <section className="section-container mb-16">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-6">
-              Who this is for
-            </h2>
-            <p className="text-muted-foreground mb-6 text-lg">
-              This is typically useful if:
-            </p>
-            <ul className="space-y-4">
-              {[
-                "You've been rejected before",
-                "Your business is complex or growing quickly",
-                "You want a second pair of experienced eyes",
-                "You'd prefer someone to manage the process end-to-end"
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <span className="h-2 w-2 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                  <span className="text-muted-foreground text-lg">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="section-container">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="bg-muted/30 rounded-2xl p-10 border border-border">
-              <Button variant="hero" size="lg" asChild className="mb-4">
-                <Link to="/assessment?start=true">
-                  Start with the assessment
-                </Link>
+            <div className="mt-10">
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/assessment?start=true">Apply for Advisory</Link>
               </Button>
-              <p className="text-sm text-muted-foreground">
-                You can choose to onboard with us after completing the assessment.
-              </p>
             </div>
+          </div>
+        </section>
+
+        {/* Problem Framing – Split Layout */}
+        <section className="border-t border-border">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-20 md:py-28">
+            <div className="grid md:grid-cols-[280px_1fr] gap-12 md:gap-16">
+              <div>
+                <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight">
+                  Why This Exists
+                </h2>
+              </div>
+              <div className="space-y-6 text-muted-foreground leading-relaxed">
+                <p>
+                  Choosing the wrong payment provider costs more than fees. It creates operational friction, compliance exposure, and settlement delays that compound over time.
+                </p>
+                <p>
+                  Most businesses make this decision based on incomplete information — marketing materials, sales calls, or peer recommendations that don't account for their specific risk profile.
+                </p>
+                <p>
+                  This service exists because the decision deserves independent, informed oversight. Not a comparison table. Not a referral. A structured evaluation conducted on your behalf.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* What We Manage – Structured Grid */}
+        <section className="border-t border-border">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-20 md:py-28">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight mb-12">
+              What We Manage
+            </h2>
+            <div className="grid md:grid-cols-2 gap-5">
+              {managedItems.map((item) => (
+                <div
+                  key={item.title}
+                  className="border border-border rounded-lg bg-secondary/30 p-6"
+                >
+                  <h3 className="text-sm font-semibold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Who This Is For – Premium Filter */}
+        <section className="border-t border-border bg-secondary/40">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-20 md:py-28">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight mb-12">
+              Who This Is For
+            </h2>
+            <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-6">This Is For</p>
+                <ul className="space-y-4">
+                  {forItems.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <Check className="h-4 w-4 text-primary mt-1 flex-shrink-0" strokeWidth={2.5} />
+                      <span className="text-foreground text-sm leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-semibold tracking-[0.15em] uppercase text-muted-foreground mb-6">This Is Not For</p>
+                <ul className="space-y-4">
+                  {notForItems.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/40 mt-2 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Engagement Flow – Timeline */}
+        <section className="border-t border-border">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-20 md:py-28">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight mb-14">
+              How the Engagement Works
+            </h2>
+            <div className="space-y-0">
+              {steps.map((step, i) => (
+                <div
+                  key={step.number}
+                  className={`grid md:grid-cols-[80px_1fr] gap-4 md:gap-8 py-8 ${i < steps.length - 1 ? "border-b border-border" : ""}`}
+                >
+                  <span className="text-2xl font-bold text-primary/30 tracking-tight">{step.number}</span>
+                  <div>
+                    <h3 className="text-sm font-semibold text-foreground mb-1.5">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Closing – Quiet Authority */}
+        <section className="border-t border-border">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-24 md:py-32 text-center">
+            <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto mb-10">
+              If your payment decision carries operational weight, apply for advisory.
+            </p>
+            <Button variant="hero" size="lg" asChild>
+              <Link to="/assessment?start=true">Apply for Advisory</Link>
+            </Button>
           </div>
         </section>
       </main>
