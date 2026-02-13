@@ -20,7 +20,7 @@
     
     <!-- DNS prefetch for third-party domains -->
     <link rel="dns-prefetch" href="https://www.clarity.ms" />
-    <link rel="dns-prefetch" href="https://embed.tawk.to" />
+    
 
     <!-- Google Fonts - loaded async with font-display: swap, non-render-blocking -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
@@ -94,22 +94,5 @@
       }
     </script>
 
-    <!-- Deferred Tawk.to Live Chat - loads well after page interactive -->
-    <script>
-      function loadTawk() {
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/696124b6f5b60819810808f3/1jehneqen';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-      }
-      // Delay Tawk.to even more - it's heavy and not needed immediately
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(function() { setTimeout(loadTawk, 2000); });
-      } else {
-        setTimeout(loadTawk, 5000);
-      }
-    </script>
   </body>
 </html>
