@@ -301,14 +301,17 @@ const Quiz = () => {
         <div className="max-w-2xl w-full animate-fade-up" key={currentStep}>
           {currentStep === 1 && (
             <div className="text-center mb-10">
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                A short assessment to understand your payment risk and approval reality
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">
+                Payment Advisory Assessment
+              </p>
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-[1.35]">
+                Understanding your provider fit starts here
               </h1>
               <p className="text-muted-foreground max-w-xl mx-auto text-base leading-relaxed">
-                This assessment helps us understand how your business will be viewed by payment providers, where approval friction typically appears, and what mistakes to avoid.
+                This structured assessment captures how your business will be evaluated by payment providers. It identifies where approval risk exists and informs our advisory review.
               </p>
-              <p className="text-muted-foreground max-w-xl mx-auto text-sm mt-3">
-                There are no instant recommendations. Every case is reviewed manually.
+              <p className="text-muted-foreground/70 max-w-xl mx-auto text-sm mt-3">
+                Every submission is reviewed individually. There are no automated recommendations.
               </p>
             </div>
           )}
