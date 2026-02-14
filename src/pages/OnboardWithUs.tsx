@@ -54,7 +54,7 @@ const OnboardWithUs = () => {
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-6">
               Independent Advisory
             </p>
-            <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-[1.15] tracking-tight max-w-2xl">
+            <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-[1.25] tracking-tight max-w-2xl">
               Managed Payment Provider Selection
             </h1>
             <p className="mt-4 text-lg text-muted-foreground font-medium max-w-xl">
