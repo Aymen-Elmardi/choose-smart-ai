@@ -310,9 +310,6 @@ const Quiz = () => {
               <p className="text-muted-foreground max-w-xl mx-auto text-base leading-relaxed">
                 This structured assessment captures how your business will be evaluated by payment providers. It identifies where approval risk exists and informs our advisory review.
               </p>
-              <p className="text-muted-foreground/70 max-w-xl mx-auto text-sm mt-3">
-                Every submission is reviewed individually. There are no automated recommendations.
-              </p>
             </div>
           )}
           <div className="text-center mb-8">
