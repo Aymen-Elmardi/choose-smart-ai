@@ -136,6 +136,10 @@ const Recommendation = () => {
 
     setIsSubmitting(true);
 
+    // Push advisory_form_submit event
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({ event: "advisory_form_submit" });
+
     // OPTIMISTIC: Show success immediately
     setIsSubmitted(true);
     setBackgroundError(null);

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -43,11 +43,21 @@ const Quiz = () => {
     return isFromUS ? "US" : "UK";
   });
 
+  // Track whether assessment_start has already been pushed
+  const assessmentStartFired = useRef(false);
+
   // Initialize session tracking and mark quiz start when component mounts
   useEffect(() => {
     initializeSessionTracking();
     window.scrollTo(0, 0);
     markQuizStart();
+
+    // Push assessment_start event once
+    if (!assessmentStartFired.current) {
+      assessmentStartFired.current = true;
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({ event: "assessment_start" });
+    }
   }, []);
 
   // Update SEO metadata
@@ -143,6 +153,9 @@ const Quiz = () => {
         const isLastQuestion = currentQuestionIndex === questions.length - 1;
         
         if (isLastQuestion) {
+          // Push assessment_complete event
+           (window as any).dataLayer = (window as any).dataLayer || [];
+           (window as any).dataLayer.push({ event: "assessment_complete" });
           // OPTIMISTIC: Navigate immediately, save in background
           navigate("/recommendation?fromQuiz=true");
           // Prepare engine-compatible answers
@@ -179,10 +192,12 @@ const Quiz = () => {
     const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
     if (isLastQuestion) {
-      navigate("/recommendation?fromQuiz=true");
-      const engineAnswers = prepareEngineAnswers(updatedAnswers);
-      sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
-      sessionStorage.setItem("quizMarket", market);
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({ event: "assessment_complete" });
+          navigate("/recommendation?fromQuiz=true");
+          const engineAnswers = prepareEngineAnswers(updatedAnswers);
+          sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
+          sessionStorage.setItem("quizMarket", market);
     } else {
       setCurrentStep((prev) => prev + 1);
     }
@@ -225,6 +240,8 @@ const Quiz = () => {
       if (question?.multiSelect) {
         const isLastQuestion = currentStep === questionCount;
         if (isLastQuestion) {
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({ event: "assessment_complete" });
           navigate("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(answers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
