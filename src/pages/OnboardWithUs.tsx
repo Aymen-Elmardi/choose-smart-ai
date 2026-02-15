@@ -82,13 +82,19 @@ const OnboardWithUs = () => {
               </div>
               <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
-                  Choosing the wrong payment provider costs more than fees. It creates operational friction, compliance exposure, and settlement delays that compound over time.
+                  The hidden cost of payment provider selection isn't in the rate sheet. It's in what breaks six months later.
                 </p>
                 <p>
-                  Most businesses make this decision based on incomplete information — marketing materials, sales calls, or peer recommendations that don't account for their specific risk profile.
+                  Poor provider fit manifests as failed transactions during peak periods, reconciliation gaps that drain finance team bandwidth, and compliance gaps that surface during audits. These aren't theoretical risks. They're patterns I've observed across hundreds of implementations.
                 </p>
                 <p>
-                  This service exists because the decision deserves independent, informed oversight. Not a comparison table. Not a referral. A structured evaluation conducted on your behalf.
+                  Most selection processes rely on surface-level inputs: polished sales presentations, feature matrices that obscure operational realities, and anecdotal recommendations from businesses operating under completely different transaction profiles and risk appetites.
+                </p>
+                <p>
+                  What's actually needed is forensic evaluation. Examining how a provider's infrastructure, underwriting approach, and operational capabilities map to your specific payment flows, dispute patterns, and growth trajectory.
+                </p>
+                <p>
+                  That's the work I do. Not brokering introductions or recycling vendor marketing. Conducting independent technical and commercial assessment so you select based on operational fit, not sales cycles.
                 </p>
               </div>
             </div>
