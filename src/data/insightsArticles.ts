@@ -260,6 +260,13 @@ export const allInsights: Insight[] = [
     category: "compliance",
     readTime: "5 min read"
   },
+  {
+    title: "What Are Payment Scheme Rules and Why They Matter More Than Your Contract",
+    slug: "payment-scheme-rules-explained",
+    description: "Learn what payment scheme rules are, how flow down provisions work, and why the rules set by Visa and Mastercard often matter more than your provider contract.",
+    category: "compliance",
+    readTime: "8 min read"
+  },
   // Risk articles
   {
     title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",
