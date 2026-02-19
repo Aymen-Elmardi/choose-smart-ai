@@ -9,6 +9,7 @@ const SchemeRulesReservesMonitoring = () => {
       title="How Scheme Rules Trigger Reserves, Monitoring Programs and Account Reviews"
       description="Learn how card network thresholds from Visa and Mastercard trigger reserves, monitoring programs, and account reviews, and what growing businesses can do to prevent them."
       category={{ name: "Compliance", slug: "compliance" }}
+      showCTA={false}
       publishedTime="2026-02-19"
       currentSlug="scheme-rules-reserves-monitoring"
       keywords={[
