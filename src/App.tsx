@@ -96,6 +96,7 @@ const FiservCloverFees = lazyWithRetry(() => import("./pages/insights/FiservClov
 const AdyenFees = lazyWithRetry(() => import("./pages/insights/AdyenFees"));
 const PayPalFees = lazyWithRetry(() => import("./pages/insights/PayPalFees"));
 const PaymentSchemeRulesExplained = lazyWithRetry(() => import("./pages/insights/PaymentSchemeRulesExplained"));
+const SchemeRulesReservesMonitoring = lazyWithRetry(() => import("./pages/insights/SchemeRulesReservesMonitoring"));
 
 const queryClient = new QueryClient();
 
