@@ -267,6 +267,13 @@ export const allInsights: Insight[] = [
     category: "compliance",
     readTime: "8 min read"
   },
+  {
+    title: "How Scheme Rules Trigger Reserves, Monitoring Programs and Account Reviews",
+    slug: "scheme-rules-reserves-monitoring",
+    description: "Learn how card network thresholds from Visa and Mastercard trigger reserves, monitoring programs, and account reviews, and what growing businesses can do to prevent them.",
+    category: "compliance",
+    readTime: "9 min read"
+  },
   // Risk articles
   {
     title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",
