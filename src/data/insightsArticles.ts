@@ -274,6 +274,13 @@ export const allInsights: Insight[] = [
     category: "compliance",
     readTime: "9 min read"
   },
+  {
+    title: "When Scheme Rules Apply Differently: Cards, Wallets, Marketplaces and BNPL Explained",
+    slug: "scheme-rules-by-payment-method",
+    description: "Scheme rules do not apply identically across payment methods. Learn how cards, digital wallets, marketplaces and Buy Now Pay Later models each carry different risk, liability and compliance requirements.",
+    category: "compliance",
+    readTime: "9 min read"
+  },
   // Risk articles
   {
     title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",

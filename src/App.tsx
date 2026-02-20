@@ -232,6 +232,7 @@ const App = () => (
               <Route path="/insights/paypal-fees-explained" element={<PayPalFees />} />
               <Route path="/insights/payment-scheme-rules-explained" element={<PaymentSchemeRulesExplained />} />
               <Route path="/insights/scheme-rules-reserves-monitoring" element={<SchemeRulesReservesMonitoring />} />
+              <Route path="/insights/scheme-rules-by-payment-method" element={<SchemeRulesByPaymentMethod />} />
               <Route path="/insights/graph" element={<InsightsGraph />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

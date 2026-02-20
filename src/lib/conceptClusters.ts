@@ -328,6 +328,13 @@ export const conceptArticles: ConceptArticle[] = [
     shortTitle: "Risk Models Explained",
     concepts: ["risk", "approval", "provider-behaviour"],
     keywords: ["risk model", "risk scoring", "underwriting", "static risk", "behavioural risk", "merchant risk"]
+  },
+  {
+    slug: "scheme-rules-by-payment-method",
+    title: "When Scheme Rules Apply Differently: Cards, Wallets, Marketplaces and BNPL",
+    shortTitle: "Scheme Rules by Payment Method",
+    concepts: ["risk", "payment-methods", "provider-behaviour"],
+    keywords: ["scheme rules", "BNPL", "marketplace", "wallet", "stored credentials", "recurring billing", "payment facilitator"]
   }
 ];
 
