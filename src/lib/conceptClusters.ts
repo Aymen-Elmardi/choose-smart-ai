@@ -323,6 +323,13 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["acronyms", "MCC", "SCA", "TRA", "MATCH list", "chargeback ratio", "settlement", "payout", "rolling reserve", "interchange", "PCI DSS", "3DS"]
   },
   {
+    slug: "scheme-rules-reserves-monitoring",
+    title: "How Scheme Rules Trigger Reserves, Monitoring Programs and Account Reviews",
+    shortTitle: "Scheme Rules and Reserves",
+    concepts: ["risk", "provider-behaviour"],
+    keywords: ["scheme rules", "reserves", "monitoring programs", "chargeback thresholds", "account reviews", "rolling reserves"]
+  },
+  {
     slug: "payment-provider-risk-models",
     title: "Payment Provider Risk Models Explained",
     shortTitle: "Risk Models Explained",
