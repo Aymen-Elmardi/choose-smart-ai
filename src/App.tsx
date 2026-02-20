@@ -97,6 +97,7 @@ const AdyenFees = lazyWithRetry(() => import("./pages/insights/AdyenFees"));
 const PayPalFees = lazyWithRetry(() => import("./pages/insights/PayPalFees"));
 const PaymentSchemeRulesExplained = lazyWithRetry(() => import("./pages/insights/PaymentSchemeRulesExplained"));
 const SchemeRulesReservesMonitoring = lazyWithRetry(() => import("./pages/insights/SchemeRulesReservesMonitoring"));
+const SchemeRulesByPaymentMethod = lazyWithRetry(() => import("./pages/insights/SchemeRulesByPaymentMethod"));
 const InsightsGraph = lazyWithRetry(() => import("./pages/InsightsGraph"));
 
 const queryClient = new QueryClient();
