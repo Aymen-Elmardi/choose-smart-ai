@@ -97,6 +97,7 @@ const AdyenFees = lazyWithRetry(() => import("./pages/insights/AdyenFees"));
 const PayPalFees = lazyWithRetry(() => import("./pages/insights/PayPalFees"));
 const PaymentSchemeRulesExplained = lazyWithRetry(() => import("./pages/insights/PaymentSchemeRulesExplained"));
 const SchemeRulesReservesMonitoring = lazyWithRetry(() => import("./pages/insights/SchemeRulesReservesMonitoring"));
+const InsightsGraph = lazyWithRetry(() => import("./pages/InsightsGraph"));
 
 const queryClient = new QueryClient();
 
@@ -230,6 +231,7 @@ const App = () => (
               <Route path="/insights/paypal-fees-explained" element={<PayPalFees />} />
               <Route path="/insights/payment-scheme-rules-explained" element={<PaymentSchemeRulesExplained />} />
               <Route path="/insights/scheme-rules-reserves-monitoring" element={<SchemeRulesReservesMonitoring />} />
+              <Route path="/insights/graph" element={<InsightsGraph />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
