@@ -1,122 +1,134 @@
 
 
-# Prerender Proxy via Backend Function
+# Homepage Rewrite: Enterprise Payment Advisory Positioning
 
-## Problem
-AI tools, social media crawlers, and link previews see generic homepage metadata for all pages because they don't execute JavaScript. Your SPA renders meta tags client-side via React, but crawlers only see what's in `index.html`.
+## Overview
 
-## Solution
-Create a backend function called `prerender` that:
-1. Detects crawler user-agents (Googlebot, LinkedInBot, Twitterbot, ChatGPT, etc.)
-2. Looks up the correct title, description, and OG tags for the requested URL
-3. Returns a minimal HTML page with the correct meta tags
-4. For normal browsers, redirects to the SPA as usual
+Transform the homepage from a general "independent payment advisory" site into a high-trust, enterprise-grade Payment Strategy Review service targeting merchants processing over GBP 1M annually. This is a significant content and messaging overhaul across 8+ components while preserving the existing layout structure and design system.
 
-Then, update the site's hosting configuration to route crawler requests through this function.
+## Section-by-Section Changes
 
----
+### 1. SEO Metadata (Index.tsx)
 
-## Architecture
+Update title, description, and keywords to target enterprise payment strategy terms:
+- Title: "Payment Strategy Review for High-Volume Merchants | ChosePayments"
+- Description focused on revenue protection, fee optimization, and risk reduction for established merchants
+- Keywords targeting enterprise payment consulting, payment infrastructure audit, etc.
 
-```text
-Crawler Request
-      |
-      v
-  Edge Function (prerender)
-      |
-      +-- Is crawler? --> YES --> Return HTML with correct meta tags
-      |
-      +-- Is crawler? --> NO  --> Return 302 redirect to SPA
-```
+### 2. Header (Header.tsx)
 
-## Implementation Steps
+- Change primary CTA from "Get Independent Advice" to "Book a Payment Strategy Review"
+- Update the "Onboard With Us" link text to "Partner With Us" for enterprise tone
+- Assessment link updated to `/assessment?start=true` (URL stays the same, label changes)
 
-### 1. Create route-to-metadata map
-Build a comprehensive metadata registry inside the edge function containing every route's title, description, and OG data. This will be sourced from the existing `insightsArticles` data and the SEO props used on each page (roughly 80+ routes).
+### 3. Hero Section (HeroSection.tsx)
 
-### 2. Create the `prerender` edge function
-**File:** `supabase/functions/prerender/index.ts`
+Complete content rewrite:
+- **Eyebrow**: "Payment Strategy Review" (replacing "Independent Payment Advisory")
+- **Headline**: "Your Payment Infrastructure Is Either Protecting Revenue or Quietly Losing It"
+- **Subhead**: Enterprise-focused pitch about the fixed-scope Payment Strategy Review for merchants processing GBP 1M+ annually
+- **Primary CTA**: "Book Your Payment Strategy Review"
+- **Secondary CTA**: "How It Works" (unchanged)
+- **Trust indicators**: Replace current ones with "For merchants processing GBP 1M+" / "Fixed-scope engagement" / "Outcome-driven methodology"
 
-- Accept a `path` query parameter (e.g., `?path=/insights/stripe-fees-explained`)
-- Check the `User-Agent` header against known crawler patterns:
-  - `Googlebot`, `bingbot`, `LinkedInBot`, `Twitterbot`, `facebookexternalhit`, `Slackbot`, `ChatGPT-User`, `GPTBot`, `ClaudeBot`, `Applebot`, `Discordbot`
-- Look up metadata for the path from the registry
-- Return a complete HTML document with:
-  - Correct `<title>`
-  - `<meta name="description">`
-  - All Open Graph tags (`og:title`, `og:description`, `og:type`, `og:url`, `og:image`)
-  - Twitter Card tags
-  - Article-specific tags (`article:published_time`, etc.) where applicable
-  - A canonical `<link>` tag
-  - A `<noscript>` redirect to the real SPA page
-- For unknown paths, fall back to default homepage metadata
-- For non-crawler requests, return a 302 redirect to the actual page
+### 4. Success Preview Section (SuccessPreviewSection.tsx) -- becomes "What the Review Covers"
 
-### 3. Update `supabase/config.toml`
-Add the function configuration with `verify_jwt = false` (this must be publicly accessible to crawlers).
+Rewrite deliverables to reflect the paid service scope:
+- **Heading**: "What the Payment Strategy Review Includes"
+- **Subhead**: "A fixed-scope, fee-based engagement designed for established merchants."
+- Items become:
+  1. "Infrastructure and Redundancy Assessment" -- Audit your gateway, processor, and acquirer setup for single points of failure
+  2. "Fee Analysis and Negotiation Strategy" -- Benchmark your rates against industry data and identify savings opportunities
+  3. "Risk Profiling and Compliance Review" -- Evaluate PCI, SCA, and fraud exposure across your payment stack
+  4. "Acceptance Rate Optimization" -- Identify checkout friction, decline patterns, and authorization improvements
+  5. "Architecture Recommendations" -- Provider mix, routing strategy, and scalability guidance tailored to your business model
 
-### 4. Update `public/_redirects` or hosting proxy
-Add a Netlify/Cloudflare-style rewrite rule (or document for the user) that proxies crawler requests to the edge function. Since Lovable deploys as a static site, the practical approach is:
-- Add a `_redirects` file that sends specific bot traffic to the edge function
-- OR document that the user should configure their DNS/CDN (e.g., Cloudflare Worker) to intercept crawler requests
+### 5. Why Different Section (WhyDifferentSection.tsx)
 
-**Note:** Static hosting platforms like Netlify/Vercel cannot inspect User-Agent in `_redirects`. The most reliable approach is a Cloudflare Worker or similar edge proxy that checks the UA and forwards crawlers to the edge function.
+Rewrite with enterprise authority:
+- **Eyebrow**: "Why ChosePayments"
+- **Heading**: "Not a Comparison Site. Not a Lead Marketplace."
+- **Subhead**: "We partner with established merchants to turn payment infrastructure from a cost center into a competitive advantage."
+- Differentiators become:
+  1. "No Provider Influence" -- Recommendations based on operational fit and risk profile, not commission
+  2. "Built for Scale" -- Designed for businesses where even a 0.1% improvement in acceptance rates has six-figure impact
+  3. "Insider Expertise" -- Built by professionals who have worked inside payment operations and underwriting teams
 
-### 5. Alternative: Direct crawler URL approach
-Since static hosting can't do UA-based routing natively, we'll make the edge function self-contained so it can be used as:
-- A shareable URL for social previews (e.g., share the edge function URL on LinkedIn)
-- A sitemap entry pointing crawlers to the function
-- A Cloudflare Worker proxy (documented for the user)
+### 6. Problem Section (ProblemSection.tsx) -- becomes Risk/Cost Messaging
 
----
+Rewrite to focus on enterprise pain points:
+- **Heading**: "The Hidden Costs of an Unaudited Payment Stack"
+- Items become:
+  1. "Revenue Leaking Through Declines" -- Poor authorization rates and checkout friction quietly erode margins, undoing marketing and sales effort
+  2. "Hidden Fees Compounding at Scale" -- At high volumes, opaque pricing structures cost six or seven figures annually
+  3. "Compliance Exposure Growing Silently" -- PCI, SCA, and scheme rule changes create risk that surfaces without warning
+- **Bottom line**: "At scale, your payment gateway is not a backend detail. It is the engine of your revenue."
+
+### 7. How It Works Section (HowItWorksSection.tsx)
+
+Rewrite steps for the paid engagement:
+1. "Submit Your Business Profile" -- Provide details about your transaction volumes, business model, and current payment stack
+2. "We Conduct the Review" -- Our team analyzes your infrastructure, fees, risk exposure, and acceptance performance
+3. "Receive Your Strategy Report" -- A detailed report with actionable recommendations, benchmarking data, and a clear roadmap
+
+### 8. Value Props Section (ValuePropsSection.tsx) -- becomes "Built for Established Merchants"
+
+Rewrite to filter audience and emphasize scale:
+- **Heading**: "Built for Businesses Where Payments Are Mission-Critical"
+- Items:
+  1. "Processing GBP 1M+ Annually" -- Our methodology is designed for merchants where transaction volume justifies a strategic review
+  2. "Fixed-Scope, Clear Pricing" -- One flat fee, clearly defined scope. No retainers, no ongoing commitments
+  3. "Outcome-Driven Methodology" -- Every recommendation is tied to measurable impact: revenue captured, costs reduced, risk mitigated
+  4. "UK and EU Specialists" -- Deep expertise in UK and EU regulatory frameworks, scheme rules, and acquirer relationships
+
+### 9. Examples Section (ExamplesSection.tsx) -- becomes audience qualifier
+
+Rewrite to show enterprise verticals, not small business types:
+- **Heading**: "Who We Work With"
+- Cards become: "High-Volume Ecommerce" / "SaaS and Subscription Platforms" / "Marketplace Operators" / "Omnichannel Retailers"
+- **Bottom note**: "We work with organizations processing substantial volumes. If you are an early-stage startup or processing under GBP 1M, our premium review may not be the right fit."
+
+### 10. CTA Section (CTASection.tsx) -- Final CTA
+
+- Remove avatar stack (social proof excluded per brand guidelines)
+- **Heading**: "Ready to Optimize Your Payment Infrastructure?"
+- **Subtext**: "Book a fixed-scope Payment Strategy Review. One engagement. Clear deliverables. Measurable outcomes."
+- **CTA**: "Book Your Payment Strategy Review"
+
+### 11. New Section: Insights Preview (new component)
+
+Add a new `InsightsPreviewSection.tsx` component placed between Value Props and CTA:
+- **Heading**: "Insights and Resources"
+- Display 3 featured insight articles with title, category badge, and read time
+- Links to the `/insights` page
+- Clean, understated design -- secondary to the main service pitch
+
+### 12. Footer (Footer.tsx)
+
+- Update copyright tagline from "Independent Payment Advisory" to "Payment Strategy Advisory"
 
 ## Technical Details
 
-### Crawler detection patterns
-```text
-Googlebot, bingbot, Slurp, DuckDuckBot, Baiduspider,
-facebookexternalhit, Twitterbot, LinkedInBot, Slackbot,
-Discordbot, WhatsApp, TelegramBot, Applebot,
-GPTBot, ChatGPT-User, ClaudeBot, PerplexityBot, Bytespider
-```
+### Files to modify:
+1. `src/pages/Index.tsx` -- Update SEO metadata, add InsightsPreviewSection import, reorder sections
+2. `src/components/HeroSection.tsx` -- Full content rewrite
+3. `src/components/Header.tsx` -- CTA label changes
+4. `src/components/SuccessPreviewSection.tsx` -- Full content rewrite
+5. `src/components/WhyDifferentSection.tsx` -- Content rewrite
+6. `src/components/ProblemSection.tsx` -- Content rewrite
+7. `src/components/HowItWorksSection.tsx` -- Content rewrite
+8. `src/components/ValuePropsSection.tsx` -- Content rewrite
+9. `src/components/ExamplesSection.tsx` -- Content rewrite and icon changes
+10. `src/components/CTASection.tsx` -- Remove avatars, rewrite content
+11. `src/components/Footer.tsx` -- Tagline update
 
-### HTML template structure
-The returned HTML will be minimal (no JS needed) -- just meta tags and a redirect fallback:
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{title}</title>
-  <meta name="description" content="{description}">
-  <link rel="canonical" href="https://chosepayments.com{path}">
-  <meta property="og:title" content="{title}">
-  <meta property="og:description" content="{description}">
-  <meta property="og:url" content="https://chosepayments.com{path}">
-  <meta property="og:image" content="{ogImage}">
-  <meta property="og:type" content="{article|website}">
-  <!-- Twitter, article tags, etc. -->
-  <meta http-equiv="refresh" content="0;url=https://chosepayments.com{path}">
-</head>
-<body><p>Redirecting...</p></body>
-</html>
-```
+### New file:
+- `src/components/InsightsPreviewSection.tsx` -- Displays 3 featured articles from the existing `insightsArticles` data
 
-### Metadata registry
-Will cover all ~90 routes including:
-- Homepage and US variant
-- All SEO content pages (hidden-fees, switch-provider, etc.)
-- All insight articles (risk, guides, compliance, explainer, providers, crisis, pricing, fees)
-- Static pages (about, privacy, terms, contact)
+### No changes to:
+- Design system, colors, typography, or layout patterns
+- URL structure or routing
+- Any insight article pages
+- Quiz/assessment flow
+- UI component library
 
-### Files to create/modify
-1. **Create** `supabase/functions/prerender/index.ts` -- the edge function
-2. **Modify** `supabase/config.toml` -- add `[functions.prerender]` with `verify_jwt = false`
-3. **Modify** `public/robots.txt` -- optionally add the prerender function URL pattern
-4. **Create** `public/_redirects` -- add rewrite rules for crawler paths (platform-dependent)
-
-## Limitations and Notes
-- This does NOT require any changes to the React app itself
-- The metadata map in the edge function will need to be kept in sync with new articles (a manual step when adding content)
-- For full automated crawler interception, the user will need a CDN-level proxy (e.g., Cloudflare Worker) -- we'll document this clearly
-- The edge function alone solves the problem for social sharing if links are shared via the function URL pattern
