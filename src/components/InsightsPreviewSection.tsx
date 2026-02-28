@@ -21,7 +21,7 @@ const InsightsPreviewSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Insights and Resources
+            Distress Hub
           </h2>
         </div>
 
