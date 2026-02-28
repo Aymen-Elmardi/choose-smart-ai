@@ -158,6 +158,7 @@ const App = () => (
               <Route path="/terms" element={<Terms />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/onboard-with-us" element={<OnboardWithUs />} />
+              <Route path="/merchant-account-problems" element={<MerchantAccountProblems />} />
               <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
               <Route path="/switch-payment-provider" element={<SwitchProvider />} />
               <Route path="/best-payment-provider-small-business" element={<SmallBusiness />} />
