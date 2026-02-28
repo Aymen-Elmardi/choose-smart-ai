@@ -7,32 +7,32 @@ const HeroSection = () => {
     <section className="bg-background pt-28 pb-12 md:pt-40 md:pb-20">
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm font-medium text-primary mb-4 tracking-wide uppercase">Payment Strategy Review</p>
+          <p className="text-sm font-medium text-muted-foreground mb-6 tracking-wide">
+            No Sales Calls. No Pitch. Just Explanation.
+          </p>
           <h1 className="heading-xl text-foreground text-balance">
-            Your Payment Infrastructure Is Either Protecting Revenue or Quietly Losing It
+            Why Is Your Payment Provider Holding Your Money?
           </h1>
           <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              We partner with established merchants processing £1M+ annually to audit, benchmark, and optimise their payment stack. One fixed-scope engagement. Measurable outcomes.
+              Funds delayed. Reserve imposed. Fees higher than expected.
+              <br />
+              We explain exactly what's happening, in plain English.
             </p>
           </div>
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-12 flex flex-col items-center gap-4">
             <Button variant="hero" size="xl" asChild>
-              <Link to="/assessment?start=true" replace>
-                Book Your Payment Strategy Review
+              <a href="#diagnostic">
+                Explain My Payment Problem
                 <ArrowRight className="w-5 h-5" />
-              </Link>
+              </a>
             </Button>
-            <Button variant="hero-outline" size="xl" asChild>
-              <a href="#how-it-works">How It Works</a>
-            </Button>
-          </div>
-          <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground justify-center flex-wrap">
-            <span>For merchants processing £1M+</span>
-            <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-            <span>Fixed-scope engagement</span>
-            <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-            <span>Outcome-driven methodology</span>
+            <Link
+              to="/insights"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Just want to understand? Start here →
+            </Link>
           </div>
         </div>
       </div>
