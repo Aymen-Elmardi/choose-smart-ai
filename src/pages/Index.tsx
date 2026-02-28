@@ -1,16 +1,13 @@
 import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import DiagnosticBlock from "@/components/DiagnosticBlock";
 import { useCanonical } from "@/hooks/useCanonical";
 import { useSEO } from "@/hooks/useSEO";
 
-// Lazy-load below-fold sections to reduce initial JS bundle (~50+ KiB saving)
-const SuccessPreviewSection = lazy(() => import("@/components/SuccessPreviewSection"));
-const WhyDifferentSection = lazy(() => import("@/components/WhyDifferentSection"));
-const ProblemSection = lazy(() => import("@/components/ProblemSection"));
-const HowItWorksSection = lazy(() => import("@/components/HowItWorksSection"));
-const ValuePropsSection = lazy(() => import("@/components/ValuePropsSection"));
-const ExamplesSection = lazy(() => import("@/components/ExamplesSection"));
+// Lazy-load below-fold sections
+const HowPaymentsWorkSection = lazy(() => import("@/components/HowPaymentsWorkSection"));
+const HardTruthSection = lazy(() => import("@/components/HardTruthSection"));
 const InsightsPreviewSection = lazy(() => import("@/components/InsightsPreviewSection"));
 const CTASection = lazy(() => import("@/components/CTASection"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -19,16 +16,16 @@ const Index = () => {
   useCanonical();
 
   useSEO({
-    title: "Payment Strategy Review for High-Volume Merchants | ChosePayments",
+    title: "Why Your Payment Provider Is Holding Your Money | ChosePayments",
     description:
-      "Fixed-scope payment infrastructure audit for merchants processing £1M+. Fee benchmarking, acceptance optimisation, risk profiling, and architecture recommendations.",
+      "Funds withheld? Reserve imposed? Fees higher than promised? Understand what payment providers are actually doing, clearly explained.",
     ogType: "website",
     keywords: [
-      "payment strategy review",
-      "payment infrastructure audit",
-      "enterprise payment consulting",
-      "payment fee optimisation",
-      "payment advisory UK",
+      "payment provider holding money",
+      "merchant account problems",
+      "payment funds held",
+      "payment reserve explained",
+      "payment fees explained",
     ],
   });
 
@@ -37,13 +34,10 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
+        <DiagnosticBlock />
         <Suspense fallback={null}>
-          <SuccessPreviewSection />
-          <WhyDifferentSection />
-          <ProblemSection />
-          <HowItWorksSection />
-          <ValuePropsSection />
-          <ExamplesSection />
+          <HowPaymentsWorkSection />
+          <HardTruthSection />
           <InsightsPreviewSection />
           <CTASection />
         </Suspense>
