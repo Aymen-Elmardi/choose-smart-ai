@@ -11,10 +11,10 @@ const CTASection = () => {
       <div className="section-container">
         <div className={`max-w-3xl mx-auto text-center reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-background mb-6">
-            Still Stuck? Get Direct Help.
+            Ready to Optimise Your Payment Infrastructure?
           </h2>
           <p className="text-lg md:text-xl text-background/70 max-w-2xl mx-auto mb-10">
-            If your situation needs more than explanation, we can review your account and give you a clear next step.
+            Book a fixed-scope Payment Strategy Review. One engagement. Clear deliverables. Measurable outcomes.
           </p>
           <Button 
             variant="hero"
@@ -22,7 +22,7 @@ const CTASection = () => {
             asChild
           >
             <Link to="/assessment?start=true" replace>
-              Get Direct Help
+              Book Your Payment Strategy Review
               <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>
