@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Shield, AlertTriangle, XCircle } from "lucide-react";
 
 const ScoringLogic = () => {
   useSEO({
@@ -101,7 +102,7 @@ const ScoringLogic = () => {
               Stage 2: Multi-Axis Scoring
             </h2>
             <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
-              Every surviving provider starts at 50 points. Then we add or subtract based on how well they match your profile.
+              Every surviving provider starts at 50 points. Risk fit dominates — it's worth more than any other dimension.
             </p>
 
             <div className="overflow-x-auto rounded-xl border border-border bg-card">
@@ -127,6 +128,114 @@ const ScoringLogic = () => {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        </section>
+
+        {/* Risk Confidence + Reserve Probability */}
+        <section className="py-16 md:py-24 bg-secondary/30">
+          <div className="section-container max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-center">
+              Your Risk Profile
+            </h2>
+            <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
+              Beyond the provider match, the engine calculates two additional indicators that signal how confident the recommendation is and how likely a reserve or hold may be imposed.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Shield className="w-6 h-6 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">Risk Confidence</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Measures how strongly the engine trusts its own recommendation.
+                  </p>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full bg-primary/10 text-primary">HIGH</span>
+                      <span className="text-sm text-muted-foreground">Green risk + volume aligned + 5+ surviving providers</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full bg-secondary text-muted-foreground">MEDIUM</span>
+                      <span className="text-sm text-muted-foreground">Amber risk or slight volume mismatch</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full" style={{ backgroundColor: "hsl(0 84% 60% / 0.1)", color: "hsl(0 84% 50%)" }}>LOW</span>
+                      <span className="text-sm text-muted-foreground">Fallback logic triggered or fewer than 3 survivors</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <AlertTriangle className="w-6 h-6" style={{ color: "hsl(38 92% 50%)" }} />
+                    <h3 className="text-lg font-semibold text-foreground">Reserve Probability</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Estimates the likelihood that a provider will impose a rolling reserve or fund hold on your account.
+                  </p>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full" style={{ backgroundColor: "hsl(142 71% 45% / 0.1)", color: "hsl(142 71% 45%)" }}>LOW</span>
+                      <span className="text-sm text-muted-foreground">Green risk appetite + aligned volume</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full" style={{ backgroundColor: "hsl(38 92% 50% / 0.1)", color: "hsl(38 92% 50%)" }}>MODERATE</span>
+                      <span className="text-sm text-muted-foreground">Amber risk appetite for best-match provider</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full" style={{ backgroundColor: "hsl(0 84% 60% / 0.1)", color: "hsl(0 84% 50%)" }}>ELEVATED</span>
+                      <span className="text-sm text-muted-foreground">High-risk industry (gambling, crypto, CBD, etc.)</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Some Providers Are Avoided */}
+        <section className="py-16 md:py-24">
+          <div className="section-container max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-center">
+              Why Some Providers Are Avoided
+            </h2>
+            <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
+              The engine doesn't just show you the best match — it explicitly tells you which providers to avoid and why. This prevents businesses from wasting time applying to providers that will reject them or impose punitive conditions.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card>
+                <CardContent className="p-5">
+                  <XCircle className="w-6 h-6 mb-3" style={{ color: "hsl(0 84% 60%)" }} />
+                  <h3 className="font-semibold text-foreground mb-2">Hard Disqualification</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Provider doesn't support your payment type, region, or volume. No amount of negotiation changes this.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-5">
+                  <XCircle className="w-6 h-6 mb-3" style={{ color: "hsl(0 84% 60%)" }} />
+                  <h3 className="font-semibold text-foreground mb-2">Industry Exclusion</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Your industry is explicitly excluded or rated "red risk" by the provider. Applying will result in rejection.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-5">
+                  <XCircle className="w-6 h-6 mb-3" style={{ color: "hsl(0 84% 60%)" }} />
+                  <h3 className="font-semibold text-foreground mb-2">Capability Gap</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Provider lacks a required capability like marketplace support or split payments that your business model demands.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -200,16 +309,16 @@ const ScoringLogic = () => {
         <section className="py-16 bg-foreground text-background">
           <div className="section-container max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              See Your Own Score
+              See Your Own Risk Profile
             </h2>
             <p className="text-background/70 mb-8">
-              Run your business profile through the engine. Takes 2 minutes.
+              Run your business profile through the engine. See your best fit, acceptable options, and providers to avoid.
             </p>
             <Link
               to="/assessment"
               className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
             >
-              Start Assessment
+              Run My Risk Profile
             </Link>
           </div>
         </section>

@@ -2,17 +2,25 @@
 import { supabase } from "@/integrations/supabase/client";
 import type { QuizAnswers, Provider } from "@/types/quiz";
 
+interface EliminatedProvider {
+  name: string;
+  reason: string;
+}
+
 interface ServerRecommendation {
-  primary: {
+  bestMatch: {
     name: string;
     description: string;
     reasons: string[];
   };
-  alternatives: {
+  acceptable: {
     name: string;
     description: string;
     reasons: string[];
   }[];
+  avoid: EliminatedProvider[];
+  riskConfidence: "high" | "medium" | "low";
+  reserveProbability: "low" | "moderate" | "elevated";
 }
 
 interface RecommendationResponse {
@@ -24,14 +32,16 @@ interface RecommendationResponse {
 
 /**
  * Fetches recommendations from the server-side decision engine
- * Returns the primary recommendation as a Provider for backward compatibility
- * Also returns alternatives if available
+ * Returns tiered output: bestMatch, acceptable, avoid + risk indicators
  */
 export const fetchServerRecommendation = async (
   answers: QuizAnswers
 ): Promise<{
   primary: Provider | null;
   alternatives: Provider[];
+  avoid: EliminatedProvider[];
+  riskConfidence: "high" | "medium" | "low";
+  reserveProbability: "low" | "moderate" | "elevated";
   fromServer: boolean;
 }> => {
   try {
@@ -52,24 +62,23 @@ export const fetchServerRecommendation = async (
 
     if (error) {
       console.error("Server recommendation error:", error);
-      return { primary: null, alternatives: [], fromServer: false };
+      return { primary: null, alternatives: [], avoid: [], riskConfidence: "low", reserveProbability: "low", fromServer: false };
     }
 
     if (!data?.success || !data.recommendation) {
       console.warn("No server recommendation available");
-      return { primary: null, alternatives: [], fromServer: true };
+      return { primary: null, alternatives: [], avoid: [], riskConfidence: "low", reserveProbability: "low", fromServer: true };
     }
 
     const { recommendation } = data;
 
-    // Convert server response to Provider format for backward compatibility
     const primary: Provider = {
-      name: recommendation.primary.name,
-      description: recommendation.primary.description,
-      reasons: recommendation.primary.reasons,
+      name: recommendation.bestMatch.name,
+      description: recommendation.bestMatch.description,
+      reasons: recommendation.bestMatch.reasons,
     };
 
-    const alternatives: Provider[] = recommendation.alternatives.map((alt) => ({
+    const alternatives: Provider[] = recommendation.acceptable.map((alt) => ({
       name: alt.name,
       description: alt.description,
       reasons: alt.reasons,
@@ -77,9 +86,16 @@ export const fetchServerRecommendation = async (
 
     console.log(`Server recommendation received in ${data.executionTimeMs?.toFixed(2)}ms`);
 
-    return { primary, alternatives, fromServer: true };
+    return {
+      primary,
+      alternatives,
+      avoid: recommendation.avoid,
+      riskConfidence: recommendation.riskConfidence,
+      reserveProbability: recommendation.reserveProbability,
+      fromServer: true,
+    };
   } catch (err) {
     console.error("Failed to fetch server recommendation:", err);
-    return { primary: null, alternatives: [], fromServer: false };
+    return { primary: null, alternatives: [], avoid: [], riskConfidence: "low", reserveProbability: "low", fromServer: false };
   }
 };

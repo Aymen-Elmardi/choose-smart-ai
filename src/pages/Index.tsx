@@ -6,6 +6,7 @@ import { useCanonical } from "@/hooks/useCanonical";
 import { useSEO } from "@/hooks/useSEO";
 
 // Lazy-load below-fold sections
+const ExampleOutputPreview = lazy(() => import("@/components/ExampleOutputPreview"));
 const HowPaymentsWorkSection = lazy(() => import("@/components/HowPaymentsWorkSection"));
 const HardTruthSection = lazy(() => import("@/components/HardTruthSection"));
 const InsightsPreviewSection = lazy(() => import("@/components/InsightsPreviewSection"));
@@ -36,6 +37,7 @@ const Index = () => {
         <HeroSection />
         <DiagnosticBlock />
         <Suspense fallback={null}>
+          <ExampleOutputPreview />
           <HowPaymentsWorkSection />
           <HardTruthSection />
           <InsightsPreviewSection />

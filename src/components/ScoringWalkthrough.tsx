@@ -1,66 +1,92 @@
 import { useState, useMemo } from "react";
 import { PROVIDER_REGISTRY, SAMPLE_WALKTHROUGH, type ProviderConfig } from "@/lib/scoringData";
 
+interface EliminatedProvider {
+  provider: ProviderConfig;
+  reason: string;
+}
+
 interface ScoredProvider {
   provider: ProviderConfig;
   score: number;
   reasons: string[];
-  eliminated: boolean;
-  eliminationReason?: string;
 }
 
-const runElimination = (providers: ProviderConfig[]): ScoredProvider[] => {
+const runEngine = (providers: ProviderConfig[]) => {
   const answers = SAMPLE_WALKTHROUGH.answers;
   const requiredTypes = ["online", "marketplace"] as const;
   const volume = 35000; // 20k-50k midpoint
+  const industry = answers.industry;
 
-  return providers.map(p => {
-    // Check payment types
+  const eliminated: EliminatedProvider[] = [];
+  const survivors: ProviderConfig[] = [];
+
+  // Stage 1: Hard elimination with reasons
+  for (const p of providers) {
     if (!requiredTypes.every(t => p.paymentTypes.includes(t as any))) {
-      return { provider: p, score: 0, reasons: [], eliminated: true, eliminationReason: "Missing marketplace payment type" };
+      eliminated.push({ provider: p, reason: "Does not support required payment type" });
+      continue;
     }
-    // Check region
     if (!p.regions.includes("UK") && !p.regions.includes("both")) {
-      return { provider: p, score: 0, reasons: [], eliminated: true, eliminationReason: "Region mismatch (UK required)" };
+      eliminated.push({ provider: p, reason: "Region mismatch (UK required)" });
+      continue;
     }
-    // Check volume
     if (volume < p.minimumMonthlyVolume) {
-      return { provider: p, score: 0, reasons: [], eliminated: true, eliminationReason: `Volume below minimum (£${p.minimumMonthlyVolume.toLocaleString()})` };
+      eliminated.push({ provider: p, reason: `Volume below minimum (£${p.minimumMonthlyVolume.toLocaleString()})` });
+      continue;
     }
-    // Check exclusions
-    if (p.exclusions.includes(answers.industry)) {
-      return { provider: p, score: 0, reasons: [], eliminated: true, eliminationReason: "Industry excluded" };
+    if (p.exclusions.includes(industry)) {
+      eliminated.push({ provider: p, reason: "Industry excluded" });
+      continue;
     }
-    if (p.riskAppetite[answers.industry] === "red") {
-      return { provider: p, score: 0, reasons: [], eliminated: true, eliminationReason: "Red risk appetite" };
+    if (p.riskAppetite[industry] === "red") {
+      eliminated.push({ provider: p, reason: "Risk tolerance exceeded" });
+      continue;
     }
-    // Check marketplace
     if (!p.marketplaceCapability) {
-      return { provider: p, score: 0, reasons: [], eliminated: true, eliminationReason: "No marketplace capability" };
+      eliminated.push({ provider: p, reason: "No marketplace capability" });
+      continue;
     }
+    survivors.push(p);
+  }
 
-    // Score
+  // Stage 2: Score (rebalanced weights)
+  const scored: ScoredProvider[] = survivors.map(p => {
     let score = 50;
     const reasons: string[] = [];
 
-    const risk = p.riskAppetite[answers.industry];
-    if (risk === "green") { score += 20; reasons.push("Risk fit: +20 (green)"); }
-    else if (risk === "amber") { score += 5; reasons.push("Risk fit: +5 (amber)"); }
+    const risk = p.riskAppetite[industry];
+    if (risk === "green") { score += 40; reasons.push("Risk fit: +40 (green)"); }
+    else if (risk === "amber") { score += 10; reasons.push("Risk fit: +10 (amber)"); }
 
-    if (p.strengths.includes("transparent-pricing")) { score += 10; reasons.push("Priority: low-fees +10"); }
-    if (p.strengths.includes("international")) { score += 10; reasons.push("Priority: international +10"); }
+    // Volume: 10k-50k tier
+    if (p.minimumMonthlyVolume <= 10000) { score += 10; reasons.push("Volume fit: +10"); }
+
+    // Priorities capped at +20
+    let priorityScore = 0;
+    if (p.strengths.includes("transparent-pricing")) { priorityScore += 5; reasons.push("Priority: low-fees +5"); }
+    if (p.strengths.includes("international")) { priorityScore += 5; reasons.push("Priority: international +5"); }
+    score += Math.min(priorityScore, 20);
+
     if (p.splitPaymentsSupport) { score += 15; reasons.push("Feature: split payments +15"); }
 
-    return { provider: p, score, reasons, eliminated: false };
+    return { provider: p, score, reasons };
   });
+
+  scored.sort((a, b) => b.score - a.score);
+
+  // Risk confidence + reserve probability
+  const bestMatch = scored[0];
+  const riskConfidence = scored.length >= 5 && bestMatch?.provider.riskAppetite[industry] === "green" ? "High" : scored.length >= 3 ? "Medium" : "Low";
+  const reserveProbability = bestMatch?.provider.riskAppetite[industry] === "green" ? "Low" : "Moderate";
+
+  return { eliminated, scored, riskConfidence, reserveProbability };
 };
 
 const ScoringWalkthrough = () => {
   const [step, setStep] = useState<0 | 1 | 2>(0);
 
-  const results = useMemo(() => runElimination(PROVIDER_REGISTRY), []);
-  const eliminated = results.filter(r => r.eliminated);
-  const survivors = results.filter(r => !r.eliminated).sort((a, b) => b.score - a.score);
+  const { eliminated, scored, riskConfidence, reserveProbability } = useMemo(() => runEngine(PROVIDER_REGISTRY), []);
 
   return (
     <section className="py-16 md:py-24">
@@ -87,7 +113,7 @@ const ScoringWalkthrough = () => {
 
         {/* Step tabs */}
         <div className="flex justify-center gap-2 mb-8">
-          {(["Eliminate", "Score", "Rank"] as const).map((label, i) => (
+          {(["Eliminate", "Score", "Result"] as const).map((label, i) => (
             <button
               key={label}
               onClick={() => setStep(i as 0 | 1 | 2)}
@@ -107,7 +133,7 @@ const ScoringWalkthrough = () => {
           <div>
             <p className="text-sm text-muted-foreground mb-6 text-center">
               <span className="font-semibold text-foreground">{eliminated.length}</span> providers eliminated,{" "}
-              <span className="font-semibold text-foreground">{survivors.length}</span> survive.
+              <span className="font-semibold text-foreground">{scored.length}</span> survive.
             </p>
             <div className="grid gap-2 max-w-2xl mx-auto">
               {eliminated.map(r => (
@@ -117,7 +143,7 @@ const ScoringWalkthrough = () => {
                 >
                   <span className="text-sm text-muted-foreground line-through">{r.provider.name}</span>
                   <span className="text-xs px-2.5 py-1 rounded-full" style={{ backgroundColor: "hsl(0 84% 60% / 0.1)", color: "hsl(0 84% 50%)" }}>
-                    {r.eliminationReason}
+                    {r.reason}
                   </span>
                 </div>
               ))}
@@ -127,7 +153,7 @@ const ScoringWalkthrough = () => {
 
         {step === 1 && (
           <div className="grid gap-3 max-w-2xl mx-auto">
-            {survivors.map(r => (
+            {scored.map(r => (
               <div
                 key={r.provider.id}
                 className="px-4 py-3 rounded-lg border border-border bg-card"
@@ -141,7 +167,7 @@ const ScoringWalkthrough = () => {
                   <div
                     className="h-2 rounded-full transition-all duration-500"
                     style={{
-                      width: `${Math.min(100, (r.score / 95) * 100)}%`,
+                      width: `${Math.min(100, (r.score / 130) * 100)}%`,
                       backgroundColor: "hsl(var(--primary))",
                     }}
                   />
@@ -159,33 +185,61 @@ const ScoringWalkthrough = () => {
         )}
 
         {step === 2 && (
-          <div className="max-w-2xl mx-auto space-y-4">
-            {survivors.slice(0, 3).map((r, i) => (
-              <div
-                key={r.provider.id}
-                className={`px-5 py-4 rounded-xl border-2 ${
-                  i === 0 ? "border-primary bg-primary/5" : "border-border bg-card"
-                }`}
-              >
+          <div className="max-w-2xl mx-auto space-y-6">
+            {/* Risk indicators */}
+            <div className="flex gap-4">
+              <div className="flex-1 rounded-lg border border-border bg-card p-4 text-center">
+                <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Risk Confidence</div>
+                <div className="text-lg font-bold text-primary">{riskConfidence}</div>
+              </div>
+              <div className="flex-1 rounded-lg border border-border bg-card p-4 text-center">
+                <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Reserve Probability</div>
+                <div className="text-lg font-bold" style={{ color: reserveProbability === "Low" ? "hsl(142 71% 45%)" : "hsl(38 92% 50%)" }}>{reserveProbability}</div>
+              </div>
+            </div>
+
+            {/* Best Fit */}
+            {scored[0] && (
+              <div className="px-5 py-4 rounded-xl border-2 border-primary bg-primary/5">
                 <div className="flex items-center gap-3 mb-2">
-                  <span
-                    className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
-                      i === 0 ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground"
-                    }`}
-                  >
-                    {i + 1}
-                  </span>
-                  <span className="font-semibold text-foreground">{r.provider.name}</span>
+                  <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">1</span>
+                  <span className="text-xs uppercase tracking-wider font-bold text-primary">Best Fit</span>
+                  <span className="ml-auto font-bold text-foreground">{scored[0].score} pts</span>
+                </div>
+                <span className="font-semibold text-foreground">{scored[0].provider.name}</span>
+                <p className="text-sm text-muted-foreground mt-1">{scored[0].provider.description}</p>
+              </div>
+            )}
+
+            {/* Acceptable */}
+            {scored.slice(1, 3).map((r, i) => (
+              <div key={r.provider.id} className="px-5 py-4 rounded-xl border border-border bg-card">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="w-7 h-7 rounded-full bg-secondary text-muted-foreground flex items-center justify-center text-xs font-bold">{i + 2}</span>
+                  <span className="text-xs uppercase tracking-wider font-bold text-muted-foreground">Acceptable</span>
                   <span className="ml-auto font-bold text-foreground">{r.score} pts</span>
                 </div>
-                <p className="text-sm text-muted-foreground">{r.provider.description}</p>
-                {i === 0 && (
-                  <div className="mt-2 text-xs font-medium" style={{ color: "hsl(var(--primary))" }}>
-                    ★ Primary Recommendation
-                  </div>
-                )}
+                <span className="font-semibold text-foreground">{r.provider.name}</span>
+                <p className="text-sm text-muted-foreground mt-1">{r.provider.description}</p>
               </div>
             ))}
+
+            {/* Avoid */}
+            <div className="px-5 py-4 rounded-xl border border-border bg-card">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-xs uppercase tracking-wider font-bold" style={{ color: "hsl(0 84% 60%)" }}>Avoid for This Profile</span>
+              </div>
+              <div className="space-y-2">
+                {eliminated.slice(0, 4).map(r => (
+                  <div key={r.provider.id} className="flex items-center justify-between text-sm">
+                    <span className="text-muted-foreground line-through">{r.provider.name}</span>
+                    <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: "hsl(0 84% 60% / 0.1)", color: "hsl(0 84% 50%)" }}>
+                      {r.reason}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </div>
