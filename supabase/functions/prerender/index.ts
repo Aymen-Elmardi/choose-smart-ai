@@ -182,6 +182,11 @@ const META: Record<string, PageMeta> = {
     description:
       "Interactive knowledge graph showing how payment concepts connect across our insights library.",
   },
+  "/insights/scoring-logic": {
+    title: "How We Match You to a Provider | Scoring Logic | ChosePayments",
+    description:
+      "Full transparency into how our recommendation engine scores and ranks payment providers. See the elimination rules, scoring dimensions, and risk appetite matrix.",
+  },
 
   // ===== Fees & Costs =====
   "/insights/stripe-fees-explained": {
