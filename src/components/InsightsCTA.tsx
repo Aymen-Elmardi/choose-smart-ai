@@ -8,7 +8,7 @@ interface InsightsCTAProps {
 
 /**
  * Standardized Call-to-Action block for all /insights articles.
- * Repositioned as advisory-led rather than automated recommendation.
+ * Repositioned as risk-profile-led rather than generic advisory.
  */
 const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
   if (variant === "compact") {
@@ -20,12 +20,12 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
               Not sure if your setup is right for your business?
             </h3>
             <p className="text-sm text-muted-foreground">
-              Apply for independent payment advice tailored to your situation.
+              Most payment problems happen because the provider wasn't a good risk fit.
             </p>
           </div>
           <Button asChild className="shrink-0">
             <Link to="/assessment">
-              Get Independent Advice <ArrowRight className="w-4 h-4 ml-2" />
+              Run My Risk Profile <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>
         </div>
@@ -46,19 +46,23 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 text-white/90 text-sm font-medium mb-6">
             <Shield className="w-4 h-4" />
-            Independent Payment Advisory
+            Independent Risk Analysis
           </div>
+
+          {/* Context line */}
+          <p className="text-base text-white/70 mb-4">
+            Most payment problems happen because the provider wasn't a good risk fit.
+          </p>
           
           {/* Headline */}
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 max-w-2xl">
-            Work With an Independent Payments Advisor
+            Find Out Which Providers Actually Fit Your Risk Profile
           </h2>
           
           {/* Body text */}
           <p className="text-lg text-white/85 mb-8 max-w-2xl leading-relaxed">
-            Your payment setup is too important to leave to guesswork. Tell us about your business and
-            we'll review your situation independently, then come back with honest guidance on which
-            options are most likely to work.
+            Our engine evaluates 21 providers against your industry, volume, and business model —
+            then shows you which ones are a strong fit, which are acceptable, and which to avoid.
           </p>
           
           {/* CTA Button */}
@@ -68,7 +72,7 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
             className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg hover:shadow-xl transition-all w-full sm:w-auto h-auto sm:h-12 py-3 sm:py-0 whitespace-normal sm:whitespace-nowrap"
           >
             <Link to="/assessment" className="flex items-center justify-center gap-2 flex-wrap sm:flex-nowrap text-center">
-              Apply for Payment Advisory
+              Run My Risk Profile
               <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>

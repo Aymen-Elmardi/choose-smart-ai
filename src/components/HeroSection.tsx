@@ -22,10 +22,10 @@ const HeroSection = () => {
           </div>
           <div className="mt-12 flex flex-col items-center gap-4">
             <Button variant="hero" size="xl" asChild>
-              <a href="#diagnostic">
-                Explain My Payment Problem
+              <Link to="/assessment">
+                Run My Risk Profile
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </Link>
             </Button>
             <Link
               to="/insights"
