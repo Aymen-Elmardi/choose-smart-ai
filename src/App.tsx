@@ -100,6 +100,7 @@ const PaymentSchemeRulesExplained = lazyWithRetry(() => import("./pages/insights
 const SchemeRulesReservesMonitoring = lazyWithRetry(() => import("./pages/insights/SchemeRulesReservesMonitoring"));
 const SchemeRulesByPaymentMethod = lazyWithRetry(() => import("./pages/insights/SchemeRulesByPaymentMethod"));
 const InsightsGraph = lazyWithRetry(() => import("./pages/InsightsGraph"));
+const ScoringLogic = lazyWithRetry(() => import("./pages/ScoringLogic"));
 
 const queryClient = new QueryClient();
 
@@ -236,6 +237,7 @@ const App = () => (
               <Route path="/insights/scheme-rules-reserves-monitoring" element={<SchemeRulesReservesMonitoring />} />
               <Route path="/insights/scheme-rules-by-payment-method" element={<SchemeRulesByPaymentMethod />} />
               <Route path="/insights/graph" element={<InsightsGraph />} />
+              <Route path="/insights/scoring-logic" element={<ScoringLogic />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

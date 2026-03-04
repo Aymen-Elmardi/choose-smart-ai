@@ -14,7 +14,6 @@ const ScoringLogic = () => {
   useSEO({
     title: "How We Match You to a Provider | Scoring Logic Explained | ChosePayments",
     description: "See exactly how our recommendation engine eliminates, scores, and ranks 21 payment providers. No black boxes — full transparency.",
-    canonical: "/insights/scoring-logic",
   });
 
   const [openRule, setOpenRule] = useState<number | null>(null);
