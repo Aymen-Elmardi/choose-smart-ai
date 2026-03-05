@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { CreditCard, Check, ArrowRight, Loader2, Mail } from "lucide-react";
+import { CreditCard, Check, ArrowRight, Loader2, Mail, Shield, ShieldAlert, ShieldX, AlertTriangle, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -8,16 +8,20 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import type { QuizAnswers } from "@/types/quiz";
+import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
+import type { QuizAnswers, Provider } from "@/types/quiz";
 import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
+
+interface EliminatedProvider {
+  name: string;
+  reason: string;
+}
 
 const readStoredAnswers = (): QuizAnswers | null => {
   try {
     const raw = sessionStorage.getItem("quizAnswers");
     if (!raw) return null;
-
     const parsed = JSON.parse(raw) as Partial<QuizAnswers>;
-
     return {
       salesChannel: typeof parsed.salesChannel === "string" ? parsed.salesChannel : "",
       businessType: typeof parsed.businessType === "string" ? parsed.businessType : "",
@@ -37,14 +41,7 @@ const readStoredAnswers = (): QuizAnswers | null => {
 };
 
 const isQuizComplete = (a: QuizAnswers) =>
-  Boolean(
-    a.salesChannel &&
-      a.businessType &&
-      a.monthlyVolume &&
-      a.avgTransaction &&
-      a.location &&
-      a.priorities?.length
-  );
+  Boolean(a.salesChannel && a.businessType && a.monthlyVolume && a.avgTransaction && a.location && a.priorities?.length);
 
 type Market = "UK" | "US";
 
@@ -56,6 +53,18 @@ const readStoredMarket = (): Market => {
   } catch {
     return "UK";
   }
+};
+
+const confidenceColors = {
+  high: "text-green-600 bg-green-50 border-green-200",
+  medium: "text-amber-600 bg-amber-50 border-amber-200",
+  low: "text-red-600 bg-red-50 border-red-200",
+};
+
+const reserveColors = {
+  low: "text-green-600 bg-green-50 border-green-200",
+  moderate: "text-amber-600 bg-amber-50 border-amber-200",
+  elevated: "text-red-600 bg-red-50 border-red-200",
 };
 
 const Recommendation = () => {
@@ -71,7 +80,14 @@ const Recommendation = () => {
   const [backgroundError, setBackgroundError] = useState<string | null>(null);
   const { toast } = useToast();
 
-  // Form state
+  // Recommendation state
+  const [primary, setPrimary] = useState<Provider | null>(null);
+  const [alternatives, setAlternatives] = useState<Provider[]>([]);
+  const [avoid, setAvoid] = useState<EliminatedProvider[]>([]);
+  const [riskConfidence, setRiskConfidence] = useState<"high" | "medium" | "low">("low");
+  const [reserveProbability, setReserveProbability] = useState<"low" | "moderate" | "elevated">("low");
+  const [resultsLoaded, setResultsLoaded] = useState(false);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -81,7 +97,6 @@ const Recommendation = () => {
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
 
-  // Initialize session tracking and redirect to quiz if not completed
   useEffect(() => {
     initializeSessionTracking();
     if (!answers || !quizComplete) {
@@ -89,42 +104,43 @@ const Recommendation = () => {
     }
   }, [answers, quizComplete, navigate]);
 
-  // Handle the loading transition from quiz
+  // Fetch recommendation on mount
+  useEffect(() => {
+    if (!answers || !quizComplete) return;
+    fetchServerRecommendation(answers).then((result) => {
+      setPrimary(result.primary);
+      setAlternatives(result.alternatives);
+      setAvoid(result.avoid);
+      setRiskConfidence(result.riskConfidence);
+      setReserveProbability(result.reserveProbability);
+      setResultsLoaded(true);
+    });
+  }, [answers, quizComplete]);
+
+  // Handle loading transition from quiz
   useEffect(() => {
     if (!startedFromQuizRef.current) {
       setShowLoader(false);
       return;
     }
-
-    // Remove the query param to clean up URL
     const newParams = new URLSearchParams(window.location.search);
     newParams.delete("fromQuiz");
     setSearchParams(newParams, { replace: true });
-
-    // Brief loader for smooth transition
-    const timer = setTimeout(() => {
-      setShowLoader(false);
-    }, 800);
-
+    const timer = setTimeout(() => setShowLoader(false), 1200);
     return () => clearTimeout(timer);
   }, [setSearchParams]);
 
-  // Ensure the loader exits immediately after a successful submission
   useEffect(() => {
     if (isSubmitted) setShowLoader(false);
   }, [isSubmitted]);
 
-  // Don't render anything while redirecting
-  if (!answers || !quizComplete) {
-    return null;
-  }
+  if (!answers || !quizComplete) return null;
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async () => {
-    // Validate
     if (!formData.fullName.trim()) {
       toast({ title: "Please enter your name", variant: "destructive" });
       return;
@@ -135,12 +151,8 @@ const Recommendation = () => {
     }
 
     setIsSubmitting(true);
-
-    // Push advisory_form_submit event
     (window as any).dataLayer = (window as any).dataLayer || [];
     (window as any).dataLayer.push({ event: "advisory_form_submit" });
-
-    // OPTIMISTIC: Show success immediately
     setIsSubmitted(true);
     setBackgroundError(null);
 
@@ -151,7 +163,6 @@ const Recommendation = () => {
       email: formData.email,
       businessName: formData.companyName,
       notes: formData.notes,
-      // Quiz context
       businessType: answers.businessType,
       monthlyVolume: answers.monthlyVolume,
       avgTransaction: answers.avgTransaction,
@@ -160,26 +171,20 @@ const Recommendation = () => {
       priorities: answers.priorities,
       features: answers.features,
       market: market,
-      recommendedProvider: "Advisory Review",
-      logicPath: "advisory",
+      recommendedProvider: primary?.name || "Advisory Review",
+      logicPath: "tiered-engine",
     };
 
     try {
-      const { data, error } = await supabase.functions.invoke("send-lead-email", {
-        body: payload,
-      });
-
+      const { data, error } = await supabase.functions.invoke("send-lead-email", { body: payload });
       if (error) throw error;
       if (!data?.success) throw new Error(data?.error || "Failed to send");
 
-      // Send confirmation email
       try {
         const { data: confirmData, error: confirmError } = await supabase.functions.invoke("send-confirmation-email", {
           body: { email: formData.email, firstName },
         });
-        if (!confirmError && confirmData?.success) {
-          setIsConfirmationSent(true);
-        }
+        if (!confirmError && confirmData?.success) setIsConfirmationSent(true);
       } catch (confirmErr) {
         console.error("Confirmation email error:", confirmErr);
       }
@@ -192,7 +197,6 @@ const Recommendation = () => {
     }
   };
 
-  // Show loading transition when coming from quiz
   if (showLoader) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-6">
@@ -204,10 +208,10 @@ const Recommendation = () => {
             </div>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-            Thank you for completing the assessment
+            Calculating your risk profile
           </h2>
           <p className="text-muted-foreground text-lg mb-4">
-            Preparing your application
+            Scoring providers against your business signals
           </p>
         </div>
       </div>
@@ -226,182 +230,267 @@ const Recommendation = () => {
               </div>
               <span className="font-bold text-foreground">ChosePayments</span>
             </a>
-            <a
-              href="/"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Back to Home
             </a>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-3xl mx-auto px-4 py-8 md:py-20">
-
+      <main className="max-w-3xl mx-auto px-4 py-8 md:py-16">
         {isSubmitted ? (
-          /* Post-submit confirmation */
           <Card className="border border-primary/30 bg-primary/5 animate-fade-up">
             <CardContent className="p-8 md:p-10 text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
                 <Check className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-2xl font-semibold text-foreground mb-3">
-                Thanks. Your assessment has been received.
+                Thanks. Your details have been received.
               </h3>
               <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
-                We now have enough context to review your situation properly.
-                If this looks like a case we can help with, we'll follow up with next steps.
+                We now have your risk profile and contact information. If this looks like a case we can help with, we'll follow up with next steps.
               </p>
-              
-              {/* Confirmation indicator */}
               <div className="flex items-center justify-center gap-2 mt-6">
                 <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
-                  isConfirmationSent 
-                    ? 'bg-primary/10 text-primary' 
-                    : 'bg-muted text-muted-foreground'
+                  isConfirmationSent ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
                 }`}>
-                  {isConfirmationSent ? (
-                    <Mail className="w-4 h-4" />
-                  ) : (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  )}
-                  <span>{isConfirmationSent ? 'Confirmation sent to your email' : 'Sending confirmation...'}</span>
+                  {isConfirmationSent ? <Mail className="w-4 h-4" /> : <Loader2 className="w-4 h-4 animate-spin" />}
+                  <span>{isConfirmationSent ? "Confirmation sent to your email" : "Sending confirmation..."}</span>
                 </div>
               </div>
-              
               {backgroundError && (
-                <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
-                  {backgroundError}
-                </p>
+                <p className="mt-4 text-sm text-muted-foreground animate-fade-in">{backgroundError}</p>
               )}
             </CardContent>
           </Card>
         ) : (
-          /* Pre-submit: Assessment complete message + application form */
           <>
-            {/* Context message */}
-            <div className="text-center mb-10 animate-fade-up">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                Thanks for completing the assessment.
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
-                Based on your answers, we'll review your situation and come back with independent guidance on which payment options are most likely to work for your business.
-              </p>
-              <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-                Please leave your details below so we can follow up.
-              </p>
-            </div>
-
-            {/* Application Form */}
-            <Card className="border border-border/50 animate-fade-up animation-delay-100">
-              <CardContent className="p-6 md:p-8">
-                <div className="space-y-5">
-                  {/* Name */}
-                  <div className="space-y-2">
-                    <Label htmlFor="fullName" className="text-sm font-medium text-foreground">
-                      Name <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="fullName"
-                      type="text"
-                      autoComplete="name"
-                      placeholder="Your full name"
-                      value={formData.fullName}
-                      onChange={(e) => handleInputChange("fullName", e.target.value)}
-                      className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                      required
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-medium text-foreground">
-                      Email <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      autoComplete="email"
-                      placeholder="you@company.com"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange("email", e.target.value)}
-                      className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                      required
-                    />
-                  </div>
-
-                  {/* Company Name */}
-                  <div className="space-y-2">
-                    <Label htmlFor="companyName" className="text-sm font-medium text-foreground">
-                      Company Name
-                    </Label>
-                    <Input
-                      id="companyName"
-                      type="text"
-                      autoComplete="organization"
-                      placeholder="Your company name"
-                      value={formData.companyName}
-                      onChange={(e) => handleInputChange("companyName", e.target.value)}
-                      className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                    />
-                  </div>
-
-                  {/* Notes */}
-                  <div className="space-y-2">
-                    <Label htmlFor="notes" className="text-sm font-medium text-foreground">
-                      Anything else we should know?
-                    </Label>
-                    <Textarea
-                      id="notes"
-                      placeholder="Optional. Add any context that might help us advise you better."
-                      value={formData.notes}
-                      onChange={(e) => handleInputChange("notes", e.target.value)}
-                      className="min-h-[100px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Submit CTA */}
-                <div className="mt-8 text-center">
-                  <Button 
-                    variant="hero" 
-                    size="xl" 
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        Submitting...
-                      </>
-                    ) : (
-                      <>
-                        Submit My Assessment
-                        <ArrowRight className="w-5 h-5" />
-                      </>
-                    )}
-                  </Button>
-                  <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
-                    Your answers from the assessment will be included so we have full context.
+            {/* Tiered Results */}
+            {resultsLoaded && primary ? (
+              <div className="mb-12 animate-fade-up">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                    Your Risk Profile Results
+                  </h2>
+                  <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+                    Based on your business profile, here's how providers align with your risk signals.
                   </p>
                 </div>
-              </CardContent>
-            </Card>
-          </>
-        )}
 
-        {/* Retake assessment link - only pre-submit */}
-        {!isSubmitted && (
-          <div className="text-center mt-10 animate-fade-up animation-delay-200">
-            <p className="text-muted-foreground mb-4">Need to change your answers?</p>
-            <a
-              href="/assessment?start=true"
-              className="text-primary font-medium hover:underline"
-            >
-              Retake assessment →
-            </a>
-          </div>
+                {/* Risk Indicators */}
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className={`flex items-center gap-3 p-4 rounded-xl border ${confidenceColors[riskConfidence]}`}>
+                    <Shield className="w-5 h-5 shrink-0" />
+                    <div>
+                      <div className="text-xs font-medium uppercase tracking-wide opacity-70">Risk Confidence</div>
+                      <div className="font-semibold capitalize">{riskConfidence}</div>
+                    </div>
+                  </div>
+                  <div className={`flex items-center gap-3 p-4 rounded-xl border ${reserveColors[reserveProbability]}`}>
+                    <AlertTriangle className="w-5 h-5 shrink-0" />
+                    <div>
+                      <div className="text-xs font-medium uppercase tracking-wide opacity-70">Reserve Probability</div>
+                      <div className="font-semibold capitalize">{reserveProbability}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Best Fit */}
+                <Card className="border-2 border-primary/30 bg-primary/5 mb-4">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <CheckCircle className="w-5 h-5 text-primary" />
+                      <span className="text-sm font-bold text-primary uppercase tracking-wide">Best Fit</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-2">{primary.name}</h3>
+                    <p className="text-muted-foreground text-sm mb-3">{primary.description}</p>
+                    {primary.reasons?.length > 0 && (
+                      <ul className="space-y-1">
+                        {primary.reasons.map((r, i) => (
+                          <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                            <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                            <span>{r}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </CardContent>
+                </Card>
+
+                {/* Acceptable */}
+                {alternatives.length > 0 && (
+                  <div className="mb-4">
+                    <div className="flex items-center gap-2 mb-3 px-1">
+                      <ShieldAlert className="w-4 h-4 text-amber-500" />
+                      <span className="text-sm font-bold text-amber-600 uppercase tracking-wide">Acceptable</span>
+                    </div>
+                    <div className="space-y-3">
+                      {alternatives.map((alt) => (
+                        <Card key={alt.name} className="border border-border/60">
+                          <CardContent className="p-5">
+                            <h4 className="font-semibold text-foreground mb-1">{alt.name}</h4>
+                            <p className="text-sm text-muted-foreground mb-2">{alt.description}</p>
+                            {alt.reasons?.length > 0 && (
+                              <ul className="space-y-1">
+                                {alt.reasons.map((r, i) => (
+                                  <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
+                                    <Check className="w-3 h-3 text-muted-foreground shrink-0 mt-0.5" />
+                                    <span>{r}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Avoid */}
+                {avoid.length > 0 && (
+                  <div className="mb-4">
+                    <div className="flex items-center gap-2 mb-3 px-1">
+                      <ShieldX className="w-4 h-4 text-destructive" />
+                      <span className="text-sm font-bold text-destructive uppercase tracking-wide">Avoid for Your Profile</span>
+                    </div>
+                    <Card className="border border-destructive/20 bg-destructive/5">
+                      <CardContent className="p-5">
+                        <ul className="space-y-3">
+                          {avoid.map((p) => (
+                            <li key={p.name} className="flex items-start gap-3">
+                              <ShieldX className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
+                              <div>
+                                <span className="font-semibold text-foreground">{p.name}</span>
+                                <p className="text-sm text-muted-foreground">{p.reason}</p>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                )}
+              </div>
+            ) : resultsLoaded && !primary ? (
+              <div className="text-center mb-12 animate-fade-up">
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  Assessment Complete
+                </h2>
+                <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+                  We couldn't generate an automated match for your profile. Leave your details below and our team will review your situation manually.
+                </p>
+              </div>
+            ) : (
+              <div className="text-center mb-12">
+                <div className="flex justify-center mb-4">
+                  <Loader2 className="w-8 h-8 text-primary animate-spin" />
+                </div>
+                <p className="text-muted-foreground">Calculating your risk profile...</p>
+              </div>
+            )}
+
+            {/* Contact Form */}
+            <div className="animate-fade-up animation-delay-100">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-semibold text-foreground mb-2">
+                  Want us to follow up with next steps?
+                </h3>
+                <p className="text-muted-foreground">
+                  Leave your details and we'll review your profile in detail.
+                </p>
+              </div>
+
+              <Card className="border border-border/50">
+                <CardContent className="p-6 md:p-8">
+                  <div className="space-y-5">
+                    <div className="space-y-2">
+                      <Label htmlFor="fullName" className="text-sm font-medium text-foreground">
+                        Name <span className="text-destructive">*</span>
+                      </Label>
+                      <Input
+                        id="fullName"
+                        type="text"
+                        autoComplete="name"
+                        placeholder="Your full name"
+                        value={formData.fullName}
+                        onChange={(e) => handleInputChange("fullName", e.target.value)}
+                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-sm font-medium text-foreground">
+                        Email <span className="text-destructive">*</span>
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        autoComplete="email"
+                        placeholder="you@company.com"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="companyName" className="text-sm font-medium text-foreground">
+                        Company Name
+                      </Label>
+                      <Input
+                        id="companyName"
+                        type="text"
+                        autoComplete="organization"
+                        placeholder="Your company name"
+                        value={formData.companyName}
+                        onChange={(e) => handleInputChange("companyName", e.target.value)}
+                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="notes" className="text-sm font-medium text-foreground">
+                        Anything else we should know?
+                      </Label>
+                      <Textarea
+                        id="notes"
+                        placeholder="Optional. Add any context that might help us advise you better."
+                        value={formData.notes}
+                        onChange={(e) => handleInputChange("notes", e.target.value)}
+                        className="min-h-[100px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-8 text-center">
+                    <Button variant="hero" size="xl" onClick={handleSubmit} disabled={isSubmitting}>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          Submit My Details
+                          <ArrowRight className="w-5 h-5" />
+                        </>
+                      )}
+                    </Button>
+                    <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
+                      Your assessment answers and risk profile will be included so we have full context.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Retake */}
+            <div className="text-center mt-10 animate-fade-up animation-delay-200">
+              <p className="text-muted-foreground mb-4">Need to change your answers?</p>
+              <a href="/assessment?start=true" className="text-primary font-medium hover:underline">
+                Retake assessment →
+              </a>
+            </div>
+          </>
         )}
       </main>
     </div>

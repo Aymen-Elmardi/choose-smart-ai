@@ -11,10 +11,10 @@ const CTASection = () => {
       <div className="section-container">
         <div className={`max-w-3xl mx-auto text-center reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-background mb-6">
-            Still Stuck? Get Direct Help.
+            Not Sure Which Provider Fits?
           </h2>
           <p className="text-lg md:text-xl text-background/70 max-w-2xl mx-auto mb-10">
-            If your situation needs more than explanation, we can review your account and give you a clear next step.
+            Find out which providers match your business and which ones to avoid.
           </p>
           <Button 
             variant="hero"
@@ -22,7 +22,7 @@ const CTASection = () => {
             asChild
           >
             <Link to="/assessment?start=true" replace>
-              Get Direct Help
+              Run My Risk Profile
               <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>

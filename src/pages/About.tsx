@@ -6,7 +6,7 @@ const About = () => {
   useSEO({
     title: "Independent Payment Advisory | Why ChosePayments is Different",
     description: "We're not a comparison site. ChosePayments provides expert risk assessment and strategic guidance, helping businesses avoid payment provider mismatch before it costs them.",
-    keywords: ["independent payment advisory", "payment risk assessment", "payment strategy", "ChosePayments"],
+    keywords: ["independent payment advisory", "payment risk assessment", "payment risk analysis", "ChosePayments"],
   });
 
   return (
@@ -19,7 +19,7 @@ const About = () => {
             
             <header>
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                ChosePayments: The Missing Layer in Payment Strategy
+                ChosePayments: The Missing Layer in Payment Risk
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 ChosePayments was founded to solve a systemic issue within the payments industry: the recurring cycle of high potential businesses being matched with the wrong providers, only to face the consequences months later.

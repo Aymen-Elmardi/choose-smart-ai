@@ -3,24 +3,24 @@ import { useInView } from "@/hooks/useInView";
 
 const deliverables = [
   {
-    title: "Infrastructure and Redundancy Assessment",
-    description: "Audit your gateway, processor, and acquirer setup for single points of failure",
+    title: "Best Fit Provider",
+    description: "The provider most aligned to your risk profile and business model",
   },
   {
-    title: "Fee Analysis and Negotiation Strategy",
-    description: "Benchmark your rates against industry data and identify savings opportunities",
+    title: "Acceptable Alternatives",
+    description: "Providers that can work but may have trade-offs for your specific situation",
   },
   {
-    title: "Risk Profiling and Compliance Review",
-    description: "Evaluate PCI, SCA, and fraud exposure across your payment stack",
+    title: "Providers to Avoid",
+    description: "And exactly why they don't fit — with clear elimination reasons",
   },
   {
-    title: "Acceptance Rate Optimisation",
-    description: "Identify checkout friction, decline patterns, and authorisation improvements",
+    title: "Reserve Risk Indicator",
+    description: "Likelihood of holds being placed on your funds based on your profile",
   },
   {
-    title: "Architecture Recommendations",
-    description: "Provider mix, routing strategy, and scalability guidance tailored to your business model",
+    title: "Risk Confidence Level",
+    description: "How strong the match signal is based on the data you provided",
   },
 ];
 
@@ -32,10 +32,10 @@ const SuccessPreviewSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            What the Payment Strategy Review Includes
+            What Your Risk Profile Reveals
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
-            A fixed-scope, fee-based engagement designed for established merchants.
+            Based on your business profile, we show you:
           </p>
         </div>
 
