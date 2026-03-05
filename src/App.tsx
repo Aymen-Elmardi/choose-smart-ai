@@ -91,6 +91,16 @@ const CrisisStripeAccountFrozen = lazyWithRetry(() => import("./pages/insights/c
 const InterchangePlusPlus = lazyWithRetry(() => import("./pages/insights/pricing/InterchangePlusPlus"));
 const BlendedVsInterchange = lazyWithRetry(() => import("./pages/insights/pricing/BlendedVsInterchange"));
 
+// Provider Fit Guides
+const HighChargebackProcessors = lazyWithRetry(() => import("./pages/insights/provider-fit/HighChargebackProcessors"));
+const HighRiskEcommerce = lazyWithRetry(() => import("./pages/insights/provider-fit/HighRiskEcommerce"));
+const SubscriptionSaaS = lazyWithRetry(() => import("./pages/insights/provider-fit/SubscriptionSaaS"));
+const MCC5812Restaurants = lazyWithRetry(() => import("./pages/insights/provider-fit/MCC5812Restaurants"));
+const FoodDeliveryAcquirers = lazyWithRetry(() => import("./pages/insights/provider-fit/FoodDeliveryAcquirers"));
+
+// Landing pages
+const RiskProfileMatching = lazyWithRetry(() => import("./pages/RiskProfileMatching"));
+
 const StripeFees = lazyWithRetry(() => import("./pages/insights/StripeFees"));
 const CheckoutComFees = lazyWithRetry(() => import("./pages/insights/CheckoutComFees"));
 const FiservCloverFees = lazyWithRetry(() => import("./pages/insights/FiservCloverFees"));
@@ -226,6 +236,16 @@ const App = () => (
               {/* Pricing Models articles */}
               <Route path="/insights/pricing-models/interchange-plus-plus" element={<InterchangePlusPlus />} />
               <Route path="/insights/pricing-models/blended-vs-interchange" element={<BlendedVsInterchange />} />
+              
+              {/* Provider Fit Guides */}
+              <Route path="/best-payment-processors-high-chargebacks" element={<HighChargebackProcessors />} />
+              <Route path="/payment-processors-high-risk-ecommerce" element={<HighRiskEcommerce />} />
+              <Route path="/payment-provider-subscription-business" element={<SubscriptionSaaS />} />
+              <Route path="/mcc-5812-payment-gateway-uk" element={<MCC5812Restaurants />} />
+              <Route path="/best-acquirers-food-delivery" element={<FoodDeliveryAcquirers />} />
+              
+              {/* Landing pages */}
+              <Route path="/risk-profile-matching" element={<RiskProfileMatching />} />
               
               {/* Fees & Costs articles */}
               <Route path="/insights/stripe-fees-explained" element={<StripeFees />} />

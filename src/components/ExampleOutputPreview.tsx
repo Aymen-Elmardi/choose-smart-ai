@@ -40,7 +40,7 @@ const ExampleOutputPreview = () => {
                 <div className="text-sm font-bold text-primary">High</div>
               </div>
               <div className="flex-1 p-4 text-center">
-                <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Reserve Probability</div>
+                <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Funds Hold Risk</div>
                 <div className="text-sm font-bold" style={{ color: "hsl(142 71% 45%)" }}>Low</div>
               </div>
             </div>

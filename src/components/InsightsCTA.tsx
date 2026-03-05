@@ -51,12 +51,12 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
 
           {/* Context line */}
           <p className="text-base text-white/70 mb-4">
-            Most payment problems happen because the provider wasn't a good risk fit.
+            Most payment problems happen because the provider was never a good risk fit.
           </p>
           
           {/* Headline */}
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 max-w-2xl">
-            Find Out Which Providers Actually Fit Your Risk Profile
+            Run Your Risk Profile to See Which Providers Actually Match Your Business
           </h2>
           
           {/* Body text */}

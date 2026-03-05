@@ -11,13 +11,14 @@ const HeroSection = () => {
             No Sales Calls. No Pitch. Just Explanation.
           </p>
           <h1 className="heading-xl text-foreground text-balance">
-            Why Is Your Payment Provider Holding Your Money?
+            Choose the Right Payment Provider for Your Risk Profile
           </h1>
           <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              Funds delayed. Reserve imposed. Fees higher than expected.
-              <br />
-              We explain exactly what's happening, in plain English.
+              Most merchants choose payment providers based on price or developer preference.
+            </p>
+            <p className="mt-3">
+              Our engine matches providers to your actual risk profile.
             </p>
           </div>
           <div className="mt-12 flex flex-col items-center gap-4">

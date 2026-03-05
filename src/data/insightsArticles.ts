@@ -1,7 +1,7 @@
 // Insights article data - extracted from Insights.tsx for reusability
 // Used by the Insights page, sitemap generation, and search
 
-export type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis" | "pricing" | "fees";
+export type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis" | "pricing" | "fees" | "provider-fit";
 
 export interface Insight {
   title: string;
@@ -81,6 +81,13 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
     description: "A complete breakdown of Stripe's pricing for UK businesses. Understand card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs.",
     category: "fees",
     readTime: "7 min read"
+  },
+  "provider-fit": {
+    title: "Best Payment Processors for High Chargeback Businesses",
+    slug: "best-payment-processors-high-chargebacks",
+    description: "Learn why many processors reject high chargeback merchants, how risk tolerance differs between providers, and how to find the right fit.",
+    category: "provider-fit",
+    readTime: "7 min read"
   }
 };
 
@@ -96,7 +103,8 @@ export const filterTabs: { label: string; value: InsightCategory }[] = [
   { label: "Risk & Freezes", value: "risk" },
   { label: "Guides", value: "guides" },
   { label: "Compliance", value: "compliance" },
-  { label: "Explainers", value: "explainer" }
+  { label: "Explainers", value: "explainer" },
+  { label: "Provider Fit Guides", value: "provider-fit" }
 ];
 
 /**
@@ -111,7 +119,8 @@ export const categoryLabels: Record<InsightCategory, string> = {
   guides: "Guide",
   compliance: "Compliance",
   explainer: "Explainer",
-  providers: "Provider Deep Dive"
+  providers: "Provider Deep Dive",
+  "provider-fit": "Provider Fit Guide"
 };
 
 /**
@@ -522,6 +531,42 @@ export const allInsights: Insight[] = [
     description: "Understand where PayPal fits in the payments landscape, how its consumer trust drives conversion, and which businesses benefit most from adding PayPal to their payment stack.",
     category: "providers",
     readTime: "10 min read"
+  },
+  // Provider Fit Guides
+  {
+    title: "Best Payment Processors for High Chargeback Businesses",
+    slug: "best-payment-processors-high-chargebacks",
+    description: "Learn why many processors reject high chargeback merchants, how risk tolerance differs between providers, and how to find the right fit for your business.",
+    category: "provider-fit",
+    readTime: "7 min read"
+  },
+  {
+    title: "Payment Processors for High-Risk E-commerce Businesses",
+    slug: "payment-processors-high-risk-ecommerce",
+    description: "Learn why high-risk ecommerce struggles with Stripe or Square, which processors tolerate high risk industries, and how risk appetite differs across providers.",
+    category: "provider-fit",
+    readTime: "8 min read"
+  },
+  {
+    title: "Choosing the Right Payment Provider for Subscription and SaaS Businesses",
+    slug: "payment-provider-subscription-business",
+    description: "Learn what subscription and SaaS businesses need from a payment provider, including recurring billing, dunning logic, and fraud exposure.",
+    category: "provider-fit",
+    readTime: "7 min read"
+  },
+  {
+    title: "MCC 5812: Payment Gateways for UK Restaurants and Food Businesses",
+    slug: "mcc-5812-payment-gateway-uk",
+    description: "What MCC 5812 means for your restaurant or food business, why hospitality triggers reserves, and which payment processors support restaurant models.",
+    category: "provider-fit",
+    readTime: "7 min read"
+  },
+  {
+    title: "Best Payment Acquirers for Food Delivery Platforms",
+    slug: "best-acquirers-food-delivery",
+    description: "Why food delivery platforms face unique payment challenges and which acquirers can handle high transaction velocity, refund patterns, and marketplace payouts.",
+    category: "provider-fit",
+    readTime: "8 min read"
   }
 ];
 
@@ -529,6 +574,10 @@ export const allInsights: Insight[] = [
  * Get the URL for an insight article
  */
 export const getInsightUrl = (insight: Insight): string => {
+  // Provider fit guides use root-level URLs
+  if (insight.category === "provider-fit") {
+    return `/${insight.slug}`;
+  }
   return `/insights/${insight.slug}`;
 };
 
