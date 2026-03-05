@@ -17,6 +17,7 @@ import {
   type InsightCategory,
   type Insight,
 } from "@/data/insightsArticles";
+import InsightsSidebarModule from "@/components/InsightsSidebarModule";
 
 const Insights = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -115,8 +116,9 @@ const Insights = () => {
             </div>
           )}
 
-          {/* Insights Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Insights Grid with Sidebar */}
+          <div className="grid lg:grid-cols-4 gap-6">
+            <div className="lg:col-span-3 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredInsights.map((insight) => (
               <Link
                 key={insight.slug}
@@ -146,6 +148,14 @@ const Insights = () => {
                 </div>
               </Link>
             ))}
+            </div>
+
+            {/* Sidebar */}
+            <div className="hidden lg:block">
+              <div className="sticky top-28">
+                <InsightsSidebarModule />
+              </div>
+            </div>
           </div>
 
           {/* Empty State */}
