@@ -56,9 +56,9 @@ interface PageMeta {
 const META: Record<string, PageMeta> = {
   // ===== Core pages =====
   "/": {
-    title: "Payment Strategy Review for High-Volume Merchants | ChosePayments",
+    title: "Payment Provider Risk Profile | ChosePayments",
     description:
-      "Fixed-scope payment infrastructure audit for merchants processing £1M+. Fee benchmarking, acceptance optimisation, risk profiling, and architecture recommendations.",
+      "Find out which payment providers fit your business — and which ones to avoid. Free risk profile assessment with tiered provider matching.",
   },
   "/us": {
     title: "Payment Provider Advisory for US Businesses | ChosePayments",

@@ -39,11 +39,6 @@ const Header = () => {
             >
               Partner With Us
             </Link>
-            <Button variant="hero" size="default" asChild>
-              <Link to="/assessment?start=true" replace>
-                Book a Payment Strategy Review
-              </Link>
-            </Button>
           </nav>
 
           {/* Mobile Navigation */}
@@ -79,7 +74,7 @@ const Header = () => {
                   <SheetClose asChild>
                     <Button variant="hero" className="mt-4" asChild>
                       <Link to="/assessment?start=true" replace onClick={() => setIsOpen(false)}>
-                        Book a Strategy Review
+                        Run My Risk Profile
                       </Link>
                     </Button>
                   </SheetClose>

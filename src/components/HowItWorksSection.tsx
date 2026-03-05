@@ -5,20 +5,20 @@ const steps = [
   {
     icon: ClipboardList,
     step: "01",
-    title: "Submit Your Business Profile",
-    description: "Provide details about your transaction volumes, business model, and current payment stack.",
+    title: "Enter Your Business Details",
+    description: "Answer a short assessment about your business model, monthly volume, and industry.",
   },
   {
     icon: Sparkles,
     step: "02",
-    title: "We Conduct the Review",
-    description: "Our team analyses your infrastructure, fees, risk exposure, and acceptance performance.",
+    title: "We Calculate Your Risk Profile",
+    description: "Our engine scores providers against your risk signals, volume tier, and operational profile.",
   },
   {
     icon: FileText,
     step: "03",
-    title: "Receive Your Strategy Report",
-    description: "A detailed report with actionable recommendations, benchmarking data, and a clear roadmap.",
+    title: "See Your Provider Match",
+    description: "View which providers fit, which are acceptable, and which to avoid — with clear reasons.",
   },
 ];
 
@@ -30,7 +30,7 @@ const HowItWorksSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-20 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            How the Payment Strategy Review Works
+            How It Works
           </h2>
         </div>
 
