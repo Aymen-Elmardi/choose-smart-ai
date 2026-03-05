@@ -17,16 +17,16 @@ const Index = () => {
   useCanonical();
 
   useSEO({
-    title: "Why Your Payment Provider Is Holding Your Money | ChosePayments",
+    title: "Choose the Right Payment Provider for Your Risk Profile | ChosePayments",
     description:
-      "Funds withheld? Reserve imposed? Fees higher than promised? Understand what payment providers are actually doing, clearly explained.",
+      "Most merchants choose payment providers based on price. Our engine matches providers to your actual risk profile — industry, volume, and business model.",
     ogType: "website",
     keywords: [
-      "payment provider holding money",
-      "merchant account problems",
-      "payment funds held",
-      "payment reserve explained",
-      "payment fees explained",
+      "payment provider risk profile",
+      "best payment processor for my business",
+      "payment provider matching",
+      "merchant risk assessment",
+      "payment provider fit",
     ],
   });
 
