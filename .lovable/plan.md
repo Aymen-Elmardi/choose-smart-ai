@@ -1,134 +1,81 @@
 
 
-# Homepage Rewrite: Enterprise Payment Advisory Positioning
+# Streamline Website: Remove Strategy Review, Unify CTAs, Show Recommendations
 
-## Overview
+## What's changing
 
-Transform the homepage from a general "independent payment advisory" site into a high-trust, enterprise-grade Payment Strategy Review service targeting merchants processing over GBP 1M annually. This is a significant content and messaging overhaul across 8+ components while preserving the existing layout structure and design system.
+The site currently has competing CTAs ("Book a Payment Strategy Review", "Get Direct Help", "Run My Risk Profile") and references to a service model ("Payment Strategy Review") that conflicts with the risk-profile engine. This plan unifies everything around one clear flow: **Run My Risk Profile → Assessment → See Results + Submit Details**.
 
-## Section-by-Section Changes
+---
 
-### 1. SEO Metadata (Index.tsx)
+## Changes by file
 
-Update title, description, and keywords to target enterprise payment strategy terms:
-- Title: "Payment Strategy Review for High-Volume Merchants | ChosePayments"
-- Description focused on revenue protection, fee optimization, and risk reduction for established merchants
-- Keywords targeting enterprise payment consulting, payment infrastructure audit, etc.
+### 1. Header — Remove green "Book" button, update mobile CTA
+**`src/components/Header.tsx`**
+- Remove the `Button variant="hero"` linking to "Book a Payment Strategy Review" (desktop nav, lines 42-46)
+- Remove the mobile equivalent "Book a Strategy Review" button (lines 80-84)
+- Keep the "Partner With Us" link as-is
 
-### 2. Header (Header.tsx)
+### 2. HowItWorksSection — Rewrite for risk profile flow
+**`src/components/HowItWorksSection.tsx`**
+- Change heading from "How the Payment Strategy Review Works" to "How It Works"
+- Rewrite 3 steps:
+  1. "Enter Your Business Details" — answer a short assessment about your model, volume, and industry
+  2. "We Calculate Your Risk Profile" — our engine scores providers against your risk signals
+  3. "See Your Provider Match" — view which providers fit, which are acceptable, and which to avoid
 
-- Change primary CTA from "Get Independent Advice" to "Book a Payment Strategy Review"
-- Update the "Onboard With Us" link text to "Partner With Us" for enterprise tone
-- Assessment link updated to `/assessment?start=true` (URL stays the same, label changes)
+### 3. SuccessPreviewSection — Rewrite for engine output
+**`src/components/SuccessPreviewSection.tsx`**
+- Change heading from "What the Payment Strategy Review Includes" to "What Your Risk Profile Reveals"
+- Change subtitle from "A fixed-scope, fee-based engagement..." to "Based on your business profile, we show you:"
+- Replace 5 deliverables with engine-aligned items:
+  1. Best Fit Provider — the provider most aligned to your risk profile
+  2. Acceptable Alternatives — providers that can work but may have trade-offs
+  3. Providers to Avoid — and exactly why they don't fit
+  4. Reserve Risk Indicator — likelihood of holds on your funds
+  5. Risk Confidence Level — how strong the match signal is
 
-### 3. Hero Section (HeroSection.tsx)
+### 4. CTASection — Update copy
+**`src/components/CTASection.tsx`**
+- Change heading from "Still Stuck? Get Direct Help." to "Not Sure Which Provider Fits?"
+- Change body text to "Find out which providers match your business and which ones to avoid."
+- Change button text from "Get Direct Help" to "Run My Risk Profile"
 
-Complete content rewrite:
-- **Eyebrow**: "Payment Strategy Review" (replacing "Independent Payment Advisory")
-- **Headline**: "Your Payment Infrastructure Is Either Protecting Revenue or Quietly Losing It"
-- **Subhead**: Enterprise-focused pitch about the fixed-scope Payment Strategy Review for merchants processing GBP 1M+ annually
-- **Primary CTA**: "Book Your Payment Strategy Review"
-- **Secondary CTA**: "How It Works" (unchanged)
-- **Trust indicators**: Replace current ones with "For merchants processing GBP 1M+" / "Fixed-scope engagement" / "Outcome-driven methodology"
+### 5. Footer — Remove "Payment Strategy Advisory"
+**`src/components/Footer.tsx`**
+- Change "Payment Strategy Advisory" to "Independent Payment Risk Analysis"
 
-### 4. Success Preview Section (SuccessPreviewSection.tsx) -- becomes "What the Review Covers"
+### 6. About page — Update heading
+**`src/pages/About.tsx`**
+- Line 22: Change "The Missing Layer in Payment Strategy" to "The Missing Layer in Payment Risk"
+- Line 9: Remove "payment strategy" from keywords, replace with "payment risk analysis"
 
-Rewrite deliverables to reflect the paid service scope:
-- **Heading**: "What the Payment Strategy Review Includes"
-- **Subhead**: "A fixed-scope, fee-based engagement designed for established merchants."
-- Items become:
-  1. "Infrastructure and Redundancy Assessment" -- Audit your gateway, processor, and acquirer setup for single points of failure
-  2. "Fee Analysis and Negotiation Strategy" -- Benchmark your rates against industry data and identify savings opportunities
-  3. "Risk Profiling and Compliance Review" -- Evaluate PCI, SCA, and fraud exposure across your payment stack
-  4. "Acceptance Rate Optimization" -- Identify checkout friction, decline patterns, and authorization improvements
-  5. "Architecture Recommendations" -- Provider mix, routing strategy, and scalability guidance tailored to your business model
+### 7. Recommendation page — Show tiered results above the form
+**`src/pages/Recommendation.tsx`**
+This is the key UX change. Currently this page only shows a contact form after the quiz. It needs to:
+- Call `fetchServerRecommendation` on mount with stored answers
+- Display the tiered result (Best Fit / Acceptable / Avoid) with risk confidence and reserve probability
+- Show the contact form **below** the results, framed as "Want us to follow up with next steps?"
+- The results become the value; the form becomes the conversion
 
-### 5. Why Different Section (WhyDifferentSection.tsx)
+### 8. Prerender metadata
+**`supabase/functions/prerender/index.ts`**
+- Update the `/` route title from "Payment Strategy Review for High-Volume Merchants" to "Payment Provider Risk Profile | ChosePayments"
 
-Rewrite with enterprise authority:
-- **Eyebrow**: "Why ChosePayments"
-- **Heading**: "Not a Comparison Site. Not a Lead Marketplace."
-- **Subhead**: "We partner with established merchants to turn payment infrastructure from a cost center into a competitive advantage."
-- Differentiators become:
-  1. "No Provider Influence" -- Recommendations based on operational fit and risk profile, not commission
-  2. "Built for Scale" -- Designed for businesses where even a 0.1% improvement in acceptance rates has six-figure impact
-  3. "Insider Expertise" -- Built by professionals who have worked inside payment operations and underwriting teams
+### 9. ExampleOutputPreview — Already exists, no changes needed
 
-### 6. Problem Section (ProblemSection.tsx) -- becomes Risk/Cost Messaging
+---
 
-Rewrite to focus on enterprise pain points:
-- **Heading**: "The Hidden Costs of an Unaudited Payment Stack"
-- Items become:
-  1. "Revenue Leaking Through Declines" -- Poor authorization rates and checkout friction quietly erode margins, undoing marketing and sales effort
-  2. "Hidden Fees Compounding at Scale" -- At high volumes, opaque pricing structures cost six or seven figures annually
-  3. "Compliance Exposure Growing Silently" -- PCI, SCA, and scheme rule changes create risk that surfaces without warning
-- **Bottom line**: "At scale, your payment gateway is not a backend detail. It is the engine of your revenue."
+## Files changed summary
 
-### 7. How It Works Section (HowItWorksSection.tsx)
-
-Rewrite steps for the paid engagement:
-1. "Submit Your Business Profile" -- Provide details about your transaction volumes, business model, and current payment stack
-2. "We Conduct the Review" -- Our team analyzes your infrastructure, fees, risk exposure, and acceptance performance
-3. "Receive Your Strategy Report" -- A detailed report with actionable recommendations, benchmarking data, and a clear roadmap
-
-### 8. Value Props Section (ValuePropsSection.tsx) -- becomes "Built for Established Merchants"
-
-Rewrite to filter audience and emphasize scale:
-- **Heading**: "Built for Businesses Where Payments Are Mission-Critical"
-- Items:
-  1. "Processing GBP 1M+ Annually" -- Our methodology is designed for merchants where transaction volume justifies a strategic review
-  2. "Fixed-Scope, Clear Pricing" -- One flat fee, clearly defined scope. No retainers, no ongoing commitments
-  3. "Outcome-Driven Methodology" -- Every recommendation is tied to measurable impact: revenue captured, costs reduced, risk mitigated
-  4. "UK and EU Specialists" -- Deep expertise in UK and EU regulatory frameworks, scheme rules, and acquirer relationships
-
-### 9. Examples Section (ExamplesSection.tsx) -- becomes audience qualifier
-
-Rewrite to show enterprise verticals, not small business types:
-- **Heading**: "Who We Work With"
-- Cards become: "High-Volume Ecommerce" / "SaaS and Subscription Platforms" / "Marketplace Operators" / "Omnichannel Retailers"
-- **Bottom note**: "We work with organizations processing substantial volumes. If you are an early-stage startup or processing under GBP 1M, our premium review may not be the right fit."
-
-### 10. CTA Section (CTASection.tsx) -- Final CTA
-
-- Remove avatar stack (social proof excluded per brand guidelines)
-- **Heading**: "Ready to Optimize Your Payment Infrastructure?"
-- **Subtext**: "Book a fixed-scope Payment Strategy Review. One engagement. Clear deliverables. Measurable outcomes."
-- **CTA**: "Book Your Payment Strategy Review"
-
-### 11. New Section: Insights Preview (new component)
-
-Add a new `InsightsPreviewSection.tsx` component placed between Value Props and CTA:
-- **Heading**: "Insights and Resources"
-- Display 3 featured insight articles with title, category badge, and read time
-- Links to the `/insights` page
-- Clean, understated design -- secondary to the main service pitch
-
-### 12. Footer (Footer.tsx)
-
-- Update copyright tagline from "Independent Payment Advisory" to "Payment Strategy Advisory"
-
-## Technical Details
-
-### Files to modify:
-1. `src/pages/Index.tsx` -- Update SEO metadata, add InsightsPreviewSection import, reorder sections
-2. `src/components/HeroSection.tsx` -- Full content rewrite
-3. `src/components/Header.tsx` -- CTA label changes
-4. `src/components/SuccessPreviewSection.tsx` -- Full content rewrite
-5. `src/components/WhyDifferentSection.tsx` -- Content rewrite
-6. `src/components/ProblemSection.tsx` -- Content rewrite
-7. `src/components/HowItWorksSection.tsx` -- Content rewrite
-8. `src/components/ValuePropsSection.tsx` -- Content rewrite
-9. `src/components/ExamplesSection.tsx` -- Content rewrite and icon changes
-10. `src/components/CTASection.tsx` -- Remove avatars, rewrite content
-11. `src/components/Footer.tsx` -- Tagline update
-
-### New file:
-- `src/components/InsightsPreviewSection.tsx` -- Displays 3 featured articles from the existing `insightsArticles` data
-
-### No changes to:
-- Design system, colors, typography, or layout patterns
-- URL structure or routing
-- Any insight article pages
-- Quiz/assessment flow
-- UI component library
+| File | Change |
+|------|--------|
+| `src/components/Header.tsx` | Remove green "Book" button (desktop + mobile) |
+| `src/components/HowItWorksSection.tsx` | Rewrite heading + 3 steps for risk profile flow |
+| `src/components/SuccessPreviewSection.tsx` | Rewrite heading + deliverables for engine output |
+| `src/components/CTASection.tsx` | Update heading, body, button text |
+| `src/components/Footer.tsx` | Replace "Payment Strategy Advisory" |
+| `src/pages/About.tsx` | Update heading + keywords |
+| `src/pages/Recommendation.tsx` | Add tiered result display above contact form |
+| `supabase/functions/prerender/index.ts` | Update homepage meta title |
 
