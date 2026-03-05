@@ -319,10 +319,10 @@ const Quiz = () => {
           {currentStep === 1 && (
             <div className="text-center mb-10">
               <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-3 leading-[1.35]">
-                Find your best provider fit
+                We designed this to understand your business
               </h1>
               <p className="text-muted-foreground max-w-md mx-auto text-base">
-                Answer a few questions about your business. Takes 2 minutes.
+                A short set of questions so we can match you to the right provider. Takes less than 2 minutes.
               </p>
             </div>
           )}
