@@ -317,51 +317,45 @@ const Recommendation = () => {
                   </CardContent>
                 </Card>
 
-                {/* Acceptable */}
+                {/* Second best alternative (limit to 1) */}
                 {alternatives.length > 0 && (
-                  <div className="mb-4">
-                    <div className="flex items-center gap-2 mb-3 px-1">
-                      <ShieldAlert className="w-4 h-4 text-amber-500" />
-                      <span className="text-sm font-bold text-amber-600 uppercase tracking-wide">Acceptable</span>
-                    </div>
-                    <div className="space-y-3">
-                      {alternatives.map((alt) => (
-                        <Card key={alt.name} className="border border-border/60">
-                          <CardContent className="p-5">
-                            <h4 className="font-semibold text-foreground mb-1">{alt.name}</h4>
-                            <p className="text-sm text-muted-foreground mb-2">{alt.description}</p>
-                            {alt.reasons?.length > 0 && (
-                              <ul className="space-y-1">
-                                {alt.reasons.map((r, i) => (
-                                  <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
-                                    <Check className="w-3 h-3 text-muted-foreground shrink-0 mt-0.5" />
-                                    <span>{r}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </div>
+                  <Card className="border border-border/60 mb-4">
+                    <CardContent className="p-5">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Shield className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm font-bold text-muted-foreground uppercase tracking-wide">Also Compatible</span>
+                      </div>
+                      <h4 className="font-semibold text-foreground mb-1">{alternatives[0].name}</h4>
+                      <p className="text-sm text-muted-foreground mb-2">{alternatives[0].description}</p>
+                      {alternatives[0].reasons?.length > 0 && (
+                        <ul className="space-y-1">
+                          {alternatives[0].reasons.map((r, i) => (
+                            <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
+                              <Check className="w-3 h-3 text-muted-foreground shrink-0 mt-0.5" />
+                              <span>{r}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </CardContent>
+                  </Card>
                 )}
 
-                {/* Avoid */}
+                {/* Not suited */}
                 {avoid.length > 0 && (
                   <div className="mb-4">
                     <div className="flex items-center gap-2 mb-3 px-1">
-                      <ShieldX className="w-4 h-4 text-destructive" />
-                      <span className="text-sm font-bold text-destructive uppercase tracking-wide">Avoid for Your Profile</span>
+                      <AlertTriangle className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-sm font-bold text-muted-foreground uppercase tracking-wide">Not Suited for Your Business</span>
                     </div>
-                    <Card className="border border-destructive/20 bg-destructive/5">
+                    <Card className="border border-border bg-muted/30">
                       <CardContent className="p-5">
                         <ul className="space-y-3">
-                          {avoid.map((p) => (
+                          {avoid.slice(0, 3).map((p) => (
                             <li key={p.name} className="flex items-start gap-3">
-                              <ShieldX className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
+                              <ShieldX className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
                               <div>
-                                <span className="font-semibold text-foreground">{p.name}</span>
+                                <span className="font-medium text-foreground">{p.name}</span>
                                 <p className="text-sm text-muted-foreground">{p.reason}</p>
                               </div>
                             </li>
