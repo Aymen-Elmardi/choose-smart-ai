@@ -318,14 +318,11 @@ const Quiz = () => {
         <div className="max-w-2xl w-full animate-fade-up" key={currentStep}>
           {currentStep === 1 && (
             <div className="text-center mb-10">
-              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-4">
-                Payment Advisory Assessment
-              </p>
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-[1.35]">
-                Understanding your provider fit starts here
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-3 leading-[1.35]">
+                Find your best provider fit
               </h1>
-              <p className="text-muted-foreground max-w-xl mx-auto text-base leading-relaxed">
-                This structured assessment captures how your business will be evaluated by payment providers. It identifies where approval risk exists and informs our advisory review.
+              <p className="text-muted-foreground max-w-md mx-auto text-base">
+                Answer a few questions about your business. Takes 2 minutes.
               </p>
             </div>
           )}
