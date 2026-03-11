@@ -11,6 +11,7 @@ const HowItWorksSection = lazy(() => import("@/components/HowItWorksSection"));
 const HowPaymentsWorkSection = lazy(() => import("@/components/HowPaymentsWorkSection"));
 const HardTruthSection = lazy(() => import("@/components/HardTruthSection"));
 const InsightsPreviewSection = lazy(() => import("@/components/InsightsPreviewSection"));
+const ValuePropsSection = lazy(() => import("@/components/ValuePropsSection"));
 const CTASection = lazy(() => import("@/components/CTASection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
@@ -42,6 +43,7 @@ const Index = () => {
           <HowItWorksSection />
           <HowPaymentsWorkSection />
           <HardTruthSection />
+          <ValuePropsSection />
           <InsightsPreviewSection />
           <CTASection />
         </Suspense>
