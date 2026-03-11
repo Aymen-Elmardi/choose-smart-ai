@@ -4,6 +4,8 @@ import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import InsightTransition from "@/components/InsightTransition";
+import QuizSidebar from "@/components/QuizSidebar";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Import from modular quiz architecture
 import type { QuizAnswers, Market } from "@/types/quiz";
@@ -26,6 +28,7 @@ import { initializeSessionTracking, markQuizStart } from "@/lib/sessionTracking"
 const Quiz = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const isMobile = useIsMobile();
   // Always start at Question 1 (no intro screen)
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_QUIZ_ANSWERS);
@@ -316,140 +319,152 @@ const Quiz = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <QuizHeader progress={progress} showBack onBack={handleBack} />
-      <div className="flex-1 flex items-center justify-center p-6">
-        <div className="max-w-2xl w-full animate-fade-up" key={currentStep}>
-          {currentStep === 1 && (
-            <div className="text-center mb-10">
-              <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-3 leading-[1.35]">
-                We designed this to understand your business
-              </h1>
-              <p className="text-muted-foreground max-w-md mx-auto text-base">
-                A short set of questions so we can match you to the right provider. Takes less than 2 minutes.
-              </p>
-            </div>
-          )}
-          <div className="text-center mb-8">
-            <p className="text-sm text-muted-foreground mb-2">
-              Question {currentStep} of {questionCount}
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-              {question.question}
-            </h2>
-            {question.subtext && (
-              <p className="text-muted-foreground mt-2">{question.subtext}</p>
-            )}
-          </div>
+      <QuizHeader progress={progress} showBack onBack={handleBack} hideProgressBar={!isMobile} />
+      <div className="flex-1 flex">
+        {/* Desktop sidebar */}
+        {!isMobile && (
+          <QuizSidebar
+            questions={questions}
+            currentStep={currentStep}
+            onStepClick={(step) => setCurrentStep(step)}
+          />
+        )}
 
-          {/* Dropdown question type */}
-          {question.type === "dropdown" && question.dropdownOptions && (
-            <div className="max-w-md mx-auto">
-              <div className="relative">
-                <button
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className={cn(
-                    "w-full p-4 rounded-xl border-2 text-left transition-all duration-200",
-                    "hover:border-primary/50 hover:bg-primary/5",
-                    "flex items-center justify-between",
-                    currentAnswer
-                      ? "border-primary bg-primary/10"
-                      : "border-border bg-card"
-                  )}
-                >
-                  <span className={cn(
-                    "font-medium",
-                    currentAnswer ? "text-foreground" : "text-muted-foreground"
-                  )}>
-                    {currentAnswer
-                      ? question.dropdownOptions.find((o) => o.value === currentAnswer)?.label
-                      : "Select an industry..."}
-                  </span>
-                  <ChevronDown className={cn(
-                    "w-5 h-5 transition-transform",
-                    dropdownOpen && "rotate-180"
-                  )} />
-                </button>
-
-                {dropdownOpen && (
-                  <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-card border border-border rounded-xl shadow-lg max-h-64 overflow-y-auto">
-                    {question.dropdownOptions.map((option) => (
-                      <button
-                        key={option.value}
-                        onClick={() => handleDropdownSelect(question.id, option.value)}
-                        className={cn(
-                          "w-full p-3 text-left hover:bg-primary/5 transition-colors",
-                          "first:rounded-t-xl last:rounded-b-xl",
-                          currentAnswer === option.value && "bg-primary/10"
-                        )}
-                      >
-                        <span className="font-medium text-foreground">{option.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                )}
+        {/* Main question area */}
+        <div className="flex-1 flex items-center justify-center p-6">
+          <div className="max-w-2xl w-full animate-fade-up" key={currentStep}>
+            {currentStep === 1 && (
+              <div className="text-center mb-10">
+                <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-3 leading-[1.35]">
+                  We designed this to understand your business
+                </h1>
+                <p className="text-muted-foreground max-w-md mx-auto text-base">
+                  A short set of questions so we can match you to the right provider. Takes less than 2 minutes.
+                </p>
               </div>
+            )}
+            <div className="text-center mb-8">
+              <p className="text-sm text-muted-foreground mb-2">
+                Question {currentStep} of {questionCount}
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                {question.question}
+              </h2>
+              {question.subtext && (
+                <p className="text-muted-foreground mt-2">{question.subtext}</p>
+              )}
             </div>
-          )}
 
-          {/* Regular options */}
-          {!question.type && question.options && (
-            <div className="grid gap-3 sm:grid-cols-2">
-              {question.options.map((option) => {
-                const isSelected = question.multiSelect
-                  ? (currentAnswer as string[]).includes(option)
-                  : currentAnswer === option;
-
-                return (
+            {/* Dropdown question type */}
+            {question.type === "dropdown" && question.dropdownOptions && (
+              <div className="max-w-md mx-auto">
+                <div className="relative">
                   <button
-                    key={option}
-                    onClick={() =>
-                      handleOptionSelect(
-                        question.id,
-                        option,
-                        question.multiSelect,
-                        question.maxSelect
-                      )
-                    }
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
                     className={cn(
-                      "p-4 rounded-xl border-2 text-left transition-all duration-200",
+                      "w-full p-4 rounded-xl border-2 text-left transition-all duration-200",
                       "hover:border-primary/50 hover:bg-primary/5",
-                      isSelected
-                        ? "border-primary bg-primary/10 shadow-sm"
+                      "flex items-center justify-between",
+                      currentAnswer
+                        ? "border-primary bg-primary/10"
                         : "border-border bg-card"
                     )}
                   >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={cn(
-                          "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors",
-                          isSelected
-                            ? "border-primary bg-primary"
-                            : "border-muted-foreground/30"
-                        )}
-                      >
-                        {isSelected && <Check className="w-3 h-3 text-primary-foreground" />}
-                      </div>
-                      <span className="font-medium text-foreground">{option}</span>
-                    </div>
+                    <span className={cn(
+                      "font-medium",
+                      currentAnswer ? "text-foreground" : "text-muted-foreground"
+                    )}>
+                      {currentAnswer
+                        ? question.dropdownOptions.find((o) => o.value === currentAnswer)?.label
+                        : "Select an industry..."}
+                    </span>
+                    <ChevronDown className={cn(
+                      "w-5 h-5 transition-transform",
+                      dropdownOpen && "rotate-180"
+                    )} />
                   </button>
-                );
-              })}
-            </div>
-          )}
 
-          {question.multiSelect && (
-            <div className="mt-8 text-center">
-              <Button
-                variant="hero"
-                size="lg"
-                onClick={handleNext}
-                disabled={!canProceed()}
-              >
-                Continue
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-            </div>
-          )}
+                  {dropdownOpen && (
+                    <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-card border border-border rounded-xl shadow-lg max-h-64 overflow-y-auto">
+                      {question.dropdownOptions.map((option) => (
+                        <button
+                          key={option.value}
+                          onClick={() => handleDropdownSelect(question.id, option.value)}
+                          className={cn(
+                            "w-full p-3 text-left hover:bg-primary/5 transition-colors",
+                            "first:rounded-t-xl last:rounded-b-xl",
+                            currentAnswer === option.value && "bg-primary/10"
+                          )}
+                        >
+                          <span className="font-medium text-foreground">{option.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Regular options */}
+            {!question.type && question.options && (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {question.options.map((option) => {
+                  const isSelected = question.multiSelect
+                    ? (currentAnswer as string[]).includes(option)
+                    : currentAnswer === option;
+
+                  return (
+                    <button
+                      key={option}
+                      onClick={() =>
+                        handleOptionSelect(
+                          question.id,
+                          option,
+                          question.multiSelect,
+                          question.maxSelect
+                        )
+                      }
+                      className={cn(
+                        "p-4 rounded-xl border-2 text-left transition-all duration-200",
+                        "hover:border-primary/50 hover:bg-primary/5",
+                        isSelected
+                          ? "border-primary bg-primary/10 shadow-sm"
+                          : "border-border bg-card"
+                      )}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={cn(
+                            "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors",
+                            isSelected
+                              ? "border-primary bg-primary"
+                              : "border-muted-foreground/30"
+                          )}
+                        >
+                          {isSelected && <Check className="w-3 h-3 text-primary-foreground" />}
+                        </div>
+                        <span className="font-medium text-foreground">{option}</span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {question.multiSelect && (
+              <div className="mt-8 text-center">
+                <Button
+                  variant="hero"
+                  size="lg"
+                  onClick={handleNext}
+                  disabled={!canProceed()}
+                >
+                  Continue
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -461,10 +476,12 @@ const QuizHeader = ({
   progress,
   showBack,
   onBack,
+  hideProgressBar,
 }: {
   progress: number;
   showBack?: boolean;
   onBack?: () => void;
+  hideProgressBar?: boolean;
 }) => (
   <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
     <div className="max-w-4xl mx-auto px-4">
@@ -492,13 +509,15 @@ const QuizHeader = ({
       </div>
     </div>
 
-    {/* Progress bar */}
-    <div className="h-1 bg-muted">
-      <div
-        className="h-full bg-primary transition-all duration-500 ease-out"
-        style={{ width: `${progress}%` }}
-      />
-    </div>
+    {/* Progress bar - hidden on desktop when sidebar is shown */}
+    {!hideProgressBar && (
+      <div className="h-1 bg-muted">
+        <div
+          className="h-full bg-primary transition-all duration-500 ease-out"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+    )}
   </header>
 );
 
