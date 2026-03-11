@@ -52,7 +52,7 @@ const QuizSidebar = ({ questions, currentStep, onStepClick }: QuizSidebarProps) 
 
               {/* Label */}
               <span className="truncate leading-tight">
-                {q.sidebarLabel || q.question}
+                {q.question}
               </span>
             </button>
           );
