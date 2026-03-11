@@ -78,18 +78,23 @@ export const getNetworkSpeed = (): EnrichmentData["networkSpeedEstimate"] => {
  * Fetch geolocation data from IP lookup service
  */
 export const fetchGeoLocation = async (): Promise<{ geoCountry: string; geoRegion: string; geoCity: string }> => {
+  const CACHE_KEY = "cp_geoLocation";
   try {
-    // Using ipapi.co free tier (1000 requests/day)
+    const cached = sessionStorage.getItem(CACHE_KEY);
+    if (cached) return JSON.parse(cached);
+
     const response = await fetch("https://ipapi.co/json/", { 
-      signal: AbortSignal.timeout(3000) // 3 second timeout
+      signal: AbortSignal.timeout(3000)
     });
     if (!response.ok) throw new Error("Geo lookup failed");
     const data = await response.json();
-    return {
+    const result = {
       geoCountry: data.country_name || "",
       geoRegion: data.region || "",
       geoCity: data.city || "",
     };
+    sessionStorage.setItem(CACHE_KEY, JSON.stringify(result));
+    return result;
   } catch {
     return { geoCountry: "", geoRegion: "", geoCity: "" };
   }
