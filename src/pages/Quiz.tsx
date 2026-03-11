@@ -198,6 +198,7 @@ const Quiz = () => {
           navigate("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(updatedAnswers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
+          sessionStorage.setItem("quizAnswersRaw", JSON.stringify(updatedAnswers));
           sessionStorage.setItem("quizMarket", market);
     } else {
       setCurrentStep((prev) => prev + 1);
