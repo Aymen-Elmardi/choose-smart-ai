@@ -476,10 +476,12 @@ const QuizHeader = ({
   progress,
   showBack,
   onBack,
+  hideProgressBar,
 }: {
   progress: number;
   showBack?: boolean;
   onBack?: () => void;
+  hideProgressBar?: boolean;
 }) => (
   <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
     <div className="max-w-4xl mx-auto px-4">
@@ -507,13 +509,15 @@ const QuizHeader = ({
       </div>
     </div>
 
-    {/* Progress bar */}
-    <div className="h-1 bg-muted">
-      <div
-        className="h-full bg-primary transition-all duration-500 ease-out"
-        style={{ width: `${progress}%` }}
-      />
-    </div>
+    {/* Progress bar - hidden on desktop when sidebar is shown */}
+    {!hideProgressBar && (
+      <div className="h-1 bg-muted">
+        <div
+          className="h-full bg-primary transition-all duration-500 ease-out"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+    )}
   </header>
 );
 
