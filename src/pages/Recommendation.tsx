@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { CreditCard, Check, ArrowRight, Loader2, Mail, Shield, ShieldAlert, ShieldX, AlertTriangle, CheckCircle } from "lucide-react";
+import { CreditCard, Check, ArrowRight, Loader2, Mail, Shield, ShieldX, AlertTriangle, CheckCircle, Building2, Globe, CreditCard as CardIcon, TrendingUp, ShoppingCart, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -11,10 +11,26 @@ import { supabase } from "@/integrations/supabase/client";
 import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
 import type { QuizAnswers, Provider } from "@/types/quiz";
 import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
+import { cn } from "@/lib/utils";
 
 interface EliminatedProvider {
   name: string;
   reason: string;
+}
+
+interface RawQuizAnswers {
+  salesChannel?: string;
+  businessType?: string;
+  industry?: string;
+  monthlyVolume?: string;
+  avgTransaction?: string;
+  location?: string;
+  priorities?: string[];
+  deliveryTimeline?: string;
+  previousRestriction?: string;
+  terminalType?: string;
+  buyingIntent?: string;
+  contactTime?: string;
 }
 
 const readStoredAnswers = (): QuizAnswers | null => {
@@ -40,6 +56,16 @@ const readStoredAnswers = (): QuizAnswers | null => {
   }
 };
 
+const readRawAnswers = (): RawQuizAnswers | null => {
+  try {
+    const raw = sessionStorage.getItem("quizAnswersRaw");
+    if (!raw) return null;
+    return JSON.parse(raw) as RawQuizAnswers;
+  } catch {
+    return null;
+  }
+};
+
 const isQuizComplete = (a: QuizAnswers) =>
   Boolean(a.salesChannel && a.businessType && a.monthlyVolume && a.avgTransaction && a.location && a.priorities?.length);
 
@@ -56,16 +82,29 @@ const readStoredMarket = (): Market => {
 };
 
 const confidenceColors = {
-  high: "text-green-600 bg-green-50 border-green-200",
-  medium: "text-amber-600 bg-amber-50 border-amber-200",
-  low: "text-red-600 bg-red-50 border-red-200",
+  high: "text-green-700 bg-green-50 border-green-200",
+  medium: "text-amber-700 bg-amber-50 border-amber-200",
+  low: "text-red-700 bg-red-50 border-red-200",
 };
 
 const reserveColors = {
-  low: "text-green-600 bg-green-50 border-green-200",
-  moderate: "text-amber-600 bg-amber-50 border-amber-200",
-  elevated: "text-red-600 bg-red-50 border-red-200",
+  low: "text-green-700 bg-green-50 border-green-200",
+  moderate: "text-amber-700 bg-amber-50 border-amber-200",
+  elevated: "text-red-700 bg-red-50 border-red-200",
 };
+
+// Business profile detail item
+const ProfileItem = ({ label, value, icon: Icon }: { label: string; value: string; icon: React.ElementType }) => (
+  <div className="flex items-start gap-3">
+    <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center shrink-0 mt-0.5">
+      <Icon className="w-4 h-4 text-muted-foreground" />
+    </div>
+    <div className="min-w-0">
+      <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">{label}</div>
+      <div className="text-sm font-medium text-foreground truncate">{value}</div>
+    </div>
+  </div>
+);
 
 const Recommendation = () => {
   const navigate = useNavigate();
@@ -73,6 +112,7 @@ const Recommendation = () => {
   const startedFromQuizRef = useRef(searchParams.get("fromQuiz") === "true");
   const [showLoader, setShowLoader] = useState(() => startedFromQuizRef.current);
   const [answers] = useState<QuizAnswers | null>(() => readStoredAnswers());
+  const [rawAnswers] = useState<RawQuizAnswers | null>(() => readRawAnswers());
   const [market] = useState<Market>(() => readStoredMarket());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -80,7 +120,6 @@ const Recommendation = () => {
   const [backgroundError, setBackgroundError] = useState<string | null>(null);
   const { toast } = useToast();
 
-  // Recommendation state
   const [primary, setPrimary] = useState<Provider | null>(null);
   const [alternatives, setAlternatives] = useState<Provider[]>([]);
   const [avoid, setAvoid] = useState<EliminatedProvider[]>([]);
@@ -104,7 +143,6 @@ const Recommendation = () => {
     }
   }, [answers, quizComplete, navigate]);
 
-  // Fetch recommendation on mount
   useEffect(() => {
     if (!answers || !quizComplete) return;
     fetchServerRecommendation(answers).then((result) => {
@@ -117,7 +155,6 @@ const Recommendation = () => {
     });
   }, [answers, quizComplete]);
 
-  // Handle loading transition from quiz
   useEffect(() => {
     if (!startedFromQuizRef.current) {
       setShowLoader(false);
@@ -197,6 +234,18 @@ const Recommendation = () => {
     }
   };
 
+  // Resolve display values from raw answers
+  const profileData = rawAnswers || answers;
+  const displaySalesChannel = (rawAnswers?.salesChannel || answers.salesChannel) || "—";
+  const displayBusinessType = (rawAnswers?.businessType || answers.businessType) || "—";
+  const displayIndustry = rawAnswers?.industry || "—";
+  const displayVolume = (rawAnswers?.monthlyVolume || answers.monthlyVolume) || "—";
+  const displayAvgTx = (rawAnswers?.avgTransaction || answers.avgTransaction) || "—";
+  const displayLocation = (rawAnswers?.location || answers.location) || "—";
+  const displayPriorities = rawAnswers?.priorities || answers.priorities || [];
+  const displayDelivery = rawAnswers?.deliveryTimeline || null;
+  const displayRestriction = rawAnswers?.previousRestriction || null;
+
   if (showLoader) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-6">
@@ -237,7 +286,7 @@ const Recommendation = () => {
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-4 py-8 md:py-16">
+      <main className="max-w-3xl mx-auto px-4 py-8 md:py-12">
         {isSubmitted ? (
           <Card className="border border-primary/30 bg-primary/5 animate-fade-up">
             <CardContent className="p-8 md:p-10 text-center">
@@ -265,50 +314,90 @@ const Recommendation = () => {
           </Card>
         ) : (
           <>
-            {/* Tiered Results */}
+            {/* Results */}
             {resultsLoaded && primary ? (
-              <div className="mb-12 animate-fade-up">
+              <div className="animate-fade-up">
+                {/* Header */}
                 <div className="text-center mb-8">
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                     Your Risk Profile Results
                   </h2>
-                  <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+                  <p className="text-muted-foreground max-w-xl mx-auto">
                     Based on your business profile, here's how providers align with your risk signals.
                   </p>
                 </div>
 
-                {/* Risk Indicators */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className={`flex items-center gap-3 p-4 rounded-xl border ${confidenceColors[riskConfidence]}`}>
-                    <Shield className="w-5 h-5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-medium uppercase tracking-wide opacity-70">Risk Confidence</div>
-                      <div className="font-semibold capitalize">{riskConfidence}</div>
+                {/* Business Profile Summary */}
+                <Card className="border border-border mb-6">
+                  <CardContent className="p-5 md:p-6">
+                    <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wide mb-4">Your Business Profile</h3>
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                      <ProfileItem icon={ShoppingCart} label="Sales Channel" value={displaySalesChannel} />
+                      <ProfileItem icon={Building2} label="Business Type" value={displayBusinessType} />
+                      {displayIndustry !== "—" && (
+                        <ProfileItem icon={Tag} label="Industry" value={displayIndustry} />
+                      )}
+                      <ProfileItem icon={TrendingUp} label="Monthly Volume" value={displayVolume} />
+                      <ProfileItem icon={CardIcon} label="Avg. Transaction" value={displayAvgTx} />
+                      <ProfileItem icon={Globe} label="Location" value={displayLocation} />
                     </div>
+                    {displayPriorities.length > 0 && (
+                      <div className="mt-4 pt-4 border-t border-border">
+                        <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-2">Priorities</div>
+                        <div className="flex flex-wrap gap-2">
+                          {displayPriorities.map((p) => (
+                            <span key={p} className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                              {p}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {(displayDelivery || displayRestriction) && (
+                      <div className="mt-4 pt-4 border-t border-border grid grid-cols-2 gap-x-6 gap-y-3">
+                        {displayDelivery && (
+                          <div>
+                            <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Delivery Timeline</div>
+                            <div className="text-sm font-medium text-foreground">{displayDelivery}</div>
+                          </div>
+                        )}
+                        {displayRestriction && (
+                          <div>
+                            <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Previous Restrictions</div>
+                            <div className="text-sm font-medium text-foreground">{displayRestriction}</div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+
+                {/* Risk Indicators — inline badges */}
+                <div className="flex flex-wrap gap-3 mb-6">
+                  <div className={cn("inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold", confidenceColors[riskConfidence])}>
+                    <Shield className="w-4 h-4" />
+                    Risk Confidence: <span className="capitalize">{riskConfidence}</span>
                   </div>
-                  <div className={`flex items-center gap-3 p-4 rounded-xl border ${reserveColors[reserveProbability]}`}>
-                    <AlertTriangle className="w-5 h-5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-medium uppercase tracking-wide opacity-70">Funds Hold Risk</div>
-                      <div className="font-semibold capitalize">{reserveProbability}</div>
-                    </div>
+                  <div className={cn("inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold", reserveColors[reserveProbability])}>
+                    <AlertTriangle className="w-4 h-4" />
+                    Funds Hold Risk: <span className="capitalize">{reserveProbability}</span>
                   </div>
                 </div>
 
                 {/* Best Fit */}
-                <Card className="border-2 border-primary/30 bg-primary/5 mb-4">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <CheckCircle className="w-5 h-5 text-primary" />
-                      <span className="text-sm font-bold text-primary uppercase tracking-wide">Best Fit</span>
+                <Card className="border-l-4 border-l-green-500 border border-border mb-3 shadow-sm">
+                  <CardContent className="p-5 md:p-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <span className="text-xs font-bold text-green-700 uppercase tracking-wider">Best Fit</span>
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">{primary.name}</h3>
+                    <h3 className="text-xl font-bold text-foreground mb-1">{primary.name}</h3>
                     <p className="text-muted-foreground text-sm mb-3">{primary.description}</p>
                     {primary.reasons?.length > 0 && (
-                      <ul className="space-y-1">
+                      <ul className="space-y-1.5">
                         {primary.reasons.map((r, i) => (
                           <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                            <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                            <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
                             <span>{r}</span>
                           </li>
                         ))}
@@ -317,13 +406,13 @@ const Recommendation = () => {
                   </CardContent>
                 </Card>
 
-                {/* Second best alternative (limit to 1) */}
+                {/* Also Compatible */}
                 {alternatives.length > 0 && (
-                  <Card className="border border-border/60 mb-4">
-                    <CardContent className="p-5">
-                      <div className="flex items-center gap-2 mb-3">
+                  <Card className="border border-border/60 mb-3">
+                    <CardContent className="p-4 md:p-5">
+                      <div className="flex items-center gap-2 mb-2">
                         <Shield className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-sm font-bold text-muted-foreground uppercase tracking-wide">Also Compatible</span>
+                        <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Also Compatible</span>
                       </div>
                       <h4 className="font-semibold text-foreground mb-1">{alternatives[0].name}</h4>
                       <p className="text-sm text-muted-foreground mb-2">{alternatives[0].description}</p>
@@ -341,28 +430,24 @@ const Recommendation = () => {
                   </Card>
                 )}
 
-                {/* Not suited */}
+                {/* Not Suited */}
                 {avoid.length > 0 && (
-                  <div className="mb-4">
-                    <div className="flex items-center gap-2 mb-3 px-1">
+                  <div className="mb-8">
+                    <div className="flex items-center gap-2 mb-2 px-1">
                       <AlertTriangle className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-sm font-bold text-muted-foreground uppercase tracking-wide">Not Suited for Your Business</span>
+                      <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Not Suited for Your Business</span>
                     </div>
-                    <Card className="border border-border bg-muted/30">
-                      <CardContent className="p-5">
-                        <ul className="space-y-3">
-                          {avoid.slice(0, 3).map((p) => (
-                            <li key={p.name} className="flex items-start gap-3">
-                              <ShieldX className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                              <div>
-                                <span className="font-medium text-foreground">{p.name}</span>
-                                <p className="text-sm text-muted-foreground">{p.reason}</p>
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
+                    <div className="space-y-2">
+                      {avoid.slice(0, 3).map((p) => (
+                        <div key={p.name} className="flex items-start gap-3 px-4 py-3 rounded-lg bg-muted/40 border border-border/40">
+                          <ShieldX className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
+                          <div>
+                            <span className="text-sm font-medium text-foreground">{p.name}</span>
+                            <p className="text-xs text-muted-foreground">{p.reason}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

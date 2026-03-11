@@ -39,6 +39,7 @@ const Index = () => {
         <DiagnosticBlock />
         <Suspense fallback={null}>
           <ExampleOutputPreview />
+          <HowItWorksSection />
           <HowPaymentsWorkSection />
           <HardTruthSection />
           <InsightsPreviewSection />

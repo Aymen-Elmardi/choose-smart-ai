@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Ban, ShieldAlert, Receipt, Scale, Wallet } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const problems = [
-  { id: "funds-held", label: "My funds are on hold", slug: "why-payment-accounts-get-frozen-without-warning" },
-  { id: "reserve-imposed", label: "A reserve was imposed", slug: "scheme-rules-reserves-monitoring" },
-  { id: "fees-higher", label: "My fees are higher than expected", slug: "crisis/hidden-fee-crisis" },
-  { id: "chargeback-lost", label: "I lost a chargeback I thought I would win", slug: "chargebacks-what-they-are-and-how-to-avoid-them" },
-  { id: "payout-mismatch", label: "My payout doesn't match my sales", slug: "payment-provider-vs-acquirer-vs-bank" },
+  { id: "funds-held", label: "Funds on hold", icon: Ban, slug: "why-payment-accounts-get-frozen-without-warning" },
+  { id: "reserve-imposed", label: "Reserve imposed", icon: ShieldAlert, slug: "scheme-rules-reserves-monitoring" },
+  { id: "fees-higher", label: "Unexpected fees", icon: Receipt, slug: "crisis/hidden-fee-crisis" },
+  { id: "chargeback-lost", label: "Lost a chargeback", icon: Scale, slug: "chargebacks-what-they-are-and-how-to-avoid-them" },
+  { id: "payout-mismatch", label: "Payout mismatch", icon: Wallet, slug: "payment-provider-vs-acquirer-vs-bank" },
 ];
 
 const DiagnosticBlock = () => {
@@ -23,7 +24,6 @@ const DiagnosticBlock = () => {
 
   const handleSubmit = () => {
     if (selected.length === 0) return;
-    // Navigate to the first selected problem's article
     const first = problems.find((p) => p.id === selected[0]);
     if (first) {
       navigate(`/insights/${first.slug}`);
@@ -33,27 +33,41 @@ const DiagnosticBlock = () => {
   return (
     <section id="diagnostic" className="border-t border-border bg-secondary/30">
       <div className="section-container py-16 md:py-20">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight text-center mb-10">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight text-center mb-3">
             What's Happening to You Right Now?
           </h2>
-          <div className="space-y-3">
+          <p className="text-muted-foreground text-center mb-10 text-sm max-w-lg mx-auto">
+            Select any issues you're experiencing. We'll show you exactly what's going on and what to do about it.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {problems.map((problem) => {
               const isSelected = selected.includes(problem.id);
+              const Icon = problem.icon;
               return (
                 <button
                   key={problem.id}
                   onClick={() => toggle(problem.id)}
-                  className={`w-full text-left px-5 py-4 rounded-lg border transition-colors text-sm font-medium ${
+                  className={cn(
+                    "flex flex-col items-center gap-3 p-5 rounded-xl border-2 transition-all duration-200 text-center",
+                    "hover:border-primary/40 hover:bg-primary/5",
                     isSelected
-                      ? "border-primary bg-primary/10 text-foreground"
-                      : "border-border bg-background text-muted-foreground hover:border-primary/40"
-                  }`}
+                      ? "border-primary bg-primary/10 shadow-sm"
+                      : "border-border bg-card"
+                  )}
                 >
-                  <span className="mr-3 inline-block w-4 text-center">
-                    {isSelected ? "✓" : "☐"}
+                  <div className={cn(
+                    "w-10 h-10 rounded-lg flex items-center justify-center transition-colors",
+                    isSelected ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"
+                  )}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <span className={cn(
+                    "text-sm font-medium leading-tight",
+                    isSelected ? "text-foreground" : "text-muted-foreground"
+                  )}>
+                    {problem.label}
                   </span>
-                  {problem.label}
                 </button>
               );
             })}
