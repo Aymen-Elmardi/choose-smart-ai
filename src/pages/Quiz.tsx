@@ -161,6 +161,7 @@ const Quiz = () => {
           // Prepare engine-compatible answers
           const engineAnswers = prepareEngineAnswers(updatedAnswers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
+          sessionStorage.setItem("quizAnswersRaw", JSON.stringify(updatedAnswers));
           sessionStorage.setItem("quizMarket", market);
         } else {
           // Find the next question index in the updated question list
@@ -197,6 +198,7 @@ const Quiz = () => {
           navigate("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(updatedAnswers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
+          sessionStorage.setItem("quizAnswersRaw", JSON.stringify(updatedAnswers));
           sessionStorage.setItem("quizMarket", market);
     } else {
       setCurrentStep((prev) => prev + 1);
@@ -245,6 +247,7 @@ const Quiz = () => {
           navigate("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(answers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
+          sessionStorage.setItem("quizAnswersRaw", JSON.stringify(answers));
           sessionStorage.setItem("quizMarket", market);
         } else {
           setCurrentStep((prev) => prev + 1);
