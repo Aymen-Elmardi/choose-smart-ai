@@ -7,6 +7,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 // Lazy-load below-fold sections
 const ExampleOutputPreview = lazy(() => import("@/components/ExampleOutputPreview"));
+const HowItWorksSection = lazy(() => import("@/components/HowItWorksSection"));
 const HowPaymentsWorkSection = lazy(() => import("@/components/HowPaymentsWorkSection"));
 const HardTruthSection = lazy(() => import("@/components/HardTruthSection"));
 const InsightsPreviewSection = lazy(() => import("@/components/InsightsPreviewSection"));
