@@ -146,9 +146,13 @@ const Recommendation = () => {
   useEffect(() => {
     if (!answers || !quizComplete) return;
     fetchServerRecommendation(answers).then((result) => {
+      const CURATED_PROVIDERS = [
+        "Stripe", "Square", "PayPal", "Adyen", "Datman", "SumUp",
+        "Braintree", "Shift4", "Fiserv (Clover)", "Authorize.Net"
+      ];
       setPrimary(result.primary);
       setAlternatives(result.alternatives);
-      setAvoid(result.avoid);
+      setAvoid(result.avoid.filter(p => CURATED_PROVIDERS.includes(p.name)));
       setRiskConfidence(result.riskConfidence);
       setReserveProbability(result.reserveProbability);
       setResultsLoaded(true);
