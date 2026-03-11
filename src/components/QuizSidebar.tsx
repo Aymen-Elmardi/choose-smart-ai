@@ -10,11 +10,25 @@ interface QuizSidebarProps {
 
 const QuizSidebar = ({ questions, currentStep, onStepClick }: QuizSidebarProps) => {
   return (
-    <aside className="w-64 shrink-0 border-r border-border bg-muted/30 py-8 px-4 overflow-y-auto">
-      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-5 px-2">
-        Progress
-      </p>
-      <nav className="space-y-1">
+    <aside className="w-72 shrink-0 border-r border-border bg-card py-10 px-5 overflow-y-auto">
+      {/* Header */}
+      <div className="mb-8 px-2">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground/70">
+          Your progress
+        </p>
+        <div className="mt-3 h-1.5 w-full rounded-full bg-muted overflow-hidden">
+          <div
+            className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
+            style={{ width: `${(currentStep / questions.length) * 100}%` }}
+          />
+        </div>
+        <p className="mt-2 text-xs text-muted-foreground/60">
+          {currentStep} of {questions.length}
+        </p>
+      </div>
+
+      {/* Steps */}
+      <nav className="space-y-0.5">
         {questions.map((q, idx) => {
           const stepNum = idx + 1;
           const isCompleted = stepNum < currentStep;
@@ -27,31 +41,35 @@ const QuizSidebar = ({ questions, currentStep, onStepClick }: QuizSidebarProps) 
               onClick={() => isCompleted && onStepClick(stepNum)}
               disabled={!isCompleted}
               className={cn(
-                "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-sm transition-colors",
-                isCompleted && "cursor-pointer hover:bg-muted/60 text-muted-foreground",
-                isCurrent && "bg-primary/10 text-foreground font-semibold",
-                isIncomplete && "cursor-default text-muted-foreground/60"
+                "group w-full flex items-center gap-3.5 px-3 py-3 rounded-lg text-left text-[13px] transition-all duration-200",
+                isCompleted && "cursor-pointer hover:bg-muted/80 text-muted-foreground",
+                isCurrent && "bg-primary/8 text-foreground font-medium ring-1 ring-primary/15",
+                isIncomplete && "cursor-default text-muted-foreground/40"
               )}
             >
-              {/* Status indicator */}
+              {/* Step number / status indicator */}
               <span className="shrink-0">
                 {isCompleted && (
-                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-600">
-                    <Check className="w-3 h-3" strokeWidth={3} />
+                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/12 text-primary group-hover:bg-primary/20 transition-colors">
+                    <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
                   </span>
                 )}
                 {isCurrent && (
-                  <span className="flex items-center justify-center w-5 h-5 rounded-full border-2 border-primary bg-primary/10">
+                  <span className="relative flex items-center justify-center w-6 h-6 rounded-full border-2 border-primary bg-primary/10">
                     <span className="w-2 h-2 rounded-full bg-primary" />
+                    {/* Subtle pulse */}
+                    <span className="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping" style={{ animationDuration: '2.5s' }} />
                   </span>
                 )}
                 {isIncomplete && (
-                  <span className="flex items-center justify-center w-5 h-5 rounded-full border-2 border-rose-300/40 bg-rose-50/60" />
+                  <span className="flex items-center justify-center w-6 h-6 rounded-full border-[1.5px] border-destructive/20 bg-destructive/5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-destructive/20" />
+                  </span>
                 )}
               </span>
 
               {/* Label */}
-              <span className="truncate leading-tight">
+              <span className="truncate leading-snug">
                 {q.question}
               </span>
             </button>
