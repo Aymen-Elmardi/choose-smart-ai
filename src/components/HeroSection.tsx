@@ -7,9 +7,6 @@ const HeroSection = () => {
     <section className="bg-background pt-28 pb-12 md:pt-40 md:pb-20">
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm font-medium text-muted-foreground mb-6 tracking-wide">
-            No Sales Calls. No Pitch. Just Explanation.
-          </p>
           <h1 className="heading-xl text-foreground text-balance">
             Choose the Right Payment Provider for Your Risk Profile
           </h1>
