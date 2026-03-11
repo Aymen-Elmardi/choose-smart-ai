@@ -58,7 +58,7 @@ const QuizSidebar = ({ questions, currentStep, onStepClick }: QuizSidebarProps) 
                   <span className="relative flex items-center justify-center w-6 h-6 rounded-full border-2 border-primary bg-primary/10">
                     <span className="w-2 h-2 rounded-full bg-primary" />
                     {/* Subtle pulse */}
-                    <span className="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping" style={{ animationDuration: '2.5s' }} />
+                    <span className="absolute inset-0 rounded-full border-2 border-primary/20" />
                   </span>
                 )}
                 {isIncomplete && (
