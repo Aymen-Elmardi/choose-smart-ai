@@ -28,6 +28,7 @@ import { initializeSessionTracking, markQuizStart } from "@/lib/sessionTracking"
 const Quiz = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const isMobile = useIsMobile();
   // Always start at Question 1 (no intro screen)
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_QUIZ_ANSWERS);
