@@ -128,12 +128,18 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     if (hash) {
-      setTimeout(() => {
-        const element = document.getElementById(hash.slice(1));
+      const id = hash.slice(1);
+      let attempts = 0;
+      const tryScroll = () => {
+        const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
+        } else if (attempts < 10) {
+          attempts++;
+          setTimeout(tryScroll, 150);
         }
-      }, 100);
+      };
+      setTimeout(tryScroll, 80);
     } else {
       window.scrollTo({ top: 0, behavior: "instant" });
     }
