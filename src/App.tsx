@@ -73,6 +73,7 @@ const LowValueTransactionExemption = lazyWithRetry(() => import("./pages/insight
 const PaymentProviderRiskModels = lazyWithRetry(() => import("./pages/insights/PaymentProviderRiskModels"));
 const WalletPaymentsGuaranteedSuccess = lazyWithRetry(() => import("./pages/insights/WalletPaymentsGuaranteedSuccess"));
 const PaymentAcronymsExplained = lazyWithRetry(() => import("./pages/insights/PaymentAcronymsExplained"));
+const ProviderAppetiteIndex = lazyWithRetry(() => import("./pages/insights/ProviderAppetiteIndex"));
 
 const AdyenEnterprisePlatform = lazyWithRetry(() => import("./pages/insights/AdyenEnterprisePlatform"));
 const StripePaymentPlatform = lazyWithRetry(() => import("./pages/insights/StripePaymentPlatform"));
