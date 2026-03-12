@@ -462,12 +462,10 @@ const QuizHeader = ({
   progress,
   showBack,
   onBack,
-  hideProgressBar,
 }: {
   progress: number;
   showBack?: boolean;
   onBack?: () => void;
-  hideProgressBar?: boolean;
 }) => (
   <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
     <div className="max-w-4xl mx-auto px-4">
