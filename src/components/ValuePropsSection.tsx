@@ -4,8 +4,8 @@ import { useInView } from "@/hooks/useInView";
 const valueProps = [
   {
     icon: TrendingUp,
-    title: "Processing £1M+ Annually",
-    description: "Our methodology is designed for merchants where transaction volume justifies a strategic review.",
+    title: "Born from Real Failures",
+    description: "We've seen businesses lose revenue, get frozen, or churn providers repeatedly. All because nobody checked the fit before they signed up.",
   },
   {
     icon: Receipt,
@@ -32,8 +32,11 @@ const ValuePropsSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-16 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            Built for Businesses Where Payments Are Mission-Critical
+            Built by People Who've Seen What the Wrong Provider Does
           </h2>
+          <p className="text-muted-foreground mt-4 text-lg leading-relaxed max-w-2xl mx-auto">
+            Frozen accounts. Silent holds on funds. Chargebacks that spiral because the underwriting never fit. We built this tool after watching it happen to businesses of every size, from sole traders to eight-figure operations.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
