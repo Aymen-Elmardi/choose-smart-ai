@@ -453,6 +453,13 @@ export const allInsights: Insight[] = [
     category: "explainer",
     readTime: "8 min read"
   },
+  {
+    title: "The Provider Appetite Index: Why Payment Processors Say No (And How to Get a Yes)",
+    slug: "provider-appetite-index",
+    description: "Payment processors don't randomly accept or decline merchants. Learn how underwriting appetite works, why applications get rejected, and how to match your business to the right provider.",
+    category: "explainer",
+    readTime: "12 min read"
+  },
   // Guides
   {
     title: "What To Do When a Payment Provider Asks for More Documents",

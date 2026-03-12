@@ -73,6 +73,7 @@ const LowValueTransactionExemption = lazyWithRetry(() => import("./pages/insight
 const PaymentProviderRiskModels = lazyWithRetry(() => import("./pages/insights/PaymentProviderRiskModels"));
 const WalletPaymentsGuaranteedSuccess = lazyWithRetry(() => import("./pages/insights/WalletPaymentsGuaranteedSuccess"));
 const PaymentAcronymsExplained = lazyWithRetry(() => import("./pages/insights/PaymentAcronymsExplained"));
+const ProviderAppetiteIndex = lazyWithRetry(() => import("./pages/insights/ProviderAppetiteIndex"));
 
 const AdyenEnterprisePlatform = lazyWithRetry(() => import("./pages/insights/AdyenEnterprisePlatform"));
 const StripePaymentPlatform = lazyWithRetry(() => import("./pages/insights/StripePaymentPlatform"));
@@ -223,6 +224,7 @@ const App = () => (
               <Route path="/insights/wallet-payments-guaranteed-success" element={<WalletPaymentsGuaranteedSuccess />} />
               <Route path="/insights/why-payment-providers-reject-growing-businesses" element={<WhyPaymentProvidersRejectGrowingBusinesses />} />
               <Route path="/insights/payment-acronyms-explained" element={<PaymentAcronymsExplained />} />
+              <Route path="/insights/provider-appetite-index" element={<ProviderAppetiteIndex />} />
               
               <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
               <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
