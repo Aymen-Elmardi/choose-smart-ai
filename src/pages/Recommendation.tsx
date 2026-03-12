@@ -507,7 +507,7 @@ const Recommendation = () => {
                         </>
                       ) : (
                         <>
-                          Submit My Details
+                          Request Introduction
                           <ArrowRight className="w-5 h-5" />
                         </>
                       )}
