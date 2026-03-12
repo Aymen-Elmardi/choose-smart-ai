@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { CreditCard, Check, ArrowRight, Loader2, Mail, ShieldX, AlertTriangle, CheckCircle, Building2, Globe, CreditCard as CardIcon, TrendingUp, ShoppingCart, Tag } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -443,6 +444,7 @@ const Recommendation = () => {
             )}
 
             {/* Section 4 — Contact Form (PAGE HIGHLIGHT) */}
+            {resultsLoaded && (
             <div className="animate-fade-up animation-delay-100">
               <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
                 <CardContent className="p-6 md:p-8">
@@ -517,14 +519,29 @@ const Recommendation = () => {
                       <Label htmlFor="currentProvider" className="text-sm font-medium text-foreground">
                         Current Payment Provider
                       </Label>
-                      <Input
-                        id="currentProvider"
-                        type="text"
-                        placeholder="e.g. Stripe, PayPal, none"
+                      <Select
                         value={formData.currentProvider}
-                        onChange={(e) => handleInputChange("currentProvider", e.target.value)}
-                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                      />
+                        onValueChange={(value) => handleInputChange("currentProvider", value)}
+                      >
+                        <SelectTrigger className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20">
+                          <SelectValue placeholder="Select your current provider" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="none">None / New business</SelectItem>
+                          <SelectItem value="Stripe">Stripe</SelectItem>
+                          <SelectItem value="PayPal">PayPal</SelectItem>
+                          <SelectItem value="Square">Square</SelectItem>
+                          <SelectItem value="Adyen">Adyen</SelectItem>
+                          <SelectItem value="Checkout.com">Checkout.com</SelectItem>
+                          <SelectItem value="Braintree">Braintree</SelectItem>
+                          <SelectItem value="SumUp">SumUp</SelectItem>
+                          <SelectItem value="Worldpay">Worldpay</SelectItem>
+                          <SelectItem value="Fiserv (Clover)">Fiserv (Clover)</SelectItem>
+                          <SelectItem value="Shift4">Shift4</SelectItem>
+                          <SelectItem value="Authorize.Net">Authorize.Net</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="painPoints" className="text-sm font-medium text-foreground">
@@ -572,6 +589,7 @@ const Recommendation = () => {
                 </CardContent>
               </Card>
             </div>
+            )}
 
             {/* Retake */}
             <div className="text-center mt-10 animate-fade-up animation-delay-200">
