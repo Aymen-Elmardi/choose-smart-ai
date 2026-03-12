@@ -224,6 +224,7 @@ const App = () => (
               <Route path="/insights/wallet-payments-guaranteed-success" element={<WalletPaymentsGuaranteedSuccess />} />
               <Route path="/insights/why-payment-providers-reject-growing-businesses" element={<WhyPaymentProvidersRejectGrowingBusinesses />} />
               <Route path="/insights/payment-acronyms-explained" element={<PaymentAcronymsExplained />} />
+              <Route path="/insights/provider-appetite-index" element={<ProviderAppetiteIndex />} />
               
               <Route path="/insights/adyen-enterprise-payments-platform" element={<AdyenEnterprisePlatform />} />
               <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
