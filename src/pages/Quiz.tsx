@@ -316,19 +316,8 @@ const Quiz = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <QuizHeader progress={progress} showBack onBack={handleBack} hideProgressBar={!isMobile} />
-      <div className="flex-1 flex">
-        {/* Desktop sidebar */}
-        {!isMobile && (
-          <QuizSidebar
-            questions={questions}
-            currentStep={currentStep}
-            onStepClick={(step) => setCurrentStep(step)}
-          />
-        )}
-
-        {/* Main question area */}
-        <div className="flex-1 flex items-center justify-center p-6">
+      <QuizHeader progress={progress} showBack onBack={handleBack} />
+      <div className="flex-1 flex items-center justify-center p-6">
           <div className="max-w-2xl w-full animate-fade-up" key={currentStep}>
             {currentStep === 1 && (
               <div className="text-center mb-10">
