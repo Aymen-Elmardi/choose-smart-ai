@@ -51,6 +51,13 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["chargeback", "dispute", "fraud", "chargeback rate", "dispute rate", "too many chargebacks", "what is a chargeback fee", "how do chargebacks work"]
   },
   {
+    slug: "provider-appetite-index",
+    title: "The Provider Appetite Index: Why Payment Processors Say No",
+    shortTitle: "Provider Appetite Index",
+    concepts: ["approval", "risk", "provider-behaviour"],
+    keywords: ["appetite", "underwriting", "rejected", "declined", "MATCH", "high-risk", "merchant account declined", "provider approval"]
+  },
+  {
     slug: "why-payment-accounts-get-flagged-without-changes",
     title: "Account Flagged Without Changes? What Providers React To",
     shortTitle: "Why Accounts Get Flagged",
