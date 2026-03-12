@@ -10,8 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
 import type { QuizAnswers, Provider } from "@/types/quiz";
-import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
-import { cn } from "@/lib/utils";
+import { initializeSessionTracking } from "@/lib/sessionTracking";
 
 interface EliminatedProvider {
   name: string;
