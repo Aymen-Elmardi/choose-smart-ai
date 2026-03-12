@@ -364,6 +364,21 @@ const Recommendation = () => {
                   </CardContent>
                 </Card>
 
+                {/* Risk Alignment Score */}
+                {primary.matchScore && (
+                  <div className="flex justify-center mb-6">
+                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-primary/10 border border-primary/20">
+                      <div className="text-3xl font-bold text-primary">
+                        {Math.min(Math.round((primary.matchScore / 130) * 100), 99)}%
+                      </div>
+                      <div className="text-left">
+                        <div className="text-sm font-semibold text-foreground">Risk Alignment</div>
+                        <div className="text-xs text-muted-foreground">Match confidence score</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Section 2 — Recommended Provider (SUBDUED) */}
                 <Card className="border border-border/60 bg-card mb-6">
                   <CardContent className="p-5 md:p-6">
