@@ -500,6 +500,45 @@ const Recommendation = () => {
                       />
                     </div>
                     <div className="space-y-2">
+                      <Label htmlFor="websiteUrl" className="text-sm font-medium text-foreground">
+                        Website URL
+                      </Label>
+                      <Input
+                        id="websiteUrl"
+                        type="url"
+                        autoComplete="url"
+                        placeholder="https://yoursite.com"
+                        value={formData.websiteUrl}
+                        onChange={(e) => handleInputChange("websiteUrl", e.target.value)}
+                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="currentProvider" className="text-sm font-medium text-foreground">
+                        Current Payment Provider
+                      </Label>
+                      <Input
+                        id="currentProvider"
+                        type="text"
+                        placeholder="e.g. Stripe, PayPal, none"
+                        value={formData.currentProvider}
+                        onChange={(e) => handleInputChange("currentProvider", e.target.value)}
+                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="painPoints" className="text-sm font-medium text-foreground">
+                        Specific Pain Points
+                      </Label>
+                      <Textarea
+                        id="painPoints"
+                        placeholder="e.g. High chargebacks, poor support, account frozen"
+                        value={formData.painPoints}
+                        onChange={(e) => handleInputChange("painPoints", e.target.value)}
+                        className="min-h-[80px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
+                      />
+                    </div>
+                    <div className="space-y-2">
                       <Label htmlFor="notes" className="text-sm font-medium text-foreground">
                         Anything else we should know?
                       </Label>
