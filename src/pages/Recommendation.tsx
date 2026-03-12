@@ -109,10 +109,7 @@ const Recommendation = () => {
   const { toast } = useToast();
 
   const [primary, setPrimary] = useState<Provider | null>(null);
-  const [alternatives, setAlternatives] = useState<Provider[]>([]);
   const [avoid, setAvoid] = useState<EliminatedProvider[]>([]);
-  const [riskConfidence, setRiskConfidence] = useState<"high" | "medium" | "low">("low");
-  const [reserveProbability, setReserveProbability] = useState<"low" | "moderate" | "elevated">("low");
   const [resultsLoaded, setResultsLoaded] = useState(false);
 
   const [formData, setFormData] = useState({
