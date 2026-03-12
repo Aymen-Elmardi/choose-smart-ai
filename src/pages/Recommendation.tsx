@@ -221,7 +221,7 @@ const Recommendation = () => {
   };
 
   // Resolve display values from raw answers
-  const profileData = rawAnswers || answers;
+  
   const displaySalesChannel = (rawAnswers?.salesChannel || answers.salesChannel) || "—";
   const displayBusinessType = (rawAnswers?.businessType || answers.businessType) || "—";
   const displayIndustry = rawAnswers?.industry || "—";
