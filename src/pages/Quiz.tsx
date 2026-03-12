@@ -4,8 +4,6 @@ import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import InsightTransition from "@/components/InsightTransition";
-import QuizSidebar from "@/components/QuizSidebar";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 // Import from modular quiz architecture
 import type { QuizAnswers, Market } from "@/types/quiz";
