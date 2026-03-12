@@ -444,6 +444,7 @@ const Recommendation = () => {
             )}
 
             {/* Section 4 — Contact Form (PAGE HIGHLIGHT) */}
+            {resultsLoaded && (
             <div className="animate-fade-up animation-delay-100">
               <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
                 <CardContent className="p-6 md:p-8">
