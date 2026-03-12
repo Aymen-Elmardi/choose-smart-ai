@@ -77,6 +77,7 @@ export const fetchServerRecommendation = async (
       name: recommendation.bestMatch.name,
       description: recommendation.bestMatch.description,
       reasons: recommendation.bestMatch.reasons,
+      matchScore: recommendation.bestMatch.score,
     };
 
     const alternatives: Provider[] = recommendation.acceptable.map((alt) => ({
