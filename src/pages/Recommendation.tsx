@@ -136,10 +136,7 @@ const Recommendation = () => {
         "Braintree", "Shift4", "Fiserv (Clover)", "Authorize.Net"
       ];
       setPrimary(result.primary);
-      setAlternatives(result.alternatives);
       setAvoid(result.avoid.filter(p => CURATED_PROVIDERS.includes(p.name)));
-      setRiskConfidence(result.riskConfidence);
-      setReserveProbability(result.reserveProbability);
       setResultsLoaded(true);
     });
   }, [answers, quizComplete]);
