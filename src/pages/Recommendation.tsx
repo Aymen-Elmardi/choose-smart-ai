@@ -117,6 +117,9 @@ const Recommendation = () => {
     email: "",
     companyName: "",
     notes: "",
+    websiteUrl: "",
+    currentProvider: "",
+    painPoints: "",
   });
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
@@ -186,6 +189,9 @@ const Recommendation = () => {
       email: formData.email,
       businessName: formData.companyName,
       notes: formData.notes,
+      websiteUrl: formData.websiteUrl,
+      currentProvider: formData.currentProvider,
+      painPoints: formData.painPoints,
       businessType: answers.businessType,
       monthlyVolume: answers.monthlyVolume,
       avgTransaction: answers.avgTransaction,
@@ -358,6 +364,21 @@ const Recommendation = () => {
                   </CardContent>
                 </Card>
 
+                {/* Risk Alignment Score */}
+                {primary.matchScore && (
+                  <div className="flex justify-center mb-6">
+                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-primary/10 border border-primary/20">
+                      <div className="text-3xl font-bold text-primary">
+                        {Math.min(Math.round((primary.matchScore / 130) * 100), 99)}%
+                      </div>
+                      <div className="text-left">
+                        <div className="text-sm font-semibold text-foreground">Risk Alignment</div>
+                        <div className="text-xs text-muted-foreground">Match confidence score</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Section 2 — Recommended Provider (SUBDUED) */}
                 <Card className="border border-border/60 bg-card mb-6">
                   <CardContent className="p-5 md:p-6">
@@ -476,6 +497,45 @@ const Recommendation = () => {
                         value={formData.companyName}
                         onChange={(e) => handleInputChange("companyName", e.target.value)}
                         className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="websiteUrl" className="text-sm font-medium text-foreground">
+                        Website URL
+                      </Label>
+                      <Input
+                        id="websiteUrl"
+                        type="url"
+                        autoComplete="url"
+                        placeholder="https://yoursite.com"
+                        value={formData.websiteUrl}
+                        onChange={(e) => handleInputChange("websiteUrl", e.target.value)}
+                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="currentProvider" className="text-sm font-medium text-foreground">
+                        Current Payment Provider
+                      </Label>
+                      <Input
+                        id="currentProvider"
+                        type="text"
+                        placeholder="e.g. Stripe, PayPal, none"
+                        value={formData.currentProvider}
+                        onChange={(e) => handleInputChange("currentProvider", e.target.value)}
+                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="painPoints" className="text-sm font-medium text-foreground">
+                        Specific Pain Points
+                      </Label>
+                      <Textarea
+                        id="painPoints"
+                        placeholder="e.g. High chargebacks, poor support, account frozen"
+                        value={formData.painPoints}
+                        onChange={(e) => handleInputChange("painPoints", e.target.value)}
+                        className="min-h-[80px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
                       />
                     </div>
                     <div className="space-y-2">

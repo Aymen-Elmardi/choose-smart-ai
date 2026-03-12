@@ -8,14 +8,11 @@ const HeroSection = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="heading-xl text-foreground text-balance">
-            Choose the Right Payment Provider for Your Risk Profile
+            The Pre-Underwriting Layer for High-Growth Merchants.
           </h1>
           <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              Most merchants choose payment providers based on price or developer preference.
-            </p>
-            <p className="mt-3">
-              Our engine matches providers to your actual risk profile.
+              We align your industry, volume, and risk signals with the right provider's appetite — before you apply.
             </p>
           </div>
           <div className="mt-12 flex flex-col items-center gap-4">

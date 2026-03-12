@@ -347,7 +347,7 @@ const getRecommendations = (answers: QuizAnswers): RecommendationResult | null =
   const reserveProbability = computeReserveProbability(industry, bestMatch.provider.riskAppetite[industry]);
 
   return {
-    bestMatch: { name: bestMatch.provider.name, description: bestMatch.provider.description, reasons: bestMatch.reasons.slice(0, 4) },
+    bestMatch: { name: bestMatch.provider.name, description: bestMatch.provider.description, reasons: bestMatch.reasons.slice(0, 4), score: bestMatch.score },
     acceptable: acceptable.map((alt) => ({ name: alt.provider.name, description: alt.provider.description, reasons: alt.reasons.slice(0, 3) })),
     avoid,
     riskConfidence,

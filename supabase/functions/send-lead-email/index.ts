@@ -87,6 +87,9 @@ interface LeadEmailRequest {
   phone?: string;
   businessName?: string;
   businessWebsite?: string;
+  websiteUrl?: string;
+  currentProvider?: string;
+  painPoints?: string;
   recommendedProvider: string | null;
   reasons?: string[];
   logicPath: string;
@@ -165,6 +168,9 @@ const handler = async (req: Request): Promise<Response> => {
       phone: sanitizeString(rawData.phone, 20),
       businessName: sanitizeString(rawData.businessName, 200),
       businessWebsite: sanitizeString(rawData.businessWebsite, 500),
+      websiteUrl: sanitizeString(rawData.websiteUrl, 500),
+      currentProvider: sanitizeString(rawData.currentProvider, 200),
+      painPoints: sanitizeString(rawData.painPoints, 1000),
       recommendedProvider: sanitizeString(rawData.recommendedProvider, 100) || null,
       reasons: sanitizeArray(rawData.reasons, 10, 200),
       logicPath: sanitizeString(rawData.logicPath, 200),
@@ -254,6 +260,9 @@ const handler = async (req: Request): Promise<Response> => {
     <tr><th>Phone</th><td>${formatValue(data.phone)}</td></tr>
     <tr><th>Business Name</th><td>${formatValue(data.businessName)}</td></tr>
     <tr><th>Business Website</th><td>${formatValue(data.businessWebsite)}</td></tr>
+    <tr><th>Website URL</th><td>${formatValue(data.websiteUrl)}</td></tr>
+    <tr><th>Current Provider</th><td>${formatValue(data.currentProvider)}</td></tr>
+    <tr><th>Pain Points</th><td>${formatValue(data.painPoints)}</td></tr>
   </table>
   <h2>2. Recommendation Details</h2>
   <table>
