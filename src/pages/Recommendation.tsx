@@ -320,10 +320,10 @@ const Recommendation = () => {
                   </p>
                 </div>
 
-                {/* Business Profile Summary */}
-                <Card className="border border-border mb-6">
-                  <CardContent className="p-5 md:p-6">
-                    <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wide mb-4">Your Business Profile</h3>
+                {/* Section 1 — Business Profile (HIGHLIGHTED) */}
+                <Card className="border-2 border-primary/30 bg-primary/5 mb-8 shadow-sm">
+                  <CardContent className="p-6 md:p-8">
+                    <h3 className="text-lg font-bold text-foreground mb-5">Your Business Profile</h3>
                     <div className="grid grid-cols-2 gap-x-6 gap-y-4">
                       <ProfileItem icon={ShoppingCart} label="Sales Channel" value={displaySalesChannel} />
                       <ProfileItem icon={Building2} label="Business Type" value={displayBusinessType} />
@@ -335,7 +335,7 @@ const Recommendation = () => {
                       <ProfileItem icon={Globe} label="Location" value={displayLocation} />
                     </div>
                     {displayPriorities.length > 0 && (
-                      <div className="mt-4 pt-4 border-t border-border">
+                      <div className="mt-5 pt-5 border-t border-primary/15">
                         <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-2">Priorities</div>
                         <div className="flex flex-wrap gap-2">
                           {displayPriorities.map((p) => (
@@ -347,7 +347,7 @@ const Recommendation = () => {
                       </div>
                     )}
                     {(displayDelivery || displayRestriction) && (
-                      <div className="mt-4 pt-4 border-t border-border grid grid-cols-2 gap-x-6 gap-y-3">
+                      <div className="mt-5 pt-5 border-t border-primary/15 grid grid-cols-2 gap-x-6 gap-y-3">
                         {displayDelivery && (
                           <div>
                             <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Delivery Timeline</div>
@@ -365,32 +365,20 @@ const Recommendation = () => {
                   </CardContent>
                 </Card>
 
-                {/* Risk Indicators — inline badges */}
-                <div className="flex flex-wrap gap-3 mb-6">
-                  <div className={cn("inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold", confidenceColors[riskConfidence])}>
-                    <Shield className="w-4 h-4" />
-                    Risk Confidence: <span className="capitalize">{riskConfidence}</span>
-                  </div>
-                  <div className={cn("inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-semibold", reserveColors[reserveProbability])}>
-                    <AlertTriangle className="w-4 h-4" />
-                    Funds Hold Risk: <span className="capitalize">{reserveProbability}</span>
-                  </div>
-                </div>
-
-                {/* Best Fit */}
-                <Card className="border-l-4 border-l-green-500 border border-border mb-3 shadow-sm">
+                {/* Section 2 — Recommended Provider (SUBDUED) */}
+                <Card className="border border-border/60 bg-card mb-6">
                   <CardContent className="p-5 md:p-6">
                     <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
-                      <span className="text-xs font-bold text-green-700 uppercase tracking-wider">Best Fit</span>
+                      <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Recommended Provider</span>
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-1">{primary.name}</h3>
+                    <h3 className="text-lg font-semibold text-foreground mb-1">{primary.name}</h3>
                     <p className="text-muted-foreground text-sm mb-3">{primary.description}</p>
                     {primary.reasons?.length > 0 && (
                       <ul className="space-y-1.5">
                         {primary.reasons.map((r, i) => (
                           <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                            <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+                            <Check className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
                             <span>{r}</span>
                           </li>
                         ))}
@@ -399,49 +387,27 @@ const Recommendation = () => {
                   </CardContent>
                 </Card>
 
-                {/* Also Compatible */}
-                {alternatives.length > 0 && (
-                  <Card className="border border-border/60 mb-3">
-                    <CardContent className="p-4 md:p-5">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Shield className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Also Compatible</span>
+                {/* Section 3 — Providers to Avoid (HIGHLIGHTED) */}
+                {avoid.length > 0 && (
+                  <Card className="border-2 border-destructive/20 bg-destructive/5 mb-8">
+                    <CardContent className="p-5 md:p-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <AlertTriangle className="w-5 h-5 text-destructive" />
+                        <span className="text-sm font-bold text-destructive uppercase tracking-wider">Providers to Avoid</span>
                       </div>
-                      <h4 className="font-semibold text-foreground mb-1">{alternatives[0].name}</h4>
-                      <p className="text-sm text-muted-foreground mb-2">{alternatives[0].description}</p>
-                      {alternatives[0].reasons?.length > 0 && (
-                        <ul className="space-y-1">
-                          {alternatives[0].reasons.map((r, i) => (
-                            <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
-                              <Check className="w-3 h-3 text-muted-foreground shrink-0 mt-0.5" />
-                              <span>{r}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+                      <div className="space-y-3">
+                        {avoid.slice(0, 2).map((p) => (
+                          <div key={p.name} className="flex items-start gap-3 px-4 py-3 rounded-lg bg-background border border-destructive/15">
+                            <ShieldX className="w-4 h-4 text-destructive/70 shrink-0 mt-0.5" />
+                            <div>
+                              <span className="text-sm font-semibold text-foreground">{p.name}</span>
+                              <p className="text-xs text-muted-foreground mt-0.5">{p.reason}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </CardContent>
                   </Card>
-                )}
-
-                {/* Not Suited */}
-                {avoid.length > 0 && (
-                  <div className="mb-8">
-                    <div className="flex items-center gap-2 mb-2 px-1">
-                      <AlertTriangle className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Not Suited for Your Business</span>
-                    </div>
-                    <div className="space-y-2">
-                      {avoid.slice(0, 3).map((p) => (
-                        <div key={p.name} className="flex items-start gap-3 px-4 py-3 rounded-lg bg-muted/40 border border-border/40">
-                          <ShieldX className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                          <div>
-                            <span className="text-sm font-medium text-foreground">{p.name}</span>
-                            <p className="text-xs text-muted-foreground">{p.reason}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
                 )}
               </div>
             ) : resultsLoaded && !primary ? (
