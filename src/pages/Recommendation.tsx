@@ -589,6 +589,7 @@ const Recommendation = () => {
                 </CardContent>
               </Card>
             </div>
+            )}
 
             {/* Retake */}
             <div className="text-center mt-10 animate-fade-up animation-delay-200">
