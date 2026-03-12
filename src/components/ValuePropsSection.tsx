@@ -8,11 +8,6 @@ const valueProps = [
     description: "We've seen businesses lose revenue, get frozen, or churn providers repeatedly. All because nobody checked the fit before they signed up.",
   },
   {
-    icon: Receipt,
-    title: "Fixed-Scope, Clear Pricing",
-    description: "One flat fee, clearly defined scope. No retainers, no ongoing commitments.",
-  },
-  {
     icon: Target,
     title: "Outcome-Driven Methodology",
     description: "Every recommendation is tied to measurable impact: revenue captured, costs reduced, risk mitigated.",
