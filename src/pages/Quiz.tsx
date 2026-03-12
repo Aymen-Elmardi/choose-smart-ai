@@ -4,8 +4,6 @@ import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import InsightTransition from "@/components/InsightTransition";
-import QuizSidebar from "@/components/QuizSidebar";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 // Import from modular quiz architecture
 import type { QuizAnswers, Market } from "@/types/quiz";
@@ -28,7 +26,6 @@ import { initializeSessionTracking, markQuizStart } from "@/lib/sessionTracking"
 const Quiz = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isMobile = useIsMobile();
   // Always start at Question 1 (no intro screen)
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_QUIZ_ANSWERS);
@@ -319,19 +316,8 @@ const Quiz = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <QuizHeader progress={progress} showBack onBack={handleBack} hideProgressBar={!isMobile} />
-      <div className="flex-1 flex">
-        {/* Desktop sidebar */}
-        {!isMobile && (
-          <QuizSidebar
-            questions={questions}
-            currentStep={currentStep}
-            onStepClick={(step) => setCurrentStep(step)}
-          />
-        )}
-
-        {/* Main question area */}
-        <div className="flex-1 flex items-center justify-center p-6">
+      <QuizHeader progress={progress} showBack onBack={handleBack} />
+      <div className="flex-1 flex items-center justify-center p-6">
           <div className="max-w-2xl w-full animate-fade-up" key={currentStep}>
             {currentStep === 1 && (
               <div className="text-center mb-10">
@@ -465,7 +451,6 @@ const Quiz = () => {
               </div>
             )}
           </div>
-        </div>
       </div>
     </div>
   );
@@ -476,12 +461,10 @@ const QuizHeader = ({
   progress,
   showBack,
   onBack,
-  hideProgressBar,
 }: {
   progress: number;
   showBack?: boolean;
   onBack?: () => void;
-  hideProgressBar?: boolean;
 }) => (
   <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
     <div className="max-w-4xl mx-auto px-4">
@@ -509,15 +492,12 @@ const QuizHeader = ({
       </div>
     </div>
 
-    {/* Progress bar - hidden on desktop when sidebar is shown */}
-    {!hideProgressBar && (
-      <div className="h-1 bg-muted">
-        <div
-          className="h-full bg-primary transition-all duration-500 ease-out"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-    )}
+    <div className="h-1 bg-muted">
+      <div
+        className="h-full bg-primary transition-all duration-500 ease-out"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
   </header>
 );
 
