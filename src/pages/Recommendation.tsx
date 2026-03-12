@@ -428,19 +428,18 @@ const Recommendation = () => {
               </div>
             )}
 
-            {/* Contact Form */}
+            {/* Section 4 — Contact Form (PAGE HIGHLIGHT) */}
             <div className="animate-fade-up animation-delay-100">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">
-                  Want us to follow up with next steps?
-                </h3>
-                <p className="text-muted-foreground">
-                  Leave your details and we'll review your profile in detail.
-                </p>
-              </div>
-
-              <Card className="border border-border/50">
+              <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
                 <CardContent className="p-6 md:p-8">
+                  <div className="text-center mb-6">
+                    <h3 className="text-xl font-bold text-foreground mb-2">
+                      {primary ? `Want a warm introduction to ${primary.name}?` : "Want us to follow up with next steps?"}
+                    </h3>
+                    <p className="text-muted-foreground max-w-md mx-auto">
+                      {primary ? "Leave your details below and we'll connect you directly with the right contact." : "Leave your details and we'll review your profile in detail."}
+                    </p>
+                  </div>
                   <div className="space-y-5">
                     <div className="space-y-2">
                       <Label htmlFor="fullName" className="text-sm font-medium text-foreground">
