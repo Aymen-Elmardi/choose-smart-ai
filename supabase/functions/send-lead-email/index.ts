@@ -87,6 +87,9 @@ interface LeadEmailRequest {
   phone?: string;
   businessName?: string;
   businessWebsite?: string;
+  websiteUrl?: string;
+  currentProvider?: string;
+  painPoints?: string;
   recommendedProvider: string | null;
   reasons?: string[];
   logicPath: string;
