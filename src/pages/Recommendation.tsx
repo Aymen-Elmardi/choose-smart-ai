@@ -10,8 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
 import type { QuizAnswers, Provider } from "@/types/quiz";
-import { initializeSessionTracking } from "@/hooks/useEnrichmentData";
-import { cn } from "@/lib/utils";
+import { initializeSessionTracking } from "@/lib/sessionTracking";
 
 interface EliminatedProvider {
   name: string;
@@ -110,10 +109,7 @@ const Recommendation = () => {
   const { toast } = useToast();
 
   const [primary, setPrimary] = useState<Provider | null>(null);
-  const [alternatives, setAlternatives] = useState<Provider[]>([]);
   const [avoid, setAvoid] = useState<EliminatedProvider[]>([]);
-  const [riskConfidence, setRiskConfidence] = useState<"high" | "medium" | "low">("low");
-  const [reserveProbability, setReserveProbability] = useState<"low" | "moderate" | "elevated">("low");
   const [resultsLoaded, setResultsLoaded] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -140,10 +136,7 @@ const Recommendation = () => {
         "Braintree", "Shift4", "Fiserv (Clover)", "Authorize.Net"
       ];
       setPrimary(result.primary);
-      setAlternatives(result.alternatives);
       setAvoid(result.avoid.filter(p => CURATED_PROVIDERS.includes(p.name)));
-      setRiskConfidence(result.riskConfidence);
-      setReserveProbability(result.reserveProbability);
       setResultsLoaded(true);
     });
   }, [answers, quizComplete]);
@@ -228,7 +221,7 @@ const Recommendation = () => {
   };
 
   // Resolve display values from raw answers
-  const profileData = rawAnswers || answers;
+  
   const displaySalesChannel = (rawAnswers?.salesChannel || answers.salesChannel) || "—";
   const displayBusinessType = (rawAnswers?.businessType || answers.businessType) || "—";
   const displayIndustry = rawAnswers?.industry || "—";
