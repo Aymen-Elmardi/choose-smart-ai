@@ -519,14 +519,29 @@ const Recommendation = () => {
                       <Label htmlFor="currentProvider" className="text-sm font-medium text-foreground">
                         Current Payment Provider
                       </Label>
-                      <Input
-                        id="currentProvider"
-                        type="text"
-                        placeholder="e.g. Stripe, PayPal, none"
+                      <Select
                         value={formData.currentProvider}
-                        onChange={(e) => handleInputChange("currentProvider", e.target.value)}
-                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                      />
+                        onValueChange={(value) => handleInputChange("currentProvider", value)}
+                      >
+                        <SelectTrigger className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20">
+                          <SelectValue placeholder="Select your current provider" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="none">None / New business</SelectItem>
+                          <SelectItem value="Stripe">Stripe</SelectItem>
+                          <SelectItem value="PayPal">PayPal</SelectItem>
+                          <SelectItem value="Square">Square</SelectItem>
+                          <SelectItem value="Adyen">Adyen</SelectItem>
+                          <SelectItem value="Checkout.com">Checkout.com</SelectItem>
+                          <SelectItem value="Braintree">Braintree</SelectItem>
+                          <SelectItem value="SumUp">SumUp</SelectItem>
+                          <SelectItem value="Worldpay">Worldpay</SelectItem>
+                          <SelectItem value="Fiserv (Clover)">Fiserv (Clover)</SelectItem>
+                          <SelectItem value="Shift4">Shift4</SelectItem>
+                          <SelectItem value="Authorize.Net">Authorize.Net</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="painPoints" className="text-sm font-medium text-foreground">
