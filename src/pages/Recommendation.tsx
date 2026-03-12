@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { CreditCard, Check, ArrowRight, Loader2, Mail, ShieldX, AlertTriangle, CheckCircle, Building2, Globe, CreditCard as CardIcon, TrendingUp, ShoppingCart, Tag } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
