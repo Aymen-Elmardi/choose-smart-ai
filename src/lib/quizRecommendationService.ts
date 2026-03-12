@@ -12,6 +12,7 @@ interface ServerRecommendation {
     name: string;
     description: string;
     reasons: string[];
+    score?: number;
   };
   acceptable: {
     name: string;
