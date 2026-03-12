@@ -260,6 +260,9 @@ const handler = async (req: Request): Promise<Response> => {
     <tr><th>Phone</th><td>${formatValue(data.phone)}</td></tr>
     <tr><th>Business Name</th><td>${formatValue(data.businessName)}</td></tr>
     <tr><th>Business Website</th><td>${formatValue(data.businessWebsite)}</td></tr>
+    <tr><th>Website URL</th><td>${formatValue(data.websiteUrl)}</td></tr>
+    <tr><th>Current Provider</th><td>${formatValue(data.currentProvider)}</td></tr>
+    <tr><th>Pain Points</th><td>${formatValue(data.painPoints)}</td></tr>
   </table>
   <h2>2. Recommendation Details</h2>
   <table>
