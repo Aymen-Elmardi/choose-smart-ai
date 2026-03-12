@@ -117,6 +117,9 @@ const Recommendation = () => {
     email: "",
     companyName: "",
     notes: "",
+    websiteUrl: "",
+    currentProvider: "",
+    painPoints: "",
   });
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
