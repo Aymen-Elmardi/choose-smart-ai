@@ -58,6 +58,7 @@ export interface Provider {
   name: string;
   description: string;
   reasons: string[];
+  matchScore?: number;
 }
 
 /**
