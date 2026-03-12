@@ -493,15 +493,12 @@ const QuizHeader = ({
       </div>
     </div>
 
-    {/* Progress bar - hidden on desktop when sidebar is shown */}
-    {!hideProgressBar && (
-      <div className="h-1 bg-muted">
-        <div
-          className="h-full bg-primary transition-all duration-500 ease-out"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-    )}
+    <div className="h-1 bg-muted">
+      <div
+        className="h-full bg-primary transition-all duration-500 ease-out"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
   </header>
 );
 

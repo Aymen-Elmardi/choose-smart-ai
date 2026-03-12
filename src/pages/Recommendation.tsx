@@ -517,6 +517,7 @@ const Recommendation = () => {
                     </p>
                   </div>
                 </CardContent>
+                </CardContent>
               </Card>
             </div>
 
