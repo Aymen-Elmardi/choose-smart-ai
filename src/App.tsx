@@ -92,6 +92,9 @@ const CrisisStripeAccountFrozen = lazyWithRetry(() => import("./pages/insights/c
 const InterchangePlusPlus = lazyWithRetry(() => import("./pages/insights/pricing/InterchangePlusPlus"));
 const BlendedVsInterchange = lazyWithRetry(() => import("./pages/insights/pricing/BlendedVsInterchange"));
 
+// E-commerce Guides
+const HighRiskToHighGrowth = lazyWithRetry(() => import("./pages/insights/ecommerce/HighRiskToHighGrowth"));
+
 // Provider Fit Guides
 const HighChargebackProcessors = lazyWithRetry(() => import("./pages/insights/provider-fit/HighChargebackProcessors"));
 const HighRiskEcommerce = lazyWithRetry(() => import("./pages/insights/provider-fit/HighRiskEcommerce"));
@@ -244,6 +247,9 @@ const App = () => (
               {/* Pricing Models articles */}
               <Route path="/insights/pricing-models/interchange-plus-plus" element={<InterchangePlusPlus />} />
               <Route path="/insights/pricing-models/blended-vs-interchange" element={<BlendedVsInterchange />} />
+              
+              {/* E-commerce Guides */}
+              <Route path="/insights/ecommerce/high-risk-to-high-growth" element={<HighRiskToHighGrowth />} />
               
               {/* Provider Fit Guides */}
               <Route path="/best-payment-processors-high-chargebacks" element={<HighChargebackProcessors />} />

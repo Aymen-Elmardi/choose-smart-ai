@@ -1,7 +1,7 @@
 // Insights article data - extracted from Insights.tsx for reusability
 // Used by the Insights page, sitemap generation, and search
 
-export type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis" | "pricing" | "fees" | "provider-fit";
+export type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis" | "pricing" | "fees" | "provider-fit" | "ecommerce";
 
 export interface Insight {
   title: string;
@@ -88,6 +88,14 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
     description: "Learn why many processors reject high chargeback merchants, how risk tolerance differs between providers, and how to find the right fit.",
     category: "provider-fit",
     readTime: "7 min read"
+  },
+  ecommerce: {
+    title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
+    slug: "ecommerce/high-risk-to-high-growth",
+    description: "Learn why ecommerce businesses get labeled high-risk, what processors actually evaluate during underwriting, and how to build a payments strategy that supports growth.",
+    category: "ecommerce",
+    readTime: "14 min read",
+    isSubfolder: true
   }
 };
 
@@ -104,7 +112,8 @@ export const filterTabs: { label: string; value: InsightCategory }[] = [
   { label: "Guides", value: "guides" },
   { label: "Compliance", value: "compliance" },
   { label: "Explainers", value: "explainer" },
-  { label: "Provider Fit Guides", value: "provider-fit" }
+  { label: "Provider Fit Guides", value: "provider-fit" },
+  { label: "E-commerce", value: "ecommerce" }
 ];
 
 /**
@@ -120,7 +129,8 @@ export const categoryLabels: Record<InsightCategory, string> = {
   compliance: "Compliance",
   explainer: "Explainer",
   providers: "Provider Deep Dive",
-  "provider-fit": "Provider Fit Guide"
+  "provider-fit": "Provider Fit Guide",
+  ecommerce: "E-commerce"
 };
 
 /**
@@ -574,6 +584,15 @@ export const allInsights: Insight[] = [
     description: "Why food delivery platforms face unique payment challenges and which acquirers can handle high transaction velocity, refund patterns, and marketplace payouts.",
     category: "provider-fit",
     readTime: "8 min read"
+  },
+  // E-commerce
+  {
+    title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
+    slug: "ecommerce/high-risk-to-high-growth",
+    description: "Learn why ecommerce businesses get labeled high-risk, what processors actually evaluate during underwriting, and how to build a payments strategy that supports growth.",
+    category: "ecommerce",
+    readTime: "14 min read",
+    isSubfolder: true
   }
 ];
 
@@ -585,6 +604,7 @@ export const getInsightUrl = (insight: Insight): string => {
   if (insight.category === "provider-fit") {
     return `/${insight.slug}`;
   }
+  // Subfolder articles already have their path in the slug
   return `/insights/${insight.slug}`;
 };
 

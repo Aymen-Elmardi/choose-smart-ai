@@ -349,6 +349,15 @@ export const conceptArticles: ConceptArticle[] = [
     shortTitle: "Scheme Rules by Payment Method",
     concepts: ["risk", "payment-methods", "provider-behaviour"],
     keywords: ["scheme rules", "BNPL", "marketplace", "wallet", "stored credentials", "recurring billing", "payment facilitator"]
+  },
+
+  // === E-COMMERCE ===
+  {
+    slug: "ecommerce/high-risk-to-high-growth",
+    title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
+    shortTitle: "High-Risk eCommerce Guide",
+    concepts: ["risk", "approval", "provider-behaviour"],
+    keywords: ["high risk ecommerce", "ecommerce payment", "high growth", "online business", "ecommerce processor", "high risk merchant"]
   }
 ];
 
