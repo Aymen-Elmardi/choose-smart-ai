@@ -1,7 +1,7 @@
 // Insights article data - extracted from Insights.tsx for reusability
 // Used by the Insights page, sitemap generation, and search
 
-export type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis" | "pricing" | "fees" | "provider-fit";
+export type InsightCategory = "all" | "risk" | "guides" | "compliance" | "explainer" | "providers" | "crisis" | "pricing" | "fees" | "provider-fit" | "ecommerce";
 
 export interface Insight {
   title: string;
