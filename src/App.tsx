@@ -92,6 +92,9 @@ const CrisisStripeAccountFrozen = lazyWithRetry(() => import("./pages/insights/c
 const InterchangePlusPlus = lazyWithRetry(() => import("./pages/insights/pricing/InterchangePlusPlus"));
 const BlendedVsInterchange = lazyWithRetry(() => import("./pages/insights/pricing/BlendedVsInterchange"));
 
+// E-commerce Guides
+const HighRiskToHighGrowth = lazyWithRetry(() => import("./pages/insights/ecommerce/HighRiskToHighGrowth"));
+
 // Provider Fit Guides
 const HighChargebackProcessors = lazyWithRetry(() => import("./pages/insights/provider-fit/HighChargebackProcessors"));
 const HighRiskEcommerce = lazyWithRetry(() => import("./pages/insights/provider-fit/HighRiskEcommerce"));
