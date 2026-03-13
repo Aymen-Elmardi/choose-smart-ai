@@ -112,7 +112,8 @@ export const filterTabs: { label: string; value: InsightCategory }[] = [
   { label: "Guides", value: "guides" },
   { label: "Compliance", value: "compliance" },
   { label: "Explainers", value: "explainer" },
-  { label: "Provider Fit Guides", value: "provider-fit" }
+  { label: "Provider Fit Guides", value: "provider-fit" },
+  { label: "E-commerce", value: "ecommerce" }
 ];
 
 /**
