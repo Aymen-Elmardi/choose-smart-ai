@@ -358,6 +358,13 @@ export const conceptArticles: ConceptArticle[] = [
     shortTitle: "High-Risk eCommerce Guide",
     concepts: ["risk", "approval", "provider-behaviour"],
     keywords: ["high risk ecommerce", "ecommerce payment", "high growth", "online business", "ecommerce processor", "high risk merchant"]
+  },
+  {
+    slug: "ecommerce/subscription-revenue-recurring-billing",
+    title: "Maximizing Subscription Revenue: Payment Success Rates and Risk Management for Recurring Billing",
+    shortTitle: "Subscription Payment Success",
+    concepts: ["risk", "provider-behaviour"],
+    keywords: ["subscription", "recurring billing", "involuntary churn", "dunning", "payment success rate", "account updater", "retry logic"]
   }
 ];
 

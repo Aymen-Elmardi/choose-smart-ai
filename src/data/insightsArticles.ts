@@ -593,6 +593,14 @@ export const allInsights: Insight[] = [
     category: "ecommerce",
     readTime: "14 min read",
     isSubfolder: true
+  },
+  {
+    title: "Maximizing Subscription Revenue: Payment Success Rates and Risk Management for Recurring Billing",
+    slug: "ecommerce/subscription-revenue-recurring-billing",
+    description: "Learn how subscription businesses can improve payment success rates, reduce involuntary churn, and choose the right payment infrastructure for recurring billing.",
+    category: "ecommerce",
+    readTime: "12 min read",
+    isSubfolder: true
   }
 ];
 
