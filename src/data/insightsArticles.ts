@@ -584,6 +584,15 @@ export const allInsights: Insight[] = [
     description: "Why food delivery platforms face unique payment challenges and which acquirers can handle high transaction velocity, refund patterns, and marketplace payouts.",
     category: "provider-fit",
     readTime: "8 min read"
+  },
+  // E-commerce
+  {
+    title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
+    slug: "ecommerce/high-risk-to-high-growth",
+    description: "Learn why ecommerce businesses get labeled high-risk, what processors actually evaluate during underwriting, and how to build a payments strategy that supports growth.",
+    category: "ecommerce",
+    readTime: "14 min read",
+    isSubfolder: true
   }
 ];
 
