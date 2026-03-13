@@ -88,6 +88,14 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
     description: "Learn why many processors reject high chargeback merchants, how risk tolerance differs between providers, and how to find the right fit.",
     category: "provider-fit",
     readTime: "7 min read"
+  },
+  ecommerce: {
+    title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
+    slug: "ecommerce/high-risk-to-high-growth",
+    description: "Learn why ecommerce businesses get labeled high-risk, what processors actually evaluate during underwriting, and how to build a payments strategy that supports growth.",
+    category: "ecommerce",
+    readTime: "14 min read",
+    isSubfolder: true
   }
 };
 
