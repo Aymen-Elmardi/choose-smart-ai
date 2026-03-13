@@ -248,6 +248,9 @@ const App = () => (
               <Route path="/insights/pricing-models/interchange-plus-plus" element={<InterchangePlusPlus />} />
               <Route path="/insights/pricing-models/blended-vs-interchange" element={<BlendedVsInterchange />} />
               
+              {/* E-commerce Guides */}
+              <Route path="/insights/ecommerce/high-risk-to-high-growth" element={<HighRiskToHighGrowth />} />
+              
               {/* Provider Fit Guides */}
               <Route path="/best-payment-processors-high-chargebacks" element={<HighChargebackProcessors />} />
               <Route path="/payment-processors-high-risk-ecommerce" element={<HighRiskEcommerce />} />

@@ -604,6 +604,7 @@ export const getInsightUrl = (insight: Insight): string => {
   if (insight.category === "provider-fit") {
     return `/${insight.slug}`;
   }
+  // Subfolder articles already have their path in the slug
   return `/insights/${insight.slug}`;
 };
 

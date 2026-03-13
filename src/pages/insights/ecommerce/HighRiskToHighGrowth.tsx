@@ -24,19 +24,19 @@ const HighRiskToHighGrowth = () => {
 
   const sources = [
     {
-      title: "Visa Acceptance Risk Standards",
+      name: "Visa Acceptance Risk Standards",
       url: "https://usa.visa.com/dam/VCOM/download/merchants/visa-acceptance-risk-standards.pdf"
     },
     {
-      title: "Stripe: How Businesses Manage Payment Risk",
+      name: "Stripe: How Businesses Manage Payment Risk",
       url: "https://stripe.com/resources/more/how-to-identify-and-manage-risk"
     },
     {
-      title: "Ramp: Merchant Underwriting and Risk Evaluation",
+      name: "Ramp: Merchant Underwriting and Risk Evaluation",
       url: "https://ramp.com/blog/merchant-underwriting"
     },
     {
-      title: "EMS Global: How High-Risk Payment Processors Evaluate Merchants",
+      name: "EMS Global: How High-Risk Payment Processors Evaluate Merchants",
       url: "https://ems-ltd.global/how-high-risk-payment-processors-evaluate-your-business/"
     }
   ];
