@@ -129,7 +129,8 @@ export const categoryLabels: Record<InsightCategory, string> = {
   compliance: "Compliance",
   explainer: "Explainer",
   providers: "Provider Deep Dive",
-  "provider-fit": "Provider Fit Guide"
+  "provider-fit": "Provider Fit Guide",
+  ecommerce: "E-commerce"
 };
 
 /**
