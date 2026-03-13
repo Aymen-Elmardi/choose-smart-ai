@@ -94,6 +94,7 @@ const BlendedVsInterchange = lazyWithRetry(() => import("./pages/insights/pricin
 
 // E-commerce Guides
 const HighRiskToHighGrowth = lazyWithRetry(() => import("./pages/insights/ecommerce/HighRiskToHighGrowth"));
+const SubscriptionRevenue = lazyWithRetry(() => import("./pages/insights/ecommerce/SubscriptionRevenue"));
 
 // Provider Fit Guides
 const HighChargebackProcessors = lazyWithRetry(() => import("./pages/insights/provider-fit/HighChargebackProcessors"));
