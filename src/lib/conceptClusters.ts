@@ -365,6 +365,13 @@ export const conceptArticles: ConceptArticle[] = [
     shortTitle: "Subscription Payment Success",
     concepts: ["risk", "provider-behaviour"],
     keywords: ["subscription", "recurring billing", "involuntary churn", "dunning", "payment success rate", "account updater", "retry logic"]
+  },
+  {
+    slug: "ecommerce/chargeback-thresholds-high-risk-processors",
+    title: "Beyond the 1%: Navigating Chargeback Thresholds With High Risk Payment Processors",
+    shortTitle: "Chargeback Thresholds Guide",
+    concepts: ["risk", "approval", "provider-behaviour"],
+    keywords: ["chargeback", "chargeback threshold", "dispute ratio", "high risk processor", "visa monitoring program", "chargeback limit", "dispute management"]
   }
 ];
 
