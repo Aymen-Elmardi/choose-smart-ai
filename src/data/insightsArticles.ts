@@ -601,6 +601,14 @@ export const allInsights: Insight[] = [
     category: "ecommerce",
     readTime: "12 min read",
     isSubfolder: true
+  },
+  {
+    title: "Beyond the 1%: Navigating Chargeback Thresholds With High Risk Payment Processors",
+    slug: "ecommerce/chargeback-thresholds-high-risk-processors",
+    description: "Learn how chargeback thresholds work, why standard processors reject high dispute businesses, and how to find a payment provider that supports your risk profile.",
+    category: "ecommerce",
+    readTime: "11 min read",
+    isSubfolder: true
   }
 ];
 

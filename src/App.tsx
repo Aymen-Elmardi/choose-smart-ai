@@ -253,6 +253,7 @@ const App = () => (
               {/* E-commerce Guides */}
               <Route path="/insights/ecommerce/high-risk-to-high-growth" element={<HighRiskToHighGrowth />} />
               <Route path="/insights/ecommerce/subscription-revenue-recurring-billing" element={<SubscriptionRevenue />} />
+              <Route path="/insights/ecommerce/chargeback-thresholds-high-risk-processors" element={<ChargebackThresholds />} />
               
               {/* Provider Fit Guides */}
               <Route path="/best-payment-processors-high-chargebacks" element={<HighChargebackProcessors />} />
