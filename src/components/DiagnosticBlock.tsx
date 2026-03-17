@@ -26,7 +26,7 @@ const DiagnosticBlock = () => {
     if (selected.length === 0) return;
     const first = problems.find((p) => p.id === selected[0]);
     if (first) {
-      navigate(`/insights/${first.slug}`);
+      navigate(first.route);
     }
   };
 

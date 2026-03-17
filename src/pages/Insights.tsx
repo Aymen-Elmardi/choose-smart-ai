@@ -20,8 +20,11 @@ import {
 import InsightsSidebarModule from "@/components/InsightsSidebarModule";
 
 const Insights = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState<InsightCategory>("all");
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(() => searchParams.get("q") || "");
+  const [activeFilter, setActiveFilter] = useState<InsightCategory>(
+    () => (searchParams.get("filter") as InsightCategory) || "all"
+  );
 
   useSEO({
     title: "Expert Insights: What Payment Providers Don't Tell You | ChosePayments",
