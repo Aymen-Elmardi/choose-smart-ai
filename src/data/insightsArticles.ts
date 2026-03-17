@@ -294,6 +294,13 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Why Payment Providers Impose Reserves and How to Negotiate Them",
+    slug: "why-providers-impose-reserves",
+    description: "Reserves protect providers from future losses. Learn why they're imposed, how rolling and fixed reserves work, and what you can do to reduce or release them.",
+    category: "compliance",
+    readTime: "7 min read"
+  },
+  {
     title: "When Scheme Rules Apply Differently: Cards, Wallets, Marketplaces and BNPL Explained",
     slug: "scheme-rules-by-payment-method",
     description: "Scheme rules do not apply identically across payment methods. Learn how cards, digital wallets, marketplaces and Buy Now Pay Later models each carry different risk, liability and compliance requirements.",
