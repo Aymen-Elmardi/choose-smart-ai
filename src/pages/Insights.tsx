@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useState, useMemo, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -20,8 +20,11 @@ import {
 import InsightsSidebarModule from "@/components/InsightsSidebarModule";
 
 const Insights = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState<InsightCategory>("all");
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(() => searchParams.get("q") || "");
+  const [activeFilter, setActiveFilter] = useState<InsightCategory>(
+    () => (searchParams.get("filter") as InsightCategory) || "all"
+  );
 
   useSEO({
     title: "Expert Insights: What Payment Providers Don't Tell You | ChosePayments",

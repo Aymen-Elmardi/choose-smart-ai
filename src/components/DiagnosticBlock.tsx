@@ -5,11 +5,11 @@ import { ArrowRight, Ban, ShieldAlert, Receipt, Scale, Wallet, ShieldCheck } fro
 import { cn } from "@/lib/utils";
 
 const problems = [
-  { id: "funds-held", label: "Funds on hold", icon: Ban, slug: "why-payment-accounts-get-frozen-without-warning" },
-  { id: "reserve-imposed", label: "Reserve imposed", icon: ShieldAlert, slug: "scheme-rules-reserves-monitoring" },
-  { id: "fees-higher", label: "Unexpected fees", icon: Receipt, slug: "crisis/hidden-fee-crisis" },
-  { id: "chargeback-lost", label: "Lost a chargeback", icon: Scale, slug: "chargebacks-what-they-are-and-how-to-avoid-them" },
-  { id: "payout-mismatch", label: "Payout mismatch", icon: Wallet, slug: "payment-provider-vs-acquirer-vs-bank" },
+  { id: "funds-held", label: "Funds on hold", icon: Ban, route: "/insights?q=frozen+hold&filter=crisis" },
+  { id: "reserve-imposed", label: "Reserve imposed", icon: ShieldAlert, route: "/insights?q=reserve&filter=risk" },
+  { id: "fees-higher", label: "Unexpected fees", icon: Receipt, route: "/insights?filter=fees" },
+  { id: "chargeback-lost", label: "Lost a chargeback", icon: Scale, route: "/insights?q=chargeback" },
+  { id: "payout-mismatch", label: "Payout mismatch", icon: Wallet, route: "/insights?q=acquirer+payout" },
 ];
 
 const DiagnosticBlock = () => {
@@ -26,7 +26,7 @@ const DiagnosticBlock = () => {
     if (selected.length === 0) return;
     const first = problems.find((p) => p.id === selected[0]);
     if (first) {
-      navigate(`/insights/${first.slug}`);
+      navigate(first.route);
     }
   };
 
