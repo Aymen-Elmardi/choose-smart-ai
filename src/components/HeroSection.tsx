@@ -8,11 +8,11 @@ const HeroSection = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="heading-xl text-foreground text-balance">
-            The Pre-Underwriting Layer for High-Growth Merchants.
+            Find the Payment Processor That Won't Freeze Your Account.
           </h1>
           <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              We align your industry, volume, and risk signals with the right provider's appetite — before you apply.
+              We match your industry, volume, and risk signals to the right provider's appetite. Before you apply.
             </p>
           </div>
           <div className="mt-12 flex flex-col items-center gap-4">
@@ -23,10 +23,10 @@ const HeroSection = () => {
               </Link>
             </Button>
             <Link
-              to="/insights"
+              to="/risk-profile-matching"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
             >
-              Just want to understand? Start here →
+              See how it works in 60 seconds
             </Link>
           </div>
         </div>

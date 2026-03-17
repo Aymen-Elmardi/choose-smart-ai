@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Ban, ShieldAlert, Receipt, Scale, Wallet } from "lucide-react";
+import { ArrowRight, Ban, ShieldAlert, Receipt, Scale, Wallet, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const problems = [
@@ -30,6 +30,11 @@ const DiagnosticBlock = () => {
     }
   };
 
+  const ctaLabel =
+    selected.length === 1
+      ? `Show Me What This Means for ${problems.find((p) => p.id === selected[0])?.label}`
+      : "Show Me What This Means";
+
   return (
     <section id="diagnostic" className="border-t border-border bg-secondary/30">
       <div className="section-container py-16 md:py-20">
@@ -49,10 +54,10 @@ const DiagnosticBlock = () => {
                   key={problem.id}
                   onClick={() => toggle(problem.id)}
                   className={cn(
-                    "flex flex-col items-center gap-3 p-5 rounded-xl border-2 transition-all duration-200 text-center",
-                    "hover:border-primary/40 hover:bg-primary/5",
+                    "flex flex-col items-center gap-3 p-5 rounded-xl border-2 transition-all duration-200 text-center cursor-pointer",
+                    "hover:border-primary/40 hover:bg-primary/5 hover:shadow-md hover:scale-[1.03]",
                     isSelected
-                      ? "border-primary bg-primary/10 shadow-sm"
+                      ? "border-primary bg-primary/10 shadow-sm ring-2 ring-primary/20"
                       : "border-border bg-card"
                   )}
                 >
@@ -79,9 +84,13 @@ const DiagnosticBlock = () => {
               onClick={handleSubmit}
               disabled={selected.length === 0}
             >
-              Show Me What This Means
+              {ctaLabel}
               <ArrowRight className="w-4 h-4" />
             </Button>
+            <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              Trusted by 50+ merchants across the UK and EU
+            </p>
           </div>
         </div>
       </div>
