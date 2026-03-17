@@ -415,6 +415,27 @@ export const allInsights: Insight[] = [
     readTime: "6 min read"
   },
   {
+    title: "Rolling Reserve vs Fixed Reserve: What Merchants Need to Know",
+    slug: "rolling-vs-fixed-reserve",
+    description: "Understand the difference between rolling and fixed reserves, how each affects your cash flow, and which reserve type you're most likely to encounter.",
+    category: "explainer",
+    readTime: "6 min read"
+  },
+  {
+    title: "Why Your Payout Doesn't Match Your Sales: Settlement Timing Explained",
+    slug: "payout-settlement-explained",
+    description: "Learn why the amount you receive from your payment provider rarely matches your daily sales, and how fees, reserves, chargebacks, and settlement timing create payout discrepancies.",
+    category: "explainer",
+    readTime: "7 min read"
+  },
+  {
+    title: "Net vs Gross Settlement: How Payment Providers Calculate Your Payout",
+    slug: "net-vs-gross-settlement",
+    description: "Understand the difference between net and gross settlement, how each model affects your cash flow, and which providers offer which approach.",
+    category: "explainer",
+    readTime: "6 min read"
+  },
+  {
     title: "What Is TRA Exemption and How It Reduces Payment Friction",
     slug: "tra-exemption-reduces-payment-friction",
     description: "Learn how TRA Exemption reduces checkout friction, improves approval rates, and affects conversion for UK and EU businesses.",
