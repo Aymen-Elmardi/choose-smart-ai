@@ -215,6 +215,13 @@ export const allInsights: Insight[] = [
     readTime: "6 min read",
     isSubfolder: true
   },
+  {
+    title: "What to Do When Your Payment Provider Holds Your Funds",
+    slug: "what-to-do-when-funds-held",
+    description: "Funds being held by your payment provider? Learn why holds happen, the difference between a hold and a freeze, and the steps to take to get your money released.",
+    category: "crisis",
+    readTime: "7 min read"
+  },
   // Compliance articles
   {
     title: "Understanding Proof of Business Activity Requests",
