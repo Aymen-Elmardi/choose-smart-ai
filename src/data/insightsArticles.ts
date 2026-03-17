@@ -215,6 +215,13 @@ export const allInsights: Insight[] = [
     readTime: "6 min read",
     isSubfolder: true
   },
+  {
+    title: "What to Do When Your Payment Provider Holds Your Funds",
+    slug: "what-to-do-when-funds-held",
+    description: "Funds being held by your payment provider? Learn why holds happen, the difference between a hold and a freeze, and the steps to take to get your money released.",
+    category: "crisis",
+    readTime: "7 min read"
+  },
   // Compliance articles
   {
     title: "Understanding Proof of Business Activity Requests",
@@ -292,6 +299,13 @@ export const allInsights: Insight[] = [
     description: "Learn how card network thresholds from Visa and Mastercard trigger reserves, monitoring programs, and account reviews, and what growing businesses can do to prevent them.",
     category: "compliance",
     readTime: "9 min read"
+  },
+  {
+    title: "Why Payment Providers Impose Reserves and How to Negotiate Them",
+    slug: "why-providers-impose-reserves",
+    description: "Reserves protect providers from future losses. Learn why they're imposed, how rolling and fixed reserves work, and what you can do to reduce or release them.",
+    category: "compliance",
+    readTime: "7 min read"
   },
   {
     title: "When Scheme Rules Apply Differently: Cards, Wallets, Marketplaces and BNPL Explained",
@@ -408,6 +422,27 @@ export const allInsights: Insight[] = [
     readTime: "6 min read"
   },
   {
+    title: "Rolling Reserve vs Fixed Reserve: What Merchants Need to Know",
+    slug: "rolling-vs-fixed-reserve",
+    description: "Understand the difference between rolling and fixed reserves, how each affects your cash flow, and which reserve type you're most likely to encounter.",
+    category: "explainer",
+    readTime: "6 min read"
+  },
+  {
+    title: "Why Your Payout Doesn't Match Your Sales: Settlement Timing Explained",
+    slug: "payout-settlement-explained",
+    description: "Learn why the amount you receive from your payment provider rarely matches your daily sales, and how fees, reserves, chargebacks, and settlement timing create payout discrepancies.",
+    category: "explainer",
+    readTime: "7 min read"
+  },
+  {
+    title: "Net vs Gross Settlement: How Payment Providers Calculate Your Payout",
+    slug: "net-vs-gross-settlement",
+    description: "Understand the difference between net and gross settlement, how each model affects your cash flow, and which providers offer which approach.",
+    category: "explainer",
+    readTime: "6 min read"
+  },
+  {
     title: "What Is TRA Exemption and How It Reduces Payment Friction",
     slug: "tra-exemption-reduces-payment-friction",
     description: "Learn how TRA Exemption reduces checkout friction, improves approval rates, and affects conversion for UK and EU businesses.",
@@ -491,6 +526,13 @@ export const allInsights: Insight[] = [
     description: "Learn how platforms, agencies, and consultants can earn ongoing revenue share by making qualified payment provider introductions.",
     category: "guides",
     readTime: "7 min read"
+  },
+  {
+    title: "You Lost a Chargeback: What Happens Next and How to Recover",
+    slug: "chargeback-loss-recovery",
+    description: "Lost a chargeback dispute? Learn what happens to your account, how it affects your standing with providers and card networks, and what steps to take next.",
+    category: "guides",
+    readTime: "8 min read"
   },
   // Provider Deep Dives
   {
@@ -633,9 +675,10 @@ export const filterInsights = (
   searchQuery: string = ""
 ): Insight[] => {
   return insights.filter((insight) => {
-    const matchesSearch = 
-      insight.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      insight.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const text = `${insight.title} ${insight.description}`.toLowerCase();
+    // Split query on spaces — match if ANY word is found (OR logic)
+    const words = searchQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    const matchesSearch = words.length === 0 || words.some((word) => text.includes(word));
     const matchesFilter = category === "all" || insight.category === category;
     return matchesSearch && matchesFilter;
   });

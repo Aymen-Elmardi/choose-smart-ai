@@ -5,11 +5,11 @@ import { ArrowRight, Ban, ShieldAlert, Receipt, Scale, Wallet, ShieldCheck } fro
 import { cn } from "@/lib/utils";
 
 const problems = [
-  { id: "funds-held", label: "Funds on hold", icon: Ban, route: "/insights?q=frozen+hold&filter=crisis" },
-  { id: "reserve-imposed", label: "Reserve imposed", icon: ShieldAlert, route: "/insights?q=reserve&filter=risk" },
+  { id: "funds-held", label: "Funds on hold", icon: Ban, route: "/insights?q=frozen+hold+funds&filter=crisis" },
+  { id: "reserve-imposed", label: "Reserve imposed", icon: ShieldAlert, route: "/insights?q=reserve" },
   { id: "fees-higher", label: "Unexpected fees", icon: Receipt, route: "/insights?filter=fees" },
   { id: "chargeback-lost", label: "Lost a chargeback", icon: Scale, route: "/insights?q=chargeback" },
-  { id: "payout-mismatch", label: "Payout mismatch", icon: Wallet, route: "/insights?q=acquirer+payout" },
+  { id: "payout-mismatch", label: "Payout mismatch", icon: Wallet, route: "/insights?q=payout+settlement" },
 ];
 
 const DiagnosticBlock = () => {

@@ -84,6 +84,12 @@ const FiservPaymentsPlatform = lazyWithRetry(() => import("./pages/insights/Fise
 const AdyenVsFirstData = lazyWithRetry(() => import("./pages/insights/AdyenVsFirstData"));
 const ReferralCommissionGuide = lazyWithRetry(() => import("./pages/insights/ReferralCommissionGuide"));
 const PayPalPaymentPlatform = lazyWithRetry(() => import("./pages/insights/PayPalPaymentPlatform"));
+const WhyProvidersImposeReserves = lazyWithRetry(() => import("./pages/insights/WhyProvidersImposeReserves"));
+const RollingVsFixedReserve = lazyWithRetry(() => import("./pages/insights/RollingVsFixedReserve"));
+const PayoutSettlementExplained = lazyWithRetry(() => import("./pages/insights/PayoutSettlementExplained"));
+const NetVsGrossSettlement = lazyWithRetry(() => import("./pages/insights/NetVsGrossSettlement"));
+const WhatToDoWhenFundsHeld = lazyWithRetry(() => import("./pages/insights/WhatToDoWhenFundsHeld"));
+const ChargebackLossRecovery = lazyWithRetry(() => import("./pages/insights/ChargebackLossRecovery"));
 
 const CrisisHiddenFeeCrisis = lazyWithRetry(() => import("./pages/insights/crisis/HiddenFeeCrisis"));
 const CrisisRejectedHighRisk = lazyWithRetry(() => import("./pages/insights/crisis/RejectedHighRiskStrategy"));
@@ -274,6 +280,12 @@ const App = () => (
               <Route path="/insights/payment-scheme-rules-explained" element={<PaymentSchemeRulesExplained />} />
               <Route path="/insights/scheme-rules-reserves-monitoring" element={<SchemeRulesReservesMonitoring />} />
               <Route path="/insights/scheme-rules-by-payment-method" element={<SchemeRulesByPaymentMethod />} />
+              <Route path="/insights/why-providers-impose-reserves" element={<WhyProvidersImposeReserves />} />
+              <Route path="/insights/rolling-vs-fixed-reserve" element={<RollingVsFixedReserve />} />
+              <Route path="/insights/payout-settlement-explained" element={<PayoutSettlementExplained />} />
+              <Route path="/insights/net-vs-gross-settlement" element={<NetVsGrossSettlement />} />
+              <Route path="/insights/what-to-do-when-funds-held" element={<WhatToDoWhenFundsHeld />} />
+              <Route path="/insights/chargeback-loss-recovery" element={<ChargebackLossRecovery />} />
               <Route path="/insights/graph" element={<InsightsGraph />} />
               <Route path="/insights/scoring-logic" element={<ScoringLogic />} />
               
