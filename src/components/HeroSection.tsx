@@ -29,6 +29,9 @@ const HeroSection = () => {
               See how it works in 60 seconds
             </Link>
           </div>
+          <p className="mt-10 text-xs text-muted-foreground tracking-wide">
+            Independent. Free for merchants. Trusted by businesses across the UK and EU.
+          </p>
         </div>
       </div>
     </section>
