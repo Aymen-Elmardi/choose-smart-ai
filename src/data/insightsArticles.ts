@@ -633,9 +633,10 @@ export const filterInsights = (
   searchQuery: string = ""
 ): Insight[] => {
   return insights.filter((insight) => {
-    const matchesSearch = 
-      insight.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      insight.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const text = `${insight.title} ${insight.description}`.toLowerCase();
+    // Split query on spaces — match if ANY word is found (OR logic)
+    const words = searchQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    const matchesSearch = words.length === 0 || words.some((word) => text.includes(word));
     const matchesFilter = category === "all" || insight.category === category;
     return matchesSearch && matchesFilter;
   });
