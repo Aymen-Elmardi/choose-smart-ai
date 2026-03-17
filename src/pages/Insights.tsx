@@ -33,7 +33,8 @@ const Insights = () => {
   });
 
   const filteredInsights = useMemo(() => {
-    return filterInsights(allInsights, activeFilter, searchQuery);
+    const effectiveFilter = searchQuery.trim() ? "all" : activeFilter;
+    return filterInsights(allInsights, effectiveFilter, searchQuery);
   }, [searchQuery, activeFilter]);
 
   return (
