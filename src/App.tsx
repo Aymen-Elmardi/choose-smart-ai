@@ -280,6 +280,12 @@ const App = () => (
               <Route path="/insights/payment-scheme-rules-explained" element={<PaymentSchemeRulesExplained />} />
               <Route path="/insights/scheme-rules-reserves-monitoring" element={<SchemeRulesReservesMonitoring />} />
               <Route path="/insights/scheme-rules-by-payment-method" element={<SchemeRulesByPaymentMethod />} />
+              <Route path="/insights/why-providers-impose-reserves" element={<WhyProvidersImposeReserves />} />
+              <Route path="/insights/rolling-vs-fixed-reserve" element={<RollingVsFixedReserve />} />
+              <Route path="/insights/payout-settlement-explained" element={<PayoutSettlementExplained />} />
+              <Route path="/insights/net-vs-gross-settlement" element={<NetVsGrossSettlement />} />
+              <Route path="/insights/what-to-do-when-funds-held" element={<WhatToDoWhenFundsHeld />} />
+              <Route path="/insights/chargeback-loss-recovery" element={<ChargebackLossRecovery />} />
               <Route path="/insights/graph" element={<InsightsGraph />} />
               <Route path="/insights/scoring-logic" element={<ScoringLogic />} />
               
