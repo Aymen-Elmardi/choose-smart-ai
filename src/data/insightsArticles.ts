@@ -527,6 +527,13 @@ export const allInsights: Insight[] = [
     category: "guides",
     readTime: "7 min read"
   },
+  {
+    title: "You Lost a Chargeback: What Happens Next and How to Recover",
+    slug: "chargeback-loss-recovery",
+    description: "Lost a chargeback dispute? Learn what happens to your account, how it affects your standing with providers and card networks, and what steps to take next.",
+    category: "guides",
+    readTime: "8 min read"
+  },
   // Provider Deep Dives
   {
     title: "Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook",

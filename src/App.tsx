@@ -84,6 +84,12 @@ const FiservPaymentsPlatform = lazyWithRetry(() => import("./pages/insights/Fise
 const AdyenVsFirstData = lazyWithRetry(() => import("./pages/insights/AdyenVsFirstData"));
 const ReferralCommissionGuide = lazyWithRetry(() => import("./pages/insights/ReferralCommissionGuide"));
 const PayPalPaymentPlatform = lazyWithRetry(() => import("./pages/insights/PayPalPaymentPlatform"));
+const WhyProvidersImposeReserves = lazyWithRetry(() => import("./pages/insights/WhyProvidersImposeReserves"));
+const RollingVsFixedReserve = lazyWithRetry(() => import("./pages/insights/RollingVsFixedReserve"));
+const PayoutSettlementExplained = lazyWithRetry(() => import("./pages/insights/PayoutSettlementExplained"));
+const NetVsGrossSettlement = lazyWithRetry(() => import("./pages/insights/NetVsGrossSettlement"));
+const WhatToDoWhenFundsHeld = lazyWithRetry(() => import("./pages/insights/WhatToDoWhenFundsHeld"));
+const ChargebackLossRecovery = lazyWithRetry(() => import("./pages/insights/ChargebackLossRecovery"));
 
 const CrisisHiddenFeeCrisis = lazyWithRetry(() => import("./pages/insights/crisis/HiddenFeeCrisis"));
 const CrisisRejectedHighRisk = lazyWithRetry(() => import("./pages/insights/crisis/RejectedHighRiskStrategy"));
