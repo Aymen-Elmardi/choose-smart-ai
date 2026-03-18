@@ -52,8 +52,8 @@ const StripeFees = () => {
 
   return (
     <InsightsArticleLayout
-      title="Stripe Fees Explained Clearly: What Businesses Actually Pay"
-      description="A complete breakdown of Stripe's pricing for UK businesses. Understand card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs."
+      title="Stripe Fees Explained: What High-Growth Merchants Actually Pay | ChosePayments"
+      description="Stripe's published pricing isn't the full picture. See how fees, reserves, and risk thresholds affect your real cost — and whether Stripe is the right fit for your business."
       category={{ name: "Fees & Costs", slug: "fees" }}
       currentSlug="stripe-fees-explained"
       publishedTime="2026-02-07"

@@ -43,8 +43,8 @@ const faqs = [
 const FiservCloverFees = () => {
   return (
     <InsightsArticleLayout
-      title="Fiserv and Clover Pricing Explained: Why It Works for Resellers and Multi Location Businesses"
-      description="A clear breakdown of Fiserv and Clover pricing for resellers, ISVs, and multi-location businesses. Understand how negotiated fees, hardware bundles, and value added services create real business value."
+      title="Fiserv Clover Review: Is It Right for Your Business Risk Profile? | ChosePayments"
+      description="Before you apply to Fiserv Clover, understand how they underwrite merchants. See if your business profile is a match — and what to do if it isn't."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="hub"
       currentSlug="fiserv-clover-pricing-explained"

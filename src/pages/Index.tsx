@@ -19,9 +19,9 @@ const Index = () => {
   useCanonical();
 
   useSEO({
-    title: "Choose the Right Payment Provider for Your Risk Profile | ChosePayments",
+    title: "Find the Payment Processor That Won't Freeze Your Account | ChosePayments",
     description:
-      "Most merchants choose payment providers based on price. Our engine matches providers to your actual risk profile — industry, volume, and business model.",
+      "Independent matching for high-growth merchants. We align your risk profile with the right provider's appetite — before you apply. Free. No sales calls.",
     ogType: "website",
     keywords: [
       "payment provider risk profile",

@@ -22,6 +22,9 @@ const HeroSection = () => {
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
+            <p className="text-xs text-muted-foreground tracking-wide">
+              Independent. Free for merchants. Trusted by businesses across the UK and EU.
+            </p>
             <Link
               to="/risk-profile-matching"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -29,9 +32,6 @@ const HeroSection = () => {
               See how it works in 60 seconds
             </Link>
           </div>
-          <p className="mt-10 text-xs text-muted-foreground tracking-wide">
-            Independent. Free for merchants. Trusted by businesses across the UK and EU.
-          </p>
         </div>
       </div>
     </section>
