@@ -38,6 +38,33 @@ export type Database = {
         }
         Relationships: []
       }
+      popup_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          page_url: string | null
+          popup_type: string
+          question: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          page_url?: string | null
+          popup_type: string
+          question: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          page_url?: string | null
+          popup_type?: string
+          question?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       article_engagement_counts: {
