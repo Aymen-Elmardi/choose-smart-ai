@@ -26,11 +26,11 @@ const HowPaymentsWorkSection = () => {
   return (
     <section className="border-t border-border">
       <div className="section-container py-16 md:py-24">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight mb-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="heading-lg text-foreground mb-4">
             Payment Providers Don't Act Randomly.
           </h2>
-          <div className="text-muted-foreground leading-relaxed space-y-3 mb-12 max-w-xl">
+          <div className="text-lg text-muted-foreground leading-relaxed space-y-3 mb-12 max-w-xl">
             <p>
               They act based on risk thresholds, scheme rules, and statistical triggers.
               If something changed in your account, there is a reason.
@@ -42,13 +42,15 @@ const HowPaymentsWorkSection = () => {
               <Link
                 key={box.title}
                 to={box.link}
-                className="border border-border rounded-lg bg-secondary/30 p-6 hover:border-primary/40 transition-colors group"
+                className="border border-border rounded-lg bg-secondary/30 p-7 md:p-8 shadow-sm hover:border-primary/40 transition-colors group"
               >
-                <box.icon className="h-5 w-5 text-primary mb-4" strokeWidth={1.5} />
-                <h3 className="text-sm font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                  <box.icon className="h-7 w-7 text-primary" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {box.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                   {box.description}
                 </p>
               </Link>
