@@ -169,6 +169,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <ExitIntentPopup />
+        <TimedPopup />
         <AppErrorBoundary>
           <Suspense fallback={<PageLoader />}>
             <Routes>
