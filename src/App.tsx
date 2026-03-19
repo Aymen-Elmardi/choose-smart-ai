@@ -1,5 +1,7 @@
 import { useEffect, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
+import TimedPopup from "@/components/TimedPopup";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -167,6 +169,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <ExitIntentPopup />
+        <TimedPopup />
         <AppErrorBoundary>
           <Suspense fallback={<PageLoader />}>
             <Routes>
