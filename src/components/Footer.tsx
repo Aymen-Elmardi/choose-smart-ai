@@ -1,10 +1,64 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Linkedin } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+
+    setSubmitting(true);
+    try {
+      await supabase.from("popup_submissions").insert({
+        popup_type: "newsletter",
+        question: "Newsletter signup",
+        email: email.trim(),
+        page_url: window.location.pathname,
+      });
+      setSubscribed(true);
+    } catch {
+      // Silently fail
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
-    <footer className="bg-background border-t border-border py-12">
-      <div className="section-container">
+    <footer className="bg-background border-t border-border">
+      {/* Newsletter Section */}
+      <div className="section-container py-10 border-b border-border">
+        <div className="max-w-xl mx-auto text-center">
+          <h3 className="text-lg font-semibold text-foreground mb-2">
+            Stay updated on payment processor trends and tips for high-growth merchants
+          </h3>
+          {subscribed ? (
+            <p className="text-primary font-medium mt-4">Thanks! You're subscribed.</p>
+          ) : (
+            <form onSubmit={handleSubscribe} className="flex gap-3 mt-4 max-w-md mx-auto">
+              <Input
+                type="email"
+                placeholder="you@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 h-11 rounded-full px-4"
+                required
+              />
+              <Button type="submit" size="sm" disabled={submitting} className="rounded-full px-6 h-11">
+                {submitting ? "..." : "Subscribe"}
+              </Button>
+            </form>
+          )}
+        </div>
+      </div>
+
+      <div className="section-container py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-4">
             <span className="text-xl font-bold text-foreground tracking-tight">ChosePayments</span>
