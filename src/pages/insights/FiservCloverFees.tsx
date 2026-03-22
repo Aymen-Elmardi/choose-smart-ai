@@ -149,7 +149,7 @@ const FiservCloverFees = () => {
         </p>
         <p className="mb-4">
           This bundled pricing strategy is a key advantage for partners, especially when selling to{" "}
-          <Link to="/insights/why-marketplaces-get-extra-scrutiny" className="text-primary hover:underline">multi location or franchise businesses</Link> that need consistency across sites.
+          <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">multi location or franchise businesses</Link> that need consistency across sites.
         </p>
 
         <h3 className="text-xl font-medium text-foreground mt-6 mb-3">3. Value added services</h3>

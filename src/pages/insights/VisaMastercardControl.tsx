@@ -103,8 +103,8 @@ const VisaMastercardControl = () => {
         <ul className="list-disc pl-6 space-y-2">
           <li>
             Whether your business model fits your provider's risk appetite — especially for{" "}
-            <Link to="/insights/why-marketplaces-get-extra-scrutiny" className="text-primary hover:underline">
-              marketplace and platform models
+             <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">
+               marketplace and platform models
             </Link>
           </li>
           <li>Whether your growth pattern matches their expectations</li>

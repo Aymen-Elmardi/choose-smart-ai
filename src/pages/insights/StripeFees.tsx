@@ -146,7 +146,7 @@ const StripeFees = () => {
           </p>
 
           <p className="text-muted-foreground">
-            For <Link to="/insights/why-marketplaces-get-extra-scrutiny" className="text-primary hover:underline">marketplaces</Link>, this is one of the most commonly overlooked costs.
+            For <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplaces</Link>, this is one of the most commonly overlooked costs.
            </p>
          </div>
 

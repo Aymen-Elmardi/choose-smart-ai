@@ -52,7 +52,7 @@ const ContractsInvoices = lazyWithRetry(() => import("./pages/insights/Contracts
 const WhyStripeFreezes = lazyWithRetry(() => import("./pages/insights/WhyStripeFreezes"));
 const WhyAccountsFlaggedAfterGrowth = lazyWithRetry(() => import("./pages/insights/WhyAccountsFlaggedAfterGrowth"));
 const WhyAccountsFrozenWithoutWarning = lazyWithRetry(() => import("./pages/insights/WhyAccountsFrozenWithoutWarning"));
-const WhyMarketplacesGetScrutiny = lazyWithRetry(() => import("./pages/insights/WhyMarketplacesGetScrutiny"));
+
 const WhyProvidersReUnderwrite = lazyWithRetry(() => import("./pages/insights/WhyProvidersReUnderwrite"));
 const WhySomeBusinessesNeverApproved = lazyWithRetry(() => import("./pages/insights/WhySomeBusinessesNeverApproved"));
 const WhyPaymentProvidersAskForDirectorDocuments = lazyWithRetry(() => import("./pages/insights/WhyPaymentProvidersAskForDirectorDocuments"));

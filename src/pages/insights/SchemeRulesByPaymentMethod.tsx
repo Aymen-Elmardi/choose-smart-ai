@@ -107,7 +107,7 @@ const SchemeRulesByPaymentMethod = () => {
       {/* Section 4 */}
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Marketplaces and Platforms</h2>
       <p className="mb-4">
-        If you operate a <Link to="/insights/why-marketplaces-get-extra-scrutiny" className="text-primary hover:underline">marketplace or platform</Link>, scheme rules become more layered.
+        If you operate a <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplace or platform</Link>, scheme rules become more layered.
       </p>
       <p className="mb-2">There are rules governing:</p>
       <ul className="list-disc pl-6 mb-4 space-y-1">
