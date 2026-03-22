@@ -6,6 +6,11 @@ import { ArrowLeft, FileText } from "lucide-react";
 
 const guideArticles = [
   {
+    title: "The Marketplace Founder's Guide to Payment Processing",
+    slug: "marketplace-payments-guide",
+    description: "What payment providers don't tell marketplace founders about split payments, seller verification, chargeback risk, and how to secure the right payment partnership."
+  },
+  {
     title: "Why Your Payment Provider Asked for Proof of Business Activity",
     slug: "proof-of-business-activity",
     description: "Understanding why payment providers ask for proof of business activity and how to prepare."

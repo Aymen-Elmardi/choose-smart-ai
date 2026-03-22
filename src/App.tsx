@@ -293,6 +293,7 @@ const App = () => (
               <Route path="/insights/net-vs-gross-settlement" element={<NetVsGrossSettlement />} />
               <Route path="/insights/what-to-do-when-funds-held" element={<WhatToDoWhenFundsHeld />} />
               <Route path="/insights/chargeback-loss-recovery" element={<ChargebackLossRecovery />} />
+              <Route path="/insights/marketplace-payments-guide" element={<MarketplacePaymentsGuide />} />
               <Route path="/insights/graph" element={<InsightsGraph />} />
               <Route path="/insights/scoring-logic" element={<ScoringLogic />} />
               
