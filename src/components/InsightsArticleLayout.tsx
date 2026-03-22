@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
