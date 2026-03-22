@@ -12,11 +12,11 @@ const MarketplacePaymentsGuide = () => {
       currentSlug="marketplace-payments-guide"
       keywords={["marketplace payments", "split payments", "seller verification", "marketplace chargebacks", "KYB", "marketplace risk", "payment processing marketplace"]}
       sources={[
-        { label: "Checkout.com: A Guide to Marketplace Payments", url: "https://www.checkout.com/blog/a-guide-to-marketplace-payments" },
-        { label: "Rapyd: What Causes Marketplace Chargebacks and How to Prevent Them", url: "https://www.rapyd.net/blog/8-marketplace-chargeback-reasons-how-to-reduce/" },
-        { label: "Stripe: Know Your Business (KYB) Guide", url: "https://stripe.com/resources/more/know-your-business-kyb" },
-        { label: "Visa: Payment Facilitator and Marketplace Risk Guide", url: "https://usa.visa.com/content/dam/VCOM/regional/na/us/partner-with-us/documents/visa-payment-facilitator-and-marketplace-risk-guide.pdf" },
-        { label: "SVB: How to Tackle Top Challenges in E-Commerce Payments", url: "https://www.svb.com/payment-management-insights/merchant-services/tackle-top-challenges-ecommerce-payments/" },
+        { name: "Checkout.com: A Guide to Marketplace Payments", url: "https://www.checkout.com/blog/a-guide-to-marketplace-payments" },
+        { name: "Rapyd: What Causes Marketplace Chargebacks and How to Prevent Them", url: "https://www.rapyd.net/blog/8-marketplace-chargeback-reasons-how-to-reduce/" },
+        { name: "Stripe: Know Your Business (KYB) Guide", url: "https://stripe.com/resources/more/know-your-business-kyb" },
+        { name: "Visa: Payment Facilitator and Marketplace Risk Guide", url: "https://usa.visa.com/content/dam/VCOM/regional/na/us/partner-with-us/documents/visa-payment-facilitator-and-marketplace-risk-guide.pdf" },
+        { name: "SVB: How to Tackle Top Challenges in E-Commerce Payments", url: "https://www.svb.com/payment-management-insights/merchant-services/tackle-top-challenges-ecommerce-payments/" },
       ]}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
