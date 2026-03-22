@@ -343,7 +343,6 @@ export const allInsights: Insight[] = [
     category: "risk",
     readTime: "6 min read"
   },
-  },
   {
     title: "Re-Underwriting Explained: When Providers Review Existing Accounts",
     slug: "why-providers-re-underwrite-accounts",
