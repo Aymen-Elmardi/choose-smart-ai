@@ -6,6 +6,7 @@ import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import { ArrowRight, CheckCircle2, Zap, Globe, Users, Settings } from "lucide-react";
 
 const checkoutComSources = [
