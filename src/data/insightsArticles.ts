@@ -245,6 +245,13 @@ export const allInsights: Insight[] = [
     readTime: "4 min read"
   },
   {
+    title: "The Marketplace Founder's Guide to Payment Processing",
+    slug: "marketplace-payments-guide",
+    description: "What payment providers don't tell marketplace founders about split payments, seller verification, chargeback risk, and how to secure the right payment partnership.",
+    category: "guides",
+    readTime: "12 min read"
+  },
+  {
     title: "Source of Funds Requests: What They Mean and How to Respond",
     slug: "source-of-funds",
     description: "Learn why providers request bank statements and source of funds documentation.",

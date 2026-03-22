@@ -93,6 +93,7 @@ const PayoutSettlementExplained = lazyWithRetry(() => import("./pages/insights/P
 const NetVsGrossSettlement = lazyWithRetry(() => import("./pages/insights/NetVsGrossSettlement"));
 const WhatToDoWhenFundsHeld = lazyWithRetry(() => import("./pages/insights/WhatToDoWhenFundsHeld"));
 const ChargebackLossRecovery = lazyWithRetry(() => import("./pages/insights/ChargebackLossRecovery"));
+const MarketplacePaymentsGuide = lazyWithRetry(() => import("./pages/insights/MarketplacePaymentsGuide"));
 
 const CrisisHiddenFeeCrisis = lazyWithRetry(() => import("./pages/insights/crisis/HiddenFeeCrisis"));
 const CrisisRejectedHighRisk = lazyWithRetry(() => import("./pages/insights/crisis/RejectedHighRiskStrategy"));
@@ -292,6 +293,7 @@ const App = () => (
               <Route path="/insights/net-vs-gross-settlement" element={<NetVsGrossSettlement />} />
               <Route path="/insights/what-to-do-when-funds-held" element={<WhatToDoWhenFundsHeld />} />
               <Route path="/insights/chargeback-loss-recovery" element={<ChargebackLossRecovery />} />
+              <Route path="/insights/marketplace-payments-guide" element={<MarketplacePaymentsGuide />} />
               <Route path="/insights/graph" element={<InsightsGraph />} />
               <Route path="/insights/scoring-logic" element={<ScoringLogic />} />
               
