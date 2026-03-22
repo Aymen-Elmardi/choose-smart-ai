@@ -6,6 +6,7 @@ import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import { ArrowRight, CheckCircle2, Building2, Shield, Globe, Users } from "lucide-react";
 
 const adyenSources = [
@@ -96,6 +97,11 @@ const AdyenEnterprisePlatform = () => {
                 When a business reaches a certain scale, one that demands true global reach, complex omnichannel solutions, and absolute transparency, Adyen is often the only name on the shortlist. They have fundamentally simplified global commerce for the world's largest brands.
               </p>
             </section>
+
+            <InlineAssessmentCTA
+              context="See if your business qualifies for Adyen's enterprise platform and how your risk profile aligns."
+              cta="Get your risk profile"
+            />
 
             {/* Single Platform Advantage */}
             <section className="mb-12">

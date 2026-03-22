@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
 
@@ -146,8 +147,13 @@ const StripeFees = () => {
 
           <p className="text-muted-foreground">
             For <Link to="/insights/why-marketplaces-get-extra-scrutiny" className="text-primary hover:underline">marketplaces</Link>, this is one of the most commonly overlooked costs.
-          </p>
-        </div>
+           </p>
+         </div>
+
+         <InlineAssessmentCTA
+           context="Find out if Stripe Connect fees will work for your marketplace or platform model."
+           cta="Get your risk profile"
+         />
 
         {/* Payout Fees */}
         <div className="mb-10">
@@ -183,6 +189,11 @@ const StripeFees = () => {
           <p className="text-muted-foreground">
             For businesses with high transaction volumes or subscription models, this can become a meaningful operational cost. Understanding <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">how chargebacks work and how to avoid them</Link> is essential.
           </p>
+
+          <InlineAssessmentCTA
+            context="See which providers have better chargeback policies for your industry."
+            cta="Run your risk profile"
+          />
         </div>
 
         {/* Currency Conversion */}

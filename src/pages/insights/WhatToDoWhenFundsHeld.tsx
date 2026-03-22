@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
 const WhatToDoWhenFundsHeld = () => {
   return (
@@ -55,6 +56,11 @@ const WhatToDoWhenFundsHeld = () => {
             <strong>Consider temporary alternatives.</strong> If cash flow is critical, having a backup provider is the best insurance. Multi-provider setups are standard for businesses processing meaningful volume.
           </li>
         </ol>
+
+        <InlineAssessmentCTA
+          context="Funds on hold more than once? It may be a provider mismatch. See which processors fit your risk profile."
+          cta="Run your risk profile"
+        />
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">How Long Do Holds Last?</h2>
         <p>

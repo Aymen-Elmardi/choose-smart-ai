@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
@@ -121,6 +122,12 @@ const InsightsArticleLayout = ({
               className="mt-8 mb-10 pt-6 border-t border-border"
             />
           )}
+
+          {/* Auto-injected contextual assessment CTA */}
+          <InlineAssessmentCTA
+            context="Wondering if your current provider is the right fit? See how your business matches against 21 providers."
+            cta="Run your risk profile"
+          />
           
           {/* Sources & References */}
           {sources && sources.length > 0 && (

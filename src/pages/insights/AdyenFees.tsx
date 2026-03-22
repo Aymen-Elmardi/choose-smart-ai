@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
 
@@ -149,6 +150,11 @@ const AdyenFees = () => {
           Two merchants using Adyen can pay very different effective rates even if they process similar volumes. This is why Adyen pricing discussions usually happen after underwriting, not before. Understanding how{" "}
           <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment provider risk models</Link> work helps explain why rates vary so widely.
         </p>
+
+        <InlineAssessmentCTA
+          context="Not sure what Adyen would actually charge your business? See how your risk profile affects pricing."
+          cta="Get your risk profile"
+        />
       </section>
 
       {/* Typical Fee Components */}

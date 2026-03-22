@@ -6,6 +6,7 @@ import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import { ArrowRight, CheckCircle2, Zap, Globe, Users, Settings } from "lucide-react";
 
 const checkoutComSources = [
@@ -127,6 +128,11 @@ const CheckoutComEnterprisePlatform = () => {
                 </div>
               </div>
             </section>
+
+            <InlineAssessmentCTA
+              context="Is Checkout.com's modular approach right for your payment needs? Find out in 2 minutes."
+              cta="Get your risk profile"
+            />
 
             {/* Differentiation Section */}
             <section className="mb-12">

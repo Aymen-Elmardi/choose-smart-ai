@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
 const RollingVsFixedReserve = () => {
   return (
@@ -83,6 +84,11 @@ const RollingVsFixedReserve = () => {
         <p>
           If reserve terms are a dealbreaker, consider providers whose <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk models</Link> align better with your business type — some providers specialise in categories that others over-reserve.
         </p>
+
+        <InlineAssessmentCTA
+          context="Want to find providers that won't impose excessive reserves on your business?"
+          cta="Get your risk profile"
+        />
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>
         <p>

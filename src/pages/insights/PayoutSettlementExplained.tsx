@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
 const PayoutSettlementExplained = () => {
   return (
@@ -52,6 +53,11 @@ const PayoutSettlementExplained = () => {
           <li>Track chargebacks and refunds separately — they create negative entries in future settlements</li>
           <li>If using multiple payment methods, each may settle on different schedules</li>
         </ul>
+
+        <InlineAssessmentCTA
+          context="Struggling with payout discrepancies? See which providers offer better settlement transparency for your business."
+          cta="Run your risk profile"
+        />
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">When Payout Mismatches Signal a Real Problem</h2>
         <p>

@@ -7,6 +7,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import { ArrowRight, CheckCircle2, Zap, Globe, Layers, Shield, CreditCard, Building } from "lucide-react";
 
 const stripeSources = [
@@ -109,6 +110,11 @@ const StripePaymentPlatform = () => {
                 Today, Stripe powers millions of businesses and processes hundreds of billions of dollars annually. The company has expanded well beyond payments into a comprehensive financial infrastructure platform. This article explains what makes Stripe exceptional, and how to determine whether your business is positioned to take full advantage of it.
               </p>
             </section>
+
+            <InlineAssessmentCTA
+              context="Is your business optimised for Stripe's platform — or would another provider be a better fit?"
+              cta="Get your risk profile"
+            />
 
             {/* The API Revolution */}
             <section className="mb-12">

@@ -9,6 +9,7 @@ import FraudPreventionModal from "@/components/FraudPreventionModal";
 import FAQSchema from "@/components/FAQSchema";
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
 const chargebackSources = [
   { name: "Visa Dispute Management Guidelines", url: "https://usa.visa.com/support/small-business/dispute-resolution.html", type: "official" as const },
@@ -152,6 +153,11 @@ const Chargebacks = () => {
             <p>
               For every £1 lost to a chargeback, businesses often lose £4–£5 in total impact once fees, admin time, and future risk are included.
             </p>
+
+            <InlineAssessmentCTA
+              context="See which providers have better chargeback policies and lower dispute fees for your industry."
+              cta="Run your risk profile"
+            />
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
               The Three Main Reasons Chargebacks Happen

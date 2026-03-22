@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 
 const WhyStripeFreezes = () => {
@@ -53,6 +54,11 @@ const WhyStripeFreezes = () => {
         <p>
           These reviews are not accusations. They are safeguards designed to protect card networks and customers. However, they can be disruptive if you are unprepared.
         </p>
+
+        <InlineAssessmentCTA
+          context="Find out if your business profile is a good fit for Stripe — or if another provider would be safer."
+          cta="Get your risk profile"
+        />
         
         <p>
           If your business is growing or changing, understanding approval and risk signals early can prevent interruptions later. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start reduces this risk significantly.
