@@ -155,7 +155,7 @@ const FAQ = () => {
     description:
       "Answers to common questions about how ChosePayments works, how we make money, payment provider matching, and merchant risk assessment.",
   });
-  useCanonical("/faq");
+  useCanonical();
 
   const sections: FAQSection[] = [
     {
