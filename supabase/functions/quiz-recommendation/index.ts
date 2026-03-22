@@ -173,7 +173,7 @@ const validateQuizAnswers = (data: unknown): QuizAnswers | null => {
 // ============================================================================
 
 const parseMonthlyVolume = (volume: string): number => {
-  const volumeMap: Record<string, number> = { "under-5k": 2500, "5k-20k": 12500, "20k-50k": 35000, "50k-100k": 75000, "100k-500k": 300000, "500k-plus": 750000, "under-1k": 500, "1k-5k": 3000, "10k-50k": 30000, "50k-200k": 125000, "200k-plus": 400000 };
+  const volumeMap: Record<string, number> = { "under-5k": 2500, "5k-20k": 12500, "20k-50k": 35000, "50k-100k": 75000, "100k-500k": 300000, "500k-plus": 750000, "under-1k": 500, "1k-5k": 3000, "10k-50k": 30000, "50k-200k": 125000, "200k-plus": 400000, "< £5k": 2500, "£5k–20k": 12500, "£20k–50k": 35000, "£50k–100k": 75000 };
   return volumeMap[volume] || 10000;
 };
 

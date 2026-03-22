@@ -685,7 +685,7 @@ const Recommendation = () => {
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="none">None / New business</SelectItem>
-                              <SelectItem value="Stripe">Stripe</SelectItem>
+                              
                               <SelectItem value="PayPal">PayPal</SelectItem>
                               <SelectItem value="Square">Square</SelectItem>
                               <SelectItem value="Adyen">Adyen</SelectItem>
