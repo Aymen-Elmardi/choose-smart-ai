@@ -1,24 +1,46 @@
 
 
-# Make "Payment Providers Don't Act Randomly" Section Bigger and More Visible
+# Dedicated FAQ Page with Article Previews
 
-## Changes to `src/components/HowPaymentsWorkSection.tsx`
+## Overview
+Create `/faq` page where article-related FAQs include a short excerpt from the actual article content, followed by a "Read more" link. This makes the page more visually engaging and drives traffic to full articles.
 
-### Heading
-- Upgrade from `text-xl md:text-2xl` to `heading-lg` (`text-3xl md:text-4xl font-bold`) to match the site's established heading hierarchy.
+## Changes
 
-### Body text
-- Increase from default `text-base` to `text-lg` for better readability at the larger scale.
+### 1. Create `src/pages/FAQ.tsx`
+- SEO: title "Frequently Asked Questions | ChosePayments", FAQSchema for rich results
+- Three grouped sections using Collapsible accordions:
+  - **About ChosePayments** (4 FAQs: what it is, how matching works, is it free, how we make money)
+  - **Payment Provider Issues** (5 FAQs: frozen accounts, reserves, rejections, chargebacks, funds held)
+  - **Using the Assessment** (3 FAQs: how long, what happens after, do I share financials)
 
-### Cards
-- Increase icon size from `h-5 w-5` to `h-7 w-7` with a colored background circle behind it (matching the reference image style).
-- Increase card title from `text-sm` to `text-base`.
-- Increase card description from `text-sm` to `text-base` (or `text-sm md:text-base`).
-- Increase card padding from `p-6` to `p-7 md:p-8`.
-- Add subtle shadow (`shadow-sm`) to cards for more visual weight.
+**Article preview pattern** (for payment-related FAQs):
+Each answer includes a short 2-3 sentence excerpt styled in a subtle card/blockquote with a muted background, followed by a "Read more →" link to the full article. Example:
 
-### Container
-- Widen from `max-w-3xl` to `max-w-4xl` to give the larger elements room.
+```
+Q: Why do payment accounts get frozen?
+A: [Brief direct answer]
 
-No content or functionality changes.
+┌─────────────────────────────────────────────┐
+│ "Stripe does not freeze accounts at random. │
+│  In the UK, freezes usually happen when     │
+│  automated risk systems detect activity..." │
+│                                             │
+│  Read more →                                │
+└─────────────────────────────────────────────┘
+```
+
+- Styled as a `bg-muted/50 rounded-lg p-4 border` block with italic excerpt text and a primary-colored "Read more →" link
+- **Business model FAQ** (no article link): "We earn a referral commission from payment providers when a business we recommend is approved. Providers value our referrals because we only recommend businesses that genuinely fit their risk appetite, leading to higher approval rates and better merchant retention. The service is completely free for merchants."
+- Bottom CTA: "Still have questions? Get in touch" linking to `/contact`
+
+### 2. Update `src/App.tsx`
+- Add lazy import and route for `/faq`
+
+### 3. Update `src/components/Footer.tsx`
+- Add "FAQ" link to footer nav
+
+### Files
+- **Create**: `src/pages/FAQ.tsx`
+- **Edit**: `src/App.tsx`, `src/components/Footer.tsx`
 
