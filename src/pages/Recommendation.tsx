@@ -139,7 +139,7 @@ const Recommendation = () => {
     if (!answers || !quizComplete) return;
     fetchServerRecommendation(answers).then((result) => {
       const CURATED_PROVIDERS = [
-        "Stripe", "Square", "PayPal", "Adyen", "Datman", "SumUp",
+        "Square", "PayPal", "Adyen", "Datman", "SumUp",
         "Braintree", "Shift4", "Fiserv (Clover)", "Authorize.Net"
       ];
       setPrimary(result.primary);
@@ -685,7 +685,7 @@ const Recommendation = () => {
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="none">None / New business</SelectItem>
-                              <SelectItem value="Stripe">Stripe</SelectItem>
+                              
                               <SelectItem value="PayPal">PayPal</SelectItem>
                               <SelectItem value="Square">Square</SelectItem>
                               <SelectItem value="Adyen">Adyen</SelectItem>

@@ -1,4 +1,4 @@
-const providers = ["Stripe", "Square", "PayPal", "Adyen", "Datman"];
+const providers = ["Square", "PayPal", "Adyen", "Datman", "SumUp"];
 
 const ProviderLogosSection = () => {
   return (
