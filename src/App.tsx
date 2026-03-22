@@ -35,6 +35,7 @@ const Terms = lazyWithRetry(() => import("./pages/Terms"));
 const Contact = lazyWithRetry(() => import("./pages/Contact"));
 const OnboardWithUs = lazyWithRetry(() => import("./pages/OnboardWithUs"));
 const MerchantAccountProblems = lazyWithRetry(() => import("./pages/MerchantAccountProblems"));
+const FAQ = lazyWithRetry(() => import("./pages/FAQ"));
 
 // Insights pages - lazy loaded
 const Insights = lazyWithRetry(() => import("./pages/Insights"));
