@@ -147,8 +147,13 @@ const StripeFees = () => {
 
           <p className="text-muted-foreground">
             For <Link to="/insights/why-marketplaces-get-extra-scrutiny" className="text-primary hover:underline">marketplaces</Link>, this is one of the most commonly overlooked costs.
-          </p>
-        </div>
+           </p>
+         </div>
+
+         <InlineAssessmentCTA
+           context="Find out if Stripe Connect fees will work for your marketplace or platform model."
+           cta="Get your risk profile"
+         />
 
         {/* Payout Fees */}
         <div className="mb-10">
