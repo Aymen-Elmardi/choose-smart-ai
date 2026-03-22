@@ -1,46 +1,40 @@
 
 
-# Contextual In-Article Assessment CTAs
+# Remove Stripe from Provider Options + Fix Adyen Volume Bug
 
-## Problem
-Articles only have a generic "Run My Risk Profile" CTA at the very bottom. Readers who don't scroll that far never see it. Contextual, topic-relevant prompts within the article body would convert better.
+## Problem 1: Stripe in provider options
+Stripe appears in:
+- `src/lib/scoringData.ts` (client-side scoring visualization)
+- `supabase/functions/quiz-recommendation/index.ts` (server-side engine)
+- `src/pages/Recommendation.tsx` (CURATED_PROVIDERS list + "current provider" dropdown)
+- `src/components/ProviderLogosSection.tsx` (homepage logos)
 
-## Approach
+**Action**: Remove the Stripe entry from all four locations.
 
-### 1. Create `src/components/InlineAssessmentCTA.tsx`
-A compact, reusable inline CTA component that sits within article content. Takes a `context` prop for the contextual message and an optional `cta` prop for button text.
+## Problem 2: Adyen incorrectly eliminated for "low volume" at £50k+
+**Root cause**: The quiz answer mapper (`quizAnswerMappers.ts`) converts "£50k+" → `"£50k–100k"` (with `£` sign and en-dash `–`). But the edge function's `parseMonthlyVolume` expects keys like `"50k-100k"` (no `£`, regular hyphen). The mapped string doesn't match any key, so it **falls back to 10,000** — below Adyen's 50,000 minimum threshold.
 
-- Styled as a subtle card: `bg-primary/5 border border-primary/15 rounded-lg p-5`
-- Contextual line (e.g., "See which providers have better chargeback policies for your industry")
-- Small CTA button: "Get your risk profile →" linking to `/assessment`
-- Trust line: "2 minutes. Free. No sales calls."
-- Visually distinct from article body but not intrusive
+**Fix**: Update `parseMonthlyVolume` in the edge function to also recognize the `£`-prefixed, en-dash versions that the mapper actually sends. Add these keys to the volume map:
+- `"< £5k"` → 2500
+- `"£5k–20k"` → 12500  
+- `"£20k–50k"` → 35000
+- `"£50k–100k"` → 75000
 
-### 2. Add contextual CTAs to key articles
-Insert 1-2 `InlineAssessmentCTA` placements at natural breakpoints in the highest-value articles:
+This ensures all volume strings from the mapper are correctly parsed.
 
-- **StripeFees.tsx**: After Connect fees section and after chargeback fees section
-- **WhyStripeFreezes.tsx**: After triggers explanation
-- **AdyenFees.tsx**: After pricing tiers
-- **CheckoutComFees.tsx**: After fee breakdown
-- **PayPalFees.tsx**: After hidden fees section
-- **FiservCloverFees.tsx**: After pricing section
-- **Chargebacks.tsx**: After impact explanation
-- **WhyAccountsFrozenWithoutWarning.tsx**: After causes
-- **WhatToDoWhenFundsHeld.tsx**: After action steps
-- **RollingVsFixedReserve.tsx**: After comparison
-- **PayoutSettlementExplained.tsx**: After reconciliation section
-- **StripePaymentPlatform.tsx**, **AdyenEnterprisePlatform.tsx**, **CheckoutComEnterprisePlatform.tsx**: After platform overview
+## Changes
 
-Each gets a unique contextual message relevant to what the reader just learned.
+### 1. `supabase/functions/quiz-recommendation/index.ts`
+- Remove Stripe from `PROVIDER_REGISTRY`
+- Add `£`-prefixed volume keys to `parseMonthlyVolume` map
 
-### 3. Auto-inject a mid-position CTA for all other articles
-In `InsightsArticleLayout.tsx`, add a secondary compact CTA between the article actions and sources sections. This ensures every article (even those without manual inline CTAs) has a contextual prompt before the reader reaches the bottom.
+### 2. `src/lib/scoringData.ts`
+- Remove Stripe from `PROVIDER_REGISTRY`
 
-Text: "Wondering if your current provider is the right fit? See how your business matches against 21 providers."
+### 3. `src/pages/Recommendation.tsx`
+- Remove "Stripe" from `CURATED_PROVIDERS` array
+- Remove "Stripe" from the current provider `<SelectItem>` dropdown
 
-### Files
-- **Create**: `src/components/InlineAssessmentCTA.tsx`
-- **Edit**: `src/components/InsightsArticleLayout.tsx` (add auto mid-article CTA)
-- **Edit**: ~15 article files (add manual contextual CTAs at key content breakpoints)
+### 4. `src/components/ProviderLogosSection.tsx`
+- Remove "Stripe" from the providers array
 
