@@ -51,6 +51,13 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["chargeback", "dispute", "fraud", "chargeback rate", "dispute rate", "too many chargebacks", "what is a chargeback fee", "how do chargebacks work"]
   },
   {
+    slug: "marketplace-payments-guide",
+    title: "The Marketplace Founder's Guide to Payment Processing",
+    shortTitle: "Marketplace Payments Guide",
+    concepts: ["risk", "approval"],
+    keywords: ["marketplace", "split payments", "seller verification", "KYB", "marketplace risk", "marketplace chargebacks", "payout"]
+  },
+  {
     slug: "provider-appetite-index",
     title: "The Provider Appetite Index: Why Payment Processors Say No",
     shortTitle: "Provider Appetite Index",
