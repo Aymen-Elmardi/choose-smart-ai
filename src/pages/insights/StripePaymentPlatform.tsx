@@ -7,6 +7,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import { ArrowRight, CheckCircle2, Zap, Globe, Layers, Shield, CreditCard, Building } from "lucide-react";
 
 const stripeSources = [
