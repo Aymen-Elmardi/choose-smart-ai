@@ -1,48 +1,46 @@
 
 
-# Recommendation Page Enhancements + Newsletter Signup
+# Contextual In-Article Assessment CTAs
 
-## Overview
-Four changes: (1) restructure the recommendation page to show a lightweight email capture first, then the introduction form as secondary, (2) enhance the post-submission confirmation with personalized detail, (3) add a Calendly booking link, (4) add newsletter signup to the footer.
+## Problem
+Articles only have a generic "Run My Risk Profile" CTA at the very bottom. Readers who don't scroll that far never see it. Contextual, topic-relevant prompts within the article body would convert better.
 
-## Changes
+## Approach
 
-### 1. Recommendation Page: Two-Step Form Flow (`src/pages/Recommendation.tsx`)
+### 1. Create `src/components/InlineAssessmentCTA.tsx`
+A compact, reusable inline CTA component that sits within article content. Takes a `context` prop for the contextual message and an optional `cta` prop for button text.
 
-**Current**: After results load, one large "Request Introduction" form with many fields.
+- Styled as a subtle card: `bg-primary/5 border border-primary/15 rounded-lg p-5`
+- Contextual line (e.g., "See which providers have better chargeback policies for your industry")
+- Small CTA button: "Get your risk profile →" linking to `/assessment`
+- Trust line: "2 minutes. Free. No sales calls."
+- Visually distinct from article body but not intrusive
 
-**New flow**:
-- After results load, show a lightweight "Get personalized guidance" card with only Name + Email fields
-- On submit of this first form, show a detailed confirmation message:
-  - "Thanks! Our founder will review your profile and email you within 24 hours with personalized guidance and a warm introduction to [Provider Name]."
-  - "You'll receive an email at [email] with: Your full risk analysis, Why [Provider] is a fit for your business, Direct introduction to [Provider]'s partnership team, Next steps to get approved"
-- Below the confirmation, show the full "Request Introduction" form (website, current provider, pain points, notes) as a secondary/optional action: "Want to speed things up? Share more details for a faster introduction."
-- Add a Calendly link at the bottom: "Prefer to talk? Book a 30 minute call" linking to `https://calendly.com/hello-chosepayments/30min`
+### 2. Add contextual CTAs to key articles
+Insert 1-2 `InlineAssessmentCTA` placements at natural breakpoints in the highest-value articles:
 
-**State changes**: Add `guidanceSubmitted` boolean state. The lightweight form triggers the same edge function calls. The full form becomes visible only after the first submission.
+- **StripeFees.tsx**: After Connect fees section and after chargeback fees section
+- **WhyStripeFreezes.tsx**: After triggers explanation
+- **AdyenFees.tsx**: After pricing tiers
+- **CheckoutComFees.tsx**: After fee breakdown
+- **PayPalFees.tsx**: After hidden fees section
+- **FiservCloverFees.tsx**: After pricing section
+- **Chargebacks.tsx**: After impact explanation
+- **WhyAccountsFrozenWithoutWarning.tsx**: After causes
+- **WhatToDoWhenFundsHeld.tsx**: After action steps
+- **RollingVsFixedReserve.tsx**: After comparison
+- **PayoutSettlementExplained.tsx**: After reconciliation section
+- **StripePaymentPlatform.tsx**, **AdyenEnterprisePlatform.tsx**, **CheckoutComEnterprisePlatform.tsx**: After platform overview
 
-### 2. Post-Submission Confirmation Enhancement (`src/pages/Recommendation.tsx`)
+Each gets a unique contextual message relevant to what the reader just learned.
 
-Update the existing `isSubmitted` confirmation card to show:
-- Personalized message with provider name and email address
-- Bullet list of what they'll receive
-- Calendly booking link as secondary CTA
+### 3. Auto-inject a mid-position CTA for all other articles
+In `InsightsArticleLayout.tsx`, add a secondary compact CTA between the article actions and sources sections. This ensures every article (even those without manual inline CTAs) has a contextual prompt before the reader reaches the bottom.
 
-### 3. Newsletter Signup in Footer (`src/components/Footer.tsx`)
-
-Add a newsletter section above the existing footer content:
-- Headline: "Stay updated on payment processor trends and tips for high growth merchants"
-- Email input + "Subscribe" button in a single row
-- Store submissions in the `popup_submissions` table (reuse existing table with `popup_type: 'newsletter'`)
-- Show a simple "Thanks! You're subscribed." confirmation on submit
-
-### 4. Calendly Link (`src/pages/Recommendation.tsx`)
-
-Add below the retake assessment link:
-- Calendar icon + "Prefer to talk? Book a 30 minute call" linking to the Calendly URL
-- Opens in new tab
+Text: "Wondering if your current provider is the right fit? See how your business matches against 21 providers."
 
 ### Files
-- **Edit**: `src/pages/Recommendation.tsx` (two-step form, enhanced confirmation, Calendly)
-- **Edit**: `src/components/Footer.tsx` (newsletter signup)
+- **Create**: `src/components/InlineAssessmentCTA.tsx`
+- **Edit**: `src/components/InsightsArticleLayout.tsx` (add auto mid-article CTA)
+- **Edit**: ~15 article files (add manual contextual CTAs at key content breakpoints)
 
