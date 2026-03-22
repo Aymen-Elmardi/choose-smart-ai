@@ -35,6 +35,7 @@ const Terms = lazyWithRetry(() => import("./pages/Terms"));
 const Contact = lazyWithRetry(() => import("./pages/Contact"));
 const OnboardWithUs = lazyWithRetry(() => import("./pages/OnboardWithUs"));
 const MerchantAccountProblems = lazyWithRetry(() => import("./pages/MerchantAccountProblems"));
+const FAQ = lazyWithRetry(() => import("./pages/FAQ"));
 
 // Insights pages - lazy loaded
 const Insights = lazyWithRetry(() => import("./pages/Insights"));
@@ -192,6 +193,7 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/onboard-with-us" element={<OnboardWithUs />} />
               <Route path="/merchant-account-problems" element={<MerchantAccountProblems />} />
+              <Route path="/faq" element={<FAQ />} />
               <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
               <Route path="/switch-payment-provider" element={<SwitchProvider />} />
               <Route path="/best-payment-provider-small-business" element={<SmallBusiness />} />
