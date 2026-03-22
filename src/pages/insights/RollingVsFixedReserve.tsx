@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
 const RollingVsFixedReserve = () => {
   return (
