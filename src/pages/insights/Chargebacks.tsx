@@ -154,6 +154,11 @@ const Chargebacks = () => {
               For every £1 lost to a chargeback, businesses often lose £4–£5 in total impact once fees, admin time, and future risk are included.
             </p>
 
+            <InlineAssessmentCTA
+              context="See which providers have better chargeback policies and lower dispute fees for your industry."
+              cta="Run your risk profile"
+            />
+
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
               The Three Main Reasons Chargebacks Happen
             </h2>
