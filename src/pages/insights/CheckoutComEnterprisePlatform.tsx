@@ -129,6 +129,11 @@ const CheckoutComEnterprisePlatform = () => {
               </div>
             </section>
 
+            <InlineAssessmentCTA
+              context="Is Checkout.com's modular approach right for your payment needs? Find out in 2 minutes."
+              cta="Get your risk profile"
+            />
+
             {/* Differentiation Section */}
             <section className="mb-12">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">

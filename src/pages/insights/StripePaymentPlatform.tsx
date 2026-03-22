@@ -111,6 +111,11 @@ const StripePaymentPlatform = () => {
               </p>
             </section>
 
+            <InlineAssessmentCTA
+              context="Is your business optimised for Stripe's platform — or would another provider be a better fit?"
+              cta="Get your risk profile"
+            />
+
             {/* The API Revolution */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">

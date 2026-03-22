@@ -98,6 +98,11 @@ const AdyenEnterprisePlatform = () => {
               </p>
             </section>
 
+            <InlineAssessmentCTA
+              context="See if your business qualifies for Adyen's enterprise platform and how your risk profile aligns."
+              cta="Get your risk profile"
+            />
+
             {/* Single Platform Advantage */}
             <section className="mb-12">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
