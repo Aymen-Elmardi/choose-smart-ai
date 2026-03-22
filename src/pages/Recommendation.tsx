@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { CreditCard, Check, ArrowRight, Loader2, Mail, ShieldX, AlertTriangle, CheckCircle, Building2, Globe, CreditCard as CardIcon, TrendingUp, ShoppingCart, Tag } from "lucide-react";
+import { CreditCard, Check, ArrowRight, Loader2, Mail, ShieldX, AlertTriangle, CheckCircle, Building2, Globe, CreditCard as CardIcon, TrendingUp, ShoppingCart, Tag, Calendar, ChevronDown } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -107,6 +107,9 @@ const Recommendation = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isConfirmationSent, setIsConfirmationSent] = useState(false);
   const [backgroundError, setBackgroundError] = useState<string | null>(null);
+  const [guidanceSubmitted, setGuidanceSubmitted] = useState(false);
+  const [guidanceEmail, setGuidanceEmail] = useState("");
+  const [showFullForm, setShowFullForm] = useState(false);
   const { toast } = useToast();
 
   const [primary, setPrimary] = useState<Provider | null>(null);
@@ -167,7 +170,7 @@ const Recommendation = () => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async () => {
+  const handleGuidanceSubmit = async () => {
     if (!formData.fullName.trim()) {
       toast({ title: "Please enter your name", variant: "destructive" });
       return;
@@ -178,10 +181,7 @@ const Recommendation = () => {
     }
 
     setIsSubmitting(true);
-    (window as any).dataLayer = (window as any).dataLayer || [];
-    (window as any).dataLayer.push({ event: "advisory_form_submit" });
-    setIsSubmitted(true);
-    setBackgroundError(null);
+    setGuidanceEmail(formData.email);
 
     const firstName = formData.fullName.trim().split(/\s+/)[0] || formData.fullName;
 
@@ -189,10 +189,10 @@ const Recommendation = () => {
       fullName: formData.fullName,
       email: formData.email,
       businessName: formData.companyName,
-      notes: formData.notes,
-      websiteUrl: formData.websiteUrl,
-      currentProvider: formData.currentProvider,
-      painPoints: formData.painPoints,
+      notes: "",
+      websiteUrl: "",
+      currentProvider: "",
+      painPoints: "",
       businessType: answers.businessType,
       monthlyVolume: answers.monthlyVolume,
       avgTransaction: answers.avgTransaction,
@@ -220,7 +220,47 @@ const Recommendation = () => {
       }
     } catch (error) {
       console.error("Error submitting application:", error);
-      setBackgroundError("We're just confirming your details. One moment.");
+    } finally {
+      setIsSubmitting(false);
+      setGuidanceSubmitted(true);
+    }
+  };
+
+  const handleFullFormSubmit = async () => {
+    setIsSubmitting(true);
+    setBackgroundError(null);
+
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({ event: "advisory_form_submit" });
+
+    const payload = {
+      fullName: formData.fullName,
+      email: formData.email,
+      businessName: formData.companyName,
+      notes: formData.notes,
+      websiteUrl: formData.websiteUrl,
+      currentProvider: formData.currentProvider,
+      painPoints: formData.painPoints,
+      businessType: answers.businessType,
+      monthlyVolume: answers.monthlyVolume,
+      avgTransaction: answers.avgTransaction,
+      region: answers.location,
+      salesChannel: answers.salesChannel,
+      priorities: answers.priorities,
+      features: answers.features,
+      market: market,
+      recommendedProvider: primary?.name || "Advisory Review",
+      logicPath: "tiered-engine-detailed",
+    };
+
+    try {
+      const { data, error } = await supabase.functions.invoke("send-lead-email", { body: payload });
+      if (error) throw error;
+      if (!data?.success) throw new Error(data?.error || "Failed to send");
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting details:", error);
+      setBackgroundError("Something went wrong. Please try again.");
       setTimeout(() => setBackgroundError(null), 5000);
     } finally {
       setIsSubmitting(false);
@@ -238,6 +278,8 @@ const Recommendation = () => {
   const displayPriorities = rawAnswers?.priorities || answers.priorities || [];
   const displayDelivery = rawAnswers?.deliveryTimeline || null;
   const displayRestriction = rawAnswers?.previousRestriction || null;
+
+  const providerName = primary?.name || "the right provider";
 
   if (showLoader) {
     return (
@@ -281,18 +323,41 @@ const Recommendation = () => {
 
       <main className="max-w-3xl mx-auto px-4 py-8 md:py-12">
         {isSubmitted ? (
+          /* ── FINAL CONFIRMATION (after full form submit) ── */
           <Card className="border border-primary/30 bg-primary/5 animate-fade-up">
-            <CardContent className="p-8 md:p-10 text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                <Check className="w-8 h-8 text-primary" />
+            <CardContent className="p-8 md:p-10">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                  <Check className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-semibold text-foreground mb-3">
+                  Thanks! Our founder will review your profile and email you within 24 hours.
+                </h3>
+                <p className="text-muted-foreground text-lg max-w-lg mx-auto">
+                  Personalized guidance and a warm introduction to {providerName} are on the way.
+                </p>
               </div>
-              <h3 className="text-2xl font-semibold text-foreground mb-3">
-                Thanks. Your details have been received.
-              </h3>
-              <p className="text-muted-foreground text-lg max-w-md mx-auto mb-6">
-                We now have your risk profile and contact information. If this looks like a case we can help with, we'll follow up with next steps.
-              </p>
-              <div className="flex items-center justify-center gap-2 mt-6">
+
+              <div className="bg-background rounded-xl border border-border p-5 mb-6 text-left">
+                <p className="text-sm font-medium text-foreground mb-3">
+                  You'll receive an email at <span className="text-primary font-semibold">{guidanceEmail || formData.email}</span> with:
+                </p>
+                <ul className="space-y-2">
+                  {[
+                    "Your full risk analysis",
+                    `Why ${providerName} is a fit for your business`,
+                    `Direct introduction to ${providerName}'s partnership team`,
+                    "Next steps to get approved",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex items-center justify-center gap-2 mb-6">
                 <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
                   isConfirmationSent ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
                 }`}>
@@ -300,8 +365,22 @@ const Recommendation = () => {
                   <span>{isConfirmationSent ? "Confirmation sent to your email" : "Sending confirmation..."}</span>
                 </div>
               </div>
+
+              {/* Calendly CTA */}
+              <div className="text-center pt-4 border-t border-border">
+                <a
+                  href="https://calendly.com/hello-chosepayments/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+                >
+                  <Calendar className="w-4 h-4" />
+                  Prefer to talk? Book a 30-minute call
+                </a>
+              </div>
+
               {backgroundError && (
-                <p className="mt-4 text-sm text-muted-foreground animate-fade-in">{backgroundError}</p>
+                <p className="mt-4 text-sm text-muted-foreground animate-fade-in text-center">{backgroundError}</p>
               )}
             </CardContent>
           </Card>
@@ -443,160 +522,252 @@ const Recommendation = () => {
               </div>
             )}
 
-            {/* Section 4 — Contact Form (PAGE HIGHLIGHT) */}
-            {resultsLoaded && (
-            <div className="animate-fade-up animation-delay-100">
-              <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
-                <CardContent className="p-6 md:p-8">
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold text-foreground mb-2">
-                      {primary ? `Want a warm introduction to ${primary.name}?` : "Want us to follow up with next steps?"}
-                    </h3>
-                    <p className="text-muted-foreground max-w-md mx-auto">
-                      {primary ? "Leave your details below and we'll connect you directly with the right contact." : "Leave your details and we'll review your profile in detail."}
-                    </p>
-                  </div>
-                  <div className="space-y-5">
-                    <div className="space-y-2">
-                      <Label htmlFor="fullName" className="text-sm font-medium text-foreground">
-                        Name <span className="text-destructive">*</span>
-                      </Label>
-                      <Input
-                        id="fullName"
-                        type="text"
-                        autoComplete="name"
-                        placeholder="Your full name"
-                        value={formData.fullName}
-                        onChange={(e) => handleInputChange("fullName", e.target.value)}
-                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                        required
-                      />
+            {/* ── STEP 1: Lightweight Guidance Capture ── */}
+            {resultsLoaded && !guidanceSubmitted && (
+              <div className="animate-fade-up animation-delay-100">
+                <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
+                  <CardContent className="p-6 md:p-8">
+                    <div className="text-center mb-6">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        Get personalized guidance on your next steps
+                      </h3>
+                      <p className="text-muted-foreground max-w-md mx-auto">
+                        We'll review your profile and email you within 24 hours with tailored advice.
+                      </p>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm font-medium text-foreground">
-                        Email <span className="text-destructive">*</span>
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        autoComplete="email"
-                        placeholder="you@company.com"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                        required
-                      />
+                    <div className="space-y-4 max-w-md mx-auto">
+                      <div className="space-y-2">
+                        <Label htmlFor="fullName" className="text-sm font-medium text-foreground">
+                          Name <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="fullName"
+                          type="text"
+                          autoComplete="name"
+                          placeholder="Your full name"
+                          value={formData.fullName}
+                          onChange={(e) => handleInputChange("fullName", e.target.value)}
+                          className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-sm font-medium text-foreground">
+                          Email <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          autoComplete="email"
+                          placeholder="you@company.com"
+                          value={formData.email}
+                          onChange={(e) => handleInputChange("email", e.target.value)}
+                          className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                          required
+                        />
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="companyName" className="text-sm font-medium text-foreground">
-                        Company Name
-                      </Label>
-                      <Input
-                        id="companyName"
-                        type="text"
-                        autoComplete="organization"
-                        placeholder="Your company name"
-                        value={formData.companyName}
-                        onChange={(e) => handleInputChange("companyName", e.target.value)}
-                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                      />
+                    <div className="mt-6 text-center">
+                      <Button variant="hero" size="xl" onClick={handleGuidanceSubmit} disabled={isSubmitting}>
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                            Submitting...
+                          </>
+                        ) : (
+                          <>
+                            Get Personalized Guidance
+                            <ArrowRight className="w-5 h-5" />
+                          </>
+                        )}
+                      </Button>
+                      <p className="mt-3 text-sm text-muted-foreground">
+                        Free. No commitment. Your risk profile is included automatically.
+                      </p>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="websiteUrl" className="text-sm font-medium text-foreground">
-                        Website URL
-                      </Label>
-                      <Input
-                        id="websiteUrl"
-                        type="url"
-                        autoComplete="url"
-                        placeholder="https://yoursite.com"
-                        value={formData.websiteUrl}
-                        onChange={(e) => handleInputChange("websiteUrl", e.target.value)}
-                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="currentProvider" className="text-sm font-medium text-foreground">
-                        Current Payment Provider
-                      </Label>
-                      <Select
-                        value={formData.currentProvider}
-                        onValueChange={(value) => handleInputChange("currentProvider", value)}
-                      >
-                        <SelectTrigger className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20">
-                          <SelectValue placeholder="Select your current provider" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="none">None / New business</SelectItem>
-                          <SelectItem value="Stripe">Stripe</SelectItem>
-                          <SelectItem value="PayPal">PayPal</SelectItem>
-                          <SelectItem value="Square">Square</SelectItem>
-                          <SelectItem value="Adyen">Adyen</SelectItem>
-                          <SelectItem value="Checkout.com">Checkout.com</SelectItem>
-                          <SelectItem value="Braintree">Braintree</SelectItem>
-                          <SelectItem value="SumUp">SumUp</SelectItem>
-                          <SelectItem value="Worldpay">Worldpay</SelectItem>
-                          <SelectItem value="Fiserv (Clover)">Fiserv (Clover)</SelectItem>
-                          <SelectItem value="Shift4">Shift4</SelectItem>
-                          <SelectItem value="Authorize.Net">Authorize.Net</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="painPoints" className="text-sm font-medium text-foreground">
-                        Specific Pain Points
-                      </Label>
-                      <Textarea
-                        id="painPoints"
-                        placeholder="e.g. High chargebacks, poor support, account frozen"
-                        value={formData.painPoints}
-                        onChange={(e) => handleInputChange("painPoints", e.target.value)}
-                        className="min-h-[80px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="notes" className="text-sm font-medium text-foreground">
-                        Anything else we should know?
-                      </Label>
-                      <Textarea
-                        id="notes"
-                        placeholder="Optional. Add any context that might help us advise you better."
-                        value={formData.notes}
-                        onChange={(e) => handleInputChange("notes", e.target.value)}
-                        className="min-h-[100px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
-                      />
-                    </div>
-                  </div>
-                  <div className="mt-8 text-center">
-                    <Button variant="hero" size="xl" onClick={handleSubmit} disabled={isSubmitting}>
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          Submitting...
-                        </>
-                      ) : (
-                        <>
-                          Request Introduction
-                          <ArrowRight className="w-5 h-5" />
-                        </>
-                      )}
-                    </Button>
-                    <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
-                      Your assessment answers and risk profile will be included so we have full context.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  </CardContent>
+                </Card>
+              </div>
             )}
 
-            {/* Retake */}
-            <div className="text-center mt-10 animate-fade-up animation-delay-200">
-              <p className="text-muted-foreground mb-4">Need to change your answers?</p>
-              <a href="/assessment?start=true" className="text-primary font-medium hover:underline">
-                Retake assessment →
-              </a>
+            {/* ── STEP 2: Guidance Confirmation + Secondary Full Form ── */}
+            {resultsLoaded && guidanceSubmitted && (
+              <div className="space-y-6 animate-fade-up animation-delay-100">
+                {/* Confirmation card */}
+                <Card className="border border-primary/30 bg-primary/5">
+                  <CardContent className="p-6 md:p-8">
+                    <div className="text-center mb-5">
+                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 mb-3">
+                        <Check className="w-7 h-7 text-primary" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">
+                        Thanks! Our founder will review your profile and email you within 24 hours.
+                      </h3>
+                      <p className="text-muted-foreground max-w-lg mx-auto">
+                        Personalized guidance and a warm introduction to {providerName} are on the way.
+                      </p>
+                    </div>
+
+                    <div className="bg-background rounded-xl border border-border p-5 mb-5 text-left">
+                      <p className="text-sm font-medium text-foreground mb-3">
+                        You'll receive an email at <span className="text-primary font-semibold">{guidanceEmail}</span> with:
+                      </p>
+                      <ul className="space-y-2">
+                        {[
+                          "Your full risk analysis",
+                          `Why ${providerName} is a fit for your business`,
+                          `Direct introduction to ${providerName}'s partnership team`,
+                          "Next steps to get approved",
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                            <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex items-center justify-center gap-2">
+                      <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
+                        isConfirmationSent ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
+                      }`}>
+                        {isConfirmationSent ? <Mail className="w-4 h-4" /> : <Loader2 className="w-4 h-4 animate-spin" />}
+                        <span>{isConfirmationSent ? "Confirmation sent to your email" : "Sending confirmation..."}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Secondary: Full introduction form (collapsible) */}
+                <Card className="border border-border/60 bg-card">
+                  <CardContent className="p-6 md:p-8">
+                    <button
+                      onClick={() => setShowFullForm(!showFullForm)}
+                      className="w-full flex items-center justify-between text-left"
+                    >
+                      <div>
+                        <h3 className="text-lg font-semibold text-foreground">
+                          Want to speed things up?
+                        </h3>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Share more details for a faster, more targeted introduction.
+                        </p>
+                      </div>
+                      <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${showFullForm ? "rotate-180" : ""}`} />
+                    </button>
+
+                    {showFullForm && (
+                      <div className="mt-6 space-y-5 animate-fade-up">
+                        <div className="space-y-2">
+                          <Label htmlFor="websiteUrl" className="text-sm font-medium text-foreground">
+                            Website URL
+                          </Label>
+                          <Input
+                            id="websiteUrl"
+                            type="url"
+                            autoComplete="url"
+                            placeholder="https://yoursite.com"
+                            value={formData.websiteUrl}
+                            onChange={(e) => handleInputChange("websiteUrl", e.target.value)}
+                            className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="currentProvider" className="text-sm font-medium text-foreground">
+                            Current Payment Provider
+                          </Label>
+                          <Select
+                            value={formData.currentProvider}
+                            onValueChange={(value) => handleInputChange("currentProvider", value)}
+                          >
+                            <SelectTrigger className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20">
+                              <SelectValue placeholder="Select your current provider" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="none">None / New business</SelectItem>
+                              <SelectItem value="Stripe">Stripe</SelectItem>
+                              <SelectItem value="PayPal">PayPal</SelectItem>
+                              <SelectItem value="Square">Square</SelectItem>
+                              <SelectItem value="Adyen">Adyen</SelectItem>
+                              <SelectItem value="Checkout.com">Checkout.com</SelectItem>
+                              <SelectItem value="Braintree">Braintree</SelectItem>
+                              <SelectItem value="SumUp">SumUp</SelectItem>
+                              <SelectItem value="Worldpay">Worldpay</SelectItem>
+                              <SelectItem value="Fiserv (Clover)">Fiserv (Clover)</SelectItem>
+                              <SelectItem value="Shift4">Shift4</SelectItem>
+                              <SelectItem value="Authorize.Net">Authorize.Net</SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="painPoints" className="text-sm font-medium text-foreground">
+                            Specific Pain Points
+                          </Label>
+                          <Textarea
+                            id="painPoints"
+                            placeholder="e.g. High chargebacks, poor support, account frozen"
+                            value={formData.painPoints}
+                            onChange={(e) => handleInputChange("painPoints", e.target.value)}
+                            className="min-h-[80px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="notes" className="text-sm font-medium text-foreground">
+                            Anything else we should know?
+                          </Label>
+                          <Textarea
+                            id="notes"
+                            placeholder="Optional. Add any context that might help us advise you better."
+                            value={formData.notes}
+                            onChange={(e) => handleInputChange("notes", e.target.value)}
+                            className="min-h-[80px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
+                          />
+                        </div>
+                        <div className="text-center pt-2">
+                          <Button variant="hero" size="lg" onClick={handleFullFormSubmit} disabled={isSubmitting}>
+                            {isSubmitting ? (
+                              <>
+                                <Loader2 className="w-5 h-5 animate-spin" />
+                                Submitting...
+                              </>
+                            ) : (
+                              <>
+                                Request Introduction
+                                <ArrowRight className="w-5 h-5" />
+                              </>
+                            )}
+                          </Button>
+                          {backgroundError && (
+                            <p className="mt-3 text-sm text-destructive">{backgroundError}</p>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </div>
+            )}
+
+            {/* Retake + Calendly */}
+            <div className="text-center mt-10 animate-fade-up animation-delay-200 space-y-4">
+              <div>
+                <p className="text-muted-foreground mb-4">Need to change your answers?</p>
+                <a href="/assessment?start=true" className="text-primary font-medium hover:underline">
+                  Retake assessment →
+                </a>
+              </div>
+              <div className="pt-2">
+                <a
+                  href="https://calendly.com/hello-chosepayments/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  <Calendar className="w-4 h-4" />
+                  Prefer to talk? Book a 30-minute call
+                </a>
+              </div>
             </div>
           </>
         )}
