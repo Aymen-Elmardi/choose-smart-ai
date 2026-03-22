@@ -135,6 +135,11 @@ const CheckoutComFees = () => {
             interchange plus plus pricing
           </Link>, which separates each cost component for transparency.
         </p>
+
+        <InlineAssessmentCTA
+          context="Find out if Checkout.com's pricing model would work for your business volume and geography."
+          cta="Get your risk profile"
+        />
       </section>
 
       {/* International and multi-currency fees */}

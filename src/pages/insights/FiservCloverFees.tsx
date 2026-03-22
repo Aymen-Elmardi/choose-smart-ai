@@ -115,6 +115,11 @@ const FiservCloverFees = () => {
         <p className="mt-4">
           In practice, this means that Fiserv pricing is negotiated and flexible, not a flat menu. This flexibility is where resellers find their opportunity.
         </p>
+
+        <InlineAssessmentCTA
+          context="See if Fiserv/Clover's risk appetite matches your business type and industry."
+          cta="Get your risk profile"
+        />
       </section>
 
       {/* Section: Pricing Structure for Resellers */}

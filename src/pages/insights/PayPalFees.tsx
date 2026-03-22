@@ -105,6 +105,11 @@ const PayPalFees = () => {
         Where PayPal becomes expensive is not at the start. It becomes expensive as volume increases.
       </p>
 
+      <InlineAssessmentCTA
+        context="Outgrowing PayPal's pricing? See which providers offer better rates for your volume."
+        cta="Get your risk profile"
+      />
+
       {/* How Adyen Pricing Is Structured Differently */}
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">How Adyen Pricing Is Structured Differently</h2>
       <p className="text-foreground/90 mb-4">

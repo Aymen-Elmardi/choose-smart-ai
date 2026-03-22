@@ -189,6 +189,11 @@ const StripeFees = () => {
           <p className="text-muted-foreground">
             For businesses with high transaction volumes or subscription models, this can become a meaningful operational cost. Understanding <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">how chargebacks work and how to avoid them</Link> is essential.
           </p>
+
+          <InlineAssessmentCTA
+            context="See which providers have better chargeback policies for your industry."
+            cta="Run your risk profile"
+          />
         </div>
 
         {/* Currency Conversion */}

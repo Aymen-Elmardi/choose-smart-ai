@@ -54,6 +54,11 @@ const PayoutSettlementExplained = () => {
           <li>If using multiple payment methods, each may settle on different schedules</li>
         </ul>
 
+        <InlineAssessmentCTA
+          context="Struggling with payout discrepancies? See which providers offer better settlement transparency for your business."
+          cta="Run your risk profile"
+        />
+
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">When Payout Mismatches Signal a Real Problem</h2>
         <p>
           Most discrepancies are normal. But if payouts stop entirely, amounts drop dramatically without explanation, or you notice deductions you can't identify, contact your provider immediately. Unexplained holds may indicate a <Link to="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">risk review or account freeze</Link>.

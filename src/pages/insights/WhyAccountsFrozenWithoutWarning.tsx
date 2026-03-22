@@ -29,6 +29,11 @@ const WhyAccountsFrozenWithoutWarning = () => {
           Triggers often include spikes in disputes, delayed fulfilment, mismatched product descriptions, or unusual payment patterns. In some cases, providers are legally required to act immediately. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">payment provider approval differences</Link> can help you anticipate these situations.
         </p>
         
+        <InlineAssessmentCTA
+          context="Find out if your business is at risk of an account freeze — and which providers are a safer fit."
+          cta="Get your risk profile"
+        />
+        
         <p>
           While this feels abrupt from a business perspective, it is usually procedural rather than personal.
         </p>
