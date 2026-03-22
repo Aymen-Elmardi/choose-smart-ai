@@ -139,7 +139,7 @@ const Recommendation = () => {
     if (!answers || !quizComplete) return;
     fetchServerRecommendation(answers).then((result) => {
       const CURATED_PROVIDERS = [
-        "Stripe", "Square", "PayPal", "Adyen", "Datman", "SumUp",
+        "Square", "PayPal", "Adyen", "Datman", "SumUp",
         "Braintree", "Shift4", "Fiserv (Clover)", "Authorize.Net"
       ];
       setPrimary(result.primary);
