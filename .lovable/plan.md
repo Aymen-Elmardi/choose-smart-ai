@@ -1,46 +1,48 @@
 
 
-# Dedicated FAQ Page with Article Previews
+# Recommendation Page Enhancements + Newsletter Signup
 
 ## Overview
-Create `/faq` page where article-related FAQs include a short excerpt from the actual article content, followed by a "Read more" link. This makes the page more visually engaging and drives traffic to full articles.
+Four changes: (1) restructure the recommendation page to show a lightweight email capture first, then the introduction form as secondary, (2) enhance the post-submission confirmation with personalized detail, (3) add a Calendly booking link, (4) add newsletter signup to the footer.
 
 ## Changes
 
-### 1. Create `src/pages/FAQ.tsx`
-- SEO: title "Frequently Asked Questions | ChosePayments", FAQSchema for rich results
-- Three grouped sections using Collapsible accordions:
-  - **About ChosePayments** (4 FAQs: what it is, how matching works, is it free, how we make money)
-  - **Payment Provider Issues** (5 FAQs: frozen accounts, reserves, rejections, chargebacks, funds held)
-  - **Using the Assessment** (3 FAQs: how long, what happens after, do I share financials)
+### 1. Recommendation Page: Two-Step Form Flow (`src/pages/Recommendation.tsx`)
 
-**Article preview pattern** (for payment-related FAQs):
-Each answer includes a short 2-3 sentence excerpt styled in a subtle card/blockquote with a muted background, followed by a "Read more →" link to the full article. Example:
+**Current**: After results load, one large "Request Introduction" form with many fields.
 
-```
-Q: Why do payment accounts get frozen?
-A: [Brief direct answer]
+**New flow**:
+- After results load, show a lightweight "Get personalized guidance" card with only Name + Email fields
+- On submit of this first form, show a detailed confirmation message:
+  - "Thanks! Our founder will review your profile and email you within 24 hours with personalized guidance and a warm introduction to [Provider Name]."
+  - "You'll receive an email at [email] with: Your full risk analysis, Why [Provider] is a fit for your business, Direct introduction to [Provider]'s partnership team, Next steps to get approved"
+- Below the confirmation, show the full "Request Introduction" form (website, current provider, pain points, notes) as a secondary/optional action: "Want to speed things up? Share more details for a faster introduction."
+- Add a Calendly link at the bottom: "Prefer to talk? Book a 30 minute call" linking to `https://calendly.com/hello-chosepayments/30min`
 
-┌─────────────────────────────────────────────┐
-│ "Stripe does not freeze accounts at random. │
-│  In the UK, freezes usually happen when     │
-│  automated risk systems detect activity..." │
-│                                             │
-│  Read more →                                │
-└─────────────────────────────────────────────┘
-```
+**State changes**: Add `guidanceSubmitted` boolean state. The lightweight form triggers the same edge function calls. The full form becomes visible only after the first submission.
 
-- Styled as a `bg-muted/50 rounded-lg p-4 border` block with italic excerpt text and a primary-colored "Read more →" link
-- **Business model FAQ** (no article link): "We earn a referral commission from payment providers when a business we recommend is approved. Providers value our referrals because we only recommend businesses that genuinely fit their risk appetite, leading to higher approval rates and better merchant retention. The service is completely free for merchants."
-- Bottom CTA: "Still have questions? Get in touch" linking to `/contact`
+### 2. Post-Submission Confirmation Enhancement (`src/pages/Recommendation.tsx`)
 
-### 2. Update `src/App.tsx`
-- Add lazy import and route for `/faq`
+Update the existing `isSubmitted` confirmation card to show:
+- Personalized message with provider name and email address
+- Bullet list of what they'll receive
+- Calendly booking link as secondary CTA
 
-### 3. Update `src/components/Footer.tsx`
-- Add "FAQ" link to footer nav
+### 3. Newsletter Signup in Footer (`src/components/Footer.tsx`)
+
+Add a newsletter section above the existing footer content:
+- Headline: "Stay updated on payment processor trends and tips for high growth merchants"
+- Email input + "Subscribe" button in a single row
+- Store submissions in the `popup_submissions` table (reuse existing table with `popup_type: 'newsletter'`)
+- Show a simple "Thanks! You're subscribed." confirmation on submit
+
+### 4. Calendly Link (`src/pages/Recommendation.tsx`)
+
+Add below the retake assessment link:
+- Calendar icon + "Prefer to talk? Book a 30 minute call" linking to the Calendly URL
+- Opens in new tab
 
 ### Files
-- **Create**: `src/pages/FAQ.tsx`
-- **Edit**: `src/App.tsx`, `src/components/Footer.tsx`
+- **Edit**: `src/pages/Recommendation.tsx` (two-step form, enhanced confirmation, Calendly)
+- **Edit**: `src/components/Footer.tsx` (newsletter signup)
 
