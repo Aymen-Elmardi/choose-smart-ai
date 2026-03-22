@@ -155,13 +155,6 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["re-underwrite", "existing account", "review", "renewal", "reassessment"]
   },
   {
-    slug: "why-marketplaces-get-extra-scrutiny",
-    title: "Marketplaces Face Extra Scrutiny: What Providers Look For",
-    shortTitle: "Marketplace Scrutiny",
-    concepts: ["provider-behaviour", "risk"],
-    keywords: ["marketplace", "scrutiny", "platform", "seller", "multi-party"]
-  },
-  {
     slug: "what-to-do-when-provider-asks-for-documents",
     title: "When a Payment Provider Asks for More Documents",
     shortTitle: "Handling Document Requests",

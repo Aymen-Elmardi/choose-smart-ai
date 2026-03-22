@@ -21,9 +21,9 @@ const paymentRiskArticles = [
     description: "Payment providers are not always able to warn merchants before taking action."
   },
   {
-    title: "Why Marketplaces Get Extra Scrutiny From Payment Providers",
-    slug: "why-marketplaces-get-extra-scrutiny",
-    description: "Marketplaces introduce additional layers of risk for payment providers."
+    title: "The Marketplace Founder's Guide to Payment Processing",
+    slug: "marketplace-payments-guide",
+    description: "What payment providers don't tell marketplace founders about split payments, seller verification, and chargeback risk."
   },
   {
     title: "Why Payment Providers Re-Underwrite Existing Accounts",

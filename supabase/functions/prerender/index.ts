@@ -372,8 +372,8 @@ const META: Record<string, PageMeta> = {
     ogType: "article",
     publishedTime: "2026-01-01",
   },
-  "/insights/why-marketplaces-get-extra-scrutiny": {
-    title: "Marketplaces Face Extra Scrutiny | ChosePayments",
+  "/insights/marketplace-payments-guide": {
+    title: "The Marketplace Founder's Guide to Payment Processing | ChosePayments",
     description:
       "Marketplaces introduce additional layers of risk for payment providers. Learn what they look for.",
     ogType: "article",

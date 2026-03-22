@@ -344,13 +344,6 @@ export const allInsights: Insight[] = [
     readTime: "6 min read"
   },
   {
-    title: "Marketplaces Face Extra Scrutiny: What Providers Look For",
-    slug: "why-marketplaces-get-extra-scrutiny",
-    description: "Marketplaces introduce additional layers of risk for payment providers.",
-    category: "risk",
-    readTime: "5 min read"
-  },
-  {
     title: "Re-Underwriting Explained: When Providers Review Existing Accounts",
     slug: "why-providers-re-underwrite-accounts",
     description: "Approval is not a one-time event. Learn why providers periodically re-underwrite accounts.",

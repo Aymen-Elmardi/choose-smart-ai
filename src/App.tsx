@@ -52,7 +52,7 @@ const ContractsInvoices = lazyWithRetry(() => import("./pages/insights/Contracts
 const WhyStripeFreezes = lazyWithRetry(() => import("./pages/insights/WhyStripeFreezes"));
 const WhyAccountsFlaggedAfterGrowth = lazyWithRetry(() => import("./pages/insights/WhyAccountsFlaggedAfterGrowth"));
 const WhyAccountsFrozenWithoutWarning = lazyWithRetry(() => import("./pages/insights/WhyAccountsFrozenWithoutWarning"));
-const WhyMarketplacesGetScrutiny = lazyWithRetry(() => import("./pages/insights/WhyMarketplacesGetScrutiny"));
+
 const WhyProvidersReUnderwrite = lazyWithRetry(() => import("./pages/insights/WhyProvidersReUnderwrite"));
 const WhySomeBusinessesNeverApproved = lazyWithRetry(() => import("./pages/insights/WhySomeBusinessesNeverApproved"));
 const WhyPaymentProvidersAskForDirectorDocuments = lazyWithRetry(() => import("./pages/insights/WhyPaymentProvidersAskForDirectorDocuments"));
@@ -218,7 +218,7 @@ const App = () => (
               <Route path="/insights/why-stripe-freezes-accounts-uk" element={<WhyStripeFreezes />} />
               <Route path="/insights/why-accounts-get-flagged-after-growth" element={<WhyAccountsFlaggedAfterGrowth />} />
               <Route path="/insights/why-payment-accounts-get-frozen-without-warning" element={<WhyAccountsFrozenWithoutWarning />} />
-              <Route path="/insights/why-marketplaces-get-extra-scrutiny" element={<WhyMarketplacesGetScrutiny />} />
+              
               <Route path="/insights/why-providers-re-underwrite-accounts" element={<WhyProvidersReUnderwrite />} />
               <Route path="/insights/why-some-businesses-never-get-approved" element={<WhySomeBusinessesNeverApproved />} />
               <Route path="/insights/why-payment-providers-ask-for-director-documents" element={<WhyPaymentProvidersAskForDirectorDocuments />} />
