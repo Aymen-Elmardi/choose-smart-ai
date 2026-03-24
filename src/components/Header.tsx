@@ -35,7 +35,7 @@ const Header = () => {
             ))}
             <Link 
               to="/onboard-with-us"
-              className="text-sm font-medium text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary pb-0.5"
+              className="text-base font-medium text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary pb-0.5"
             >
               Partner With Us
             </Link>
