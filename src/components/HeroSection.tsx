@@ -10,7 +10,7 @@ const HeroSection = () => {
           <h1 className="heading-xl text-foreground text-balance">
             Find the Payment Processor That Won't Freeze Your Account.
           </h1>
-          <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <div className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
               We match your industry, volume, and risk signals to the right provider's appetite. Before you apply.
             </p>
