@@ -82,6 +82,7 @@ const AdyenEnterprisePlatform = lazyWithRetry(() => import("./pages/insights/Ady
 const StripePaymentPlatform = lazyWithRetry(() => import("./pages/insights/StripePaymentPlatform"));
 const CheckoutComEnterprisePlatform = lazyWithRetry(() => import("./pages/insights/CheckoutComEnterprisePlatform"));
 const Shift4PaymentsPlatform = lazyWithRetry(() => import("./pages/insights/Shift4PaymentsPlatform"));
+const Shift4VsStripe = lazyWithRetry(() => import("./pages/insights/Shift4VsStripe"));
 const EnterpriseProviderComparison = lazyWithRetry(() => import("./pages/insights/EnterpriseProviderComparison"));
 const FiservPaymentsPlatform = lazyWithRetry(() => import("./pages/insights/FiservPaymentsPlatform"));
 const AdyenVsFirstData = lazyWithRetry(() => import("./pages/insights/AdyenVsFirstData"));
