@@ -82,6 +82,7 @@ const AdyenEnterprisePlatform = lazyWithRetry(() => import("./pages/insights/Ady
 const StripePaymentPlatform = lazyWithRetry(() => import("./pages/insights/StripePaymentPlatform"));
 const CheckoutComEnterprisePlatform = lazyWithRetry(() => import("./pages/insights/CheckoutComEnterprisePlatform"));
 const Shift4PaymentsPlatform = lazyWithRetry(() => import("./pages/insights/Shift4PaymentsPlatform"));
+const Shift4VsStripe = lazyWithRetry(() => import("./pages/insights/Shift4VsStripe"));
 const EnterpriseProviderComparison = lazyWithRetry(() => import("./pages/insights/EnterpriseProviderComparison"));
 const FiservPaymentsPlatform = lazyWithRetry(() => import("./pages/insights/FiservPaymentsPlatform"));
 const AdyenVsFirstData = lazyWithRetry(() => import("./pages/insights/AdyenVsFirstData"));
@@ -248,6 +249,7 @@ const App = () => (
               <Route path="/insights/stripe-payment-platform" element={<StripePaymentPlatform />} />
               <Route path="/insights/checkout-com-enterprise-platform" element={<CheckoutComEnterprisePlatform />} />
               <Route path="/insights/shift4-payments-platform" element={<Shift4PaymentsPlatform />} />
+              <Route path="/insights/shift4-vs-stripe-enterprise" element={<Shift4VsStripe />} />
               <Route path="/insights/enterprise-provider-comparison" element={<EnterpriseProviderComparison />} />
               <Route path="/insights/fiserv-payments-platform" element={<FiservPaymentsPlatform />} />
               <Route path="/insights/adyen-vs-first-data" element={<AdyenVsFirstData />} />

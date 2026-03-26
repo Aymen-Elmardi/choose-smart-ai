@@ -309,6 +309,13 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["adyen", "first data", "fiserv", "fiserv first data", "comparison", "platform model", "bank acquiring"]
   },
   {
+    slug: "shift4-vs-stripe-enterprise",
+    title: "Shift4 vs Stripe: Choosing the Right Payment Engine for Your Enterprise",
+    shortTitle: "Shift4 vs Stripe",
+    concepts: ["provider-behaviour", "approval"],
+    keywords: ["shift4 vs stripe", "stripe vs shift4", "enterprise payments", "shift4", "stripe", "POS", "hospitality payments", "SaaS payments"]
+  },
+  {
     slug: "enterprise-provider-comparison",
     title: "Enterprise Payment Providers: Strength Comparison",
     shortTitle: "Enterprise Provider Comparison",
