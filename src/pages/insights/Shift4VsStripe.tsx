@@ -59,7 +59,7 @@ const Shift4VsStripe = () => {
       keywords={["shift4 vs stripe", "stripe vs shift4", "enterprise payment processor", "shift4 payments", "stripe enterprise", "payment processor comparison", "hospitality payments", "SaaS payments", "POS payments"]}
       sources={sources}
     >
-      <FAQSchema questions={faqItems} />
+      <FAQSchema faqs={faqItems} />
 
       {/* Hero */}
       <header className="mb-12">
