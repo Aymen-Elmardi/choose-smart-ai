@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Priority 1.0 — Homepage -->
   <url>
     <loc>https://chosepayments.com/</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Priority 0.9 — Assessment & Insights Hub -->
   <url>
     <loc>https://chosepayments.com/assessment</loc>
     <lastmod>2026-03-27</lastmod>
@@ -13,121 +16,81 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://chosepayments.com/recommendation</loc>
+    <loc>https://chosepayments.com/insights</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://chosepayments.com/about</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/privacy</loc>
-    <lastmod>2026-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/terms</loc>
-    <lastmod>2026-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/contact</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/faq</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/onboard-with-us</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/merchant-account-problems</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/choose-payment-provider</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- Priority 0.8 — Key Landing Pages -->
   <url>
     <loc>https://chosepayments.com/best-payment-processor-uk</loc>
     <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://chosepayments.com/stripe-vs-square-vs-paypal-uk</loc>
     <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://chosepayments.com/best-payment-api-uk</loc>
     <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://chosepayments.com/payment-provider-hidden-fees</loc>
+    <loc>https://chosepayments.com/choose-payment-provider</loc>
     <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/switch-payment-provider</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/best-payment-provider-small-business</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/stripe-alternatives-marketplace</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/payment-provider-support</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://chosepayments.com/marketplace-payment-provider</loc>
     <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/stripe-alternatives-marketplace</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/switch-payment-provider</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/payment-provider-hidden-fees</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/best-payment-provider-small-business</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/payment-provider-support</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://chosepayments.com/risk-profile-matching</loc>
     <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Provider Fit Guides -->
+  <!-- Priority 0.8 — Provider Fit Guides -->
   <url>
     <loc>https://chosepayments.com/best-payment-processors-high-chargebacks</loc>
     <lastmod>2026-03-27</lastmod>
@@ -159,30 +122,154 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Insights Hub -->
+  <!-- Priority 0.8 — Crisis Pages -->
   <url>
-    <loc>https://chosepayments.com/insights</loc>
+    <loc>https://chosepayments.com/insights/crisis</loc>
     <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://chosepayments.com/insights/crisis/stripe-account-frozen</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/crisis/hidden-fee-crisis</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/crisis/rejected-high-risk-strategy</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Priority 0.8 — Pricing Pages -->
+  <url>
+    <loc>https://chosepayments.com/insights/pricing-models</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/pricing-models/interchange-plus-plus</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/pricing-models/blended-vs-interchange</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Priority 0.8 — Provider Fee Breakdowns -->
+  <url>
+    <loc>https://chosepayments.com/insights/stripe-fees-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/adyen-pricing-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/checkout-com-fees-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/paypal-fees-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/fiserv-clover-pricing-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Priority 0.8 — Key Insight Articles -->
+  <url>
+    <loc>https://chosepayments.com/insights/marketplace-payments-guide</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/shift4-vs-stripe-enterprise</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Priority 0.7 — Provider Platform Pages -->
+  <url>
+    <loc>https://chosepayments.com/insights/stripe-payment-platform</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/adyen-enterprise-payments-platform</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/checkout-com-enterprise-platform</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/paypal-payment-platform</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/shift4-payments-platform</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/fiserv-payments-platform</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/enterprise-provider-comparison</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Priority 0.7 — Risk & Scoring Content -->
   <url>
     <loc>https://chosepayments.com/insights/payment-risk</loc>
     <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chosepayments.com/insights/guides</loc>
+    <loc>https://chosepayments.com/insights/payment-provider-risk-models</loc>
     <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/case-studies</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://chosepayments.com/insights/scoring-logic</loc>
@@ -190,8 +277,26 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://chosepayments.com/insights/guides</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/case-studies</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/provider-appetite-index</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-  <!-- Payment Risk Articles -->
+  <!-- Priority 0.7 — Payment Risk Articles (deduplicated) -->
   <url>
     <loc>https://chosepayments.com/insights/why-stripe-freezes-accounts-uk</loc>
     <lastmod>2026-03-27</lastmod>
@@ -235,282 +340,10 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chosepayments.com/insights/why-payment-accounts-get-flagged-after-growth</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/why-providers-re-underwrite-existing-accounts</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/why-payment-accounts-get-flagged-without-changes</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://chosepayments.com/insights/why-payment-providers-reject-growing-businesses</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-
-  <!-- Guide Articles -->
-  <url>
-    <loc>https://chosepayments.com/insights/proof-of-business-activity</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/sales-increase</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/marketplace-seller-info</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/source-of-funds</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/industry-verification</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/international-sales</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/contracts-invoices</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/what-to-do-when-provider-asks-for-documents</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/marketplace-payments-guide</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Payment Infrastructure Articles -->
-  <url>
-    <loc>https://chosepayments.com/insights/visa-mastercard-control-card-payments</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/what-is-an-acquirer</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/payment-provider-vs-acquirer-vs-bank</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/credit-card-payments-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/open-banking-payments-uk</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/apple-pay-google-pay-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/wallet-payments-guaranteed-success</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/payment-acronyms-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/payment-provider-risk-models</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/provider-appetite-index</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Checkout & Approval -->
-  <url>
-    <loc>https://chosepayments.com/insights/why-card-approval-speed-affects-checkout-abandonment</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/same-day-settlement-and-instant-payouts</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/tra-exemption-reduces-payment-friction</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/low-value-transaction-exemption</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Chargebacks & Risk -->
-  <url>
-    <loc>https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/chargeback-loss-recovery</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Reserves & Settlement -->
-  <url>
-    <loc>https://chosepayments.com/insights/why-providers-impose-reserves</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/rolling-vs-fixed-reserve</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/payout-settlement-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/net-vs-gross-settlement</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/what-to-do-when-funds-held</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Scheme Rules -->
-  <url>
-    <loc>https://chosepayments.com/insights/payment-scheme-rules-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/scheme-rules-reserves-monitoring</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/scheme-rules-by-payment-method</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Provider Deep Dives -->
-  <url>
-    <loc>https://chosepayments.com/insights/stripe-payment-platform</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/adyen-enterprise-payments-platform</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/checkout-com-enterprise-platform</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/shift4-payments-platform</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/fiserv-payments-platform</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/paypal-payment-platform</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/enterprise-provider-comparison</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://chosepayments.com/insights/adyen-vs-first-data</loc>
@@ -519,85 +352,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chosepayments.com/insights/shift4-vs-stripe-enterprise</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://chosepayments.com/insights/referral-commission-guide</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Fees & Pricing -->
-  <url>
-    <loc>https://chosepayments.com/insights/stripe-fees-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/checkout-com-fees-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/fiserv-clover-pricing-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/adyen-pricing-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/paypal-fees-explained</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Pricing Models -->
-  <url>
-    <loc>https://chosepayments.com/insights/pricing-models/interchange-plus-plus</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/pricing-models/blended-vs-interchange</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Crisis Intervention -->
-  <url>
-    <loc>https://chosepayments.com/insights/crisis/stripe-account-frozen</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/crisis/hidden-fee-crisis</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chosepayments.com/insights/crisis/rejected-high-risk-strategy</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- E-commerce Guides -->
+  <!-- Priority 0.7 — E-commerce Guides -->
   <url>
     <loc>https://chosepayments.com/insights/ecommerce/high-risk-to-high-growth</loc>
     <lastmod>2026-03-27</lastmod>
@@ -615,5 +376,239 @@
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Priority 0.6 — Educational/Explainer Articles -->
+  <url>
+    <loc>https://chosepayments.com/insights/credit-card-payments-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/what-is-an-acquirer</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/apple-pay-google-pay-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/open-banking-payments-uk</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/payment-acronyms-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/visa-mastercard-control-card-payments</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/payment-provider-vs-acquirer-vs-bank</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/wallet-payments-guaranteed-success</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/why-card-approval-speed-affects-checkout-abandonment</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/same-day-settlement-and-instant-payouts</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/tra-exemption-reduces-payment-friction</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/low-value-transaction-exemption</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/chargeback-loss-recovery</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/proof-of-business-activity</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/sales-increase</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/marketplace-seller-info</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/source-of-funds</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/industry-verification</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/international-sales</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/contracts-invoices</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/what-to-do-when-provider-asks-for-documents</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/what-to-do-when-funds-held</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/why-providers-impose-reserves</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/rolling-vs-fixed-reserve</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/payout-settlement-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/net-vs-gross-settlement</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/payment-scheme-rules-explained</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/scheme-rules-reserves-monitoring</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/insights/scheme-rules-by-payment-method</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Priority 0.5 — Utility Pages -->
+  <url>
+    <loc>https://chosepayments.com/about</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/contact</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/faq</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/recommendation</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/onboard-with-us</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/merchant-account-problems</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Priority 0.3 — Legal Pages -->
+  <url>
+    <loc>https://chosepayments.com/privacy</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://chosepayments.com/terms</loc>
+    <lastmod>2026-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
