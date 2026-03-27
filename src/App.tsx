@@ -5,7 +5,7 @@ import TimedPopup from "@/components/TimedPopup";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import AppErrorBoundary from "@/components/AppErrorBoundary";
 import { useVersionCheck, lazyWithRetry } from "@/hooks/useVersionCheck";
 
@@ -102,6 +102,8 @@ const CrisisStripeAccountFrozen = lazyWithRetry(() => import("./pages/insights/c
 
 const InterchangePlusPlus = lazyWithRetry(() => import("./pages/insights/pricing/InterchangePlusPlus"));
 const BlendedVsInterchange = lazyWithRetry(() => import("./pages/insights/pricing/BlendedVsInterchange"));
+const CrisisIndex = lazyWithRetry(() => import("./pages/insights/CrisisIndex"));
+const PricingModelsIndex = lazyWithRetry(() => import("./pages/insights/PricingModelsIndex"));
 
 // E-commerce Guides
 const HighRiskToHighGrowth = lazyWithRetry(() => import("./pages/insights/ecommerce/HighRiskToHighGrowth"));
@@ -224,9 +226,10 @@ const App = () => (
               <Route path="/insights/why-some-businesses-never-get-approved" element={<WhySomeBusinessesNeverApproved />} />
               <Route path="/insights/why-payment-providers-ask-for-director-documents" element={<WhyPaymentProvidersAskForDirectorDocuments />} />
               <Route path="/insights/why-payment-providers-ask-for-source-of-funds" element={<WhyPaymentProvidersAskForSourceOfFunds />} />
-              <Route path="/insights/why-payment-accounts-get-flagged-after-growth" element={<WhyPaymentAccountsGetFlaggedAfterGrowth />} />
-              <Route path="/insights/why-providers-re-underwrite-existing-accounts" element={<WhyProvidersReUnderwriteExistingAccounts />} />
-              <Route path="/insights/why-payment-accounts-get-flagged-without-changes" element={<WhyPaymentAccountsGetFlaggedWithoutChanges />} />
+              {/* 301 Redirects for deduplicated articles */}
+              <Route path="/insights/why-payment-accounts-get-flagged-after-growth" element={<Navigate to="/insights/why-accounts-get-flagged-after-growth" replace />} />
+              <Route path="/insights/why-providers-re-underwrite-existing-accounts" element={<Navigate to="/insights/why-providers-re-underwrite-accounts" replace />} />
+              <Route path="/insights/why-payment-accounts-get-flagged-without-changes" element={<Navigate to="/insights/why-accounts-get-flagged-after-growth" replace />} />
               <Route path="/insights/visa-mastercard-control-card-payments" element={<VisaMastercardControl />} />
               <Route path="/insights/what-is-an-acquirer" element={<WhatIsAnAcquirer />} />
               <Route path="/insights/payment-provider-vs-acquirer-vs-bank" element={<PaymentProviderVsAcquirerVsBank />} />
@@ -256,12 +259,14 @@ const App = () => (
               <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
               <Route path="/insights/paypal-payment-platform" element={<PayPalPaymentPlatform />} />
               
-              {/* Crisis Intervention articles */}
+              {/* Crisis Intervention */}
+              <Route path="/insights/crisis" element={<CrisisIndex />} />
               <Route path="/insights/crisis/hidden-fee-crisis" element={<CrisisHiddenFeeCrisis />} />
               <Route path="/insights/crisis/rejected-high-risk-strategy" element={<CrisisRejectedHighRisk />} />
               <Route path="/insights/crisis/stripe-account-frozen" element={<CrisisStripeAccountFrozen />} />
               
-              {/* Pricing Models articles */}
+              {/* Pricing Models */}
+              <Route path="/insights/pricing-models" element={<PricingModelsIndex />} />
               <Route path="/insights/pricing-models/interchange-plus-plus" element={<InterchangePlusPlus />} />
               <Route path="/insights/pricing-models/blended-vs-interchange" element={<BlendedVsInterchange />} />
               

@@ -226,6 +226,11 @@ const META: Record<string, PageMeta> = {
   },
 
   // ===== Pricing Models =====
+  "/insights/pricing-models": {
+    title: "Payment Pricing Models Explained | ChosePayments",
+    description:
+      "Understand the difference between Interchange++, blended pricing, and other payment processing fee structures. Learn which pricing model saves you the most.",
+  },
   "/insights/pricing-models/interchange-plus-plus": {
     title: "Interchange++ Pricing Explained | ChosePayments",
     description:
@@ -242,6 +247,11 @@ const META: Record<string, PageMeta> = {
   },
 
   // ===== Crisis Intervention =====
+  "/insights/crisis": {
+    title: "Crisis Intervention Guides | ChosePayments",
+    description:
+      "Urgent guides for merchants dealing with frozen accounts, hidden fees, or provider rejections. Practical steps to recover and find the right payment partner.",
+  },
   "/insights/crisis/stripe-account-frozen": {
     title: "Stripe Account Frozen? 5 Hidden Reasons Why | ChosePayments",
     description:
@@ -396,21 +406,14 @@ const META: Record<string, PageMeta> = {
   "/insights/why-payment-accounts-get-flagged-after-growth": {
     title: "Growth-Related Account Flags Explained | ChosePayments",
     description:
-      "Understand why sudden business growth triggers payment account reviews and how to handle them.",
+      "Redirects to the consolidated article on growth-related account flags.",
     ogType: "article",
     publishedTime: "2026-01-01",
   },
   "/insights/why-providers-re-underwrite-existing-accounts": {
-    title: "When Providers Re-Underwrite Existing Accounts | ChosePayments",
+    title: "Re-Underwriting Existing Accounts | ChosePayments",
     description:
-      "Understand why payment providers re-underwrite existing accounts and how to handle these reviews.",
-    ogType: "article",
-    publishedTime: "2026-01-01",
-  },
-  "/insights/why-payment-accounts-get-flagged-without-changes": {
-    title: "Account Flagged Without Changes? Here's Why | ChosePayments",
-    description:
-      "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction.",
+      "Redirects to the consolidated article on provider re-underwriting.",
     ogType: "article",
     publishedTime: "2026-01-01",
   },
@@ -687,6 +690,21 @@ Deno.serve(async (req) => {
     // Normalize: remove trailing slash (except root)
     if (path.length > 1 && path.endsWith("/")) {
       path = path.slice(0, -1);
+    }
+
+    // Handle 301 redirects for deduplicated URLs
+    const REDIRECTS: Record<string, string> = {
+      "/insights/why-payment-accounts-get-flagged-after-growth": "/insights/why-accounts-get-flagged-after-growth",
+      "/insights/why-providers-re-underwrite-existing-accounts": "/insights/why-providers-re-underwrite-accounts",
+      "/insights/why-payment-accounts-get-flagged-without-changes": "/insights/why-accounts-get-flagged-after-growth",
+    };
+
+    if (REDIRECTS[path]) {
+      const redirectUrl = `${BASE_URL}${REDIRECTS[path]}`;
+      return new Response(null, {
+        status: 301,
+        headers: { ...corsHeaders, Location: redirectUrl },
+      });
     }
 
     const userAgent = req.headers.get("user-agent") || "";
