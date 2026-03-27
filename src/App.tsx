@@ -258,12 +258,14 @@ const App = () => (
               <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
               <Route path="/insights/paypal-payment-platform" element={<PayPalPaymentPlatform />} />
               
-              {/* Crisis Intervention articles */}
+              {/* Crisis Intervention */}
+              <Route path="/insights/crisis" element={<CrisisIndex />} />
               <Route path="/insights/crisis/hidden-fee-crisis" element={<CrisisHiddenFeeCrisis />} />
               <Route path="/insights/crisis/rejected-high-risk-strategy" element={<CrisisRejectedHighRisk />} />
               <Route path="/insights/crisis/stripe-account-frozen" element={<CrisisStripeAccountFrozen />} />
               
-              {/* Pricing Models articles */}
+              {/* Pricing Models */}
+              <Route path="/insights/pricing-models" element={<PricingModelsIndex />} />
               <Route path="/insights/pricing-models/interchange-plus-plus" element={<InterchangePlusPlus />} />
               <Route path="/insights/pricing-models/blended-vs-interchange" element={<BlendedVsInterchange />} />
               
