@@ -484,14 +484,23 @@ export default {
     const url = new URL(request.url);
     const userAgent = request.headers.get("user-agent") || "";
 
-    // Skip static assets
+    // Skip static assets — pass through to origin
     if (isStaticAsset(url.pathname)) {
-      return fetch(request);
+      const originUrl = new URL(url.pathname + url.search, `https://${ORIGIN_IP}`);
+      return fetch(originUrl.toString(), {
+        method: request.method,
+        headers: { ...Object.fromEntries(request.headers), Host: "chosepayments.com" },
+      });
     }
 
     // Skip non-GET requests
     if (request.method !== "GET") {
-      return fetch(request);
+      const originUrl = new URL(url.pathname + url.search, `https://${ORIGIN_IP}`);
+      return fetch(originUrl.toString(), {
+        method: request.method,
+        headers: { ...Object.fromEntries(request.headers), Host: "chosepayments.com" },
+        body: request.body,
+      });
     }
 
     // For crawlers, try the full prerender function first
@@ -519,8 +528,12 @@ export default {
       // Fall through to meta-tag rewriting below
     }
 
-    // Fetch origin response
-    const originResponse = await fetch(request);
+    // Fetch from the ORIGIN server (by IP) to avoid Worker loop
+    const originUrl = new URL(url.pathname + url.search, `https://${ORIGIN_IP}`);
+    const originResponse = await fetch(originUrl.toString(), {
+      method: "GET",
+      headers: { ...Object.fromEntries(request.headers), Host: "chosepayments.com" },
+    });
 
     // Only rewrite HTML responses
     const contentType = originResponse.headers.get("content-type") || "";
