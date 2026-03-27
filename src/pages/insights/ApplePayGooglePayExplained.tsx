@@ -32,8 +32,8 @@ const sources: Source[] = [
 const ApplePayGooglePayExplained = () => {
   return (
     <InsightsArticleLayout
-      title="Apple Pay and Google Pay Explained: Faster Checkout, Lower Risk, Higher Approval Rates"
-      description="Learn how Apple Pay and Google Pay improve transaction security, reduce chargebacks, and increase conversion rates. Understand why payment providers trust wallet payments more."
+      title="Apple Pay & Google Pay: Boost Approval & Lower Chargebacks"
+      description="Apple Pay and Google Pay reduce chargebacks and improve payment provider approval. See how digital wallets help merchants get approved and increase conversion."
       category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"
       currentSlug="apple-pay-google-pay-explained"

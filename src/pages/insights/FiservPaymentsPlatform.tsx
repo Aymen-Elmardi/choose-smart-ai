@@ -85,8 +85,8 @@ const FiservPaymentsPlatform = () => {
 
   return (
     <InsightsArticleLayout
-      title="Fiserv and the First Data Legacy: Who It Actually Fits, and Where It Doesn't"
-      description="Fiserv operates across acquiring, issuing, bank infrastructure, and Clover POS. Learn where it performs well, where friction appears, and which business profiles benefit most."
+      title="Fiserv Payment Platform: Enterprise Alternative to Stripe"
+      description="Fiserv payment processing for enterprises. Fees, approval process, settlement speed. When Fiserv beats Stripe and Adyen. See if it fits your business model."
       category={{ name: "Provider Deep Dive", slug: "providers" }}
       cluster="provider"
       currentSlug="fiserv-payments-platform"
