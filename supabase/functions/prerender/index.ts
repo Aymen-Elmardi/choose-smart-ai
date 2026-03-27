@@ -242,6 +242,11 @@ const META: Record<string, PageMeta> = {
   },
 
   // ===== Crisis Intervention =====
+  "/insights/crisis": {
+    title: "Crisis Intervention Guides | ChosePayments",
+    description:
+      "Urgent guides for merchants dealing with frozen accounts, hidden fees, or provider rejections. Practical steps to recover and find the right payment partner.",
+  },
   "/insights/crisis/stripe-account-frozen": {
     title: "Stripe Account Frozen? 5 Hidden Reasons Why | ChosePayments",
     description:
