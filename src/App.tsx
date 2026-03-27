@@ -226,9 +226,10 @@ const App = () => (
               <Route path="/insights/why-some-businesses-never-get-approved" element={<WhySomeBusinessesNeverApproved />} />
               <Route path="/insights/why-payment-providers-ask-for-director-documents" element={<WhyPaymentProvidersAskForDirectorDocuments />} />
               <Route path="/insights/why-payment-providers-ask-for-source-of-funds" element={<WhyPaymentProvidersAskForSourceOfFunds />} />
-              <Route path="/insights/why-payment-accounts-get-flagged-after-growth" element={<WhyPaymentAccountsGetFlaggedAfterGrowth />} />
-              <Route path="/insights/why-providers-re-underwrite-existing-accounts" element={<WhyProvidersReUnderwriteExistingAccounts />} />
-              <Route path="/insights/why-payment-accounts-get-flagged-without-changes" element={<WhyPaymentAccountsGetFlaggedWithoutChanges />} />
+              {/* 301 Redirects for deduplicated articles */}
+              <Route path="/insights/why-payment-accounts-get-flagged-after-growth" element={<Navigate to="/insights/why-accounts-get-flagged-after-growth" replace />} />
+              <Route path="/insights/why-providers-re-underwrite-existing-accounts" element={<Navigate to="/insights/why-providers-re-underwrite-accounts" replace />} />
+              <Route path="/insights/why-payment-accounts-get-flagged-without-changes" element={<Navigate to="/insights/why-accounts-get-flagged-after-growth" replace />} />
               <Route path="/insights/visa-mastercard-control-card-payments" element={<VisaMastercardControl />} />
               <Route path="/insights/what-is-an-acquirer" element={<WhatIsAnAcquirer />} />
               <Route path="/insights/payment-provider-vs-acquirer-vs-bank" element={<PaymentProviderVsAcquirerVsBank />} />
