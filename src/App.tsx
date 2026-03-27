@@ -5,7 +5,7 @@ import TimedPopup from "@/components/TimedPopup";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import AppErrorBoundary from "@/components/AppErrorBoundary";
 import { useVersionCheck, lazyWithRetry } from "@/hooks/useVersionCheck";
 
