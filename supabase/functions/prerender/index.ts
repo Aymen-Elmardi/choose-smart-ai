@@ -692,6 +692,21 @@ Deno.serve(async (req) => {
       path = path.slice(0, -1);
     }
 
+    // Handle 301 redirects for deduplicated URLs
+    const REDIRECTS: Record<string, string> = {
+      "/insights/why-payment-accounts-get-flagged-after-growth": "/insights/why-accounts-get-flagged-after-growth",
+      "/insights/why-providers-re-underwrite-existing-accounts": "/insights/why-providers-re-underwrite-accounts",
+      "/insights/why-payment-accounts-get-flagged-without-changes": "/insights/why-accounts-get-flagged-after-growth",
+    };
+
+    if (REDIRECTS[path]) {
+      const redirectUrl = `${BASE_URL}${REDIRECTS[path]}`;
+      return new Response(null, {
+        status: 301,
+        headers: { ...corsHeaders, Location: redirectUrl },
+      });
+    }
+
     const userAgent = req.headers.get("user-agent") || "";
     const meta = META[path] || DEFAULT_META;
 
