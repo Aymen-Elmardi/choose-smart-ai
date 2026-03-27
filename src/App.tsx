@@ -102,6 +102,8 @@ const CrisisStripeAccountFrozen = lazyWithRetry(() => import("./pages/insights/c
 
 const InterchangePlusPlus = lazyWithRetry(() => import("./pages/insights/pricing/InterchangePlusPlus"));
 const BlendedVsInterchange = lazyWithRetry(() => import("./pages/insights/pricing/BlendedVsInterchange"));
+const CrisisIndex = lazyWithRetry(() => import("./pages/insights/CrisisIndex"));
+const PricingModelsIndex = lazyWithRetry(() => import("./pages/insights/PricingModelsIndex"));
 
 // E-commerce Guides
 const HighRiskToHighGrowth = lazyWithRetry(() => import("./pages/insights/ecommerce/HighRiskToHighGrowth"));
