@@ -226,6 +226,11 @@ const META: Record<string, PageMeta> = {
   },
 
   // ===== Pricing Models =====
+  "/insights/pricing-models": {
+    title: "Payment Pricing Models Explained | ChosePayments",
+    description:
+      "Understand the difference between Interchange++, blended pricing, and other payment processing fee structures. Learn which pricing model saves you the most.",
+  },
   "/insights/pricing-models/interchange-plus-plus": {
     title: "Interchange++ Pricing Explained | ChosePayments",
     description:
