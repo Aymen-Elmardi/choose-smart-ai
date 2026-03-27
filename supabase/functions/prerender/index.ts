@@ -396,21 +396,14 @@ const META: Record<string, PageMeta> = {
   "/insights/why-payment-accounts-get-flagged-after-growth": {
     title: "Growth-Related Account Flags Explained | ChosePayments",
     description:
-      "Understand why sudden business growth triggers payment account reviews and how to handle them.",
+      "Redirects to the consolidated article on growth-related account flags.",
     ogType: "article",
     publishedTime: "2026-01-01",
   },
   "/insights/why-providers-re-underwrite-existing-accounts": {
-    title: "When Providers Re-Underwrite Existing Accounts | ChosePayments",
+    title: "Re-Underwriting Existing Accounts | ChosePayments",
     description:
-      "Understand why payment providers re-underwrite existing accounts and how to handle these reviews.",
-    ogType: "article",
-    publishedTime: "2026-01-01",
-  },
-  "/insights/why-payment-accounts-get-flagged-without-changes": {
-    title: "Account Flagged Without Changes? Here's Why | ChosePayments",
-    description:
-      "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction.",
+      "Redirects to the consolidated article on provider re-underwriting.",
     ogType: "article",
     publishedTime: "2026-01-01",
   },
