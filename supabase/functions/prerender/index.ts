@@ -56,9 +56,9 @@ interface PageMeta {
 const META: Record<string, PageMeta> = {
   // ===== Core pages =====
   "/": {
-    title: "Payment Provider Risk Profile | ChosePayments",
+    title: "ChosePayments — Match Your Business to the Right Payment Processor",
     description:
-      "Find out which payment providers fit your business — and which ones to avoid. Free risk profile assessment with tiered provider matching.",
+      "Stop overpaying or getting frozen. We match UK businesses to risk-aligned payment processors based on your volume, industry, and chargeback profile. Free assessment.",
   },
   "/us": {
     title: "Payment Provider Advisory for US Businesses | ChosePayments",
