@@ -16,6 +16,7 @@
  */
 
 const BASE_URL = "https://chosepayments.com";
+const ORIGIN_IP = "185.158.133.1";
 
 const PRERENDER_FUNCTION_URL =
   "https://yftyxqnshmsstwkdceny.supabase.co/functions/v1/prerender";
