@@ -44,8 +44,8 @@ const faqs = [
 const FiservCloverFees = () => {
   return (
     <InsightsArticleLayout
-      title="Fiserv Clover Review: Is It Right for Your Business Risk Profile? | ChosePayments"
-      description="Before you apply to Fiserv Clover, understand how they underwrite merchants. See if your business profile is a match — and what to do if it isn't."
+      title="Fiserv Clover Pricing: Multi-Location & Reseller Guide"
+      description="Negotiated rates, hardware costs, and when it beats Stripe. See real-world examples."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="hub"
       currentSlug="fiserv-clover-pricing-explained"

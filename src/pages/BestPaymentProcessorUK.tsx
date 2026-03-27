@@ -101,8 +101,8 @@ const BestPaymentProcessorUK = () => {
   useCanonical();
   
   useSEO({
-    title: "Best Payment Processor for UK Small Businesses (2025)",
-    description: "Find the best small business payment system in the UK. Compare cheapest business payment solutions, fees, and which providers actually approve your business type.",
+    title: "Best Payment Processors for UK Merchants: Find Your Fit",
+    description: "Best UK payment processors for ecommerce, SaaS, and marketplaces. Compare Stripe, Adyen, Checkout.com. See which processor approves your business type.",
     keywords: [
       "best payment processor UK",
       "best small business payment systems",

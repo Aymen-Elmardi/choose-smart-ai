@@ -14,8 +14,8 @@ const traSources = [
 
 const TRAExemption = () => {
   useSEO({
-    title: "What Is TRA Exemption and How It Reduces Payment Friction | ChosePayments",
-    description: "Learn how TRA exemptions reduce checkout friction, improve approval rates, and affect conversion for UK and EU businesses accepting card payments.",
+    title: "TRA Exemption: Reduce Friction & Improve Approval Rates",
+    description: "TRA exemption explained: how it reduces checkout friction and improves approval odds. See if your business qualifies and how to use it to lower fraud.",
     keywords: [
       "tra exemption",
       "tra exemptions",

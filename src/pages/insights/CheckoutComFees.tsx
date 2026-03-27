@@ -48,8 +48,8 @@ const sources: Source[] = [
 const CheckoutComFees = () => {
   return (
     <InsightsArticleLayout
-      title="Checkout.com Fees Explained: What Businesses Actually Pay"
-      description="A clear breakdown of Checkout.com's negotiated pricing model, including card processing fees, international costs, chargebacks, and when this enterprise platform makes financial sense for your business."
+      title="Checkout.com Fees: Is It Worth It for Your Business?"
+      description="Checkout.com pricing breakdown: processing fees, international costs, chargebacks. See how it compares to Stripe and Adyen for enterprise rates."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="pricing"
       currentSlug="checkout-com-fees-explained"

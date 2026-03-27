@@ -76,8 +76,8 @@ const StripeVsSquareVsPaypal = () => {
   useCanonical();
   
   useSEO({
-    title: "Stripe vs Square vs PayPal UK: Fees, Risk & Which One Fits (2026)",
-    description: "Stripe vs PayPal vs Square for UK businesses. Compare fees, risk appetite, and approval criteria. Find out which provider actually fits your business model.",
+    title: "Stripe vs Square vs PayPal: UK Comparison & Costs",
+    description: "Pricing, fees, approval odds, and which processor fits high-growth merchants. Avoid the wrong choice.",
     keywords: [
       "stripe vs square vs paypal",
       "stripe vs paypal",

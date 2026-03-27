@@ -17,8 +17,8 @@ const adyenSources = [
 
 const AdyenEnterprisePlatform = () => {
   useSEO({
-    title: "Adyen: The Single Platform That Rewrote Enterprise Payments | ChosePayments",
-    description: "Discover why Adyen's single-platform approach to payments is the choice of enterprise brands. Learn about Interchange++ pricing, dedicated Integration Engineers, and omnichannel capabilities.",
+    title: "Adyen for Enterprises: When It's Better Than Stripe",
+    description: "Adyen vs Stripe for enterprise. Unified platform, global reach, lower fees at scale. See if Adyen's infrastructure fits your business model and volume needs.",
     keywords: [
       "adyen payments",
       "adyen payment gateway",

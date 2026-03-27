@@ -32,8 +32,8 @@ const sources = [
 const PaymentProviderRiskModels = () => {
   return (
     <InsightsArticleLayout
-      title="Payment Provider Risk Models Explained in Plain English"
-      description="Learn why two similar businesses get very different outcomes from payment providers. Understand how risk models work and how to position your business for approval."
+      title="Payment Provider Risk Models: Why You Get Rejected or Approved"
+      description="Understand why payment providers approve some merchants and reject others. Underwriting criteria, risk models, and how to improve your approval odds."
       category={{ name: "Explainer", slug: "explainer" }}
       cluster="hub"
       currentSlug="payment-provider-risk-models"
