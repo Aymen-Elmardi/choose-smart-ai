@@ -1,3 +1,4 @@
+'use client'
 import { useState, useMemo } from "react";
 import { PROVIDER_REGISTRY, ALL_INDUSTRIES, type RiskLevel } from "@/lib/scoringData";
 

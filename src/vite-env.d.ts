@@ -1,8 +1,2 @@
-/// <reference types="vite/client" />
-
-// Injected by Vite `define` in vite.config.ts
-declare global {
-  const __APP_BUILD_TIME__: string;
-}
-
-export {};
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />

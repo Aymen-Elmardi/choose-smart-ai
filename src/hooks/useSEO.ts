@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect, useLayoutEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from '@/lib/router-compat';
 
 const BASE_URL = "https://chosepayments.com";
 const DEFAULT_OG_IMAGE = "https://chosepayments.com/og-default.png";

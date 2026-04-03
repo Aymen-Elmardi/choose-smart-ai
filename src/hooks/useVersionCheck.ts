@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useRef, lazy, ComponentType } from "react";
-import { useLocation } from "react-router-dom";
+'use client'
+import { useCallback, useEffect, useRef, ComponentType } from "react";
+import { useLocation } from '@/lib/router-compat';
 
-// Provided by Vite `define` (vite.config.ts). Kept local to this module to avoid
-// TS moduleDetection quirks.
-declare const __APP_BUILD_TIME__: string;
+// Provided by next.config.mjs env.NEXT_PUBLIC_BUILD_TIME
+const __APP_BUILD_TIME__ = process.env.NEXT_PUBLIC_BUILD_TIME;
 
 const VERSION_CHECK_KEY = "__app_version__";
 const VERSION_FORCE_RELOAD_KEY = "__cp_version_force_reload_once__";
@@ -57,8 +57,7 @@ export function useVersionCheck() {
 
         const data = await response.json();
         const serverVersion = data.version;
-        const clientVersion =
-          typeof __APP_BUILD_TIME__ !== "undefined" ? __APP_BUILD_TIME__ : undefined;
+        const clientVersion = __APP_BUILD_TIME__ ?? undefined;
         const storedVersion = sessionStorage.getItem(VERSION_CHECK_KEY);
 
         // If this tab is running a stale cached build (very common cause of
@@ -122,38 +121,13 @@ export function useVersionCheck() {
 }
 
 /**
- * Wraps a lazy import with automatic retry on chunk load failure.
- * Forces a cache-busting reload if the import fails.
+ * In Next.js, code splitting is handled natively via next/dynamic.
+ * This shim keeps the same call-signature so App.tsx doesn't need changes.
+ * App.tsx is removed as part of the migration; this export remains for
+ * any remaining usage.
  */
 export function lazyWithRetry<T extends ComponentType<unknown>>(
   importFn: () => Promise<{ default: T }>
-) {
-  return lazy(async () => {
-    try {
-      return await importFn();
-    } catch (error) {
-      // Check if this is a chunk load error
-      const message = error instanceof Error ? error.message : String(error);
-      const isChunkError =
-        message.includes("Failed to fetch dynamically imported module") ||
-        message.includes("ChunkLoadError") ||
-        message.includes("Loading chunk") ||
-        message.includes("Importing a module script failed");
-
-      if (isChunkError) {
-        const key = "__chunk_retry_attempted__";
-        const alreadyTried = sessionStorage.getItem(key) === "1";
-        
-        if (!alreadyTried) {
-          sessionStorage.setItem(key, "1");
-          // Force reload without cache
-          window.location.reload();
-          // Return a never-resolving promise while reload happens
-          return new Promise(() => {});
-        }
-      }
-      
-      throw error;
-    }
-  });
+): () => Promise<{ default: T }> {
+  return importFn;
 }

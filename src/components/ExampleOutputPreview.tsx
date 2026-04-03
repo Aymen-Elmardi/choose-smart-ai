@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/router-compat';
 import { ArrowRight, ShieldX, CheckCircle, Building2, Globe, TrendingUp, CreditCard, ShoppingCart, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useInView } from "@/hooks/useInView";

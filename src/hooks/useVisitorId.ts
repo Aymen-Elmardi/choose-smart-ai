@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from "react";
 
 const VISITOR_ID_KEY = "cp_visitor_id";

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/router-compat';
 import { ArrowRight, BookOpen } from "lucide-react";
 import { 
   getConceptRelatedArticles, 

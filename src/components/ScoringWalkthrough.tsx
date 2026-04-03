@@ -1,3 +1,4 @@
+'use client'
 import { useState, useMemo } from "react";
 import { PROVIDER_REGISTRY, SAMPLE_WALKTHROUGH, type ProviderConfig } from "@/lib/scoringData";
 
