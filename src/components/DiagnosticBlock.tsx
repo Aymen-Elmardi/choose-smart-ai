@@ -1,5 +1,7 @@
+'use client'
+
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from '@/lib/router-compat';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Ban, ShieldAlert, Receipt, Scale, Wallet, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";

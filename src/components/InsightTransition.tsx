@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from "react";
 import { Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";

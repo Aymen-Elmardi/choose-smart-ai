@@ -1,3 +1,4 @@
+'use client'
 // Enrichment data hook - collects analytics data for lead quality scoring
 import { useEffect, useState, useCallback } from "react";
 import type { EnrichmentData } from "@/types/quiz";
