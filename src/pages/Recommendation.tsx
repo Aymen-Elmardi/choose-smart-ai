@@ -81,6 +81,28 @@ const readStoredMarket = (): Market => {
   }
 };
 
+const RECOMMENDATION_EMAIL_GATE_KEY = "chosepayments_recommendation_unlocked";
+const RECOMMENDATION_GATE_EMAIL_KEY = "chosepayments_recommendation_gate_email";
+const EMAIL_GATE_PLACEHOLDER_NAME = "Quiz participant";
+
+const readRecommendationUnlocked = (): boolean => {
+  if (typeof window === "undefined") return false;
+  try {
+    return localStorage.getItem(RECOMMENDATION_EMAIL_GATE_KEY) === "1";
+  } catch {
+    return false;
+  }
+};
+
+const readGateEmailForForm = (): string => {
+  if (typeof window === "undefined") return "";
+  try {
+    if (localStorage.getItem(RECOMMENDATION_EMAIL_GATE_KEY) !== "1") return "";
+    return localStorage.getItem(RECOMMENDATION_GATE_EMAIL_KEY) || "";
+  } catch {
+    return "";
+  }
+};
 
 // Business profile detail item
 const ProfileItem = ({ label, value, icon: Icon }: { label: string; value: string; icon: React.ElementType }) => (
@@ -110,6 +132,9 @@ const Recommendation = () => {
   const [guidanceSubmitted, setGuidanceSubmitted] = useState(false);
   const [guidanceEmail, setGuidanceEmail] = useState("");
   const [showFullForm, setShowFullForm] = useState(false);
+  const [recommendationUnlocked, setRecommendationUnlocked] = useState(readRecommendationUnlocked);
+  const [gateEmail, setGateEmail] = useState("");
+  const [isGateSubmitting, setIsGateSubmitting] = useState(false);
   const { toast } = useToast();
 
   const [primary, setPrimary] = useState<Provider | null>(null);
@@ -118,7 +143,7 @@ const Recommendation = () => {
 
   const [formData, setFormData] = useState({
     fullName: "",
-    email: "",
+    email: readGateEmailForForm(),
     companyName: "",
     notes: "",
     websiteUrl: "",
@@ -168,6 +193,56 @@ const Recommendation = () => {
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleEmailGateSubmit = async () => {
+    const email = gateEmail.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast({ title: "Please enter a valid email address", variant: "destructive" });
+      return;
+    }
+    if (!primary || !answers) return;
+
+    setIsGateSubmitting(true);
+    const payload = {
+      fullName: EMAIL_GATE_PLACEHOLDER_NAME,
+      email,
+      businessName: "",
+      notes: "",
+      websiteUrl: "",
+      currentProvider: "",
+      painPoints: "",
+      businessType: answers.businessType,
+      monthlyVolume: answers.monthlyVolume,
+      avgTransaction: answers.avgTransaction,
+      region: answers.location,
+      salesChannel: answers.salesChannel,
+      priorities: answers.priorities,
+      features: answers.features,
+      market,
+      recommendedProvider: primary.name,
+      reasons: primary.reasons ?? [],
+      logicPath: "tiered-engine-email-gate",
+    };
+
+    try {
+      const { data, error } = await supabase.functions.invoke("send-lead-email", { body: payload });
+      if (error) throw error;
+      if (!data?.success) throw new Error(data?.error || "Failed to send");
+      try {
+        localStorage.setItem(RECOMMENDATION_EMAIL_GATE_KEY, "1");
+        localStorage.setItem(RECOMMENDATION_GATE_EMAIL_KEY, email);
+      } catch {
+        /* ignore */
+      }
+      setFormData((prev) => ({ ...prev, email }));
+      setRecommendationUnlocked(true);
+    } catch (err) {
+      console.error("Email gate lead error:", err);
+      toast({ title: "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setIsGateSubmitting(false);
+    }
   };
 
   const handleGuidanceSubmit = async () => {
@@ -459,49 +534,100 @@ const Recommendation = () => {
                   </div>
                 )}
 
-                {/* Section 2 — Recommended Provider (SUBDUED) */}
-                <Card className="border border-border/60 bg-card mb-6">
-                  <CardContent className="p-5 md:p-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Recommended Provider</span>
-                    </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-1">{primary.name}</h3>
-                    <p className="text-muted-foreground text-sm mb-3">{primary.description}</p>
-                    {primary.reasons?.length > 0 && (
-                      <ul className="space-y-1.5">
-                        {primary.reasons.map((r, i) => (
-                          <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                            <Check className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                            <span>{r}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </CardContent>
-                </Card>
-
-                {/* Section 3 — Providers to Avoid (HIGHLIGHTED) */}
-                {avoid.length > 0 && (
-                  <Card className="border-2 border-destructive/20 bg-destructive/5 mb-8">
-                    <CardContent className="p-5 md:p-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <AlertTriangle className="w-5 h-5 text-destructive" />
-                        <span className="text-sm font-bold text-destructive uppercase tracking-wider">Providers to Avoid</span>
+                {!recommendationUnlocked ? (
+                  <Card className="border-2 border-primary/40 bg-primary/5 shadow-md mb-8">
+                    <CardContent className="p-6 md:p-8">
+                      <div className="text-center mb-6">
+                        <h3 className="text-xl font-bold text-foreground mb-2">
+                          Based on your answers, we&apos;ve matched you with the right payment processor for your business.
+                        </h3>
+                        <p className="text-muted-foreground max-w-md mx-auto text-sm">
+                          Enter your email to see your full recommendation.
+                        </p>
                       </div>
-                      <div className="space-y-3">
-                        {avoid.slice(0, 2).map((p) => (
-                          <div key={p.name} className="flex items-start gap-3 px-4 py-3 rounded-lg bg-background border border-destructive/15">
-                            <ShieldX className="w-4 h-4 text-destructive/70 shrink-0 mt-0.5" />
-                            <div>
-                              <span className="text-sm font-semibold text-foreground">{p.name}</span>
-                              <p className="text-xs text-muted-foreground mt-0.5">{p.reason}</p>
-                            </div>
-                          </div>
-                        ))}
+                      <div className="space-y-4 max-w-md mx-auto">
+                        <div className="space-y-2">
+                          <Label htmlFor="recGateEmail" className="text-sm font-medium text-foreground">
+                            Email
+                          </Label>
+                          <Input
+                            id="recGateEmail"
+                            type="email"
+                            autoComplete="email"
+                            placeholder="you@company.com"
+                            value={gateEmail}
+                            onChange={(e) => setGateEmail(e.target.value)}
+                            className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-6 text-center">
+                        <Button variant="hero" size="xl" onClick={handleEmailGateSubmit} disabled={isGateSubmitting}>
+                          {isGateSubmitting ? (
+                            <>
+                              <Loader2 className="w-5 h-5 animate-spin" />
+                              Submitting...
+                            </>
+                          ) : (
+                            <>
+                              See my recommendation
+                              <ArrowRight className="w-5 h-5" />
+                            </>
+                          )}
+                        </Button>
+                        <p className="mt-3 text-sm text-muted-foreground">
+                          No spam. No sales calls. Just your result.
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
+                ) : (
+                  <>
+                    {/* Section 2 — Recommended Provider (SUBDUED) */}
+                    <Card className="border border-border/60 bg-card mb-6">
+                      <CardContent className="p-5 md:p-6">
+                        <div className="flex items-center gap-2 mb-2">
+                          <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                          <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Recommended Provider</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-foreground mb-1">{primary.name}</h3>
+                        <p className="text-muted-foreground text-sm mb-3">{primary.description}</p>
+                        {primary.reasons?.length > 0 && (
+                          <ul className="space-y-1.5">
+                            {primary.reasons.map((r, i) => (
+                              <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                                <Check className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
+                                <span>{r}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </CardContent>
+                    </Card>
+
+                    {/* Section 3 — Providers to Avoid (HIGHLIGHTED) */}
+                    {avoid.length > 0 && (
+                      <Card className="border-2 border-destructive/20 bg-destructive/5 mb-8">
+                        <CardContent className="p-5 md:p-6">
+                          <div className="flex items-center gap-2 mb-4">
+                            <AlertTriangle className="w-5 h-5 text-destructive" />
+                            <span className="text-sm font-bold text-destructive uppercase tracking-wider">Providers to Avoid</span>
+                          </div>
+                          <div className="space-y-3">
+                            {avoid.slice(0, 2).map((p) => (
+                              <div key={p.name} className="flex items-start gap-3 px-4 py-3 rounded-lg bg-background border border-destructive/15">
+                                <ShieldX className="w-4 h-4 text-destructive/70 shrink-0 mt-0.5" />
+                                <div>
+                                  <span className="text-sm font-semibold text-foreground">{p.name}</span>
+                                  <p className="text-xs text-muted-foreground mt-0.5">{p.reason}</p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    )}
+                  </>
                 )}
               </div>
             ) : resultsLoaded && !primary ? (
@@ -523,7 +649,7 @@ const Recommendation = () => {
             )}
 
             {/* ── STEP 1: Lightweight Guidance Capture ── */}
-            {resultsLoaded && !guidanceSubmitted && (
+            {resultsLoaded && !guidanceSubmitted && (!primary || recommendationUnlocked) && (
               <div className="animate-fade-up animation-delay-100">
                 <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
                   <CardContent className="p-6 md:p-8">
@@ -591,7 +717,7 @@ const Recommendation = () => {
             )}
 
             {/* ── STEP 2: Guidance Confirmation + Secondary Full Form ── */}
-            {resultsLoaded && guidanceSubmitted && (
+            {resultsLoaded && guidanceSubmitted && (!primary || recommendationUnlocked) && (
               <div className="space-y-6 animate-fade-up animation-delay-100">
                 {/* Confirmation card */}
                 <Card className="border border-primary/30 bg-primary/5">
