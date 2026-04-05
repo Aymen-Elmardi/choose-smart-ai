@@ -1,10 +1,10 @@
 # Deploy to Cloudflare Workers (Staging)
-# Triggers on every push to main — runs lint, typecheck, build, then deploys to staging.
+# Triggers on every push to staging — runs lint, typecheck, build, then deploys.
 name: Deploy to Staging
 
 on:
   push:
-    branches: [main]
+    branches: [staging]
 
 jobs:
   deploy-staging:
@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -36,4 +36,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 97936c3b95b5e68ff3a8c2f8994ae178
           command: deploy --name chosepayments-staging
