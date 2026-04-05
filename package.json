@@ -8,7 +8,13 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "check": "npm run lint && npm run typecheck",
+    "deploy:staging": "npm run check && vite build --mode staging && wrangler deploy --name chosepayments-staging",
+    "deploy:production": "npm run check && vite build && wrangler deploy",
+    "rollback:staging": "wrangler rollback --name chosepayments-staging",
+    "rollback:production": "wrangler rollback"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",
