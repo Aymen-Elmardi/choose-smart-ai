@@ -37,5 +37,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 97936c3b95b5e68ff3a8c2f8994ae178
-          command: deploy --env staging
-          wranglerVersion: "3.114.3"
+          command: deploy --config wrangler.staging.jsonc
