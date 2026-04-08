@@ -89,6 +89,7 @@ const FiservPaymentsPlatform = lazyWithRetry(() => import("./pages/insights/Fise
 const AdyenVsFirstData = lazyWithRetry(() => import("./pages/insights/AdyenVsFirstData"));
 const ReferralCommissionGuide = lazyWithRetry(() => import("./pages/insights/ReferralCommissionGuide"));
 const PayPalPaymentPlatform = lazyWithRetry(() => import("./pages/insights/PayPalPaymentPlatform"));
+const CashflowsPaymentPlatform = lazyWithRetry(() => import("./pages/insights/CashflowsPaymentPlatform"));
 const WhyProvidersImposeReserves = lazyWithRetry(() => import("./pages/insights/WhyProvidersImposeReserves"));
 const RollingVsFixedReserve = lazyWithRetry(() => import("./pages/insights/RollingVsFixedReserve"));
 const PayoutSettlementExplained = lazyWithRetry(() => import("./pages/insights/PayoutSettlementExplained"));
@@ -260,6 +261,7 @@ const App = () => (
               <Route path="/insights/adyen-vs-first-data" element={<AdyenVsFirstData />} />
               <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
               <Route path="/insights/paypal-payment-platform" element={<PayPalPaymentPlatform />} />
+              <Route path="/insights/cashflows-payment-platform" element={<CashflowsPaymentPlatform />} />
               
               {/* Crisis Intervention */}
               <Route path="/insights/crisis" element={<CrisisIndex />} />

@@ -598,6 +598,13 @@ export const allInsights: Insight[] = [
     category: "providers",
     readTime: "10 min read"
   },
+  {
+    title: "Cashflows: The UK Direct Acquirer Built for Speed, Control, and Transparency",
+    slug: "cashflows-payment-platform",
+    description: "Cashflows is an FCA-regulated direct acquirer offering fast onboarding, same-day settlement, and modern APIs. Learn why Cashflows is one of the strongest UK payment providers.",
+    category: "providers",
+    readTime: "9 min read"
+  },
   // Provider Fit Guides
   {
     title: "Best Payment Processors for High Chargeback Businesses",
