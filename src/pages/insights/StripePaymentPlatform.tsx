@@ -306,7 +306,7 @@ const StripePaymentPlatform = () => {
                 <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
                   Our 60-second assessment helps ensure your business is perfectly aligned with Stripe's automated systems to maximize platform benefits.
                 </p>
-                <Link to="/quiz">
+                <Link to="/assessment?start=true">
                   <Button size="lg" className="gap-2">
                     Take the Assessment
                     <ArrowRight className="w-4 h-4" />

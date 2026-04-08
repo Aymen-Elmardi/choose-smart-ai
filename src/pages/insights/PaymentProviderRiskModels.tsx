@@ -417,7 +417,7 @@ const PaymentProviderRiskModels = () => {
 
       <p className="mb-8">
         If you want to avoid surprises, reviews, and rework,{" "}
-        <Link to="/quiz" className="text-primary hover:underline font-medium">
+        <Link to="/assessment?start=true" className="text-primary hover:underline font-medium">
           a short assessment before applying
         </Link>{" "}
         can save months of friction.

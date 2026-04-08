@@ -256,7 +256,7 @@ const AdyenVsFirstData = () => {
 
       <div className="my-8 p-6 bg-primary/5 border border-primary/20 rounded-lg">
         <p className="text-base">
-          <strong>Ready to find your fit?</strong> If you want to understand which model suits your business before applying, <Link to="/quiz" className="text-primary hover:underline font-medium">start a short assessment</Link>. It looks at your business structure and routes you toward the type of provider most likely to approve and support you long term.
+          <strong>Ready to find your fit?</strong> If you want to understand which model suits your business before applying, <Link to="/assessment?start=true" className="text-primary hover:underline font-medium">start a short assessment</Link>. It looks at your business structure and routes you toward the type of provider most likely to approve and support you long term.
         </p>
       </div>
 
