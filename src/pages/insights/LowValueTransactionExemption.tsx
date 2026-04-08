@@ -246,7 +246,7 @@ const LowValueTransactionExemption = () => {
 
       <p className="mb-8">
         If you are unsure how your current setup handles low value transactions, or whether your provider is optimising exemptions correctly, a short{" "}
-        <Link to="/quiz" className="text-primary hover:underline font-medium">
+        <Link to="/assessment?start=true" className="text-primary hover:underline font-medium">
           payment assessment
         </Link>{" "}
         can help you understand which providers are more likely to support your business model.
