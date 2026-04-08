@@ -31,7 +31,7 @@ const StripeFees = () => {
   const faqs = [
     {
       question: "What are Stripe's standard UK card processing fees?",
-      answer: "Stripe charges 1.4% + 20p for UK cards, 1.5% + 20p for European cards, and 2.9% + 20p for non-European cards."
+      answer: "Stripe charges 1.5% + 20p for UK cards, 2.5% + 20p for EU cards, and 2.9% + 20p for non-European cards."
     },
     {
       question: "How much does Stripe Connect cost for platforms?",
@@ -53,8 +53,8 @@ const StripeFees = () => {
 
   return (
     <InsightsArticleLayout
-      title="Stripe Fees Explained: Real Costs for UK Merchants"
-      description="Discover what Stripe really costs. Hidden fees, Connect charges, chargebacks, and FX costs explained. See if you're overpaying on your processing rates."
+      title="Stripe Fees UK 2026: Exact Pricing, Hidden Costs & Alternatives | ChosePayments"
+      description="Stripe charges UK businesses 1.5% + 20p for UK cards and 2.5% + 20p for EU cards. See the full breakdown of fees, hidden charges, and whether Stripe is right for your business."
       category={{ name: "Fees & Costs", slug: "fees" }}
       currentSlug="stripe-fees-explained"
       publishedTime="2026-02-07"
@@ -93,11 +93,11 @@ const StripeFees = () => {
           <ul className="space-y-3">
             <li className="flex justify-between items-center border-b border-border pb-3">
               <span className="text-foreground font-medium">UK cards</span>
-              <span className="text-primary font-semibold">1.4% + 20p</span>
+              <span className="text-primary font-semibold">1.5% + 20p</span>
             </li>
             <li className="flex justify-between items-center border-b border-border pb-3">
-              <span className="text-foreground font-medium">European cards</span>
-              <span className="text-primary font-semibold">1.5% + 20p</span>
+              <span className="text-foreground font-medium">EU cards</span>
+              <span className="text-primary font-semibold">2.5% + 20p</span>
             </li>
             <li className="flex justify-between items-center">
               <span className="text-foreground font-medium">Non-European cards</span>
