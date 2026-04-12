@@ -59,9 +59,10 @@ export default class AppErrorBoundary extends React.Component<Props, State> {
     return (
       <main className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
         <section className="w-full max-w-lg rounded-xl border border-border bg-card p-6 md:p-8 shadow-sm">
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Something went wrong</p>
           <h1 className="text-xl md:text-2xl font-semibold tracking-tight">We couldn’t load this page</h1>
           <p className="mt-2 text-sm md:text-base text-muted-foreground">
-            This is usually temporary (for example, after an update). Please refresh to try again.
+            This is usually temporary—for example right after a deploy when your browser still has an old script. Refresh to load the latest version.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Button onClick={this.handleReload} variant="hero" size="lg">
