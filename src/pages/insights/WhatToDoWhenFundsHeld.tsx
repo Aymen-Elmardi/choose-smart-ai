@@ -5,7 +5,7 @@ import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 const WhatToDoWhenFundsHeld = () => {
   return (
     <InsightsArticleLayout
-      title="What to Do When Your Payment Provider Holds Your Funds"
+      title="Funds Held by Provider? What to Do Next"
       description="Funds being held by your payment provider? Learn why holds happen, the difference between a hold and a freeze, and the steps to take to get your money released."
       category={{ name: "Crisis Intervention", slug: "crisis" }}
       cluster="crisis"

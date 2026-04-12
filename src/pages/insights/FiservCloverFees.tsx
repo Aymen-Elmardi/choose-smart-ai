@@ -44,7 +44,7 @@ const faqs = [
 const FiservCloverFees = () => {
   return (
     <InsightsArticleLayout
-      title="Fiserv Clover Pricing: Multi-Location & Reseller Guide"
+      title="Fiserv Clover Fees: Multi-Location Pricing"
       description="Negotiated rates, hardware costs, and when it beats Stripe. See real-world examples."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="hub"

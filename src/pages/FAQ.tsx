@@ -151,7 +151,7 @@ const AccordionItem = ({ item }: { item: FAQItem }) => {
 
 const FAQ = () => {
   useSEO({
-    title: "Frequently Asked Questions | ChosePayments",
+    title: "Payment Processing FAQ — ChosePayments",
     description:
       "Answers to common questions about how ChosePayments works, how we make money, payment provider matching, and merchant risk assessment.",
   });

@@ -30,7 +30,7 @@ const WhatToDoWhenProviderAsksForDocuments = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useSEO({
-    title: "What To Do When a Payment Provider Asks for More Documents | ChosePayments",
+    title: "Provider Asking for Documents? Step-by-Step Guide | ChosePayments",
     description: "Learn why payment providers request additional documents, what these requests mean, and how to respond confidently. Includes a document checklist."
   });
 

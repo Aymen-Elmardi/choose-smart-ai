@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyPaymentAccountsGetFlaggedAfterGrowth = () => {
   return (
     <InsightsArticleLayout
-      title="Growth-Related Account Flags: What Triggers Them"
+      title="Payment Account Flagged After Growth Explained"
       description="Understand why sudden business growth triggers payment account reviews. Learn what providers check and how to handle growth reviews effectively."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

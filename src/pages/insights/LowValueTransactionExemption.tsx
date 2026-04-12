@@ -33,7 +33,7 @@ const sources: Source[] = [
 const LowValueTransactionExemption = () => {
   return (
     <InsightsArticleLayout
-      title="Low Value Transaction (LVT) Exemption: How Small Payments Unlock Higher Approval Rates"
+      title="Low Value Transaction Exemption Explained"
       description="Learn how the Low Value Transaction exemption under SCA rules can improve card approval rates, reduce checkout friction, and boost conversion for small purchases."
       category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"

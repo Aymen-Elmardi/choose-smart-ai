@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyPaymentAccountsGetFlaggedWithoutChanges = () => {
   return (
     <InsightsArticleLayout
-      title="Account Flagged Without Changes? Here's What Providers Are Reacting To"
+      title="Account Flagged Without Changes? Here's Why"
       description="Learn why payment accounts get flagged or reviewed even when nothing changed. Understand what providers are reacting to and how to reduce friction."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyPaymentProvidersAskForSourceOfFunds = () => {
   return (
     <InsightsArticleLayout
-      title="Understanding Source of Funds Verification"
+      title="Source of Funds: Why Providers Ask for Proof"
       description="Understand why payment providers request source of funds documentation. Learn what triggers these requests and how to respond effectively."
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"

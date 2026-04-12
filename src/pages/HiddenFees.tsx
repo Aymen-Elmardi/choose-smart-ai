@@ -10,7 +10,7 @@ const HiddenFees = () => {
   useCanonical();
   
   useSEO({
-    title: "Hidden Payment Fees: What Your Provider Isn't Telling You",
+    title: "Hidden Payment Fees Exposed — ChosePayments",
     description: "The rate you're quoted often isn't the rate you pay. Insider knowledge on hidden fees, rolling reserves, and why effective rates differ from advertised rates.",
     keywords: ["hidden payment fees", "payment processing costs", "effective rate", "rolling reserve", "provider pricing"],
   });

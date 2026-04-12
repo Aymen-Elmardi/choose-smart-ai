@@ -59,7 +59,7 @@ const guideArticles = [
 
 const Guides = () => {
   useSEO({
-    title: "Practical Guides | ChosePayments Insights",
+    title: "Payment Processing Guides — ChosePayments",
     description: "Step-by-step guides on payment provider verification, documentation requirements, and how to respond to compliance requests."
   });
 

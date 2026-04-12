@@ -10,7 +10,7 @@ const paymentSchemeRulesSources = [
 const PaymentSchemeRulesExplained = () => {
   return (
     <InsightsArticleLayout
-      title="What Are Payment Scheme Rules and Why They Matter More Than Your Contract"
+      title="Payment Scheme Rules: What Merchants Must Know"
       description="Learn what payment scheme rules are, how flow down provisions work, and why the rules set by Visa and Mastercard often matter more than your provider contract."
       category={{ name: "Compliance", slug: "compliance" }}
       cluster="hub"

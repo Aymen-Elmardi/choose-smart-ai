@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyPaymentProvidersAskForDirectorDocuments = () => {
   return (
     <InsightsArticleLayout
-      title="Director ID Verification: What Providers Ask For"
+      title="Director ID Verification: What Providers Need"
       description="Understand why payment providers request director documents like passports and proof of address. Learn what triggers these requests and how to respond effectively."
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"

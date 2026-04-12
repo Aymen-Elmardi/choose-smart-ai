@@ -31,7 +31,7 @@ const howToSteps = [
 
 const SourceOfFunds = () => {
   useSEO({
-    title: "Source of Funds Requests: What They Mean and How to Respond | ChosePayments",
+    title: "Source of Funds Verification: How to Respond | ChosePayments",
     description: "Wondering why your bank is asking for source of funds? Learn why payment providers request bank statements and source of funds documentation, and how to respond.",
     keywords: [
       "source of funds",

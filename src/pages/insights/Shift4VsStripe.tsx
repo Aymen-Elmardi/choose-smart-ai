@@ -50,7 +50,7 @@ const faqItems = [
 const Shift4VsStripe = () => {
   return (
     <InsightsArticleLayout
-      title="Shift4 vs Stripe: Choosing the Right Payment Engine for Your Enterprise"
+      title="Shift4 vs Stripe: Enterprise Comparison 2026"
       description="A strategic comparison of Shift4 and Stripe for enterprise payments. Learn how their pricing, risk models, and commerce capabilities differ to find the right fit for your business."
       category={{ name: "Provider Deep Dive", slug: "providers" }}
       cluster="provider"

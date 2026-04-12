@@ -48,7 +48,7 @@ const sources: Source[] = [
 const CreditCardPaymentsExplained = () => {
   return (
     <InsightsArticleLayout
-      title="Credit Card Payments: Why Providers Reject Card-Heavy Merchants"
+      title="Card-Heavy Merchants: Why Providers Reject You"
       description="Chargebacks, fraud, and approval risk explained. See how to reduce card payment risk and get approved."
       category={{ name: "Explainers", slug: "explainer" }}
       currentSlug="credit-card-payments-explained"

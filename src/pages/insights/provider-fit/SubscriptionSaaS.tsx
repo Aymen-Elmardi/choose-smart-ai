@@ -16,7 +16,7 @@ const SubscriptionSaaS = () => {
 
   return (
     <InsightsArticleLayout
-      title="Choosing the Right Payment Provider for Subscription and SaaS Businesses"
+      title="Subscription & SaaS Payment Provider Guide"
       description="Learn what subscription and SaaS businesses need from a payment provider, including recurring billing, dunning logic, and fraud exposure specific to subscription models."
       category={{ name: "Provider Fit Guides", slug: "provider-fit" }}
       cluster="hub"

@@ -37,7 +37,7 @@ const PayPalFees = () => {
 
   return (
     <InsightsArticleLayout
-      title="PayPal Pricing Explained and How It Compares to Adyen for UK Businesses"
+      title="PayPal Fees UK 2026: Full Pricing Breakdown"
       description="A clear breakdown of PayPal's blended pricing model for UK businesses, how fees compare to Adyen's interchange-plus model, and when each provider makes financial sense."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="pricing"

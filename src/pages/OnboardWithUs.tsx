@@ -39,7 +39,7 @@ const steps = [
 
 const OnboardWithUs = () => {
   useSEO({
-    title: "Managed Payment Provider Selection | ChosePayments",
+    title: "Partner With Us — ChosePayments",
     description: "Independent oversight for high-stakes payment decisions. We manage the entire provider selection and onboarding process on your behalf."
   });
   useCanonical();

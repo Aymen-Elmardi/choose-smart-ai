@@ -58,7 +58,7 @@ const faqs = [
 const AdyenFees = () => {
   return (
     <InsightsArticleLayout
-      title="Adyen Pricing Explained: How Fees Really Work and When Adyen Is Worth It"
+      title="Adyen Fees UK 2026: Full Pricing Breakdown"
       description="A clear breakdown of Adyen's interchange plus pricing model, how fees are structured, what affects your rate, and when Adyen pricing makes sense compared to Stripe and other providers."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="pricing"

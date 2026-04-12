@@ -13,7 +13,7 @@ import { Shield, AlertTriangle, XCircle } from "lucide-react";
 
 const ScoringLogic = () => {
   useSEO({
-    title: "How We Match You to a Provider | Scoring Logic Explained | ChosePayments",
+    title: "How Our Scoring Engine Works — ChosePayments",
     description: "See exactly how our recommendation engine eliminates, scores, and ranks 21 payment providers. No black boxes — full transparency.",
   });
 

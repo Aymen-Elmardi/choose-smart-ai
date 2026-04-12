@@ -27,7 +27,7 @@ const AdyenVsFirstData = () => {
 
   return (
     <InsightsArticleLayout
-      title="Adyen vs First Data: Which Enterprise Processor Wins?"
+      title="Adyen vs First Data: Enterprise Comparison"
       description="Adyen vs First Data comparison: pricing, features, approval speed. Which enterprise processor fits your volume and risk profile?"
       category={{ name: "Provider Deep Dive", slug: "providers" }}
       cluster="provider"

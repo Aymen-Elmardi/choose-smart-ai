@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const MarketplaceSellerInfo = () => {
   return (
     <InsightsArticleLayout
-      title="Marketplace Seller Verification: What Providers Need"
+      title="Marketplace Seller Verification Requirements"
       description="Understanding why marketplace businesses face additional verification for seller and payout information."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

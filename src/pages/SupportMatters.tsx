@@ -1,32 +1,17 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, HeadphonesIcon, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const SupportMatters = () => {
   useCanonical();
-  
-  useEffect(() => {
-    document.title = "Payment Provider Support Issues? Why It Matters More Than Fees";
-    
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute(
-      "content",
-      "Low fees mean nothing when your account is frozen and no one responds. Learn why support quality should be a top priority when choosing a payment provider."
-    );
-
-    return () => {
-      document.title = "Payment Provider Quiz";
-    };
-  }, []);
+  useSEO({
+    title: "Why Payment Provider Support Matters — ChosePayments",
+    description: "Low fees mean nothing when your account is frozen and no one responds. Learn why support quality should be a top priority when choosing a payment provider.",
+  });
 
   return (
     <div className="min-h-screen bg-background">

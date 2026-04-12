@@ -25,7 +25,7 @@ const WhyStripeFreezes = () => {
 
   return (
     <InsightsArticleLayout
-      title="Stripe Account Freezes in the UK: Common Triggers and Prevention"
+      title="Stripe Account Freezes UK: Triggers & Prevention"
       description="Stripe does not freeze accounts at random. Learn the common triggers for Stripe account freezes in the UK and how to prevent them before they happen."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const SameDaySettlementAndInstantPayouts = () => {
   return (
     <InsightsArticleLayout
-      title="Same-Day Settlement and Instant Payouts: What Businesses Should Know"
+      title="Same-Day Settlement & Instant Payouts Guide"
       description="Learn how same-day settlement and instant payouts work, when they help businesses, and the trade-offs involved with faster access to funds."
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"

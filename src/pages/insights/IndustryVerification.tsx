@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const IndustryVerification = () => {
   return (
     <InsightsArticleLayout
-      title="High-Risk Industries Face Extra Verification: Is Yours One?"
+      title="High-Risk Industry Verification Explained"
       description="Understanding why certain industries face additional verification requirements from payment providers."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

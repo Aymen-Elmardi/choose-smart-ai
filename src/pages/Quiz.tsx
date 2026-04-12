@@ -4,6 +4,7 @@ import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import InsightTransition from "@/components/InsightTransition";
+import { useSEO } from "@/hooks/useSEO";
 
 // Import from modular quiz architecture
 import type { QuizAnswers, Market } from "@/types/quiz";
@@ -60,25 +61,12 @@ const Quiz = () => {
     }
   }, []);
 
-  // Update SEO metadata
-  useEffect(() => {
-    document.title = "Payment Advisory Assessment | ChosePayments";
-    
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute(
-      "content",
-      "Complete a short assessment and receive independent payment advice tailored to your business. No automated recommendations. Human-reviewed guidance."
-    );
-
-    return () => {
-      document.title = "ChosePayments - Independent Payment Advisory";
-    };
-  }, []);
+  // SEO metadata
+  useSEO({
+    title: "Payment Processor Assessment — ChosePayments",
+    description: "Complete a short assessment and receive independent payment advice tailored to your business. No automated recommendations. Human-reviewed guidance.",
+    noIndex: true,
+  });
 
   const questionCount = getQuestionCount(answers);
   // Progress: questions only (no welcome step)

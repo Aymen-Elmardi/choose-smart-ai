@@ -32,7 +32,7 @@ const sources: Source[] = [
 const ApplePayGooglePayExplained = () => {
   return (
     <InsightsArticleLayout
-      title="Apple Pay & Google Pay: Boost Approval & Lower Chargebacks"
+      title="Apple Pay & Google Pay: Merchant Guide 2026"
       description="Apple Pay and Google Pay reduce chargebacks and improve payment provider approval. See how digital wallets help merchants get approved and increase conversion."
       category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"

@@ -49,7 +49,7 @@ const clusters = [
 
 const MerchantAccountProblems = () => {
   useSEO({
-    title: "Merchant Account Problems Explained | ChosePayments",
+    title: "Merchant Account Problems Solved — ChosePayments",
     description:
       "Funds withheld, reserves imposed, fees higher than expected. Understand what your payment provider is doing and why, clearly explained.",
   });

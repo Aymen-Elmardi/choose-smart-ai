@@ -1,25 +1,18 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Users, TrendingUp, Shield, AlertTriangle, CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 import ArticleActions from "@/components/ArticleActions";
 
 const ReferralCommissionGuide = () => {
   useCanonical();
-
-  useEffect(() => {
-    document.title = "How to Earn Recurring Commission by Referring Payment Providers | ChosePayments";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "If you advise other businesses, you're probably already influencing their payment choices. Here's how referral commission works and how to do it without burning trust.");
-    }
-    return () => {
-      document.title = "ChosePayments";
-    };
-  }, []);
+  useSEO({
+    title: "Earn Commission Referring Payment Providers — ChosePayments",
+    description: "If you advise other businesses, you're probably already influencing their payment choices. Here's how referral commission works and how to do it without burning trust.",
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -281,7 +274,7 @@ const ReferralCommissionGuide = () => {
           {/* Share & Like Actions */}
           <ArticleActions
             slug="referral-commission-guide"
-            title="How to Earn Recurring Commission by Referring Payment Providers"
+            title="Earn Commission Referring Payment Providers"
             className="mt-8 mb-12 pt-6 border-t border-border"
           />
 

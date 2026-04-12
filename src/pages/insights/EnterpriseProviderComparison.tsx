@@ -103,7 +103,7 @@ const comparisonData = [
 const EnterpriseProviderComparison = () => {
   return (
     <InsightsArticleLayout
-      title="Enterprise Payment Processors: Adyen vs Shift4 vs Checkout"
+      title="Enterprise Payment Processors Compared 2026"
       description="Enterprise payment processor comparison: Adyen, Shift4, Checkout.com. Pricing, approval odds, settlement speed. See which fits high-volume, high-risk businesses."
       category={{ name: "Provider Deep Dive", slug: "providers" }}
       cluster="provider"

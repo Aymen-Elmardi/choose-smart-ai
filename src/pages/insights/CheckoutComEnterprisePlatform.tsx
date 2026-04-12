@@ -17,7 +17,7 @@ const checkoutComSources = [
 
 const CheckoutComEnterprisePlatform = () => {
   useSEO({
-    title: "Checkout.com: The High-Performance Platform Built for Global Ambition | ChosePayments",
+    title: "Checkout.com Review: Enterprise Platform Guide | ChosePayments",
     description: "Discover why Checkout.com's modular architecture delivers superior authorization rates and granular control for high-growth global merchants. Learn about the Checkout.com API, local acquiring, and customizable risk engines.",
     keywords: [
       "checkout.com",

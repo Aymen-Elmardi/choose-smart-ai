@@ -53,7 +53,7 @@ const BestPaymentApiUK = () => {
   useCanonical();
   
   useSEO({
-    title: "Best Payment APIs for UK Developers & High-Growth Apps",
+    title: "Best Payment API UK 2026 — ChosePayments",
     description: "Compare payment APIs for UK developers: Stripe, Adyen, Checkout.com. Pricing, integration speed, approval rates. Find the API that fits your tech stack.",
     keywords: ["payment API UK", "best payment gateway API", "Stripe API alternatives", "checkout.com api", "developer payment integration", "payment API comparison"],
   });

@@ -6,7 +6,7 @@ import { ArrowLeft, Building2 } from "lucide-react";
 
 const CaseStudies = () => {
   useSEO({
-    title: "Case Studies | ChosePayments Insights",
+    title: "Payment Case Studies — ChosePayments",
     description: "Real-world examples of how businesses navigate payment provider challenges, account reviews, and compliance requirements."
   });
 

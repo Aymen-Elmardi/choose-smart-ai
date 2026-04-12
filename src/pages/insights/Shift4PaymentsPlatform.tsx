@@ -62,7 +62,7 @@ const Shift4PaymentsPlatform = () => {
 
   return (
     <InsightsArticleLayout
-      title="Shift4 Payments: The Global Payments Giant Most Businesses Have Never Heard Of"
+      title="Shift4 Payments Review: Global Platform Guide"
       description="Shift4 Payments is one of the largest payment technology companies in the world. Learn what they offer, who they serve best, and why they matter for long term payment stability."
       category={{ name: "Provider Deep Dive", slug: "providers" }}
       cluster="provider"

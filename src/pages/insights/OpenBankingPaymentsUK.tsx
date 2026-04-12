@@ -52,7 +52,7 @@ const OpenBankingPaymentsUK = () => {
 
   return (
     <InsightsArticleLayout
-      title="Open Banking Payments in the UK: Faster Settlement, Lower Risk, Fewer Chargebacks"
+      title="Open Banking Payments UK: Merchant Guide 2026"
       description="Learn how Open Banking payments work in the UK, why providers see them as lower risk than cards, and where they can improve payment performance for growing businesses."
       category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"

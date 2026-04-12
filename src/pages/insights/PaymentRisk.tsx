@@ -54,7 +54,7 @@ const paymentRiskArticles = [
 
 const PaymentRisk = () => {
   useSEO({
-    title: "Payment Risk & Account Freezes | ChosePayments Insights",
+    title: "Payment Risk Guides — ChosePayments",
     description: "Understand why payment accounts get flagged, frozen, or reviewed. Learn about account freezes, re-underwriting, and how to reduce payment risk."
   });
 

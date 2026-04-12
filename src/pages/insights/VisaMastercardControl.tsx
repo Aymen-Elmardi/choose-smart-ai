@@ -11,7 +11,7 @@ const visaMastercardSources = [
 const VisaMastercardControl = () => {
   return (
     <InsightsArticleLayout
-      title="Visa and Mastercard Control Card Payments. What Businesses Can and Cannot Do"
+      title="Visa & Mastercard Rules: What Merchants Can Do"
       description="Learn how Visa and Mastercard control the card payment system, why even large providers must follow their rules, and what UK and EU businesses can realistically do."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

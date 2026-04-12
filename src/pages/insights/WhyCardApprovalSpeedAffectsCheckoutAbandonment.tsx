@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyCardApprovalSpeedAffectsCheckoutAbandonment = () => {
   return (
     <InsightsArticleLayout
-      title="Card Approval Speed and Checkout Abandonment: The Connection Explained"
+      title="Card Approval Speed & Checkout Abandonment"
       description="Learn why card approval speed matters for conversion rates. Understand what slows down approvals and how delays cause checkout abandonment and lost revenue."
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"

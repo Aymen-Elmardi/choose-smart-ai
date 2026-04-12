@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhySomeBusinessesNeverApproved = () => {
   return (
     <InsightsArticleLayout
-      title="Some Businesses Struggle to Get Approved: The Real Reason"
+      title="Why Some Businesses Never Get Approved"
       description="Not all businesses are declined because they are doing something wrong. Learn why approval failures happen and how to apply correctly the first time."
       category={{ name: "Risk & Freezes", slug: "payment-risk" }}
       cluster="hub"

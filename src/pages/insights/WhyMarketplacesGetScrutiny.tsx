@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyMarketplacesGetScrutiny = () => {
   return (
     <InsightsArticleLayout
-      title="Marketplaces Face Extra Scrutiny: What Providers Look For"
+      title="Why Marketplaces Face Extra Payment Scrutiny"
       description="Marketplaces introduce additional layers of risk for payment providers. Learn why marketplace businesses face deeper reviews and how to choose the right payment infrastructure."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

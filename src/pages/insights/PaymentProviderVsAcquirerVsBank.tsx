@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const PaymentProviderVsAcquirerVsBank = () => {
   return (
     <InsightsArticleLayout
-      title="Payment Provider vs Acquirer vs Bank: What's the Difference?"
+      title="Provider vs Acquirer vs Bank: Key Differences"
       description="Understand who does what in card payments: payment providers, acquirers, and banks. Learn why money moves slower than transactions and what affects payout timelines."
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"

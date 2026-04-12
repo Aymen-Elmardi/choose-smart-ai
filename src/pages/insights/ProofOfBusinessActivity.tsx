@@ -35,7 +35,7 @@ const howToSteps = [
 
 const ProofOfBusinessActivity = () => {
   useSEO({
-    title: "Understanding Proof of Business Activity Requests | ChosePayments",
+    title: "Proof of Business Activity: How to Respond",
     description: "Understanding why payment providers ask for proof of business activity and how to prepare your documentation."
   });
 

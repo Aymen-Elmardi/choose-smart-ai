@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const SchemeRulesByPaymentMethod = () => {
   return (
     <InsightsArticleLayout
-      title="When Scheme Rules Apply Differently: Cards, Wallets, Marketplaces and BNPL Explained"
+      title="Scheme Rules by Payment Method Explained"
       description="Scheme rules do not apply identically across payment methods. Learn how cards, digital wallets, marketplaces and Buy Now Pay Later models each carry different risk, liability and compliance requirements."
       category={{ name: "Compliance", slug: "compliance" }}
       showCTA={false}

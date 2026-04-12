@@ -17,7 +17,7 @@ const adyenSources = [
 
 const AdyenEnterprisePlatform = () => {
   useSEO({
-    title: "Adyen for Enterprises: When It's Better Than Stripe",
+    title: "Adyen Platform Review: Enterprise Payments 2026 | ChosePayments",
     description: "Adyen vs Stripe for enterprise. Unified platform, global reach, lower fees at scale. See if Adyen's infrastructure fits your business model and volume needs.",
     keywords: [
       "adyen payments",

@@ -5,7 +5,7 @@ import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 const PayoutSettlementExplained = () => {
   return (
     <InsightsArticleLayout
-      title="Why Your Payout Doesn't Match Your Sales: Settlement Timing Explained"
+      title="Payout Settlement Timing Explained"
       description="Learn why the amount you receive from your payment provider rarely matches your daily sales, and how fees, reserves, chargebacks, and settlement timing create payout discrepancies."
       category={{ name: "Explainer", slug: "explainer" }}
       cluster="hub"

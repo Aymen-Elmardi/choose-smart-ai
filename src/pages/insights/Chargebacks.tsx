@@ -44,7 +44,7 @@ const Chargebacks = () => {
     }
   ];
   useSEO({
-    title: "Chargebacks Explained: Costs, Causes, and How to Reduce Them (UK & EU)",
+    title: "Chargebacks Explained: Costs & Prevention | ChosePayments",
     description: "Too many chargebacks can freeze your account. Learn what a chargeback fee is, how chargebacks work, and how to reduce them before they damage your business.",
     keywords: [
       "chargebacks",

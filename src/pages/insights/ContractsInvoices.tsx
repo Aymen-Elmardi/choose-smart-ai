@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const ContractsInvoices = () => {
   return (
     <InsightsArticleLayout
-      title="Document Requests Explained: Contracts, Invoices, and Agreements"
+      title="Document Requests: Contracts & Invoices Guide"
       description="Understanding why payment providers request contracts, invoices, and customer agreements, when these requests appear, and how to respond effectively."
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"

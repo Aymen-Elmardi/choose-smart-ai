@@ -32,7 +32,7 @@ const sources = [
 const PaymentProviderRiskModels = () => {
   return (
     <InsightsArticleLayout
-      title="Payment Provider Risk Models: Why You Get Rejected or Approved"
+      title="Payment Provider Risk Models Explained"
       description="Understand why payment providers approve some merchants and reject others. Underwriting criteria, risk models, and how to improve your approval odds."
       category={{ name: "Explainer", slug: "explainer" }}
       cluster="hub"

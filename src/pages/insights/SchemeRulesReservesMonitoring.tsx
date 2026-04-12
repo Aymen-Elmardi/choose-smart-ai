@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const SchemeRulesReservesMonitoring = () => {
   return (
     <InsightsArticleLayout
-      title="How Scheme Rules Trigger Reserves, Monitoring Programs and Account Reviews"
+      title="Scheme Rules: Reserves & Monitoring Triggers"
       description="Learn how card network thresholds from Visa and Mastercard trigger reserves, monitoring programs, and account reviews, and what growing businesses can do to prevent them."
       category={{ name: "Compliance", slug: "compliance" }}
       showCTA={false}

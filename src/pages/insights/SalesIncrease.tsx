@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const SalesIncrease = () => {
   return (
     <InsightsArticleLayout
-      title="Sales Growth Triggers Document Requests: How to Prepare"
+      title="Sales Growth Triggers: Prepare for Reviews"
       description="Learn why sudden sales growth triggers additional document requests from payment providers."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

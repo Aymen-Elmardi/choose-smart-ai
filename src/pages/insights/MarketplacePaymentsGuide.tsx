@@ -5,7 +5,7 @@ import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 const MarketplacePaymentsGuide = () => {
   return (
     <InsightsArticleLayout
-      title="The Marketplace Founder's Guide to Payment Processing"
+      title="Marketplace Payments: Founder's Guide 2026"
       description="Building a marketplace means navigating split payments, seller verification, chargeback risk, and provider scrutiny. This guide explains what payment providers don't tell marketplace founders and how to secure the right payment partnership."
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"

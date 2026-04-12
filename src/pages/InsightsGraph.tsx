@@ -2,6 +2,7 @@ import { useMemo, useState, useCallback, useRef, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { conceptArticles, clusterMeta, type ConceptCluster } from "@/lib/conceptClusters";
+import { useSEO } from "@/hooks/useSEO";
 
 interface Node {
   id: string;
@@ -33,6 +34,7 @@ const clusterColorsBg: Record<ConceptCluster, string> = {
 };
 
 const InsightsGraph = () => {
+  useSEO({ title: "Insights Knowledge Graph — ChosePayments", noIndex: true });
   const [selectedCluster, setSelectedCluster] = useState<ConceptCluster | "all">("all");
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);

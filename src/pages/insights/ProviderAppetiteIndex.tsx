@@ -32,7 +32,7 @@ const sources = [
 const ProviderAppetiteIndex = () => {
   return (
     <InsightsArticleLayout
-      title="The Provider Appetite Index: Why Payment Processors Say No (And How to Get a Yes)"
+      title="Provider Appetite Index: Why Processors Say No"
       description="Payment processors don't randomly accept or decline merchants. Learn how underwriting appetite works, why applications get rejected, and how to match your business to the right provider."
       category={{ name: "Explainer", slug: "explainer" }}
       cluster="hub"

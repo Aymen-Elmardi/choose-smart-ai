@@ -12,7 +12,7 @@ const articleSources: Source[] = [
 const WhyPaymentProvidersRejectGrowingBusinesses = () => {
   return (
     <InsightsArticleLayout
-      title="Why Payment Providers Reject Growing Businesses"
+      title="Why Providers Reject Growing Businesses"
       description="Understand why payment providers reject growing businesses and what you can fix before applying to improve your chances of approval."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

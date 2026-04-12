@@ -28,7 +28,7 @@ const Contact = () => {
   const { toast } = useToast();
 
   useSEO({
-    title: "Contact Us | ChosePayments",
+    title: "Contact Us — ChosePayments",
     description: "Get in touch with ChosePayments. We provide independent payment advisory services to help businesses find the right payment provider."
   });
 

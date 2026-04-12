@@ -1,32 +1,17 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Scale, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const ChooseProvider = () => {
   useCanonical();
-  
-  useEffect(() => {
-    document.title = "How to Choose the Right Payment Provider | UK & EU Guide";
-    
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
-      document.head.appendChild(metaDescription);
-    }
-    metaDescription.setAttribute(
-      "content",
-      "Confused by Stripe, Worldpay, Square or others? Learn how to choose the right payment provider based on your business model, not just price."
-    );
-
-    return () => {
-      document.title = "Payment Provider Quiz";
-    };
-  }, []);
+  useSEO({
+    title: "How to Choose a Payment Provider UK — ChosePayments",
+    description: "Confused by Stripe, Worldpay, Square or others? Learn how to choose the right payment provider based on your business model, not just price.",
+  });
 
   return (
     <div className="min-h-screen bg-background">

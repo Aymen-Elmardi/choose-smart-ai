@@ -12,7 +12,7 @@ const rejectedSources: Source[] = [
 const RejectedHighRiskStrategy = () => {
   return (
     <InsightsArticleLayout
-      title="Rejected by Stripe or Square?"
+      title="Rejected by Stripe or Square? Next Steps"
       description="Rejected by a major payment provider? Learn why the 'high-risk' label is not a judgment and how to find a provider that actually wants your business."
       category={{ name: "Crisis Intervention", slug: "crisis" }}
       cluster="crisis"

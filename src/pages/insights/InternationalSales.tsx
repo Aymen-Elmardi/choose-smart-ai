@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const InternationalSales = () => {
   return (
     <InsightsArticleLayout
-      title="International Sales and Payment Provider Checks: What to Expect"
+      title="International Sales: Payment Provider Checks"
       description="Learn why selling internationally can trigger additional verification from payment providers."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

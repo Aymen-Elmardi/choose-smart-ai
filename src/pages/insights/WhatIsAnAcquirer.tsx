@@ -24,7 +24,7 @@ const WhatIsAnAcquirer = () => {
 
   return (
     <InsightsArticleLayout
-      title="What Is an Acquirer and Why Your Payment Provider Needs One"
+      title="What Is an Acquirer? Payment Basics Explained"
       description="Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business approval and account reviews."
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"

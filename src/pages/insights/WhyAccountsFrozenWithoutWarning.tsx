@@ -5,7 +5,7 @@ import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 const WhyAccountsFrozenWithoutWarning = () => {
   return (
     <InsightsArticleLayout
-      title="Account Freezes Without Warning: What Triggers Them"
+      title="Account Frozen Without Warning: Common Triggers"
       description="Payment providers are not always able to warn merchants before taking action. Learn why account freezes happen suddenly and how to protect your business."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

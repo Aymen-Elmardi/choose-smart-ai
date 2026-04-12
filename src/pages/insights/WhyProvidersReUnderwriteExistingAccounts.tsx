@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyProvidersReUnderwriteExistingAccounts = () => {
   return (
     <InsightsArticleLayout
-      title="When Providers Re-Underwrite Existing Accounts"
+      title="Provider Re-Underwriting Existing Accounts"
       description="Understand why payment providers re-underwrite existing accounts. Learn what triggers these reviews and how to handle them without disruption."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

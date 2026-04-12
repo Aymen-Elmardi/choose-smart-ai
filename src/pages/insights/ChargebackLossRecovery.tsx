@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const ChargebackLossRecovery = () => {
   return (
     <InsightsArticleLayout
-      title="You Lost a Chargeback: What Happens Next and How to Recover"
+      title="Lost a Chargeback? How to Recover Funds"
       description="Lost a chargeback dispute? Learn what happens to your account, how it affects your standing with providers and card networks, and what steps to take next."
       category={{ name: "Guide", slug: "guides" }}
       cluster="hub"

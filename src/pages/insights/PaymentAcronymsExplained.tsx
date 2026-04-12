@@ -28,7 +28,7 @@ const PaymentAcronymsExplained = () => {
 
   return (
     <InsightsArticleLayout
-      title="Payment Acronyms Merchants Actually Need to Understand (And Which Ones You Can Ignore)"
+      title="Payment Acronyms: Essential Merchant Glossary"
       description="A clear guide to the payment acronyms that affect approval, cash flow, and costs. Learn which terms matter for your business and which ones you can safely ignore."
       category={{ name: "Explainers", slug: "explainer" }}
       currentSlug="payment-acronyms-explained"

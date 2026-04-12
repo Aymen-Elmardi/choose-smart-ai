@@ -48,7 +48,7 @@ const SubscriptionRevenue = () => {
 
   return (
     <InsightsArticleLayout
-      title="Maximizing Subscription Revenue: Payment Success Rates and Risk Management for Recurring Billing"
+      title="Subscription Revenue: Payment Success & Risk"
       description="Learn how subscription businesses can improve payment success rates, reduce involuntary churn, and choose the right payment infrastructure for recurring billing."
       category={{ name: "E-commerce", slug: "ecommerce" }}
       cluster="hub"

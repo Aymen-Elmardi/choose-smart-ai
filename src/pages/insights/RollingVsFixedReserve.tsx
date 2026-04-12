@@ -5,7 +5,7 @@ import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 const RollingVsFixedReserve = () => {
   return (
     <InsightsArticleLayout
-      title="Rolling Reserve vs Fixed Reserve: What Merchants Need to Know"
+      title="Rolling vs Fixed Reserve: Merchant Guide"
       description="Understand the difference between rolling and fixed reserves, how each affects your cash flow, and which reserve type you're most likely to encounter."
       category={{ name: "Explainer", slug: "explainer" }}
       cluster="hub"

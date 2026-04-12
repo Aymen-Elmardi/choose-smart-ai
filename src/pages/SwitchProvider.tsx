@@ -43,7 +43,7 @@ const SwitchProvider = () => {
   useCanonical();
   
   useSEO({
-    title: "Switching Payment Providers — What to Check First",
+    title: "How to Switch Payment Provider — ChosePayments",
     description: "Stuck with the wrong provider? Learn how to leave without exit fees, fund holds, or unnecessary disruption.",
   });
 

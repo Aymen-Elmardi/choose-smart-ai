@@ -48,7 +48,7 @@ const sources: Source[] = [
 const CheckoutComFees = () => {
   return (
     <InsightsArticleLayout
-      title="Checkout.com Fees: Is It Worth It for Your Business?"
+      title="Checkout.com Fees UK 2026: Full Breakdown"
       description="Checkout.com pricing breakdown: processing fees, international costs, chargebacks. See how it compares to Stripe and Adyen for enterprise rates."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="pricing"

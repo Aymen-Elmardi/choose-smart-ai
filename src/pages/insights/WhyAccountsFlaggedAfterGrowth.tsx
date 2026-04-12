@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyAccountsFlaggedAfterGrowth = () => {
   return (
     <InsightsArticleLayout
-      title="Sudden Growth Can Trigger Account Reviews: How to Handle It"
+      title="Account Flagged After Growth? Here's Why"
       description="Rapid growth is one of the most common reasons payment accounts are reviewed. Learn why fast-growing businesses get flagged and how to avoid payment freezes."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

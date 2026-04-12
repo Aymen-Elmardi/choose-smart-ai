@@ -14,7 +14,7 @@ const traSources = [
 
 const TRAExemption = () => {
   useSEO({
-    title: "TRA Exemption: Reduce Friction & Improve Approval Rates",
+    title: "TRA Exemption: Reduce Payment Friction",
     description: "TRA exemption explained: how it reduces checkout friction and improves approval odds. See if your business qualifies and how to use it to lower fraud.",
     keywords: [
       "tra exemption",

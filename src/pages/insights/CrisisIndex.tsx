@@ -27,7 +27,7 @@ const crisisArticles = [
 
 const CrisisIndex = () => {
   useSEO({
-    title: "Crisis Intervention Guides | ChosePayments",
+    title: "Payment Crisis Guide — ChosePayments",
     description: "Urgent guides for merchants dealing with frozen accounts, hidden fees, or provider rejections. Practical steps to recover and find the right payment partner.",
     keywords: ["account frozen", "payment crisis", "provider rejection", "hidden fees", "recovery plan"],
   });

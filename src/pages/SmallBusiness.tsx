@@ -10,7 +10,7 @@ const SmallBusiness = () => {
   useCanonical();
   
   useSEO({
-    title: "Small Business Payment Risk: Finding a Provider That Won't Freeze You",
+    title: "Small Business Payment Processor UK — ChosePayments",
     description: "Most small businesses choose a payment provider too quickly — and regret it. Understand your risk profile and find a provider that actually fits your business.",
     keywords: ["small business payment risk", "payment provider fit", "UK small business payments", "provider approval"],
   });

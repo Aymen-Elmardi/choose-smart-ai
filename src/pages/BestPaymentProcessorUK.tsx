@@ -101,7 +101,7 @@ const BestPaymentProcessorUK = () => {
   useCanonical();
   
   useSEO({
-    title: "Best Payment Processors for UK Merchants: Find Your Fit",
+    title: "Best Payment Processor UK 2026 — ChosePayments",
     description: "Best UK payment processors for ecommerce, SaaS, and marketplaces. Compare Stripe, Adyen, Checkout.com. See which processor approves your business type.",
     keywords: [
       "best payment processor UK",

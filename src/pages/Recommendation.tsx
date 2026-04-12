@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
 import type { QuizAnswers, Provider } from "@/types/quiz";
 import { initializeSessionTracking } from "@/lib/sessionTracking";
+import { useSEO } from "@/hooks/useSEO";
 
 interface EliminatedProvider {
   name: string;
@@ -118,6 +119,7 @@ const ProfileItem = ({ label, value, icon: Icon }: { label: string; value: strin
 );
 
 const Recommendation = () => {
+  useSEO({ title: "Your Payment Processor Match — ChosePayments", noIndex: true });
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const startedFromQuizRef = useRef(searchParams.get("fromQuiz") === "true");

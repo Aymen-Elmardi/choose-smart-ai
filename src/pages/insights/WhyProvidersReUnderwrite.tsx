@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyProvidersReUnderwrite = () => {
   return (
     <InsightsArticleLayout
-      title="Re-Underwriting Explained: When Providers Review Existing Accounts"
+      title="Re-Underwriting: When Providers Review Accounts"
       description="Approval is not a one-time event. Learn why payment providers periodically re-underwrite accounts and how to prepare for ongoing reviews."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"

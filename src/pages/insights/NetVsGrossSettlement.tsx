@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const NetVsGrossSettlement = () => {
   return (
     <InsightsArticleLayout
-      title="Net vs Gross Settlement: How Payment Providers Calculate Your Payout"
+      title="Net vs Gross Settlement: Payout Guide"
       description="Understand the difference between net and gross settlement, how each model affects your cash flow, and which providers offer which approach."
       category={{ name: "Explainer", slug: "explainer" }}
       cluster="hub"

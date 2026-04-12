@@ -8,9 +8,11 @@ import ExamplesSection from "@/components/ExamplesSection";
 import CTASectionUS from "@/components/CTASectionUS";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
+import { useSEO } from "@/hooks/useSEO";
 
 const IndexUS = () => {
   useCanonical();
+  useSEO({ title: "Best Payment Processor Match for US Merchants — ChosePayments" });
   return (
     <div className="min-h-screen bg-background">
       <Header />

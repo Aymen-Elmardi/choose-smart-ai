@@ -53,7 +53,7 @@ const StripeFees = () => {
 
   return (
     <InsightsArticleLayout
-      title="Stripe Fees UK 2026: Exact Pricing, Hidden Costs & Alternatives | ChosePayments"
+      title="Stripe Fees UK 2026: Full Pricing Breakdown"
       description="Stripe charges UK businesses 1.5% + 20p for UK cards and 2.5% + 20p for EU cards. See the full breakdown of fees, hidden charges, and whether Stripe is right for your business."
       category={{ name: "Fees & Costs", slug: "fees" }}
       currentSlug="stripe-fees-explained"

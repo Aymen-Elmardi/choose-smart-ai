@@ -4,7 +4,7 @@ import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 const WhyProvidersImposeReserves = () => {
   return (
     <InsightsArticleLayout
-      title="Why Payment Providers Impose Reserves and How to Negotiate Them"
+      title="Why Providers Impose Reserves & How to Negotiate"
       description="Reserves protect providers from future losses. Learn why they're imposed, how rolling and fixed reserves work, and what you can do to reduce or release them."
       category={{ name: "Compliance", slug: "compliance" }}
       cluster="hub"

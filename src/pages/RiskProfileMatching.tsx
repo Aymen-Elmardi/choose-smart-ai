@@ -12,7 +12,7 @@ const RiskProfileMatching = () => {
   const { ref: factorsRef, isInView: factorsVisible } = useInView<HTMLElement>({ threshold: 0.15 });
 
   useSEO({
-    title: "Risk-Profile Matching: Never Choose the Wrong Payment Processor | ChosePayments",
+    title: "Risk-Profile Payment Matching — ChosePayments",
     description:
       "Our engine matches payment providers to your business risk profile. Stop choosing processors based on marketing. Find the one that actually fits your industry, volume, and model.",
     keywords: [

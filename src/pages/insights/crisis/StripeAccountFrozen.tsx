@@ -12,7 +12,7 @@ const stripeFrozenSources: Source[] = [
 const StripeAccountFrozen = () => {
   return (
     <InsightsArticleLayout
-      title="Stripe Account Frozen?"
+      title="Stripe Account Frozen? Recovery Steps UK"
       description="Stripe funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider."
       category={{ name: "Crisis Intervention", slug: "crisis" }}
       cluster="crisis"

@@ -27,7 +27,7 @@ const Insights = () => {
   );
 
   useSEO({
-    title: "Expert Insights: What Payment Providers Don't Tell You | ChosePayments",
+    title: "Payment Processing Insights & Guides — ChosePayments",
     description: "Insider knowledge on payment provider risk, underwriting criteria, account freezes, and why businesses get rejected. Strategic guidance from industry experts.",
     keywords: ["payment provider insights", "payment risk", "underwriting criteria", "account freezes", "provider rejection"],
   });

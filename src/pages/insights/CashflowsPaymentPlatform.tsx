@@ -19,7 +19,7 @@ const cashflowsSources = [
 
 const CashflowsPaymentPlatform = () => {
   useSEO({
-    title: "Cashflows: The UK Direct Acquirer Built for Speed, Control, and Transparency",
+    title: "Cashflows Review: UK Direct Acquirer Guide | ChosePayments",
     description: "Cashflows is an FCA-regulated direct acquirer offering fast onboarding, same-day settlement, and modern APIs. Learn why Cashflows is one of the strongest UK payment providers.",
     keywords: [
       "cashflows payments",

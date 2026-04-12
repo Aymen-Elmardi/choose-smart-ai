@@ -10,7 +10,7 @@ const StripeAlternatives = () => {
   useCanonical();
   
   useSEO({
-    title: "Stripe Alternatives for Marketplaces: Risk Assessment & Provider Fit",
+    title: "Stripe Alternatives for Marketplaces — ChosePayments",
     description: "Stripe Connect isn't always the right fit. Understand which marketplace payment providers match your risk profile, onboarding needs, and operational reality.",
     keywords: ["Stripe alternatives", "marketplace payment risk", "Stripe Connect assessment", "platform payment fit"],
   });

@@ -21,7 +21,7 @@ const pricingArticles = [
 
 const PricingModelsIndex = () => {
   useSEO({
-    title: "Payment Pricing Models Explained | ChosePayments",
+    title: "Payment Pricing Models — ChosePayments",
     description: "Understand the difference between Interchange++, blended pricing, and other payment processing fee structures. Learn which pricing model saves you the most.",
     keywords: ["interchange plus plus", "blended pricing", "payment fees", "pricing models"],
   });

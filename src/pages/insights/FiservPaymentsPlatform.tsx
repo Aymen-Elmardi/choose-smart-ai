@@ -85,7 +85,7 @@ const FiservPaymentsPlatform = () => {
 
   return (
     <InsightsArticleLayout
-      title="Fiserv Payment Platform: Enterprise Alternative to Stripe"
+      title="Fiserv Review: Enterprise Payment Platform"
       description="Fiserv payment processing for enterprises. Fees, approval process, settlement speed. When Fiserv beats Stripe and Adyen. See if it fits your business model."
       category={{ name: "Provider Deep Dive", slug: "providers" }}
       cluster="provider"
