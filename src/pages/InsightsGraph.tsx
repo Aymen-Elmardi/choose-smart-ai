@@ -34,7 +34,7 @@ const clusterColorsBg: Record<ConceptCluster, string> = {
 };
 
 const InsightsGraph = () => {
-  useSEO({ title: "Insights Knowledge Graph — ChosePayments", noIndex: true });
+  useSEO({ title: "Insights Knowledge Graph — ChosePayments", description: "Visual map of payment processing concepts and how our insight articles connect.", noIndex: true });
   const [selectedCluster, setSelectedCluster] = useState<ConceptCluster | "all">("all");
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);

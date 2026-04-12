@@ -119,7 +119,7 @@ const ProfileItem = ({ label, value, icon: Icon }: { label: string; value: strin
 );
 
 const Recommendation = () => {
-  useSEO({ title: "Your Payment Processor Match — ChosePayments", noIndex: true });
+  useSEO({ title: "Your Payment Processor Match — ChosePayments", description: "Your personalised payment processor recommendation based on your risk profile, volume, and industry.", noIndex: true });
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const startedFromQuizRef = useRef(searchParams.get("fromQuiz") === "true");

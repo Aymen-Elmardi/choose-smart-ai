@@ -12,7 +12,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const IndexUS = () => {
   useCanonical();
-  useSEO({ title: "Best Payment Processor Match for US Merchants — ChosePayments" });
+  useSEO({ title: "Best Payment Processor Match for US Merchants — ChosePayments", description: "Find the best payment processor for your US business. Match based on your risk profile, volume, and industry. Free and independent." });
   return (
     <div className="min-h-screen bg-background">
       <Header />
