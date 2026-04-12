@@ -1,7 +1,5 @@
 import { useEffect, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
-import ExitIntentPopup from "@/components/ExitIntentPopup";
-import TimedPopup from "@/components/TimedPopup";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
@@ -18,6 +16,7 @@ const IndexUS = lazyWithRetry(() => import("./pages/IndexUS"));
 const Quiz = lazyWithRetry(() => import("./pages/Quiz"));
 const Recommendation = lazyWithRetry(() => import("./pages/Recommendation"));
 const NotFound = lazyWithRetry(() => import("./pages/NotFound"));
+const ServerError = lazyWithRetry(() => import("./pages/ServerError"));
 
 // SEO Content Pages - lazy loaded
 const HiddenFees = lazyWithRetry(() => import("./pages/HiddenFees"));
@@ -177,8 +176,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
-        <ExitIntentPopup />
-        <TimedPopup />
         <AppErrorBoundary>
           <Suspense fallback={<PageLoader />}>
             <Routes>
@@ -288,7 +285,8 @@ const App = () => (
               
               {/* Landing pages */}
               <Route path="/risk-profile-matching" element={<RiskProfileMatching />} />
-              
+              <Route path="/500" element={<ServerError />} />
+
               {/* Fees & Costs articles */}
               <Route path="/insights/stripe-fees-explained" element={<StripeFees />} />
               <Route path="/insights/checkout-com-fees-explained" element={<CheckoutComFees />} />
