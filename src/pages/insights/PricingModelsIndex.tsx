@@ -34,7 +34,7 @@ const PricingModelsIndex = () => {
           Payment Pricing Models
         </h1>
         <p className="text-lg text-muted-foreground mb-12">
-          Understanding how payment processors structure their fees is one of the most important decisions for any growing business. These guides break down the two most common pricing models so you can make an informed choice.
+          Understanding how payment processors structure their fees is one of the most important decisions for any growing business. These guides break down the two most common pricing models so you can make an informed choice. Want to see real numbers? <Link to="/fee-calculator" className="text-primary hover:underline">Estimate your monthly fees</Link> across five major providers.
         </p>
 
         <div className="space-y-6">

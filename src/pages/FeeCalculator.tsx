@@ -327,6 +327,25 @@ const FeeCalculator = () => {
             </CardContent>
           </Card>
 
+          {/* Deep-dive links */}
+          <div className="mb-10">
+            <h2 className="text-lg font-semibold mb-3">Read the Full Fee Breakdowns</h2>
+            <ul className="grid sm:grid-cols-2 gap-2 text-sm">
+              <li>
+                <Link to="/insights/stripe-fees-explained" className="text-primary hover:underline">Stripe Fees Explained</Link>
+              </li>
+              <li>
+                <Link to="/insights/adyen-pricing-explained" className="text-primary hover:underline">Adyen Pricing Explained</Link>
+              </li>
+              <li>
+                <Link to="/insights/checkout-com-fees-explained" className="text-primary hover:underline">Checkout.com Fees Explained</Link>
+              </li>
+              <li>
+                <Link to="/insights/paypal-fees-explained" className="text-primary hover:underline">PayPal Fees Explained</Link>
+              </li>
+            </ul>
+          </div>
+
           {/* CTA */}
           <Card className="text-center border-primary/20 bg-primary/5">
             <CardContent className="p-8">
