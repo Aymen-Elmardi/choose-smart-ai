@@ -10,6 +10,8 @@ const ChargebackLossRecovery = () => {
       cluster="hub"
       currentSlug="chargeback-loss-recovery"
       keywords={["chargeback lost", "lost chargeback", "chargeback dispute", "chargeback recovery", "chargeback ratio"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         You Lost a Chargeback: What Happens Next and How to Recover

@@ -10,6 +10,8 @@ const WhyPaymentProvidersAskForSourceOfFunds = () => {
       cluster="hub"
       currentSlug="why-payment-providers-ask-for-source-of-funds"
       keywords={["source of funds", "why is bank asking for source of funds", "AML compliance", "payment verification", "fund traceability"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Understanding Source of Funds Verification

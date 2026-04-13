@@ -18,6 +18,8 @@ const MarketplacePaymentsGuide = () => {
         { name: "Visa: Payment Facilitator and Marketplace Risk Guide", url: "https://usa.visa.com/content/dam/VCOM/regional/na/us/partner-with-us/documents/visa-payment-facilitator-and-marketplace-risk-guide.pdf" },
         { name: "SVB: How to Tackle Top Challenges in E-Commerce Payments", url: "https://www.svb.com/payment-management-insights/merchant-services/tackle-top-challenges-ecommerce-payments/" },
       ]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         The Marketplace Founder's Guide to Payment Processing: What Providers Don't Tell You

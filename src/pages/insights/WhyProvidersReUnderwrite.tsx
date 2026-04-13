@@ -10,6 +10,8 @@ const WhyProvidersReUnderwrite = () => {
       cluster="hub"
       currentSlug="why-providers-re-underwrite"
       keywords={["re-underwriting", "account review", "payment compliance", "ongoing verification"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Re-Underwriting Explained: When Providers Review Existing Accounts

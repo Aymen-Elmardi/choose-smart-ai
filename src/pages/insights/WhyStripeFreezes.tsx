@@ -31,6 +31,8 @@ const WhyStripeFreezes = () => {
       cluster="hub"
       currentSlug="why-stripe-freezes-accounts-uk"
       keywords={["Stripe freeze", "account frozen", "Stripe UK", "payment hold"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <FAQSchema faqs={faqs} />
       

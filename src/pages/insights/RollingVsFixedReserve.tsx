@@ -11,6 +11,8 @@ const RollingVsFixedReserve = () => {
       cluster="hub"
       currentSlug="rolling-vs-fixed-reserve"
       keywords={["rolling reserve", "fixed reserve", "upfront reserve", "reserve release", "cash flow"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Rolling Reserve vs Fixed Reserve: What Merchants Need to Know

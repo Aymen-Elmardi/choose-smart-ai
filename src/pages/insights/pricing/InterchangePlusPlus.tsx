@@ -20,6 +20,8 @@ const InterchangePlusPlus = () => {
       showRelated={false}
       keywords={["interchange plus plus", "IC++ explained", "payment pricing models", "merchant fees"]}
       sources={interchangeSources}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Interchange++ Pricing: The "Secret" to Lower Fees (And Why Most Businesses Never Qualify)

@@ -10,6 +10,8 @@ const SalesIncrease = () => {
       cluster="hub"
       currentSlug="sales-increase"
       keywords={["sales growth", "document requests", "payment verification", "scaling business"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Sales Growth Triggers Document Requests: How to Prepare

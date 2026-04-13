@@ -18,6 +18,8 @@ const VisaMastercardControl = () => {
       currentSlug="visa-mastercard-control"
       keywords={["Visa", "Mastercard", "visa transaction controls", "card networks", "payment rules", "card scheme rules"]}
       sources={visaMastercardSources}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Visa and Mastercard Control Card Payments. What Businesses Can and Cannot Do
