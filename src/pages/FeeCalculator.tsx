@@ -5,6 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
   Table,
   TableBody,
   TableCell,
@@ -40,24 +46,22 @@ function calculate(
   const cnpVolume = cnpTxns * avgTxn;
   const cpVolume = cpTxns * avgTxn;
 
-  // Stripe: 1.5% + 20p (UK cards CNP), 1.4% + 20p (UK cards CP via Terminal)
-  // Simplify: assume all UK cards
+  // Stripe: 1.5% + 20p (UK cards online), 1.4% + 20p (UK cards in-person)
+  // EU: 2.5% + 20p, Intl: 3.25% + 20p — calculator assumes UK cards
   const stripeCnp = cnpVolume * 0.015 + cnpTxns * 0.2;
   const stripeCp = cpVolume * 0.014 + cpTxns * 0.2;
   const stripeFee = stripeCnp + stripeCp;
 
-  // Adyen: interchange++ model
-  // Estimate interchange 0.3% (UK debit ~70%) + 0.6% (UK credit ~30%) = weighted ~0.39%
-  // Scheme fees ~0.15%, Adyen markup 0.60% + £0.07/txn
+  // Adyen: interchange++ — 0.95% + £0.07 processing markup
+  // Plus estimated interchange: 0.3% UK debit (~70%), 0.6% UK credit (~30%) = weighted ~0.39%
   const adyenInterchange = monthlyVolume * 0.0039;
-  const adyenScheme = monthlyVolume * 0.0015;
-  const adyenMarkup = monthlyVolume * 0.006 + txnCount * 0.07;
-  const adyenFee = adyenInterchange + adyenScheme + adyenMarkup;
+  const adyenProcessing = monthlyVolume * 0.0095 + txnCount * 0.07;
+  const adyenFee = adyenInterchange + adyenProcessing;
 
   // Checkout.com: 0.95% + 20p
   const checkoutFee = monthlyVolume * 0.0095 + txnCount * 0.2;
 
-  // PayPal: 1.29% + 30p (standard UK)
+  // PayPal: 1.29% + 30p (standard UK), 2.9% + 30p (intl) — calculator assumes UK
   const paypalFee = monthlyVolume * 0.0129 + txnCount * 0.3;
 
   // Square: 1.75% in-person, 2.5% online
@@ -70,13 +74,13 @@ function calculate(
       name: "Stripe",
       monthlyFee: stripeFee,
       effectiveRate: ((stripeFee / monthlyVolume) * 100).toFixed(2) + "%",
-      note: cnpPct === 100 ? "1.5% + 20p online" : "1.4% + 20p in-person, 1.5% + 20p online",
+      note: cnpPct === 100 ? "1.5% + 20p online (UK cards)" : "1.4% + 20p in-person, 1.5% + 20p online",
     },
     {
       name: "Adyen",
       monthlyFee: adyenFee,
       effectiveRate: ((adyenFee / monthlyVolume) * 100).toFixed(2) + "%",
-      note: "Interchange++ (est. 0.39% IC + 0.15% scheme + 0.60% markup + 7p/txn)",
+      note: "IC++: ~0.39% interchange + 0.95% + 7p",
     },
     {
       name: "Checkout.com",
@@ -147,65 +151,65 @@ const FeeCalculator = () => {
           </section>
 
           {/* Inputs */}
-          <section className="rounded-xl border border-border bg-card p-6 md:p-8 shadow-sm mb-10">
-            <h2 className="text-lg font-semibold mb-6">Your Business Details</h2>
-
-            <div className="grid gap-6 sm:grid-cols-3">
-              {/* Monthly volume */}
-              <div className="space-y-2">
-                <Label htmlFor="volume">Monthly Card Volume (£)</Label>
-                <Input
-                  id="volume"
-                  type="number"
-                  min={0}
-                  step={1000}
-                  value={volume}
-                  onChange={(e) => setVolume(Number(e.target.value))}
-                />
-              </div>
-
-              {/* Average transaction */}
-              <div className="space-y-2">
-                <Label htmlFor="avgTxn">Average Transaction (£)</Label>
-                <Input
-                  id="avgTxn"
-                  type="number"
-                  min={1}
-                  step={5}
-                  value={avgTxn}
-                  onChange={(e) => setAvgTxn(Number(e.target.value))}
-                />
-              </div>
-
-              {/* CNP split */}
-              <div className="space-y-2">
-                <Label htmlFor="cnp">Online (Card-Not-Present) %</Label>
-                <div className="flex items-center gap-3">
-                  <input
-                    id="cnp"
-                    type="range"
+          <Card className="mb-10">
+            <CardHeader>
+              <CardTitle className="text-lg">Your Business Details</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-6 sm:grid-cols-3">
+                <div className="space-y-2">
+                  <Label htmlFor="volume">Monthly Card Volume (£)</Label>
+                  <Input
+                    id="volume"
+                    type="number"
                     min={0}
-                    max={100}
-                    step={5}
-                    value={cnpPct}
-                    onChange={(e) => setCnpPct(Number(e.target.value))}
-                    className="flex-1 accent-primary h-2 rounded-full cursor-pointer"
+                    step={1000}
+                    value={volume}
+                    onChange={(e) => setVolume(Number(e.target.value))}
                   />
-                  <span className="text-sm font-medium tabular-nums w-12 text-right">
-                    {cnpPct}%
-                  </span>
                 </div>
-                <p className="text-xs text-muted-foreground">
-                  {cnpPct}% online · {100 - cnpPct}% in-person
-                </p>
-              </div>
-            </div>
 
-            <p className="text-sm text-muted-foreground mt-4">
-              ≈ {txnCount.toLocaleString("en-GB")} transactions per month at{" "}
-              {formatGBP(avgTxn)} average
-            </p>
-          </section>
+                <div className="space-y-2">
+                  <Label htmlFor="avgTxn">Average Transaction (£)</Label>
+                  <Input
+                    id="avgTxn"
+                    type="number"
+                    min={1}
+                    step={5}
+                    value={avgTxn}
+                    onChange={(e) => setAvgTxn(Number(e.target.value))}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="cnp">Online (Card-Not-Present) %</Label>
+                  <div className="flex items-center gap-3">
+                    <input
+                      id="cnp"
+                      type="range"
+                      min={0}
+                      max={100}
+                      step={5}
+                      value={cnpPct}
+                      onChange={(e) => setCnpPct(Number(e.target.value))}
+                      className="flex-1 accent-primary h-2 rounded-full cursor-pointer"
+                    />
+                    <span className="text-sm font-medium tabular-nums w-12 text-right">
+                      {cnpPct}%
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {cnpPct}% online · {100 - cnpPct}% in-person
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-sm text-muted-foreground mt-4">
+                ≈ {txnCount.toLocaleString("en-GB")} transactions per month at{" "}
+                {formatGBP(avgTxn)} average
+              </p>
+            </CardContent>
+          </Card>
 
           {/* Results */}
           {results.length > 0 && (
@@ -276,57 +280,67 @@ const FeeCalculator = () => {
           )}
 
           {/* Methodology */}
-          <section className="rounded-xl border border-border bg-muted/30 p-6 md:p-8 mb-10">
-            <h2 className="text-lg font-semibold mb-3">How We Calculate</h2>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <strong className="text-foreground">Stripe</strong> — 1.5% + 20p
-                for UK cards online, 1.4% + 20p via Stripe Terminal in-person.
-                European and international card rates are higher.
-              </li>
-              <li>
-                <strong className="text-foreground">Adyen</strong> — Interchange++
-                model. We estimate weighted interchange at 0.39% (70% UK debit at
-                0.3%, 30% UK credit at 0.6%), scheme fees at 0.15%, and Adyen
-                markup at 0.60% + 7p per transaction.
-              </li>
-              <li>
-                <strong className="text-foreground">Checkout.com</strong> — 0.95% +
-                20p per transaction (published UK rate for standard accounts).
-              </li>
-              <li>
-                <strong className="text-foreground">PayPal</strong> — 1.29% + 30p
-                standard UK commercial rate. International and PayPal-wallet
-                transactions are higher.
-              </li>
-              <li>
-                <strong className="text-foreground">Square</strong> — 1.75% for
-                in-person (card-present), 2.5% for online (card-not-present). No
-                per-transaction fixed fee.
-              </li>
-            </ul>
-            <p className="text-xs text-muted-foreground mt-4">
-              All rates are based on publicly available standard pricing as of
-              April 2026. Actual fees vary by contract, volume tier, and card mix.
-            </p>
-          </section>
+          <Card className="bg-muted/30 mb-10">
+            <CardHeader>
+              <CardTitle className="text-lg">How We Calculate</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <strong className="text-foreground">Stripe</strong> — 1.5% +
+                  20p for UK cards online, 1.4% + 20p via Stripe Terminal
+                  in-person. EU cards: 2.5% + 20p. International cards: 3.25% +
+                  20p. Calculator assumes UK domestic cards.
+                </li>
+                <li>
+                  <strong className="text-foreground">Adyen</strong> —
+                  Interchange++ model. Adyen processing markup: 0.95% + 7p per
+                  transaction, plus estimated interchange at 0.3% (UK debit,
+                  ~70% of volume) and 0.6% (UK credit, ~30%) for a weighted
+                  average of ~0.39%.
+                </li>
+                <li>
+                  <strong className="text-foreground">Checkout.com</strong> —
+                  0.95% + 20p per transaction (published UK rate for standard
+                  accounts).
+                </li>
+                <li>
+                  <strong className="text-foreground">PayPal</strong> — 1.29% +
+                  30p standard UK commercial rate. International transactions:
+                  2.9% + 30p. Calculator assumes UK domestic transactions.
+                </li>
+                <li>
+                  <strong className="text-foreground">Square</strong> — 1.75%
+                  for in-person (card-present), 2.5% for online
+                  (card-not-present). No per-transaction fixed fee.
+                </li>
+              </ul>
+              <p className="text-xs text-muted-foreground mt-4">
+                All rates are based on publicly available standard pricing as of
+                April 2026. Actual fees vary by contract, volume tier, card
+                geography, and card mix.
+              </p>
+            </CardContent>
+          </Card>
 
           {/* CTA */}
-          <section className="text-center rounded-xl border border-primary/20 bg-primary/5 p-8">
-            <h2 className="text-xl font-semibold mb-3">
-              These are estimates based on standard published rates
-            </h2>
-            <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-              Get a personalised recommendation based on your business profile,
-              risk signals, and industry — not just listed prices.
-            </p>
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/assessment">
-                Get Your Free Recommendation
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </section>
+          <Card className="text-center border-primary/20 bg-primary/5">
+            <CardContent className="p-8">
+              <h2 className="text-xl font-semibold mb-3">
+                These are estimates based on standard published rates
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+                Get a personalised recommendation based on your business
+                profile, risk signals, and industry — not just listed prices.
+              </p>
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/assessment">
+                  Get Your Free Recommendation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </main>
 
