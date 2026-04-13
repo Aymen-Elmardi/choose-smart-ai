@@ -23,10 +23,9 @@ import {
 } from "@/lib/quiz/quizAnswerMappers";
 import { getActiveMicroInsight } from "@/lib/quiz/quizMicroInsights";
 import { initializeSessionTracking, markQuizStart } from "@/lib/sessionTracking";
-import { useSEO } from "@/hooks/useSEO";
 
 const Quiz = () => {
-  useSEO({ title: "Payment Processor Assessment — ChosePayments", noIndex: true });
+  useSEO({ title: "Payment Processor Assessment — ChosePayments", description: "Answer a few questions about your business to get matched with the right UK payment processor for your risk profile.", noIndex: true });
   const navigate = useNavigate();
   const location = useLocation();
   // Always start at Question 1 (no intro screen)
