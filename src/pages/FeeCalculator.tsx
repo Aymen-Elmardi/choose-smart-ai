@@ -284,41 +284,45 @@ const FeeCalculator = () => {
             <CardHeader>
               <CardTitle className="text-lg">How We Calculate</CardTitle>
             </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <strong className="text-foreground">Stripe</strong> — 1.5% +
-                  20p for UK cards online, 1.4% + 20p via Stripe Terminal
-                  in-person. EU cards: 2.5% + 20p. International cards: 3.25% +
-                  20p. Calculator assumes UK domestic cards.
-                </li>
-                <li>
-                  <strong className="text-foreground">Adyen</strong> —
-                  Interchange++ model. Adyen processing markup: 0.95% + 7p per
-                  transaction, plus estimated interchange at 0.3% (UK debit,
-                  ~70% of volume) and 0.6% (UK credit, ~30%) for a weighted
-                  average of ~0.39%.
-                </li>
-                <li>
-                  <strong className="text-foreground">Checkout.com</strong> —
-                  0.95% + 20p per transaction (published UK rate for standard
-                  accounts).
-                </li>
-                <li>
-                  <strong className="text-foreground">PayPal</strong> — 1.29% +
-                  30p standard UK commercial rate. International transactions:
-                  2.9% + 30p. Calculator assumes UK domestic transactions.
-                </li>
-                <li>
-                  <strong className="text-foreground">Square</strong> — 1.75%
-                  for in-person (card-present), 2.5% for online
-                  (card-not-present). No per-transaction fixed fee.
-                </li>
-              </ul>
-              <p className="text-xs text-muted-foreground mt-4">
-                All rates are based on publicly available standard pricing as of
-                April 2026. Actual fees vary by contract, volume tier, card
-                geography, and card mix.
+            <CardContent className="space-y-4">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-left text-muted-foreground border-b">
+                      <th className="pb-2 pr-4 font-medium">Provider</th>
+                      <th className="pb-2 pr-4 font-medium">Online</th>
+                      <th className="pb-2 font-medium">In-Person</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 font-medium text-foreground">Stripe</td>
+                      <td className="py-2 pr-4">1.5% + 20p</td>
+                      <td className="py-2">1.4% + 20p</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 font-medium text-foreground">Adyen</td>
+                      <td className="py-2 pr-4" colSpan={2}>0.95% + 7p + interchange (~0.39%)</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 font-medium text-foreground">Checkout.com</td>
+                      <td className="py-2 pr-4" colSpan={2}>0.95% + 20p</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="py-2 pr-4 font-medium text-foreground">PayPal</td>
+                      <td className="py-2 pr-4" colSpan={2}>1.29% + 30p</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-4 font-medium text-foreground">Square</td>
+                      <td className="py-2 pr-4">2.5%</td>
+                      <td className="py-2">1.75%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Standard UK domestic card rates as of April 2026. Actual fees
+                vary by contract, volume tier, and card mix.
               </p>
             </CardContent>
           </Card>

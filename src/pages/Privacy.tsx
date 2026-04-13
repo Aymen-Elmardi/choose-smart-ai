@@ -4,7 +4,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const Privacy = () => {
   useSEO({
-    title: "Privacy Policy | ChosePayments",
+    title: "Privacy Policy — ChosePayments",
     description: "Learn how ChosePayments collects, uses, and protects your personal information when using our payment provider recommendation service."
   });
 
