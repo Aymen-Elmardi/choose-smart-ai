@@ -129,6 +129,7 @@ const PayPalFees = lazyWithRetry(() => import("./pages/insights/PayPalFees"));
 const PaymentSchemeRulesExplained = lazyWithRetry(() => import("./pages/insights/PaymentSchemeRulesExplained"));
 const SchemeRulesReservesMonitoring = lazyWithRetry(() => import("./pages/insights/SchemeRulesReservesMonitoring"));
 const SchemeRulesByPaymentMethod = lazyWithRetry(() => import("./pages/insights/SchemeRulesByPaymentMethod"));
+const FeeCalculator = lazyWithRetry(() => import("./pages/FeeCalculator"));
 const InsightsGraph = lazyWithRetry(() => import("./pages/InsightsGraph"));
 const ScoringLogic = lazyWithRetry(() => import("./pages/ScoringLogic"));
 
@@ -284,6 +285,7 @@ const App = () => (
               <Route path="/best-acquirers-food-delivery" element={<FoodDeliveryAcquirers />} />
               
               {/* Landing pages */}
+              <Route path="/fee-calculator" element={<FeeCalculator />} />
               <Route path="/risk-profile-matching" element={<RiskProfileMatching />} />
               <Route path="/500" element={<ServerError />} />
 
