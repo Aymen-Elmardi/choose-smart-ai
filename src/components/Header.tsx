@@ -36,10 +36,10 @@ const Header = () => {
               </Link>
             ))}
             <Link
-              to="/onboard-with-us"
+              to="/analyse-statement"
               className="text-base font-medium text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary pb-0.5"
             >
-              Partner With Us
+              Analyse My Statement
             </Link>
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -79,12 +79,12 @@ const Header = () => {
                     </SheetClose>
                   ))}
                   <SheetClose asChild>
-                    <Link 
-                      to="/onboard-with-us"
+                    <Link
+                      to="/analyse-statement"
                       className="text-primary font-medium text-lg py-2 border-b border-primary/30 w-fit"
                       onClick={() => setIsOpen(false)}
                     >
-                      Partner With Us
+                      Analyse My Statement
                     </Link>
                   </SheetClose>
                   <SheetClose asChild>

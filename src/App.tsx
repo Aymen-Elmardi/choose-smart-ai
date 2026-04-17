@@ -35,6 +35,7 @@ const Privacy = lazyWithRetry(() => import("./pages/Privacy"));
 const Terms = lazyWithRetry(() => import("./pages/Terms"));
 const Contact = lazyWithRetry(() => import("./pages/Contact"));
 const OnboardWithUs = lazyWithRetry(() => import("./pages/OnboardWithUs"));
+const StatementAnalysis = lazyWithRetry(() => import("./pages/StatementAnalysis"));
 const MerchantAccountProblems = lazyWithRetry(() => import("./pages/MerchantAccountProblems"));
 const FAQ = lazyWithRetry(() => import("./pages/FAQ"));
 
@@ -199,6 +200,7 @@ const App = () => (
               <Route path="/terms" element={<Terms />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/onboard-with-us" element={<OnboardWithUs />} />
+              <Route path="/analyse-statement" element={<StatementAnalysis />} />
               <Route path="/merchant-account-problems" element={<MerchantAccountProblems />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
