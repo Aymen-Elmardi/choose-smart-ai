@@ -248,82 +248,23 @@ const StatementAnalysis = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* Hero */}
-        <section className="pt-32 pb-20 md:pt-44 md:pb-28">
-          <div className="max-w-[900px] mx-auto px-4 sm:px-6 text-center">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-6">
-              Free Statement Analysis
-            </p>
-            <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-[1.35] tracking-tight">
-              Find Out If You're Overpaying
-            </h1>
-            <p className="mt-6 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Upload your payment processing statement. We'll break down every fee you're being charged and show you exactly what alternative providers would cost for the same transactions.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-primary" />
-                Takes under 2 minutes
-              </span>
-              <span className="hidden sm:inline text-border">•</span>
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-primary" />
-                100% free, no obligation
-              </span>
-              <span className="hidden sm:inline text-border">•</span>
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-primary" />
-                Results emailed instantly
-              </span>
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works */}
-        <section className="border-t border-border">
-          <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-20 md:py-28">
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight mb-14">
-              How It Works
-            </h2>
-            <div className="space-y-0">
-              {steps.map((step, i) => (
-                <div
-                  key={step.number}
-                  className={`grid md:grid-cols-[80px_1fr] gap-4 md:gap-8 py-8 ${
-                    i < steps.length - 1 ? "border-b border-border" : ""
-                  }`}
-                >
-                  <span className="text-2xl font-bold text-primary/30 tracking-tight">
-                    {step.number}
-                  </span>
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground mb-1.5">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Upload Form */}
-        <section className="border-t border-border bg-secondary/40">
-          <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-20 md:py-28">
-            <div className="text-center mb-10">
-              <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight">
-                Upload Your Statement
-              </h2>
-              <p className="mt-3 text-muted-foreground leading-relaxed max-w-lg mx-auto">
-                Your file is private and only used to generate your analysis.
+        {/* Hero + Upload Form (combined, upload is dominant) */}
+        <section className="pt-32 pb-16 md:pt-40 md:pb-20">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6">
+            <div className="text-center mb-10 md:mb-12">
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-6">
+                Free Statement Analysis
+              </p>
+              <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-[1.35] tracking-tight">
+                Find Out If You're Overpaying
+              </h1>
+              <p className="mt-5 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                Upload your payment processing statement. We'll break down every fee and show you exactly what alternative providers would cost.
               </p>
             </div>
 
             {submitted ? (
-              <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
+              <Card className="border-2 border-primary/40 bg-primary/5 shadow-lg">
                 <CardContent className="p-8 md:p-12 text-center">
                   <div className="flex justify-center mb-6">
                     <CheckCircle2 className="w-16 h-16 text-primary" />
@@ -346,24 +287,21 @@ const StatementAnalysis = () => {
                 </CardContent>
               </Card>
             ) : (
-              <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
-                <CardContent className="p-6 md:p-8">
+              <Card className="border-2 border-primary/40 bg-primary/5 shadow-lg">
+                <CardContent className="p-6 md:p-10">
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* File Upload */}
+                    {/* File Upload — DOMINANT */}
                     <div className="space-y-2">
-                      <Label className="text-sm font-medium text-foreground">
-                        Statement file <span className="text-destructive">*</span>
-                      </Label>
                       {file ? (
-                        <div className="flex items-center justify-between gap-3 p-4 rounded-xl border-2 border-primary/30 bg-background">
+                        <div className="flex items-center justify-between gap-3 p-5 rounded-xl border-2 border-primary/40 bg-background">
                           <div className="flex items-center gap-3 min-w-0">
-                            <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                            <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
                             <div className="min-w-0">
-                              <p className="text-sm font-medium text-foreground truncate">
+                              <p className="text-base font-semibold text-foreground truncate">
                                 {file.name}
                               </p>
                               <p className="text-xs text-muted-foreground">
-                                {(file.size / 1024).toFixed(1)} KB
+                                {(file.size / 1024).toFixed(1)} KB · Ready to analyse
                               </p>
                             </div>
                           </div>
@@ -391,16 +329,21 @@ const StatementAnalysis = () => {
                               handleBrowseClick();
                             }
                           }}
-                          className="border-2 border-dashed border-border rounded-xl p-8 text-center cursor-pointer hover:border-primary/60 hover:bg-background/50 transition-colors"
+                          className="border-2 border-dashed border-primary/40 rounded-2xl p-10 md:p-14 text-center cursor-pointer hover:border-primary hover:bg-primary/10 bg-background/60 transition-colors"
                         >
-                          <div className="flex justify-center mb-3">
-                            <Upload className="w-8 h-8 text-muted-foreground" />
+                          <div className="flex justify-center mb-4">
+                            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                              <Upload className="w-8 h-8 text-primary" />
+                            </div>
                           </div>
-                          <p className="text-sm font-medium text-foreground mb-1">
-                            Drop your statement here or click to browse
+                          <p className="text-lg md:text-xl font-semibold text-foreground mb-2">
+                            Drop your statement here
+                          </p>
+                          <p className="text-sm text-muted-foreground mb-4">
+                            or <span className="text-primary font-medium underline">click to browse</span>
                           </p>
                           <p className="text-xs text-muted-foreground">
-                            Excel files only (.xlsx, .xls). Maximum 5MB.
+                            Excel files only (.xlsx, .xls) · Maximum 5MB
                           </p>
                         </div>
                       )}
@@ -418,52 +361,55 @@ const StatementAnalysis = () => {
                       )}
                     </div>
 
-                    {/* Current Provider */}
-                    <div className="space-y-2">
-                      <Label
-                        htmlFor="currentProvider"
-                        className="text-sm font-medium text-foreground"
-                      >
-                        Who is your current provider?{" "}
-                        <span className="text-destructive">*</span>
-                      </Label>
-                      <Select
-                        value={currentProvider}
-                        onValueChange={setCurrentProvider}
-                      >
-                        <SelectTrigger
-                          id="currentProvider"
-                          className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                    {/* Compact form fields */}
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {/* Current Provider */}
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="currentProvider"
+                          className="text-sm font-medium text-foreground"
                         >
-                          <SelectValue placeholder="Select your current provider" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {providerOptions.map((provider) => (
-                            <SelectItem key={provider} value={provider}>
-                              {provider}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+                          Current provider{" "}
+                          <span className="text-destructive">*</span>
+                        </Label>
+                        <Select
+                          value={currentProvider}
+                          onValueChange={setCurrentProvider}
+                        >
+                          <SelectTrigger
+                            id="currentProvider"
+                            className="h-12 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                          >
+                            <SelectValue placeholder="Select provider" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {providerOptions.map((provider) => (
+                              <SelectItem key={provider} value={provider}>
+                                {provider}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                    {/* Full Name */}
-                    <div className="space-y-2">
-                      <Label
-                        htmlFor="fullName"
-                        className="text-sm font-medium text-foreground"
-                      >
-                        Full name <span className="text-destructive">*</span>
-                      </Label>
-                      <Input
-                        id="fullName"
-                        type="text"
-                        autoComplete="name"
-                        placeholder="Your full name"
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                      />
+                      {/* Full Name */}
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="fullName"
+                          className="text-sm font-medium text-foreground"
+                        >
+                          Full name <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="fullName"
+                          type="text"
+                          autoComplete="name"
+                          placeholder="Your full name"
+                          value={fullName}
+                          onChange={(e) => setFullName(e.target.value)}
+                          className="h-12 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                        />
+                      </div>
                     </div>
 
                     {/* Email */}
@@ -481,7 +427,7 @@ const StatementAnalysis = () => {
                         placeholder="you@company.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                        className="h-12 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
                       />
                       <p className="text-xs text-muted-foreground">
                         We'll send your analysis report to this email
@@ -502,7 +448,7 @@ const StatementAnalysis = () => {
                         variant="hero"
                         size="xl"
                         disabled={!canSubmit}
-                        className="w-full sm:w-auto"
+                        className="w-full"
                       >
                         {submitting ? (
                           <>
@@ -518,6 +464,55 @@ const StatementAnalysis = () => {
                 </CardContent>
               </Card>
             )}
+
+            {/* Trust indicators below the form */}
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-muted-foreground">
+              <span className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-primary" />
+                Takes under 2 minutes
+              </span>
+              <span className="hidden sm:inline text-border">•</span>
+              <span className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-primary" />
+                100% free, no obligation
+              </span>
+              <span className="hidden sm:inline text-border">•</span>
+              <span className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-primary" />
+                Results emailed instantly
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section className="border-t border-border bg-secondary/40">
+          <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-20 md:py-28">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight mb-14">
+              How It Works
+            </h2>
+            <div className="space-y-0">
+              {steps.map((step, i) => (
+                <div
+                  key={step.number}
+                  className={`grid md:grid-cols-[80px_1fr] gap-4 md:gap-8 py-8 ${
+                    i < steps.length - 1 ? "border-b border-border" : ""
+                  }`}
+                >
+                  <span className="text-2xl font-bold text-primary/30 tracking-tight">
+                    {step.number}
+                  </span>
+                  <div>
+                    <h3 className="text-sm font-semibold text-foreground mb-1.5">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
