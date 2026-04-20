@@ -534,6 +534,13 @@ export const allInsights: Insight[] = [
     category: "guides",
     readTime: "8 min read"
   },
+  {
+    title: "Your Customers Are Not Anonymous: Why You Must Control the Payment Experience",
+    slug: "payment-experience-optimization",
+    description: "You know your customers. You know their region, ticket size, and order frequency. Learn why controlling the payment experience is the single biggest lever for retention and conversion.",
+    category: "guides",
+    readTime: "9 min read"
+  },
   // Provider Deep Dives
   {
     title: "Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook",

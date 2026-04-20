@@ -34,6 +34,7 @@ const Privacy = lazyWithRetry(() => import("./pages/Privacy"));
 const Terms = lazyWithRetry(() => import("./pages/Terms"));
 const Contact = lazyWithRetry(() => import("./pages/Contact"));
 const OnboardWithUs = lazyWithRetry(() => import("./pages/OnboardWithUs"));
+const StatementAnalysis = lazyWithRetry(() => import("./pages/StatementAnalysis"));
 const MerchantAccountProblems = lazyWithRetry(() => import("./pages/MerchantAccountProblems"));
 const FAQ = lazyWithRetry(() => import("./pages/FAQ"));
 
@@ -87,6 +88,7 @@ const EnterpriseProviderComparison = lazyWithRetry(() => import("./pages/insight
 const FiservPaymentsPlatform = lazyWithRetry(() => import("./pages/insights/FiservPaymentsPlatform"));
 const AdyenVsFirstData = lazyWithRetry(() => import("./pages/insights/AdyenVsFirstData"));
 const ReferralCommissionGuide = lazyWithRetry(() => import("./pages/insights/ReferralCommissionGuide"));
+const PaymentExperienceOptimization = lazyWithRetry(() => import("./pages/insights/PaymentExperienceOptimization"));
 const PayPalPaymentPlatform = lazyWithRetry(() => import("./pages/insights/PayPalPaymentPlatform"));
 const CashflowsPaymentPlatform = lazyWithRetry(() => import("./pages/insights/CashflowsPaymentPlatform"));
 const WhyProvidersImposeReserves = lazyWithRetry(() => import("./pages/insights/WhyProvidersImposeReserves"));
@@ -196,6 +198,7 @@ const App = () => (
               <Route path="/terms" element={<Terms />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/onboard-with-us" element={<OnboardWithUs />} />
+              <Route path="/analyse-statement" element={<StatementAnalysis />} />
               <Route path="/merchant-account-problems" element={<MerchantAccountProblems />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/payment-provider-hidden-fees" element={<HiddenFees />} />
@@ -257,6 +260,7 @@ const App = () => (
               <Route path="/insights/fiserv-payments-platform" element={<FiservPaymentsPlatform />} />
               <Route path="/insights/adyen-vs-first-data" element={<AdyenVsFirstData />} />
               <Route path="/insights/referral-commission-guide" element={<ReferralCommissionGuide />} />
+              <Route path="/insights/payment-experience-optimization" element={<PaymentExperienceOptimization />} />
               <Route path="/insights/paypal-payment-platform" element={<PayPalPaymentPlatform />} />
               <Route path="/insights/cashflows-payment-platform" element={<CashflowsPaymentPlatform />} />
               
