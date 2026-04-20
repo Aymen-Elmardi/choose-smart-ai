@@ -250,7 +250,7 @@ const PayPalFees = () => {
       <p className="text-foreground/90 mb-8">
         If you want to understand which pricing model your business is likely to qualify for before speaking to providers, you can start a{" "}
         <Link to="/assessment" className="text-primary hover:underline">short assessment</Link> on ChosePayments.
-        It is designed to surface eligibility, not sell you a rate.
+        It is designed to surface eligibility, not sell you a rate. You can also <Link to="/fee-calculator" className="text-primary hover:underline">estimate your monthly fees</Link> to compare PayPal against other providers.
       </p>
 
       {/* Final Thought */}

@@ -4,7 +4,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const Terms = () => {
   useSEO({
-    title: "Terms of Service | ChosePayments",
+    title: "Terms of Service — ChosePayments",
     description: "Terms of Service for ChosePayments. Read our terms and conditions for using our payment provider advisory services."
   });
 

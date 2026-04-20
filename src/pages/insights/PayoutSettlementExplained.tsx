@@ -11,6 +11,8 @@ const PayoutSettlementExplained = () => {
       cluster="hub"
       currentSlug="payout-settlement-explained"
       keywords={["payout", "settlement", "payout mismatch", "net settlement", "gross settlement", "fees deducted"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Why Your Payout Doesn't Match Your Sales: Settlement Timing Explained

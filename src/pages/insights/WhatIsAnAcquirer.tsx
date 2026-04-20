@@ -30,6 +30,8 @@ const WhatIsAnAcquirer = () => {
       cluster="hub"
       currentSlug="what-is-an-acquirer"
       keywords={["acquirer", "payment processing", "card networks", "merchant account"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <FAQSchema faqs={faqs} />
       

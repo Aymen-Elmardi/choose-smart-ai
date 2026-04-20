@@ -11,6 +11,8 @@ const WhyAccountsFrozenWithoutWarning = () => {
       cluster="hub"
       currentSlug="why-accounts-frozen-without-warning"
       keywords={["account freeze", "payment freeze", "merchant account", "risk triggers"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Account Freezes Without Warning: What Triggers Them

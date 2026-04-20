@@ -10,6 +10,8 @@ const WhyMarketplacesGetScrutiny = () => {
       cluster="hub"
       currentSlug="why-marketplaces-get-scrutiny"
       keywords={["marketplace payments", "payment scrutiny", "marketplace compliance", "platform payments"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Marketplaces Face Extra Scrutiny: What Providers Look For

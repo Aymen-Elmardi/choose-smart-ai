@@ -1,8 +1,8 @@
 import { useMemo, useState, useCallback, useRef, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { conceptArticles, clusterMeta, type ConceptCluster } from "@/lib/conceptClusters";
 import { useSEO } from "@/hooks/useSEO";
+import { conceptArticles, clusterMeta, type ConceptCluster } from "@/lib/conceptClusters";
 
 interface Node {
   id: string;

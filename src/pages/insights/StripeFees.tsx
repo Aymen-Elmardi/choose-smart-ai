@@ -312,7 +312,7 @@ const StripeFees = () => {
         </ul>
 
         <p className="text-muted-foreground mb-6">
-          This is why many businesses reassess their payment provider after scaling, even if Stripe worked well at the beginning.
+          This is why many businesses reassess their payment provider after scaling, even if Stripe worked well at the beginning. You can <Link to="/fee-calculator" className="text-primary hover:underline">estimate your monthly fees</Link> across providers to see how Stripe compares.
         </p>
 
         <p className="text-muted-foreground">

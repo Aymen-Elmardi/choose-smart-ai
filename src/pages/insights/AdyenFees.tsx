@@ -315,7 +315,7 @@ const AdyenFees = () => {
           There is no generic Adyen pricing calculator that will give you a meaningful answer. The only way to understand whether Adyen pricing works for your business is to go through pre-underwriting with the right context.
         </p>
         <p className="mb-4">
-          That includes your volume, markets, risk profile, and operational setup.
+          That includes your volume, markets, risk profile, and operational setup. For a quick comparison, you can <Link to="/fee-calculator" className="text-primary hover:underline">estimate your monthly fees</Link> across major UK providers.
         </p>
         <p>
           If you want to understand whether Adyen is likely to be cost-effective for your business,{" "}

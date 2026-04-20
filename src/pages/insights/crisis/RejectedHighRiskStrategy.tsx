@@ -20,6 +20,8 @@ const RejectedHighRiskStrategy = () => {
       ctaVariant="default"
       keywords={["Stripe rejected", "Square rejected", "high-risk merchant", "payment provider rejection"]}
       sources={rejectedSources}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Rejected by Stripe or Square? Why Your 'High-Risk' Business Needs a Risk-Aligned Payment Strategy

@@ -20,6 +20,8 @@ const BlendedVsInterchange = () => {
       currentSlug="blended-vs-interchange"
       keywords={["blended pricing", "interchange plus plus", "IC++ pricing", "payment processing pricing"]}
       sources={blendedSources}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy

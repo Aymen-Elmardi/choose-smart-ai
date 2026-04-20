@@ -541,6 +541,20 @@ export const allInsights: Insight[] = [
     category: "guides",
     readTime: "9 min read"
   },
+  {
+    title: "Visa's 2026 Card Brand Fee Changes: What They Mean for Your Processing Costs",
+    slug: "visa-card-brand-fees-2026",
+    description: "Visa is changing how 3DS and token fees work from 15 May 2026. Learn how these scheme fee changes affect your processing costs and what you can actually do about them.",
+    category: "guides",
+    readTime: "7 min read"
+  },
+  {
+    title: "Why Merchant Onboarding Can Make or Break Your Customer Relationships",
+    slug: "onboarding-experience",
+    description: "Your onboarding flow is entirely within your control. Learn how to choose a payment provider whose onboarding tools fit your market and reduce drop-off.",
+    category: "guides",
+    readTime: "7 min read"
+  },
   // Provider Deep Dives
   {
     title: "Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook",

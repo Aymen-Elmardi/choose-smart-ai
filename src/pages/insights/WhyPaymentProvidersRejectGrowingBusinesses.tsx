@@ -19,6 +19,8 @@ const WhyPaymentProvidersRejectGrowingBusinesses = () => {
       currentSlug="why-payment-providers-reject-growing-businesses"
       keywords={["payment rejection", "account approval", "growing business", "underwriting", "payment provider"]}
       sources={articleSources}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
         Why Payment Providers Reject Growing Businesses

@@ -1,5 +1,5 @@
-import { useState, useMemo, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useState, useMemo, useEffect, useRef } from "react";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -20,11 +20,15 @@ import {
 import InsightsSidebarModule from "@/components/InsightsSidebarModule";
 
 const Insights = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get("q") || "");
   const [activeFilter, setActiveFilter] = useState<InsightCategory>(
     () => (searchParams.get("filter") as InsightCategory) || "all"
   );
+  const [suggestionsOpen, setSuggestionsOpen] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
   useSEO({
     title: "Payment Processing Insights & Guides — ChosePayments",
@@ -36,6 +40,51 @@ const Insights = () => {
     const effectiveFilter = searchQuery.trim() ? "all" : activeFilter;
     return filterInsights(allInsights, effectiveFilter, searchQuery);
   }, [searchQuery, activeFilter]);
+
+  const suggestions = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    return filterInsights(allInsights, "all", searchQuery).slice(0, 6);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(e.target as Node)
+      ) {
+        setSuggestionsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    setHighlightedIndex(-1);
+  }, [searchQuery]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!suggestionsOpen || suggestions.length === 0) {
+      if (e.key === "Escape") setSuggestionsOpen(false);
+      return;
+    }
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setHighlightedIndex((i) => (i + 1) % suggestions.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setHighlightedIndex((i) => (i <= 0 ? suggestions.length - 1 : i - 1));
+    } else if (e.key === "Enter") {
+      if (highlightedIndex >= 0 && highlightedIndex < suggestions.length) {
+        e.preventDefault();
+        const picked = suggestions[highlightedIndex];
+        setSuggestionsOpen(false);
+        navigate(getInsightUrl(picked));
+      }
+    } else if (e.key === "Escape") {
+      setSuggestionsOpen(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -55,15 +104,77 @@ const Insights = () => {
 
           {/* Search and Filters */}
           <div className="mb-12">
-            <div className="relative max-w-md mx-auto mb-8">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <div
+              ref={searchContainerRef}
+              className="relative max-w-md mx-auto mb-8"
+            >
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none z-10" />
               <Input
                 type="text"
                 placeholder="Search insights..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setSuggestionsOpen(true);
+                }}
+                onFocus={() => {
+                  if (searchQuery.trim()) setSuggestionsOpen(true);
+                }}
+                onKeyDown={handleKeyDown}
+                role="combobox"
+                aria-expanded={suggestionsOpen && suggestions.length > 0}
+                aria-controls="insights-search-suggestions"
+                aria-autocomplete="list"
                 className="pl-12 h-12 rounded-full border-border bg-background"
               />
+
+              {suggestionsOpen && searchQuery.trim() && (
+                <div
+                  id="insights-search-suggestions"
+                  role="listbox"
+                  className="absolute left-0 right-0 top-full mt-2 bg-popover border border-border rounded-2xl shadow-lg overflow-hidden z-20"
+                >
+                  {suggestions.length === 0 ? (
+                    <div className="px-4 py-6 text-sm text-muted-foreground text-center">
+                      No matching insights. Press Enter to browse all.
+                    </div>
+                  ) : (
+                    <ul className="max-h-96 overflow-y-auto py-2">
+                      {suggestions.map((insight, index) => (
+                        <li key={insight.slug} role="option" aria-selected={highlightedIndex === index}>
+                          <Link
+                            to={getInsightUrl(insight)}
+                            onClick={() => setSuggestionsOpen(false)}
+                            onMouseEnter={() => setHighlightedIndex(index)}
+                            className={`flex items-start gap-3 px-4 py-3 transition-colors ${
+                              highlightedIndex === index ? "bg-muted" : "hover:bg-muted/60"
+                            }`}
+                          >
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-muted text-muted-foreground">
+                                  {categoryLabels[insight.category]}
+                                </span>
+                                <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+                                  <Clock className="w-3 h-3" />
+                                  {insight.readTime}
+                                </span>
+                              </div>
+                              <div className="text-sm font-medium text-foreground line-clamp-1">
+                                {insight.title}
+                              </div>
+                              <div className="text-xs text-muted-foreground line-clamp-1 mt-0.5">
+                                {insight.description}
+                              </div>
+                            </div>
+                            <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="flex flex-wrap justify-center gap-2">

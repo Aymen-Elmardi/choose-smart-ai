@@ -20,6 +20,8 @@ const HiddenFeeCrisis = () => {
       ctaVariant="default"
       keywords={["hidden payment fees", "effective rate", "payment processing costs", "merchant fees"]}
       sources={hiddenFeeSources}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         The Hidden Fee Crisis: How Your 'Low Rate' Payment Processor is Quietly Costing You Thousands

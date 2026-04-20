@@ -322,7 +322,7 @@ const CheckoutComFees = () => {
           <li>The complexity of your business model (marketplace, subscription, travel, etc.)</li>
         </ul>
         <p className="text-muted-foreground mb-4">
-          Comparing pricing without understanding your business profile is misleading. The same merchant could pay very different effective costs with different providers because pricing depends on how likely the provider thinks you are to succeed without fraud, disputes, or risk.
+          Comparing pricing without understanding your business profile is misleading. The same merchant could pay very different effective costs with different providers because pricing depends on how likely the provider thinks you are to succeed without fraud, disputes, or risk. Try our <Link to="/fee-calculator" className="text-primary hover:underline">fee calculator</Link> to model your expected costs.
         </p>
         <p className="text-muted-foreground">
           If you want clarity before committing, a{" "}

@@ -20,6 +20,8 @@ const StripeAccountFrozen = () => {
       ctaVariant="default"
       keywords={["Stripe account frozen", "Stripe funds frozen", "account freeze recovery", "payment account suspended"]}
       sources={stripeFrozenSources}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Stripe Account Frozen? The 5 Hidden Reasons Why (And How to Prevent the Next Freeze)

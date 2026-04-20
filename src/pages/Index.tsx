@@ -38,7 +38,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <DiagnosticBlock />
-        <Suspense fallback={null}>
+        <Suspense fallback={<div className="min-h-[2400px]" />}>
           <ExampleOutputPreview />
           <HowItWorksSection />
           <HowPaymentsWorkSection />
@@ -48,7 +48,7 @@ const Index = () => {
           <CTASection />
         </Suspense>
       </main>
-      <Suspense fallback={null}>
+      <Suspense fallback={<div className="min-h-[200px]" />}>
         <Footer />
       </Suspense>
     </div>

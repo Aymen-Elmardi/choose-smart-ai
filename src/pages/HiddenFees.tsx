@@ -99,6 +99,10 @@ const HiddenFees = () => {
               </li>
             </ul>
 
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              Use our <Link to="/fee-calculator" className="text-primary hover:underline">fee calculator</Link> to compare your effective costs across Stripe, Adyen, Checkout.com, PayPal, and Square.
+            </p>
+
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
               Finding the right fit
             </h2>

@@ -10,6 +10,8 @@ const ContractsInvoices = () => {
       cluster="hub"
       currentSlug="contracts-invoices"
       keywords={["document requests", "contracts", "invoices", "payment verification"]}
+      publishedTime="2026-01-15"
+      modifiedTime="2026-04-13"
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Document Requests Explained: Contracts, Invoices, and Agreements
