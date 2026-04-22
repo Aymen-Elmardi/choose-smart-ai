@@ -431,23 +431,6 @@ export const getConceptRelatedArticles = (
 };
 
 /**
- * Get all articles in a specific concept cluster
- */
-export const getArticlesByCluster = (cluster: ConceptCluster): ConceptArticle[] => {
-  return conceptArticles.filter(a => a.concepts.includes(cluster));
-};
-
-/**
- * Find articles matching a keyword (for inline linking suggestions)
- */
-export const findArticleByKeyword = (keyword: string): ConceptArticle | undefined => {
-  const lowerKeyword = keyword.toLowerCase();
-  return conceptArticles.find(article =>
-    article.keywords.some(k => lowerKeyword.includes(k.toLowerCase()))
-  );
-};
-
-/**
  * Build full URL for an article
  */
 export const buildConceptArticleUrl = (slug: string): string => {

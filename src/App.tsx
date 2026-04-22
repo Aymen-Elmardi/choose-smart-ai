@@ -58,10 +58,7 @@ const WhyProvidersReUnderwrite = lazyWithRetry(() => import("./pages/insights/Wh
 const WhySomeBusinessesNeverApproved = lazyWithRetry(() => import("./pages/insights/WhySomeBusinessesNeverApproved"));
 const WhyPaymentProvidersAskForDirectorDocuments = lazyWithRetry(() => import("./pages/insights/WhyPaymentProvidersAskForDirectorDocuments"));
 const WhyPaymentProvidersAskForSourceOfFunds = lazyWithRetry(() => import("./pages/insights/WhyPaymentProvidersAskForSourceOfFunds"));
-const WhyPaymentAccountsGetFlaggedAfterGrowth = lazyWithRetry(() => import("./pages/insights/WhyPaymentAccountsGetFlaggedAfterGrowth"));
 const WhyPaymentProvidersRejectGrowingBusinesses = lazyWithRetry(() => import("./pages/insights/WhyPaymentProvidersRejectGrowingBusinesses"));
-const WhyProvidersReUnderwriteExistingAccounts = lazyWithRetry(() => import("./pages/insights/WhyProvidersReUnderwriteExistingAccounts"));
-const WhyPaymentAccountsGetFlaggedWithoutChanges = lazyWithRetry(() => import("./pages/insights/WhyPaymentAccountsGetFlaggedWithoutChanges"));
 const VisaMastercardControl = lazyWithRetry(() => import("./pages/insights/VisaMastercardControl"));
 const WhatIsAnAcquirer = lazyWithRetry(() => import("./pages/insights/WhatIsAnAcquirer"));
 const PaymentProviderVsAcquirerVsBank = lazyWithRetry(() => import("./pages/insights/PaymentProviderVsAcquirerVsBank"));
@@ -124,6 +121,7 @@ const FoodDeliveryAcquirers = lazyWithRetry(() => import("./pages/insights/provi
 
 // Landing pages
 const RiskProfileMatching = lazyWithRetry(() => import("./pages/RiskProfileMatching"));
+const FeeCalculator = lazyWithRetry(() => import("./pages/FeeCalculator"));
 
 const StripeFees = lazyWithRetry(() => import("./pages/insights/StripeFees"));
 const CheckoutComFees = lazyWithRetry(() => import("./pages/insights/CheckoutComFees"));
@@ -291,6 +289,7 @@ const App = () => (
               
               {/* Landing pages */}
               <Route path="/risk-profile-matching" element={<RiskProfileMatching />} />
+              <Route path="/fee-calculator" element={<FeeCalculator />} />
               <Route path="/500" element={<ServerError />} />
 
               {/* Fees & Costs articles */}
