@@ -27,9 +27,9 @@ const Header = () => {
           
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
+              <Link 
                 key={link.to}
-                to={link.to}
+                to={link.to} 
                 className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium"
               >
                 {link.label}
