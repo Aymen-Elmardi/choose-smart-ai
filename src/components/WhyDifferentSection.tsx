@@ -31,7 +31,7 @@ const WhyDifferentSection = () => {
           </p>
           <h2 className="heading-lg text-foreground">Not a Comparison Site. Not a Lead Marketplace.</h2>
           <p className="text-muted-foreground mt-4 text-lg">
-            We partner with established merchants to turn payment infrastructure from a cost centre into a competitive advantage.
+            We work with businesses who have been burned by the wrong processor — and want to make sure it never happens again.
           </p>
         </div>
 

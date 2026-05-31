@@ -4,18 +4,18 @@ import { useInView } from "@/hooks/useInView";
 const problems = [
   {
     icon: TrendingDown,
-    title: "Revenue Leaking Through Declines",
-    description: "Poor authorisation rates and checkout friction quietly erode margins, undoing marketing and sales effort.",
+    title: "Your Account Gets Frozen Without Warning",
+    description: "One Friday afternoon, payments stop. No explanation, no timeline. You chose a provider that was never built for your business model.",
   },
   {
     icon: EyeOff,
-    title: "Hidden Fees Compounding at Scale",
-    description: "At high volumes, opaque pricing structures cost six or seven figures annually.",
+    title: "You're Paying More Than You Should",
+    description: "Fees buried in blended rates, charges that appear months in. Most businesses overpay by thousands a year and never know it.",
   },
   {
     icon: ShieldAlert,
-    title: "Compliance Exposure Growing Silently",
-    description: "PCI, SCA, and scheme rule changes create risk that surfaces without warning.",
+    title: "Your Provider Doesn't Understand Your Business",
+    description: "Generic processors treat every business the same. If yours is in a complex category — subscriptions, marketplaces, high-volume — you're one review away from a hold.",
   },
 ];
 
@@ -27,7 +27,7 @@ const ProblemSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-16 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            The Hidden Costs of an Unaudited Payment Stack
+            Most Businesses Are on the Wrong Processor
           </h2>
         </div>
 
@@ -47,7 +47,7 @@ const ProblemSection = () => {
         </div>
 
         <p className={`text-center mt-16 text-lg text-muted-foreground max-w-2xl mx-auto reveal stagger-4 ${isInView ? "visible" : ""}`}>
-          At scale, your payment gateway is not a backend detail. It is the engine of your revenue.
+          None of this happens because you did something wrong. It happens because you picked a processor that wasn't built for a business like yours.
         </p>
       </div>
     </section>

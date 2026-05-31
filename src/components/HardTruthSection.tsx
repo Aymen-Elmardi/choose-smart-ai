@@ -1,9 +1,9 @@
 const truths = [
-  "Your rate is risk-adjusted.",
-  "Reserves are statistical, not personal.",
-  "Chargebacks change your risk tier instantly.",
-  "Growth spikes trigger reviews.",
-  "Blended pricing hides interchange shifts.",
+  "Your rate is based on how risky your business looks to them — not how well you've performed.",
+  "When they hold your funds, it's because their system flagged your account type. It's not personal, but it still stops your business.",
+  "A spike in chargebacks — even one bad month — can change how every future transaction is treated.",
+  "If your revenue suddenly grows, your processor may pause your account to review it. Fast growth looks like a red flag to the wrong provider.",
+  "Flat-rate pricing bundles fees together so you can't see what you're actually paying for each transaction type.",
 ];
 
 const HardTruthSection = () => {

@@ -12,7 +12,7 @@ const steps = [
     icon: Sparkles,
     step: "02",
     title: "We Calculate Your Risk Profile",
-    description: "Our engine scores providers against your risk signals, volume tier, and operational profile.",
+    description: "Our engine matches providers against your business type, monthly volume, and transaction history.",
   },
   {
     icon: FileText,

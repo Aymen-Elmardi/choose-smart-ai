@@ -15,7 +15,7 @@ const SESSION_KEY = "cp_exitIntentShown";
 
 const ExitIntentPopup = () => {
   const [open, setOpen] = useState(false);
-  const [question, setQuestion] = useState("");
+  const [frozenAnswer, setFrozenAnswer] = useState<"yes" | "no" | null>(null);
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -42,7 +42,7 @@ const ExitIntentPopup = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!question.trim() || !email.trim()) return;
+    if (!frozenAnswer || !email.trim()) return;
 
     setIsSubmitting(true);
     setError(null);
@@ -50,7 +50,7 @@ const ExitIntentPopup = () => {
     try {
       const { error: dbError } = await supabase.from("popup_submissions").insert({
         popup_type: "exit_intent",
-        question: question.trim(),
+        question: `Account frozen or held: ${frozenAnswer}`,
         email: email.trim(),
         page_url: window.location.href,
       });
@@ -82,18 +82,42 @@ const ExitIntentPopup = () => {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              What's your biggest payment challenge right now?
+            <p className="text-base font-medium text-foreground">
+              Has your payment account ever been frozen or held?
             </p>
 
-            <Input
-              type="text"
-              placeholder="e.g. my funds are on hold, I was just rejected by Stripe..."
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              required
-              className="w-full"
-            />
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => setFrozenAnswer("yes")}
+                className={`flex-1 py-3 rounded-lg border text-sm font-medium transition-colors ${
+                  frozenAnswer === "yes"
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "border-border text-foreground hover:border-primary"
+                }`}
+              >
+                Yes, it has
+              </button>
+              <button
+                type="button"
+                onClick={() => setFrozenAnswer("no")}
+                className={`flex-1 py-3 rounded-lg border text-sm font-medium transition-colors ${
+                  frozenAnswer === "no"
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "border-border text-foreground hover:border-primary"
+                }`}
+              >
+                Not yet
+              </button>
+            </div>
+
+            {frozenAnswer && (
+              <p className="text-sm text-muted-foreground">
+                {frozenAnswer === "yes"
+                  ? "We can help you understand what happened and find a provider that won't do it again."
+                  : "We can tell you if your current processor is the right fit before there's a problem."}
+              </p>
+            )}
 
             <Input
               type="email"
@@ -106,7 +130,7 @@ const ExitIntentPopup = () => {
 
             {error && <p className="text-sm text-destructive">{error}</p>}
 
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <Button type="submit" className="w-full" disabled={isSubmitting || !frozenAnswer}>
               {isSubmitting ? "Sending..." : "Get a free answer"}
             </Button>
 

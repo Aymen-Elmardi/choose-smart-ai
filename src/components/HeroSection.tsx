@@ -12,7 +12,7 @@ const HeroSection = () => {
           </h1>
           <div className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              We match your industry, volume, and risk signals to the right provider's appetite. Before you apply.
+              We match your industry, volume, and transaction history to the providers most likely to approve you. Before you apply.
             </p>
           </div>
           <div className="mt-12 flex flex-col items-center gap-4">
@@ -23,7 +23,10 @@ const HeroSection = () => {
               </Link>
             </Button>
             <p className="text-xs text-muted-foreground tracking-wide">
-              Independent. Free for merchants. Trusted by businesses across the UK and EU.
+              Takes 60 seconds. No sales call. You'll see your match immediately.
+            </p>
+            <p className="text-xs text-muted-foreground tracking-wide">
+              Independent. Free for merchants. Trusted by 50+ businesses across the UK and EU.
             </p>
             <Link
               to="/risk-profile-matching"

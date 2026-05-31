@@ -27,20 +27,25 @@ const Header = () => {
           
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link 
+              <Link
                 key={link.to}
-                to={link.to} 
+                to={link.to}
                 className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium"
               >
                 {link.label}
               </Link>
             ))}
-            <Link 
+            <Link
               to="/onboard-with-us"
               className="text-base font-medium text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary pb-0.5"
             >
               Partner With Us
             </Link>
+            <Button variant="hero" size="sm" asChild>
+              <Link to="/assessment?start=true" replace>
+                Run My Risk Profile
+              </Link>
+            </Button>
           </nav>
 
           {/* Mobile Navigation */}
