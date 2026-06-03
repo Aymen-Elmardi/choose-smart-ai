@@ -140,6 +140,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Insights hub pages — priority 0.7
     {
+      url: `${BASE_URL}/insights/buy-now-pay-later-uk`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/insights`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
