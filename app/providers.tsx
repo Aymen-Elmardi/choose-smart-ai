@@ -6,7 +6,6 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
 import { useState } from 'react'
-import ExitIntentPopup from '@/components/ExitIntentPopup'
 import TimedPopup from '@/components/TimedPopup'
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -28,7 +27,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <ExitIntentPopup />
           <TimedPopup />
           {children}
         </TooltipProvider>
