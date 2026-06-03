@@ -507,6 +507,13 @@ export const allInsights: Insight[] = [
   },
   // Guides
   {
+    title: "Buy Now Pay Later for UK Merchants: The Practical Guide",
+    slug: "buy-now-pay-later-uk",
+    description: "BNPL can lift conversion rates by 20–30% and increase average order value significantly. How to evaluate Klarna, Clearpay, and other providers — and what it means for your payment stack.",
+    category: "guides",
+    readTime: "6 min read"
+  },
+  {
     title: "What To Do When a Payment Provider Asks for More Documents",
     slug: "what-to-do-when-provider-asks-for-documents",
     description: "Learn why document requests happen, what they usually mean, and how to respond with confidence.",
