@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { Providers } from './providers'
 import AppErrorBoundary from '@/components/AppErrorBoundary'
@@ -60,6 +61,9 @@ export default function RootLayout({
             {children}
           </AppErrorBoundary>
         </Providers>
+        <Script id="crisp-chat" strategy="afterInteractive">
+          {`window.$crisp=[];window.CRISP_WEBSITE_ID="0292116c-4c90-40f8-9367-5343a3431cc8";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}
+        </Script>
       </body>
     </html>
   )
