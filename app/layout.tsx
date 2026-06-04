@@ -61,6 +61,10 @@ export default function RootLayout({
             {children}
           </AppErrorBoundary>
         </Providers>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-L6LB24F1J8" strategy="afterInteractive" />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L6LB24F1J8');`}
+        </Script>
         <Script id="crisp-chat" strategy="afterInteractive">
           {`window.$crisp=[];window.CRISP_WEBSITE_ID="0292116c-4c90-40f8-9367-5343a3431cc8";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}
         </Script>
