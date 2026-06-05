@@ -57,6 +57,10 @@ export const fetchServerRecommendation = async (
           monthlyVolume: answers.monthlyVolume,
           avgTransaction: answers.avgTransaction,
           features: answers.features,
+          // Industry + segmentation drive risk and segment scoring
+          industry: answers.industry,
+          platform: answers.platform,
+          segment: answers.segment,
         },
       }
     );

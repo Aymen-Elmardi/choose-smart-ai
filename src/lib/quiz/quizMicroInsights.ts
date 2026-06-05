@@ -7,6 +7,11 @@ import type { MicroInsightConfig } from "@/types/quiz";
  */
 export const MICRO_INSIGHTS: MicroInsightConfig[] = [
   {
+    questionId: "platform",
+    triggerAnswer: "Shopify / Shopify Plus",
+    text: "You're on Shopify, so you already have access to Shopify Payments — optimised for your platform. We specialise in self-hosted, marketplace and SaaS businesses, but we'll still flag where you could save and how your costs compare.",
+  },
+  {
     questionId: "salesChannel",
     triggerAnswer: "Marketplace or platform",
     text: "Marketplace models require specialized \"Split Payment\" logic to handle sub-merchant payouts and compliance.",

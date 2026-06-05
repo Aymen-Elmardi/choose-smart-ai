@@ -2,6 +2,25 @@
 // This is the single source of truth - import from here everywhere
 
 /**
+ * Business segment derived from platform + industry + business type.
+ * Drives conditional questions, the recommendation engine, and results templates.
+ */
+export type QuizSegment =
+  | "self-hosted" // WooCommerce, Magento, custom, BigCommerce, Wix, etc.
+  | "marketplace" // multi-merchant platforms
+  | "saas" // subscription / recurring billing
+  | "multi-location" // omnichannel retail / hospitality
+  | "high-risk" // adult, gaming, CBD, crypto, etc.
+  | "shopify" // soft-capture: locked into Shopify Payments
+  | "unknown";
+
+/**
+ * Lead routing tier derived from monthly volume.
+ * We tag (not gate) so every lead is still captured.
+ */
+export type VolumeTier = "too-small" | "nurture" | "qualified" | "unknown";
+
+/**
  * Core quiz answers collected from the user during the assessment.
  * Used by both client-side and server-side recommendation logic.
  */
@@ -14,19 +33,35 @@ export interface QuizAnswers {
   monthlyVolume: string;
   avgTransaction: string;
   features: string[];
-  
+
+  // Platform & segmentation (drives branching + results templates)
+  platform?: string;
+  segment?: QuizSegment;
+  volumeTier?: VolumeTier;
+
   // Derived flags for engine (set based on salesChannel)
   needsOnline?: boolean;
   needsInPerson?: boolean;
   needsMarketplace?: boolean;
   terminalType?: string;
-  
+
   // Extended fields for lead capture context
   industry?: string;
   deliveryTimeline?: string;
   buyingIntent?: string;
   contactTime?: string;
   previousRestriction?: string;
+
+  // Segment-specific answers
+  currentProcessor?: string; // self-hosted
+  painPoints?: string[]; // self-hosted (multi-select)
+  marketplaceModel?: string; // marketplace
+  marketplaceChallenge?: string; // marketplace
+  revenueModel?: string; // saas
+  billingChallenge?: string; // saas
+  locationCount?: string; // multi-location
+  salesMix?: string; // multi-location
+  declineHistory?: string; // high-risk
 }
 
 /**
@@ -40,6 +75,9 @@ export const INITIAL_QUIZ_ANSWERS: QuizAnswers = {
   monthlyVolume: "",
   avgTransaction: "",
   features: [],
+  platform: "",
+  segment: "unknown",
+  volumeTier: "unknown",
   needsOnline: false,
   needsInPerson: false,
   needsMarketplace: false,
@@ -49,6 +87,15 @@ export const INITIAL_QUIZ_ANSWERS: QuizAnswers = {
   buyingIntent: "",
   contactTime: "",
   previousRestriction: "",
+  currentProcessor: "",
+  painPoints: [],
+  marketplaceModel: "",
+  marketplaceChallenge: "",
+  revenueModel: "",
+  billingChallenge: "",
+  locationCount: "",
+  salesMix: "",
+  declineHistory: "",
 };
 
 /**

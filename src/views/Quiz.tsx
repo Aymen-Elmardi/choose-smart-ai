@@ -22,6 +22,7 @@ import {
   mapAvgTransaction,
 } from "@/lib/quiz/quizAnswerMappers";
 import { getActiveMicroInsight } from "@/lib/quiz/quizMicroInsights";
+import { deriveSegment, deriveVolumeTier } from "@/lib/quiz/quizSegment";
 import { initializeSessionTracking, markQuizStart } from "@/lib/sessionTracking";
 
 const Quiz = () => {
@@ -140,6 +141,10 @@ const Quiz = () => {
       (updatedAnswers as any)[questionId] = option;
     }
 
+    // Recompute derived segmentation + volume tier on every answer change
+    updatedAnswers.segment = deriveSegment(updatedAnswers);
+    updatedAnswers.volumeTier = deriveVolumeTier(updatedAnswers.monthlyVolume);
+
     setAnswers(updatedAnswers);
 
     // For single-select questions, auto-advance (with insight transition if applicable)
@@ -185,6 +190,9 @@ const Quiz = () => {
 
   const handleDropdownSelect = (questionId: string, value: string) => {
     const updatedAnswers = { ...answers, [questionId]: value };
+    // Recompute derived segmentation (industry dropdown drives high-risk routing)
+    updatedAnswers.segment = deriveSegment(updatedAnswers);
+    updatedAnswers.volumeTier = deriveVolumeTier(updatedAnswers.monthlyVolume);
     setAnswers(updatedAnswers);
     setDropdownOpen(false);
 
@@ -226,6 +234,10 @@ const Quiz = () => {
       monthlyVolume: mapMonthlyVolume(ans.monthlyVolume),
       avgTransaction: mapAvgTransaction(ans.avgTransaction),
       features: [], // Not collecting features in this flow
+      // Platform & segmentation
+      platform: ans.platform,
+      segment: ans.segment,
+      volumeTier: ans.volumeTier,
       // Additional metadata for lead capture
       industry: ans.industry,
       deliveryTimeline: ans.deliveryTimeline,
@@ -233,6 +245,16 @@ const Quiz = () => {
       contactTime: ans.contactTime,
       terminalType: ans.terminalType,
       previousRestriction: ans.previousRestriction,
+      // Segment-specific answers
+      currentProcessor: ans.currentProcessor,
+      painPoints: ans.painPoints,
+      marketplaceModel: ans.marketplaceModel,
+      marketplaceChallenge: ans.marketplaceChallenge,
+      revenueModel: ans.revenueModel,
+      billingChallenge: ans.billingChallenge,
+      locationCount: ans.locationCount,
+      salesMix: ans.salesMix,
+      declineHistory: ans.declineHistory,
     };
   };
 

@@ -11,8 +11,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
-import type { QuizAnswers, Provider } from "@/types/quiz";
+import type { QuizAnswers, Provider, QuizSegment, VolumeTier } from "@/types/quiz";
 import { initializeSessionTracking } from "@/lib/sessionTracking";
+import { SEGMENT_LABELS } from "@/lib/quiz/quizSegment";
+import { SEGMENT_RESULTS, estimateSavings, formatGBP } from "@/lib/quiz/segmentResults";
 
 interface EliminatedProvider {
   name: string;
@@ -32,6 +34,20 @@ interface RawQuizAnswers {
   terminalType?: string;
   buyingIntent?: string;
   contactTime?: string;
+  // Platform & segmentation
+  platform?: string;
+  segment?: QuizSegment;
+  volumeTier?: VolumeTier;
+  // Segment-specific answers
+  currentProcessor?: string;
+  painPoints?: string[];
+  marketplaceModel?: string;
+  marketplaceChallenge?: string;
+  revenueModel?: string;
+  billingChallenge?: string;
+  locationCount?: string;
+  salesMix?: string;
+  declineHistory?: string;
 }
 
 const readStoredAnswers = (): QuizAnswers | null => {
@@ -51,6 +67,11 @@ const readStoredAnswers = (): QuizAnswers | null => {
       features: Array.isArray(parsed.features)
         ? parsed.features.filter((f): f is string => typeof f === "string")
         : [],
+      // Industry + segmentation are needed by the engine and results templates
+      industry: typeof parsed.industry === "string" ? parsed.industry : undefined,
+      platform: typeof parsed.platform === "string" ? parsed.platform : undefined,
+      segment: parsed.segment,
+      volumeTier: parsed.volumeTier,
     };
   } catch {
     return null;
@@ -192,8 +213,8 @@ const Recommendation = () => {
       businessName: formData.companyName,
       notes: "",
       websiteUrl: "",
-      currentProvider: "",
-      painPoints: "",
+      currentProvider: rawAnswers?.currentProcessor || "",
+      painPoints: (rawAnswers?.painPoints || []).join(", "),
       businessType: answers.businessType,
       monthlyVolume: answers.monthlyVolume,
       avgTransaction: answers.avgTransaction,
@@ -204,6 +225,19 @@ const Recommendation = () => {
       market: market,
       recommendedProvider: primary?.name || "Advisory Review",
       logicPath: "tiered-engine",
+      // Segmentation + routing context
+      segment,
+      segmentLabel,
+      volumeTier: rawAnswers?.volumeTier || answers.volumeTier || "unknown",
+      platform: rawAnswers?.platform || "",
+      industry: rawAnswers?.industry || "",
+      marketplaceModel: rawAnswers?.marketplaceModel || "",
+      marketplaceChallenge: rawAnswers?.marketplaceChallenge || "",
+      revenueModel: rawAnswers?.revenueModel || "",
+      billingChallenge: rawAnswers?.billingChallenge || "",
+      locationCount: rawAnswers?.locationCount || "",
+      salesMix: rawAnswers?.salesMix || "",
+      declineHistory: rawAnswers?.declineHistory || "",
     };
 
     try {
@@ -240,8 +274,8 @@ const Recommendation = () => {
       businessName: formData.companyName,
       notes: formData.notes,
       websiteUrl: formData.websiteUrl,
-      currentProvider: formData.currentProvider,
-      painPoints: formData.painPoints,
+      currentProvider: formData.currentProvider || rawAnswers?.currentProcessor || "",
+      painPoints: formData.painPoints || (rawAnswers?.painPoints || []).join(", "),
       businessType: answers.businessType,
       monthlyVolume: answers.monthlyVolume,
       avgTransaction: answers.avgTransaction,
@@ -252,6 +286,19 @@ const Recommendation = () => {
       market: market,
       recommendedProvider: primary?.name || "Advisory Review",
       logicPath: "tiered-engine-detailed",
+      // Segmentation + routing context
+      segment,
+      segmentLabel,
+      volumeTier: rawAnswers?.volumeTier || answers.volumeTier || "unknown",
+      platform: rawAnswers?.platform || "",
+      industry: rawAnswers?.industry || "",
+      marketplaceModel: rawAnswers?.marketplaceModel || "",
+      marketplaceChallenge: rawAnswers?.marketplaceChallenge || "",
+      revenueModel: rawAnswers?.revenueModel || "",
+      billingChallenge: rawAnswers?.billingChallenge || "",
+      locationCount: rawAnswers?.locationCount || "",
+      salesMix: rawAnswers?.salesMix || "",
+      declineHistory: rawAnswers?.declineHistory || "",
     };
 
     try {
@@ -279,6 +326,13 @@ const Recommendation = () => {
   const displayPriorities = rawAnswers?.priorities || answers.priorities || [];
   const displayDelivery = rawAnswers?.deliveryTimeline || null;
   const displayRestriction = rawAnswers?.previousRestriction || null;
+
+  // Segmentation-driven presentation
+  const segment: QuizSegment = rawAnswers?.segment || answers.segment || "unknown";
+  const segmentContent = SEGMENT_RESULTS[segment] || SEGMENT_RESULTS.unknown;
+  const segmentLabel = SEGMENT_LABELS[segment] || SEGMENT_LABELS.unknown;
+  const isShopify = segment === "shopify";
+  const savings = estimateSavings(rawAnswers?.currentProcessor, rawAnswers?.monthlyVolume);
 
   const providerName = primary?.name || "the right provider";
 
@@ -390,13 +444,16 @@ const Recommendation = () => {
             {/* Results */}
             {resultsLoaded && primary ? (
               <div className="animate-fade-up">
-                {/* Header */}
+                {/* Header — segment-specific */}
                 <div className="text-center mb-8">
+                  <span className="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 rounded-full px-3 py-1 mb-3">
+                    {segmentLabel}
+                  </span>
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                    Your Risk Profile Results
+                    {segmentContent.headline}
                   </h2>
                   <p className="text-muted-foreground max-w-xl mx-auto">
-                    Based on your business profile, here's how providers align with your risk signals.
+                    {segmentContent.intro}
                   </p>
                 </div>
 
@@ -445,45 +502,103 @@ const Recommendation = () => {
                   </CardContent>
                 </Card>
 
-                {/* Risk Alignment Score */}
-                {primary.matchScore && (
+                {/* Shopify soft-capture explainer (replaces provider push) */}
+                {isShopify && (
+                  <Card className="border-2 border-primary/30 bg-primary/5 mb-8">
+                    <CardContent className="p-6 md:p-8">
+                      <div className="flex items-center gap-2 mb-3">
+                        <CheckCircle className="w-5 h-5 text-primary" />
+                        <span className="text-sm font-bold text-primary uppercase tracking-wider">{segmentContent.alertLabel}</span>
+                      </div>
+                      <p className="text-foreground mb-4">
+                        You're on Shopify, which means you already have access to <span className="font-semibold">Shopify Payments</span> — a solution optimised for your platform. We specialise in helping businesses on self-hosted platforms (WooCommerce, Magento), marketplaces and SaaS companies find better processors.
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        If you'd like to compare Shopify Payments to other options, understand your true payment costs, or get strategic advice, leave your details below — otherwise, best of luck with Shopify.
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Self-hosted savings / misalignment analysis */}
+                {!isShopify && segment === "self-hosted" && savings.applicable && (
+                  <Card className="border-2 border-amber-400/40 bg-amber-50/60 mb-8">
+                    <CardContent className="p-6 md:p-8">
+                      <div className="flex items-center gap-2 mb-4">
+                        <AlertTriangle className="w-5 h-5 text-amber-600" />
+                        <span className="text-sm font-bold text-amber-700 uppercase tracking-wider">Misalignment detected</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4 mb-5 text-sm">
+                        <div>
+                          <div className="text-muted-foreground">Currently with</div>
+                          <div className="font-semibold text-foreground">{rawAnswers?.currentProcessor}</div>
+                        </div>
+                        <div>
+                          <div className="text-muted-foreground">Est. current fees</div>
+                          <div className="font-semibold text-foreground">~{formatGBP(savings.currentMonthlyFees)}/mo</div>
+                        </div>
+                        <div>
+                          <div className="text-muted-foreground">On Interchange++</div>
+                          <div className="font-semibold text-foreground">~{formatGBP(savings.optimizedMonthlyFees)}/mo</div>
+                        </div>
+                        <div>
+                          <div className="text-muted-foreground">Potential saving</div>
+                          <div className="font-semibold text-primary">{formatGBP(savings.monthlySavingsLow)}–{formatGBP(savings.monthlySavingsHigh)}/mo</div>
+                        </div>
+                      </div>
+                      <div className="rounded-lg bg-primary/10 border border-primary/20 px-4 py-3 text-center">
+                        <span className="text-sm font-semibold text-primary">
+                          Estimated annual impact: {formatGBP(savings.annualSavingsLow)}–{formatGBP(savings.annualSavingsHigh)}
+                        </span>
+                      </div>
+                      <p className="mt-3 text-xs text-muted-foreground text-center">
+                        Illustrative estimate based on typical blended flat rates vs. Interchange++. Your actual rates depend on card mix and negotiation.
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Risk Alignment Score (hidden for Shopify) */}
+                {!isShopify && primary.matchScore && (
                   <div className="flex justify-center mb-6">
                     <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-primary/10 border border-primary/20">
                       <div className="text-3xl font-bold text-primary">
-                        {Math.min(Math.round((primary.matchScore / 130) * 100), 99)}%
+                        {Math.min(Math.round((primary.matchScore / 155) * 100), 99)}%
                       </div>
                       <div className="text-left">
-                        <div className="text-sm font-semibold text-foreground">Risk Alignment</div>
+                        <div className="text-sm font-semibold text-foreground">{segment === "high-risk" ? "Approval Fit" : "Match Alignment"}</div>
                         <div className="text-xs text-muted-foreground">Match confidence score</div>
                       </div>
                     </div>
                   </div>
                 )}
 
-                {/* Section 2 — Recommended Provider (SUBDUED) */}
-                <Card className="border border-border/60 bg-card mb-6">
-                  <CardContent className="p-5 md:p-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Recommended Provider</span>
-                    </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-1">{primary.name}</h3>
-                    <p className="text-muted-foreground text-sm mb-3">{primary.description}</p>
-                    {primary.reasons?.length > 0 && (
-                      <ul className="space-y-1.5">
-                        {primary.reasons.map((r, i) => (
-                          <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                            <Check className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                            <span>{r}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </CardContent>
-                </Card>
+                {/* Section 2 — Recommended Provider (hidden for Shopify) */}
+                {!isShopify && (
+                  <Card className="border border-border/60 bg-card mb-6">
+                    <CardContent className="p-5 md:p-6">
+                      <div className="flex items-center gap-2 mb-2">
+                        <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Recommended Provider</span>
+                      </div>
+                      <h3 className="text-lg font-semibold text-foreground mb-1">{primary.name}</h3>
+                      <p className="text-muted-foreground text-sm mb-3">{primary.description}</p>
+                      {primary.reasons?.length > 0 && (
+                        <ul className="space-y-1.5">
+                          {primary.reasons.map((r, i) => (
+                            <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                              <Check className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
+                              <span>{r}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </CardContent>
+                  </Card>
+                )}
 
-                {/* Section 3 — Providers to Avoid (HIGHLIGHTED) */}
-                {avoid.length > 0 && (
+                {/* Section 3 — Providers to Avoid (hidden for Shopify) */}
+                {!isShopify && avoid.length > 0 && (
                   <Card className="border-2 border-destructive/20 bg-destructive/5 mb-8">
                     <CardContent className="p-5 md:p-6">
                       <div className="flex items-center gap-2 mb-4">
@@ -577,13 +692,13 @@ const Recommendation = () => {
                           </>
                         ) : (
                           <>
-                            Get Personalized Guidance
+                            {segmentContent.ctaLabel}
                             <ArrowRight className="w-5 h-5" />
                           </>
                         )}
                       </Button>
                       <p className="mt-3 text-sm text-muted-foreground">
-                        Free. No commitment. Your risk profile is included automatically.
+                        {segmentContent.ctaSubtext}
                       </p>
                     </div>
                   </CardContent>
