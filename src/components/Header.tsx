@@ -21,8 +21,8 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <div className="section-container">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-foreground tracking-tight">ChosePayments</span>
+          <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="ChosePayments home">
+            <img src="/chosepayments-logo.svg" alt="ChosePayments" className="h-8 w-auto shrink-0" width={144} height={36} />
           </Link>
           
           <nav className="hidden md:flex items-center gap-8">
