@@ -14,7 +14,7 @@ const CTASection = () => {
             Your Processor Is Either Right for Your Business or It Isn't.
           </h2>
           <p className="text-lg md:text-xl text-background/70 max-w-2xl mx-auto mb-10">
-            Most businesses find out the hard way — frozen accounts, unexpected holds, fees that don't make sense. Find out now, before it costs you.
+            Most UK businesses find out the hard way. Frozen merchant accounts. Unexpected holds. Fees that don't add up. Run your profile now and find out before it costs you.
           </p>
           <Button 
             variant="hero"

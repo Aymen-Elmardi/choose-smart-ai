@@ -8,11 +8,11 @@ const HeroSection = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="heading-xl text-foreground text-balance">
-            Find the Payment Processor That Won't Freeze Your Account.
+            Find the Right UK Payment Processor for Your Business.
           </h1>
           <div className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              We match your industry, volume, and transaction history to the providers most likely to approve you. Before you apply.
+              We match your business model, volume, and transaction history to UK merchant account providers most likely to approve you. Avoid frozen accounts, rejected applications, and fees that never made sense.
             </p>
           </div>
           <div className="mt-12 flex flex-col items-center gap-4">

@@ -42,10 +42,10 @@ const DiagnosticBlock = () => {
       <div className="section-container py-16 md:py-20">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight text-center mb-3">
-            What's Happening to You Right Now?
+            What's Happening to Your Account Right Now?
           </h2>
           <p className="text-muted-foreground text-center mb-10 text-sm max-w-lg mx-auto">
-            Select any issues you're experiencing. We'll show you exactly what's going on and what to do about it.
+            Pick what you're dealing with. We'll explain the real cause and tell you exactly what to do.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {problems.map((problem) => {

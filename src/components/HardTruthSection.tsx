@@ -1,9 +1,9 @@
 const truths = [
-  "Your rate is based on how risky your business looks to them — not how well you've performed.",
-  "When they hold your funds, it's because their system flagged your account type. It's not personal, but it still stops your business.",
-  "A spike in chargebacks — even one bad month — can change how every future transaction is treated.",
+  "Your rate is based on how risky your business looks to them, not how well you have performed.",
+  "When they hold your funds, it is because their system flagged your account type. It is not personal. But it still stops your business.",
+  "A spike in chargebacks in even one bad month can change how every future transaction is treated.",
   "If your revenue suddenly grows, your processor may pause your account to review it. Fast growth looks like a red flag to the wrong provider.",
-  "Flat-rate pricing bundles fees together so you can't see what you're actually paying for each transaction type.",
+  "Flat-rate pricing bundles fees together so you cannot see what you are actually paying per transaction type.",
 ];
 
 const HardTruthSection = () => {

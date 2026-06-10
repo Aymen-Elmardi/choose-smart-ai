@@ -14,6 +14,7 @@ const HardTruthSection = lazy(() => import("@/components/HardTruthSection"));
 const SocialProofSection = lazy(() => import("@/components/SocialProofSection"));
 const InsightsPreviewSection = lazy(() => import("@/components/InsightsPreviewSection"));
 const ValuePropsSection = lazy(() => import("@/components/ValuePropsSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
 const CTASection = lazy(() => import("@/components/CTASection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
@@ -48,6 +49,7 @@ const Index = () => {
           <SocialProofSection />
           <ValuePropsSection />
           <InsightsPreviewSection />
+          <FAQSection />
           <CTASection />
         </Suspense>
       </main>

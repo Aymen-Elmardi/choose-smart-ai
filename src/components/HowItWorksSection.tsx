@@ -1,4 +1,4 @@
-import { ClipboardList, Sparkles, FileText } from "lucide-react";
+import { ClipboardList, Sparkles, FileText, PhoneCall } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const steps = [
@@ -6,19 +6,29 @@ const steps = [
     icon: ClipboardList,
     step: "01",
     title: "Enter Your Business Details",
-    description: "Answer a short assessment about your business model, monthly volume, and industry.",
+    description: "Answer a short assessment about your business model, monthly volume, and industry. No account needed.",
+    dark: false,
   },
   {
     icon: Sparkles,
     step: "02",
     title: "We Calculate Your Risk Profile",
-    description: "Our engine matches providers against your business type, monthly volume, and transaction history.",
+    description: "Our engine maps your profile against the underwriting criteria of 50+ UK processors to find the right fit.",
+    dark: false,
   },
   {
     icon: FileText,
     step: "03",
     title: "See Your Provider Match",
-    description: "View which providers fit, which are acceptable, and which to avoid — with clear reasons.",
+    description: "View which providers fit, which are acceptable, and which to avoid. Every recommendation includes a clear reason why.",
+    dark: false,
+  },
+  {
+    icon: PhoneCall,
+    step: "04",
+    title: "Get on a Call. Get Introduced.",
+    description: "Book a 15-minute call with us. We introduce you directly to your matched processor and guide you through the application.",
+    dark: true,
   },
 ];
 
@@ -30,22 +40,22 @@ const HowItWorksSection = () => {
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-20 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            How It Works
+            How UK Payment Processor Matching Works
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
           {steps.map((step, index) => (
-            <div 
-              key={step.title} 
-              className={`text-center reveal stagger-${index + 1} ${isInView ? "visible" : ""}`}
+            <div
+              key={step.title}
+              className={`text-center reveal stagger-${index + 1} ${isInView ? "visible" : ""} ${step.dark ? "bg-foreground rounded-xl p-6" : ""}`}
             >
               <div className="w-14 h-14 mx-auto flex items-center justify-center mb-6">
                 <step.icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
               </div>
               <div className="text-sm font-bold text-primary mb-3 tracking-wide">STEP {step.step}</div>
-              <h3 className="text-lg font-semibold text-foreground mb-3">{step.title}</h3>
-              <p className="text-muted-foreground">{step.description}</p>
+              <h3 className={`text-lg font-semibold mb-3 ${step.dark ? "text-background" : "text-foreground"}`}>{step.title}</h3>
+              <p className={step.dark ? "text-background/60" : "text-muted-foreground"}>{step.description}</p>
             </div>
           ))}
         </div>

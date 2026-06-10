@@ -14,8 +14,11 @@ const ExampleOutputPreview = () => {
             Example Engine Output
           </p>
           <h2 className="heading-lg text-foreground">
-            What Your Risk Profile Looks Like
+            This Is What Providers See When They Look at Your Business
           </h2>
+          <p className="mt-4 text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            Your risk profile determines who approves you, what rate you pay, and whether your account stays open. Most merchants never see it until something goes wrong.
+          </p>
         </div>
 
         <div className={`reveal stagger-1 ${isInView ? "visible" : ""}`}>
@@ -117,7 +120,6 @@ const ExampleOutputPreview = () => {
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
-            <p className="mt-3 text-xs text-muted-foreground">Takes 2 minutes. Human-reviewed guidance.</p>
           </div>
         </div>
       </div>

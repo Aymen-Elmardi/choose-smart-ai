@@ -1,21 +1,26 @@
-import { TrendingUp, Receipt, Target, MapPin } from "lucide-react";
+import { TrendingUp, Target, MapPin, Users } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const valueProps = [
   {
     icon: TrendingUp,
     title: "Born from Real Failures",
-    description: "We've seen businesses lose revenue, get frozen, or churn providers repeatedly. All because nobody checked the fit before they signed up.",
+    description: "We've seen businesses lose revenue, get frozen, and churn through providers. All because nobody checked the fit before they applied.",
   },
   {
     icon: Target,
     title: "Outcome-Driven Methodology",
-    description: "Every recommendation is tied to measurable impact: revenue captured, costs reduced, risk mitigated.",
+    description: "Every recommendation ties to measurable impact: revenue captured, costs reduced, account stability improved.",
   },
   {
     icon: MapPin,
     title: "UK and EU Specialists",
-    description: "Deep expertise in UK and EU regulatory frameworks, scheme rules, and acquirer relationships.",
+    description: "Deep expertise in UK and EU regulatory frameworks, scheme rules, and acquirer relationships across all merchant categories.",
+  },
+  {
+    icon: Users,
+    title: "Independent, Not Affiliated",
+    description: "We are not owned by any payment provider. Our recommendations are based on what fits your business, not commission rates.",
   },
 ];
 
@@ -30,7 +35,7 @@ const ValuePropsSection = () => {
             Built by People Who've Seen What the Wrong Provider Does
           </h2>
           <p className="text-muted-foreground mt-4 text-lg leading-relaxed max-w-2xl mx-auto">
-            Frozen accounts. Silent holds on funds. Chargebacks that spiral because the underwriting never fit. We built this tool after watching it happen to businesses of every size, from sole traders to eight-figure operations.
+            Frozen accounts. Silent holds on funds. Chargebacks that spiral because the underwriting never fit. We built ChosePayments after watching this happen to businesses of every size, from sole traders to eight-figure operations.
           </p>
         </div>
 

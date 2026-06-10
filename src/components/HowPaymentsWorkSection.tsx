@@ -5,19 +5,19 @@ const boxes = [
   {
     icon: ShieldAlert,
     title: "Holds and Reviews",
-    description: "Why funds get frozen and what triggers it.",
+    description: "Why funds get frozen and what triggers it. Your account type, chargeback rate, and volume pattern all feed into this decision automatically.",
     link: "/insights/why-payment-accounts-get-frozen-without-warning",
   },
   {
     icon: BarChart3,
     title: "Reserves and Risk Bands",
-    description: "How providers protect themselves and why you moved tiers.",
+    description: "How providers protect themselves and why your pricing tier changed. Reserve requirements are tied directly to your risk classification.",
     link: "/insights/scheme-rules-reserves-monitoring",
   },
   {
     icon: Receipt,
     title: "Fees and Effective Rate",
-    description: "Why your \"1.4%\" became 2.3%.",
+    description: "Why your 1.4% became 2.3%. Scheme fees, assessment fees, and interchange variations add up in ways your headline rate does not show.",
     link: "/insights/crisis/hidden-fee-crisis",
   },
 ];
@@ -32,10 +32,10 @@ const HowPaymentsWorkSection = () => {
           </h2>
           <div className="text-lg text-muted-foreground leading-relaxed space-y-3 mb-12 max-w-xl">
             <p>
-              They act based on risk thresholds, scheme rules, and statistical triggers.
-              If something changed in your account, there is a reason.
+              They act on risk thresholds, scheme rules, and statistical triggers.
+              If something changed in your account, there is a specific reason.
             </p>
-            <p>Here's how the system actually works.</p>
+            <p>Here is how the system actually works.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
             {boxes.map((box) => (

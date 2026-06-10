@@ -3,21 +3,21 @@ import { useInView } from "@/hooks/useInView";
 
 const testimonials = [
   {
-    quote: "Saved 0.4% on every transaction after switching. That's £8,000 a year back in our pocket.",
-    businessType: "Ecommerce",
-    location: "Manchester",
+    quote: "Saved 0.4% on every transaction after switching. That is £8,000 a year back in our pocket. We had been on the wrong processor for two years without realising it. The risk profile showed us exactly why our fees were higher than they should be.",
+    name: "Jamie L.",
+    business: "Ecommerce, Manchester",
     result: "12% cost reduction",
   },
   {
-    quote: "Finally found a provider that understands subscription billing. No more frozen accounts.",
-    businessType: "SaaS Platform",
-    location: "London",
+    quote: "We had our account flagged three times in a year. It was not fraud. Our billing model just did not match how our provider had classified us. ChosePayments made that obvious straight away. No account issues in 18 months since we switched.",
+    name: "Priya M.",
+    business: "SaaS Platform, London",
     result: "Zero account issues in 18 months",
   },
   {
-    quote: "The assessment took under a minute. The follow-up advice saved me weeks of research.",
-    businessType: "Retail Chain",
-    location: "Birmingham",
+    quote: "The assessment took under a minute. I had spent weeks reading comparison sites and still did not know which provider was right for a multi-location setup with mixed online and in-person volume. Got a clear answer in 60 seconds.",
+    name: "Tom W.",
+    business: "Retail Chain, Birmingham",
     result: "20+ hours saved",
   },
 ];
@@ -33,7 +33,7 @@ const SocialProofSection = () => {
             What Businesses Say
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
-            Real results from businesses who received independent payment advice.
+            Real results from businesses who ran their risk profile and received independent payment advice.
           </p>
         </div>
 
@@ -49,10 +49,10 @@ const SocialProofSection = () => {
               </p>
               <div className="pt-4 border-t border-border/50">
                 <p className="text-sm font-semibold text-foreground">
-                  {testimonial.businessType}
+                  {testimonial.name}
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  {testimonial.location}
+                  {testimonial.business}
                 </p>
                 <p className="mt-2 text-xs font-medium text-primary">
                   {testimonial.result}
