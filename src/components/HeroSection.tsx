@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="heading-xl text-foreground text-balance">
-            Find the Right UK Payment Processor for Your Business.
+            Find the Right UK Payment Processor for Your Business
           </h1>
           <div className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
