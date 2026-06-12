@@ -3,12 +3,12 @@ import { Suspense } from 'react'
 import FiservCloverFees from '@/views/insights/FiservCloverFees'
 
 export const metadata: Metadata = {
-  title: 'Fiserv & Clover Pricing Explained | ChosePayments',
-  description: 'Fiserv\'s pricing through Clover and their enterprise channels can be complex. A clear breakdown of their fee structures for UK and US merchants.',
+  title: 'Fiserv Clover Pricing (2026): Hardware, Software and Processing Fees Explained',
+  description: 'Clover pricing starts at $49 for the Go reader. Full breakdown of hardware costs, monthly software fees, and card processing rates for merchants in 2026.',
   alternates: { canonical: '/insights/fiserv-clover-pricing-explained' },
   openGraph: {
-    title: 'Fiserv & Clover Pricing Explained | ChosePayments',
-    description: 'Fiserv\'s pricing through Clover and their enterprise channels can be complex. A clear breakdown of their fee structures for UK and US merchants.',
+    title: 'Fiserv Clover Pricing (2026): Hardware, Software and Processing Fees Explained | ChosePayments',
+    description: 'Clover pricing starts at $49 for the Go reader. Full breakdown of hardware costs, monthly software fees, and card processing rates for merchants in 2026.',
     type: 'article',
   },
 }

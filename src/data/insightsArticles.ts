@@ -76,7 +76,7 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
     readTime: "10 min read"
   },
   fees: {
-    title: "Stripe Fees Explained Clearly: What Businesses Actually Pay",
+    title: "Stripe Fees Explained Clearly: What UK Businesses Actually Pay",
     slug: "stripe-fees-explained",
     description: "A complete breakdown of Stripe's pricing for UK businesses. Understand card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs.",
     category: "fees",
@@ -139,23 +139,23 @@ export const categoryLabels: Record<InsightCategory, string> = {
 export const allInsights: Insight[] = [
   // Fees & Costs articles
   {
-    title: "Stripe Fees Explained Clearly: What Businesses Actually Pay",
+    title: "Stripe Fees Explained Clearly: What UK Businesses Actually Pay",
     slug: "stripe-fees-explained",
     description: "A complete breakdown of Stripe's pricing for UK businesses. Understand card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs.",
     category: "fees",
     readTime: "7 min read"
   },
   {
-    title: "Checkout.com Fees Explained: What Businesses Actually Pay",
+    title: "Checkout.com Fees Explained: What Businesses Actually Pay in 2026",
     slug: "checkout-com-fees-explained",
-    description: "A clear breakdown of Checkout.com's negotiated pricing model, including card processing fees, international costs, chargebacks, and when this enterprise platform makes financial sense.",
+    description: "A clear breakdown of Checkout.com's negotiated interchange-plus-plus pricing, indicative rates by volume, how it compares to Stripe and Adyen, and when this enterprise platform makes financial sense.",
     category: "fees",
     readTime: "8 min read"
   },
   {
-    title: "Fiserv and Clover Pricing Explained: Why It Works for Resellers and Multi Location Businesses",
+    title: "Fiserv Clover Pricing Explained: What Merchants Pay in 2026",
     slug: "fiserv-clover-pricing-explained",
-    description: "A clear breakdown of Fiserv and Clover pricing for resellers, ISVs, and multi-location businesses. Understand how negotiated fees, hardware bundles, and value added services create real business value.",
+    description: "A breakdown of Clover hardware costs, monthly software plans, and card processing fees for merchants in 2026, plus how it compares to Square and SumUp.",
     category: "fees",
     readTime: "9 min read"
   },

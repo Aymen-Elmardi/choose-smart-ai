@@ -3,12 +3,12 @@ import { Suspense } from 'react'
 import StripeFees from '@/views/insights/StripeFees'
 
 export const metadata: Metadata = {
-  title: 'Stripe Fees Explained: What You Actually Pay | ChosePayments',
-  description: 'Stripe\'s pricing looks simple — until you dig in. Understand every Stripe fee including blended rates, international cards, disputes, and add-ons.',
+  title: 'Stripe Fees UK (2026): What Businesses Actually Pay',
+  description: 'Stripe charges 1.4% + 20p for UK cards. See the full breakdown of Connect fees, chargebacks, FX, and instant payouts, updated for 2026.',
   alternates: { canonical: '/insights/stripe-fees-explained' },
   openGraph: {
-    title: 'Stripe Fees Explained: What You Actually Pay | ChosePayments',
-    description: 'Stripe\'s pricing looks simple — until you dig in. Understand every Stripe fee including blended rates, international cards, disputes, and add-ons.',
+    title: 'Stripe Fees UK (2026): What Businesses Actually Pay | ChosePayments',
+    description: 'Stripe charges 1.4% + 20p for UK cards. See the full breakdown of Connect fees, chargebacks, FX, and instant payouts, updated for 2026.',
     type: 'article',
   },
 }

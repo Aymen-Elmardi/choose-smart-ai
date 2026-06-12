@@ -3,12 +3,12 @@ import { Suspense } from 'react'
 import CheckoutComFees from '@/views/insights/CheckoutComFees'
 
 export const metadata: Metadata = {
-  title: 'Checkout.com Fees Explained: Interchange++ Pricing Breakdown | ChosePayments',
-  description: 'Checkout.com uses Interchange++ pricing. Learn exactly what you pay and how to benchmark their rates against other enterprise processors.',
+  title: 'Checkout.com Pricing and Fees (2026): Is It Worth It For Your Business?',
+  description: 'Checkout.com uses negotiated pricing with no public rates. See how it works, when it beats Stripe, and what to expect at different volumes in 2026.',
   alternates: { canonical: '/insights/checkout-com-fees-explained' },
   openGraph: {
-    title: 'Checkout.com Fees Explained: Interchange++ Pricing Breakdown | ChosePayments',
-    description: 'Checkout.com uses Interchange++ pricing. Learn exactly what you pay and how to benchmark their rates against other enterprise processors.',
+    title: 'Checkout.com Pricing and Fees (2026): Is It Worth It For Your Business? | ChosePayments',
+    description: 'Checkout.com uses negotiated pricing with no public rates. See how it works, when it beats Stripe, and what to expect at different volumes in 2026.',
     type: 'article',
   },
 }

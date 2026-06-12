@@ -3,6 +3,7 @@ import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
+import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
 const sources: Source[] = [
@@ -25,96 +26,244 @@ const sources: Source[] = [
 
 const faqs = [
   {
-    question: "Does Fiserv publish standard pricing?",
-    answer: "No. Fiserv pricing is negotiated through acquiring banks, resellers, and ISVs. Rates depend on business model, volume, risk profile, and the reseller relationship."
+    question: "How much does Clover POS cost per month?",
+    answer: "Clover software subscription fees start at approximately $14.95 per month for the Starter plan. The Standard plan is around $44.95 per month, and the Plus plan is around $64.90 per month. These are software-only fees and do not include hardware costs or card processing fees, both of which are charged separately."
   },
   {
-    question: "How does Clover pricing work for resellers?",
-    answer: "Resellers bundle Clover hardware, software, and payment processing into a single offer. This allows them to set competitive merchant rates while capturing margin on devices, subscriptions, and value added services."
+    question: "What are Clover's card processing fees?",
+    answer: "Card-present transactions (chip, tap, or swipe at a Clover device) typically cost around 2.3% + $0.10 per transaction. Card-not-present and keyed-in transactions are typically 3.5% + $0.10. These rates are indicative and can vary based on your plan, volume, and whether you sign up directly or through a reseller or bank partner."
   },
   {
-    question: "Is Fiserv more expensive than flat rate providers?",
-    answer: "At low volumes, flat rate providers may appear cheaper. At scale, Fiserv's negotiated pricing and bundled value often result in lower total cost of ownership, especially for multi-location and franchise businesses."
+    question: "How much does Clover hardware cost?",
+    answer: "Clover hardware pricing varies by device. The Clover Go (mobile reader) is approximately $49. The Clover Flex (handheld terminal) is approximately $599. The Clover Mini (countertop terminal) is approximately $799. The Clover Station (full POS system) is approximately $1,649. Prices may vary by region and reseller."
   },
   {
-    question: "What industries benefit most from Fiserv and Clover?",
-    answer: "Hospitality, retail franchises, multi-location businesses, and service industries that need integrated POS, loyalty, inventory, and reporting tools alongside payment processing."
+    question: "Is Clover available in the UK?",
+    answer: "Clover is primarily available in North America. UK availability through Fiserv's banking partnerships is limited. UK merchants should consider alternatives such as Square, SumUp, iZettle, and Dojo, which have stronger UK presence, local pricing, and dedicated support."
+  },
+  {
+    question: "Who is Clover designed for?",
+    answer: "Clover is designed for small to medium-sized businesses in physical retail, restaurants, cafes, and service businesses that need a complete POS system. It is not designed for online-only merchants or enterprise businesses with complex global requirements."
+  },
+  {
+    question: "What is the difference between Fiserv and Clover?",
+    answer: "Fiserv is the parent company and one of the world's largest payment processors. Clover is the POS and merchant services brand that Fiserv acquired in 2019. Merchants who sign up for Clover are processed through Fiserv's payment infrastructure. Some merchants receive Clover through their bank, which may itself be a Fiserv partner."
   }
 ];
 
 const FiservCloverFees = () => {
   return (
     <InsightsArticleLayout
-      title="Fiserv Clover Pricing: Multi-Location & Reseller Guide"
-      description="Negotiated rates, hardware costs, and when it beats Stripe. See real-world examples."
+      title="Fiserv Clover Pricing (2026): Hardware, Software and Processing Fees Explained"
+      description="Clover pricing starts at $49 for the Go reader. Full breakdown of hardware costs, monthly software fees, and card processing rates for merchants in 2026."
       category={{ name: "Fees & Costs", slug: "fees" }}
-      cluster="hub"
+      cluster="pricing"
       currentSlug="fiserv-clover-pricing-explained"
       publishedTime="2026-02-09"
+      modifiedTime="2026-06-12"
       keywords={[
-        "fiserv fees",
-        "clover pricing",
-        "fiserv clover costs",
-        "reseller payment pricing",
-        "multi location payment processing",
-        "ISV payment platform",
-        "franchise payment fees",
-        "clover POS pricing",
-        "negotiated payment rates",
-        "interchange plus pricing fiserv"
+        "Clover pricing",
+        "Clover fees",
+        "Fiserv Clover cost",
+        "Clover hardware pricing",
+        "Clover POS pricing",
+        "Clover monthly fee",
+        "Clover processing fees"
       ]}
       sources={sources}
+      breadcrumbSchemaItems={[
+        { name: "Home", url: "/" },
+        { name: "Insights", url: "/insights" },
+        { name: "Fiserv Clover Pricing Explained", url: "/insights/fiserv-clover-pricing-explained" },
+      ]}
     >
       <FAQSchema faqs={faqs} />
 
-      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-        Fiserv and Clover Pricing Explained: Why It Works for Resellers and Multi Location Businesses
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
+        Fiserv Clover Pricing Explained: What Merchants Pay in 2026
       </h1>
 
-      <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-        If you have ever compared payment platforms, you might have noticed something unusual about Fiserv and its Clover product suite.
-        Unlike standardised pricing from newer fintech providers, Fiserv pricing is rarely a single flat rate. Instead, it is built around relationships, business models, and resellers.
-      </p>
+      <h2 className="text-xl md:text-2xl font-semibold text-muted-foreground mb-6">
+        Clover Pricing for Merchants: Hardware, Software, and Processing Fees
+      </h2>
 
       <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-        This makes Fiserv with Clover a natural fit for resellers, independent software vendors, and franchise networks where custom pricing, bundled value, and operational integration matter more than headline fees.
+        Clover is one of the most widely deployed point-of-sale systems in North America. It is built by Fiserv, one of the world's largest payments infrastructure companies, and is sold directly and through a network of banks and resellers.
       </p>
 
-      <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-        This article explains how Fiserv pricing works in practice and why resellers often choose it as a backbone for their clients' payment setups.
+      <p className="text-muted-foreground mb-4 leading-relaxed">
+        Understanding Clover pricing requires looking at three separate costs: the hardware you buy, the monthly software subscription you pay, and the card processing fees on every transaction. This guide breaks down all three for 2026.
       </p>
 
-      {/* Section: Pricing Philosophy */}
+      <p className="text-sm text-muted-foreground italic mb-12">
+        Last updated: June 2026
+      </p>
+
+      {/* Hardware */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
-          The pricing philosophy behind Fiserv and Clover
+          Clover Hardware: What Each Device Costs
         </h2>
-        <p className="mb-4">
-          Fiserv does not list standard rates on its website. This is intentional.
-        </p>
-        <p className="mb-4">
-          Instead, pricing is driven by three factors.
+        <p className="text-muted-foreground mb-6">
+          Clover offers a range of devices for different business types. Each device is purchased upfront (or sometimes leased through a reseller, though outright purchase is generally better value).
         </p>
 
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">1. The acquiring bank relationship</h3>
-        <p className="mb-4">
-          Fiserv is often paired with acquiring banks or financial institutions that resell the product. Each bank has its own fee structure and cost expectations. If you want to understand how{" "}
-          <Link to="/insights/what-is-an-acquirer" className="text-primary hover:underline">acquirers fit into the payment chain</Link>, that context helps explain why rates vary so widely.
+        <div className="overflow-x-auto mb-4">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b-2 border-border">
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Device</th>
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Price (approx.)</th>
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Best For</th>
+              </tr>
+            </thead>
+            <tbody className="text-muted-foreground">
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Clover Go</td>
+                <td className="py-3 px-3">~$49</td>
+                <td className="py-3 px-3">Mobile merchants, pop-ups, market stalls</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Clover Flex</td>
+                <td className="py-3 px-3">~$599</td>
+                <td className="py-3 px-3">Table service, mobile ordering, delivery</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Clover Mini</td>
+                <td className="py-3 px-3">~$799</td>
+                <td className="py-3 px-3">Countertop retail, quick service</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3 font-medium text-foreground">Clover Station</td>
+                <td className="py-3 px-3">~$1,649</td>
+                <td className="py-3 px-3">Full-service restaurants, busy retail</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-sm text-muted-foreground italic mb-6">
+          Prices are approximate USD. Actual pricing may vary by region, reseller, and any ongoing promotions. Contact Clover or your bank for exact pricing.
         </p>
 
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">2. The reseller margin strategy</h3>
-        <p className="mb-4">
-          Resellers and ISVs bundle Fiserv's services into broader offerings for merchants. This means base processing fees become part of a larger value package that can include terminals, software, reporting, support, and integration.
+        <p className="text-muted-foreground mb-3">
+          <strong className="text-foreground">Clover Go</strong> is the entry-level mobile card reader. It connects to a smartphone or tablet via Bluetooth and is designed for merchants who take payments on the go or at events.
+        </p>
+        <p className="text-muted-foreground mb-3">
+          <strong className="text-foreground">Clover Flex</strong> is a handheld device that works independently without a separate tablet. It prints receipts, connects to Wi-Fi and LTE, and is common in table-service restaurants and delivery operations.
+        </p>
+        <p className="text-muted-foreground mb-3">
+          <strong className="text-foreground">Clover Mini</strong> is a compact countertop terminal suited for retail and quick-service environments. It supports tap, chip, and swipe payments.
+        </p>
+        <p className="text-muted-foreground">
+          <strong className="text-foreground">Clover Station</strong> is a full POS setup including a touchscreen display, receipt printer, and cash drawer. It is designed for restaurants and retail businesses with high transaction volumes and complex order management needs.
+        </p>
+      </section>
+
+      {/* Software */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-foreground mb-4">
+          Clover Software Subscription Plans
+        </h2>
+        <p className="text-muted-foreground mb-6">
+          Clover hardware requires a monthly software subscription to operate. Plans vary depending on the type of business and features needed.
         </p>
 
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">3. Deployment scale and risk profile</h3>
-        <p className="mb-4">
-          Large enterprises and franchise groups can negotiate lower effective costs because the underlying risk and volume behaviour are predictable. This is similar to how{" "}
-          <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment provider risk models</Link> determine pricing outcomes for all providers.
+        <div className="overflow-x-auto mb-4">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b-2 border-border">
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Plan</th>
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Monthly Fee (approx.)</th>
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Included Features</th>
+              </tr>
+            </thead>
+            <tbody className="text-muted-foreground">
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Starter</td>
+                <td className="py-3 px-3">~$14.95/month</td>
+                <td className="py-3 px-3">Basic payments, simple reporting</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Standard</td>
+                <td className="py-3 px-3">~$44.95/month</td>
+                <td className="py-3 px-3">Inventory, employee management, online ordering</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3 font-medium text-foreground">Plus</td>
+                <td className="py-3 px-3">~$64.90/month</td>
+                <td className="py-3 px-3">Advanced reporting, loyalty, table management</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-sm text-muted-foreground italic mb-6">
+          These are approximate fees. Exact pricing depends on your device, region, and reseller. Rates may differ from those offered directly through Clover versus through a bank partner.
         </p>
 
-        <p className="mt-4">
-          In practice, this means that Fiserv pricing is negotiated and flexible, not a flat menu. This flexibility is where resellers find their opportunity.
+        <p className="text-muted-foreground mb-3">
+          The Starter plan is the minimum software tier. It covers basic payment acceptance but lacks inventory management and employee features that most growing businesses will need.
+        </p>
+        <p className="text-muted-foreground mb-3">
+          The Standard plan adds inventory tracking, employee management, and online ordering capabilities, making it the most common choice for retail and hospitality merchants.
+        </p>
+        <p className="text-muted-foreground">
+          The Plus plan includes advanced reporting, loyalty programmes, and restaurant-specific features like table management. It is typically used by full-service restaurants and higher-volume retailers.
+        </p>
+      </section>
+
+      {/* Processing fees */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-foreground mb-4">
+          Clover Card Processing Fees
+        </h2>
+        <p className="text-muted-foreground mb-4">
+          On top of hardware and software costs, Clover charges processing fees on every card transaction.
+        </p>
+        <p className="text-muted-foreground mb-4">
+          Processing rates vary based on:
+        </p>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
+          <li>Your monthly transaction volume</li>
+          <li>Whether transactions are card-present (in-person) or card-not-present (online, keyed in)</li>
+          <li>Your business type and industry risk profile</li>
+          <li>Whether you sign up directly through Clover or through a reseller bank</li>
+        </ul>
+
+        <p className="text-muted-foreground mb-4">Typical processing rates for standard merchants:</p>
+
+        <div className="overflow-x-auto mb-4">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b-2 border-border">
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Transaction Type</th>
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Typical Rate</th>
+              </tr>
+            </thead>
+            <tbody className="text-muted-foreground">
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Card-present (tap/chip)</td>
+                <td className="py-3 px-3">2.3% + $0.10</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Card-not-present</td>
+                <td className="py-3 px-3">3.5% + $0.10</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3 font-medium text-foreground">Keyed-in transactions</td>
+                <td className="py-3 px-3">3.5% + $0.10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-sm text-muted-foreground italic mb-4">
+          These are indicative rates for illustration. Actual fees depend on your specific plan and account agreement. Always confirm with Clover or your reseller.
+        </p>
+
+        <p className="text-muted-foreground">
+          Card-present rates are lower because in-person transactions have lower fraud risk. Card-not-present and keyed-in transactions are priced higher to reflect that elevated risk.
         </p>
 
         <InlineAssessmentCTA
@@ -123,150 +272,219 @@ const FiservCloverFees = () => {
         />
       </section>
 
-      {/* Section: Pricing Structure for Resellers */}
+      {/* Worked example */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
-          How pricing gets structured for resellers
+          Total Monthly Cost: A Worked Example
         </h2>
-        <p className="mb-6">
-          When a reseller offers Clover and Fiserv processing, there are usually three components.
+        <p className="text-muted-foreground mb-6">
+          To understand the real cost of Clover, you need to add hardware (amortised), software, and processing together.
         </p>
 
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">1. Merchant acquiring fees</h3>
-        <p className="mb-4">
-          These are the basic card acceptance charges. They depend on the merchant's industry, volume and ticket size, risk classification, and card mix (debit vs. credit, domestic vs. international).
-        </p>
-        <p className="mb-4">
-          Unlike flat retail rates, these are usually presented as{" "}
-          <Link to="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">interchange plus a markup</Link> when pricing is negotiated. Resellers can adjust the markup to remain competitive while still capturing margin.
-        </p>
+        <div className="bg-muted/30 rounded-lg p-6 mb-6">
+          <h3 className="text-lg font-semibold text-foreground mb-3">Example: A small retail shop</h3>
+          <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-1 text-sm">
+            <li>Hardware: Clover Mini ($799 upfront, amortised over 36 months = ~$22/month)</li>
+            <li>Software: Standard plan ($44.95/month)</li>
+            <li>Monthly card volume: $10,000</li>
+            <li>Mostly card-present transactions at 2.3% + $0.10 per transaction (approx. 200 transactions)</li>
+          </ul>
+          <p className="text-sm text-muted-foreground mb-1">Approximate monthly costs:</p>
+          <ul className="text-sm text-muted-foreground space-y-1 mb-3">
+            <li>Hardware (amortised): ~$22</li>
+            <li>Software subscription: ~$45</li>
+            <li>Processing fees (2.3% of $10,000): ~$230 + $20 fixed fees = ~$250</li>
+            <li className="text-foreground font-semibold">Total per month: approximately $317</li>
+          </ul>
+          <p className="text-foreground font-semibold text-sm">Effective all-in processing rate: ~3.17%</p>
+        </div>
 
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">2. Terminal and software bundle</h3>
-        <p className="mb-4">
-          Clover is both a product suite and a hardware and software ecosystem. It includes terminals and point of sale devices, integrated business management tools, loyalty and gift card functionality, and inventory and reporting features.
-        </p>
-        <p className="mb-4">
-          Resellers often bundle devices with processing into a single offer. This allows them to reduce upfront friction for merchants, capture hardware margin, and add value with integrated services.
-        </p>
-        <p className="mb-4">
-          This bundled pricing strategy is a key advantage for partners, especially when selling to{" "}
-          <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">multi location or franchise businesses</Link> that need consistency across sites.
-        </p>
-
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">3. Value added services</h3>
-        <p className="mb-4">
-          Resellers commonly attach services that merchants find sticky and valuable. These include local support and onboarding, custom reporting and analytics, hosted payments or virtual terminal integrations, and marketing and loyalty tools.
-        </p>
-        <p className="mb-4">
-          These services are often priced as subscriptions or monthly additions. The result is a revenue stream that sits above processing fees. For resellers, this is where profitability increases because they control both the underlying payment relationship and the services around it.
+        <p className="text-muted-foreground">
+          This is notably higher than the headline processing rate of 2.3%. Adding software and amortised hardware is how Clover's real cost differs from flat-rate competitors like Square.
         </p>
       </section>
 
-      {/* Section: Why It Works for Resellers */}
+      {/* Comparison */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-foreground mb-4">
-          Why Fiserv and Clover pricing works for resellers
+        <h2 className="text-2xl font-semibold text-foreground mb-6">
+          Clover vs Square vs SumUp: How Does the Pricing Compare?
         </h2>
 
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">Negotiated pricing creates margin opportunity</h3>
-        <p className="mb-4">
-          Because fees are not posted publicly, resellers can build pricing that balances competitive merchant rates, adequate reseller margin, and reduced risk exposure for banks. This flexibility is hard to match with providers that publish fixed fees.
-        </p>
+        <div className="overflow-x-auto mb-6">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b-2 border-border">
+                <th className="text-left py-3 px-3 font-semibold text-foreground"></th>
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Clover</th>
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Square</th>
+                <th className="text-left py-3 px-3 font-semibold text-foreground">SumUp</th>
+              </tr>
+            </thead>
+            <tbody className="text-muted-foreground">
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Entry hardware cost</td>
+                <td className="py-3 px-3">~$49 (Go)</td>
+                <td className="py-3 px-3">$0 (free reader for new merchants)</td>
+                <td className="py-3 px-3">~$39 (Air reader)</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">POS terminal cost</td>
+                <td className="py-3 px-3">~$799 (Mini)</td>
+                <td className="py-3 px-3">~$299 (Square Terminal)</td>
+                <td className="py-3 px-3">~$99 (SumUp Solo)</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Monthly software fee</td>
+                <td className="py-3 px-3">$14.95 to $64.90</td>
+                <td className="py-3 px-3">$0 (basic) to $60+</td>
+                <td className="py-3 px-3">$0 to $25</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Card-present rate</td>
+                <td className="py-3 px-3">2.3% + $0.10</td>
+                <td className="py-3 px-3">2.6% + $0.10</td>
+                <td className="py-3 px-3">1.69% (EU), varies by market</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Contract required</td>
+                <td className="py-3 px-3">Sometimes (via reseller)</td>
+                <td className="py-3 px-3">No</td>
+                <td className="py-3 px-3">No</td>
+              </tr>
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">UK availability</td>
+                <td className="py-3 px-3">Limited</td>
+                <td className="py-3 px-3">Yes</td>
+                <td className="py-3 px-3">Yes</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3 font-medium text-foreground">Best for</td>
+                <td className="py-3 px-3">SME retail/restaurants in North America</td>
+                <td className="py-3 px-3">SMEs wanting simple, no-contract setup</td>
+                <td className="py-3 px-3">European SMEs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">Integration into broader business systems</h3>
-        <p className="mb-4">
-          Clover is not just a payment terminal. It is a platform that resellers can integrate with POS systems, booking and scheduling tools, inventory systems, and loyalty programmes. This allows resellers to sell a bundle rather than just processing fees. Merchants are willing to pay more for simplicity and integration.
+        <p className="text-muted-foreground mb-4">
+          Square offers a free card reader and $0 monthly fee for basic usage, making it the lowest-cost entry point. However, Clover tends to offer more robust POS features for restaurants and retailers at scale.
         </p>
-
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">Better support for multi location and franchise environments</h3>
-        <p className="mb-4">
-          Large enterprises and franchise groups have complex needs, including central reporting, standardised hardware across stores, multi site settlement, and consistent pricing. Financial institutions and ISVs can configure Clover pricing so that these customers pay a unified rate with predictable operating costs.
-        </p>
-
-        <h3 className="text-xl font-medium text-foreground mt-6 mb-3">Risk and compliance support built into pricing</h3>
-        <p className="mb-4">
-          For industries with higher scrutiny, such as hospitality or travel, resellers often price in risk monitoring, PCI compliance tooling, and enhanced support. This reduces merchant friction and strengthens the overall payment relationship.
+        <p className="text-muted-foreground">
+          SumUp is particularly competitive in the UK and EU, with straightforward pricing and no monthly fees.
         </p>
       </section>
 
-      {/* Section: When It's Especially Appealing */}
+      {/* Fiserv and Clover relationship */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
-          When Fiserv and Clover pricing is especially appealing
+          Fiserv and Clover: Understanding the Relationship
         </h2>
-        <p className="mb-4">This pricing model makes sense for:</p>
-        <ul className="list-disc pl-6 space-y-2 mb-4">
-          <li>Independent resellers and ISVs who want to build value beyond processing</li>
-          <li>Franchise networks needing uniform rollout and billing</li>
-          <li>Multi location retailers with centralised reporting and consistent checkout flows</li>
-          <li>Hospitality businesses that need terminals, loyalty, and kitchen integration</li>
-          <li>Service industries where hardware and software bundles replace legacy point of sale systems</li>
+        <p className="text-muted-foreground mb-4">
+          Fiserv is one of the largest payment processing companies in the world, processing billions of transactions annually across banking, merchant services, and financial technology.
+        </p>
+        <p className="text-muted-foreground mb-4">
+          Clover is the POS and merchant-facing brand that Fiserv acquired in 2019. When a business signs up for Clover:
+        </p>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+          <li>Clover provides the hardware and software platform</li>
+          <li>Fiserv or a Fiserv reseller partner is the underlying payment processor</li>
+          <li>Some merchants receive Clover through their bank, which is itself a Fiserv partner</li>
         </ul>
-        <p>
-          In these cases, the bundle value often outweighs the simplicity of flat rate processors.
+        <p className="text-muted-foreground">
+          This structure matters because it affects who sets processing rates and terms. Merchants who receive Clover through a bank or reseller may see different pricing than those who go directly to Clover. In some cases, reseller pricing can be less transparent than direct pricing, so it is worth comparing. This is similar to how{" "}
+          <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment provider risk models</Link> determine pricing outcomes for all providers.
         </p>
       </section>
 
-      {/* Section: Comparison with Flat Rate */}
+      {/* Who is Clover for */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
-          Comparing Fiserv pricing with flat rate providers
+          Who Is Clover Designed For?
         </h2>
-        <p className="mb-4">
-          Providers with public pricing like{" "}
-          <Link to="/insights/stripe-fees-explained" className="text-primary hover:underline">Stripe</Link> and PayPal make it easy to estimate costs. Fiserv does not. That can feel opaque to some merchants.
+        <p className="text-muted-foreground mb-4">
+          Clover is designed for small to medium-sized merchants operating physical locations, particularly in:
         </p>
-        <p className="mb-4">
-          However, consider this. Flat fees are predictable but inflexible. Negotiated pricing is adaptable but requires underwriting and relationship building. Understanding the{" "}
-          <Link to="/insights/pricing-models/blended-vs-interchange" className="text-primary hover:underline">trade offs between blended and interchange based pricing</Link> helps clarify why different models suit different businesses.
-        </p>
-        <p className="mb-4">
-          Resellers thrive on this adaptability because they can set margins, tailor solutions to specific verticals, and layer on services that merchants actually need.
-        </p>
-        <p>
-          At scale, this often results in lower total cost of ownership for complex businesses.
-        </p>
-      </section>
-
-      {/* Section: How to Evaluate */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-foreground mb-4">
-          How merchants should evaluate Fiserv pricing
-        </h2>
-        <p className="mb-4">
-          Merchants should look beyond the processing fees alone and ask:
-        </p>
-        <ul className="list-disc pl-6 space-y-2 mb-4">
-          <li>What is included in the bundle?</li>
-          <li>Are terminals or devices part of the package?</li>
-          <li>What ongoing support is offered?</li>
-          <li>How does multi location settlement work?</li>
-          <li>Are there fees for contract exit or hardware replacement?</li>
-          <li>Does the pricing vary by location or store?</li>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+          <li>Retail (clothing, gifts, specialty stores)</li>
+          <li>Restaurants and cafes (from quick service to full table service)</li>
+          <li>Service businesses (salons, spas, repair shops)</li>
+          <li>Professional services accepting in-person payments</li>
         </ul>
-        <p className="mb-4">
-          Understanding these variables helps merchants and resellers align expectations and negotiate better terms. For a broader look at{" "}
+        <p className="text-muted-foreground mb-4">It is not designed for:</p>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+          <li>Online-only businesses (Stripe or similar are better fits)</li>
+          <li>Enterprise merchants with global acquiring needs (Checkout.com, Adyen)</li>
+          <li>Very early stage businesses that want zero upfront cost (Square's free reader is more accessible)</li>
+        </ul>
+        <p className="text-muted-foreground">
+          For UK and European merchants, Clover's availability is more limited. Merchants in these markets should compare alternatives including Square, SumUp, iZettle, and Zettle, which have stronger local support and pricing.
+        </p>
+      </section>
+
+      {/* UK availability */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-foreground mb-4">
+          Is Clover Available in the UK?
+        </h2>
+        <p className="text-muted-foreground mb-4">
+          Clover has expanded into some international markets through Fiserv's global partnerships, but availability and product range in the UK are not as extensive as in North America.
+        </p>
+        <p className="text-muted-foreground mb-4">
+          UK merchants looking for a similar POS experience have strong alternatives:
+        </p>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+          <li><strong className="text-foreground">Square</strong> (full POS hardware, growing UK presence)</li>
+          <li><strong className="text-foreground">SumUp</strong> (competitive rates, strong UK and European coverage)</li>
+          <li><strong className="text-foreground">iZettle / Zettle</strong> (now owned by PayPal, well-established in UK)</li>
+          <li><strong className="text-foreground">Dojo</strong> (UK-focused, popular with hospitality businesses)</li>
+        </ul>
+        <p className="text-muted-foreground">
+          If you are in the UK and specifically researching Clover, it is worth checking current availability directly with Fiserv UK, as product offerings in this market continue to evolve.
+        </p>
+      </section>
+
+      {/* Resellers and ISO */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-foreground mb-4">
+          Clover for Resellers and ISO Partners
+        </h2>
+        <p className="text-muted-foreground mb-4">
+          Fiserv operates an extensive reseller programme for Independent Sales Organisations (ISOs), value-added resellers (VARs), and financial institutions that distribute Clover hardware and processing services to merchants.
+        </p>
+        <p className="text-muted-foreground mb-4">Key points for resellers:</p>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+          <li>Fiserv sets a baseline interchange structure; resellers negotiate their own merchant-facing markup</li>
+          <li>Clover hardware can be purchased at wholesale and resold or leased to merchants</li>
+          <li>Reseller agreements typically include revenue sharing on processing volume</li>
+          <li>Support and liability structures vary by reseller agreement</li>
+        </ul>
+        <p className="text-muted-foreground">
+          For merchants receiving Clover through a bank or reseller partner, it is worth understanding that the pricing and terms you receive may have been set by the reseller, not Clover directly. Comparing offers across multiple channels is advisable before committing. For a broader look at{" "}
           <Link to="/insights/fiserv-payments-platform" className="text-primary hover:underline">Fiserv's capabilities and where it fits in the payment landscape</Link>, our provider deep dive covers the full picture.
         </p>
-        <p>
-          If you want to understand whether Fiserv or a different provider would be the best fit for your business,{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">start a short assessment</Link>. It looks at how you operate and what providers typically charge for businesses like yours.
-        </p>
+      </section>
+
+      {/* FAQ */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-foreground mb-6">
+          Frequently Asked Questions About Clover Pricing
+        </h2>
+
+        <FAQAccordion faqs={faqs} />
       </section>
 
       {/* Key Takeaway */}
-      <section className="mb-8 p-6 bg-muted/50 rounded-xl border border-border">
-        <h2 className="text-2xl font-semibold text-foreground mb-4">
-          Key takeaway
+      <section className="bg-primary/5 border border-primary/20 rounded-xl p-8">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Key Takeaway
         </h2>
-        <p className="mb-4">
-          Fiserv pricing is not simple. But for resellers, integrators, and larger enterprises, its negotiability and bundle potential create real business value.
+        <p className="text-muted-foreground mb-4">
+          Clover offers a complete POS ecosystem for physical merchants, but the real cost is the sum of hardware, monthly software, and processing fees combined. Understanding each component separately prevents the common mistake of comparing only the processing rate to flat-rate competitors.
         </p>
-        <p className="mb-4">
-          Rather than selling processing in isolation, resellers using Fiserv and Clover can build packages that deliver consistency across locations, hardware and software value, predictable reporting and settlement, and revenue streams beyond interchange.
-        </p>
-        <p>
-          Because of this, Clover remains a preferred solution for ISVs and partnerships focused on integrated billing and long term merchant success.
+        <p className="text-muted-foreground">
+          For North American merchants with physical locations and a need for robust POS features, Clover is a credible option. For UK and European merchants, it is worth comparing alternatives that have stronger local availability. If you want to understand whether Fiserv or a different provider would be the best fit for your business,{" "}
+          <Link to="/assessment" className="text-primary hover:underline font-medium">start a short assessment</Link>.
         </p>
       </section>
     </InsightsArticleLayout>

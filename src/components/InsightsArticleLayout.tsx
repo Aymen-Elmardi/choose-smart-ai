@@ -30,6 +30,7 @@ interface InsightsArticleLayoutProps {
   modifiedTime?: string;
   keywords?: string[];
   sources?: Source[];
+  breadcrumbSchemaItems?: { name: string; url?: string }[];
 }
 
 /**
@@ -68,6 +69,7 @@ const InsightsArticleLayout = ({
   modifiedTime,
   keywords,
   sources,
+  breadcrumbSchemaItems,
 }: InsightsArticleLayoutProps) => {
   // Set SEO meta tags
   useSEO({
@@ -79,8 +81,8 @@ const InsightsArticleLayout = ({
     keywords,
   });
 
-  // Build breadcrumb items for schema
-  const breadcrumbItems = [
+  // Build breadcrumb items for schema (overridable per article)
+  const breadcrumbItems = breadcrumbSchemaItems ?? [
     { name: "Home", url: "/" },
     { name: "Insights", url: "/insights" },
     ...(category.slug !== "insights" ? [{ name: category.name, url: `/insights/${category.slug}` }] : []),
