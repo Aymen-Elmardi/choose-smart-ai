@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from "react";
-import { useLocation } from '@/lib/router-compat';
+import { usePathname } from 'next/navigation';
 
 const BASE_URL = "https://chosepayments.com";
 
@@ -10,10 +10,10 @@ const BASE_URL = "https://chosepayments.com";
  * Ensures HTTPS without www prefix for all pages.
  */
 export const useCanonical = () => {
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const path = location.pathname === "/" ? "" : location.pathname;
+    const path = pathname === "/" ? "" : pathname;
     const canonicalUrl = `${BASE_URL}${path}`;
 
     let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -29,7 +29,7 @@ export const useCanonical = () => {
     return () => {
       // Don't remove on cleanup - let the next page set its own
     };
-  }, [location.pathname]);
+  }, [pathname]);
 };
 
 /**

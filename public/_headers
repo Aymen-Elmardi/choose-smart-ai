@@ -19,3 +19,4 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
+  Link: </sitemap.xml>; rel="sitemap", </terms>; rel="terms-of-service", </privacy>; rel="privacy-policy"

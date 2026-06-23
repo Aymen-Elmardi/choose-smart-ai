@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useLayoutEffect } from "react";
-import { useLocation } from '@/lib/router-compat';
+import { usePathname } from 'next/navigation';
 
 const BASE_URL = "https://chosepayments.com";
 const DEFAULT_OG_IMAGE = "https://chosepayments.com/og-default.png";
@@ -43,7 +43,7 @@ export const useSEO = ({
   keywords,
   noIndex = false,
 }: SEOProps) => {
-  const location = useLocation();
+  const pathname = usePathname();
 
   const setMetaTag = (selector: string, attribute: string, value: string, createTag?: () => HTMLElement) => {
     let element = document.querySelector(selector) as HTMLElement | null;
@@ -65,7 +65,7 @@ export const useSEO = ({
 
   // Set meta tags immediately (synchronously) for prerendering
   const updateMetaTags = () => {
-    const path = location.pathname === "/" ? "" : location.pathname;
+    const path = pathname === "/" ? "" : pathname;
     const canonicalUrl = `${BASE_URL}${path}`;
 
     // Set title
@@ -203,5 +203,5 @@ export const useSEO = ({
     return () => {
       document.title = "ChosePayments";
     };
-  }, [title, description, ogImage, ogType, publishedTime, modifiedTime, author, keywords, noIndex, location.pathname]);
+  }, [title, description, ogImage, ogType, publishedTime, modifiedTime, author, keywords, noIndex, pathname]);
 };

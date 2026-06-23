@@ -1,6 +1,6 @@
 'use client'
 import { useState, useMemo, useEffect } from "react";
-import { Link, useSearchParams } from '@/lib/router-compat';
+import { Link } from '@/lib/router-compat';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -21,11 +21,18 @@ import {
 import InsightsSidebarModule from "@/components/InsightsSidebarModule";
 
 const Insights = () => {
-  const [searchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(() => searchParams.get("q") || "");
-  const [activeFilter, setActiveFilter] = useState<InsightCategory>(
-    () => (searchParams.get("filter") as InsightCategory) || "all"
-  );
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState<InsightCategory>("all");
+
+  // Read initial ?q / ?filter client-side (post-hydration) instead of via
+  // useSearchParams, so this listing can be statically prerendered for crawlers.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+    const filter = params.get("filter") as InsightCategory | null;
+    if (q) setSearchQuery(q);
+    if (filter) setActiveFilter(filter);
+  }, []);
 
   useSEO({
     title: "Expert Insights: What Payment Providers Don't Tell You | ChosePayments",
