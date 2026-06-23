@@ -26,6 +26,18 @@ const faqs = [
   {
     question: "Can small businesses use Checkout.com?",
     answer: "Checkout.com does not typically onboard early-stage or low-volume businesses. The platform's value of negotiated pricing, global acquiring, and enterprise tooling only becomes cost-effective at scale. Small businesses are generally better served by flat-rate providers like Stripe, Square, or Revolut Business, which offer simple pricing and fast setup without complex underwriting requirements."
+  },
+  {
+    question: "What payment methods does Checkout.com support?",
+    answer: "Checkout.com supports Visa, Mastercard, American Express, Maestro, Apple Pay, Google Pay, SEPA Direct Debit (EU), Bacs Direct Debit (UK), and a wide range of local payment methods including iDEAL, Bancontact, Giropay, Klarna, and others depending on your contracted markets. Specific checkout payment options are agreed during onboarding."
+  },
+  {
+    question: "What are ECOMM_SMALL_EEA or ECOMM_MEDIUM_EEA charges on my statement?",
+    answer: "These are Visa scheme fee billing categories, not Checkout.com charges. ECOMM_SMALL_EEA and ECOMM_MEDIUM_EEA classify your e-commerce transactions by volume tier within the European Economic Area. They appear on your statement because Checkout.com passes through scheme fees transparently under the IC++ model. All processors operating in the EEA apply these categories. Checkout.com simply makes them visible."
+  },
+  {
+    question: "What does \"oversized\" mean on a Checkout.com invoice?",
+    answer: "An oversized fee is a scheme-level surcharge triggered when a transaction or transaction batch exceeds the standard size threshold for its billing category. These are Visa or Mastercard charges, not Checkout.com charges, passed through transparently. Common causes include a high average transaction value relative to your MCC category norm, or a billing category mismatch."
   }
 ];
 
@@ -51,7 +63,7 @@ const CheckoutComFees = () => {
   return (
     <InsightsArticleLayout
       title="Checkout.com Pricing and Fees (2026): Is It Worth It For Your Business?"
-      description="Checkout.com uses negotiated pricing with no public rates. See how it works, when it beats Stripe, and what to expect at different volumes in 2026."
+      description="Checkout.com uses negotiated pricing with no public rates. Learn what businesses pay, which payment methods are supported, and how UK and EEA billing works in 2026."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="pricing"
       currentSlug="checkout-com-fees-explained"
@@ -153,6 +165,59 @@ const CheckoutComFees = () => {
         />
       </section>
 
+      {/* What payment methods does Checkout.com accept? */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-foreground mb-4">
+          What Payment Methods Does Checkout.com Accept?
+        </h2>
+        <p className="text-muted-foreground mb-6">
+          One of Checkout.com's core strengths as a global payment gateway is the breadth of payment methods it supports. The exact methods available depend on your merchant agreement and the markets you operate in.
+        </p>
+
+        <h3 className="text-lg font-semibold text-foreground mb-2">Card payments</h3>
+        <p className="text-muted-foreground mb-3">Checkout.com accepts all major card networks:</p>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
+          <li>Visa (credit and debit)</li>
+          <li>Mastercard (credit and debit)</li>
+          <li>American Express</li>
+          <li>Maestro and domestic debit schemes</li>
+          <li>JCB (select markets)</li>
+          <li>Diners Club / Discover (select markets)</li>
+        </ul>
+
+        <h3 className="text-lg font-semibold text-foreground mb-2">Digital wallets</h3>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
+          <li>Apple Pay</li>
+          <li>Google Pay</li>
+          <li>PayPal (via integration, select markets)</li>
+        </ul>
+
+        <h3 className="text-lg font-semibold text-foreground mb-2">Bank payments and direct debit</h3>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
+          <li>SEPA Direct Debit (EU and EEA merchants)</li>
+          <li>Bacs Direct Debit (UK merchants)</li>
+          <li>Open banking / account-to-account payments (select markets)</li>
+        </ul>
+
+        <h3 className="text-lg font-semibold text-foreground mb-2">Local payment methods</h3>
+        <p className="text-muted-foreground mb-3">
+          Checkout.com supports a wide range of local checkout payment options, including:
+        </p>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+          <li>iDEAL (Netherlands)</li>
+          <li>Bancontact (Belgium)</li>
+          <li>Giropay (Germany)</li>
+          <li>Sofort (select EU markets)</li>
+          <li>Klarna (BNPL, select markets)</li>
+          <li>OXXO (Mexico)</li>
+          <li>Boleto Bancário (Brazil)</li>
+          <li>And others depending on your contracted geographies</li>
+        </ul>
+        <p className="text-muted-foreground">
+          For businesses asking which checkout payment options to enable, the answer is typically determined during onboarding. Checkout.com activates the methods relevant to your primary customer geographies and business model. If you need a specific local method, confirm availability before signing.
+        </p>
+      </section>
+
       {/* Indicative pricing ranges */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
@@ -171,6 +236,10 @@ const CheckoutComFees = () => {
               </tr>
             </thead>
             <tbody className="text-muted-foreground">
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">Growth stage (100K to 1M GBP/month)</td>
+                <td className="py-3 px-3">0.8% to 1.8% + scheme fees</td>
+              </tr>
               <tr className="border-b border-border">
                 <td className="py-3 px-3 font-medium text-foreground">Mid-market (1M to 10M GBP/month)</td>
                 <td className="py-3 px-3">0.5% to 1.2% + scheme fees</td>
@@ -191,8 +260,71 @@ const CheckoutComFees = () => {
           These are indicative ranges only. Actual fees depend on your specific agreement and are subject to negotiation. Always obtain a direct quote from Checkout.com.
         </p>
 
+        <div className="bg-muted/30 rounded-lg p-6 mb-4">
+          <p className="text-foreground font-semibold mb-2">Volume example: 500,000 transactions per year</p>
+          <p className="text-muted-foreground text-sm">
+            For a business processing 500,000 transactions annually at an average value of £50, roughly £25M in annual volume, you would likely qualify for mid-market or enterprise rates. At 0.5% to 1.2% effective, total payment processing costs would fall in approximately the £125,000 to £300,000/year range, depending on card mix, geography, and your negotiated markup. Checkout.com's payment gateway pricing at this volume is often more efficient than flat-rate processors.
+          </p>
+        </div>
+
         <p className="text-muted-foreground">
           The markup component alone is typically in the range of 0.1% to 0.4% for well-qualified merchants, applied on top of the underlying interchange and scheme costs.
+        </p>
+      </section>
+
+      {/* UK and EEA billing codes */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold text-foreground mb-4">
+          Checkout.com Fees for UK and EEA Merchants: Billing Codes Explained
+        </h2>
+        <p className="text-muted-foreground mb-6">
+          If you review your Checkout.com invoice or statement and see line items such as <strong className="text-foreground">ECOMM_SMALL_EEA</strong> or <strong className="text-foreground">ECOMM_MEDIUM_EEA</strong>, these are Visa and Mastercard scheme fee billing categories, not arbitrary charges created by Checkout.com.
+        </p>
+
+        <h3 className="text-lg font-semibold text-foreground mb-3">What these EEA billing codes mean</h3>
+        <div className="overflow-x-auto mb-6">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b-2 border-border">
+                <th className="text-left py-3 px-3 font-semibold text-foreground">Billing Code</th>
+                <th className="text-left py-3 px-3 font-semibold text-foreground">What it means</th>
+              </tr>
+            </thead>
+            <tbody className="text-muted-foreground">
+              <tr className="border-b border-border">
+                <td className="py-3 px-3 font-medium text-foreground">ECOMM_SMALL_EEA</td>
+                <td className="py-3 px-3">Visa scheme fee for small-volume e-commerce merchants processing within the EEA</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3 font-medium text-foreground">ECOMM_MEDIUM_EEA</td>
+                <td className="py-3 px-3">Visa scheme fee for medium-volume EEA e-commerce merchants</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-muted-foreground mb-6">
+          These categories are defined by Visa and applied uniformly across all processors operating in the European Economic Area. The classification is based on your transaction volume tier and has nothing to do with how Checkout.com structures its own fees. It is a Visa-defined category passed through to your statement.
+        </p>
+
+        <h3 className="text-lg font-semibold text-foreground mb-3">What are "oversized" fees on Checkout.com?</h3>
+        <p className="text-muted-foreground mb-4">
+          An "oversized" fee, such as an "oversized checkout com UK charge" or "oversized checkout com EEA" line on your statement, is a scheme-level surcharge triggered when a transaction or transaction batch exceeds a standard size threshold for its billing category. These surcharges are set by Visa or Mastercard, not Checkout.com, and are passed through transparently on the interchange-plus-plus model.
+        </p>
+        <p className="text-muted-foreground mb-6">
+          If you are seeing unexpectedly high oversized charges, the most common cause is a high average transaction value relative to the category norm, or a mismatch between your merchant category code and your actual business type.
+        </p>
+
+        <h3 className="text-lg font-semibold text-foreground mb-3">Post-Brexit implications for UK merchants</h3>
+        <p className="text-muted-foreground mb-4">
+          Following Brexit, UK-issued cards are no longer classified as EEA cards. This has direct cost implications:
+        </p>
+        <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+          <li><strong className="text-foreground">EEA-issued cards used in UK transactions:</strong> Now treated as cross-border transactions, attracting higher scheme and interchange fees</li>
+          <li><strong className="text-foreground">UK-issued cards used in EEA transactions:</strong> Equally subject to cross-border surcharges</li>
+          <li><strong className="text-foreground">Local acquiring reduces this cost:</strong> Checkout.com's local acquiring capability in both the UK and EU enables a UK merchant with significant EU customers to route transactions through a European acquiring entity, substantially reducing cross-border scheme fees</li>
+        </ul>
+        <p className="text-muted-foreground">
+          For UK businesses with 20%+ EU customer bases, confirming whether your Checkout.com agreement includes EU local acquiring is a material cost consideration, and worth raising explicitly in your contract negotiation.
         </p>
       </section>
 
@@ -333,11 +465,17 @@ const CheckoutComFees = () => {
                 <td className="py-3 px-3">Yes</td>
                 <td className="py-3 px-3">No</td>
               </tr>
-              <tr>
+              <tr className="border-b border-border">
                 <td className="py-3 px-3 font-medium text-foreground">UK local acquiring</td>
                 <td className="py-3 px-3">Yes</td>
                 <td className="py-3 px-3">Yes</td>
                 <td className="py-3 px-3">Yes</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-3 font-medium text-foreground">Payment methods breadth</td>
+                <td className="py-3 px-3">Very broad</td>
+                <td className="py-3 px-3">Broad</td>
+                <td className="py-3 px-3">Very broad</td>
               </tr>
             </tbody>
           </table>
@@ -437,7 +575,7 @@ const CheckoutComFees = () => {
           For small businesses, flat-rate or more transparent pricing will feel easier and be cheaper to start with. For medium and large enterprises processing globally, Checkout.com's negotiated pricing and enterprise tools can deliver lower real costs and better performance over time.
         </p>
         <p className="text-muted-foreground">
-          Understanding not just the fees but the context behind them is critical to choosing the right payments partner, for where your business is now and where it plans to be.
+          Understanding not just the fees but the context behind them, including how EEA billing categories, UK cross-border costs, and scheme fee pass-through work, is critical to choosing the right payments partner, for where your business is now and where it plans to be.
         </p>
       </section>
     </InsightsArticleLayout>
