@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import Privacy from '@/views/Privacy'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | ChosePayments',
+  title: 'Privacy Policy',
   description: 'Learn how ChosePayments collects, uses, and protects your personal information when using our payment provider recommendation service.',
   alternates: {
     canonical: '/privacy',

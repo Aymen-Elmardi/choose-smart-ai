@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import MerchantAccountProblems from '@/views/MerchantAccountProblems'
 
 export const metadata: Metadata = {
-  title: "Merchant Account Problems Explained | ChosePayments",
+  title: "Merchant Account Problems Explained",
   description: "Funds withheld, reserves imposed, fees higher than expected. Understand what your payment provider is doing and why, clearly explained.",
   alternates: {
     canonical: '/merchant-account-problems',

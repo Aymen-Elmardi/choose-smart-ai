@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import PayPalPaymentPlatform from '@/views/insights/PayPalPaymentPlatform'
 
 export const metadata: Metadata = {
-  title: 'PayPal for Business: Platform Overview & When It Fits | ChosePayments',
+  title: 'PayPal for Business: Platform Overview & When It Fits',
   description: 'PayPal remains one of the world\'s most recognised payment brands. Learn when it\'s the right choice and when its limitations will cost you.',
   alternates: { canonical: '/insights/paypal-payment-platform' },
   openGraph: {

@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import Terms from '@/views/Terms'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | ChosePayments',
+  title: 'Terms of Service',
   description: 'Terms of Service for ChosePayments. Read our terms and conditions for using our payment provider advisory services.',
   alternates: {
     canonical: '/terms',

@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import Insights from '@/views/Insights'
 
 export const metadata: Metadata = {
-  title: "Expert Insights: What Payment Providers Don't Tell You | ChosePayments",
+  title: "Expert Insights: What Payment Providers Don't Tell You",
   description: "Insider knowledge on payment provider risk, underwriting criteria, account freezes, and why businesses get rejected. Strategic guidance from industry experts.",
   keywords: [
     'payment provider insights',

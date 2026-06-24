@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import WhyAccountsFlaggedAfterGrowth from '@/views/insights/WhyAccountsFlaggedAfterGrowth'
 
 export const metadata: Metadata = {
-  title: 'Why Payment Accounts Get Flagged After Business Growth | ChosePayments',
+  title: 'Why Payment Accounts Get Flagged After Business Growth',
   description: 'Growing too fast can trigger a payment provider review. Learn why rapid growth flags accounts and how to document your growth to avoid disruption.',
   alternates: { canonical: '/insights/why-accounts-get-flagged-after-growth' },
   openGraph: {

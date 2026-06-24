@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import InternationalSales from '@/views/insights/InternationalSales'
 
 export const metadata: Metadata = {
-  title: 'International Sales Documentation for Payment Providers | ChosePayments',
+  title: 'International Sales Documentation for Payment Providers',
   description: 'Selling internationally? Payment providers need specific documentation. Learn what\'s required and how to evidence your cross-border transactions.',
   alternates: { canonical: '/insights/international-sales' },
   openGraph: {

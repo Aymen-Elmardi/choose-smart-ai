@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import ProofOfBusinessActivity from '@/views/insights/ProofOfBusinessActivity'
 
 export const metadata: Metadata = {
-  title: 'Understanding Proof of Business Activity Requests | ChosePayments',
+  title: 'Understanding Proof of Business Activity Requests',
   description: 'Understanding why payment providers ask for proof of business activity and how to prepare your documentation.',
   alternates: { canonical: '/insights/proof-of-business-activity' },
   openGraph: { title: 'Understanding Proof of Business Activity Requests | ChosePayments', description: 'Why payment providers ask for proof of business activity and how to prepare your documentation.', type: 'article' },

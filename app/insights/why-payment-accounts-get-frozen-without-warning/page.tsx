@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import WhyAccountsFrozenWithoutWarning from '@/views/insights/WhyAccountsFrozenWithoutWarning'
 
 export const metadata: Metadata = {
-  title: 'Why Payment Accounts Get Frozen Without Warning | ChosePayments',
+  title: 'Why Payment Accounts Get Frozen Without Warning',
   description: 'Account freezes rarely come with advance notice. Understand the hidden triggers that cause sudden payment account freezes and what you can do about them.',
   alternates: { canonical: '/insights/why-payment-accounts-get-frozen-without-warning' },
   openGraph: {

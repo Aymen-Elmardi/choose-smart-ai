@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import ChargebackThresholds from '@/views/insights/ecommerce/ChargebackThresholds'
 
 export const metadata: Metadata = {
-  title: 'Chargeback Thresholds & High-Risk Processors: What to Know | ChosePayments',
+  title: 'Chargeback Thresholds & High-Risk Processors: What to Know',
   description: 'Visa and Mastercard set chargeback thresholds that trigger monitoring programmes. Learn the limits, consequences, and which processors work above standard thresholds.',
   alternates: { canonical: '/insights/ecommerce/chargeback-thresholds-high-risk-processors' },
   openGraph: {

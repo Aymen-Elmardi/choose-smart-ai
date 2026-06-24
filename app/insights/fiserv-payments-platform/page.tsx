@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import FiservPaymentsPlatform from '@/views/insights/FiservPaymentsPlatform'
 
 export const metadata: Metadata = {
-  title: 'Fiserv Payments Platform: What Merchants Need to Know | ChosePayments',
+  title: 'Fiserv Payments Platform: What Merchants Need to Know',
   description: 'Fiserv is one of the world\'s largest payment processors. Learn about their Clover and Carat platforms and when Fiserv makes sense for your business.',
   alternates: { canonical: '/insights/fiserv-payments-platform' },
   openGraph: {

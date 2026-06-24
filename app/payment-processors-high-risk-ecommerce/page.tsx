@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import HighRiskEcommerce from '@/views/insights/provider-fit/HighRiskEcommerce'
 
 export const metadata: Metadata = {
-  title: 'Payment Processors for High-Risk Ecommerce | ChosePayments',
+  title: 'Payment Processors for High-Risk Ecommerce',
   description: 'High-risk ecommerce needs a specialist processor. Compare providers that accept your industry, offer chargeback protection, and won\'t freeze your account.',
   alternates: { canonical: '/payment-processors-high-risk-ecommerce' },
   openGraph: {

@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import ApplePayGooglePayExplained from '@/views/insights/ApplePayGooglePayExplained'
 
 export const metadata: Metadata = {
-  title: 'Apple Pay & Google Pay Explained for Merchants | ChosePayments',
+  title: 'Apple Pay & Google Pay Explained for Merchants',
   description: 'Digital wallets are now expected by customers. Learn how Apple Pay and Google Pay work for merchants, their costs, and which providers support them.',
   alternates: { canonical: '/insights/apple-pay-google-pay-explained' },
   openGraph: {

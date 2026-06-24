@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import Recommendation from '@/views/Recommendation'
 
 export const metadata: Metadata = {
-  title: 'Your Recommendation | ChosePayments',
+  title: 'Your Recommendation',
   description: 'Your personalised payment provider recommendation based on your business profile.',
   robots: { index: false, follow: false },
 }

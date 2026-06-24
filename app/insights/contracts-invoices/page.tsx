@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import ContractsInvoices from '@/views/insights/ContractsInvoices'
 
 export const metadata: Metadata = {
-  title: 'Contracts & Invoices: What Payment Providers Want to See | ChosePayments',
+  title: 'Contracts & Invoices: What Payment Providers Want to See',
   description: 'Payment providers often request contracts and invoices to verify your business model. Learn what format they expect and how to respond.',
   alternates: { canonical: '/insights/contracts-invoices' },
   openGraph: {

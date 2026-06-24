@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import WhySomeBusinessesNeverApproved from '@/views/insights/WhySomeBusinessesNeverApproved'
 
 export const metadata: Metadata = {
-  title: 'Why Some Businesses Never Get Payment Provider Approval | ChosePayments',
+  title: 'Why Some Businesses Never Get Payment Provider Approval',
   description: 'Some businesses are structurally incompatible with mainstream providers. Learn whether your business model is causing systematic rejections.',
   alternates: { canonical: '/insights/why-some-businesses-never-get-approved' },
   openGraph: {

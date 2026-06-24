@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import ChargebackLossRecovery from '@/views/insights/ChargebackLossRecovery'
 
 export const metadata: Metadata = {
-  title: 'Chargeback Loss Recovery: How to Fight & Win Disputes | ChosePayments',
+  title: 'Chargeback Loss Recovery: How to Fight & Win Disputes',
   description: 'Not all chargebacks are legitimate. Learn how to build evidence packs, submit representments, and recover revenue from fraudulent disputes.',
   alternates: { canonical: '/insights/chargeback-loss-recovery' },
   openGraph: {

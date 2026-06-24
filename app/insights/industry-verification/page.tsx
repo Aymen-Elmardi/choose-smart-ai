@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import IndustryVerification from '@/views/insights/IndustryVerification'
 
 export const metadata: Metadata = {
-  title: 'Industry Verification: What Payment Providers Check | ChosePayments',
+  title: 'Industry Verification: What Payment Providers Check',
   description: 'Payment providers verify your industry before approving your account. Learn what they check and how to present your business correctly.',
   alternates: { canonical: '/insights/industry-verification' },
   openGraph: {

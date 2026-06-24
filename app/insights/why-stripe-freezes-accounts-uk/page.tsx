@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import WhyStripeFreezes from '@/views/insights/WhyStripeFreezes'
 
 export const metadata: Metadata = {
-  title: 'Why Stripe Freezes Accounts: The Real Reasons | ChosePayments',
+  title: 'Why Stripe Freezes Accounts: The Real Reasons',
   description: 'Stripe account frozen? Learn the real reasons Stripe freezes merchant accounts, what triggers a review, and how to avoid or recover from it.',
   alternates: { canonical: '/insights/why-stripe-freezes-accounts-uk' },
   openGraph: {

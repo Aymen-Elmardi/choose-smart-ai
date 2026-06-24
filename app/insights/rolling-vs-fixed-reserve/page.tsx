@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import RollingVsFixedReserve from '@/views/insights/RollingVsFixedReserve'
 
 export const metadata: Metadata = {
-  title: 'Rolling vs Fixed Reserve: What\'s the Difference? | ChosePayments',
+  title: 'Rolling vs Fixed Reserve: What\'s the Difference?',
   description: 'Payment providers use both rolling and fixed reserves. Learn how each type works, which is better for your cash flow, and how to negotiate.',
   alternates: { canonical: '/insights/rolling-vs-fixed-reserve' },
   openGraph: {
