@@ -63,7 +63,7 @@ const Footer = () => {
       <div className="section-container py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-4">
-            <img src="/chosepayments-logo.svg" alt="ChosePayments" className="h-8 w-auto" width={144} height={36} />
+            <img src="/chosepayments-logo.svg" alt="ChosePayments" className="h-8 w-auto" width={144} height={36} loading="lazy" decoding="async" />
             <a
               href="https://www.linkedin.com/company/chosepayments" 
               target="_blank" 
