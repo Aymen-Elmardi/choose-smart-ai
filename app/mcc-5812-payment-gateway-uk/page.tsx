@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Restaurant and food service businesses need payment gateways that understand MCC 5812. Compare UK options that approve your business type.',
   alternates: { canonical: '/mcc-5812-payment-gateway-uk' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'MCC 5812 Payment Gateway UK: Best Options for Restaurants | ChosePayments',
     description: 'Restaurant and food service businesses need payment gateways that understand MCC 5812. Compare UK options that approve your business type.',
     type: 'article',

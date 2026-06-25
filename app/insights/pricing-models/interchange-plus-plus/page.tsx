@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Interchange++ passes through exact card scheme costs plus a fixed markup. Learn how to read an Interchange++ statement and whether it\'s right for you.',
   alternates: { canonical: '/insights/pricing-models/interchange-plus-plus' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Interchange++ Pricing Explained: The Transparent Fee Model | ChosePayments',
     description: 'Interchange++ passes through exact card scheme costs plus a fixed markup. Learn how to read an Interchange++ statement and whether it\'s right for you.',
     type: 'article',

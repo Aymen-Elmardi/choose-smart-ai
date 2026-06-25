@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Rolling reserves hold back a percentage of your revenue. Learn why providers impose them, how long they last, and how to negotiate their removal.',
   alternates: { canonical: '/insights/why-providers-impose-reserves' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Why Payment Providers Impose Rolling Reserves | ChosePayments',
     description: 'Rolling reserves hold back a percentage of your revenue. Learn why providers impose them, how long they last, and how to negotiate their removal.',
     type: 'article',

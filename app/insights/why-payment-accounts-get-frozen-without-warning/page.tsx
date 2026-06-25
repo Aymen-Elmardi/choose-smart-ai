@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Account freezes rarely come with advance notice. Understand the hidden triggers that cause sudden payment account freezes and what you can do about them.',
   alternates: { canonical: '/insights/why-payment-accounts-get-frozen-without-warning' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Why Payment Accounts Get Frozen Without Warning | ChosePayments',
     description: 'Account freezes rarely come with advance notice. Understand the hidden triggers that cause sudden payment account freezes and what you can do about them.',
     type: 'article',

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/merchant-account-problems',
   },
   openGraph: {
+    images: ['/og-default.png'],
     title: "Merchant Account Problems Explained | ChosePayments",
     description: "Funds withheld, reserves imposed, fees higher than expected. Understand what your payment provider is doing and why, clearly explained.",
     type: 'website',

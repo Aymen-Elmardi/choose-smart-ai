@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Stripe account frozen? Learn the real reasons Stripe freezes merchant accounts, what triggers a review, and how to avoid or recover from it.',
   alternates: { canonical: '/insights/why-stripe-freezes-accounts-uk' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Why Stripe Freezes Accounts: The Real Reasons | ChosePayments',
     description: 'Stripe account frozen? Learn the real reasons Stripe freezes merchant accounts, what triggers a review, and how to avoid or recover from it.',
     type: 'article',

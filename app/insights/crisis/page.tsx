@@ -6,7 +6,8 @@ export const metadata: Metadata = {
   title: 'Crisis Intervention Guides',
   description: 'Urgent guides for merchants dealing with frozen accounts, hidden fees, or provider rejections. Practical steps to recover and find the right payment partner.',
   alternates: { canonical: '/insights/crisis' },
-  openGraph: { title: 'Crisis Intervention Guides | ChosePayments', description: 'Urgent guides for merchants dealing with frozen accounts, hidden fees, or provider rejections.', type: 'website' },
+  openGraph: {
+    images: ['/og-default.png'], title: 'Crisis Intervention Guides | ChosePayments', description: 'Urgent guides for merchants dealing with frozen accounts, hidden fees, or provider rejections.', type: 'website' },
 }
 
 export default function Page() {

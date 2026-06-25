@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Funds held or frozen by your payment provider? Step-by-step guidance on how to respond, what to provide, and how to recover access quickly.',
   alternates: { canonical: '/insights/what-to-do-when-funds-held' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'What To Do When a Payment Provider Holds Your Funds | ChosePayments',
     description: 'Funds held or frozen by your payment provider? Step-by-step guidance on how to respond, what to provide, and how to recover access quickly.',
     type: 'article',

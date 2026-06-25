@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Apple Pay and Google Pay consistently outperform card payments on approval rates. Learn why wallets succeed where cards fail.',
   alternates: { canonical: '/insights/wallet-payments-guaranteed-success' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Why Wallet Payments Have Higher Success Rates | ChosePayments',
     description: 'Apple Pay and Google Pay consistently outperform card payments on approval rates. Learn why wallets succeed where cards fail.',
     type: 'article',

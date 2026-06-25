@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Selling internationally? Payment providers need specific documentation. Learn what\'s required and how to evidence your cross-border transactions.',
   alternates: { canonical: '/insights/international-sales' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'International Sales Documentation for Payment Providers | ChosePayments',
     description: 'Selling internationally? Payment providers need specific documentation. Learn what\'s required and how to evidence your cross-border transactions.',
     type: 'article',

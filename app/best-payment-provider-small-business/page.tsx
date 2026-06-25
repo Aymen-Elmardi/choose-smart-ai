@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     canonical: '/best-payment-provider-small-business',
   },
   openGraph: {
+    images: ['/og-default.png'],
     title: "Small Business Payment Risk: Finding a Provider That Won't Freeze You",
     description: "Most small businesses choose a payment provider too quickly — and regret it. Understand your risk profile and find a provider that actually fits your business.",
     type: 'article',

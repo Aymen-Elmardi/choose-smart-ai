@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'High-risk ecommerce needs a specialist processor. Compare providers that accept your industry, offer chargeback protection, and won\'t freeze your account.',
   alternates: { canonical: '/payment-processors-high-risk-ecommerce' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Payment Processors for High-Risk Ecommerce | ChosePayments',
     description: 'High-risk ecommerce needs a specialist processor. Compare providers that accept your industry, offer chargeback protection, and won\'t freeze your account.',
     type: 'article',

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'The payment industry is full of overlapping terms. Learn the difference between payment providers, acquirers, and banks — and why it matters for your business.',
   alternates: { canonical: '/insights/payment-provider-vs-acquirer-vs-bank' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Payment Provider vs Acquirer vs Bank: What\'s the Difference? | ChosePayments',
     description: 'The payment industry is full of overlapping terms. Learn the difference between payment providers, acquirers, and banks — and why it matters for your business.',
     type: 'article',

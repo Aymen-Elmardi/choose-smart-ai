@@ -6,7 +6,8 @@ export const metadata: Metadata = {
   title: 'TRA Exemption: Reduce Friction & Improve Approval Rates',
   description: 'TRA exemption explained: how it reduces checkout friction and improves approval odds. See if your business qualifies and how to use it to lower fraud.',
   alternates: { canonical: '/insights/tra-exemption-reduces-payment-friction' },
-  openGraph: { title: 'TRA Exemption: Reduce Friction & Improve Approval Rates', description: 'TRA exemption explained: how it reduces checkout friction and improves approval odds.', type: 'article' },
+  openGraph: {
+    images: ['/og-default.png'], title: 'TRA Exemption: Reduce Friction & Improve Approval Rates', description: 'TRA exemption explained: how it reduces checkout friction and improves approval odds.', type: 'article' },
 }
 
 export default function Page() {

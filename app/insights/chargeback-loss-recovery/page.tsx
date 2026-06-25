@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Not all chargebacks are legitimate. Learn how to build evidence packs, submit representments, and recover revenue from fraudulent disputes.',
   alternates: { canonical: '/insights/chargeback-loss-recovery' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Chargeback Loss Recovery: How to Fight & Win Disputes | ChosePayments',
     description: 'Not all chargebacks are legitimate. Learn how to build evidence packs, submit representments, and recover revenue from fraudulent disputes.',
     type: 'article',

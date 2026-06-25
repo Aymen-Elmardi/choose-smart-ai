@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'The low value exemption lets you skip SCA for small transactions. Learn how it works, the thresholds, and how to configure it with your payment provider.',
   alternates: { canonical: '/insights/low-value-transaction-exemption' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Low Value Transaction Exemption: Reduce SCA Friction | ChosePayments',
     description: 'The low value exemption lets you skip SCA for small transactions. Learn how it works, the thresholds, and how to configure it with your payment provider.',
     type: 'article',

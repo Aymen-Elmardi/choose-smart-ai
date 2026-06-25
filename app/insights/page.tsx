@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     canonical: '/insights',
   },
   openGraph: {
+    images: ['/og-default.png'],
     title: "Expert Insights: What Payment Providers Don't Tell You | ChosePayments",
     description: "Insider knowledge on payment provider risk, underwriting criteria, account freezes, and why businesses get rejected. Strategic guidance from industry experts.",
     type: 'website',

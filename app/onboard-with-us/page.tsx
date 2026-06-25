@@ -6,7 +6,8 @@ export const metadata: Metadata = {
   title: 'Onboard With Us',
   description: 'Start onboarding with a payment provider matched to your business. Simple, transparent, no hidden fees.',
   alternates: { canonical: '/onboard-with-us' },
-  openGraph: { title: 'Onboard With Us | ChosePayments', description: 'Start onboarding with a payment provider matched to your business.', type: 'website' },
+  openGraph: {
+    images: ['/og-default.png'], title: 'Onboard With Us | ChosePayments', description: 'Start onboarding with a payment provider matched to your business.', type: 'website' },
 }
 
 export default function Page() {

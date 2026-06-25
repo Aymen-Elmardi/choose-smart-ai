@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Visa and Mastercard set the rules that all payment providers follow. Understanding scheme rules explains why providers behave the way they do.',
   alternates: { canonical: '/insights/visa-mastercard-control-card-payments' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'How Visa & Mastercard Control Card Payments | ChosePayments',
     description: 'Visa and Mastercard set the rules that all payment providers follow. Understanding scheme rules explains why providers behave the way they do.',
     type: 'article',

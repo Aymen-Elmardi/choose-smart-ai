@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/insights/case-studies',
   },
   openGraph: {
+    images: ['/og-default.png'],
     title: "Case Studies | ChosePayments Insights",
     description: "Real-world examples of how businesses navigate payment provider challenges, account reviews, and compliance requirements.",
     type: 'website',

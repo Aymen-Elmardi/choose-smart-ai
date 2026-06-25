@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/insights/payment-risk',
   },
   openGraph: {
+    images: ['/og-default.png'],
     title: "Payment Risk & Account Freezes | ChosePayments Insights",
     description: "Understand why payment accounts get flagged, frozen, or reviewed. Learn about account freezes, re-underwriting, and how to reduce payment risk.",
     type: 'website',

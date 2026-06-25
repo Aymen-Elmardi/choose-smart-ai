@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     canonical: '/stripe-vs-square-vs-paypal-uk',
   },
   openGraph: {
+    images: ['/og-default.png'],
     title: "Stripe vs Square vs PayPal: UK Comparison & Costs",
     description: "Pricing, fees, approval odds, and which processor fits high-growth merchants. Avoid the wrong choice.",
     type: 'article',

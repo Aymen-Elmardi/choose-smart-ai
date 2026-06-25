@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Subscription businesses need specialised payment infrastructure. Learn which providers handle recurring billing, failed payment recovery, and dunning management.',
   alternates: { canonical: '/insights/ecommerce/subscription-revenue-recurring-billing' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Subscription Revenue & Recurring Billing: Payment Infrastructure Guide | ChosePayments',
     description: 'Subscription businesses need specialised payment infrastructure. Learn which providers handle recurring billing, failed payment recovery, and dunning management.',
     type: 'article',

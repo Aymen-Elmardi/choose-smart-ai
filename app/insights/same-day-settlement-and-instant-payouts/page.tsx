@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Cash flow depends on settlement speed. Compare which payment providers offer same-day settlement and instant payouts for UK merchants.',
   alternates: { canonical: '/insights/same-day-settlement-and-instant-payouts' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Same-Day Settlement & Instant Payouts: Which Providers Offer It | ChosePayments',
     description: 'Cash flow depends on settlement speed. Compare which payment providers offer same-day settlement and instant payouts for UK merchants.',
     type: 'article',

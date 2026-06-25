@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Acquirers are the banks behind your payment processor. Understanding the acquirer relationship explains fees, risk, and why some businesses get rejected.',
   alternates: { canonical: '/insights/what-is-an-acquirer' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'What Is an Acquirer? Payment Acquiring Explained | ChosePayments',
     description: 'Acquirers are the banks behind your payment processor. Understanding the acquirer relationship explains fees, risk, and why some businesses get rejected.',
     type: 'article',

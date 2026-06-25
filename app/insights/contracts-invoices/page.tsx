@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Payment providers often request contracts and invoices to verify your business model. Learn what format they expect and how to respond.',
   alternates: { canonical: '/insights/contracts-invoices' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Contracts & Invoices: What Payment Providers Want to See | ChosePayments',
     description: 'Payment providers often request contracts and invoices to verify your business model. Learn what format they expect and how to respond.',
     type: 'article',

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Adyen charges Interchange++ plus a small processing fee. Learn what that means in practice and how Adyen\'s pricing compares at different volumes.',
   alternates: { canonical: '/insights/adyen-pricing-explained' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Adyen Pricing Explained: Interchange++ Fees & Processing Costs | ChosePayments',
     description: 'Adyen charges Interchange++ plus a small processing fee. Learn what that means in practice and how Adyen\'s pricing compares at different volumes.',
     type: 'article',

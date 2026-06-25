@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     canonical: '/payment-provider-hidden-fees',
   },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Hidden Payment Fees: What Your Provider Isn\'t Telling You',
     description: "The rate you're quoted often isn't the rate you pay. Insider knowledge on hidden fees, rolling reserves, and why effective rates differ from advertised rates.",
     type: 'article',

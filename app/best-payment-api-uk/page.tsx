@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     canonical: '/best-payment-api-uk',
   },
   openGraph: {
+    images: ['/og-default.png'],
     title: "Best Payment APIs for UK Developers & High-Growth Apps",
     description: "Compare payment APIs for UK developers: Stripe, Adyen, Checkout.com. Pricing, integration speed, approval rates. Find the API that fits your tech stack.",
     type: 'article',

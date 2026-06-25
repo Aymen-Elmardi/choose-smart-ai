@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Different payment methods have different scheme rules. Understand how rules vary for debit, credit, corporate cards, and wallet payments.',
   alternates: { canonical: '/insights/scheme-rules-by-payment-method' },
   openGraph: {
+    images: ['/og-default.png'],
     title: 'Scheme Rules by Payment Method | ChosePayments',
     description: 'Different payment methods have different scheme rules. Understand how rules vary for debit, credit, corporate cards, and wallet payments.',
     type: 'article',
