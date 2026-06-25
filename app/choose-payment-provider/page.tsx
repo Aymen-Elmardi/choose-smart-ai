@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/choose-payment-provider',
   },
   openGraph: {
+    url: 'https://chosepayments.com/choose-payment-provider',
     images: ['/og-default.png'],
     title: "How to Choose the Right Payment Provider | UK & EU Guide",
     description: "Confused by Stripe, Worldpay, Square or others? Learn how to choose the right payment provider based on your business model, not just price.",

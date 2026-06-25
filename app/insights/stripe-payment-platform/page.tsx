@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Stripe revolutionized digital commerce with its developer-first API and unified financial infrastructure. Learn how to optimize your business for Stripe\'s platform.',
   alternates: { canonical: '/insights/stripe-payment-platform' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/stripe-payment-platform',
     images: ['/og-default.png'], title: 'Stripe: The Engine That Built the Modern Internet Economy | ChosePayments', description: 'Stripe revolutionized digital commerce with its developer-first API and unified financial infrastructure.', type: 'article' },
 }
 

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Re-underwriting can happen months after approval. Learn what triggers a provider to review your account again and how to prepare.',
   alternates: { canonical: '/insights/why-providers-re-underwrite-accounts' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/why-providers-re-underwrite-accounts',
     images: ['/og-default.png'],
     title: 'Why Payment Providers Re-Underwrite Existing Accounts | ChosePayments',
     description: 'Re-underwriting can happen months after approval. Learn what triggers a provider to review your account again and how to prepare.',

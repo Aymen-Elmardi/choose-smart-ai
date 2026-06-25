@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Visa and Mastercard set chargeback thresholds that trigger monitoring programmes. Learn the limits, consequences, and which processors work above standard thresholds.',
   alternates: { canonical: '/insights/ecommerce/chargeback-thresholds-high-risk-processors' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/ecommerce/chargeback-thresholds-high-risk-processors',
     images: ['/og-default.png'],
     title: 'Chargeback Thresholds & High-Risk Processors: What to Know | ChosePayments',
     description: 'Visa and Mastercard set chargeback thresholds that trigger monitoring programmes. Learn the limits, consequences, and which processors work above standard thresholds.',

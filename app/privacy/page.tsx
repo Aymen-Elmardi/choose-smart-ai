@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/privacy',
   },
   openGraph: {
+    url: 'https://chosepayments.com/privacy',
     images: ['/og-default.png'],
     title: 'Privacy Policy | ChosePayments',
     description: 'Learn how ChosePayments collects, uses, and protects your personal information when using our payment provider recommendation service.',

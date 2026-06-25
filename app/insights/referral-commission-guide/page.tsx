@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'How referral arrangements work in the payment industry. Understanding commission structures helps you evaluate whether your advisor is truly independent.',
   alternates: { canonical: '/insights/referral-commission-guide' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/referral-commission-guide',
     images: ['/og-default.png'], title: 'Payment Provider Referral & Commission Guide | ChosePayments', description: 'How referral arrangements work in the payment industry.', type: 'article' },
 }
 

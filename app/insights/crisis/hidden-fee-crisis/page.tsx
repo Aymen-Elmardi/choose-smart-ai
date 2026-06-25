@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Discovered hidden fees eating your margins? A practical guide to auditing your payment costs and switching without disruption.',
   alternates: { canonical: '/insights/crisis/hidden-fee-crisis' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/crisis/hidden-fee-crisis',
     images: ['/og-default.png'],
     title: 'Hidden Fee Crisis: When Your Provider Costs More Than You Thought | ChosePayments',
     description: 'Discovered hidden fees eating your margins? A practical guide to auditing your payment costs and switching without disruption.',

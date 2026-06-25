@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/insights/guides',
   },
   openGraph: {
+    url: 'https://chosepayments.com/insights/guides',
     images: ['/og-default.png'],
     title: "Practical Guides | ChosePayments Insights",
     description: "Step-by-step guides on payment provider verification, documentation requirements, and how to respond to compliance requests.",

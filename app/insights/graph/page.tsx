@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Visual graph of payment provider relationships, risk profiles, and market positioning.',
   alternates: { canonical: '/insights/graph' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/graph',
     images: ['/og-default.png'], title: 'Provider Insights Graph | ChosePayments', description: 'Visual graph of payment provider relationships, risk profiles, and market positioning.', type: 'website' },
 }
 

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Growing too fast can trigger a payment provider review. Learn why rapid growth flags accounts and how to document your growth to avoid disruption.',
   alternates: { canonical: '/insights/why-accounts-get-flagged-after-growth' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/why-accounts-get-flagged-after-growth',
     images: ['/og-default.png'],
     title: 'Why Payment Accounts Get Flagged After Business Growth | ChosePayments',
     description: 'Growing too fast can trigger a payment provider review. Learn why rapid growth flags accounts and how to document your growth to avoid disruption.',

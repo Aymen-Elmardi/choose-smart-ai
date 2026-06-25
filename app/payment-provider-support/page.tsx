@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/payment-provider-support',
   },
   openGraph: {
+    url: 'https://chosepayments.com/payment-provider-support',
     images: ['/og-default.png'],
     title: "Payment Provider Support Issues? Why It Matters More Than Fees",
     description: "Low fees mean nothing when your account is frozen and no one responds. Learn why support quality should be a top priority when choosing a payment provider.",

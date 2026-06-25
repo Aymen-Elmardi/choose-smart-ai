@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Understanding why payment providers ask for proof of business activity and how to prepare your documentation.',
   alternates: { canonical: '/insights/proof-of-business-activity' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/proof-of-business-activity',
     images: ['/og-default.png'], title: 'Understanding Proof of Business Activity Requests | ChosePayments', description: 'Why payment providers ask for proof of business activity and how to prepare your documentation.', type: 'article' },
 }
 

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Net settlement deducts fees before paying you. Gross settlement pays the full amount then invoices separately. Learn which is better for your business.',
   alternates: { canonical: '/insights/net-vs-gross-settlement' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/net-vs-gross-settlement',
     images: ['/og-default.png'],
     title: 'Net vs Gross Settlement: What It Means for Your Cash Flow | ChosePayments',
     description: 'Net settlement deducts fees before paying you. Gross settlement pays the full amount then invoices separately. Learn which is better for your business.',

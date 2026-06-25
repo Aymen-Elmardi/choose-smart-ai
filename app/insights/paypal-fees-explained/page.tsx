@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'PayPal\'s fee structure has many layers. A complete breakdown of transaction fees, currency conversion, withdrawal costs, and when PayPal gets expensive.',
   alternates: { canonical: '/insights/paypal-fees-explained' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/paypal-fees-explained',
     images: ['/og-default.png'],
     title: 'PayPal Fees Explained: Full Breakdown for UK Business Accounts | ChosePayments',
     description: 'PayPal\'s fee structure has many layers. A complete breakdown of transaction fees, currency conversion, withdrawal costs, and when PayPal gets expensive.',

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Get in touch with ChosePayments for help choosing a payment provider or any questions.',
   alternates: { canonical: '/contact' },
   openGraph: {
+    url: 'https://chosepayments.com/contact',
     images: ['/og-default.png'], title: 'Contact Us | ChosePayments', description: 'Get in touch with ChosePayments for help choosing a payment provider or any questions.', type: 'website' },
 }
 

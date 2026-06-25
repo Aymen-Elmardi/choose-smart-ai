@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Rapid growth can make providers nervous. Learn why fast-growing businesses face more scrutiny and how to document your growth to keep accounts open.',
   alternates: { canonical: '/insights/why-payment-providers-reject-growing-businesses' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/why-payment-providers-reject-growing-businesses',
     images: ['/og-default.png'],
     title: 'Why Payment Providers Reject Growing Businesses | ChosePayments',
     description: 'Rapid growth can make providers nervous. Learn why fast-growing businesses face more scrutiny and how to document your growth to keep accounts open.',

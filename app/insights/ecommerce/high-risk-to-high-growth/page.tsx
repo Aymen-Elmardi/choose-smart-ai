@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'High-risk labels don\'t have to hold you back. Learn how to reposition your ecommerce business and access better payment infrastructure as you scale.',
   alternates: { canonical: '/insights/ecommerce/high-risk-to-high-growth' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/ecommerce/high-risk-to-high-growth',
     images: ['/og-default.png'],
     title: 'From High-Risk to High-Growth: Payment Strategy for Scaling Ecommerce | ChosePayments',
     description: 'High-risk labels don\'t have to hold you back. Learn how to reposition your ecommerce business and access better payment infrastructure as you scale.',

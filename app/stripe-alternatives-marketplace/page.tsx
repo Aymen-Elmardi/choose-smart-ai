@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     canonical: '/stripe-alternatives-marketplace',
   },
   openGraph: {
+    url: 'https://chosepayments.com/stripe-alternatives-marketplace',
     images: ['/og-default.png'],
     title: "Stripe Alternatives for Marketplaces: Risk Assessment & Provider Fit",
     description: "Stripe Connect isn't always the right fit. Understand which marketplace payment providers match your risk profile, onboarding needs, and operational reality.",

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Understand the difference between Interchange++, blended pricing, and other payment processing fee structures. Learn which pricing model saves you the most.',
   alternates: { canonical: '/insights/pricing-models' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/pricing-models',
     images: ['/og-default.png'], title: 'Payment Pricing Models Explained | ChosePayments', description: 'Understand Interchange++, blended pricing, and other payment fee structures.', type: 'website' },
 }
 

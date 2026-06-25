@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Payment providers verify your industry before approving your account. Learn what they check and how to present your business correctly.',
   alternates: { canonical: '/insights/industry-verification' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/industry-verification',
     images: ['/og-default.png'],
     title: 'Industry Verification: What Payment Providers Check | ChosePayments',
     description: 'Payment providers verify your industry before approving your account. Learn what they check and how to present your business correctly.',

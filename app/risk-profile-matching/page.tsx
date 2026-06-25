@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     canonical: '/risk-profile-matching',
   },
   openGraph: {
+    url: 'https://chosepayments.com/risk-profile-matching',
     images: ['/og-default.png'],
     title: "Risk-Profile Matching: Never Choose the Wrong Payment Processor | ChosePayments",
     description: "Our engine matches payment providers to your business risk profile. Stop choosing processors based on marketing. Find the one that actually fits your industry, volume, and model.",

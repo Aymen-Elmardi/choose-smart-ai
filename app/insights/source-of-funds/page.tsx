@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Wondering why your bank is asking for source of funds? Learn why payment providers request bank statements and source of funds documentation, and how to respond.',
   alternates: { canonical: '/insights/source-of-funds' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/source-of-funds',
     images: ['/og-default.png'], title: 'Source of Funds Requests: What They Mean and How to Respond', description: 'Learn why payment providers request source of funds documentation and how to respond.', type: 'article' },
 }
 

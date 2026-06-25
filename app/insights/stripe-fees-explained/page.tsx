@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Stripe\'s UK card fee is 1.5% + 20p, but that\'s just the start. This guide covers Connect fees, international charges, European rates, and what you actually pay at scale in 2026.',
   alternates: { canonical: '/insights/stripe-fees-explained' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/stripe-fees-explained',
     images: ['/og-default.png'],
     title: 'Stripe Fees UK (2026): What Businesses Actually Pay | ChosePayments',
     description: 'Stripe\'s UK card fee is 1.5% + 20p, but that\'s just the start. This guide covers Connect fees, international charges, European rates, and what you actually pay at scale in 2026.',

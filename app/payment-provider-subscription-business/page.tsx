@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Recurring billing needs the right payment infrastructure. Find providers that support subscriptions, handle failed payments, and scale with your MRR.',
   alternates: { canonical: '/payment-provider-subscription-business' },
   openGraph: {
+    url: 'https://chosepayments.com/payment-provider-subscription-business',
     images: ['/og-default.png'],
     title: 'Best Payment Providers for Subscription & SaaS Businesses | ChosePayments',
     description: 'Recurring billing needs the right payment infrastructure. Find providers that support subscriptions, handle failed payments, and scale with your MRR.',

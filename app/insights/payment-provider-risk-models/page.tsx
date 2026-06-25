@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Every payment provider has a risk model they use to approve or reject merchants. Understanding their criteria helps you apply to the right provider first time.',
   alternates: { canonical: '/insights/payment-provider-risk-models' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/payment-provider-risk-models',
     images: ['/og-default.png'],
     title: 'How Payment Providers Assess Business Risk | ChosePayments',
     description: 'Every payment provider has a risk model they use to approve or reject merchants. Understanding their criteria helps you apply to the right provider first time.',

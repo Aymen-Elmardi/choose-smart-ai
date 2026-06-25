@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/terms',
   },
   openGraph: {
+    url: 'https://chosepayments.com/terms',
     images: ['/og-default.png'],
     title: 'Terms of Service | ChosePayments',
     description: 'Terms of Service for ChosePayments. Read our terms and conditions for using our payment provider advisory services.',

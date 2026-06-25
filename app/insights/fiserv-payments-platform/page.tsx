@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Fiserv is one of the world\'s largest payment processors. Learn about their Clover and Carat platforms and when Fiserv makes sense for your business.',
   alternates: { canonical: '/insights/fiserv-payments-platform' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/fiserv-payments-platform',
     images: ['/og-default.png'],
     title: 'Fiserv Payments Platform: What Merchants Need to Know | ChosePayments',
     description: 'Fiserv is one of the world\'s largest payment processors. Learn about their Clover and Carat platforms and when Fiserv makes sense for your business.',

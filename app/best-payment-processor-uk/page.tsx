@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     canonical: '/best-payment-processor-uk',
   },
   openGraph: {
+    url: 'https://chosepayments.com/best-payment-processor-uk',
     images: ['/og-default.png'],
     title: "Best Payment Processors for UK Merchants: Find Your Fit",
     description: "Best UK payment processors for ecommerce, SaaS, and marketplaces. Compare Stripe, Adyen, Checkout.com. See which processor approves your business type.",

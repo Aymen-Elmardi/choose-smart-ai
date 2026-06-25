@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Slow authorisation kills conversions. Learn how approval speed varies between providers and what it means for your checkout abandonment rate.',
   alternates: { canonical: '/insights/why-card-approval-speed-affects-checkout-abandonment' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/why-card-approval-speed-affects-checkout-abandonment',
     images: ['/og-default.png'],
     title: 'Why Card Approval Speed Affects Checkout Abandonment | ChosePayments',
     description: 'Slow authorisation kills conversions. Learn how approval speed varies between providers and what it means for your checkout abandonment rate.',

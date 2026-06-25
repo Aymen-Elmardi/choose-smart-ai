@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Discover why Checkout.com\'s modular architecture delivers superior authorization rates and granular control for high-growth global merchants.',
   alternates: { canonical: '/insights/checkout-com-enterprise-platform' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/checkout-com-enterprise-platform',
     images: ['/og-default.png'], title: 'Checkout.com: The High-Performance Platform Built for Global Ambition', description: 'Checkout.com\'s modular architecture delivers superior authorization rates for high-growth merchants.', type: 'article' },
 }
 

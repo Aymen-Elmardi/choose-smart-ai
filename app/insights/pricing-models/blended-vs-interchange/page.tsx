@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Blended rates are simple but often more expensive. Interchange++ is complex but fairer at scale. Learn which model suits your transaction mix.',
   alternates: { canonical: '/insights/pricing-models/blended-vs-interchange' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/pricing-models/blended-vs-interchange',
     images: ['/og-default.png'],
     title: 'Blended vs Interchange Pricing: Which Is Better for Your Business? | ChosePayments',
     description: 'Blended rates are simple but often more expensive. Interchange++ is complex but fairer at scale. Learn which model suits your transaction mix.',

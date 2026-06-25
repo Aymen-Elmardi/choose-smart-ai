@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/faq',
   },
   openGraph: {
+    url: 'https://chosepayments.com/faq',
     images: ['/og-default.png'],
     title: 'Frequently Asked Questions | ChosePayments',
     description: 'Answers to common questions about how ChosePayments works, how we make money, payment provider matching, and merchant risk assessment.',

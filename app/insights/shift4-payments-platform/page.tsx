@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Shift4 powers large hospitality, restaurant, and retail payment operations. Learn what makes their platform different from standard processors.',
   alternates: { canonical: '/insights/shift4-payments-platform' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/shift4-payments-platform',
     images: ['/og-default.png'],
     title: 'Shift4 Payments Platform: Enterprise Features for Hospitality & Retail | ChosePayments',
     description: 'Shift4 powers large hospitality, restaurant, and retail payment operations. Learn what makes their platform different from standard processors.',

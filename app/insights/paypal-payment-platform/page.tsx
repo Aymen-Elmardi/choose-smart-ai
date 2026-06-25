@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'PayPal remains one of the world\'s most recognised payment brands. Learn when it\'s the right choice and when its limitations will cost you.',
   alternates: { canonical: '/insights/paypal-payment-platform' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/paypal-payment-platform',
     images: ['/og-default.png'],
     title: 'PayPal for Business: Platform Overview & When It Fits | ChosePayments',
     description: 'PayPal remains one of the world\'s most recognised payment brands. Learn when it\'s the right choice and when its limitations will cost you.',

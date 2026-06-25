@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'See exactly how our recommendation engine eliminates, scores, and ranks 21 payment providers. No black boxes — full transparency.',
   alternates: { canonical: '/insights/scoring-logic' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/scoring-logic',
     images: ['/og-default.png'], title: 'How We Match You to a Provider | Scoring Logic Explained', description: 'See exactly how our recommendation engine eliminates, scores, and ranks 21 payment providers.', type: 'article' },
 }
 

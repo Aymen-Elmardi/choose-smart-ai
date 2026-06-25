@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Director document requests are standard, but timing matters. Learn why providers ask and what to prepare to avoid delays.',
   alternates: { canonical: '/insights/why-payment-providers-ask-for-director-documents' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/why-payment-providers-ask-for-director-documents',
     images: ['/og-default.png'],
     title: 'Why Payment Providers Ask for Director Documents | ChosePayments',
     description: 'Director document requests are standard, but timing matters. Learn why providers ask and what to prepare to avoid delays.',

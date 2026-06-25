@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     canonical: '/us',
   },
   openGraph: {
+    url: 'https://chosepayments.com/us',
     images: ['/og-default.png'],
     title: 'ChosePayments: Payment Processor Matching for US Merchants',
     description: 'Find the right payment processor for your US business. Avoid frozen accounts and rejections. Get matched with a provider that fits your risk profile.',

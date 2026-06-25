@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Too many chargebacks can freeze your account. Learn what a chargeback fee is, how chargebacks work, and how to reduce them before they damage your business.',
   alternates: { canonical: '/insights/chargebacks-what-they-are-and-how-to-avoid-them' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them',
     images: ['/og-default.png'], title: 'Chargebacks Explained: Costs, Causes, and How to Reduce Them', description: 'Too many chargebacks can freeze your account. Learn how chargebacks work and how to reduce them.', type: 'article' },
 }
 

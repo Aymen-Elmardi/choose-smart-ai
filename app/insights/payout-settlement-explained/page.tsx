@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Settlement timing affects your cash flow. Learn how payment provider settlement cycles work and how to choose a provider with the right payout speed.',
   alternates: { canonical: '/insights/payout-settlement-explained' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/payout-settlement-explained',
     images: ['/og-default.png'],
     title: 'Payout & Settlement Explained: When Do You Get Paid? | ChosePayments',
     description: 'Settlement timing affects your cash flow. Learn how payment provider settlement cycles work and how to choose a provider with the right payout speed.',

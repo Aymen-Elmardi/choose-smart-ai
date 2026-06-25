@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     canonical: '/switch-payment-provider',
   },
   openGraph: {
+    url: 'https://chosepayments.com/switch-payment-provider',
     images: ['/og-default.png'],
     title: 'Switching Payment Providers — What to Check First',
     description: "Stuck with the wrong provider? Learn how to leave without exit fees, fund holds, or unnecessary disruption.",

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Adyen and First Data (now Fiserv) both serve large merchants. Compare their global acquiring, pricing models, and risk approach.',
   alternates: { canonical: '/insights/adyen-vs-first-data' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/adyen-vs-first-data',
     images: ['/og-default.png'],
     title: 'Adyen vs First Data (Fiserv): Enterprise Payment Platform Comparison | ChosePayments',
     description: 'Adyen and First Data (now Fiserv) both serve large merchants. Compare their global acquiring, pricing models, and risk approach.',

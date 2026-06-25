@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Open banking is changing how UK merchants get paid. Learn how account-to-account payments work and when they make sense for your business.',
   alternates: { canonical: '/insights/open-banking-payments-uk' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/open-banking-payments-uk',
     images: ['/og-default.png'],
     title: 'Open Banking Payments UK: What Merchants Need to Know | ChosePayments',
     description: 'Open banking is changing how UK merchants get paid. Learn how account-to-account payments work and when they make sense for your business.',

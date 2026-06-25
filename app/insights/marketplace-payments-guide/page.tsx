@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Marketplaces have complex payment needs: split payments, seller onboarding, KYC, reserves. A complete guide to payments for platform businesses.',
   alternates: { canonical: '/insights/marketplace-payments-guide' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/marketplace-payments-guide',
     images: ['/og-default.png'],
     title: 'Marketplace Payments Guide: Split Payments & Platform Compliance | ChosePayments',
     description: 'Marketplaces have complex payment needs: split payments, seller onboarding, KYC, reserves. A complete guide to payments for platform businesses.',

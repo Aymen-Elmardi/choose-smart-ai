@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Stripe frozen your account? Immediate steps to take, what to send them, and which alternative providers can get you processing quickly.',
   alternates: { canonical: '/insights/crisis/stripe-account-frozen' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/crisis/stripe-account-frozen',
     images: ['/og-default.png'],
     title: 'Stripe Account Frozen: Immediate Steps & Alternatives | ChosePayments',
     description: 'Stripe frozen your account? Immediate steps to take, what to send them, and which alternative providers can get you processing quickly.',

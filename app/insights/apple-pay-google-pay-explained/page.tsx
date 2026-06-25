@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: 'Digital wallets are now expected by customers. Learn how Apple Pay and Google Pay work for merchants, their costs, and which providers support them.',
   alternates: { canonical: '/insights/apple-pay-google-pay-explained' },
   openGraph: {
+    url: 'https://chosepayments.com/insights/apple-pay-google-pay-explained',
     images: ['/og-default.png'],
     title: 'Apple Pay & Google Pay Explained for Merchants | ChosePayments',
     description: 'Digital wallets are now expected by customers. Learn how Apple Pay and Google Pay work for merchants, their costs, and which providers support them.',
