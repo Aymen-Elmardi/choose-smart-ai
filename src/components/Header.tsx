@@ -11,8 +11,9 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const isUS = pathname === "/us" || (pathname?.startsWith("/us/") ?? false);
-  const ctaLabel = pathname === "/" ? "See if you're overpaying" : "Run My Risk Profile";
-  const ctaHref = pathname === "/" ? "/statement-review" : "/assessment?start=true";
+  const isHome = pathname === "/" || pathname === "/us";
+  const ctaLabel = isHome ? "See if you're overpaying" : "Run My Risk Profile";
+  const ctaHref = isHome ? (isUS ? "/statement-review?us=1" : "/statement-review") : "/assessment?start=true";
 
   const navLinks = [
     { to: "/#how-it-works", label: "How It Works" },

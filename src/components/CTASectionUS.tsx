@@ -15,10 +15,10 @@ const CTASectionUS = () => {
           
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
-              Ready for Independent Payment Advice?
+              See if you're overpaying
             </h2>
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-              Tell us about your business and we'll review your situation with honest, independent guidance.
+              Upload your latest statement and we'll work out your all-in effective rate and how it compares.
             </p>
             <div className="flex flex-col items-center">
               <Button 
@@ -27,8 +27,8 @@ const CTASectionUS = () => {
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                 asChild
               >
-                <Link to="/assessment?start=true" state={{ market: "US" }} replace>
-                  Apply for Payment Advisory
+                <Link to="/statement-review?us=1">
+                  See if you're overpaying
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>

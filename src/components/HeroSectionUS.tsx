@@ -18,7 +18,7 @@ const HeroSectionUS = () => {
             Independent Payment Advisory
           </p>
           <h1 className="heading-xl text-foreground text-balance">
-            Get Independent Payment Advice for Your US Business
+            Find the Right USA Payment Processor for Your Business
           </h1>
           <div className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>

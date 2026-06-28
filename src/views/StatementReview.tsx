@@ -63,6 +63,13 @@ const StatementReview = () => {
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [providerIdx, setProviderIdx] = useState(0);
+  const [cur, setCur] = useState("£");
+
+  // US visitors arrive with ?us=1 (from the /us CTAs) — show $ instead of £.
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    if (p.get("us") === "1" || p.get("market") === "us") setCur("$");
+  }, []);
 
   // While analysing, cycle through provider names every ~500ms.
   useEffect(() => {
@@ -193,7 +200,7 @@ const StatementReview = () => {
                       <p className="text-muted-foreground">
                         Indicatively, that could be around{" "}
                         <strong className="text-foreground">
-                          £{analysis.comparison.annualOverpayGBP.toLocaleString()}/year
+                          {cur}{analysis.comparison.annualOverpayGBP.toLocaleString()}/year
                         </strong>{" "}
                         more than a {analysis.comparison.typicalRate}% all-in rate.
                       </p>
@@ -218,8 +225,8 @@ const StatementReview = () => {
               <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
                 <Stat label="Provider" value={analysis.provider} />
                 <Stat label="Period" value={analysis.period} />
-                <Stat label="Card volume" value={analysis.totalCardVolumeGBP != null ? `£${analysis.totalCardVolumeGBP.toLocaleString()}` : null} />
-                <Stat label="Total fees" value={analysis.totalFeesGBP != null ? `£${analysis.totalFeesGBP.toLocaleString()}` : null} />
+                <Stat label="Card volume" value={analysis.totalCardVolumeGBP != null ? `${cur}${analysis.totalCardVolumeGBP.toLocaleString()}` : null} />
+                <Stat label="Total fees" value={analysis.totalFeesGBP != null ? `${cur}${analysis.totalFeesGBP.toLocaleString()}` : null} />
                 <Stat label="Effective rate" value={analysis.effectiveRatePct != null ? `${analysis.effectiveRatePct}%` : null} />
                 <Stat label="Pricing model" value={analysis.pricingModel} />
               </div>
