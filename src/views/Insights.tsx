@@ -20,7 +20,7 @@ import {
 } from "@/data/insightsArticles";
 import InsightsSidebarModule from "@/components/InsightsSidebarModule";
 
-const Insights = () => {
+const Insights = ({ globalOnly = false }: { globalOnly?: boolean }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<InsightCategory>("all");
 
@@ -41,9 +41,10 @@ const Insights = () => {
   });
 
   const filteredInsights = useMemo(() => {
+    const base = globalOnly ? allInsights.filter((a) => a.global) : allInsights;
     const effectiveFilter = searchQuery.trim() ? "all" : activeFilter;
-    return filterInsights(allInsights, effectiveFilter, searchQuery);
-  }, [searchQuery, activeFilter]);
+    return filterInsights(base, effectiveFilter, searchQuery);
+  }, [searchQuery, activeFilter, globalOnly]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -92,7 +93,7 @@ const Insights = () => {
           </div>
 
           {/* Featured Insight */}
-          {activeFilter !== "all" && featuredInsights[activeFilter] && (
+          {activeFilter !== "all" && featuredInsights[activeFilter] && (!globalOnly || featuredInsights[activeFilter].global) && (
             <div className="mb-12">
               <Link
                 to={getInsightUrl(featuredInsights[activeFilter])}

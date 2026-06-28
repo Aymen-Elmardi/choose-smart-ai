@@ -11,6 +11,8 @@ export interface Insight {
   readTime: string;
   /** If true, the article uses /insights/crisis/ or /insights/pricing-models/ URL structure */
   isSubfolder?: boolean;
+  /** If true, the article is country-neutral and appears on the /us/insights hub. */
+  global?: boolean;
 }
 
 /**
@@ -27,6 +29,7 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
   crisis: {
     title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze",
     slug: "crisis/stripe-account-frozen",
+    global: true,
     description: "Funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider.",
     category: "crisis",
     readTime: "8 min read",
@@ -64,6 +67,7 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
   explainer: {
     title: "The Only Payment Method With a 100% Success Rate (On Part of Your Transactions)",
     slug: "wallet-payments-guaranteed-success",
+    global: true,
     description: "Wallet payments are the only method that can reach a 100% success rate. Learn why wallet spend never fails and when wallets make sense for your business.",
     category: "explainer",
     readTime: "7 min read"
@@ -92,6 +96,7 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
   ecommerce: {
     title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
     slug: "ecommerce/high-risk-to-high-growth",
+    global: true,
     description: "Learn why ecommerce businesses get labeled high-risk, what processors actually evaluate during underwriting, and how to build a payments strategy that supports growth.",
     category: "ecommerce",
     readTime: "14 min read",
@@ -194,6 +199,7 @@ export const allInsights: Insight[] = [
   {
     title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze",
     slug: "crisis/stripe-account-frozen",
+    global: true,
     description: "Funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider.",
     category: "crisis",
     readTime: "8 min read",
@@ -202,6 +208,7 @@ export const allInsights: Insight[] = [
   {
     title: "Rejected by Stripe or Square? A Strategic Recovery Plan for High-Risk Merchants",
     slug: "crisis/rejected-high-risk-strategy",
+    global: true,
     description: "Rejected by a major payment provider? Learn why the 'high-risk' label is not a judgment and how to find a provider that actually wants your business.",
     category: "crisis",
     readTime: "7 min read",
@@ -218,6 +225,7 @@ export const allInsights: Insight[] = [
   {
     title: "What to Do When Your Payment Provider Holds Your Funds",
     slug: "what-to-do-when-funds-held",
+    global: true,
     description: "Funds being held by your payment provider? Learn why holds happen, the difference between a hold and a freeze, and the steps to take to get your money released.",
     category: "crisis",
     readTime: "7 min read"
@@ -296,6 +304,7 @@ export const allInsights: Insight[] = [
   {
     title: "What Are Payment Scheme Rules and Why They Matter More Than Your Contract",
     slug: "payment-scheme-rules-explained",
+    global: true,
     description: "Learn what payment scheme rules are, how flow down provisions work, and why the rules set by Visa and Mastercard often matter more than your provider contract.",
     category: "compliance",
     readTime: "8 min read"
@@ -303,6 +312,7 @@ export const allInsights: Insight[] = [
   {
     title: "How Scheme Rules Trigger Reserves, Monitoring Programs and Account Reviews",
     slug: "scheme-rules-reserves-monitoring",
+    global: true,
     description: "Learn how card network thresholds from Visa and Mastercard trigger reserves, monitoring programs, and account reviews, and what growing businesses can do to prevent them.",
     category: "compliance",
     readTime: "9 min read"
@@ -310,6 +320,7 @@ export const allInsights: Insight[] = [
   {
     title: "Why Payment Providers Impose Reserves and How to Negotiate Them",
     slug: "why-providers-impose-reserves",
+    global: true,
     description: "Reserves protect providers from future losses. Learn why they're imposed, how rolling and fixed reserves work, and what you can do to reduce or release them.",
     category: "compliance",
     readTime: "7 min read"
@@ -317,6 +328,7 @@ export const allInsights: Insight[] = [
   {
     title: "When Scheme Rules Apply Differently: Cards, Wallets, Marketplaces and BNPL Explained",
     slug: "scheme-rules-by-payment-method",
+    global: true,
     description: "Scheme rules do not apply identically across payment methods. Learn how cards, digital wallets, marketplaces and Buy Now Pay Later models each carry different risk, liability and compliance requirements.",
     category: "compliance",
     readTime: "9 min read"
@@ -381,6 +393,7 @@ export const allInsights: Insight[] = [
   {
     title: "Why Payment Providers Reject Growing Businesses",
     slug: "why-payment-providers-reject-growing-businesses",
+    global: true,
     description: "Understand why payment providers reject growing businesses and what you can fix before applying to improve your chances of approval.",
     category: "risk",
     readTime: "7 min read"
@@ -396,6 +409,7 @@ export const allInsights: Insight[] = [
   {
     title: "What Is an Acquirer and Why Your Payment Provider Needs One",
     slug: "what-is-an-acquirer",
+    global: true,
     description: "Understand what an acquirer is, how they connect payment providers to card networks, and why this relationship affects your business.",
     category: "explainer",
     readTime: "6 min read"
@@ -403,6 +417,7 @@ export const allInsights: Insight[] = [
   {
     title: "Payment Provider vs Acquirer vs Bank. What Actually Happens to Your Money",
     slug: "payment-provider-vs-acquirer-vs-bank",
+    global: true,
     description: "Learn who does what in card payments, how long each step takes, and why money moves slower than transactions.",
     category: "explainer",
     readTime: "7 min read"
@@ -410,6 +425,7 @@ export const allInsights: Insight[] = [
   {
     title: "Card Approval Speed and Checkout Abandonment: The Connection Explained",
     slug: "why-card-approval-speed-affects-checkout-abandonment",
+    global: true,
     description: "Learn why card approval speed matters for conversion rates and how delays cause checkout abandonment and lost revenue.",
     category: "explainer",
     readTime: "5 min read"
@@ -417,6 +433,7 @@ export const allInsights: Insight[] = [
   {
     title: "Same-Day Settlement and Instant Payouts. What Businesses Should Know",
     slug: "same-day-settlement-and-instant-payouts",
+    global: true,
     description: "Learn how same-day settlement and instant payouts work, when they help businesses, and the trade-offs involved.",
     category: "explainer",
     readTime: "6 min read"
@@ -438,6 +455,7 @@ export const allInsights: Insight[] = [
   {
     title: "Net vs Gross Settlement: How Payment Providers Calculate Your Payout",
     slug: "net-vs-gross-settlement",
+    global: true,
     description: "Understand the difference between net and gross settlement, how each model affects your cash flow, and which providers offer which approach.",
     category: "explainer",
     readTime: "6 min read"
@@ -473,6 +491,7 @@ export const allInsights: Insight[] = [
   {
     title: "Payment Provider Risk Models Explained in Plain English",
     slug: "payment-provider-risk-models",
+    global: true,
     description: "Learn why two similar businesses get very different outcomes from payment providers. Understand how risk models work and how to position your business for approval.",
     category: "explainer",
     readTime: "10 min read"
@@ -494,6 +513,7 @@ export const allInsights: Insight[] = [
   {
     title: "The Only Payment Method With a 100% Success Rate (On Part of Your Transactions)",
     slug: "wallet-payments-guaranteed-success",
+    global: true,
     description: "Wallet payments are the only method that can reach a 100% success rate. Learn why wallet spend never fails, how refund-to-wallet strategies reduce chargebacks, and when wallets make sense for your business.",
     category: "explainer",
     readTime: "8 min read"
@@ -501,6 +521,7 @@ export const allInsights: Insight[] = [
   {
     title: "The Provider Appetite Index: Why Payment Processors Say No (And How to Get a Yes)",
     slug: "provider-appetite-index",
+    global: true,
     description: "Payment processors don't randomly accept or decline merchants. Learn how underwriting appetite works, why applications get rejected, and how to match your business to the right provider.",
     category: "explainer",
     readTime: "12 min read"
@@ -516,6 +537,7 @@ export const allInsights: Insight[] = [
   {
     title: "What To Do When a Payment Provider Asks for More Documents",
     slug: "what-to-do-when-provider-asks-for-documents",
+    global: true,
     description: "Learn why document requests happen, what they usually mean, and how to respond with confidence.",
     category: "guides",
     readTime: "6 min read"
@@ -552,6 +574,7 @@ export const allInsights: Insight[] = [
   {
     title: "Stripe: The Engine That Built the Modern Internet Economy",
     slug: "stripe-payment-platform",
+    global: true,
     description: "How Stripe's API-first approach and unified financial infrastructure revolutionized digital commerce.",
     category: "providers",
     readTime: "10 min read"
@@ -559,6 +582,7 @@ export const allInsights: Insight[] = [
   {
     title: "Checkout.com: The High Performance Platform Built for Global Ambition",
     slug: "checkout-com-enterprise-platform",
+    global: true,
     description: "How Checkout.com's modular architecture delivers superior authorization rates and granular control for high growth global merchants.",
     category: "providers",
     readTime: "8 min read"
@@ -580,6 +604,7 @@ export const allInsights: Insight[] = [
   {
     title: "Fiserv and the First Data Legacy: Who It Actually Fits, and Where It Doesn't",
     slug: "fiserv-payments-platform",
+    global: true,
     description: "Fiserv operates across acquiring, issuing, bank infrastructure, and Clover POS. Learn where it performs well, where friction appears, and which business profiles benefit most.",
     category: "providers",
     readTime: "9 min read"
@@ -587,6 +612,7 @@ export const allInsights: Insight[] = [
   {
     title: "Shift4 vs Stripe: Choosing the Right Payment Engine for Your Enterprise",
     slug: "shift4-vs-stripe-enterprise",
+    global: true,
     description: "A strategic comparison of Shift4 and Stripe for enterprise payments. Learn how their pricing, risk models, and commerce capabilities differ to find the right fit.",
     category: "providers",
     readTime: "9 min read"
@@ -645,6 +671,7 @@ export const allInsights: Insight[] = [
   {
     title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
     slug: "ecommerce/high-risk-to-high-growth",
+    global: true,
     description: "Learn why ecommerce businesses get labeled high-risk, what processors actually evaluate during underwriting, and how to build a payments strategy that supports growth.",
     category: "ecommerce",
     readTime: "14 min read",
@@ -661,6 +688,7 @@ export const allInsights: Insight[] = [
   {
     title: "Beyond the 1%: Navigating Chargeback Thresholds With High Risk Payment Processors",
     slug: "ecommerce/chargeback-thresholds-high-risk-processors",
+    global: true,
     description: "Learn how chargeback thresholds work, why standard processors reject high dispute businesses, and how to find a payment provider that supports your risk profile.",
     category: "ecommerce",
     readTime: "11 min read",

@@ -3,17 +3,18 @@ import { Suspense } from 'react'
 import Insights from '@/views/Insights'
 
 export const metadata: Metadata = {
-  title: "Expert Insights: What Payment Providers Don't Tell You",
-  description: "Insider knowledge on payment provider risk, underwriting criteria, account freezes, and why businesses get rejected. Strategic guidance from industry experts.",
+  title: "Payments Insights: What Providers Don't Tell You",
+  description: "Insider knowledge on payment provider risk, underwriting, account freezes, chargebacks, and why businesses get rejected. Strategic guidance for merchants.",
   keywords: [
     'payment provider insights',
     'payment risk',
     'underwriting criteria',
     'account freezes',
+    'chargebacks',
     'provider rejection',
   ],
   alternates: {
-    canonical: '/insights',
+    canonical: '/us/insights',
     languages: {
       'en-GB': 'https://chosepayments.com/insights',
       'en-US': 'https://chosepayments.com/us/insights',
@@ -21,10 +22,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    url: 'https://chosepayments.com/insights',
+    url: 'https://chosepayments.com/us/insights',
     images: ['/og-default.png'],
-    title: "Expert Insights: What Payment Providers Don't Tell You | ChosePayments",
-    description: "Insider knowledge on payment provider risk, underwriting criteria, account freezes, and why businesses get rejected. Strategic guidance from industry experts.",
+    title: "Payments Insights: What Providers Don't Tell You | ChosePayments",
+    description: "Insider knowledge on payment provider risk, underwriting, account freezes, chargebacks, and why businesses get rejected. Strategic guidance for merchants.",
     type: 'website',
   },
 }
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <Suspense>
-      <Insights />
+      <Insights globalOnly />
     </Suspense>
   )
 }

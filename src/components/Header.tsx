@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import { usePathname } from 'next/navigation';
 import { Link } from '@/lib/router-compat';
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -8,10 +9,12 @@ import { Menu } from "lucide-react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isUS = pathname === "/us" || (pathname?.startsWith("/us/") ?? false);
 
   const navLinks = [
     { to: "/#how-it-works", label: "How It Works" },
-    { to: "/insights", label: "Insights" },
+    { to: isUS ? "/us/insights" : "/insights", label: "Insights" },
     { to: "/#why-us", label: "Why Us" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },

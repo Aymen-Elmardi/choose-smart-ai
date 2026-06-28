@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import { usePathname } from 'next/navigation';
 import { Link } from '@/lib/router-compat';
 import { Linkedin } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,9 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
 const Footer = () => {
+  const pathname = usePathname();
+  const isUS = pathname === "/us" || (pathname?.startsWith("/us/") ?? false);
+  const insightsHref = isUS ? "/us/insights" : "/insights";
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -79,7 +83,7 @@ const Footer = () => {
             <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
               About
             </Link>
-            <Link to="/insights" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link to={insightsHref} className="text-muted-foreground hover:text-foreground transition-colors">
               Insights
             </Link>
             <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
