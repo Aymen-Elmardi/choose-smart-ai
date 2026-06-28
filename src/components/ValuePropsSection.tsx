@@ -1,7 +1,7 @@
 import { TrendingUp, Target, MapPin, Users } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-const valueProps = [
+const buildValueProps = (market: "UK" | "US") => [
   {
     icon: TrendingUp,
     title: "Born from Real Failures",
@@ -12,11 +12,17 @@ const valueProps = [
     title: "Outcome-Driven Methodology",
     description: "Every recommendation ties to measurable impact: revenue captured, costs reduced, account stability improved.",
   },
-  {
-    icon: MapPin,
-    title: "UK and EU Specialists",
-    description: "Deep expertise in UK and EU regulatory frameworks, scheme rules, and acquirer relationships across all merchant categories.",
-  },
+  market === "US"
+    ? {
+        icon: MapPin,
+        title: "US Payments Specialists",
+        description: "Deep expertise in US payment regulations, card network rules, and acquirer relationships across all merchant categories.",
+      }
+    : {
+        icon: MapPin,
+        title: "UK and EU Specialists",
+        description: "Deep expertise in UK and EU regulatory frameworks, scheme rules, and acquirer relationships across all merchant categories.",
+      },
   {
     icon: Users,
     title: "Independent, Not Affiliated",
@@ -24,8 +30,9 @@ const valueProps = [
   },
 ];
 
-const ValuePropsSection = () => {
+const ValuePropsSection = ({ market = "UK" }: { market?: "UK" | "US" }) => {
   const { ref, isInView } = useInView<HTMLElement>({ threshold: 0.15 });
+  const valueProps = buildValueProps(market);
 
   return (
     <section id="why-us" className="section-padding bg-secondary" ref={ref}>

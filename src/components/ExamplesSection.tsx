@@ -56,7 +56,7 @@ const ExamplesSection = () => {
         </div>
 
         <p className={`text-center mt-10 text-muted-foreground reveal stagger-4 ${isInView ? "visible" : ""}`}>
-          We work with organisations processing substantial volumes. If you are an early-stage startup or processing under £1M, our premium review may not be the right fit.
+          We work with organizations processing substantial volumes. If you are an early-stage startup or processing under $1M, our premium review may not be the right fit.
         </p>
       </div>
     </section>

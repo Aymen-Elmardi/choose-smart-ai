@@ -1,7 +1,7 @@
 import { ClipboardList, Sparkles, FileText, PhoneCall } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-const steps = [
+const buildSteps = (country: string) => [
   {
     icon: ClipboardList,
     step: "01",
@@ -13,7 +13,7 @@ const steps = [
     icon: Sparkles,
     step: "02",
     title: "We Calculate Your Risk Profile",
-    description: "Our engine maps your profile against the underwriting criteria of 50+ UK processors to find the right fit.",
+    description: `Our engine maps your profile against the underwriting criteria of 50+ ${country} processors to find the right fit.`,
     dark: false,
   },
   {
@@ -32,15 +32,16 @@ const steps = [
   },
 ];
 
-const HowItWorksSection = () => {
+const HowItWorksSection = ({ market = "UK" }: { market?: "UK" | "US" }) => {
   const { ref, isInView } = useInView<HTMLElement>({ threshold: 0.15 });
+  const steps = buildSteps(market);
 
   return (
     <section id="how-it-works" className="section-padding bg-background" ref={ref}>
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-20 reveal ${isInView ? "visible" : ""}`}>
           <h2 className="heading-lg text-foreground">
-            How UK Payment Processor Matching Works
+            How {market} Payment Processor Matching Works
           </h2>
         </div>
 

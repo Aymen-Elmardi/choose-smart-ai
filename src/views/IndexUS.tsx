@@ -19,8 +19,8 @@ const IndexUS = () => {
         <HeroSectionUS />
         <ProviderLogosSection />
         <ProblemSection />
-        <HowItWorksSection />
-        <ValuePropsSection />
+        <HowItWorksSection market="US" />
+        <ValuePropsSection market="US" />
         <ExamplesSection />
         <CTASectionUS />
       </main>
