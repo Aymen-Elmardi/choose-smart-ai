@@ -26,3 +26,14 @@ dist-ssr
 # Bun lockfiles — project uses npm for Cloudflare CI
 bun.lock
 bun.lockb
+
+# Local env files — CI builds from GitHub secrets, never commit these
+.env.production
+.env.staging
+
+# Build output / local tooling artifacts
+.next/
+out/
+.wrangler/
+supabase/.temp/
+tsconfig.tsbuildinfo

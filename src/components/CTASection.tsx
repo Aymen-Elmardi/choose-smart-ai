@@ -21,7 +21,7 @@ const CTASection = () => {
             size="xl" 
             asChild
           >
-            <Link to="/assessment?start=true" replace>
+            <Link to="/statement-review">
               See if you're overpaying
               <ArrowRight className="w-5 h-5" />
             </Link>

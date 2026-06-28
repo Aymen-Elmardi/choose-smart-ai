@@ -12,6 +12,7 @@ const Header = () => {
   const pathname = usePathname();
   const isUS = pathname === "/us" || (pathname?.startsWith("/us/") ?? false);
   const ctaLabel = pathname === "/" ? "See if you're overpaying" : "Run My Risk Profile";
+  const ctaHref = pathname === "/" ? "/statement-review" : "/assessment?start=true";
 
   const navLinks = [
     { to: "/#how-it-works", label: "How It Works" },
@@ -46,7 +47,7 @@ const Header = () => {
               Partner With Us
             </Link>
             <Button variant="hero" size="sm" asChild>
-              <Link to="/assessment?start=true" replace>
+              <Link to={ctaHref} replace>
                 {ctaLabel}
               </Link>
             </Button>
@@ -84,7 +85,7 @@ const Header = () => {
                   </SheetClose>
                   <SheetClose asChild>
                     <Button variant="hero" className="mt-4" asChild>
-                      <Link to="/assessment?start=true" replace onClick={() => setIsOpen(false)}>
+                      <Link to={ctaHref} replace onClick={() => setIsOpen(false)}>
                         {ctaLabel}
                       </Link>
                     </Button>

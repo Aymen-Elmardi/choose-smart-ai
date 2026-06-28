@@ -17,7 +17,7 @@ const HeroSection = () => {
           </div>
           <div className="mt-12 flex flex-col items-center gap-4">
             <Button variant="hero" size="xl" asChild>
-              <Link to="/assessment">
+              <Link to="/statement-review">
                 See if you're overpaying
                 <ArrowRight className="w-5 h-5" />
               </Link>
