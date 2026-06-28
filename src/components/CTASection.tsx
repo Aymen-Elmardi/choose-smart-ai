@@ -22,7 +22,7 @@ const CTASection = () => {
             asChild
           >
             <Link to="/assessment?start=true" replace>
-              Run My Risk Profile
+              See if you're overpaying
               <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>
