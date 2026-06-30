@@ -41,11 +41,14 @@ const DiagnosticBlock = () => {
     <section id="diagnostic" className="border-t border-border bg-secondary/30">
       <div className="section-container py-16 md:py-20">
         <div className="max-w-3xl mx-auto">
+          <p className="text-xs font-bold uppercase tracking-widest text-primary text-center mb-3">
+            What We Solve
+          </p>
           <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight text-center mb-3">
-            What's Happening to Your Account Right Now?
+            Problems Businesses Face Every Now and Then
           </h2>
           <p className="text-muted-foreground text-center mb-10 text-sm max-w-lg mx-auto">
-            Pick what you're dealing with. We'll explain the real cause and tell you exactly what to do.
+            Tell us what you are dealing with. We will explain the real cause and tell you exactly what to do.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {problems.map((problem) => {

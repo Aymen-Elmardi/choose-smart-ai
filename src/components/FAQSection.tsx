@@ -7,34 +7,39 @@ import { useInView } from "@/hooks/useInView";
 
 const faqs = [
   {
+    question: "Is ChosePayments really free for merchants?",
+    answer:
+      "Yes, completely free. We are paid by the payment processors when we make a successful introduction. You never pay us a fee, a commission, or anything else. Our incentive is to find you the right fit, because that is how we get paid.",
+  },
+  {
     question: "What is a payment processor risk profile?",
     answer:
-      "A risk profile is how payment providers assess your business before approving a merchant account. It covers your industry, monthly volume, chargeback history, business model, and transaction type. Providers use it to decide whether to approve you, at what rate, and under what terms. Running your profile before applying prevents rejections and account freezes.",
+      "A risk profile is how payment providers assess your business before approving a merchant account. It covers your industry, monthly volume, chargeback history, business model, and transaction type. Providers use it to decide whether to approve you, at what rate, and under what terms. Running yours before applying prevents rejections and account freezes.",
   },
   {
     question: "Why do payment processors freeze accounts?",
     answer:
-      "Account freezes happen when a processor's system flags your account based on risk triggers. Common causes include a sudden volume spike, a chargeback rate above threshold, a business model that does not match how you were originally onboarded, or industry reclassification. Running your risk profile before applying helps you avoid processors likely to freeze your account.",
+      "Account freezes are triggered by automated risk thresholds. A spike in chargebacks, a sudden increase in volume, or a business model that no longer fits the processor's risk appetite. The freeze is rarely personal. It is a system flag. Knowing your risk profile before you apply puts you with a processor whose thresholds match your business.",
   },
   {
-    question: "Is ChosePayments free for merchants?",
+    question: "Do you work with high-risk businesses?",
     answer:
-      "Yes. Completely free for merchants. ChosePayments is funded through partnerships with payment providers, not through merchant fees or commissions. You pay nothing and have no obligation to apply to any provider we recommend.",
+      "Yes. We work with businesses across all risk categories including gaming, adult content, CBD, crypto, travel, and subscription businesses with recurring billing. High-risk merchants often benefit most from our matching service because the cost of being on the wrong processor is highest for them.",
   },
   {
-    question: "What if I have already been declined by a payment processor?",
+    question: "What if I have already been declined by a processor?",
     answer:
-      "Previous declines do not disqualify you. Most merchants who use ChosePayments have already been rejected by at least one provider. A decline usually means you applied to the wrong processor for your risk profile, not that approval is impossible. We identify the processors that are the correct fit for your business.",
+      "A decline from one processor does not mean you will be declined by all of them. Each processor has different underwriting criteria. We match you to ones whose criteria fit your specific risk profile, including businesses that have been declined elsewhere.",
   },
   {
-    question: "Do you cover high-risk industries?",
+    question: "How is this different from a comparison website?",
     answer:
-      "Yes. ChosePayments covers all merchant categories including high-risk industries such as gambling, supplements, forex, subscription services, adult content, and e-cigarettes. Our matching engine includes specialist acquirers who understand these business models and are set up to approve them.",
+      "Comparison sites show you a list of processors. We show you which processors will actually approve your specific business, at what rate, and why, based on your risk profile. Then we introduce you directly and guide the application. It is the difference between a search result and a specialist.",
   },
   {
-    question: "How is this different from a payment processor comparison site?",
+    question: "Do you cover US businesses?",
     answer:
-      "Comparison sites list providers side by side. ChosePayments identifies which specific providers are likely to approve your business based on your actual risk profile. The output tells you which to apply to and which to avoid, with specific reasons for each. You apply once, to the right provider, with a high probability of approval.",
+      "Yes. We work with businesses in the United States, United Kingdom, and across the EU. We have processor relationships and expertise across all three markets, including high-risk categories in each.",
   },
 ];
 
@@ -47,19 +52,17 @@ const FAQSection = () => {
       <FAQSchema faqs={faqs} />
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
+          <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">FAQ</p>
           <h2 className="heading-lg text-foreground">
-            Common Questions About UK Merchant Accounts and Payment Processors
+            Common Questions
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg">
-            Everything UK merchants ask before running their risk profile.
-          </p>
         </div>
 
         <div className="max-w-3xl mx-auto space-y-3">
           {faqs.map((faq, index) => {
             const open = openIndex === index;
             return (
-              <div key={faq.question} className="border border-border rounded-lg overflow-hidden bg-card">
+              <div key={faq.question} className="border border-border rounded-lg overflow-hidden bg-card transition-colors hover:border-primary/40">
                 <button
                   onClick={() => setOpenIndex(open ? -1 : index)}
                   className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-muted/30 transition-colors"

@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     images: ['/og-default.png'],
-    title: 'ChosePayments: Payment Processor Matching for UK Merchants',
-    description: 'Find the right payment processor for your business. Avoid frozen accounts and rejections. Get matched with a provider that fits your risk profile in 2 minutes.',
+    title: 'ChosePayments: Free Payment Processor Matching for US and UK Businesses',
+    description: 'Stop overpaying. Stop getting frozen. ChosePayments matches your business to the right payment processor for free. US, UK and EU coverage across all industries.',
     type: 'website',
     url: 'https://chosepayments.com',
   },

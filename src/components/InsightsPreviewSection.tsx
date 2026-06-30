@@ -20,9 +20,13 @@ const InsightsPreviewSection = () => {
     <section className="section-padding bg-background" ref={ref}>
       <div className="section-container">
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Insights and Resources
+          <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Insights and Resources</p>
+          <h2 className="heading-lg text-foreground">
+            Payment Processing, Explained Clearly
           </h2>
+          <p className="mt-4 text-muted-foreground text-lg">
+            No jargon. No filler. Just what you need to know to protect your merchant account and lower your costs.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -35,7 +39,7 @@ const InsightsPreviewSection = () => {
               <Link
                 key={article.slug}
                 to={url}
-                className={`group p-6 rounded-xl border border-border bg-card hover:shadow-lg transition-all reveal stagger-${index + 1} ${isInView ? "visible" : ""}`}
+                className={`group p-6 rounded-xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary/50 reveal stagger-${index + 1} ${isInView ? "visible" : ""}`}
               >
                 <span className="inline-block text-xs font-medium text-primary bg-primary/10 px-2.5 py-1 rounded-full mb-4">
                   {categoryLabels[article.category]}

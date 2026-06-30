@@ -22,9 +22,9 @@ const Index = () => {
   useCanonical();
 
   useSEO({
-    title: "ChosePayments: Payment Processor Matching for UK Merchants",
+    title: "ChosePayments: Free Payment Processor Matching for US and UK Businesses",
     description:
-      "Find the right payment processor for your business. Avoid frozen accounts and rejections. Get matched with a provider that fits your risk profile in 2 minutes.",
+      "Stop overpaying. Stop getting frozen. ChosePayments matches your business to the right payment processor for free. US, UK and EU coverage across all industries.",
     ogType: "website",
     keywords: [
       "payment provider risk profile",

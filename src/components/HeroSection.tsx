@@ -7,33 +7,38 @@ const HeroSection = () => {
     <section className="bg-background pt-28 pb-12 md:pt-40 md:pb-20">
       <div className="section-container">
         <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-primary mb-6">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            Free for merchants. US, UK and EU.
+          </div>
           <h1 className="heading-xl text-foreground text-balance">
-            Find the Right UK Payment Processor for Your Business
+            Find the Right Payment Processor for Your Business
           </h1>
-          <div className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-3 text-lg md:text-xl font-medium text-muted-foreground">
+            Small business, e-commerce, online gaming, SaaS, and more.
+          </p>
+          <div className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
-              We match your business model, volume, and transaction history to UK merchant account providers most likely to approve you. Avoid frozen accounts, rejected applications, and fees that never made sense.
+              We match your business to payment processors that will actually approve you, at the right rate, with the right terms. No frozen accounts. No surprises. No more guessing.
             </p>
           </div>
-          <div className="mt-12 flex flex-col items-center gap-4">
-            <Button variant="hero" size="xl" asChild>
-              <Link to="/statement-review">
-                See if you're overpaying
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
+          <div className="mt-10 flex flex-col items-center gap-5">
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/statement-review">
+                  See if you're overpaying
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+              <Button variant="hero-outline" size="xl" asChild>
+                <Link to="/#how-it-works">
+                  See How It Works
+                </Link>
+              </Button>
+            </div>
             <p className="text-xs text-muted-foreground tracking-wide">
-              Takes 60 seconds. No sales call. You'll see your match immediately.
+              Takes 60 seconds. No sales call. <strong className="text-primary font-semibold">Completely free for merchants.</strong>
             </p>
-            <p className="text-xs text-muted-foreground tracking-wide">
-              Independent. Free for merchants. Trusted by 50+ businesses across the UK and EU.
-            </p>
-            <Link
-              to="/risk-profile-matching"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              See how it works in 60 seconds
-            </Link>
           </div>
         </div>
       </div>

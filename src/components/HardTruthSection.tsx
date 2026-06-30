@@ -1,30 +1,51 @@
 const truths = [
-  "Your rate is based on how risky your business looks to them, not how well you have performed.",
-  "When they hold your funds, it is because their system flagged your account type. It is not personal. But it still stops your business.",
-  "A spike in chargebacks in even one bad month can change how every future transaction is treated.",
-  "If your revenue suddenly grows, your processor may pause your account to review it. Fast growth looks like a red flag to the wrong provider.",
-  "Flat-rate pricing bundles fees together so you cannot see what you are actually paying per transaction type.",
+  {
+    strong: "Your rate is based on how risky your business looks to them,",
+    rest: " not how well you have actually performed.",
+  },
+  {
+    strong: "When they hold your funds, it is a system flag, not a personal decision.",
+    rest: " But it still stops your business cold.",
+  },
+  {
+    strong: "One bad chargeback month can change how every future transaction is treated,",
+    rest: " permanently, at that processor.",
+  },
+  {
+    strong: "Fast growth can trigger a freeze.",
+    rest: " Sudden volume increases look like a red flag to the wrong provider.",
+  },
+  {
+    strong: "Flat-rate pricing bundles fees together",
+    rest: " so you cannot see what you are actually paying per transaction type.",
+  },
+  {
+    strong: "Most merchant account rejections are preventable",
+    rest: " if you know which processors match your risk profile before you apply.",
+  },
 ];
 
 const HardTruthSection = () => {
   return (
-    <section className="border-t border-border bg-foreground">
-      <div className="section-container py-16 md:py-24">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl md:text-2xl font-semibold text-background tracking-tight mb-10">
-            The Truth Most Providers Won't Explain Clearly
-          </h2>
-          <ul className="space-y-4">
-            {truths.map((truth) => (
-              <li
-                key={truth}
-                className="flex items-start gap-3 text-background/80 text-sm leading-relaxed"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
-                {truth}
-              </li>
-            ))}
-          </ul>
+    <section className="section-padding bg-background border-t border-border">
+      <div className="section-container">
+        <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">The Reality</p>
+        <h2 className="heading-lg text-foreground mb-12">
+          What Most Processors Will Not Tell You
+        </h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          {truths.map((truth) => (
+            <div
+              key={truth.strong}
+              className="flex items-start gap-4 p-5 bg-card border border-border rounded-xl transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary/50"
+            >
+              <span className="h-2 w-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                <strong className="text-foreground font-semibold">{truth.strong}</strong>
+                {truth.rest}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
