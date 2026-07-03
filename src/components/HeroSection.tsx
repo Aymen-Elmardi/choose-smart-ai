@@ -23,19 +23,12 @@ const HeroSection = () => {
             </p>
           </div>
           <div className="mt-10 flex flex-col items-center gap-5">
-            <div className="flex flex-col sm:flex-row items-center gap-3">
-              <Button variant="hero" size="xl" asChild>
-                <Link to="/statement-review">
-                  See if you're overpaying
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
-              <Button variant="hero-outline" size="xl" asChild>
-                <Link to="/#how-it-works">
-                  See How It Works
-                </Link>
-              </Button>
-            </div>
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/statement-review">
+                See if you're overpaying
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
             <p className="text-xs text-muted-foreground tracking-wide">
               Takes 60 seconds. No sales call. <strong className="text-primary font-semibold">Completely free for merchants.</strong>
             </p>

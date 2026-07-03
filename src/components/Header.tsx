@@ -31,7 +31,7 @@ const Header = () => {
             <img src="/chosepayments-logo.svg" alt="ChosePayments" className="h-8 w-auto shrink-0" width={144} height={36} />
           </Link>
           
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link 
                 key={link.to}
@@ -41,12 +41,11 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
-            <Link
-              to="/onboard-with-us"
-              className="text-base font-medium text-primary hover:text-primary/80 transition-colors border-b border-primary/30 hover:border-primary pb-0.5"
-            >
-              Partner With Us
-            </Link>
+            <Button variant="hero" size="sm" asChild>
+              <Link to="/onboard-with-us">
+                Partner With Us
+              </Link>
+            </Button>
             <Button variant="hero" size="sm" asChild>
               <Link to={ctaHref} replace>
                 {ctaLabel}
@@ -55,7 +54,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden flex items-center gap-3">
+          <div className="lg:hidden flex items-center gap-3">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" aria-label="Open menu">
@@ -76,13 +75,11 @@ const Header = () => {
                     </SheetClose>
                   ))}
                   <SheetClose asChild>
-                    <Link 
-                      to="/onboard-with-us"
-                      className="text-primary font-medium text-lg py-2 border-b border-primary/30 w-fit"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Partner With Us
-                    </Link>
+                    <Button variant="hero" className="mt-2 w-fit" asChild>
+                      <Link to="/onboard-with-us" onClick={() => setIsOpen(false)}>
+                        Partner With Us
+                      </Link>
+                    </Button>
                   </SheetClose>
                   <SheetClose asChild>
                     <Button variant="hero" className="mt-4" asChild>

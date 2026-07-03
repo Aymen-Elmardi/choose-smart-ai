@@ -2,13 +2,6 @@ import { ArrowRight } from "lucide-react";
 import { Link } from '@/lib/router-compat';
 import { Button } from "@/components/ui/button";
 
-// US market quiz link with state
-const USQuizLink = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <Link to="/assessment?start=true" state={{ market: "US" }} className={className} replace>
-    {children}
-  </Link>
-);
-
 const HeroSectionUS = () => {
   return (
     <section className="bg-background pt-28 pb-20 md:pt-40 md:pb-32">
@@ -25,19 +18,14 @@ const HeroSectionUS = () => {
               Many US businesses choose the wrong payment provider and overpay. Tell us about your business and we'll review your situation with independent guidance.
             </p>
           </div>
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-            <div className="flex flex-col items-center">
-              <Button variant="hero" size="xl" asChild>
-                <USQuizLink>
-                  Apply for Payment Advisory
-                  <ArrowRight className="w-5 h-5" />
-                </USQuizLink>
-              </Button>
-              <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
-            </div>
-            <Button variant="hero-outline" size="xl" asChild>
-              <a href="#how-it-works">How it Works</a>
+          <div className="mt-12 flex flex-col items-center">
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/statement-review?us=1">
+                See if you're overpaying
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </Button>
+            <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
           </div>
           <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground justify-center flex-wrap">
             <div className="flex items-center gap-2">
