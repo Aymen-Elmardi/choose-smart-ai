@@ -49,6 +49,9 @@ const fileToText = (file: File) =>
     r.readAsText(file);
   });
 
+const formatSize = (bytes: number) =>
+  bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+
 const verdictCopy: Record<Comparison["verdict"], { label: string; tone: string }> = {
   "well-priced": { label: "Your rate looks competitive", tone: "text-primary" },
   "mid-market": { label: "Your rate is around the middle of the market", tone: "text-foreground" },
@@ -130,19 +133,37 @@ const StatementReview = () => {
                   See if you're overpaying
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                  Upload your latest payment processing statement and we'll work out your all-in
-                  effective rate and how it compares. Takes about a minute.
+                  Upload your latest statement and we'll work out your true all-in rate, then compare
+                  it against real statements from other businesses to show whether you're overpaying,
+                  and by how much. Free, independent, and about a minute.
                 </p>
               </div>
 
               <form onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-6 md:p-8 space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">Your statement (PDF or CSV)</label>
-                  <label className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-border rounded-xl p-8 cursor-pointer hover:border-primary/40 transition-colors text-center">
-                    <Upload className="w-6 h-6 text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">
-                      {file ? file.name : "Click to upload or drag your statement here"}
-                    </span>
+                  <label
+                    className={`flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-xl p-8 cursor-pointer transition-colors text-center ${
+                      file ? "border-primary/60 bg-primary/5" : "border-border hover:border-primary/40"
+                    }`}
+                  >
+                    {file ? (
+                      <>
+                        <CheckCircle2 className="w-8 h-8 text-primary" />
+                        <span className="text-sm font-semibold text-primary">Statement uploaded successfully</span>
+                        <span className="text-sm font-medium text-foreground break-all">{file.name}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {formatSize(file.size)} · Click to replace
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <Upload className="w-6 h-6 text-muted-foreground" />
+                        <span className="text-sm text-muted-foreground">
+                          Click to upload or drag your statement here
+                        </span>
+                      </>
+                    )}
                     <input
                       type="file"
                       accept=".pdf,.csv,application/pdf,text/csv"
