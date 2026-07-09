@@ -1,6 +1,7 @@
 'use client'
 import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
 import { Shield, Globe, Building2, Zap, CreditCard, BarChart3, CheckCircle, AlertTriangle, ArrowRight } from "lucide-react";
 
@@ -27,12 +28,47 @@ const fiservSources: Source[] = [
   }
 ];
 
+// FAQPage structured data (Change 9). Injected into <head> by FAQSchema,
+// scoped to this page because it only renders inside this view.
+const fiservFaqs = [
+  {
+    question: "What is First Data?",
+    answer:
+      "First Data was one of the world's largest merchant acquirers and payment processing companies before being acquired by Fiserv in 2019 for $22 billion. The First Data brand now operates as part of Fiserv's merchant services division, powering first data payment processing for millions of merchants through banks and resellers globally.",
+  },
+  {
+    question: "Is Fiserv the same as First Data?",
+    answer:
+      "Fiserv acquired First Data in 2019 and merged the two companies. First Data's merchant acquiring and payment gateway services now operate under the Fiserv brand, but many businesses and banks still refer to the systems and infrastructure by the original First Data name. The underlying technology and services remain largely the same.",
+  },
+  {
+    question: "What is the First Data payment gateway?",
+    answer:
+      "The First Data payment gateway, now part of Fiserv, provides card processing, settlement, and reconciliation services to merchants. It is typically accessed through banks, ISOs, or resellers rather than directly. The platform supports both in-person payments through Clover POS and online transactions through API integrations.",
+  },
+  {
+    question: "How does first data payment processing work for merchants today?",
+    answer:
+      "Most merchants do not sign up with Fiserv directly. First data payment processing is typically accessed through a bank, ISO, or reseller that has a processing relationship with Fiserv. Your merchant account is underwritten and settled by Fiserv as the acquirer, but the commercial relationship and support sits with the intermediary. Pricing and contract terms vary significantly depending on which partner you sign through.",
+  },
+  {
+    question: "What was the First Data Buypass platform?",
+    answer:
+      "Buypass was a First Data communications protocol and gateway service used primarily for POS terminal connectivity in the United States. It allowed terminals to route transaction data to the First Data processing network for authorisation and settlement. Following the Fiserv acquisition, Buypass infrastructure has been integrated into Fiserv's broader gateway and acquiring operations.",
+  },
+  {
+    question: "Which businesses typically use the First Data payment gateway?",
+    answer:
+      "The First Data payment gateway is widely used by retailers, hospitality businesses, franchise groups, and multi-location merchants that signed up through a bank or ISO. Many US banks resell Fiserv and First Data processing as their default merchant services product, meaning a large number of businesses operate on this network without knowing Fiserv sits behind it.",
+  },
+];
+
 const FiservPaymentsPlatform = () => {
   const coreServices = [
     {
       name: "Global Acquiring and Gateway",
       icon: Globe,
-      description: "Card processing, settlement, reconciliation, and chargeback handling delivered directly or through banking and reseller partners."
+      description: "The First Data payment gateway, now operating under the Fiserv name, handles card processing, settlement, reconciliation, and chargeback management. Access is almost always through a bank, ISO, or reseller rather than a direct merchant relationship with Fiserv. The network covers both in-person transactions through Clover POS and online payments through API and hosted integrations."
     },
     {
       name: "Clover Point-of-Sale",
@@ -86,8 +122,8 @@ const FiservPaymentsPlatform = () => {
 
   return (
     <InsightsArticleLayout
-      title="Fiserv Payment Platform: Enterprise Alternative to Stripe"
-      description="Fiserv payment processing for enterprises. Fees, approval process, settlement speed. When Fiserv beats Stripe and Adyen. See if it fits your business model."
+      title="Fiserv and the First Data Payment Gateway: What Merchants Need to Know"
+      description="Fiserv acquired First Data in 2019, creating one of the largest payment gateway and merchant processing networks in the world. What merchants need to know before choosing Fiserv."
       category={{ name: "Provider Deep Dive", slug: "providers" }}
       cluster="provider"
       currentSlug="fiserv-payments-platform"
@@ -95,10 +131,13 @@ const FiservPaymentsPlatform = () => {
       keywords={["fiserv", "first data", "fiserv first data", "first data payment processing", "first data services", "first data platforms", "first data systems", "what is first data payment gateway", "clover", "enterprise", "acquiring", "POS", "merchant services"]}
       sources={fiservSources}
     >
+      {/* FAQPage structured data (Change 9), scoped to this page only */}
+      <FAQSchema faqs={fiservFaqs} />
+
       {/* Hero Section */}
       <header className="mb-12">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-          Fiserv and the First Data Legacy: Who It Actually Fits, and Where It Doesn't
+          Fiserv - the First Data Payment Gateway: What Merchants Need to Know
         </h1>
         <p className="text-xl text-muted-foreground leading-relaxed">
           Fiserv sits very high up the payments stack. It is not just a payment processor. It operates across acquiring, issuing technology, bank infrastructure, and point-of-sale through Clover. When Fiserv acquired First Data in 2019, it absorbed one of the largest global merchant acquirers into an already bank-centric technology business. Today, Fiserv First Data represents one of the largest first data payment processing networks in the world.
@@ -107,6 +146,9 @@ const FiservPaymentsPlatform = () => {
 
       {/* Introduction */}
       <section className="mb-12">
+        <p className="text-lg text-muted-foreground mb-6">
+          The First Data payment gateway, now fully integrated under the Fiserv brand, continues to serve millions of merchants through banks, ISOs, and resellers worldwide.
+        </p>
         <p className="text-lg text-muted-foreground mb-6">
           On paper, that creates a single organisation capable of handling issuing, acquiring, terminals, reconciliation, and settlement at scale.
         </p>
@@ -121,7 +163,7 @@ const FiservPaymentsPlatform = () => {
           What Fiserv Actually Provides
         </h2>
         <p className="text-muted-foreground mb-6">
-          At a high level, Fiserv's merchant-facing services fall into three broad areas:
+          At a high level, the Fiserv First Data platforms for merchants fall into three broad areas:
         </p>
         
         <div className="grid md:grid-cols-3 gap-4 mb-6">
@@ -203,6 +245,23 @@ const FiservPaymentsPlatform = () => {
         </ul>
       </section>
 
+      {/* Mid-article CTA (Change 7) */}
+      <div style={{ background: "#0D1117", border: "1px solid #1F2937", borderRadius: "14px", padding: "2.5rem 2.8rem", margin: "3rem 0", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg,#10B981,#059669)" }} />
+        <p style={{ color: "#10B981", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", margin: "0 0 1rem 0" }}>
+          Free Consultation
+        </p>
+        <p style={{ color: "#F9FAFB", fontSize: "1.35rem", fontWeight: 700, lineHeight: 1.4, margin: "0 0 0.75rem 0" }}>
+          Not sure if Fiserv is right for your business?
+        </p>
+        <p style={{ color: "#9CA3AF", fontSize: "1rem", lineHeight: 1.65, margin: "0 0 1.75rem 0" }}>
+          Book a free 15-minute call with our team. We will help you work out which processor actually fits your volume, industry, and risk profile. No sales pitch. No strings attached.
+        </p>
+        <Link to="/contact" style={{ display: "inline-block", background: "#10B981", color: "#ffffff", fontWeight: 700, fontSize: "0.95rem", padding: "0.85rem 2rem", borderRadius: "8px", textDecoration: "none", letterSpacing: "0.02em" }}>
+          Book a Free 15-Minute Call
+        </Link>
+      </div>
+
       {/* How to Evaluate */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-foreground mb-6">
@@ -237,6 +296,18 @@ const FiservPaymentsPlatform = () => {
           <div className="p-6 rounded-xl bg-card border border-border">
             <h3 className="text-lg font-semibold text-foreground mb-3">What is First Data payment gateway?</h3>
             <p className="text-muted-foreground">The First Data payment gateway (now part of Fiserv) provides card processing, settlement, and reconciliation services to merchants. It is typically accessed through banks, ISOs, or resellers rather than directly. The first data platforms support both in-person payments through Clover POS and online transactions through API integrations.</p>
+          </div>
+          <div className="p-6 rounded-xl bg-card border border-border">
+            <h3 className="text-lg font-semibold text-foreground mb-3">How does first data payment processing work for merchants today?</h3>
+            <p className="text-muted-foreground">Most merchants do not sign up with Fiserv directly. First data payment processing is typically accessed through a bank, ISO (Independent Sales Organisation), or reseller that has a processing relationship with Fiserv. Your merchant account is underwritten and settled by Fiserv as the acquirer, but the commercial relationship and day-to-day support sits with the intermediary. This means pricing, contract terms, and support quality can vary significantly depending on which partner you sign through.</p>
+          </div>
+          <div className="p-6 rounded-xl bg-card border border-border">
+            <h3 className="text-lg font-semibold text-foreground mb-3">What was the First Data Buypass platform?</h3>
+            <p className="text-muted-foreground">Buypass was a First Data communications protocol and gateway service used primarily for point-of-sale terminal connectivity in the United States. It allowed POS terminals to route transaction data to the First Data processing network for authorisation and settlement. Following the Fiserv acquisition, Buypass infrastructure has been integrated into Fiserv's broader gateway and acquiring operations.</p>
+          </div>
+          <div className="p-6 rounded-xl bg-card border border-border">
+            <h3 className="text-lg font-semibold text-foreground mb-3">Which businesses typically use the First Data payment gateway?</h3>
+            <p className="text-muted-foreground">The First Data payment gateway is widely used across retail, hospitality, franchise groups, and multi-location businesses that signed up for merchant services through a bank or ISO. Many US banks resell Fiserv and First Data processing as their default merchant services product, meaning a large number of businesses operate on this network without necessarily knowing that Fiserv sits behind it.</p>
           </div>
         </div>
       </section>
