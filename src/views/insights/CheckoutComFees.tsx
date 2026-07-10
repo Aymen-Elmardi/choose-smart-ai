@@ -1,7 +1,6 @@
 'use client'
 import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
-import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
@@ -38,6 +37,18 @@ const faqs = [
   {
     question: "What does \"oversized\" mean on a Checkout.com invoice?",
     answer: "An oversized fee is a scheme-level surcharge triggered when a transaction or transaction batch exceeds the standard size threshold for its billing category. These are Visa or Mastercard charges, not Checkout.com charges, passed through transparently. Common causes include a high average transaction value relative to your MCC category norm, or a billing category mismatch."
+  },
+  {
+    question: "What is the Checkout.com payment gateway pricing model?",
+    answer: "Checkout.com's payment gateway pricing uses an interchange-plus-plus (IC++) structure. You pay interchange fees set by card networks, scheme fees charged by those networks directly, and a negotiated Checkout.com markup on top. The markup is the only component you negotiate. For high-volume merchants, this model typically delivers lower effective rates than flat-rate providers because you benefit when cheaper card types such as debit cards make up a larger share of your transaction mix."
+  },
+  {
+    question: "What does an oversized checkout.com EEA charge mean on my statement?",
+    answer: "An oversized checkout.com EEA charge is a scheme-level surcharge applied by Visa or Mastercard when a transaction or batch exceeds a size threshold for its EEA billing category. These surcharges are set by the card networks and passed through transparently under interchange-plus-plus pricing. They are most common when your average transaction value is high relative to your category norm. This applies equally to Visa, Mastercard, and American Express transactions processed within the EEA."
+  },
+  {
+    question: "Does Checkout.com pricing differ for UK merchants versus EEA merchants after Brexit?",
+    answer: "Yes. Since Brexit, UK-issued cards are no longer classified as EEA cards. When UK-issued cards are used in EEA transactions, or EEA-issued cards in UK transactions, these are treated as cross-border transactions and attract higher scheme and interchange fees. Checkout.com offers local acquiring in both the UK and EU, which can substantially reduce these costs for merchants with significant cross-border customer volumes. This is a material cost point worth raising explicitly during contract negotiation."
   }
 ];
 
@@ -62,8 +73,8 @@ const sources: Source[] = [
 const CheckoutComFees = () => {
   return (
     <InsightsArticleLayout
-      title="Checkout.com Pricing and Fees (2026): Is It Worth It For Your Business?"
-      description="Checkout.com uses negotiated pricing with no public rates. Learn what businesses pay, which payment methods are supported, and how UK and EEA billing works in 2026."
+      title="Checkout.com Fees and Pricing (2026): What Businesses Actually Pay"
+      description="Checkout.com does not publish standard pricing. This guide covers what businesses actually pay in 2026, with indicative rates from 0.2% to 1.8%, payment gateway pricing, EEA billing codes, oversized charges, and UK post-Brexit costs explained."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="pricing"
       currentSlug="checkout-com-fees-explained"
@@ -86,13 +97,9 @@ const CheckoutComFees = () => {
     >
       <FAQSchema faqs={faqs} />
 
-      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-        Checkout.com Fees Explained: What Businesses Actually Pay in 2026
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+        Checkout.com Pricing and Fees Explained: What Businesses Actually Pay in 2026
       </h1>
-
-      <h2 className="text-xl md:text-2xl font-semibold text-muted-foreground mb-6">
-        Checkout.com Fees Explained: Pricing, Structure, and When It Makes Sense
-      </h2>
 
       <p className="text-lg text-muted-foreground mb-8">
         Checkout.com is widely regarded as one of the most capable payment infrastructure providers for fast-growing and enterprise businesses. Unlike providers that publish clear pricing on their websites, Checkout.com uses negotiated pricing, meaning fees depend on your business model, transaction volume, and global footprint.
@@ -136,7 +143,7 @@ const CheckoutComFees = () => {
           How Checkout.com Pricing Works: The Interchange-Plus-Plus Model
         </h2>
         <p className="text-muted-foreground mb-4">
-          Although Checkout.com does not list standard fees, most agreements include three components:
+          Checkout.com's payment gateway pricing follows an interchange-plus-plus structure. Rather than a flat rate, the checkout.com pricing model breaks down into three separate components that appear on your statement:
         </p>
         <div className="bg-muted/50 rounded-lg p-6 mb-4">
           <div className="space-y-4">
@@ -158,11 +165,6 @@ const CheckoutComFees = () => {
           This structure is known as interchange-plus-plus (IC++) pricing. It separates each cost component for transparency, which means merchants can see exactly what they are paying and to whom. For established businesses with meaningful volume, this pricing approach often results in effective rates that are lower than flat-rate competitors when looked at holistically. This is similar to{" "}
           <Link to="/insights/pricing/interchange-plus-plus" className="text-primary hover:underline">interchange plus plus pricing</Link>.
         </p>
-
-        <InlineAssessmentCTA
-          context="Find out if Checkout.com's pricing model would work for your business volume and geography."
-          cta="Get your risk profile"
-        />
       </section>
 
       {/* What payment methods does Checkout.com accept? */}
@@ -171,7 +173,7 @@ const CheckoutComFees = () => {
           What Payment Methods Does Checkout.com Accept?
         </h2>
         <p className="text-muted-foreground mb-6">
-          One of Checkout.com's core strengths as a global payment gateway is the breadth of payment methods it supports. The exact methods available depend on your merchant agreement and the markets you operate in.
+          One of Checkout.com's core strengths is the breadth of checkout payment options it supports across global markets. The checkout payment methods available to your customers depend on your merchant agreement and the countries you operate in.
         </p>
 
         <h3 className="text-lg font-semibold text-foreground mb-2">Card payments</h3>
@@ -312,6 +314,9 @@ const CheckoutComFees = () => {
         </p>
         <p className="text-muted-foreground mb-6">
           If you are seeing unexpectedly high oversized charges, the most common cause is a high average transaction value relative to the category norm, or a mismatch between your merchant category code and your actual business type.
+        </p>
+        <p className="text-muted-foreground mb-6">
+          Oversized surcharges can apply across all card schemes including American Express. An oversized checkout.com Amex charge on your EEA statement follows the same trigger logic as Visa and Mastercard oversized fees, but under American Express's own scheme fee schedule. If you are seeing this charge appear consistently, it is worth reviewing whether your average Amex transaction size has increased relative to your normal profile, or whether your merchant category classification is still accurate.
         </p>
 
         <h3 className="text-lg font-semibold text-foreground mb-3">Post-Brexit implications for UK merchants</h3>
@@ -515,6 +520,23 @@ const CheckoutComFees = () => {
           to understand the tradeoffs.
         </p>
       </section>
+
+      {/* Mid-article CTA (Change 7) */}
+      <div style={{ background: "#0D1117", border: "1px solid #1F2937", borderRadius: "14px", padding: "2.5rem 2.8rem", margin: "3rem 0", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg,#10B981,#059669)" }} />
+        <p style={{ color: "#10B981", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", margin: "0 0 1rem 0" }}>
+          Free Consultation
+        </p>
+        <p style={{ color: "#F9FAFB", fontSize: "1.35rem", fontWeight: 700, lineHeight: 1.4, margin: "0 0 0.75rem 0" }}>
+          Not sure which processor is right for your business?
+        </p>
+        <p style={{ color: "#9CA3AF", fontSize: "1rem", lineHeight: 1.65, margin: "0 0 1.75rem 0" }}>
+          Book a free 15-minute call with our team. We will help you work out whether Checkout.com, Stripe, or a different provider is actually the right fit for your volume, geography, and risk profile. No sales pitch. No strings attached.
+        </p>
+        <Link to="/contact" style={{ display: "inline-block", background: "#10B981", color: "#ffffff", fontWeight: 700, fontSize: "0.95rem", padding: "0.85rem 2rem", borderRadius: "8px", textDecoration: "none", letterSpacing: "0.02em" }}>
+          Book a Free 15-Minute Call
+        </Link>
+      </div>
 
       {/* Why Checkout.com can feel expensive early */}
       <section className="mb-12">
