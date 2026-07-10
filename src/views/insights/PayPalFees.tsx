@@ -3,6 +3,7 @@ import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
+import FAQAccordion from "@/components/FAQAccordion";
 
 const PayPalFees = () => {
   const sources = [
@@ -15,95 +16,351 @@ const PayPalFees = () => {
 
   const faqItems = [
     {
-      question: "What are PayPal's fees for UK businesses?",
-      answer: "PayPal typically charges around 2.9% plus a fixed fee per transaction for UK online card payments. Additional fees apply for international cards, currency conversion, disputes, and payouts. All costs are bundled into a blended rate, so you do not see the underlying interchange or scheme fees."
+      question: "Does PayPal charge a fee?",
+      answer: "PayPal is free for most personal UK transactions between friends and family using a PayPal balance or linked bank account. It charges fees for commercial transactions (goods and services), international personal transfers, and currency conversions. Business accounts pay a processing fee on every commercial transaction received."
     },
     {
-      question: "Is PayPal more expensive than Adyen?",
-      answer: "For most UK businesses processing moderate to high volumes, PayPal's blended pricing results in a higher effective rate than Adyen's interchange-plus model. On £10,000 in monthly card volume, the difference can be £90 to £150 per month. However, PayPal's consumer trust and conversion benefits may justify the higher cost for some businesses."
+      question: "What is the PayPal G&S fee?",
+      answer: "The PayPal goods and services (G&S) fee for UK domestic transactions is 2.9% + 0.30 GBP per transaction for most standard commercial payments. Card-funded commercial transactions carry a lower rate of 1.2% + fixed fee. The fee is paid entirely by the seller. Buyers do not pay a separate fee when sending a G&S payment via their PayPal balance or bank account."
     },
     {
-      question: "Why is PayPal pricing higher than interchange-plus providers?",
-      answer: "PayPal bundles interchange, scheme fees, fraud protection, consumer trust, and its own margin into a single flat rate. You are paying for simplicity, fast onboarding, and access to PayPal's consumer network. Interchange-plus providers like Adyen pass card costs through at cost and add a lower margin, rewarding scale and operational maturity."
+      question: "What is the PayPal fee for goods and services?",
+      answer: "For UK domestic commercial transactions, PayPal charges the seller 2.9% + 0.30 GBP per transaction at the standard rate. Transactions funded by a Visa or Mastercard debit or credit card carry a rate of 1.2% + fixed fee. American Express transactions processed through PayPal's Advanced Card Payments attract a 3.5% rate."
     },
     {
-      question: "Can I use PayPal alongside Adyen?",
-      answer: "Yes. Many businesses use PayPal as a conversion layer alongside a primary card processor like Adyen. PayPal captures wallet-preferring consumers while Adyen handles direct card payments at lower cost. This combination balances conversion with cost efficiency."
+      question: "How much does PayPal charge per transaction for UK businesses?",
+      answer: "UK business accounts pay between 1.2% and 2.9% plus a GBP fixed fee for domestic commercial transactions, depending on the payment method. International transactions add a further 1.29% for EEA payments or 1.99% for payments from other markets. Micropayments pricing is available at 5% + reduced fixed fee for eligible low-value sellers who apply separately."
     },
     {
-      question: "Does PayPal offer interchange-plus pricing?",
-      answer: "PayPal primarily uses blended pricing for most merchants. While PayPal has introduced some volume-based pricing tiers, it does not offer the same level of interchange transparency as providers like Adyen. Businesses seeking full cost visibility typically need to qualify for an enterprise-grade provider."
+      question: "What is the PayPal instant transfer fee?",
+      answer: "Standard transfers to a UK bank account are free and typically clear within one to three business days. PayPal charges a separate fee for instant transfers to an eligible UK debit card. This rate is subject to change, so check PayPal's current UK fee schedule before relying on a specific figure."
+    },
+    {
+      question: "Does PayPal charge a fee for international transfers?",
+      answer: "Yes. Sending money personally to someone abroad from the UK costs 5% of the transaction amount. Merchants receiving international commercial payments pay their standard domestic rate plus 1.29% for EEA transactions or 1.99% for transactions from other markets. Since Brexit, cross-border transactions between the UK and EU now attract the EEA additional fee in both directions."
+    },
+    {
+      question: "Is PayPal free for businesses?",
+      answer: "Opening and maintaining a PayPal business account is free. Every commercial transaction you receive attracts a processing fee. The standard domestic rate is 2.9% + 0.30 GBP per transaction. There are no monthly account fees unless you use Website Payments Pro or the Recurring Payments tool, both of which cost 20.00 GBP per month."
+    },
+    {
+      question: "What is the PayPal currency conversion fee?",
+      answer: "PayPal charges 3% above the base exchange rate for all currency conversions. This applies when you receive funds in a different currency to your account's primary currency, or when you withdraw funds that need to be converted to GBP. The 3% margin makes PayPal a relatively expensive option for currency conversion compared to specialist FX providers."
+    },
+    {
+      question: "What is the PayPal invoice fee?",
+      answer: "PayPal invoice payments are processed at the standard commercial transaction rate. For UK domestic payments, this is 2.9% + 0.30 GBP per transaction. There is no separate invoicing fee. The cost of receiving payment via a PayPal invoice is the same as receiving payment through a checkout button."
+    },
+    {
+      question: "What happens to fees if my PayPal account is classed as high-risk?",
+      answer: "PayPal can apply a surcharge of up to 5% per transaction on top of your standard rate if it classifies your account as high-risk. This classification can result from elevated chargeback rates, your business category, or other factors. For merchants in industries that any processor might consider elevated-risk, understanding your risk classification before committing to a payment solution matters."
     }
   ];
 
   return (
     <InsightsArticleLayout
-      title="PayPal Pricing Explained and How It Compares to Adyen for UK Businesses"
-      description="A clear breakdown of PayPal's blended pricing model for UK businesses, how fees compare to Adyen's interchange-plus model, and when each provider makes financial sense."
+      title="PayPal Fees UK (2026): Complete Breakdown for Businesses and Consumers"
+      description="Full breakdown of PayPal fees for UK users in 2026. Covers goods and services fees, business transaction rates, instant transfer costs, currency conversion, and when PayPal starts costing more than you expect."
       category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="pricing"
       currentSlug="paypal-fees-explained"
       publishedTime="2026-02-09"
+      modifiedTime="2026-07-10"
       keywords={[
-        "paypal fees", "paypal pricing", "paypal fees uk", "paypal merchant fees",
-        "paypal vs adyen", "paypal vs adyen pricing", "paypal transaction fees",
-        "paypal cost comparison", "paypal business fees", "paypal blended pricing",
-        "paypal interchange", "payment provider fees comparison",
-        "paypal processing fees uk", "cheapest payment provider uk"
+        "paypal fees", "paypal fees uk", "paypal g&s fee", "paypal goods and services fee",
+        "paypal business fees", "paypal transaction fees", "paypal currency conversion fee",
+        "paypal instant transfer fee", "paypal invoice fee", "paypal micropayments",
+        "paypal international fees", "paypal merchant fees uk"
       ]}
       sources={sources}
     >
       <FAQSchema faqs={faqItems} />
 
-      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
-        PayPal Pricing Explained and How It Compares to Adyen for UK Businesses
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
+        PayPal Fees Explained: The Complete UK Guide for 2026
       </h1>
 
       <p className="text-foreground/90 mb-4">
-        PayPal is one of the most recognisable payment brands in the world. For many businesses, it feels like a safe default. Customers already trust it, setup is quick, and pricing looks simple on the surface.
-      </p>
-      <p className="text-foreground/90 mb-4">
-        But that simplicity often hides real cost differences when compared to enterprise-focused providers like{" "}
-        <Link to="/insights/adyen-pricing-explained" className="text-primary hover:underline">Adyen</Link>.
+        PayPal does not charge a fee for most personal transactions between UK users. But the moment money moves in a commercial context, the fees kick in, and they can range from 1.2% to 5% depending on what you are doing and where the money is coming from.
       </p>
       <p className="text-foreground/90 mb-12">
-        This guide explains how PayPal pricing actually works, what you are really paying for, and how it compares to Adyen when processing the same volume.
+        This guide covers every PayPal fee that matters to UK consumers and businesses in 2026: goods and services fees, business transaction rates, instant transfer costs, currency conversion charges, and the less visible fees that catch merchants off guard.
       </p>
 
-      {/* How PayPal Pricing Works */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">How PayPal Pricing Works in Practice</h2>
-      <p className="text-foreground/90 mb-4">
-        PayPal uses a{" "}
-        <Link to="/insights/pricing-models/blended-vs-interchange" className="text-primary hover:underline">blended pricing model</Link>.
-        This means interchange, scheme fees, fraud tools, and PayPal's margin are bundled into a single rate.
-      </p>
-      <p className="text-foreground/90 mb-4">For UK businesses, PayPal's standard online card pricing is typically:</p>
+      {/* Is PayPal Free? */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Is PayPal Free?</h2>
+      <p className="text-foreground/90 mb-4">It depends on the transaction type. PayPal is free in these situations:</p>
       <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-6">
-        <li>Around 2.9 percent per transaction</li>
-        <li>Plus a fixed fee per transaction</li>
-        <li>Higher rates for international cards and currency conversion</li>
-        <li>Additional fees for payouts, disputes, and some platform features</li>
+        <li>Buying from a seller using your PayPal balance or linked bank account (with no currency conversion needed)</li>
+        <li>Sending money to friends and family in the UK from your PayPal balance or bank account</li>
+        <li>Receiving personal payments from another UK user</li>
+        <li>Withdrawing funds to a UK bank account (standard transfer)</li>
       </ul>
-      <p className="text-foreground/90 mb-4">
-        You do not see the underlying card costs. You only see the final percentage.
-      </p>
       <p className="text-foreground/90 mb-8">
-        This makes PayPal easy to understand, but it also makes it hard to optimise costs as your business grows.
+        PayPal charges fees when money moves commercially. If you receive payment for goods or services, send money abroad, convert currencies, or process payments through a business account, fees apply.
       </p>
 
-      {/* Why Many Businesses Still Choose PayPal */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Why Many Businesses Still Choose PayPal</h2>
+      {/* Goods and Services */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">PayPal Goods and Services Fees (G&S)</h2>
       <p className="text-foreground/90 mb-4">
-        PayPal is not popular by accident. It has two major advantages that are easy to underestimate.
+        This is the most-searched PayPal fee category for good reason. Goods and services (G&S) is the payment type that triggers buyer protection on PayPal, and it costs the recipient a fee.
       </p>
       <p className="text-foreground/90 mb-4">
-        First, PayPal owns one of the largest consumer payment networks in the world. When you add PayPal at checkout, you instantly tap into millions of consumers who already have accounts, stored cards, and trust the brand. That trust alone can lift conversion rates for some businesses.
+        G&S is the correct option for any commercial transaction. Selling a product, running a service, accepting payment as a freelancer, or collecting money through a business account all fall under this category. Using the "friends and family" option to avoid fees for commercial sales is a violation of PayPal's user agreement and removes buyer protection.
+      </p>
+      <p className="text-foreground/90 mb-6">The UK PayPal G&S fee structure for domestic transactions:</p>
+
+      <div className="overflow-x-auto mb-6">
+        <table className="w-full border-collapse border border-border text-sm">
+          <thead>
+            <tr className="bg-muted">
+              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Transaction Type</th>
+              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border border-border px-4 py-3 text-foreground/90">Standard commercial transactions</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">2.9% + 0.30 GBP fixed fee</td>
+            </tr>
+            <tr className="bg-muted/30">
+              <td className="border border-border px-4 py-3 text-foreground/90">Card-funded transactions (Visa/Mastercard)</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">1.2% + 0.30 GBP fixed fee</td>
+            </tr>
+            <tr>
+              <td className="border border-border px-4 py-3 text-foreground/90">Alternative Payment Methods (APM)</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">1.29% + fixed fee</td>
+            </tr>
+            <tr className="bg-muted/30">
+              <td className="border border-border px-4 py-3 text-foreground/90">QR Code (above 10.01 GBP)</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">1.5% + fixed fee</td>
+            </tr>
+            <tr>
+              <td className="border border-border px-4 py-3 text-foreground/90">QR Code (10.00 GBP and below)</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">2% + fixed fee</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p className="text-foreground/90 mb-4">
+        The fixed fee per transaction varies by currency. For GBP transactions, it is 0.30 GBP.
       </p>
       <p className="text-foreground/90 mb-4">
-        Second, PayPal is fast to launch. There is minimal underwriting, predictable approval, and very little upfront friction. For early-stage businesses, marketplaces, and international sellers, this matters.
+        The default rate most sellers encounter is 2.9% + 0.30 GBP. The card-funded rate of 1.2% is lower because the transaction is funded directly from a card, and PayPal prices this type separately. Alternative Payment Methods such as Apple Pay or Google Pay carry the 1.29% APM rate.
+      </p>
+      <p className="text-foreground/90 mb-4">
+        Who pays the G&S fee? The seller pays. Buyers do not pay a PayPal fee when sending a G&S payment from their PayPal balance or bank account. If a buyer pays using a credit card, there is no additional buyer-side charge, but it does affect which seller rate applies.
       </p>
       <p className="text-foreground/90 mb-8">
-        Where PayPal becomes expensive is not at the start. It becomes expensive as volume increases.
+        What this costs in practice: on a 50 GBP sale at the standard rate, the seller pays 1.45 GBP + 0.30 GBP = 1.75 GBP. On a 200 GBP sale, the cost is 5.80 GBP + 0.30 GBP = 6.10 GBP. For sellers operating on platforms like eBay, Depop, or Vinted, these costs compound quickly.
+      </p>
+
+      {/* Business Transaction Fees */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">PayPal Business Transaction Fees for UK Merchants</h2>
+      <p className="text-foreground/90 mb-4">
+        If you operate a business account and accept payments from customers, these are the rates you will see.
+      </p>
+
+      <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">Standard Commercial Transaction Rate</h3>
+      <p className="text-foreground/90 mb-4">
+        The default rate for receiving commercial payments through online checkout, invoices, or payment links is 2.9% + 0.30 GBP per transaction for standard domestic UK payments.
+      </p>
+
+      <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">Card Payment Fees</h3>
+      <p className="text-foreground/90 mb-4">
+        Merchants using PayPal's Advanced Credit and Debit Card Payments product see the following rates:
+      </p>
+      <div className="overflow-x-auto mb-6">
+        <table className="w-full border-collapse border border-border text-sm">
+          <thead>
+            <tr className="bg-muted">
+              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Card Type</th>
+              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Pricing Model</th>
+              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border border-border px-4 py-3 text-foreground/90">Visa and Mastercard</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">Blended pricing</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">1.2% + fixed fee</td>
+            </tr>
+            <tr className="bg-muted/30">
+              <td className="border border-border px-4 py-3 text-foreground/90">Visa and Mastercard</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">Interchange plus</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">1.2% + fixed fee + interchange</td>
+            </tr>
+            <tr>
+              <td className="border border-border px-4 py-3 text-foreground/90">American Express</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">Standard</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">3.5%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p className="text-foreground/90 mb-4">
+        American Express sits materially higher than Visa and Mastercard. If a significant share of your customer base pays with Amex, this is worth building into your margin assumptions. The 3.5% rate applies to Amex transactions processed through PayPal's card payment products.
+      </p>
+
+      <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">PayPal Invoice Fee</h3>
+      <p className="text-foreground/90 mb-4">
+        Payments made in response to a PayPal invoice are charged at the standard commercial transaction rate. For UK domestic payments, that is 2.9% + 0.30 GBP per transaction. There is no separate invoicing fee layered on top of this. The cost of getting paid via invoice is the same as the cost of getting paid through checkout.
+      </p>
+
+      <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">QR Code Payments</h3>
+      <p className="text-foreground/90 mb-4">
+        Merchants using PayPal QR codes for in-person transactions pay 1.5% + fixed fee for transactions above 10.01 GBP, and 2% + fixed fee for transactions at or below 10.00 GBP. QR code payments are designed for market stalls, pop-ups, and similar settings where card readers are not in use.
+      </p>
+
+      <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">Charity and Donation Rates</h3>
+      <p className="text-foreground/90 mb-8">
+        Registered charities receive a reduced domestic rate of 1.4% + fixed fee for commercial transactions. QR code transactions and listed fundraisers use commercial transaction rates. Unlisted PayPal fundraisers carry no fee to receive donations.
+      </p>
+
+      {/* International Transaction Fees */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">PayPal International Transaction Fees</h2>
+      <p className="text-foreground/90 mb-6">
+        International transactions carry an additional percentage on top of the standard domestic rate.
+      </p>
+      <div className="overflow-x-auto mb-6">
+        <table className="w-full border-collapse border border-border text-sm">
+          <thead>
+            <tr className="bg-muted">
+              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Transaction Origin</th>
+              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Additional Fee</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border border-border px-4 py-3 text-foreground/90">European Economic Area (EEA)</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">+1.29%</td>
+            </tr>
+            <tr className="bg-muted/30">
+              <td className="border border-border px-4 py-3 text-foreground/90">All other markets</td>
+              <td className="border border-border px-4 py-3 text-foreground/90">+1.99%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p className="text-foreground/90 mb-6">
+        A UK merchant receiving a standard payment from a French buyer, for example, would pay 2.9% + 1.29% + 0.30 GBP fixed fee. The additional percentage is applied on top of whichever domestic rate applies to the transaction type.
+      </p>
+
+      <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">Post-Brexit cross-border considerations</h3>
+      <p className="text-foreground/90 mb-6">
+        Since the UK left the EU, UK-issued cards are no longer classified as EEA cards by card networks or by PayPal. A UK buyer paying a merchant based in Germany is now a cross-border transaction, attracting the additional 1.29% EEA fee. The same logic applies in reverse: a French buyer paying a UK merchant triggers cross-border charges. If you process meaningful volumes across the UK and Europe, this post-Brexit reclassification has a real cost impact that was not present before 2021.
+      </p>
+
+      <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">Sending personal payments internationally</h3>
+      <p className="text-foreground/90 mb-8">
+        UK users sending personal payments to someone abroad pay 5% of the transaction amount. There is no fee for receiving personal payments from abroad unless a currency conversion is required.
+      </p>
+
+      {/* Instant Transfer and Withdrawal */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">PayPal Instant Transfer and Withdrawal Fees</h2>
+      <p className="text-foreground/90 mb-4">
+        Standard withdrawal from your PayPal account to a UK bank account is free. Standard bank transfers typically clear within one to three business days. PayPal does not charge for this.
+      </p>
+      <p className="text-foreground/90 mb-4">
+        If you need funds faster, PayPal offers an instant transfer option to an eligible UK debit card. This option carries a separate fee. PayPal updates this rate periodically, so check the current fee schedule in your PayPal account settings or at paypal.com/uk before relying on a specific figure.
+      </p>
+      <p className="text-foreground/90 mb-8">
+        Currency conversion is charged separately from the transfer itself. If your PayPal balance is held in a foreign currency and you withdraw to a GBP account, PayPal applies its currency conversion charge before releasing funds to your bank.
+      </p>
+
+      {/* Currency Conversion */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">PayPal Currency Conversion Fees</h2>
+      <p className="text-foreground/90 mb-4">PayPal charges 3% above the base exchange rate for all currency conversions. This applies when:</p>
+      <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-6">
+        <li>You receive a payment in a currency different from your account's primary currency</li>
+        <li>You withdraw funds that require conversion to GBP</li>
+        <li>You send or spend in a currency you do not hold</li>
+      </ul>
+      <p className="text-foreground/90 mb-8">
+        A 3% margin above the interbank rate is substantially more expensive than specialist FX providers. For merchants regularly receiving payments in USD, EUR, or other currencies, holding balances in the received currency and converting via a lower-cost FX service when rates are favourable can reduce this cost meaningfully over time.
+      </p>
+
+      {/* Micropayments */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">PayPal Micropayments Pricing</h2>
+      <p className="text-foreground/90 mb-4">
+        For merchants selling low-value items where the standard 0.30 GBP fixed fee would take a disproportionate share of each sale, PayPal offers a Micropayments pricing option by application.
+      </p>
+      <p className="text-foreground/90 mb-2">Micropayments rates:</p>
+      <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-4">
+        <li>Domestic: 5% + reduced fixed fee</li>
+        <li>International: 6% + reduced fixed fee</li>
+      </ul>
+      <p className="text-foreground/90 mb-8">
+        The percentage rate is higher than the standard rate, but the fixed fee per transaction is lower. This structure benefits sellers with average transaction values below approximately 10 GBP, such as those selling digital downloads, individual articles, or in-game items. You need to apply to PayPal separately to access this pricing tier.
+      </p>
+
+      {/* Dark CTA */}
+      <div style={{ background: "#0D1117", border: "1px solid #1F2937", borderRadius: "14px", padding: "2.5rem 2.8rem", margin: "3rem 0", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg,#10B981,#059669)" }} />
+        <p style={{ color: "#10B981", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", margin: "0 0 1rem 0" }}>
+          Free Consultation
+        </p>
+        <p style={{ color: "#F9FAFB", fontSize: "1.35rem", fontWeight: 700, lineHeight: 1.4, margin: "0 0 0.75rem 0" }}>
+          Not sure if PayPal is the right fit for your business?
+        </p>
+        <p style={{ color: "#9CA3AF", fontSize: "1rem", lineHeight: 1.65, margin: "0 0 1.75rem 0" }}>
+          Book a free 15-minute call with our team. We will help you work out whether PayPal, a dedicated payment gateway, or a different solution is actually the right fit for your volume, industry, and risk profile. No sales pitch. No strings attached.
+        </p>
+        <Link to="/contact" style={{ display: "inline-block", background: "#10B981", color: "#ffffff", fontWeight: 700, fontSize: "0.95rem", padding: "0.85rem 2rem", borderRadius: "8px", textDecoration: "none", letterSpacing: "0.02em" }}>
+          Book a Free 15-Minute Call
+        </Link>
+      </div>
+
+      {/* Additional Fees */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Additional PayPal Fees UK Merchants Should Know</h2>
+      <p className="text-foreground/90 mb-6">
+        A number of less visible fees can appear on UK business accounts. The table below covers the ones most likely to catch merchants off guard.
+      </p>
+      <div className="overflow-x-auto mb-6">
+        <table className="w-full border-collapse border border-border text-sm">
+          <thead>
+            <tr className="bg-muted">
+              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Fee Type</th>
+              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["High-risk account surcharge", "Up to 5% additional per transaction"],
+              ["Chargeback Protection Tool", "0.59% per transaction"],
+              ["PayPal Payouts (mass payments)", "2% of transaction amount"],
+              ["Website Payments Pro monthly fee", "20.00 GBP per month"],
+              ["Recurring Payments Tool", "20.00 GBP per month"],
+              ["Inactive account fee", "9.00 GBP"],
+              ["PayPal Business Payments", "2.00 GBP per transaction"],
+              ["Records Request", "10.00 GBP"],
+              ["Account Verification Request", "0.20 GBP"],
+              ["UK Business Debit Card Withdrawal", "1.00 GBP"],
+              ["Bank return on withdrawal", "0.50 GBP"],
+            ].map(([fee, amount], i) => (
+              <tr key={fee} className={i % 2 === 1 ? "bg-muted/30" : ""}>
+                <td className="border border-border px-4 py-3 text-foreground/90">{fee}</td>
+                <td className="border border-border px-4 py-3 text-foreground/90">{amount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="text-foreground/90 mb-8">
+        The high-risk account surcharge is the one that surprises merchants most. If PayPal classifies your account as high-risk due to elevated chargeback rates, your business category, or other factors, it can add up to 5% per transaction on top of your standard rate. In that scenario, PayPal's effective cost can exceed any other mainstream payment provider. If your business operates in a category that any processor might consider elevated-risk, knowing your risk classification before choosing your payment stack is essential.
+      </p>
+
+      {/* Is PayPal the Right Payment Solution? */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Is PayPal the Right Payment Solution for Your Business?</h2>
+      <p className="text-foreground/90 mb-4">
+        PayPal works well for businesses in the early stages, for markets where PayPal has strong consumer trust, and for merchants who benefit from PayPal's name recognition at checkout. Its standard rates are competitive at low volumes, and setup requires no underwriting in most cases.
+      </p>
+      <p className="text-foreground/90 mb-4">
+        At higher processing volumes, the economics shift. A dedicated merchant account through a mainstream payment processor typically offers lower effective rates, a cleaner integration, and better access to your own data. PayPal also classifies certain business types differently, which can mean restricted accounts or unexpected surcharges with little warning.
+      </p>
+      <p className="text-foreground/90 mb-8">
+        If you are growing past the stage where a default payment button was enough, the question of whether PayPal, a dedicated gateway, or a blended setup makes more sense is worth answering properly.
       </p>
 
       <InlineAssessmentCTA
@@ -111,164 +368,9 @@ const PayPalFees = () => {
         cta="Get your risk profile"
       />
 
-      {/* How Adyen Pricing Is Structured Differently */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">How Adyen Pricing Is Structured Differently</h2>
-      <p className="text-foreground/90 mb-4">
-        Adyen uses an{" "}
-        <Link to="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">interchange-plus pricing model</Link>.
-      </p>
-      <p className="text-foreground/90 mb-4">
-        This means card costs are passed through at cost, and Adyen adds a transparent processing margin on top. The result is more moving parts, but also more control.
-      </p>
-      <p className="text-foreground/90 mb-4">With Adyen, your total cost depends on:</p>
-      <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-8">
-        <li>Card type and region</li>
-        <li>Interchange set by the card networks</li>
-        <li>Scheme fees</li>
-        <li>Adyen's processing markup</li>
-        <li>Your risk profile and volume</li>
-      </ul>
-      <p className="text-foreground/90 mb-8">
-        This model rewards scale. The more stable and predictable your business is, the more competitive your effective rate becomes.
-      </p>
-
-      {/* Cost Comparison Table */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Example Cost Comparison: £10,000 in Monthly Card Volume</h2>
-      <p className="text-foreground/90 mb-4">
-        The table below shows a realistic example of what processing £10,000 per month might look like for a UK business.
-      </p>
-      <p className="text-foreground/90 mb-6">
-        This is not a quote. It is a directional comparison to help you understand scale.
-      </p>
-
-      <div className="overflow-x-auto mb-8">
-        <table className="w-full border-collapse border border-border text-sm">
-          <thead>
-            <tr className="bg-muted">
-              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Provider</th>
-              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Typical Pricing Model</th>
-              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Approximate Cost on £10,000</th>
-              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">What's Driving the Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="border border-border px-4 py-3 text-foreground/90 font-medium">PayPal</td>
-              <td className="border border-border px-4 py-3 text-foreground/90">Blended pricing</td>
-              <td className="border border-border px-4 py-3 text-foreground/90">~£320 to £330</td>
-              <td className="border border-border px-4 py-3 text-foreground/90">Flat rate bundles all costs including PayPal margin</td>
-            </tr>
-            <tr className="bg-muted/30">
-              <td className="border border-border px-4 py-3 text-foreground/90 font-medium">Adyen</td>
-              <td className="border border-border px-4 py-3 text-foreground/90">Interchange plus</td>
-              <td className="border border-border px-4 py-3 text-foreground/90">~£180 to £230</td>
-              <td className="border border-border px-4 py-3 text-foreground/90">Card costs passed through with lower processor markup</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* Why the Difference Exists */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Why the Difference Exists</h2>
-      <p className="text-foreground/90 mb-4">
-        PayPal prices for simplicity and risk coverage. You are paying for:
-      </p>
-      <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-6">
-        <li>Brand trust</li>
-        <li>Consumer network access</li>
-        <li>Fraud protection</li>
-        <li>Fast onboarding</li>
-        <li>Predictable approval</li>
-      </ul>
-      <p className="text-foreground/90 mb-4">
-        Adyen prices for efficiency at scale. You are paying for:
-      </p>
-      <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-6">
-        <li>Direct acquiring</li>
-        <li>Lower margins</li>
-        <li>Advanced optimisation</li>
-        <li>Enterprise-grade risk controls</li>
-        <li>Long-term cost efficiency</li>
-      </ul>
-      <p className="text-foreground/90 mb-8">
-        Neither model is wrong. They serve different stages of business maturity.
-      </p>
-
-      {/* When PayPal Makes Sense */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">When PayPal Makes Sense</h2>
-      <p className="text-foreground/90 mb-4">PayPal is often a good fit if:</p>
-      <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-8">
-        <li>You value speed over optimisation</li>
-        <li>Your customers actively choose PayPal</li>
-        <li>You operate cross-border without local entities</li>
-        <li>You want minimal underwriting friction</li>
-        <li>Your monthly volumes are still modest</li>
-      </ul>
-      <p className="text-foreground/90 mb-8">
-        For many businesses, PayPal works best as an additional payment option rather than the primary processor.
-      </p>
-
-      {/* When Adyen Becomes the Better Option */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">When Adyen Becomes the Better Option</h2>
-      <p className="text-foreground/90 mb-4">Adyen tends to make sense when:</p>
-      <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-8">
-        <li>Monthly volume is growing steadily</li>
-        <li>Card acceptance costs matter</li>
-        <li>You want detailed cost visibility</li>
-        <li>You operate across multiple regions</li>
-        <li>You need advanced approval optimisation</li>
-        <li>Your business model is stable and low risk</li>
-      </ul>
-      <p className="text-foreground/90 mb-8">
-        This is where pricing differences compound quietly over time.
-      </p>
-
-      {/* The Real Question */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">The Real Question Is Not Price. It Is Eligibility</h2>
-      <p className="text-foreground/90 mb-4">
-        The biggest mistake businesses make is assuming they can choose any pricing model they want.
-      </p>
-      <p className="text-foreground/90 mb-4">
-        <Link to="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">Interchange-plus pricing</Link> is not something you simply sign up for. You qualify for it.
-      </p>
-      <p className="text-foreground/90 mb-8">
-        Your industry, chargeback history, fraud profile, settlement flows, and operating geography all affect what providers will offer you.
-      </p>
-      <p className="text-foreground/90 mb-8">
-        This is why pricing pages alone are misleading.
-      </p>
-
-      {/* What to Do Before Choosing */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">What to Do Before Choosing a Provider</h2>
-      <p className="text-foreground/90 mb-4">Before switching or committing long term, it is worth understanding:</p>
-      <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-6">
-        <li>Whether your business qualifies for interchange plus</li>
-        <li>How your card mix affects real costs</li>
-        <li>Which provider aligns with your growth stage</li>
-        <li>What approval friction you might face later</li>
-        <li>Whether lower fees today create risk tomorrow</li>
-      </ul>
-      <p className="text-foreground/90 mb-8">
-        If you want to understand which pricing model your business is likely to qualify for before speaking to providers, you can start a{" "}
-        <Link to="/assessment" className="text-primary hover:underline">short assessment</Link> on ChosePayments.
-        It is designed to surface eligibility, not sell you a rate.
-      </p>
-
-      {/* Final Thought */}
-      <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Final Thought</h2>
-      <p className="text-foreground/90 mb-4">
-        PayPal and Adyen are not competitors in the traditional sense. They solve different problems.
-      </p>
-      <p className="text-foreground/90 mb-4">
-        PayPal lowers friction for customers.{" "}
-        <Link to="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">Adyen</Link> lowers cost and improves control for businesses that are ready.
-      </p>
-      <p className="text-foreground/90 mb-4">
-        The right choice depends less on headline fees and more on where your business is today and where it is heading next.
-      </p>
-      <p className="text-foreground/90 mb-8">
-        Understanding that difference early prevents expensive decisions later.
-      </p>
+      {/* FAQ */}
+      <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">Frequently Asked Questions</h2>
+      <FAQAccordion faqs={faqItems} />
     </InsightsArticleLayout>
   );
 };
