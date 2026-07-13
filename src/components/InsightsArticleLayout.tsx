@@ -112,7 +112,7 @@ const InsightsArticleLayout = ({
           <InsightsBreadcrumb category={category} currentTitle={title} />
           
           {/* Article Content */}
-          <div className="prose prose-lg max-w-none">
+          <div className="insight-body prose prose-lg max-w-none">
             {children}
           </div>
           

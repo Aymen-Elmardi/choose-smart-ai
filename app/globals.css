@@ -193,3 +193,14 @@
     box-shadow: var(--shadow-lg);
   }
 }
+
+/* Insight articles: consistent black body text across all posts.
+   Some articles used text-muted-foreground (grey) or text-foreground/90 for body
+   copy; force them to the full foreground colour so every blog reads the same.
+   Scoped to the article body only, so links (text-primary) and the surrounding
+   chrome (breadcrumb, related, sources) are unaffected. Unlayered so it wins over
+   Tailwind's @layer utilities. */
+.insight-body .text-muted-foreground,
+.insight-body .text-foreground\/90 {
+  color: hsl(var(--foreground));
+}
