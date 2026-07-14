@@ -96,9 +96,9 @@ const StripeFees = () => {
         Stripe Fees Explained: Real Costs for UK Businesses in 2026
       </h1>
 
-      <h2 className="text-xl md:text-2xl font-semibold text-muted-foreground mb-6">
-        Stripe Fees Explained Clearly: What UK Businesses Actually Pay
-      </h2>
+      <p className="text-lg text-muted-foreground mb-6">
+        Stripe fees explained clearly: what UK businesses actually pay.
+      </p>
 
       <p className="text-lg text-muted-foreground mb-8">
         Stripe is one of the most widely used payment platforms in the world. Its pricing looks simple at first glance, but many businesses discover later that their real costs are higher than expected.

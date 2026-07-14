@@ -83,9 +83,9 @@ const FiservCloverFees = () => {
         Fiserv Clover Pricing Explained: What Merchants Pay in 2026
       </h1>
 
-      <h2 className="text-xl md:text-2xl font-semibold text-muted-foreground mb-6">
-        Clover Pricing for Merchants: Hardware, Software, and Processing Fees
-      </h2>
+      <p className="text-lg text-muted-foreground mb-6">
+        Clover pricing for merchants: hardware, software, and processing fees.
+      </p>
 
       <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
         Clover is one of the most widely deployed point-of-sale systems in North America. It is built by Fiserv, one of the world's largest payments infrastructure companies, and is sold directly and through a network of banks and resellers.
