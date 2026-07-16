@@ -17,8 +17,10 @@ const PROVIDERS = [
 ];
 
 interface Comparison {
+  market?: "uk" | "us";
   goodRate: number;
   typicalRate: number;
+  savingsBaseline?: number;
   monthlyOverpayGBP: number | null;
   annualOverpayGBP: number | null;
   verdict: "well-priced" | "mid-market" | "likely-overpaying";
@@ -67,12 +69,17 @@ const StatementReview = () => {
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [providerIdx, setProviderIdx] = useState(0);
   const [cur, setCur] = useState("£");
+  const [market, setMarket] = useState<"uk" | "us">("uk");
 
-  // US visitors arrive with ?us=1 (from the /us CTAs) — show $ instead of £.
+  // US visitors arrive with ?us=1 (from the /us CTAs) — show $ and use US benchmark.
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
-    if (p.get("us") === "1" || p.get("market") === "us") setCur("$");
+    if (p.get("us") === "1" || p.get("market") === "us") {
+      setCur("$");
+      setMarket("us");
+    }
   }, []);
+  const isUS = market === "us";
 
   // While analysing, cycle through provider names every ~500ms.
   useEffect(() => {
@@ -93,7 +100,7 @@ const StatementReview = () => {
     try {
       const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
       const fileType = isPdf ? "pdf" : "csv";
-      const body: Record<string, unknown> = { email: email.trim(), fileType, fileName: file.name };
+      const body: Record<string, unknown> = { email: email.trim(), fileType, fileName: file.name, market };
       if (isPdf) body.fileBase64 = await fileToBase64(file);
       else body.csvText = await fileToText(file);
 
@@ -219,21 +226,25 @@ const StatementReview = () => {
                   {analysis.comparison.verdict === "likely-overpaying" &&
                     (analysis.comparison.annualOverpayGBP != null ? (
                       <p className="text-muted-foreground">
-                        Indicatively, that could be around{" "}
+                        Indicatively, that's about{" "}
                         <strong className="text-foreground">
                           {cur}{analysis.comparison.annualOverpayGBP.toLocaleString()}/year
                         </strong>{" "}
-                        more than a {analysis.comparison.typicalRate}% all-in rate.
+                        {isUS
+                          ? <>more than the ~{analysis.comparison.goodRate}% all-in rate we can typically get you.</>
+                          : <>more than a {analysis.comparison.typicalRate}% all-in rate.</>}
                       </p>
                     ) : (
                       <p className="text-muted-foreground">
-                        That's above the {analysis.comparison.typicalRate}% all-in rate we typically see, and
-                        well above the {analysis.comparison.goodRate}% the sharpest-priced businesses achieve.
+                        {isUS
+                          ? <>That's above the flat rates most US providers charge, and well above the ~{analysis.comparison.goodRate}% we can typically get you on interchange-plus.</>
+                          : <>That's above the {analysis.comparison.typicalRate}% all-in rate we typically see, and well above the {analysis.comparison.goodRate}% the sharpest-priced businesses achieve.</>}
                       </p>
                     ))}
                   <p className="text-sm text-muted-foreground mt-3">
-                    For context, well-priced businesses pay around {analysis.comparison.goodRate}–
-                    {analysis.comparison.typicalRate}% all-in.
+                    {isUS
+                      ? <>For context, we can typically get US merchants to around {analysis.comparison.goodRate}% all-in on interchange-plus, versus the {analysis.comparison.typicalRate}%+ flat rate of providers like Stripe, Square, and PayPal.</>
+                      : <>For context, well-priced businesses pay around {analysis.comparison.goodRate}–{analysis.comparison.typicalRate}% all-in.</>}
                   </p>
                 </div>
               ) : (

@@ -100,28 +100,40 @@ const maybeAlert = async (subject: string, detail: string): Promise<void> => {
   } catch { /* best-effort */ }
 };
 
-// ---- benchmark anchored on real merchant statements ------------------------
-// All-in effective rate = total fees / total card volume, taken from actual statements:
-//   Adyen (Jan 2026):        0.52%  — £293,281 / £56.24M  (IC++, enterprise)
-//   Checkout.com (May 2026): 0.58%  — £48,123  / £8.28M   (IC++)
-//   Barclaycard (12-mo):     1.04%  — £4.35M   / £419.5M  (blended, MCC 5812)
-// "Good" ≈ what the sharpest-priced IC++ providers deliver (~0.6%);
-// "typical" ≈ a blended high-street acquirer deal (~1.0%). Flat (volume-agnostic) for now.
-const BENCHMARK = { goodRate: 0.6, typicalRate: 1.0 };
+// ---- benchmarks by market --------------------------------------------------
+// All-in effective rate = total fees / total card volume.
+//
+// UK — anchored on real merchant statements (Adyen 0.52%, Checkout 0.58%,
+//   Barclaycard 1.04%). "good" ≈ sharp IC++ (~0.6%), "typical" ≈ blended (~1.0%).
+//   Savings measured vs the typical rate (conservative).
+//
+// US — anchored on what we can actually place merchants on via Quantum
+//   (interchange pass-through + ~0.3% markup) versus flat-rate providers
+//   (Stripe/Square/PayPal ~2.9%). US interchange is structurally higher than
+//   the UK, so the bands sit higher. Savings measured vs the achievable rate
+//   ("vs what we can get you").
+const BENCHMARKS = {
+  uk: { goodRate: 0.6, typicalRate: 1.0, savingsBaseline: 1.0 },
+  us: { goodRate: 2.2, typicalRate: 2.9, savingsBaseline: 2.2 },
+} as const;
 
+type Market = keyof typeof BENCHMARKS;
 type Verdict = "well-priced" | "mid-market" | "likely-overpaying";
-function compareRate(allInRate: number, monthlyVolumeGBP: number | null) {
-  const { goodRate, typicalRate } = BENCHMARK;
+
+function compareRate(allInRate: number, monthlyVolume: number | null, market: Market) {
+  const { goodRate, typicalRate, savingsBaseline } = BENCHMARKS[market];
   const verdict: Verdict =
     allInRate <= goodRate ? "well-priced" : allInRate <= typicalRate ? "mid-market" : "likely-overpaying";
-  // £ saving is measured against the "typical" rate (conservative) and only when volume is known.
+  // Saving is measured against the market's baseline, only when volume is known.
   const monthlyOverpayGBP =
-    monthlyVolumeGBP !== null
-      ? Math.round(Math.max(0, ((allInRate - typicalRate) / 100) * monthlyVolumeGBP))
+    monthlyVolume !== null
+      ? Math.round(Math.max(0, ((allInRate - savingsBaseline) / 100) * monthlyVolume))
       : null;
   return {
+    market,
     goodRate,
     typicalRate,
+    savingsBaseline,
     monthlyOverpayGBP,
     annualOverpayGBP: monthlyOverpayGBP !== null ? monthlyOverpayGBP * 12 : null,
     verdict,
@@ -216,10 +228,11 @@ serve(async (req: Request): Promise<Response> => {
   const origin = req.headers.get("origin");
   const ua = req.headers.get("user-agent");
 
-  let body: { email?: string; fileBase64?: string; fileType?: "pdf" | "csv"; fileName?: string; csvText?: string };
+  let body: { email?: string; fileBase64?: string; fileType?: "pdf" | "csv"; fileName?: string; csvText?: string; market?: string };
   try { body = await req.json(); } catch { return err("Invalid request body."); }
 
   const email = (body.email ?? "").trim().toLowerCase();
+  const market: Market = body.market === "us" ? "us" : "uk";
   const fileType = body.fileType === "csv" ? "csv" : "pdf";
   const fileBase64 = body.fileBase64 ?? "";
   const csvText = body.csvText ?? "";
@@ -280,7 +293,7 @@ serve(async (req: Request): Promise<Response> => {
   const extracted = await extractStatement(fileBase64, fileType, csvText);
   const comparison =
     extracted.effectiveRatePct !== null
-      ? compareRate(extracted.effectiveRatePct, extracted.totalCardVolumeGBP)
+      ? compareRate(extracted.effectiveRatePct, extracted.totalCardVolumeGBP, market)
       : null;
   if (rowId) {
     try {
