@@ -2,6 +2,7 @@
 import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
+import { BOOKING_URL } from "@/lib/booking";
 import { Source } from "@/components/SourcesCitation";
 import { Shield, Globe, Building2, Zap, CreditCard, BarChart3, CheckCircle, AlertTriangle, ArrowRight } from "lucide-react";
 
@@ -257,9 +258,9 @@ const FiservPaymentsPlatform = () => {
         <p style={{ color: "#9CA3AF", fontSize: "1rem", lineHeight: 1.65, margin: "0 0 1.75rem 0" }}>
           Book a free 15-minute call with our team. We will help you work out which processor actually fits your volume, industry, and risk profile. No sales pitch. No strings attached.
         </p>
-        <Link to="/contact" style={{ display: "inline-block", background: "#10B981", color: "#ffffff", fontWeight: 700, fontSize: "0.95rem", padding: "0.85rem 2rem", borderRadius: "8px", textDecoration: "none", letterSpacing: "0.02em" }}>
+        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#10B981", color: "#ffffff", fontWeight: 700, fontSize: "0.95rem", padding: "0.85rem 2rem", borderRadius: "8px", textDecoration: "none", letterSpacing: "0.02em" }}>
           Book a Free 15-Minute Call
-        </Link>
+        </a>
       </div>
 
       {/* How to Evaluate */}

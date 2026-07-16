@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
@@ -307,9 +307,9 @@ const PayPalFees = () => {
         <p style={{ color: "#9CA3AF", fontSize: "1rem", lineHeight: 1.65, margin: "0 0 1.75rem 0" }}>
           Book a free 15-minute call with our team. We will help you work out whether PayPal, a dedicated payment gateway, or a different solution is actually the right fit for your volume, industry, and risk profile. No sales pitch. No strings attached.
         </p>
-        <Link to="/contact" style={{ display: "inline-block", background: "#10B981", color: "#ffffff", fontWeight: 700, fontSize: "0.95rem", padding: "0.85rem 2rem", borderRadius: "8px", textDecoration: "none", letterSpacing: "0.02em" }}>
+        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#10B981", color: "#ffffff", fontWeight: 700, fontSize: "0.95rem", padding: "0.85rem 2rem", borderRadius: "8px", textDecoration: "none", letterSpacing: "0.02em" }}>
           Book a Free 15-Minute Call
-        </Link>
+        </a>
       </div>
 
       {/* Additional Fees */}
