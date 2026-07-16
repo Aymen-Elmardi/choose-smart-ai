@@ -5,3 +5,13 @@
 /insights/why-payment-accounts-get-flagged-after-growth /insights/why-accounts-get-flagged-after-growth 301
 /insights/why-providers-re-underwrite-existing-accounts /insights/why-providers-re-underwrite-accounts 301
 /insights/why-payment-accounts-get-flagged-without-changes /insights/why-accounts-get-flagged-after-growth 301
+/insights/why-accounts-flagged-after-growth /insights/why-accounts-get-flagged-after-growth 301
+/insights/same-day-settlement-instant-payouts /insights/same-day-settlement-and-instant-payouts 301
+/insights/why-international-sales-trigger-reviews /insights/international-sales 301
+/insights/chargebacks /insights/chargebacks-what-they-are-and-how-to-avoid-them 301
+
+# Provider deep dives were never nested under /provider/ — flatten to /insights/<slug>
+/insights/provider/* /insights/:splat 301
+
+# Pricing explainers live under /insights/pricing-models/
+/insights/pricing/interchange-plus-plus /insights/pricing-models/interchange-plus-plus 301
