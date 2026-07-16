@@ -10,8 +10,10 @@
 /insights/why-international-sales-trigger-reviews /insights/international-sales 301
 /insights/chargebacks /insights/chargebacks-what-they-are-and-how-to-avoid-them 301
 
-# Provider deep dives were never nested under /provider/ — flatten to /insights/<slug>
-/insights/provider/* /insights/:splat 301
-
 # Pricing explainers live under /insights/pricing-models/
 /insights/pricing/interchange-plus-plus /insights/pricing-models/interchange-plus-plus 301
+
+# Wildcard rules MUST stay last: Cloudflare stops applying static rules that come
+# after a dynamic (splat) rule, so anything below this line is silently ignored.
+# Provider deep dives were never nested under /provider/ — flatten to /insights/<slug>
+/insights/provider/* /insights/:splat 301
