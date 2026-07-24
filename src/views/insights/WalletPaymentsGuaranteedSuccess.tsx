@@ -229,7 +229,7 @@ const WalletPaymentsGuaranteedSuccess = () => {
           <li>Risk controls that scale</li>
         </ul>
         <p>
-          This is often the difference between smooth approvals and <Link to="/insights/why-providers-re-underwrite-existing-accounts" className="text-primary hover:underline">constant reviews</Link>.
+          This is often the difference between smooth approvals and <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">constant reviews</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

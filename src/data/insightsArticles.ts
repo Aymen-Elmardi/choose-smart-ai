@@ -20,11 +20,11 @@ export interface Insight {
  */
 export const featuredInsights: Record<InsightCategory, Insight> = {
   all: {
-    title: "Account Flagged Without Changes? Here's What Providers Are Reacting To",
-    slug: "why-payment-accounts-get-flagged-without-changes",
-    description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction.",
+    title: "Sudden Growth Can Trigger Account Reviews: How to Handle It",
+    slug: "why-accounts-get-flagged-after-growth",
+    description: "Rapid growth is one of the most common reasons payment accounts are reviewed.",
     category: "risk",
-    readTime: "6 min read"
+    readTime: "5 min read"
   },
   crisis: {
     title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze",
@@ -366,27 +366,6 @@ export const allInsights: Insight[] = [
     title: "Some Businesses Struggle to Get Approved: The Real Reason",
     slug: "why-some-businesses-never-get-approved",
     description: "Not all businesses are declined because they are doing something wrong.",
-    category: "risk",
-    readTime: "6 min read"
-  },
-  {
-    title: "Growth-Related Account Flags: What Triggers Them",
-    slug: "why-payment-accounts-get-flagged-after-growth",
-    description: "Understand why sudden business growth triggers payment account reviews and how to handle them.",
-    category: "risk",
-    readTime: "5 min read"
-  },
-  {
-    title: "When Providers Re-Underwrite Existing Accounts",
-    slug: "why-providers-re-underwrite-existing-accounts",
-    description: "Understand why payment providers re-underwrite existing accounts and how to handle these reviews.",
-    category: "risk",
-    readTime: "5 min read"
-  },
-  {
-    title: "Account Flagged Without Changes? Here's What Providers Are Reacting To",
-    slug: "why-payment-accounts-get-flagged-without-changes",
-    description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction.",
     category: "risk",
     readTime: "6 min read"
   },

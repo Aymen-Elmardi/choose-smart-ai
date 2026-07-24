@@ -232,7 +232,7 @@ const EnterpriseProviderComparison = () => {
                 <TableHead className="font-semibold text-foreground w-[20%] bg-muted">Area</TableHead>
                 <TableHead className="font-semibold text-foreground w-[26%] bg-muted">
                   <Link 
-                    to="/insights/adyen-enterprise-platform" 
+                    to="/insights/adyen-enterprise-payments-platform"
                     className="text-primary hover:underline"
                   >
                     Adyen
@@ -460,7 +460,7 @@ const EnterpriseProviderComparison = () => {
         </h2>
         <ul className="space-y-2">
           <li>
-            <Link to="/insights/adyen-enterprise-platform" className="text-primary hover:underline">
+            <Link to="/insights/adyen-enterprise-payments-platform"className="text-primary hover:underline">
               Adyen: The Enterprise Payments Giant
             </Link>
           </li>
@@ -475,7 +475,7 @@ const EnterpriseProviderComparison = () => {
             </Link>
           </li>
           <li>
-            <Link to="/insights/why-accounts-flagged-after-growth" className="text-primary hover:underline">
+            <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
               Why Payment Accounts Get Flagged After Sudden Growth
             </Link>
           </li>

@@ -272,7 +272,7 @@ const Shift4VsStripe = () => {
             </Link>
           </li>
           <li>
-            <Link to="/insights/why-payment-accounts-get-flagged-after-growth" className="text-primary hover:underline">
+            <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
               Why payment accounts get frozen after sudden growth
             </Link>
           </li>

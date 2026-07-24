@@ -16,7 +16,7 @@ const InterchangePlusPlus = () => {
     <InsightsArticleLayout
       title="Interchange++ Pricing Explained"
       description="The expert guide to Interchange++ pricing: what it really is, why it's an underwriting outcome not a menu option, and how to know if you actually qualify."
-      category={{ name: "Pricing Models", slug: "pricing" }}
+      category={{ name: "Pricing Models", slug: "pricing-models" }}
       cluster="hub"
       showRelated={false}
       keywords={["interchange plus plus", "IC++ explained", "payment pricing models", "merchant fees"]}

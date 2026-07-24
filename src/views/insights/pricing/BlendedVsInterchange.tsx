@@ -15,7 +15,7 @@ const BlendedVsInterchange = () => {
     <InsightsArticleLayout
       title="Blended vs Interchange++"
       description="Discover the strategic trade off between blended pricing and Interchange++ (IC++). Learn which model fits your business and why the wrong choice costs more than a higher rate."
-      category={{ name: "Pricing Models", slug: "pricing" }}
+      category={{ name: "Pricing Models", slug: "pricing-models" }}
       cluster="pricing"
       showRelated={true}
       currentSlug="blended-vs-interchange"

@@ -36,21 +36,6 @@ const paymentRiskArticles = [
     slug: "why-some-businesses-never-get-approved",
     description: "Not all businesses are declined because they are doing something wrong."
   },
-  {
-    title: "Why Payment Accounts Get Flagged Even When Nothing Changed",
-    slug: "why-payment-accounts-get-flagged-without-changes",
-    description: "Learn why payment accounts get flagged or reviewed even when nothing changed and how to reduce friction."
-  },
-  {
-    title: "Why Payment Accounts Get Flagged After Sudden Growth",
-    slug: "why-payment-accounts-get-flagged-after-growth",
-    description: "Understand why sudden business growth triggers payment account reviews and how to handle them."
-  },
-  {
-    title: "Why Payment Providers Re-Underwrite Existing Accounts",
-    slug: "why-providers-re-underwrite-existing-accounts",
-    description: "Understand why payment providers re-underwrite existing accounts and how to handle these reviews."
-  }
 ];
 
 const PaymentRisk = () => {

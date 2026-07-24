@@ -78,7 +78,7 @@ const VisaMastercardControl = () => {
         </p>
         <p>
           Complaints, escalation tickets, or switching providers rarely change this reality. In fact,{" "}
-          <Link to="/insights/why-payment-accounts-get-flagged-without-changes" className="text-primary hover:underline">
+          <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
             accounts can be flagged even when nothing changes
           </Link>.
         </p>
@@ -126,7 +126,7 @@ const VisaMastercardControl = () => {
           <li>Rapid increase in volume</li>
           <li>
             Expansion into new countries —{" "}
-            <Link to="/insights/why-international-sales-trigger-reviews" className="text-primary hover:underline">
+            <Link to="/insights/international-sales" className="text-primary hover:underline">
               international sales often trigger reviews
             </Link>
           </li>

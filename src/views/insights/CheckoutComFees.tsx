@@ -164,7 +164,7 @@ const CheckoutComFees = () => {
         </div>
         <p className="text-muted-foreground">
           This structure is known as interchange-plus-plus (IC++) pricing. It separates each cost component for transparency, which means merchants can see exactly what they are paying and to whom. For established businesses with meaningful volume, this pricing approach often results in effective rates that are lower than flat-rate competitors when looked at holistically. This is similar to{" "}
-          <Link to="/insights/pricing/interchange-plus-plus" className="text-primary hover:underline">interchange plus plus pricing</Link>.
+          <Link to="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">interchange plus plus pricing</Link>.
         </p>
       </section>
 
@@ -372,7 +372,7 @@ const CheckoutComFees = () => {
         </ul>
         <p className="text-muted-foreground">
           Unlike some payment platforms that charge visible per-payout fees, Checkout.com often bundles payout flexibility into the broader commercial agreement. This tends to be more cost-effective for medium and large enterprises, but it requires serious underwriting upfront. Learn more about{" "}
-          <Link to="/insights/same-day-settlement-instant-payouts" className="text-primary hover:underline">same day settlement and instant payouts</Link>.
+          <Link to="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:underline">same day settlement and instant payouts</Link>.
         </p>
       </section>
 
@@ -386,7 +386,7 @@ const CheckoutComFees = () => {
         </p>
         <p className="text-muted-foreground">
           What sets Checkout.com apart is the tooling and insight it provides around disputes. Larger merchants benefit from detailed chargeback analytics, which can help reduce total dispute costs over time. See our{" "}
-          <Link to="/insights/chargebacks" className="text-primary hover:underline">complete guide to chargebacks</Link>{" "}
+          <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">complete guide to chargebacks</Link>{" "}
           for strategies to reduce dispute rates.
         </p>
       </section>
@@ -573,7 +573,7 @@ const CheckoutComFees = () => {
         </p>
         <p className="text-muted-foreground">
           For merchants with international ambitions, this kind of demonstrated scale and performance is part of why providers like Checkout.com are considered seriously. For a deeper look at enterprise platforms, see our{" "}
-          <Link to="/insights/provider/checkout-com-enterprise-platform" className="text-primary hover:underline">Checkout.com enterprise platform analysis</Link>.
+          <Link to="/insights/checkout-com-enterprise-platform" className="text-primary hover:underline">Checkout.com enterprise platform analysis</Link>.
         </p>
       </section>
 

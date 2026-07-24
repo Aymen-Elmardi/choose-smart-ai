@@ -9,7 +9,7 @@ const WhyAccountsFlaggedAfterGrowth = () => {
       description="Rapid growth is one of the most common reasons payment accounts are reviewed. Learn why fast-growing businesses get flagged and how to avoid payment freezes."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"
-      currentSlug="why-accounts-flagged-after-growth"
+      currentSlug="why-accounts-get-flagged-after-growth"
       keywords={["account review", "business growth", "payment freeze", "scaling payments"]}
     >
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">

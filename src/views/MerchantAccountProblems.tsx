@@ -20,7 +20,7 @@ const clusters = [
     articles: [
       { title: "How Scheme Rules Trigger Reserves and Monitoring Programs", slug: "scheme-rules-reserves-monitoring" },
       { title: "Re-Underwriting Explained: When Providers Review Existing Accounts", slug: "why-providers-re-underwrite-accounts" },
-      { title: "Account Flagged Without Changes? Here's What Providers Are Reacting To", slug: "why-payment-accounts-get-flagged-without-changes" },
+      { title: "Sudden Growth Can Trigger Account Reviews", slug: "why-accounts-get-flagged-after-growth" },
     ],
   },
   {

@@ -245,7 +245,7 @@ const Shift4PaymentsPlatform = () => {
         <ul className="space-y-2">
           <li>
             <Link 
-              to="/insights/why-payment-accounts-get-flagged-after-growth" 
+              to="/insights/why-accounts-get-flagged-after-growth"
               className="text-primary hover:underline"
             >
               Why payment accounts get frozen after sudden growth

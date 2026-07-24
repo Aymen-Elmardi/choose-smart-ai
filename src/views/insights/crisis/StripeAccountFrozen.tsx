@@ -79,7 +79,7 @@ const StripeAccountFrozen = () => {
         </p>
         <div className="bg-primary/5 border-l-4 border-primary p-4 my-4">
           <p className="text-foreground">
-            <strong>The Insight:</strong> Stripe's risk model establishes a baseline for your business. A spike of 200% or more in a short period (e.g., 7 days) is flagged as a potential bust-out fraud attempt, where a fraudster processes a large volume of stolen cards before disappearing. Learn more about <Link to="/insights/why-payment-accounts-get-flagged-after-growth" className="text-primary hover:underline">why growth triggers account reviews</Link>.
+            <strong>The Insight:</strong> Stripe's risk model establishes a baseline for your business. A spike of 200% or more in a short period (e.g., 7 days) is flagged as a potential bust-out fraud attempt, where a fraudster processes a large volume of stolen cards before disappearing. Learn more about <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">why growth triggers account reviews</Link>.
           </p>
         </div>
 

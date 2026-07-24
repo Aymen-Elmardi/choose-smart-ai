@@ -186,7 +186,7 @@ export const buildInsightUrl = (slug: string, cluster: ContentCluster): string =
     case "crisis":
       return `/insights/crisis/${slug}`;
     case "provider":
-      return `/insights/provider/${slug}`;
+      return `/insights/${slug}`;
     case "pricing":
       return `/insights/pricing-models/${slug}`;
     default:

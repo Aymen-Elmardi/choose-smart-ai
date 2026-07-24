@@ -370,7 +370,7 @@ const Chargebacks = () => {
 
             <p>
               This is often connected to the same risk checks that cause{" "}
-              <Link to="/insights/why-payment-accounts-get-flagged-without-changes" className="text-primary hover:underline">
+              <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
                 payment accounts to get flagged
               </Link>{" "}
               or payout delays.
@@ -378,7 +378,7 @@ const Chargebacks = () => {
 
             <p>
               Understanding this link helps businesses act early instead of reacting when money is already held. It also explains why providers may trigger{" "}
-              <Link to="/insights/why-providers-re-underwrite-existing-accounts" className="text-primary hover:underline">
+              <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">
                 re-underwriting
               </Link>{" "}
               on accounts with rising dispute rates.

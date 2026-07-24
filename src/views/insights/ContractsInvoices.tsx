@@ -37,7 +37,7 @@ const ContractsInvoices = () => {
           <li>During periodic compliance or account reviews</li>
         </ul>
         <p>
-          These checks are common and do not automatically mean there is a problem with your account. Understanding <Link to="/insights/why-providers-re-underwrite-existing-accounts" className="text-primary hover:underline">why providers re-underwrite existing accounts</Link> can help you anticipate when these requests might appear.
+          These checks are common and do not automatically mean there is a problem with your account. Understanding <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">why providers re-underwrite existing accounts</Link> can help you anticipate when these requests might appear.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

@@ -5,7 +5,7 @@ import { Link } from '@/lib/router-compat';
 const sources = [
   {
     name: "Stripe – Payments Risk and Underwriting",
-    url: "https://stripe.com/resources/more/what-is-underwriting",
+    url: "https://stripe.com/resources/more/how-to-improve-the-underwriting-process-key-approaches-and-how-to-execute-them",
     type: "official" as const
   },
   {
@@ -418,7 +418,7 @@ const PaymentProviderRiskModels = () => {
 
       <p className="mb-8">
         If you want to avoid surprises, reviews, and rework,{" "}
-        <Link to="/quiz" className="text-primary hover:underline font-medium">
+        <Link to="/assessment" className="text-primary hover:underline font-medium">
           a short assessment before applying
         </Link>{" "}
         can save months of friction.

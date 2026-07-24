@@ -104,7 +104,7 @@ const SchemeRulesReservesMonitoring = () => {
       </ul>
       <p className="mb-6">
         Growth without infrastructure upgrades can trigger scrutiny. This is one of the most misunderstood dynamics in{" "}
-        <Link to="/insights/why-payment-accounts-get-flagged-after-growth" className="text-primary hover:underline">scaling businesses</Link>.
+        <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">scaling businesses</Link>.
       </p>
 
       {/* Section: Why Reserves Appear Suddenly */}

@@ -65,13 +65,6 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["appetite", "underwriting", "rejected", "declined", "MATCH", "high-risk", "merchant account declined", "provider approval"]
   },
   {
-    slug: "why-payment-accounts-get-flagged-without-changes",
-    title: "Account Flagged Without Changes? What Providers React To",
-    shortTitle: "Why Accounts Get Flagged",
-    concepts: ["risk", "provider-behaviour"],
-    keywords: ["flagged", "flag", "review", "flagged account", "under review"]
-  },
-  {
     slug: "crisis/hidden-fee-crisis",
     title: "The Hidden Fee Crisis: How Low Rate Processors Cost You Thousands",
     shortTitle: "Hidden Fee Crisis",
@@ -110,13 +103,6 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["growth", "scaling", "volume increase", "rapid growth", "spike"]
   },
   {
-    slug: "why-payment-accounts-get-flagged-after-growth",
-    title: "Growth Related Account Flags: What Triggers Them",
-    shortTitle: "Growth Related Account Flags",
-    concepts: ["approval", "risk"],
-    keywords: ["growth", "flagged", "scaling", "volume", "transaction spike"]
-  },
-  {
     slug: "tra-exemption-reduces-payment-friction",
     title: "TRA Exemption: How It Reduces Payment Friction",
     shortTitle: "TRA Exemption Explained",
@@ -146,13 +132,6 @@ export const conceptArticles: ConceptArticle[] = [
     shortTitle: "Why Providers Re Underwrite",
     concepts: ["provider-behaviour", "risk"],
     keywords: ["re-underwrite", "underwriting", "review", "periodic review", "account review"]
-  },
-  {
-    slug: "why-providers-re-underwrite-existing-accounts",
-    title: "When Providers Re Underwrite Existing Accounts",
-    shortTitle: "Re Underwriting Existing Accounts",
-    concepts: ["provider-behaviour"],
-    keywords: ["re-underwrite", "existing account", "review", "renewal", "reassessment"]
   },
   {
     slug: "what-to-do-when-provider-asks-for-documents",
