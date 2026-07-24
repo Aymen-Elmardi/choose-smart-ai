@@ -5,6 +5,7 @@ import Recommendation from '@/views/Recommendation'
 export const metadata: Metadata = {
   title: 'Your Recommendation',
   description: 'Your personalised payment provider recommendation based on your business profile.',
+  alternates: { canonical: '/recommendation' },
   robots: { index: false, follow: false },
 }
 

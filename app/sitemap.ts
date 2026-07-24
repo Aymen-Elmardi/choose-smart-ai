@@ -20,7 +20,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
 
-    // Assessment & recommendation — priority 0.9
+    // Assessment — priority 0.9
+    // /recommendation is deliberately excluded: it's noindexed
+    // (app/recommendation/page.tsx) and disallowed in app/robots.ts, so
+    // listing it in the sitemap would contradict both signals.
     {
       url: `${BASE_URL}/assessment`,
       lastModified: new Date(),
@@ -28,10 +31,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/recommendation`,
+      url: `${BASE_URL}/statement-review`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/us/insights`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
     },
 
     // SEO landing pages — priority 0.8
@@ -144,6 +153,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
+    },
+    // Category hub pages
+    {
+      url: `${BASE_URL}/insights/explainer`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/insights/providers`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/insights/fees`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/insights/provider-fit`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/insights/compliance`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/insights/ecommerce`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
     },
     {
       url: `${BASE_URL}/insights`,
