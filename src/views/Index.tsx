@@ -2,7 +2,6 @@
 import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import DiagnosticBlock from "@/components/DiagnosticBlock";
 import { useCanonical } from "@/hooks/useCanonical";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -41,7 +40,6 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <DiagnosticBlock />
         <Suspense fallback={null}>
           <ExampleOutputPreview />
           <HowItWorksSection />
