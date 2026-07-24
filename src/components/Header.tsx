@@ -20,11 +20,10 @@ const Header = () => {
     { to: isUS ? "/us/insights" : "/insights", label: "Insights" },
     { to: "/#why-us", label: "Why Us" },
     { to: "/about", label: "About" },
-    { to: "/contact", label: "Contact" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background">
       <div className="section-container">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="ChosePayments home">

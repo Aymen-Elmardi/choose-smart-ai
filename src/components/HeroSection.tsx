@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from '@/lib/router-compat';
 import { Button } from "@/components/ui/button";
+import { BOOKING_URL } from '@/lib/booking';
 
 const HeroSection = () => {
   return (
@@ -15,7 +16,7 @@ const HeroSection = () => {
             Find the Right Payment Processor for Your Business
           </h1>
           <p className="mt-3 text-lg md:text-xl font-medium text-muted-foreground">
-            Small business, e-commerce, online gaming, SaaS, and more.
+            For all business types — ecommerce, marketplaces, small businesses, SaaS, online gaming, and more.
           </p>
           <div className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             <p>
@@ -24,9 +25,15 @@ const HeroSection = () => {
           </div>
           <div className="mt-10 flex flex-col items-center gap-5">
             <Button variant="hero" size="xl" asChild>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                Book a 15-Minute Call
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </Button>
+            <Button variant="link" asChild>
               <Link to="/statement-review">
                 See if you're overpaying
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
             <p className="text-xs text-muted-foreground tracking-wide">
