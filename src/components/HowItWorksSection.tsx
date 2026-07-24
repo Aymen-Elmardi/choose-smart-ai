@@ -1,5 +1,7 @@
-import { ClipboardList, Sparkles, FileText, PhoneCall } from "lucide-react";
+import { ClipboardList, Sparkles, FileText, PhoneCall, ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { Button } from "@/components/ui/button";
+import { BOOKING_URL } from "@/lib/booking";
 
 const buildSteps = (country: string) => [
   {
@@ -38,25 +40,25 @@ const ukSteps = [
     icon: ClipboardList,
     step: "01",
     title: "Tell Us About Your Business",
-    description: "Answer a short assessment covering your business model, monthly volume, industry, and transaction type. No account needed.",
+    description: "Complete a short assessment covering your business model, transaction volume, countries served, average order value, and industry — including whether you're considered a high-risk merchant.",
   },
   {
     icon: Sparkles,
     step: "02",
-    title: "We Calculate Your Risk Profile",
-    description: "Our engine maps your profile against the underwriting criteria of 50+ processors across the US, UK and EU to find the right fit.",
+    title: "We Analyse Your Risk Profile",
+    description: "Our matching engine compares your business against the underwriting requirements of 50+ payment processors and payment providers across the UK, US and Europe.",
   },
   {
     icon: FileText,
     step: "03",
-    title: "See Your Processor Match",
-    description: "We show you which processors fit, which are acceptable, and which to avoid, with a clear reason for every recommendation.",
+    title: "Receive Your Best Payment Processor Matches",
+    description: "We recommend the payment processors most likely to approve your business, explain why each one fits, and highlight any risks or potential savings on your payment processing costs.",
   },
   {
     icon: PhoneCall,
     step: "04",
-    title: "Get on a Call With Us",
-    description: "I get on a call with you to understand more deeply the type of payment processor you need, and introduce you to your right payment processor.",
+    title: "Book a Free Strategy Call",
+    description: "Meet with one of our payment specialists to review your matches, ask questions, and get introduced to the payment gateway or merchant account provider that best fits your business.",
   },
 ];
 
@@ -104,7 +106,7 @@ const HowItWorksSection = ({ market = "UK" }: { market?: "UK" | "US" }) => {
             How Payment Processor Matching Works
           </h2>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-            Four steps. Sixty seconds for the first one. No account needed, no commitment, and free from start to finish.
+            We compare payment processors and merchant account providers across the UK, US and EU, matching ecommerce, SaaS, marketplaces and other online businesses with the right payment gateway. Free from start to finish, no commitment required.
           </p>
         </div>
 
@@ -122,6 +124,18 @@ const HowItWorksSection = ({ market = "UK" }: { market?: "UK" | "US" }) => {
               <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Button variant="hero" size="xl" asChild>
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              Book a Free 15-Minute Call
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </Button>
+          <p className="mt-4 text-sm text-muted-foreground">
+            A payment setup review never hurts — your current processor certainly isn't offering one.
+          </p>
         </div>
       </div>
     </section>
