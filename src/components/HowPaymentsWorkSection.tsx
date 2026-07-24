@@ -1,5 +1,7 @@
 import { Link } from '@/lib/router-compat';
-import { ShieldAlert, BarChart3, Receipt } from "lucide-react";
+import { ShieldAlert, BarChart3, Receipt, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BOOKING_URL } from "@/lib/booking";
 
 const boxes = [
   {
@@ -55,6 +57,18 @@ const HowPaymentsWorkSection = () => {
                 </p>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <Button variant="hero" size="xl" asChild>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                Book a Free 15-Minute Call
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </Button>
+            <p className="mt-4 text-sm text-muted-foreground">
+              A payment setup review never hurts — your current processor certainly isn't offering one.
+            </p>
           </div>
         </div>
       </div>

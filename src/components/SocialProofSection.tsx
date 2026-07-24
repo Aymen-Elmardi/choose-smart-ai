@@ -31,7 +31,7 @@ const SocialProofSection = () => {
         <div className={`text-center max-w-3xl mx-auto mb-12 reveal ${isInView ? "visible" : ""}`}>
           <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">What Businesses Say</p>
           <h2 className="heading-lg text-foreground">
-            Real Results from Real Merchants
+            Look at What Our Customers Are Saying
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
             Businesses that ran their risk profile and found the right processor.
