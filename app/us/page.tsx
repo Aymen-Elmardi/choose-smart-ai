@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import IndexUS from '@/views/IndexUS'
 
 export const metadata: Metadata = {
-  title: 'ChosePayments: Payment Processor Matching for US Merchants',
+  title: 'Payment Processor Matching for US Merchants',
   description: 'Find the right payment processor for your US business. Avoid frozen accounts and rejections. Get matched with a provider that fits your risk profile.',
   keywords: [
     'payment provider matching US',

@@ -3,7 +3,11 @@ import { Suspense } from 'react'
 import Index from '@/views/Index'
 
 export const metadata: Metadata = {
-  title: 'ChosePayments: Payment Processor Matching for UK Merchants',
+  // Hardcoded in full: the root layout's title.template does not apply to the
+  // "/" route specifically (reproduced in the static export build output —
+  // every other route templates correctly). Spelling out the final string here
+  // avoids depending on that.
+  title: 'Payment Processor Matching for UK Merchants | ChosePayments',
   description: 'Find the right payment processor for your business. Avoid frozen accounts and rejections. Get matched with a provider that fits your risk profile in 2 minutes.',
   keywords: [
     'payment provider risk profile',
