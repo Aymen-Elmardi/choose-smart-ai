@@ -27,12 +27,12 @@ const ChargebackThresholds = () => {
   const sources: Source[] = [
     {
       name: "Visa Merchant Monitoring Program Documentation",
-      url: "https://usa.visa.com/dam/VCOM/download/merchants/visa-monitoring-program.pdf",
+      url: "https://usa.visa.com/dam/VCOM/download/merchants/visa-acceptance-risk-standards.pdf",
       type: "official"
     },
     {
       name: "Stripe: Chargebacks and Dispute Management",
-      url: "https://stripe.com/resources/more/chargebacks",
+      url: "https://stripe.com/guides/introduction-to-payment-disputes",
       type: "official"
     },
     {

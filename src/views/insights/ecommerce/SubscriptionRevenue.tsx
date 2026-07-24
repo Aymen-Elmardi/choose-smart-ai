@@ -27,12 +27,12 @@ const SubscriptionRevenue = () => {
   const sources: Source[] = [
     {
       name: "Visa — Account Updater Services Overview",
-      url: "https://usa.visa.com/run-your-business/small-business-tools/payment-technology/account-updater.html",
+      url: "https://developer.visa.com/capabilities/vau",
       type: "official"
     },
     {
       name: "Stripe — Reducing Involuntary Churn in Subscription Businesses",
-      url: "https://stripe.com/resources/more/involuntary-churn",
+      url: "https://stripe.com/resources/more/involuntary-churn-101-what-it-is-why-it-happens-and-seven-ways-to-reduce-it",
       type: "industry"
     },
     {

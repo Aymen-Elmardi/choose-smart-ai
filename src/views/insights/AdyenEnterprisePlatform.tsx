@@ -13,7 +13,7 @@ import { ArrowRight, CheckCircle2, Building2, Shield, Globe, Users } from "lucid
 const adyenSources = [
   { name: "Adyen Official Documentation", url: "https://docs.adyen.com/", type: "official" as const },
   { name: "Adyen Investor Relations", url: "https://www.adyen.com/investor-relations", type: "official" as const },
-  { name: "Adyen – Interchange++ Pricing Explained", url: "https://www.adyen.com/knowledge-hub/guides/payments-academy/interchange-plus-plus-pricing", type: "official" as const }
+  { name: "Adyen – Interchange++ Pricing Explained", url: "https://www.adyen.com/what-is-interchange", type: "official" as const }
 ];
 
 const AdyenEnterprisePlatform = () => {

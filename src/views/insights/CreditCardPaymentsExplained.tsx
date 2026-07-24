@@ -16,7 +16,7 @@ const sources: Source[] = [
   },
   {
     name: "Stripe: How Card Payments Work",
-    url: "https://stripe.com/resources/more/how-credit-card-processing-works",
+    url: "https://stripe.com/resources/more/how-credit-card-transaction-processing-works-a-quick-guide",
     type: "industry"
   },
   {

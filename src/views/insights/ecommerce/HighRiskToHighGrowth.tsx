@@ -30,7 +30,7 @@ const HighRiskToHighGrowth = () => {
     },
     {
       name: "Stripe: How Businesses Manage Payment Risk",
-      url: "https://stripe.com/resources/more/how-to-identify-and-manage-risk"
+      url: "https://stripe.com/resources/more/how-to-identify-and-manage-risk-a-guide-for-businesses"
     },
     {
       name: "Ramp: Merchant Underwriting and Risk Evaluation",

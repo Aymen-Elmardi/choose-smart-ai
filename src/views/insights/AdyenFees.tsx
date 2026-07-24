@@ -13,7 +13,7 @@ const sources: Source[] = [
   },
   {
     name: "Adyen Documentation. Interchange and Scheme Fees",
-    url: "https://docs.adyen.com/point-of-sale/pricing",
+    url: "https://www.adyen.com/what-is-interchange",
     type: "official"
   },
   {

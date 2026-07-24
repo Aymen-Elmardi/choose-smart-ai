@@ -5,7 +5,7 @@ import { Link } from '@/lib/router-compat';
 const sources = [
   {
     name: "Stripe – What Makes a Business High-Risk",
-    url: "https://stripe.com/resources/more/high-risk-merchant-accounts-101",
+    url: "https://stripe.com/resources/more/high-risk-merchant-accounts-explained",
     type: "official" as const
   },
   {
