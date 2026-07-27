@@ -99,18 +99,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/choose-payment-provider`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/payment-provider-hidden-fees`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/switch-payment-provider`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -324,7 +312,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/insights/payment-provider-vs-acquirer-vs-bank`,
+      url: `${BASE_URL}/insights/merchant-acquirer-vs-payment-processor`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/insights/hidden-payment-processor-fees`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/insights/how-to-choose-a-payment-processor`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/insights/payment-processor-business-vertical-classification`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/insights/digital-product-chargebacks-refunds-payment-processor`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,

@@ -7,6 +7,11 @@ import { ArrowLeft, FileText } from "lucide-react";
 
 const guideArticles = [
   {
+    title: "How to Choose a Payment Processor: The Business Owner's Guide",
+    slug: "how-to-choose-a-payment-processor",
+    description: "A practical framework for choosing a payment processor: pricing models, hidden fees, risk alignment, integration fit, and the real cost of switching later."
+  },
+  {
     title: "The Marketplace Founder's Guide to Payment Processing",
     slug: "marketplace-payments-guide",
     description: "What payment providers don't tell marketplace founders about split payments, seller verification, chargeback risk, and how to secure the right payment partnership."

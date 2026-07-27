@@ -27,6 +27,12 @@ const ecommerceArticles = [
     slug: "/insights/ecommerce/chargeback-thresholds-high-risk-processors",
     icon: AlertTriangle,
   },
+  {
+    title: "Digital Product Chargebacks and Refunds: What Your Payment Processor Does About It",
+    description: "Digital goods have a 1.8% average chargeback rate - more than triple the rate for physical goods. Here is what processors do about it.",
+    slug: "/insights/digital-product-chargebacks-refunds-payment-processor",
+    icon: AlertTriangle,
+  },
 ];
 
 const faqs = [

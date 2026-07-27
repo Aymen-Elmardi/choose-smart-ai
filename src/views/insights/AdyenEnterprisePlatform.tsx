@@ -316,11 +316,11 @@ const AdyenEnterprisePlatform = () => {
                 </p>
               </Link>
               <Link
-                to="/insights/payment-provider-vs-acquirer-vs-bank"
+                to="/insights/merchant-acquirer-vs-payment-processor"
                 className="p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors group"
               >
                 <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
-                  Payment Provider vs Acquirer vs Bank: What Happens to Your Money
+                  Merchant Acquirer vs Payment Processor: What's the Difference?
                 </h3>
                 <p className="text-sm text-muted-foreground">
                   Learn how the payment ecosystem works and why vertical integration matters.

@@ -34,6 +34,12 @@ const feesArticles = [
     icon: DollarSign,
   },
   {
+    title: "Hidden Payment Processor Fees: What to Look For Before You Sign",
+    description: "PCI fees, batch fees, early termination charges. Here is every fee processors bury in contracts, what they cost, and how to negotiate them out.",
+    slug: "/insights/hidden-payment-processor-fees",
+    icon: Receipt,
+  },
+  {
     title: "Fiserv Clover Pricing (2026): Hardware, Software and Processing Fees Explained",
     description: "Clover pricing starts at $49 for the Go reader. Full breakdown of hardware costs, monthly software fees, and card processing rates for merchants in 2026.",
     slug: "/insights/fiserv-clover-pricing-explained",

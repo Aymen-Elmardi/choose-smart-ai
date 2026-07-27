@@ -221,11 +221,11 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["acquirer", "acquiring bank", "merchant acquirer", "settlement"]
   },
   {
-    slug: "payment-provider-vs-acquirer-vs-bank",
-    title: "Payment Provider vs Acquirer vs Bank",
-    shortTitle: "Provider vs Acquirer vs Bank",
+    slug: "merchant-acquirer-vs-payment-processor",
+    title: "Merchant Acquirer vs Payment Processor",
+    shortTitle: "Acquirer vs Processor",
     concepts: ["payment-methods", "provider-behaviour"],
-    keywords: ["acquirer", "provider", "bank", "payment flow", "money movement"]
+    keywords: ["acquirer", "processor", "payment flow", "money movement"]
   },
 
   // === PRICING (spans multiple clusters) ===

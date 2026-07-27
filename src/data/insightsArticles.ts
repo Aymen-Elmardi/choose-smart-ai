@@ -394,10 +394,10 @@ export const allInsights: Insight[] = [
     readTime: "6 min read"
   },
   {
-    title: "Payment Provider vs Acquirer vs Bank. What Actually Happens to Your Money",
-    slug: "payment-provider-vs-acquirer-vs-bank",
+    title: "Merchant Acquirer vs Payment Processor: What's the Difference?",
+    slug: "merchant-acquirer-vs-payment-processor",
     global: true,
-    description: "Learn who does what in card payments, how long each step takes, and why money moves slower than transactions.",
+    description: "A merchant acquirer holds your merchant account and takes the financial risk. A payment processor routes the transaction. Here is exactly how they differ.",
     category: "explainer",
     readTime: "7 min read"
   },
@@ -672,6 +672,38 @@ export const allInsights: Insight[] = [
     category: "ecommerce",
     readTime: "11 min read",
     isSubfolder: true
+  },
+  {
+    title: "Hidden Payment Processor Fees: What to Look For Before You Sign",
+    slug: "hidden-payment-processor-fees",
+    global: true,
+    description: "PCI fees, batch fees, early termination charges. Here is every fee processors bury in contracts, what they cost, and how to negotiate them out.",
+    category: "fees",
+    readTime: "9 min read"
+  },
+  {
+    title: "How to Choose a Payment Processor: The Business Owner's Guide",
+    slug: "how-to-choose-a-payment-processor",
+    global: true,
+    description: "A practical framework for choosing a payment processor: pricing models, hidden fees, risk alignment, integration fit, and the real cost of switching later.",
+    category: "guides",
+    readTime: "10 min read"
+  },
+  {
+    title: "How Payment Processors Classify Your Business Vertical (and Why It Matters)",
+    slug: "payment-processor-business-vertical-classification",
+    global: true,
+    description: "Payment processors assign a four-digit MCC code to every merchant that determines your interchange rate, approval odds, and risk scrutiny.",
+    category: "compliance",
+    readTime: "9 min read"
+  },
+  {
+    title: "Digital Product Chargebacks and Refunds: What Your Payment Processor Does About It",
+    slug: "digital-product-chargebacks-refunds-payment-processor",
+    global: true,
+    description: "Digital goods have a 1.8% average chargeback rate - more than triple the rate for physical goods. Here is what processors do about it.",
+    category: "ecommerce",
+    readTime: "10 min read"
   }
 ];
 

@@ -6,9 +6,15 @@ import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
-import { ShieldAlert, FileText, CreditCard, Scale } from "lucide-react";
+import { ShieldAlert, FileText, CreditCard, Scale, Fingerprint } from "lucide-react";
 
 const complianceArticles = [
+  {
+    title: "How Payment Processors Classify Your Business Vertical (and Why It Matters)",
+    description: "Payment processors assign a four-digit MCC code to every merchant that determines your interchange rate, approval odds, and risk scrutiny.",
+    slug: "/insights/payment-processor-business-vertical-classification",
+    icon: Fingerprint,
+  },
   {
     title: "Why Payment Providers Impose Rolling Reserves",
     description: "Rolling reserves hold back a percentage of your revenue. Learn why providers impose them, how long they last, and how to negotiate their removal.",

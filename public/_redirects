@@ -13,6 +13,11 @@
 # Pricing explainers live under /insights/pricing-models/
 /insights/pricing/interchange-plus-plus /insights/pricing-models/interchange-plus-plus 301
 
+# Retired pages, replaced by newer/more thorough posts on the same topic
+/payment-provider-hidden-fees /insights/hidden-payment-processor-fees 301
+/choose-payment-provider /insights/how-to-choose-a-payment-processor 301
+/insights/payment-provider-vs-acquirer-vs-bank /insights/merchant-acquirer-vs-payment-processor 301
+
 # Wildcard rules MUST stay last: Cloudflare stops applying static rules that come
 # after a dynamic (splat) rule, so anything below this line is silently ignored.
 # Provider deep dives were never nested under /provider/ — flatten to /insights/<slug>
