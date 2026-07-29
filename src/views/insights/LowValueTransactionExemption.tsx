@@ -268,6 +268,14 @@ const LowValueTransactionExemption = () => {
       <p className="mb-8">
         Understanding this is not about compliance. It is about choosing infrastructure that works with banks, not against them.
       </p>
+
+      <p className="mb-8">
+        It is also increasingly about cost: Mastercard's{" "}
+        <Link to="/insights/mastercard-3ds-authentication-fee-changes-europe" className="text-primary hover:underline">
+          per-authentication fee in Europe went up from July 2026
+        </Link>
+        , so every transaction correctly routed through the LVT exemption instead of a full 3DS challenge now saves more than it used to.
+      </p>
     </InsightsArticleLayout>
   );
 };

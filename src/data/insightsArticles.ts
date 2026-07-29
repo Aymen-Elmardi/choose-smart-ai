@@ -704,6 +704,14 @@ export const allInsights: Insight[] = [
     description: "Digital goods have a 1.8% average chargeback rate - more than triple the rate for physical goods. Here is what processors do about it.",
     category: "ecommerce",
     readTime: "10 min read"
+  },
+  {
+    title: "Mastercard's 2026 3DS Authentication Fee Changes in Europe",
+    slug: "mastercard-3ds-authentication-fee-changes-europe",
+    global: true,
+    description: "What changed in Mastercard's EMV 3DS Authentication Fee from 29 July 2026, and how SCA exemptions reduce your exposure to it.",
+    category: "guides",
+    readTime: "8 min read"
   }
 ];
 

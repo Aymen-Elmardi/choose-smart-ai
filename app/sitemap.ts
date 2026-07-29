@@ -342,6 +342,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/insights/mastercard-3ds-authentication-fee-changes-europe`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/insights/why-card-approval-speed-affects-checkout-abandonment`,
       lastModified: new Date(),
       changeFrequency: 'weekly',

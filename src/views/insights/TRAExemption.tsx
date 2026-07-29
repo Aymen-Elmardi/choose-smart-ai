@@ -173,6 +173,14 @@ const TRAExemption = () => {
               If payments feel more complicated than they should, it is often not your checkout design. It is how risk is being handled behind the scenes.
             </p>
 
+            <p className="text-muted-foreground mb-8">
+              This also has a direct cost angle: Mastercard's per-authentication scheme fee{" "}
+              <Link to="/insights/mastercard-3ds-authentication-fee-changes-europe" className="text-primary hover:underline">
+                increased in Europe from July 2026
+              </Link>
+              , which makes qualifying for a TRA exemption worth more than it used to.
+            </p>
+
             <SourcesCitation sources={traSources} />
 
             {/* Share & Like Actions */}
