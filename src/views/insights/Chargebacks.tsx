@@ -157,7 +157,6 @@ const Chargebacks = () => {
 
             <InlineAssessmentCTA
               context="See which providers have better chargeback policies and lower dispute fees for your industry."
-              cta="Run your risk profile"
             />
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

@@ -32,7 +32,6 @@ const WhyAccountsFrozenWithoutWarning = () => {
         
         <InlineAssessmentCTA
           context="Find out if your business is at risk of an account freeze — and which providers are a safer fit."
-          cta="Get your risk profile"
         />
         
         <p>

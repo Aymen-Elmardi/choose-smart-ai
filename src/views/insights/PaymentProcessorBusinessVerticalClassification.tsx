@@ -238,7 +238,6 @@ const PaymentProcessorBusinessVerticalClassification = () => {
 
       <InlineAssessmentCTA
         context="Not sure which MCC your business will be assigned, or whether your current processor actually supports your vertical?"
-        cta="Get your risk profile"
       />
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">Frequently Asked Questions</h2>

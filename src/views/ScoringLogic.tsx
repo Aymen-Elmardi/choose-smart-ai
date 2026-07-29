@@ -9,8 +9,8 @@ import { PROVIDER_REGISTRY, SCORING_DIMENSIONS, ELIMINATION_RULES } from "@/lib/
 import { Card, CardContent } from "@/components/ui/card";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { useState } from "react";
-import { Link } from '@/lib/router-compat';
 import { Shield, AlertTriangle, XCircle } from "lucide-react";
+import { BOOKING_URL } from "@/lib/booking";
 
 const ScoringLogic = () => {
   useSEO({
@@ -313,14 +313,16 @@ const ScoringLogic = () => {
               See Your Own Risk Profile
             </h2>
             <p className="text-background/70 mb-8">
-              Run your business profile through the engine. See your best fit, acceptable options, and providers to avoid.
+              Book a free 15-minute call and we'll walk through your best fit, acceptable options, and providers to avoid.
             </p>
-            <Link
-              to="/assessment"
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
             >
-              Run My Risk Profile
-            </Link>
+              Book a 15-Minute Call
+            </a>
           </div>
         </section>
       </main>

@@ -58,7 +58,6 @@ const WhyStripeFreezes = () => {
 
         <InlineAssessmentCTA
           context="Find out if your business profile is a good fit for Stripe — or if another provider would be safer."
-          cta="Get your risk profile"
         />
         
         <p>

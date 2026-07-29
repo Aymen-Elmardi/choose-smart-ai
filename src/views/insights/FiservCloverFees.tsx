@@ -299,7 +299,6 @@ const FiservCloverFees = () => {
 
         <InlineAssessmentCTA
           context="See if Fiserv/Clover's risk appetite matches your business type and industry."
-          cta="Get your risk profile"
         />
       </section>
 

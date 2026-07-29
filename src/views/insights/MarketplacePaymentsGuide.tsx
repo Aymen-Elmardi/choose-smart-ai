@@ -2,6 +2,7 @@
 import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
+import { BOOKING_URL } from "@/lib/booking";
 
 const MarketplacePaymentsGuide = () => {
   return (
@@ -79,7 +80,6 @@ const MarketplacePaymentsGuide = () => {
 
         <InlineAssessmentCTA
           context="Running a marketplace? Find out which payment providers are built to handle split payments and seller verification."
-          cta="Get your risk profile"
         />
 
         <h2 className="text-2xl font-bold text-foreground pt-6">How Payment Providers Assess Marketplace Risk</h2>
@@ -152,7 +152,6 @@ const MarketplacePaymentsGuide = () => {
 
         <InlineAssessmentCTA
           context="Worried about account freezes? See which providers have the right risk appetite for your marketplace model."
-          cta="Run your risk profile"
         />
 
         <h2 className="text-2xl font-bold text-foreground pt-6">Navigating Compliance and Regulatory Frameworks</h2>
@@ -275,7 +274,6 @@ const MarketplacePaymentsGuide = () => {
 
         <InlineAssessmentCTA
           context="Ready to find payment providers that match your marketplace's risk profile and support split payments?"
-          cta="Run your risk profile"
         />
 
         <h2 className="text-2xl font-bold text-foreground pt-6">Find the Payment Processor That Won't Freeze Your Account</h2>
@@ -293,10 +291,10 @@ const MarketplacePaymentsGuide = () => {
         </p>
 
         <p>
-          <Link to="/assessment?start=true" className="text-primary hover:underline font-semibold">
-            Run your risk profile
-          </Link>{" "}
-          today. It takes 2 minutes, provides human-reviewed guidance, and is completely free for merchants. Discover which providers fit your marketplace model, which are acceptable, and which to avoid, with clear, actionable reasons.
+          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
+            Book a 15-Minute Call
+          </a>{" "}
+          today. It's free, with no sales pitch, just a straight read on which providers fit your marketplace model, which are acceptable, and which to avoid, with clear, actionable reasons.
         </p>
       </div>
     </InsightsArticleLayout>

@@ -101,7 +101,6 @@ const AdyenEnterprisePlatform = () => {
 
             <InlineAssessmentCTA
               context="See if your business qualifies for Adyen's enterprise platform and how your risk profile aligns."
-              cta="Get your risk profile"
             />
 
             {/* Single Platform Advantage */}

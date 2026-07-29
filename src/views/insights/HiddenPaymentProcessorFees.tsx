@@ -204,7 +204,6 @@ const HiddenPaymentProcessorFees = () => {
 
       <InlineAssessmentCTA
         context="Evaluating a new processor or reviewing an existing contract? Get a second read on what you are actually paying."
-        cta="Get your risk profile"
       />
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">Frequently Asked Questions</h2>

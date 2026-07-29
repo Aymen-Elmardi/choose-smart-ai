@@ -3,6 +3,7 @@ import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
+import { BOOKING_URL } from "@/lib/booking";
 
 const ChargebackThresholds = () => {
   const faqs = [
@@ -272,11 +273,11 @@ const ChargebackThresholds = () => {
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
         <h3 className="font-semibold text-foreground mb-2">Find processors that match your dispute profile</h3>
         <p className="text-muted-foreground text-sm mb-4">
-          Run your risk profile to see which payment providers can support your chargeback level and business model.
+          Book a free 15-minute call to find out which payment providers can support your chargeback level and business model.
         </p>
-        <Link to="/assessment" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-          Run My Risk Profile <span aria-hidden>→</span>
-        </Link>
+        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+          Book a 15-Minute Call <span aria-hidden>→</span>
+        </a>
       </div>
     </InsightsArticleLayout>
   );

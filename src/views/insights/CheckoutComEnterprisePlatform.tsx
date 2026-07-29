@@ -132,7 +132,6 @@ const CheckoutComEnterprisePlatform = () => {
 
             <InlineAssessmentCTA
               context="Is Checkout.com's modular approach right for your payment needs? Find out in 2 minutes."
-              cta="Get your risk profile"
             />
 
             {/* Differentiation Section */}

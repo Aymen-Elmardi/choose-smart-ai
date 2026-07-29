@@ -114,7 +114,6 @@ const StripePaymentPlatform = () => {
 
             <InlineAssessmentCTA
               context="Is your business optimised for Stripe's platform — or would another provider be a better fit?"
-              cta="Get your risk profile"
             />
 
             {/* The API Revolution */}

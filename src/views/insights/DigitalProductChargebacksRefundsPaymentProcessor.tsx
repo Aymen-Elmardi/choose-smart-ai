@@ -280,7 +280,6 @@ const DigitalProductChargebacksRefundsPaymentProcessor = () => {
 
       <InlineAssessmentCTA
         context="Managing elevated chargebacks on digital products? Find out which processors are actually built to support your dispute profile."
-        cta="Get your risk profile"
       />
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">Frequently Asked Questions</h2>

@@ -212,7 +212,6 @@ const MastercardThreeDSFeeChangesEurope = () => {
 
       <InlineAssessmentCTA
         context="Want to know whether your current processor is actually optimising your 3DS exemption rate, or just passing every fee straight through?"
-        cta="Get your risk profile"
       />
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">Frequently Asked Questions</h2>

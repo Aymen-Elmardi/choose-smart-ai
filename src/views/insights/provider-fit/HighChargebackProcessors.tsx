@@ -1,7 +1,7 @@
 'use client'
-import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
+import { BOOKING_URL } from "@/lib/booking";
 
 const HighChargebackProcessors = () => {
   const faqs = [
@@ -74,11 +74,11 @@ const HighChargebackProcessors = () => {
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
         <h3 className="font-semibold text-foreground mb-2">Find your best fit</h3>
         <p className="text-muted-foreground text-sm mb-4">
-          Run your risk profile to see which providers tolerate your chargeback level.
+          Book a free 15-minute call to find out which providers tolerate your chargeback level.
         </p>
-        <Link to="/assessment" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-          Run My Risk Profile <span aria-hidden>→</span>
-        </Link>
+        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+          Book a 15-Minute Call <span aria-hidden>→</span>
+        </a>
       </div>
     </InsightsArticleLayout>
   );

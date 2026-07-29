@@ -88,7 +88,6 @@ const RollingVsFixedReserve = () => {
 
         <InlineAssessmentCTA
           context="Want to find providers that won't impose excessive reserves on your business?"
-          cta="Get your risk profile"
         />
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>

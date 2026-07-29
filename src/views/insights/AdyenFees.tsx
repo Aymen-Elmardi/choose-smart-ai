@@ -154,7 +154,6 @@ const AdyenFees = () => {
 
         <InlineAssessmentCTA
           context="Not sure what Adyen would actually charge your business? See how your risk profile affects pricing."
-          cta="Get your risk profile"
         />
       </section>
 

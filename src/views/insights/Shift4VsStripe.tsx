@@ -156,7 +156,6 @@ const Shift4VsStripe = () => {
 
       <InlineAssessmentCTA
         context="Not sure whether Stripe or Shift4 is the right fit for your business? Our assessment matches your risk profile to 21 providers."
-        cta="Run your risk profile"
       />
 
       {/* Online vs In Person */}
@@ -196,7 +195,6 @@ const Shift4VsStripe = () => {
 
       <InlineAssessmentCTA
         context="Understanding your risk profile is the first step to choosing the right provider. See how your business scores across 21 providers."
-        cta="Get your risk profile"
       />
 
       {/* Strategic Verdict */}

@@ -309,7 +309,6 @@ const StripeFees = () => {
 
          <InlineAssessmentCTA
            context="Find out if Stripe Connect fees will work for your marketplace or platform model."
-           cta="Get your risk profile"
          />
 
         {/* Payout Fees */}
@@ -376,7 +375,6 @@ const StripeFees = () => {
 
           <InlineAssessmentCTA
             context="See which providers have better chargeback policies for your industry."
-            cta="Run your risk profile"
           />
         </div>
 

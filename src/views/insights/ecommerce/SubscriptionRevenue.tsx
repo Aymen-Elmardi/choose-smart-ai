@@ -1,8 +1,8 @@
 'use client'
-import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
+import { BOOKING_URL } from "@/lib/booking";
 
 const SubscriptionRevenue = () => {
   const faqs = [
@@ -274,11 +274,11 @@ const SubscriptionRevenue = () => {
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
         <h3 className="font-semibold text-foreground mb-2">Find the right provider for your subscription business</h3>
         <p className="text-muted-foreground text-sm mb-4">
-          Our diagnostic assessment evaluates subscription specific risk signals to match you with providers built for recurring revenue.
+          Book a free 15-minute call and we'll match you with providers built for recurring revenue.
         </p>
-        <Link to="/assessment" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-          Run My Risk Profile <span aria-hidden>→</span>
-        </Link>
+        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+          Book a 15-Minute Call <span aria-hidden>→</span>
+        </a>
       </div>
     </InsightsArticleLayout>
   );

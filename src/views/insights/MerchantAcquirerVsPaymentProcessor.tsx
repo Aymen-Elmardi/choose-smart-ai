@@ -196,7 +196,6 @@ const MerchantAcquirerVsPaymentProcessor = () => {
 
       <InlineAssessmentCTA
         context="Not sure whether your business needs a direct acquiring relationship or an aggregator? Get matched to processors that actually fit your profile."
-        cta="Get your risk profile"
       />
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">Frequently Asked Questions</h2>

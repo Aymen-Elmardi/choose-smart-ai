@@ -1,7 +1,7 @@
 'use client'
-import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
+import { BOOKING_URL } from "@/lib/booking";
 
 const MCC5812Restaurants = () => {
   const faqs = [
@@ -64,11 +64,11 @@ const MCC5812Restaurants = () => {
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
         <h3 className="font-semibold text-foreground mb-2">See which providers fit your food business</h3>
         <p className="text-muted-foreground text-sm mb-4">
-          Our engine evaluates MCC-specific risk signals to match you with the right processor.
+          Book a free 15-minute call and we'll match you with the right processor.
         </p>
-        <Link to="/assessment" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-          Run My Risk Profile <span aria-hidden>→</span>
-        </Link>
+        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+          Book a 15-Minute Call <span aria-hidden>→</span>
+        </a>
       </div>
     </InsightsArticleLayout>
   );

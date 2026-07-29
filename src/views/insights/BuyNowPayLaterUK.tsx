@@ -206,7 +206,6 @@ const BuyNowPayLaterUK = () => {
 
         <InlineAssessmentCTA
           context="Not sure which payment setup — including BNPL — fits your business model? See how your risk profile matches across 21 providers."
-          cta="Check your provider fit"
         />
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">

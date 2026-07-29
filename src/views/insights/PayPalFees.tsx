@@ -365,7 +365,6 @@ const PayPalFees = () => {
 
       <InlineAssessmentCTA
         context="Outgrowing PayPal's pricing? See which providers offer better rates for your volume."
-        cta="Get your risk profile"
       />
 
       {/* FAQ */}

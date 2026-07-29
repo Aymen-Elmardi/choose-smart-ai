@@ -234,7 +234,6 @@ const HowToChoosePaymentProcessor = () => {
 
       <InlineAssessmentCTA
         context="Not sure how your business's risk profile, volume, and transaction mix stack up against what different processors are actually built for?"
-        cta="Match your risk profile"
       />
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-6">Frequently Asked Questions</h2>
