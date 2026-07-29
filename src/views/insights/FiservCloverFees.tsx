@@ -2,9 +2,10 @@
 import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
-import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
+
+const BASE_URL = "https://chosepayments.com";
 
 const sources: Source[] = [
   {
@@ -60,7 +61,7 @@ const FiservCloverFees = () => {
       cluster="pricing"
       currentSlug="fiserv-clover-pricing-explained"
       publishedTime="2026-02-09"
-      modifiedTime="2026-06-12"
+      modifiedTime="2026-07-29"
       keywords={[
         "Clover pricing",
         "Clover fees",
@@ -77,14 +78,44 @@ const FiservCloverFees = () => {
         { name: "Fiserv Clover Pricing Explained", url: "/insights/fiserv-clover-pricing-explained" },
       ]}
     >
-      <FAQSchema faqs={faqs} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+              { "@type": "ListItem", "position": 2, "name": "Insights", "item": `${BASE_URL}/insights` },
+              { "@type": "ListItem", "position": 3, "name": "Fiserv Clover Pricing Explained", "item": `${BASE_URL}/insights/fiserv-clover-pricing-explained` }
+            ]
+          })
+        }}
+      />
 
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
         Fiserv Clover Pricing Explained: What Merchants Pay in 2026
       </h1>
 
       <p className="text-lg text-muted-foreground mb-6">
-        Clover pricing for merchants: hardware, software, and processing fees.
+        Clover Pricing for Merchants: Hardware, Software, and Processing Fees
       </p>
 
       <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
@@ -96,7 +127,7 @@ const FiservCloverFees = () => {
       </p>
 
       <p className="text-sm text-muted-foreground italic mb-12">
-        Last updated: June 2026
+        Last updated: July 2026
       </p>
 
       {/* Hardware */}
