@@ -3,14 +3,14 @@ import { Suspense } from 'react'
 import StripeFees from '@/views/insights/StripeFees'
 
 export const metadata: Metadata = {
-  title: 'Stripe Fees UK 2026: Real Costs Beyond 1.5% + 20p',
-  description: 'Stripe\'s UK card rate is 1.5% + 20p. But that\'s rarely your final bill. Full 2026 breakdown including Connect fees, chargebacks, FX and add-ons most guides skip.',
+  title: 'Stripe Fees & Pricing UK 2026: 1.5% + 20p Explained',
+  description: 'Stripe fees start at 1.5% + 20p, but Connect, chargebacks, FX and add-ons push the real cost higher. See the full 2026 breakdown and what you\'ll actually pay.',
   alternates: { canonical: '/insights/stripe-fees-explained' },
   openGraph: {
     url: 'https://chosepayments.com/insights/stripe-fees-explained',
     images: ['/og-default.png'],
-    title: 'Stripe Fees UK 2026: Real Costs Beyond 1.5% + 20p | ChosePayments',
-    description: 'Stripe\'s UK card rate is 1.5% + 20p. But that\'s rarely your final bill. Full 2026 breakdown including Connect fees, chargebacks, FX and add-ons most guides skip.',
+    title: 'Stripe Fees & Pricing UK 2026: 1.5% + 20p Explained | ChosePayments',
+    description: 'Stripe fees start at 1.5% + 20p, but Connect, chargebacks, FX and add-ons push the real cost higher. See the full 2026 breakdown and what you\'ll actually pay.',
     type: 'article',
   },
 }

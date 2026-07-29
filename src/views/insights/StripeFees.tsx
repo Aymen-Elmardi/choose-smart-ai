@@ -1,10 +1,54 @@
 'use client'
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
-import FAQSchema from "@/components/FAQSchema";
-import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
+
+interface FAQAccordionItem {
+  question: string;
+  answer: string;
+}
+
+/**
+ * Page-scoped accordion for this article only. Unlike the shared FAQAccordion
+ * component, answer text stays mounted (visually collapsed via CSS) so it is
+ * present in the static/SSR HTML rather than only appearing after a user click.
+ */
+const StripeFeesAccordionItem = ({ item }: { item: FAQAccordionItem }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="border border-border rounded-lg overflow-hidden bg-card">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-muted/30 transition-colors"
+        aria-expanded={open}
+      >
+        <span className="font-medium text-foreground text-base">{item.question}</span>
+        <ChevronDown
+          className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      <div
+        className={`px-5 transition-all duration-200 ease-in-out ${
+          open ? "max-h-96 pb-5 opacity-100" : "max-h-0 pb-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        <p className="text-muted-foreground text-base leading-relaxed">{item.answer}</p>
+      </div>
+    </div>
+  );
+};
+
+const StripeFeesAccordion = ({ faqs }: { faqs: FAQAccordionItem[] }) => (
+  <div className="space-y-3">
+    {faqs.map((faq) => (
+      <StripeFeesAccordionItem key={faq.question} item={faq} />
+    ))}
+  </div>
+);
 
 const StripeFees = () => {
   const sources: Source[] = [
@@ -70,6 +114,22 @@ const StripeFees = () => {
     {
       question: "What are Stripe Billing and Invoicing fees?",
       answer: "Stripe Billing (for recurring subscriptions) costs 0.5% of recurring revenue processed through the product. Stripe Invoicing costs 0.4% of the invoice amount. Both are in addition to card processing fees. For SaaS businesses automating subscription collection, these add-ons typically increase the effective total Stripe cost by 0.5% to 1%."
+    },
+    {
+      question: "How much does Stripe charge?",
+      answer: "Stripe charges 1.5% + 20p per transaction for standard UK cards. The rate rises to 1.9% + 20p for premium UK cards, 2.5% + 20p for European cards, and 3.25% + 20p for non-European international cards. There is no monthly fee."
+    },
+    {
+      question: "How much does Stripe cost?",
+      answer: "For a typical UK business taking standard UK card payments, Stripe costs 1.5% + 20p per transaction. The real cost is often higher once Connect fees, chargebacks, FX conversion, and add-ons like Billing or Invoicing are included."
+    },
+    {
+      question: "What percent does Stripe take?",
+      answer: "Stripe takes 1.5% of the transaction value plus a fixed 20p for standard UK cards. The percentage rises for premium, European, and international cards, and additional percentage-based fees apply for FX conversion (2%) and Stripe Billing (0.5%)."
+    },
+    {
+      question: "Does Stripe take a fee?",
+      answer: "Yes. Stripe takes a fee on every transaction it processes. There is no free tier for payment processing. UK card payments start at 1.5% + 20p, with additional fees for chargebacks, Connect accounts, currency conversion, instant payouts, and optional add-on products."
     }
   ];
 
@@ -81,16 +141,27 @@ const StripeFees = () => {
       cluster="pricing"
       currentSlug="stripe-fees-explained"
       publishedTime="2026-02-07"
-      modifiedTime="2026-06-12"
+      modifiedTime="2026-07-29"
       sources={sources}
       keywords={["Stripe fees UK", "Stripe pricing 2026", "Stripe UK processing fees", "Stripe fees explained", "Stripe Connect fees", "Stripe chargeback fee"]}
-      breadcrumbSchemaItems={[
-        { name: "Home", url: "/" },
-        { name: "Insights", url: "/insights" },
-        { name: "Stripe Fees Explained", url: "/insights/stripe-fees-explained" },
-      ]}
     >
-      <FAQSchema faqs={faqs} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
 
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
         Stripe Fees Explained: Real Costs for UK Businesses in 2026
@@ -105,11 +176,11 @@ const StripeFees = () => {
       </p>
 
       <p className="text-muted-foreground mb-4">
-        This guide explains Stripe fees in plain English for 2026. Not just the headline rates, but the charges that appear as your business grows, adds features, or runs a platform or marketplace.
+        This guide explains Stripe fees in plain English for 2026. Not just the headline rates, but the charges that appear as your business grows, adds features, or runs a platform or marketplace. Stripe's commission, the cut it takes per transaction, starts at 1.5% + 20p for standard UK cards. Rates below cover UK, EU and international cards.
       </p>
 
       <p className="text-sm text-muted-foreground italic mb-12">
-        Last updated: June 2026
+        Last updated: July 2026
       </p>
 
       {/* Standard Card Processing Fees */}
@@ -148,7 +219,7 @@ const StripeFees = () => {
         </div>
 
         <p className="text-muted-foreground mb-4">
-          These fees cover card acceptance, basic fraud protection, and standard payouts to your bank account.
+          These processing fees cover card acceptance, basic fraud protection, and standard payouts to your bank account.
         </p>
 
         <p className="text-muted-foreground mb-4">
@@ -704,7 +775,7 @@ const StripeFees = () => {
           Frequently Asked Questions About Stripe Fees
         </h2>
 
-        <FAQAccordion faqs={faqs} />
+        <StripeFeesAccordion faqs={faqs} />
       </section>
 
       {/* Key Takeaway */}
