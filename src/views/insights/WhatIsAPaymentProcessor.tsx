@@ -277,7 +277,9 @@ const WhatIsAPaymentProcessor = () => {
         </p>
 
         <p className="text-muted-foreground">
-          When a single company like Stripe, Square, or PayPal performs all three roles, it is operating as a payment facilitator or aggregator: your business does not get its own merchant account, it becomes a sub-merchant under the aggregator's master account. That arrangement is why signup takes minutes instead of weeks, and it is also why aggregator account freezes can happen with less warning than a traditionally underwritten merchant account would allow.
+          When a single company like Stripe, Square, or PayPal performs all three roles, it is operating as a payment facilitator or aggregator: your business does not get its own merchant account, it becomes a sub-merchant under the aggregator's master account. That arrangement is why signup takes minutes instead of weeks, and it is also why aggregator account freezes can happen with less warning than a traditionally underwritten merchant account would allow. See our full explainer on{" "}
+          <Link to="/insights/third-party-payment-processors" className="text-primary hover:underline">third-party payment processors</Link>{" "}
+          for how that model works in more detail.
         </p>
       </section>
 

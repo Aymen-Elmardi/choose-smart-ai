@@ -327,9 +327,9 @@ const AchPaymentProcessors = () => {
           Key Takeaways
         </h2>
         <p className="text-muted-foreground mb-4">
-          ACH is not a replacement for card acceptance, most consumer-facing checkout still needs cards. But for B2B invoicing, subscription billing, marketplace payouts, and vendor payments, the flat-fee structure of ACH generates savings that scale with transaction size in exactly the way card fees do not. The trade-off is speed and a different fraud profile, both manageable with the account validation practices Nacha now expects, similar in spirit to how{" "}
-          <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment provider risk models</Link>{" "}
-          shape underwriting and monitoring across payment rails generally.
+          ACH is not a replacement for card acceptance, most consumer-facing checkout still needs cards. But for B2B invoicing, subscription billing, marketplace payouts, and vendor payments, the flat-fee structure of ACH generates savings that scale with transaction size in exactly the way card fees do not. The trade-off is speed and a different fraud profile, both manageable with the account validation practices Nacha now expects, the same kind of aggregate-risk oversight that shapes how{" "}
+          <Link to="/insights/third-party-payment-processors" className="text-primary hover:underline">third-party payment processors</Link>{" "}
+          monitor every payment rail they support, not just ACH.
         </p>
         <p className="text-muted-foreground">
           Not sure which mix of ACH and card processing fits your payment flows?{" "}
