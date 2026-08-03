@@ -366,6 +366,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/insights/what-is-a-payment-processor`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/insights/why-card-approval-speed-affects-checkout-abandonment`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
