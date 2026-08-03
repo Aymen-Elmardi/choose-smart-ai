@@ -360,6 +360,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/insights/best-payment-processor-ecommerce`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/insights/digital-product-chargebacks-refunds-payment-processor`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
