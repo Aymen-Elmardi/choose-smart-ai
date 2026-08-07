@@ -18,6 +18,12 @@
 /choose-payment-provider /insights/how-to-choose-a-payment-processor 301
 /insights/payment-provider-vs-acquirer-vs-bank /insights/merchant-acquirer-vs-payment-processor 301
 
+# Dangling URLs found in GSC (crawled/discovered, no page.tsx or redirect ever existed
+# for these in this repo's history) — pointed at the closest live topical match
+/insights/payment-experience-optimization /insights/why-card-approval-speed-affects-checkout-abandonment 301
+/insights/visa-card-brand-fees-2026 /insights/visa-mastercard-control-card-payments 301
+/insights/onboarding-experience /insights/what-to-do-when-provider-asks-for-documents 301
+
 # Wildcard rules MUST stay last: Cloudflare stops applying static rules that come
 # after a dynamic (splat) rule, so anything below this line is silently ignored.
 # Provider deep dives were never nested under /provider/ — flatten to /insights/<slug>
