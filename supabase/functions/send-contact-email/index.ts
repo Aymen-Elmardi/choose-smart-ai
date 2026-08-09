@@ -70,6 +70,9 @@ interface ContactEmailRequest {
   businessName: string;
   message: string;
   honeypot?: string;
+  /** "newsletter" swaps the auto-reply for signup wording. Defaults to the
+   *  contact-form copy so existing callers are unaffected. */
+  type?: "contact" | "newsletter";
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -84,7 +87,8 @@ const handler = async (req: Request): Promise<Response> => {
       return errorResponse("Too many requests. Please try again later.", 429);
     }
 
-    const { name, email, businessName, message, honeypot }: ContactEmailRequest = await req.json();
+    const { name, email, businessName, message, honeypot, type }: ContactEmailRequest = await req.json();
+    const isNewsletter = type === "newsletter";
 
     if (honeypot) {
       console.log("Honeypot triggered, rejecting submission");
@@ -110,8 +114,16 @@ const handler = async (req: Request): Promise<Response> => {
       from: "ChosePayments Contact <onboarding@resend.dev>",
       to: ["hello@chosepayments.com"],
       reply_to: sanitizedEmail,
-      subject: `New contact form message from ${escapeHtml(sanitizedName)}`,
-      html: `
+      subject: isNewsletter
+        ? `New newsletter subscriber: ${escapeHtml(sanitizedEmail)}`
+        : `New contact form message from ${escapeHtml(sanitizedName)}`,
+      html: isNewsletter
+        ? `
+        <h2>New Newsletter Subscriber</h2>
+        <p><strong>Email:</strong> ${escapeHtml(sanitizedEmail)}</p>
+        <p>${escapeHtml(sanitizedMessage)}</p>
+      `
+        : `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${escapeHtml(sanitizedName)}</p>
         <p><strong>Email:</strong> ${escapeHtml(sanitizedEmail)}</p>
@@ -125,8 +137,16 @@ const handler = async (req: Request): Promise<Response> => {
     await resend.emails.send({
       from: "ChosePayments <onboarding@resend.dev>",
       to: [sanitizedEmail],
-      subject: "We received your message",
-      html: `
+      subject: isNewsletter ? "You're subscribed" : "We received your message",
+      html: isNewsletter
+        ? `
+        <h2>You're on the list</h2>
+        <p>Thanks for subscribing to the ChosePayments newsletter. We'll send occasional notes on payment processor pricing, risk and provider behaviour, written for operators. No sales pitches.</p>
+        <p>Start here: <a href="https://chosepayments.com/insights">our latest insights</a>.</p>
+        <br />
+        <p>The ChosePayments Team</p>
+      `
+        : `
         <h2>Thank you for contacting ChosePayments, ${escapeHtml(sanitizedName)}!</h2>
         <p>We have received your message and will get back to you as soon as possible, usually within one working day.</p>
         <p>In the meantime, you might find our <a href="https://chosepayments.com/insights">payment insights</a> helpful.</p>

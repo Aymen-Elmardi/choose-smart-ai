@@ -95,11 +95,6 @@ const META: Record<string, PageMeta> = {
     description:
       "Get in touch with ChosePayments for independent payment advisory services.",
   },
-  "/onboard-with-us": {
-    title: "Onboard With Us | ChosePayments",
-    description:
-      "Start your onboarding with ChosePayments for expert payment provider advisory.",
-  },
 
   // ===== SEO Content Pages =====
   "/best-payment-processor-uk": {

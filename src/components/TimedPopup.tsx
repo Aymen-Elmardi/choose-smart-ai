@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 
 const SESSION_KEY = "cp_timedPopupShown";
-const CTA_SELECTORS = 'a[href="/assessment"], a[href="/contact"], a[href="/onboard-with-us"]';
+const CTA_SELECTORS = 'a[href="/assessment"], a[href="/contact"]';
 
 const TimedPopup = () => {
   const [open, setOpen] = useState(false);

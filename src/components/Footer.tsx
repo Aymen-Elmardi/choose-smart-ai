@@ -4,8 +4,6 @@ import { useState } from "react";
 import { usePathname } from 'next/navigation';
 import { Link } from '@/lib/router-compat';
 import { Linkedin } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
 const Footer = () => {
@@ -15,97 +13,120 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    const value = email.trim();
+    if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return;
 
     setSubmitting(true);
-    try {
-      await supabase.from("popup_submissions").insert({
+    setError(false);
+
+    const page = typeof window !== "undefined" ? window.location.pathname : "";
+
+    // Two independent sinks: the existing submissions table (unchanged, so the
+    // historical record stays intact) and the contact mailbox, so a signup
+    // actually reaches a human rather than only landing in the database.
+    const [stored, mailed] = await Promise.allSettled([
+      supabase.from("popup_submissions").insert({
         popup_type: "newsletter",
         question: "Newsletter signup",
-        email: email.trim(),
-        page_url: window.location.pathname,
-      });
+        email: value,
+        page_url: page,
+      }),
+      supabase.functions.invoke("send-contact-email", {
+        body: {
+          type: "newsletter",
+          name: "Newsletter subscriber",
+          email: value,
+          businessName: "Not provided",
+          message: `Newsletter signup from ${page || "the site"}.`,
+        },
+      }),
+    ]);
+
+    const ok =
+      (stored.status === "fulfilled" && !stored.value.error) ||
+      (mailed.status === "fulfilled" && !mailed.value.error);
+
+    if (ok) {
       setSubscribed(true);
-    } catch {
-      // Silently fail
-    } finally {
-      setSubmitting(false);
+      setEmail("");
+    } else {
+      setError(true);
     }
+    setSubmitting(false);
   };
 
   return (
-    <footer className="bg-background border-t border-border">
-      {/* Newsletter Section */}
-      <div className="section-container py-10 border-b border-border">
-        <div className="max-w-xl mx-auto text-center">
-          <h3 className="text-lg font-semibold text-foreground mb-2">
-            Stay updated on payment processor trends and tips for high-growth merchants
-          </h3>
+    <>
+      <div className="cp-newsletter">
+        <div className="cp-wrap cp-nl-row">
+          <h3>Stay updated on payment processor trends and tips for high-growth merchants</h3>
           {subscribed ? (
-            <p className="text-primary font-medium mt-4">Thanks! You're subscribed.</p>
+            <p className="cp-nl-note" role="status">Thanks. You&apos;re subscribed.</p>
           ) : (
-            <form onSubmit={handleSubscribe} className="flex gap-3 mt-4 max-w-md mx-auto">
-              <Input
+            <form className="cp-nl-form" onSubmit={handleSubscribe}>
+              <label htmlFor="cp-newsletter-email" className="sr-only">Email address</label>
+              <input
+                id="cp-newsletter-email"
                 type="email"
-                placeholder="you@company.com"
+                placeholder="you@business.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 h-11 rounded-full px-4"
                 required
               />
-              <Button type="submit" size="sm" disabled={submitting} className="rounded-full px-6 h-11">
-                {submitting ? "..." : "Subscribe"}
-              </Button>
+              <button type="submit" className="cp-btn cp-btn-primary" disabled={submitting}>
+                {submitting ? "Subscribing…" : "Subscribe"}
+              </button>
+              {error && (
+                <p role="alert" className="w-full text-sm text-[color:var(--cp-text-2)]">
+                  Something went wrong. Email us at{" "}
+                  <a href="mailto:hello@chosepayments.com" className="underline">hello@chosepayments.com</a>.
+                </p>
+              )}
             </form>
           )}
         </div>
       </div>
 
-      <div className="section-container py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-4">
-            <img src="/chosepayments-logo.svg" alt="ChosePayments" className="h-8 w-auto" width={144} height={36} loading="lazy" decoding="async" />
-            <a
-              href="https://www.linkedin.com/company/chosepayments" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
+      <footer className="cp-footer">
+        <div className="cp-wrap">
+          <div className="cp-footer-top">
+            <div className="flex items-center gap-4">
+              <Link to="/" className="cp-nav-logo" aria-label="ChosePayments home">
+                <img src="/logo-mark.png" alt="" width={176} height={192} loading="lazy" decoding="async" />
+                <span className="cp-logotype">Chose<em>Payments</em></span>
+              </Link>
+              <a
+                href="https://www.linkedin.com/company/chosepayments"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[color:var(--cp-text-3)] hover:text-[color:var(--cp-text)] transition-colors"
+                aria-label="ChosePayments on LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
+
+            <nav className="cp-footer-links">
+              <Link to="/about">About</Link>
+              <Link to={insightsHref}>Insights</Link>
+              <Link to="/contact">Contact</Link>
+              <Link to="/faq">FAQ</Link>
+              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/terms">Terms of Service</Link>
+            </nav>
           </div>
-          
-          <nav className="flex flex-wrap justify-center gap-8 text-sm">
-            <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-              About
-            </Link>
-            <Link to={insightsHref} className="text-muted-foreground hover:text-foreground transition-colors">
-              Insights
-            </Link>
-            <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
-              Contact
-            </Link>
-            <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors">
-              FAQ
-            </Link>
-            <Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
-              Terms of Service
-            </Link>
-          </nav>
+
+          <div className="cp-footer-bottom">
+            <span>© 2026 ChosePayments. All rights reserved.</span>
+            <span>Independent Payment Risk Analysis – US, UK &amp; EU</span>
+          </div>
         </div>
-        
-        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          © 2026 ChosePayments. All rights reserved. | Based in the United Kingdom | Independent Payment Risk Analysis
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 

@@ -700,12 +700,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
-    {
-      url: `${BASE_URL}/onboard-with-us`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
 
     // Legal — priority 0.3
     {

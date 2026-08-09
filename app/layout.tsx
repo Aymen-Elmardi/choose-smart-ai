@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import { Providers } from './providers'
@@ -8,6 +8,14 @@ import AppErrorBoundary from '@/components/AppErrorBoundary'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+})
+
+// Headings, logo wordmark and stat numbers in the 2026 homepage design.
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-space-grotesk',
   display: 'swap',
 })
 
@@ -41,7 +49,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      // No SVG variant for the 2026 mark yet. Left out deliberately: browsers
+      // prefer an SVG icon over every PNG, so a stale one silently wins the tab.
       { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
       { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
       { url: '/favicon.ico', sizes: 'any' },
@@ -56,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable} data-scroll-behavior="smooth">
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`} data-scroll-behavior="smooth">
       <body>
         <Providers>
           <AppErrorBoundary>

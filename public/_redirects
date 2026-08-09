@@ -24,6 +24,10 @@
 /insights/visa-card-brand-fees-2026 /insights/visa-mastercard-control-card-payments 301
 /insights/onboarding-experience /insights/what-to-do-when-provider-asks-for-documents 301
 
+# Partner/onboarding page retired 2026-08-09. It was in the sitemap, so send the
+# indexed URL to contact rather than letting it start returning 404s.
+/onboard-with-us /contact 301
+
 # Wildcard rules MUST stay last: Cloudflare stops applying static rules that come
 # after a dynamic (splat) rule, so anything below this line is silently ignored.
 # Provider deep dives were never nested under /provider/ — flatten to /insights/<slug>

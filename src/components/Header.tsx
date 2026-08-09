@@ -1,97 +1,119 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation';
 import { Link } from '@/lib/router-compat';
-import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { BOOKING_URL } from "@/lib/booking";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isUS = pathname === "/us" || (pathname?.startsWith("/us/") ?? false);
-  const isHome = pathname === "/" || pathname === "/us";
-  const ctaLabel = isHome ? "See if you're overpaying" : "Run My Risk Profile";
-  const ctaHref = isHome ? (isUS ? "/statement-review?us=1" : "/statement-review") : "/assessment?start=true";
 
+  // Solid + blurred once the page moves, transparent over the hero at rest.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Section links are absolute (`/#id`) so they also work from article pages,
+  // where they navigate home first and then scroll.
   const navLinks = [
-    { to: "/#how-it-works", label: "How It Works" },
-    { to: isUS ? "/us/insights" : "/insights", label: "Insights" },
-    { to: "/#why-us", label: "Why Us" },
-    { to: "/about", label: "About" },
+    { to: "/#how", label: "How it works", external: false },
+    { to: "/#why", label: "Why us", external: false },
+    { to: "/#use-cases", label: "Use cases", external: false },
+    { to: "/statement-review", label: "Hidden fee check", external: false },
+    { to: isUS ? "/us/insights" : "/insights", label: "Insights", external: false },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background">
-      <div className="section-container">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="ChosePayments home">
-            <img src="/chosepayments-logo.svg" alt="ChosePayments" className="h-8 w-auto shrink-0" width={144} height={36} />
+    <header className={`cp-header${scrolled ? " cp-scrolled" : ""}`}>
+      <div className="cp-wrap">
+        <nav className="cp-nav">
+          <Link to="/" className="cp-nav-logo" aria-label="ChosePayments home">
+            <img src="/logo-mark.png" alt="" width={176} height={192} />
+            <span className="cp-logotype">Chose<em>Payments</em></span>
           </Link>
-          
-          <nav className="hidden lg:flex items-center gap-6">
+
+          <div className="cp-nav-links">
             {navLinks.map((link) => (
-              <Link 
-                key={link.to}
-                to={link.to} 
-                className="text-muted-foreground hover:text-foreground transition-colors text-base font-medium"
-              >
+              <Link key={link.to} to={link.to}>
                 {link.label}
               </Link>
             ))}
-            <Button variant="hero" size="sm" asChild>
-              <Link to="/onboard-with-us">
-                Partner With Us
-              </Link>
-            </Button>
-            <Button variant="hero" size="sm" asChild>
-              <Link to={ctaHref} replace>
-                {ctaLabel}
-              </Link>
-            </Button>
-          </nav>
+          </div>
 
-          {/* Mobile Navigation */}
-          <div className="lg:hidden flex items-center gap-3">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Open menu">
-                  <Menu className="h-5 w-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] pt-12">
-                <nav className="flex flex-col gap-4">
-                  {navLinks.map((link) => (
-                    <SheetClose asChild key={link.to}>
-                      <Link 
-                        to={link.to}
-                        className="text-foreground hover:text-primary transition-colors text-lg font-medium py-2"
+          <div className="cp-nav-right">
+            <Link to="/assessment" className="cp-btn cp-btn-ghost cp-nav-cta-ghost">
+              Risk analysis
+            </Link>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cp-btn cp-btn-primary cp-nav-cta-primary"
+            >
+              Book a call
+            </a>
+
+            {/* Mobile menu. The prototype simply hides the nav below 900px with
+                no replacement; keeping the sheet here so small screens don't
+                lose every navigation entry point. */}
+            <div className="cp-nav-menu">
+              <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label="Open menu"
+                    className="inline-flex items-center justify-center h-10 w-10 rounded-lg text-[color:var(--cp-text)] hover:bg-[color:var(--cp-surface)] transition-colors"
+                  >
+                    <Menu className="h-5 w-5" />
+                  </button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[288px] pt-12">
+                  <nav className="flex flex-col gap-1">
+                    {navLinks.map((link) => (
+                      <SheetClose asChild key={link.to}>
+                        <Link
+                          to={link.to}
+                          className="text-[color:var(--cp-text)] text-lg font-medium py-2.5"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      </SheetClose>
+                    ))}
+                    <SheetClose asChild>
+                      <Link
+                        to="/assessment"
+                        className="cp-btn cp-btn-ghost mt-4 justify-center"
                         onClick={() => setIsOpen(false)}
                       >
-                        {link.label}
+                        Risk analysis
                       </Link>
                     </SheetClose>
-                  ))}
-                  <SheetClose asChild>
-                    <Button variant="hero" className="mt-2 w-fit" asChild>
-                      <Link to="/onboard-with-us" onClick={() => setIsOpen(false)}>
-                        Partner With Us
-                      </Link>
-                    </Button>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Button variant="hero" className="mt-4" asChild>
-                      <Link to={ctaHref} replace onClick={() => setIsOpen(false)}>
-                        {ctaLabel}
-                      </Link>
-                    </Button>
-                  </SheetClose>
-                </nav>
-              </SheetContent>
-            </Sheet>
+                    <SheetClose asChild>
+                      <a
+                        href={BOOKING_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cp-btn cp-btn-primary mt-2 justify-center"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Book a call
+                      </a>
+                    </SheetClose>
+                  </nav>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   );

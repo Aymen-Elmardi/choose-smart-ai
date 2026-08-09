@@ -1,25 +1,25 @@
 'use client'
 import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
+import Footer from "@/components/Footer";
+import CpAmbient from "@/components/home/CpAmbient";
+import CpHero from "@/components/home/CpHero";
+import { useCpReveal } from "@/components/home/useCpReveal";
 import { useCanonical } from "@/hooks/useCanonical";
 import { useSEO } from "@/hooks/useSEO";
 
-// Lazy-load below-fold sections
-const ExampleOutputPreview = lazy(() => import("@/components/ExampleOutputPreview"));
-const HowItWorksSection = lazy(() => import("@/components/HowItWorksSection"));
-const HowPaymentsWorkSection = lazy(() => import("@/components/HowPaymentsWorkSection"));
-const HardTruthSection = lazy(() => import("@/components/HardTruthSection"));
-const SocialProofSection = lazy(() => import("@/components/SocialProofSection"));
-const InsightsPreviewSection = lazy(() => import("@/components/InsightsPreviewSection"));
-const ValuePropsSection = lazy(() => import("@/components/ValuePropsSection"));
-const FAQSection = lazy(() => import("@/components/FAQSection"));
-const ContactCTASection = lazy(() => import("@/components/ContactCTASection"));
-const CTASection = lazy(() => import("@/components/CTASection"));
-const Footer = lazy(() => import("@/components/Footer"));
+// Below-fold sections stay lazy, as before.
+const CpProblem = lazy(() => import("@/components/home/CpProblem"));
+const CpHowItWorks = lazy(() => import("@/components/home/CpHowItWorks"));
+const CpWhyUs = lazy(() => import("@/components/home/CpWhyUs"));
+const CpUseCases = lazy(() => import("@/components/home/CpUseCases"));
+const CpLatestInsights = lazy(() => import("@/components/home/CpLatestInsights"));
+const CpFaq = lazy(() => import("@/components/home/CpFaq"));
+const CpFinalCta = lazy(() => import("@/components/home/CpFinalCta"));
 
 const Index = () => {
   useCanonical();
+  useCpReveal();
 
   useSEO({
     title: "ChosePayments: Free Payment Processor Matching for US and UK Businesses",
@@ -36,26 +36,22 @@ const Index = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="cp-page min-h-screen">
+      <CpAmbient />
       <Header />
       <main>
-        <HeroSection />
+        <CpHero />
         <Suspense fallback={null}>
-          <ExampleOutputPreview />
-          <HowItWorksSection />
-          <HowPaymentsWorkSection />
-          <HardTruthSection />
-          <SocialProofSection />
-          <ValuePropsSection />
-          <InsightsPreviewSection />
-          <FAQSection />
-          <ContactCTASection />
-          <CTASection />
+          <CpProblem />
+          <CpHowItWorks />
+          <CpWhyUs />
+          <CpUseCases />
+          <CpLatestInsights />
+          <CpFaq />
+          <CpFinalCta />
         </Suspense>
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      <Footer />
     </div>
   );
 };
