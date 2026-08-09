@@ -142,7 +142,7 @@ const About = () => {
               <p className="text-muted-foreground leading-relaxed mt-4">
                 For a detailed look at my professional background, you can connect with me on{" "}
                 <a 
-                  href="https://www.linkedin.com/in/aymen-elmardi-3a15b6b2/" 
+                  href="https://www.linkedin.com/in/aymen-elmardi/"
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-primary hover:underline"
