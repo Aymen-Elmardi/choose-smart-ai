@@ -110,8 +110,12 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending contact form email from:", sanitizedEmail);
 
-    await resend.emails.send({
-      from: "ChosePayments Contact <onboarding@resend.dev>",
+    // Sender must be on the verified chosepayments.com domain. The shared
+    // sandbox address (onboarding@resend.dev) only delivers to the Resend
+    // account owner's own address, so every other recipient was rejected —
+    // silently, because the results below were previously not inspected.
+    const notification = await resend.emails.send({
+      from: "ChosePayments <leads@chosepayments.com>",
       to: ["hello@chosepayments.com"],
       reply_to: sanitizedEmail,
       subject: isNewsletter
@@ -134,8 +138,8 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
-    await resend.emails.send({
-      from: "ChosePayments <onboarding@resend.dev>",
+    const autoReply = await resend.emails.send({
+      from: "ChosePayments <hello@chosepayments.com>",
       to: [sanitizedEmail],
       subject: isNewsletter ? "You're subscribed" : "We received your message",
       html: isNewsletter
@@ -156,6 +160,19 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
+    // The Resend SDK resolves with { data, error } instead of throwing, so an
+    // unchecked `await` reports success even when nothing was delivered. Treat a
+    // failed notification as a failed request; a failed auto-reply is logged but
+    // not fatal, since the submission itself already reached the inbox.
+    if (notification.error) {
+      console.error("Resend rejected the notification email:", notification.error);
+      return errorResponse("Could not deliver your message. Please email hello@chosepayments.com.", 502);
+    }
+    if (autoReply.error) {
+      console.error("Resend rejected the auto-reply email:", autoReply.error);
+    }
+
+    console.log("Emails sent:", { notification: notification.data?.id, autoReply: autoReply.data?.id });
     return successResponse();
   } catch (error: unknown) {
     console.error("Error in send-contact-email function:", error);
