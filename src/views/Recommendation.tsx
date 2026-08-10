@@ -1,7 +1,7 @@
 'use client'
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useNavigate } from '@/lib/router-compat';
-import { CreditCard, Check, ArrowRight, Loader2, Mail, ShieldX, AlertTriangle, CheckCircle, Building2, Globe, CreditCard as CardIcon, TrendingUp, ShoppingCart, Tag, Calendar, ChevronDown } from "lucide-react";
+import { Check, ArrowRight, Loader2, Mail, ShieldX, AlertTriangle, CheckCircle, Building2, Globe, CreditCard as CardIcon, TrendingUp, ShoppingCart, Tag, Calendar, ChevronDown } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -363,11 +363,9 @@ const Recommendation = () => {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <a href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <CreditCard className="w-4 h-4 text-primary-foreground" />
-              </div>
-              <span className="font-bold text-foreground">ChosePayments</span>
+            <a href="/" className="flex items-center gap-2" aria-label="ChosePayments home">
+              <img src="/logo-mark.png" alt="" width={176} height={192} className="h-7 w-auto" />
+              <span className="cp-logotype">Chose<em>Payments</em></span>
             </a>
             <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Back to Home
