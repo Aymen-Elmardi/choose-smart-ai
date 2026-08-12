@@ -87,7 +87,7 @@ const schemaGraph = {
         "url": "https://chosepayments.com",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://chosepayments.com/logo.png"
+          "url": "https://chosepayments.com/favicon.png"
         }
       },
       "mainEntityOfPage": {

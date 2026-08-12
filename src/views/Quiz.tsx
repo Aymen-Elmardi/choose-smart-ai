@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate, useLocation, Link } from '@/lib/router-compat';
-import { CreditCard, ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import InsightTransition from "@/components/InsightTransition";
@@ -498,11 +498,9 @@ const QuizHeader = ({
             Back
           </Button>
         ) : (
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <CreditCard className="w-4 h-4 text-primary-foreground" />
-            </div>
-            <span className="font-bold text-foreground">ChosePayments</span>
+          <Link to="/" className="flex items-center gap-2" aria-label="ChosePayments home">
+            <img src="/logo-mark.png" alt="" width={176} height={192} className="h-7 w-auto" />
+            <span className="cp-logotype">Chose<em>Payments</em></span>
           </Link>
         )}
 
