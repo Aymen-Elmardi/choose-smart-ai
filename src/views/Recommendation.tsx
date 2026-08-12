@@ -160,9 +160,13 @@ const Recommendation = () => {
   useEffect(() => {
     if (!answers || !quizComplete) return;
     fetchServerRecommendation(answers).then((result) => {
+      // Whitelist for the "avoid" list shown on the results page. Names must
+      // match the engine roster exactly or they are silently dropped.
       const CURATED_PROVIDERS = [
         "Square", "PayPal", "Adyen", "Datman", "SumUp",
-        "Braintree", "Shift4", "Fiserv (Clover)", "Authorize.Net"
+        "Braintree", "Shift4", "Fiserv (Clover)", "Authorize.Net",
+        // US roster
+        "Quantum ePay", "Easy Pay Direct", "Payline Data",
       ];
       setPrimary(result.primary);
       setAvoid(result.avoid.filter(p => CURATED_PROVIDERS.includes(p.name)));

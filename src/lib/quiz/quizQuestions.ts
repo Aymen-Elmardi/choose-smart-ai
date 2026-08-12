@@ -38,6 +38,13 @@ export const INDUSTRY_OPTIONS = [
  * Get localized contact time options based on location
  */
 export const getContactTimeOptions = (location: string): string[] => {
+  if (location === "US") {
+    return [
+      "Morning (9:00–12:00 ET)",
+      "Afternoon (12:00–17:00 ET)",
+      "Evening (after 17:00 ET)",
+    ];
+  }
   if (location === "EU") {
     return [
       "Morning (9:00–12:00 CET)",
@@ -334,7 +341,7 @@ export const getQuestions = (answers: QuizAnswers): Question[] => {
     id: "location",
     question: "Where is your business based?",
     subtext: "Cross-border activity changes approval rules, settlement timing, and risk review.",
-    options: ["UK", "EU", "UK & EU"],
+    options: ["UK", "EU", "UK & EU", "US"],
   });
 
   // Best Time to Contact (always)

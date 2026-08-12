@@ -49,7 +49,9 @@ const checkIpRateLimit = (clientIp: string, max: number = 10): boolean => {
 
 type PaymentType = "online" | "in-person" | "marketplace" | "subscriptions";
 type TerminalType = "wired" | "portable-sim" | "none";
-type Region = "UK" | "EU" | "both";
+// "both" is legacy shorthand for UK+EU: it predates US support and must never
+// satisfy a US requirement. See providerCoversRegion below.
+type Region = "UK" | "EU" | "US" | "both";
 type RiskLevel = "green" | "amber" | "red";
 type Segment =
   | "self-hosted"
@@ -135,6 +137,17 @@ const PROVIDER_REGISTRY: ProviderConfig[] = [
   { id: "wise", name: "Wise Business", description: "Low-cost multi-currency payments with excellent FX rates, strong for EU cross-border ecommerce.", paymentTypes: ["online"], terminalSupport: ["none"], marketplaceCapability: false, splitPaymentsSupport: false, regions: ["both"], minimumMonthlyVolume: 0, riskAppetite: { "ecommerce": "green", "saas": "green", "professional-services": "green", "digital-goods": "green", "gambling": "red", "adult": "red", "crypto": "red", "subscription-ecommerce": "amber", "food-delivery": "amber", "ticketing": "amber", "education": "green", "gaming": "red" }, exclusions: ["gambling", "adult", "crypto"], strengths: ["multi-currency", "international", "fx-optimization", "low-fees", "transparent-pricing"], segmentFit: ["self-hosted"] },
   { id: "recurly", name: "Recurly", description: "Purpose-built subscription billing platform with advanced dunning and revenue recognition.", paymentTypes: ["subscriptions", "online"], terminalSupport: ["none"], marketplaceCapability: false, splitPaymentsSupport: false, regions: ["both"], minimumMonthlyVolume: 10000, riskAppetite: { "saas": "green", "subscription": "green", "membership": "green", "professional-services": "green", "ecommerce": "green", "gambling": "red", "adult": "red", "subscription-ecommerce": "green", "food-delivery": "red", "ticketing": "amber", "education": "green", "gaming": "red" }, exclusions: ["gambling", "adult"], strengths: ["subscriptions", "recurring-billing", "dunning", "revenue-recognition", "churn-reduction"], segmentFit: ["saas"] },
   { id: "paysafe", name: "Paysafe", description: "Established high-risk specialist with 20+ years supporting regulated and complex industries.", paymentTypes: ["online", "in-person"], terminalSupport: ["wired", "portable-sim"], marketplaceCapability: false, splitPaymentsSupport: false, regions: ["both"], minimumMonthlyVolume: 10000, riskAppetite: { "gambling": "green", "gaming": "green", "adult": "amber", "crypto": "amber", "cbd": "amber", "nutraceuticals": "green", "supplements": "amber", "travel": "green", "ticketing": "green", "ecommerce": "green", "subscription-ecommerce": "green", "food-delivery": "amber", "education": "green", "financial-services": "amber" }, exclusions: [], strengths: ["higher-risk", "established", "reliability", "specialist-industries", "chargeback-management"], segmentFit: ["high-risk"] },
+  // --- US providers -------------------------------------------------------
+  // Sourced from the ChosePayments US Provider Underwriting Matrix. Per that
+  // document: compound ratings ("Amber/red", "Green/amber") are recorded at the
+  // more conservative value; true marketplace split payouts are unverified for
+  // all three so splitPaymentsSupport stays false; and no provider-specific
+  // hard exclusions are asserted, because none of the three publishes an
+  // authoritative prohibited-business schedule. Volume minimums are not
+  // publicly disclosed, so 0 is used rather than an invented floor.
+  { id: "quantum-epay", name: "Quantum ePay", description: "US processor with explicit high-risk support, POS, recurring billing and marketplace-seller workflows across several named specialist categories.", paymentTypes: ["online", "in-person", "subscriptions"], terminalSupport: ["none", "wired"], marketplaceCapability: false, splitPaymentsSupport: false, regions: ["US"], minimumMonthlyVolume: 0, riskAppetite: { "ecommerce": "green", "retail": "green", "hospitality": "green", "food-beverage": "green", "professional-services": "green", "marketplace": "amber", "subscription-ecommerce": "green", "food-delivery": "amber", "ticketing": "amber", "education": "amber", "gaming": "amber", "gambling": "red", "adult": "red", "crypto": "red" }, exclusions: [], strengths: ["high-risk", "cbd", "firearms", "nutraceuticals", "marketing-services", "pos", "recurring", "multi-gateway", "invoicing"], segmentFit: ["high-risk"] },
+  { id: "easy-pay-direct", name: "Easy Pay Direct", description: "US, Canada and EU dedicated-MID provider with the broadest published high-risk and specialty coverage, upfront underwriting, and multi-account transaction routing.", paymentTypes: ["online", "in-person", "subscriptions"], terminalSupport: ["none"], marketplaceCapability: false, splitPaymentsSupport: false, regions: ["US", "UK", "EU"], minimumMonthlyVolume: 0, riskAppetite: { "ecommerce": "green", "retail": "green", "hospitality": "green", "food-beverage": "green", "professional-services": "green", "marketplace": "amber", "subscription-ecommerce": "green", "food-delivery": "amber", "ticketing": "amber", "education": "green", "gaming": "green", "gambling": "red", "adult": "amber", "crypto": "red" }, exclusions: [], strengths: ["broad-high-risk", "regulated", "adult", "cbd-hemp", "cannabis", "firearms", "gaming", "subscriptions", "high-ticket", "high-volume", "multi-account-routing", "international"], segmentFit: ["high-risk", "saas"] },
+  { id: "payline-data", name: "Payline Data", description: "US general-purpose processor for in-person, online, recurring, software and mobile workflows, with transparent pricing and selective high-risk appetite.", paymentTypes: ["online", "in-person", "subscriptions"], terminalSupport: ["none", "wired"], marketplaceCapability: false, splitPaymentsSupport: false, regions: ["US"], minimumMonthlyVolume: 0, riskAppetite: { "ecommerce": "green", "retail": "green", "hospitality": "green", "food-beverage": "green", "professional-services": "green", "marketplace": "amber", "subscription-ecommerce": "amber", "food-delivery": "amber", "ticketing": "amber", "education": "amber", "gaming": "amber", "gambling": "red", "adult": "red", "crypto": "red" }, exclusions: [], strengths: ["general-purpose", "in-person", "online", "recurring", "software-api", "transparent-pricing", "mobile-reader", "selective-high-risk"], segmentFit: ["self-hosted"] },
 ];
 
 // ============================================================================
@@ -210,9 +223,32 @@ const getRequiredPaymentTypes = (answers: QuizAnswers): PaymentType[] => {
 
 const getRequiredRegion = (location: string): Region | null => {
   if (!location) return null;
-  if (location.includes("uk") || location === "united-kingdom") return "UK";
-  if (location.includes("eu") || location.includes("europe")) return "EU";
+  // Answers arrive as "UK" / "EU" / "UK & EU" / "US", so this has to be
+  // case-insensitive. It previously was not, which meant every location fell
+  // through to "both" and the region filter below never eliminated anyone.
+  const l = location.toLowerCase();
+  if (l.includes("us") || l.includes("united states") || l.includes("usa")) return "US";
+  if (l.includes("uk") && l.includes("eu")) return "both";
+  if (l.includes("uk") || l === "united-kingdom") return "UK";
+  if (l.includes("eu") || l.includes("europe")) return "EU";
   return "both";
+};
+
+/**
+ * A provider covers a region if it lists it explicitly. The legacy "both" value
+ * means UK+EU only, so it deliberately does not satisfy "US" — otherwise every
+ * UK/EU provider would be offered to US merchants.
+ */
+const providerCoversRegion = (provider: ProviderConfig, region: Region): boolean => {
+  // "both" as a requirement means the merchant trades in UK *and* EU, so the
+  // provider has to cover both — either via the legacy shorthand or explicitly.
+  if (region === "both") {
+    return provider.regions.includes("both") ||
+      (provider.regions.includes("UK") && provider.regions.includes("EU"));
+  }
+  if (provider.regions.includes(region)) return true;
+  if (region === "US") return false;
+  return provider.regions.includes("both");
 };
 
 const getIndustryFromBusinessType = (businessType: string): string => {
@@ -241,7 +277,7 @@ const applyHardElimination = (providers: ProviderConfig[], answers: QuizAnswers)
       eliminated.push({ name: provider.name, reason: `Does not support required payment type` });
       continue;
     }
-    if (requiredRegion && requiredRegion !== "both" && !provider.regions.includes(requiredRegion) && !provider.regions.includes("both")) {
+    if (requiredRegion && !providerCoversRegion(provider, requiredRegion)) {
       eliminated.push({ name: provider.name, reason: `Region mismatch (${requiredRegion} required)` });
       continue;
     }
