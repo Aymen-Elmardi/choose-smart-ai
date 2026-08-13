@@ -31,6 +31,12 @@ interface InsightsArticleLayoutProps {
   keywords?: string[];
   sources?: Source[];
   breadcrumbSchemaItems?: { name: string; url?: string }[];
+  /**
+   * Article schema `headline`, when it should differ from the SEO title.
+   * Used where the title tag is trimmed for the SERP but the schema headline
+   * should still match the visible H1. Defaults to `title`.
+   */
+  schemaHeadline?: string;
 }
 
 /**
@@ -70,6 +76,7 @@ const InsightsArticleLayout = ({
   keywords,
   sources,
   breadcrumbSchemaItems,
+  schemaHeadline,
 }: InsightsArticleLayoutProps) => {
   // Set SEO meta tags
   useSEO({
@@ -97,7 +104,7 @@ const InsightsArticleLayout = ({
       
       {/* Structured Data */}
       <ArticleSchema
-        title={title}
+        title={schemaHeadline ?? title}
         description={description}
         publishedTime={publishedTime}
         modifiedTime={modifiedTime}

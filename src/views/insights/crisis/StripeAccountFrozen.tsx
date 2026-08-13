@@ -2,6 +2,44 @@
 import { Link } from '@/lib/router-compat';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
+import FAQSchema from "@/components/FAQSchema";
+import FAQAccordion from "@/components/FAQAccordion";
+
+/**
+ * Single source of truth for this article's FAQ: the accordion and the FAQPage
+ * JSON-LD are both generated from this array, so the rendered copy and the
+ * structured data cannot drift apart.
+ */
+const faqItems = [
+  {
+    question: "What is a chargeback?",
+    answer: "A chargeback is a payment reversal initiated by a cardholder through their bank, not a refund you issue voluntarily. It comes with a fee charged to the merchant regardless of whether the merchant ultimately wins or loses the dispute, and it counts against the dispute ratio that processors and card networks monitor.",
+  },
+  {
+    question: "How long does a Stripe account freeze usually last?",
+    answer: "There's no fixed timeline Stripe publishes, and it depends heavily on the reason for the freeze and how quickly you supply the documentation requested. A straightforward volume-spike review can resolve in days once you've sent invoices and shipping records. A freeze tied to elevated chargebacks or account termination is widely reported by affected merchants to hold funds for 90 to 180 days, consistent with covering the dispute window on transactions already processed, though this isn't a figure Stripe states as official policy, treat it as a realistic range to plan around, not a guarantee.",
+  },
+  {
+    question: "What is a provisional credit, and can it be reversed?",
+    answer: "A provisional credit is the temporary refund a cardholder's bank issues the moment a dispute is filed, before the dispute has actually been investigated or decided. It can be reversed back to the merchant if the merchant successfully disputes the chargeback with evidence, but the funds leave the merchant's account immediately regardless of the eventual outcome.",
+  },
+  {
+    question: "What is a Merchant Category Code, and why does it matter for account freezes?",
+    answer: "A Merchant Category Code (MCC) is a four-digit classification assigned by your acquirer that tells card networks what kind of business you run. It's set when you open your account and directly affects your interchange rate, reserve requirements, and risk monitoring. If your product line changes and your MCC doesn't get updated to match, you're operating outside the risk profile your account was approved for, which is a common, avoidable trigger for a manual review.",
+  },
+  {
+    question: "What is a high-risk merchant account?",
+    answer: "A high-risk merchant account is a payment processing relationship with a provider that manually underwrites your business rather than relying on automated risk scoring alone. It typically comes with a higher processing rate or a rolling reserve, but far greater stability for businesses whose transaction patterns, high average order value, future delivery, or elevated chargeback exposure, don't fit a standard platform's risk appetite.",
+  },
+  {
+    question: "Can I get my frozen Stripe funds back?",
+    answer: "In most cases, yes, a freeze is a hold pending review or dispute resolution, not a permanent seizure. Funds are typically released once you've supplied the requested documentation and any open disputes are resolved. The exception is funds tied to disputes you ultimately lose, those are reversed to the cardholder and don't come back.",
+  },
+  {
+    question: "Does Stripe ever permanently close an account instead of just freezing it?",
+    answer: "Yes, if the review finds a serious policy violation, prohibited business activity, or a chargeback ratio that keeps climbing after the first freeze, Stripe can move from a temporary hold to a permanent account closure. A wind-down period commonly reported in the 90 to 180 day range usually follows, during which existing balances are held to cover the remaining dispute window before final release, though Stripe doesn't publish this as a fixed policy figure.",
+  },
+];
 
 const stripeFrozenSources: Source[] = [
   { name: "Visa Rules and Policy", url: "https://usa.visa.com/support/consumer/visa-rules.html", type: "official" },
@@ -13,15 +51,24 @@ const stripeFrozenSources: Source[] = [
 const StripeAccountFrozen = () => {
   return (
     <InsightsArticleLayout
-      title="Stripe Account Frozen?"
-      description="Stripe funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider."
+      title="Stripe Account Frozen? 5 Hidden Reasons Why (2026 Guide)"
+      schemaHeadline="Stripe Account Frozen? The 5 Hidden Reasons Why (And How to Prevent the Next Freeze)"
+      description="Stripe froze your funds without warning? Here are the 5 hidden triggers, what to send them today, and how to stop it happening again."
       category={{ name: "Crisis Intervention", slug: "crisis" }}
       cluster="crisis"
       currentSlug="stripe-account-frozen"
       ctaVariant="default"
-      keywords={["Stripe account frozen", "Stripe funds frozen", "account freeze recovery", "payment account suspended"]}
+      publishedTime="2026-01-17"
+      modifiedTime="2026-08-13"
+      keywords={[
+        "Stripe account frozen", "Stripe funds frozen", "account freeze recovery", "payment account suspended",
+        "what is a chargeback", "chargeback meaning", "provisional credit reversal",
+        "merchant category codes", "high risk merchant account",
+      ]}
       sources={stripeFrozenSources}
     >
+      <FAQSchema faqs={faqItems} />
+
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Stripe Account Frozen? The 5 Hidden Reasons Why (And How to Prevent the Next Freeze)
       </h1>
@@ -95,6 +142,14 @@ const StripeAccountFrozen = () => {
           </p>
         </div>
 
+        <p>
+          Merchant Category Codes are assigned by your acquirer when you open an account, and they're a four-digit classification the card networks use to price interchange and assess risk, not just a label. A business coded as "general retail" that starts processing high-ticket software licences, cryptocurrency-adjacent services, or subscription boxes is now operating outside the risk profile that code was approved for, even if nothing about the business itself feels risky to you.
+        </p>
+
+        <p>
+          This matters beyond the freeze itself. Your MCC affects your interchange rate, your rolling reserve requirements, and how closely your account gets monitored going forward. If you've pivoted your product line in the last twelve months, checking whether your MCC still matches what you actually sell is a five-minute task that can prevent the next review before it starts. For a fuller breakdown of how this classification works, see our guide on <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business</Link>.
+        </p>
+
         <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
           3. The Chargeback Ratio Creep (The Silent Killer)
         </h3>
@@ -131,6 +186,59 @@ const StripeAccountFrozen = () => {
           </p>
         </div>
 
+        {/* INSERT 1 */}
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          What Actually Counts as a Chargeback (And Why It's the Trigger Most Businesses Underestimate)
+        </h2>
+
+        <p>
+          A chargeback happens when a cardholder disputes a transaction directly with their bank instead of contacting you, and the bank reverses the payment before you've had a chance to respond. It's different from a refund, which you issue voluntarily. A chargeback is initiated against you, and it comes with a fee attached regardless of the outcome.
+        </p>
+
+        <p>
+          The reason chargebacks trigger account freezes faster than almost anything else is that they aren't just a Stripe metric, they're a card network metric. Visa and Mastercard both run merchant monitoring programs that track your dispute ratio independently of whatever your processor's internal threshold is. Under Visa's 2026 monitoring update (VAMP), the network-level excessive threshold sits at 1.5% of transactions, down from 2.2% previously, with fines charged per disputed transaction once a merchant crosses it. Stripe's own internal threshold, the one that actually triggers a freeze on your account, is typically tighter than the network figure, which is why a freeze can happen before you've technically breached the card network's own limit.
+        </p>
+
+        <p>
+          This is what makes chargebacks the "silent killer" among the five triggers. Volume spikes and MCC mismatches are visible in your dashboard. A chargeback ratio creeping from 0.4% to 0.9% over a few months often isn't, until the freeze notice arrives.
+        </p>
+
+        <p>
+          <strong className="text-foreground">How the ratio is actually calculated:</strong> chargebacks received in a rolling window (usually the last 30 to 60 days), divided by total transactions in that same window. A business processing 500 transactions a month needs only 4 to 5 disputes to cross the 0.9% to 1.0% range that triggers review. Low transaction volume makes this ratio more volatile, not less risky, a single bad month can look like a trend to an automated system even if it isn't one.
+        </p>
+
+        {/* INSERT 2 */}
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          How a Dispute Actually Moves Through the System
+        </h2>
+
+        <p>
+          Most merchants only see a dispute at the moment it costs them money. Understanding the full sequence explains why disputes freeze funds even before a final decision is made.
+        </p>
+
+        <ol className="list-decimal list-inside space-y-4 ml-4 mt-4">
+          <li>
+            <strong className="text-foreground">The cardholder contacts their bank</strong>, not you, and reports the transaction as unauthorised, not-as-described, or never received.
+          </li>
+          <li>
+            <strong className="text-foreground">The issuing bank often issues a provisional credit</strong> to the cardholder, refunding them while the dispute is investigated. This is standard practice for most card disputes, though the exact requirement varies by card network and region. That credit can be reversed later if the merchant wins the dispute, but the money leaves your processor's hands straight away regardless.
+          </li>
+          <li>
+            <strong className="text-foreground">Your processor pulls the disputed amount from your balance</strong>, plus a dispute fee, and opens an evidence window, commonly around 20 to 30 days though the exact window varies by card network and dispute reason code, during which you can submit proof the transaction was legitimate.
+          </li>
+          <li>
+            <strong className="text-foreground">The card network reviews the evidence</strong> and rules in favour of either the cardholder or the merchant. If you win, the provisional credit is reversed and the funds return to you. If you lose, the reversal is final.
+          </li>
+        </ol>
+
+        <p className="mt-4">
+          The freeze risk isn't really about any single dispute, it's about what a rising dispute count signals to an automated risk model while step 3 and step 4 are still in progress. A processor doesn't wait for the final rulings to come back before acting, a growing pile of open, unresolved disputes looks the same to a risk model as a growing pile of lost ones.
+        </p>
+
+        <p>
+          <strong className="text-foreground">What actually improves your odds in step 3:</strong> transaction records showing the cardholder's IP address and device at the time of purchase, delivery or access confirmation, and any support correspondence with the customer before the dispute was filed. Card network dispute resolution runs on documentation, not persuasion.
+        </p>
+
         <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
           The Long-Term Solution: Preventing the Next Crisis
         </h2>
@@ -160,6 +268,29 @@ const StripeAccountFrozen = () => {
         <p className="mt-4">
           If you've been rejected elsewhere, read our guide on <Link to="/insights/crisis/rejected-high-risk-strategy" className="text-primary hover:underline">finding a risk-aligned provider after rejection</Link>.
         </p>
+
+        {/* INSERT 4 */}
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          Is a High-Risk Merchant Account the Right Fix?
+        </h2>
+
+        <p>
+          Once an account has been frozen, or repeatedly flagged, the honest question isn't "how do I get back in Stripe's good graces," it's whether Stripe was ever the right long-term fit. A high-risk merchant account isn't a downgrade, it's a different underwriting relationship built for businesses whose transaction patterns don't fit an automated, high-volume platform's risk model.
+        </p>
+
+        <p>
+          The practical differences: a high-risk provider underwrites your business manually, with a human reviewing your actual operating history rather than an algorithm pattern-matching against fraud signatures. Approval takes longer, sometimes weeks instead of minutes, but the account is far less likely to be frozen without warning once it's live, because the provider already knows what your normal transaction pattern looks like. The trade-off is usually a higher processing rate and, in some cases, a rolling reserve, the provider's way of pricing in the risk they've already agreed to carry.
+        </p>
+
+        <p>
+          This is the right move if more than one of the five triggers above applies to your business structurally, not as a one-off. A single volume spike from a viral moment is recoverable on Stripe. A business model that inherently involves future delivery, high average order values, or a category card networks treat as elevated risk will keep triggering reviews on a standard platform no matter how clean your documentation is.
+        </p>
+
+        {/* INSERT 5 */}
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-6">
+          Frequently Asked Questions
+        </h2>
+        <FAQAccordion faqs={faqItems} />
       </div>
     </InsightsArticleLayout>
   );
