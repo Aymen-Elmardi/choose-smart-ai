@@ -246,11 +246,11 @@ export const allInsights: Insight[] = [
     readTime: "5 min read"
   },
   {
-    title: "Marketplace Seller Verification: What Providers Need",
+    title: "Marketplace Seller Verification: What Providers Require",
     slug: "marketplace-seller-info",
-    description: "Why marketplace businesses face additional verification for seller and payout information.",
+    description: "Marketplaces face KYB/KYC checks payment providers rarely explain clearly. See exactly what seller documents are required and how to avoid payout delays.",
     category: "compliance",
-    readTime: "4 min read"
+    readTime: "8 min read"
   },
   {
     title: "The Marketplace Founder's Guide to Payment Processing",
