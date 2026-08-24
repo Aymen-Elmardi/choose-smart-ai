@@ -41,8 +41,8 @@ const MarketplaceTakeRate = () => {
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"
       currentSlug="marketplace-take-rate"
-      publishedTime="PASTE ACTUAL PUBLISH DATE HERE, DO NOT GUESS"
-      modifiedTime="PASTE TODAY'S PUBLISH DATE HERE WHEN THIS GOES LIVE"
+      publishedTime="2026-08-24"
+      modifiedTime="2026-08-24"
       keywords={[
         "marketplace take rate", "marketplace commission rate",
         "average marketplace take rate", "how much should a marketplace charge",

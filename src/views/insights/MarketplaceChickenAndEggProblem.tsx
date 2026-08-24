@@ -41,8 +41,8 @@ const MarketplaceChickenAndEggProblem = () => {
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"
       currentSlug="marketplace-chicken-and-egg-problem"
-      publishedTime="PASTE ACTUAL PUBLISH DATE HERE, DO NOT GUESS"
-      modifiedTime="PASTE TODAY'S PUBLISH DATE HERE WHEN THIS GOES LIVE"
+      publishedTime="2026-08-24"
+      modifiedTime="2026-08-24"
       keywords={[
         "chicken and egg problem", "marketplace cold start problem",
         "two-sided marketplace launch", "how to launch a marketplace",
