@@ -260,6 +260,20 @@ export const allInsights: Insight[] = [
     readTime: "12 min read"
   },
   {
+    title: "The Chicken and Egg Problem: How Marketplaces Solve It",
+    slug: "marketplace-chicken-and-egg-problem",
+    description: "The chicken and egg problem stalls most marketplaces before launch. Real examples, 8 proven strategies, and the payout mistake that kills early supply.",
+    category: "guides",
+    readTime: "9 min read"
+  },
+  {
+    title: "Marketplace Take Rate: What to Actually Charge in 2026",
+    slug: "marketplace-take-rate",
+    description: "Marketplace take rate benchmarks by industry, the real formula, and the payment processing cost most founders forget to subtract first.",
+    category: "guides",
+    readTime: "6 min read"
+  },
+  {
     title: "Source of Funds Requests: What They Mean and How to Respond",
     slug: "source-of-funds",
     description: "Learn why providers request bank statements and source of funds documentation.",
