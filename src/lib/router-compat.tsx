@@ -25,6 +25,7 @@ export function Link({ to, href, replace, ...rest }: LinkProps) {
   return <NextLink href={to || href || '/'} replace={replace} {...rest} />
 }
 
+import { useCallback, useEffect } from 'react'
 import {
   useRouter,
   usePathname,
@@ -75,21 +76,49 @@ export function useLocation() {
 // useSearchParams — wraps Next.js's useSearchParams to expose the same
 // .get() / .getAll() interface that react-router-dom provides
 // ---------------------------------------------------------------------------
-export function useSearchParams(): [URLSearchParams, (params: URLSearchParams) => void] {
+type SearchParamsInit =
+  | URLSearchParams
+  | ((prev: URLSearchParams) => URLSearchParams)
+
+type SetSearchParams = (
+  next: SearchParamsInit,
+  options?: { replace?: boolean }
+) => void
+
+export function useSearchParams(): [URLSearchParams, SetSearchParams] {
   const params = useNextSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
+
+  // Referentially stable: callers put this in effect dependency arrays, and an
+  // identity that changed every render would re-run the effect after the
+  // navigation it triggers, looping.
+  const setSearchParams = useCallback<SetSearchParams>(
+    (next, options) => {
+      // Read live rather than closing over `params`, so the callback can stay
+      // out of this hook's dependency list.
+      const current = new URLSearchParams(
+        typeof window !== 'undefined' ? window.location.search : ''
+      )
+      const resolved = typeof next === 'function' ? next(current) : next
+      const query = resolved.toString()
+      const url = query ? `${pathname}?${query}` : pathname
+      // scroll: false — these are same-page query edits, not navigations the
+      // reader asked for; jumping to the top would be wrong.
+      if (options?.replace) router.replace(url, { scroll: false })
+      else router.push(url, { scroll: false })
+    },
+    [router, pathname]
+  )
+
   // Convert ReadonlyURLSearchParams → URLSearchParams for full compat
-  const mutableParams = new URLSearchParams(params.toString())
-  // Setter is a no-op shim (use router.push for actual navigation)
-  const setSearchParams = (_p: URLSearchParams) => {}
-  return [mutableParams, setSearchParams]
+  return [new URLSearchParams(params.toString()), setSearchParams]
 }
 
 // ---------------------------------------------------------------------------
 // Navigate component — renders null, triggers push on mount
 // (Only used for redirect cases; prefer next.config.mjs redirects instead)
 // ---------------------------------------------------------------------------
-import { useEffect } from 'react'
-
 export function Navigate({
   to,
   replace = false,

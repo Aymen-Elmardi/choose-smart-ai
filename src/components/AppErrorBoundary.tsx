@@ -46,7 +46,6 @@ export default class AppErrorBoundary extends React.Component<Props, State> {
     }
 
     // Keep existing global error capture behavior; also log here for visibility.
-    // eslint-disable-next-line no-console
     console.error("AppErrorBoundary caught error:", error);
   }
 

@@ -9,13 +9,8 @@ const nextConfig = {
   // Redirects and headers are handled by public/_redirects and public/_headers
   output: 'export',
 
-  // Skip the auto-generated validator.ts type check during build.
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // Type and lint errors fail the build. They were ignored while the Vite-era
+  // SPA source still sat in the tree and could not compile; that code is gone.
 
   // next/image optimisation requires a server; disable for static export
   images: {
