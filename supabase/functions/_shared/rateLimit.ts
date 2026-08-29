@@ -77,7 +77,15 @@ const countSince = async (
   for (const [k, v] of Object.entries(match)) q = q.eq(k, v);
   const { count, error } = await q;
   if (error) throw error;
-  return count ?? 0;
+  // `head: true` sends a HEAD request, so a failed count comes back with no body
+  // for the client to parse an error out of: both `error` and `count` end up
+  // null. Treating that as 0 would silently read "no requests yet" on every
+  // ledger failure — the limiter would stop limiting and say nothing. A
+  // successful count is always a number, so null here means the read failed.
+  if (typeof count !== "number") {
+    throw new Error("rate limit count unavailable (no count returned)");
+  }
+  return count;
 };
 
 /**
