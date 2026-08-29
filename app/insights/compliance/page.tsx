@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import ComplianceIndex from '@/views/insights/ComplianceIndex'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <ComplianceIndex />
-    </Suspense>
-  )
+  return <ComplianceIndex />
 }

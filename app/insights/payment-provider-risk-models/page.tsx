@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import PaymentProviderRiskModels from '@/views/insights/PaymentProviderRiskModels'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <PaymentProviderRiskModels />
-    </Suspense>
-  )
+  return <PaymentProviderRiskModels />
 }

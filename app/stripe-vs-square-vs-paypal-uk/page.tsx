@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import StripeVsSquareVsPaypal from '@/views/StripeVsSquareVsPaypal'
 
 export const metadata: Metadata = {
@@ -30,9 +29,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <StripeVsSquareVsPaypal />
-    </Suspense>
-  )
+  return <StripeVsSquareVsPaypal />
 }

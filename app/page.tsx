@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import Index from '@/views/Index'
 
 export const metadata: Metadata = {
@@ -29,11 +28,7 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <Index />
-    </Suspense>
-  )
+  return <Index />
 }
 
 // migration test: new MacBook M4 — 2026-05-14

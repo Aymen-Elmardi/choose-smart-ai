@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import PricingModelsIndex from '@/views/insights/PricingModelsIndex'
 
 export const metadata: Metadata = {
@@ -12,9 +11,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <PricingModelsIndex />
-    </Suspense>
-  )
+  return <PricingModelsIndex />
 }

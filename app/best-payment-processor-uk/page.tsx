@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import BestPaymentProcessorUK from '@/views/BestPaymentProcessorUK'
 
 export const metadata: Metadata = {
@@ -29,9 +28,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <BestPaymentProcessorUK />
-    </Suspense>
-  )
+  return <BestPaymentProcessorUK />
 }

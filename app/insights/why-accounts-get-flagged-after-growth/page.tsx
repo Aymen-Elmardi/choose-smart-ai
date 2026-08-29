@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import WhyAccountsFlaggedAfterGrowth from '@/views/insights/WhyAccountsFlaggedAfterGrowth'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <WhyAccountsFlaggedAfterGrowth />
-    </Suspense>
-  )
+  return <WhyAccountsFlaggedAfterGrowth />
 }

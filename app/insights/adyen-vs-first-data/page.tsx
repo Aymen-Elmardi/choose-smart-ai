@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import AdyenVsFirstData from '@/views/insights/AdyenVsFirstData'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <AdyenVsFirstData />
-    </Suspense>
-  )
+  return <AdyenVsFirstData />
 }

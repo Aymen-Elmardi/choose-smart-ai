@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import WhyProvidersReUnderwrite from '@/views/insights/WhyProvidersReUnderwrite'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <WhyProvidersReUnderwrite />
-    </Suspense>
-  )
+  return <WhyProvidersReUnderwrite />
 }

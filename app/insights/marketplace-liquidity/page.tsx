@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import MarketplaceLiquidity from '@/views/insights/MarketplaceLiquidity'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <MarketplaceLiquidity />
-    </Suspense>
-  )
+  return <MarketplaceLiquidity />
 }

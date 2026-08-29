@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import MCC5812Restaurants from '@/views/insights/provider-fit/MCC5812Restaurants'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <MCC5812Restaurants />
-    </Suspense>
-  )
+  return <MCC5812Restaurants />
 }

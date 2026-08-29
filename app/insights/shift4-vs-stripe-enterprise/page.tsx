@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import Shift4VsStripe from '@/views/insights/Shift4VsStripe'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <Shift4VsStripe />
-    </Suspense>
-  )
+  return <Shift4VsStripe />
 }

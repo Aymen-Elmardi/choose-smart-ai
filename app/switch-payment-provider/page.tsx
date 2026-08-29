@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import SwitchProvider from '@/views/SwitchProvider'
 
 export const metadata: Metadata = {
@@ -18,9 +17,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <SwitchProvider />
-    </Suspense>
-  )
+  return <SwitchProvider />
 }

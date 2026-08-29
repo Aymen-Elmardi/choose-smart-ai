@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import InterchangePlusPlus from '@/views/insights/pricing/InterchangePlusPlus'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <InterchangePlusPlus />
-    </Suspense>
-  )
+  return <InterchangePlusPlus />
 }

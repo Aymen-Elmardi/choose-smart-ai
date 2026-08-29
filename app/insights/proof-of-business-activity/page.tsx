@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import ProofOfBusinessActivity from '@/views/insights/ProofOfBusinessActivity'
 
 export const metadata: Metadata = {
@@ -12,9 +11,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <ProofOfBusinessActivity />
-    </Suspense>
-  )
+  return <ProofOfBusinessActivity />
 }

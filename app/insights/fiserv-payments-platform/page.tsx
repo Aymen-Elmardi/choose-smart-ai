@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import FiservPaymentsPlatform from '@/views/insights/FiservPaymentsPlatform'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <FiservPaymentsPlatform />
-    </Suspense>
-  )
+  return <FiservPaymentsPlatform />
 }

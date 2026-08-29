@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import PaymentGatewayVsPaymentProcessor from '@/views/insights/PaymentGatewayVsPaymentProcessor'
 
 export const metadata: Metadata = {
@@ -16,9 +15,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <PaymentGatewayVsPaymentProcessor />
-    </Suspense>
-  )
+  return <PaymentGatewayVsPaymentProcessor />
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import StripeAlternatives from '@/views/StripeAlternatives'
 
 export const metadata: Metadata = {
@@ -24,9 +23,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense>
-      <StripeAlternatives />
-    </Suspense>
-  )
+  return <StripeAlternatives />
 }
