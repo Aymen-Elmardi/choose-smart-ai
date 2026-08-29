@@ -37,3 +37,10 @@ out/
 .wrangler/
 supabase/.temp/
 tsconfig.tsbuildinfo
+
+# Supabase CLI local state
+supabase/.branches/
+
+# Local tooling / session notes (not part of the build)
+.claude/
+PROGRESS.md
