@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   // "/" route specifically (reproduced in the static export build output —
   // every other route templates correctly). Spelling out the final string here
   // avoids depending on that.
-  title: 'Payment Processor Matching for UK Merchants | ChosePayments',
+  title: 'Payment Processor Matching for US, UK & EU Merchants | ChosePayments',
   description: 'Find the right payment processor for your business. Avoid frozen accounts and rejections. Get matched with a provider that fits your risk profile in 2 minutes.',
   keywords: [
     'payment provider risk profile',
