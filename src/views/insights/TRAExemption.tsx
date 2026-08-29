@@ -1,7 +1,6 @@
 'use client'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import Link from 'next/link';
 import SourcesCitation from "@/components/SourcesCitation";
@@ -14,20 +13,6 @@ const traSources = [
 ];
 
 const TRAExemption = () => {
-  useSEO({
-    title: "TRA Exemption: Reduce Friction & Improve Approval Rates",
-    description: "TRA exemption explained: how it reduces checkout friction and improves approval odds. See if your business qualifies and how to use it to lower fraud.",
-    keywords: [
-      "tra exemption",
-      "tra exemptions",
-      "transaction risk analysis",
-      "TRA",
-      "SCA exemption",
-      "payment friction",
-      "approval rates",
-      "checkout abandonment",
-    ],
-  });
 
   return (
     <div className="min-h-screen bg-background">

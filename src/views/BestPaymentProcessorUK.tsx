@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/table";
 import { useEffect } from "react";
 import { useCanonical } from "@/hooks/useCanonical";
-import { useSEO } from "@/hooks/useSEO";
 import ComparisonTableSchema from "@/components/ComparisonTableSchema";
 import FAQSchema from "@/components/FAQSchema";
 
@@ -101,23 +100,6 @@ const faqs = [
 const BestPaymentProcessorUK = () => {
   useCanonical();
   
-  useSEO({
-    title: "Best Payment Processors for UK Merchants: Find Your Fit",
-    description: "Best UK payment processors for ecommerce, SaaS, and marketplaces. Compare Stripe, Adyen, Checkout.com. See which processor approves your business type.",
-    keywords: [
-      "best payment processor UK",
-      "best small business payment systems",
-      "best small business payment solution",
-      "best payment solutions for small businesses",
-      "cheapest business payment solutions uk",
-      "cheap business payment solutions uk",
-      "payment processor price comparison uk",
-      "recommend business payment solutions in uk",
-      "payment processor risk UK",
-      "payment provider assessment",
-      "UK business payment fit",
-    ],
-  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

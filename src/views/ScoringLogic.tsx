@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import ScoringFlowchart from "@/components/ScoringFlowchart";
 import RiskHeatmap from "@/components/RiskHeatmap";
 import ScoringWalkthrough from "@/components/ScoringWalkthrough";
-import { useSEO } from "@/hooks/useSEO";
 import { PROVIDER_REGISTRY, SCORING_DIMENSIONS, ELIMINATION_RULES } from "@/lib/scoringData";
 import { Card, CardContent } from "@/components/ui/card";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
@@ -13,10 +12,6 @@ import { Shield, AlertTriangle, XCircle } from "lucide-react";
 import { BOOKING_URL } from "@/lib/booking";
 
 const ScoringLogic = () => {
-  useSEO({
-    title: "How We Match You to a Provider | Scoring Logic Explained | ChosePayments",
-    description: "See exactly how our recommendation engine eliminates, scores, and ranks 21 payment providers. No black boxes — full transparency.",
-  });
 
   const [openRule, setOpenRule] = useState<number | null>(null);
 

@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import { ArrowLeft, FileText } from "lucide-react";
 
 const guideArticles = [
@@ -69,10 +68,6 @@ const guideArticles = [
 ];
 
 const Guides = () => {
-  useSEO({
-    title: "Practical Guides | ChosePayments Insights",
-    description: "Step-by-step guides on payment provider verification, documentation requirements, and how to respond to compliance requests."
-  });
 
   return (
     <div className="min-h-screen bg-background">

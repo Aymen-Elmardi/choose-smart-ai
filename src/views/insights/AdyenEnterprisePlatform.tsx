@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import SourcesCitation from "@/components/SourcesCitation";
@@ -17,22 +16,6 @@ const adyenSources = [
 ];
 
 const AdyenEnterprisePlatform = () => {
-  useSEO({
-    title: "Adyen for Enterprises: When It's Better Than Stripe",
-    description: "Adyen vs Stripe for enterprise. Unified platform, global reach, lower fees at scale. See if Adyen's infrastructure fits your business model and volume needs.",
-    keywords: [
-      "adyen payments",
-      "adyen payment gateway",
-      "adyen platform",
-      "adyen marketplace",
-      "adyen unified commerce",
-      "what does adyen do",
-      "is adyen a payment processor",
-      "adyen alternative",
-      "adyen enterprise",
-      "adyen acquiring",
-    ],
-  });
 
   const faqItems = [
     {

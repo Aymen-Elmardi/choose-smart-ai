@@ -5,16 +5,10 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
-import { useSEO } from "@/hooks/useSEO";
 
 const StripeAlternatives = () => {
   useCanonical();
   
-  useSEO({
-    title: "Stripe Alternatives for Marketplaces: Risk Assessment & Provider Fit",
-    description: "Stripe Connect isn't always the right fit. Understand which marketplace payment providers match your risk profile, onboarding needs, and operational reality.",
-    keywords: ["Stripe alternatives", "marketplace payment risk", "Stripe Connect assessment", "platform payment fit"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

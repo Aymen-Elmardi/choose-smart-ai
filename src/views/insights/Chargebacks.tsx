@@ -3,7 +3,6 @@ import { useState } from "react";
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import { Button } from "@/components/ui/button";
 import FraudPreventionModal from "@/components/FraudPreventionModal";
@@ -44,19 +43,6 @@ const Chargebacks = () => {
       answer: "If chargebacks rise suddenly or stay high over time, payment providers may delay payouts, hold reserves from your funds, increase processing fees, or suspend or close your account entirely."
     }
   ];
-  useSEO({
-    title: "Chargebacks Explained: Costs, Causes, and How to Reduce Them (UK & EU)",
-    description: "Too many chargebacks can freeze your account. Learn what a chargeback fee is, how chargebacks work, and how to reduce them before they damage your business.",
-    keywords: [
-      "chargebacks",
-      "too many chargebacks",
-      "what is a chargeback fee",
-      "how do chargebacks work",
-      "chargeback costs",
-      "reduce chargebacks",
-      "chargeback prevention",
-    ],
-  });
 
   return (
     <div className="min-h-screen flex flex-col bg-background">

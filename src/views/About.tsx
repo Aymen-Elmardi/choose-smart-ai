@@ -1,14 +1,8 @@
 'use client'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 
 const About = () => {
-  useSEO({
-    title: "Independent Payment Advisory | Why ChosePayments is Different",
-    description: "We're not a comparison site. ChosePayments provides expert risk assessment and strategic guidance, helping businesses avoid payment provider mismatch before it costs them.",
-    keywords: ["independent payment advisory", "payment risk assessment", "payment risk analysis", "ChosePayments"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

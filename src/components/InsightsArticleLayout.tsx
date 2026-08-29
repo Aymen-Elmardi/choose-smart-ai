@@ -11,7 +11,6 @@ import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
 import { ContentCluster } from "@/lib/insightsArchitecture";
-import { useSEO } from "@/hooks/useSEO";
 
 interface InsightsArticleLayoutProps {
   children: ReactNode;
@@ -84,15 +83,6 @@ const InsightsArticleLayout = ({
   image,
   schemaHeadline,
 }: InsightsArticleLayoutProps) => {
-  // Set SEO meta tags
-  useSEO({
-    title: `${title} | ChosePayments`,
-    description,
-    ogType: "article",
-    publishedTime,
-    modifiedTime,
-    keywords,
-  });
 
   // Build breadcrumb items for schema (overridable per article)
   const breadcrumbItems = breadcrumbSchemaItems ?? [

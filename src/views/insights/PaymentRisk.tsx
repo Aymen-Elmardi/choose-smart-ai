@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import { ArrowLeft, AlertTriangle } from "lucide-react";
 
 const paymentRiskArticles = [
@@ -39,10 +38,6 @@ const paymentRiskArticles = [
 ];
 
 const PaymentRisk = () => {
-  useSEO({
-    title: "Payment Risk & Account Freezes | ChosePayments Insights",
-    description: "Understand why payment accounts get flagged, frozen, or reviewed. Learn about account freezes, re-underwriting, and how to reduce payment risk."
-  });
 
   return (
     <div className="min-h-screen bg-background">

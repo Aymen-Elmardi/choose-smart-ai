@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
-import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
@@ -18,10 +17,6 @@ const stripeSources = [
 ];
 
 const StripePaymentPlatform = () => {
-  useSEO({
-    title: "Stripe: The Engine That Built the Modern Internet Economy | ChosePayments",
-    description: "Stripe revolutionized digital commerce with its developer-first API and unified financial infrastructure. Learn how to optimize your business for Stripe's platform."
-  });
 
   const faqs = [
     {

@@ -6,7 +6,6 @@ import CpAmbient from "@/components/home/CpAmbient";
 import CpHero from "@/components/home/CpHero";
 import { useCpReveal } from "@/components/home/useCpReveal";
 import { useCanonical } from "@/hooks/useCanonical";
-import { useSEO } from "@/hooks/useSEO";
 
 // Below-fold sections stay lazy, as before.
 const CpProblem = lazy(() => import("@/components/home/CpProblem"));
@@ -21,19 +20,6 @@ const Index = () => {
   useCanonical();
   useCpReveal();
 
-  useSEO({
-    title: "ChosePayments: Free Payment Processor Matching for US and UK Businesses",
-    description:
-      "Stop overpaying. Stop getting frozen. ChosePayments matches your business to the right payment processor for free. US, UK and EU coverage across all industries.",
-    ogType: "website",
-    keywords: [
-      "payment provider risk profile",
-      "best payment processor for my business",
-      "payment provider matching",
-      "merchant risk assessment",
-      "payment provider fit",
-    ],
-  });
 
   return (
     <div className="cp-page min-h-screen">

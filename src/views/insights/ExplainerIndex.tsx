@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -106,11 +105,6 @@ const faqs = [
 ];
 
 const ExplainerIndex = () => {
-  useSEO({
-    title: "Payment Explainers: Terms & Mechanics Merchants Need to Know | ChosePayments",
-    description: "Plain-English explainers on payment settlement, reserves, wallet payments, SCA exemptions, and the acronyms every merchant runs into — without the jargon.",
-    keywords: ["payment explainer", "payment terms", "settlement explained", "SCA exemption", "payment acronyms"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

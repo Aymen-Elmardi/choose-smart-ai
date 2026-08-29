@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -54,11 +53,6 @@ const faqs = [
 ];
 
 const EcommerceIndex = () => {
-  useSEO({
-    title: "Ecommerce Payment Strategy: Growth, Recurring Billing & Chargebacks | ChosePayments",
-    description: "Payment strategy guides for scaling ecommerce businesses — moving past a high-risk label, structuring recurring billing, and managing chargeback thresholds.",
-    keywords: ["high risk ecommerce", "recurring billing payments", "chargeback thresholds", "ecommerce payment strategy"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

@@ -4,7 +4,6 @@ import { ArrowRight, Shield, CheckCircle, AlertTriangle, ChevronDown } from "luc
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { useSEO } from "@/hooks/useSEO";
 import { useInView } from "@/hooks/useInView";
 
 const RiskProfileMatching = () => {
@@ -12,18 +11,6 @@ const RiskProfileMatching = () => {
   const { ref: exampleRef, isInView: exampleVisible } = useInView<HTMLElement>({ threshold: 0.15 });
   const { ref: factorsRef, isInView: factorsVisible } = useInView<HTMLElement>({ threshold: 0.15 });
 
-  useSEO({
-    title: "Risk-Profile Matching: Never Choose the Wrong Payment Processor | ChosePayments",
-    description:
-      "Our engine matches payment providers to your business risk profile. Stop choosing processors based on marketing. Find the one that actually fits your industry, volume, and model.",
-    keywords: [
-      "payment processor matching",
-      "risk profile payment provider",
-      "best payment processor for my business",
-      "payment provider risk fit",
-      "merchant risk profile",
-    ],
-  });
 
   return (
     <div className="min-h-screen bg-background">

@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -60,11 +59,6 @@ const faqs = [
 ];
 
 const ComplianceIndex = () => {
-  useSEO({
-    title: "Payment Compliance: Scheme Rules, Reserves & Monitoring | ChosePayments",
-    description: "How Visa and Mastercard scheme rules, reserve requirements, and monitoring programmes actually work — and what triggers them for merchants.",
-    keywords: ["scheme rules", "rolling reserve", "visa mastercard rules", "chargeback monitoring programme", "payment compliance"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

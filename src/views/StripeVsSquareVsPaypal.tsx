@@ -14,7 +14,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useCanonical } from "@/hooks/useCanonical";
-import { useSEO } from "@/hooks/useSEO";
 import ComparisonTableSchema from "@/components/ComparisonTableSchema";
 import FAQSchema from "@/components/FAQSchema";
 
@@ -76,24 +75,6 @@ const faqs = [
 const StripeVsSquareVsPaypal = () => {
   useCanonical();
   
-  useSEO({
-    title: "Stripe vs Square vs PayPal: UK Comparison & Costs",
-    description: "Pricing, fees, approval odds, and which processor fits high-growth merchants. Avoid the wrong choice.",
-    keywords: [
-      "stripe vs square vs paypal",
-      "stripe vs paypal",
-      "paypal vs stripe vs square",
-      "square vs stripe vs paypal",
-      "stripe vs paypal uk",
-      "stripe vs square uk",
-      "stripe vs paypal fees uk",
-      "stripe vs square fees uk",
-      "payment provider comparison UK",
-      "Stripe risk assessment",
-      "Square approval criteria",
-      "PayPal underwriting",
-    ],
-  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

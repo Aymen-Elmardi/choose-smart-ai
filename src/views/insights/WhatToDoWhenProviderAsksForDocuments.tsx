@@ -3,7 +3,6 @@ import { useState } from "react";
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import ChecklistEmailModal from "@/components/ChecklistEmailModal";
 import HowToSchema from "@/components/HowToSchema";
 import ArticleActions from "@/components/ArticleActions";
@@ -30,10 +29,6 @@ const howToSteps = [
 const WhatToDoWhenProviderAsksForDocuments = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useSEO({
-    title: "What To Do When a Payment Provider Asks for More Documents | ChosePayments",
-    description: "Learn why payment providers request additional documents, what these requests mean, and how to respond confidently. Includes a document checklist."
-  });
 
   return (
     <div className="min-h-screen bg-background">

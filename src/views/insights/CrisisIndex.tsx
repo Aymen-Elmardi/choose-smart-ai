@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import { AlertTriangle, DollarSign, ShieldAlert } from "lucide-react";
 
 const crisisArticles = [
@@ -27,11 +26,6 @@ const crisisArticles = [
 ];
 
 const CrisisIndex = () => {
-  useSEO({
-    title: "Crisis Intervention Guides | ChosePayments",
-    description: "Urgent guides for merchants dealing with frozen accounts, hidden fees, or provider rejections. Practical steps to recover and find the right payment partner.",
-    keywords: ["account frozen", "payment crisis", "provider rejection", "hidden fees", "recovery plan"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

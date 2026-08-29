@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -60,11 +59,6 @@ const faqs = [
 ];
 
 const ProviderFitIndex = () => {
-  useSEO({
-    title: "Provider Fit Guides: The Right Payment Processor for Your Business Model | ChosePayments",
-    description: "Matching guides for subscription billing, high-risk ecommerce, high chargeback rates, restaurants, and food delivery — find providers built for your specific business model.",
-    keywords: ["payment provider for subscription business", "high risk ecommerce processor", "restaurant payment gateway", "food delivery acquirer"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

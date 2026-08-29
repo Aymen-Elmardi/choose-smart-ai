@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import HowToSchema from "@/components/HowToSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
@@ -31,17 +30,6 @@ const howToSteps = [
 ];
 
 const SourceOfFunds = () => {
-  useSEO({
-    title: "Source of Funds Requests: What They Mean and How to Respond | ChosePayments",
-    description: "Wondering why your bank is asking for source of funds? Learn why payment providers request bank statements and source of funds documentation, and how to respond.",
-    keywords: [
-      "source of funds",
-      "why is bank asking for source of funds",
-      "bank statement request",
-      "AML compliance",
-      "payment verification",
-    ],
-  });
 
   return (
     <div className="min-h-screen bg-background">

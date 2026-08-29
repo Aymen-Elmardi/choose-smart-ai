@@ -1,7 +1,6 @@
 'use client'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import { useCanonical } from "@/hooks/useCanonical";
 import Link from 'next/link';
 import { ArrowRight } from "lucide-react";
@@ -49,11 +48,6 @@ const clusters = [
 ];
 
 const MerchantAccountProblems = () => {
-  useSEO({
-    title: "Merchant Account Problems Explained | ChosePayments",
-    description:
-      "Funds withheld, reserves imposed, fees higher than expected. Understand what your payment provider is doing and why, clearly explained.",
-  });
   useCanonical();
 
   return (

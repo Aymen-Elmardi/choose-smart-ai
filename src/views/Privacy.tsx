@@ -1,13 +1,8 @@
 'use client'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 
 const Privacy = () => {
-  useSEO({
-    title: "Privacy Policy | ChosePayments",
-    description: "Learn how ChosePayments collects, uses, and protects your personal information when using our payment provider recommendation service."
-  });
 
   return (
     <div className="min-h-screen flex flex-col bg-background">

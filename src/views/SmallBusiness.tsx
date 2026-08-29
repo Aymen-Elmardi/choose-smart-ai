@@ -5,16 +5,10 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
-import { useSEO } from "@/hooks/useSEO";
 
 const SmallBusiness = () => {
   useCanonical();
   
-  useSEO({
-    title: "Small Business Payment Risk: Finding a Provider That Won't Freeze You",
-    description: "Most small businesses choose a payment provider too quickly — and regret it. Understand your risk profile and find a provider that actually fits your business.",
-    keywords: ["small business payment risk", "payment provider fit", "UK small business payments", "provider approval"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

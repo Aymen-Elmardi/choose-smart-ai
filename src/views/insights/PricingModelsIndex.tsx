@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import { Calculator, BarChart3 } from "lucide-react";
 
 const pricingArticles = [
@@ -21,11 +20,6 @@ const pricingArticles = [
 ];
 
 const PricingModelsIndex = () => {
-  useSEO({
-    title: "Payment Pricing Models Explained | ChosePayments",
-    description: "Understand the difference between Interchange++, blended pricing, and other payment processing fee structures. Learn which pricing model saves you the most.",
-    keywords: ["interchange plus plus", "blended pricing", "payment fees", "pricing models"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

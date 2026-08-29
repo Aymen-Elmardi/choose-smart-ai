@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
-import { useSEO } from "@/hooks/useSEO";
 import HowToSchema from "@/components/HowToSchema";
 
 const howToSteps = [
@@ -43,10 +42,6 @@ const howToSteps = [
 const SwitchProvider = () => {
   useCanonical();
   
-  useSEO({
-    title: "Switching Payment Providers — What to Check First",
-    description: "Stuck with the wrong provider? Learn how to leave without exit fees, fund holds, or unnecessary disruption.",
-  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,10 +27,6 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
-  useSEO({
-    title: "Contact Us | ChosePayments",
-    description: "Get in touch with ChosePayments. We provide independent payment advisory services to help businesses find the right payment provider."
-  });
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),

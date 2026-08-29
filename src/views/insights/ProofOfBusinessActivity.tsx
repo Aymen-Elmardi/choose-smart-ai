@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import HowToSchema from "@/components/HowToSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
@@ -35,10 +34,6 @@ const howToSteps = [
 ];
 
 const ProofOfBusinessActivity = () => {
-  useSEO({
-    title: "Understanding Proof of Business Activity Requests | ChosePayments",
-    description: "Understanding why payment providers ask for proof of business activity and how to prepare your documentation."
-  });
 
   return (
     <div className="min-h-screen bg-background">

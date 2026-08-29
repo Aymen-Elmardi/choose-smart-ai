@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -66,11 +65,6 @@ const faqs = [
 ];
 
 const FeesIndex = () => {
-  useSEO({
-    title: "Payment Provider Fees & Costs Explained (2026) | ChosePayments",
-    description: "Real 2026 fee breakdowns for Stripe, Checkout.com, Adyen, PayPal, and Fiserv Clover — what you actually pay beyond the headline rate, including add-ons most guides skip.",
-    keywords: ["payment processing fees", "stripe fees", "checkout.com fees", "adyen pricing", "paypal fees", "clover pricing"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

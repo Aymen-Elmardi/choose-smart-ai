@@ -3,7 +3,6 @@ import { useState, useMemo, useEffect } from "react";
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import { Search, ArrowRight, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
@@ -34,11 +33,6 @@ const Insights = ({ globalOnly = false }: { globalOnly?: boolean }) => {
     if (filter) setActiveFilter(filter);
   }, []);
 
-  useSEO({
-    title: "Expert Insights: What Payment Providers Don't Tell You | ChosePayments",
-    description: "Insider knowledge on payment provider risk, underwriting criteria, account freezes, and why businesses get rejected. Strategic guidance from industry experts.",
-    keywords: ["payment provider insights", "payment risk", "underwriting criteria", "account freezes", "provider rejection"],
-  });
 
   const filteredInsights = useMemo(() => {
     const base = globalOnly ? allInsights.filter((a) => a.global) : allInsights;

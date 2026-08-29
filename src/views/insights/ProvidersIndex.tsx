@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -84,11 +83,6 @@ const faqs = [
 ];
 
 const ProvidersIndex = () => {
-  useSEO({
-    title: "Payment Provider Deep Dives: Stripe, Adyen, Checkout.com & More | ChosePayments",
-    description: "In-depth, independent reviews of the major payment platforms — Stripe, Adyen, Checkout.com, Shift4, Fiserv, and PayPal — covering architecture, risk appetite, and who each one actually fits.",
-    keywords: ["payment provider review", "stripe review", "adyen review", "checkout.com review", "enterprise payment platform"],
-  });
 
   return (
     <div className="min-h-screen bg-background">

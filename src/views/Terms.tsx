@@ -1,13 +1,8 @@
 'use client'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 
 const Terms = () => {
-  useSEO({
-    title: "Terms of Service | ChosePayments",
-    description: "Terms of Service for ChosePayments. Read our terms and conditions for using our payment provider advisory services."
-  });
 
   return (
     <div className="min-h-screen flex flex-col bg-background">

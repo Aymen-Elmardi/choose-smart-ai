@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useSEO } from "@/hooks/useSEO";
 import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import SourcesCitation from "@/components/SourcesCitation";
@@ -17,18 +16,6 @@ const checkoutComSources = [
 ];
 
 const CheckoutComEnterprisePlatform = () => {
-  useSEO({
-    title: "Checkout.com: The High-Performance Platform Built for Global Ambition | ChosePayments",
-    description: "Discover why Checkout.com's modular architecture delivers superior authorization rates and granular control for high-growth global merchants. Learn about the Checkout.com API, local acquiring, and customizable risk engines.",
-    keywords: [
-      "checkout.com",
-      "checkout.com api",
-      "checkout.com enterprise",
-      "checkout.com payments",
-      "payment platform",
-      "global payments",
-    ],
-  });
 
   const faqItems = [
     {

@@ -5,7 +5,6 @@ import { ChevronDown, ArrowRight, HelpCircle, Shield, ClipboardCheck } from "luc
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
-import { useSEO } from "@/hooks/useSEO";
 import { useCanonical } from "@/hooks/useCanonical";
 
 interface FAQItem {
@@ -151,11 +150,6 @@ const AccordionItem = ({ item }: { item: FAQItem }) => {
 };
 
 const FAQ = () => {
-  useSEO({
-    title: "Frequently Asked Questions | ChosePayments",
-    description:
-      "Answers to common questions about how ChosePayments works, how we make money, payment provider matching, and merchant risk assessment.",
-  });
   useCanonical();
 
   const sections: FAQSection[] = [

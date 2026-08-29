@@ -5,16 +5,10 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
-import { useSEO } from "@/hooks/useSEO";
 
 const MarketplacePlatforms = () => {
   useCanonical();
   
-  useSEO({
-    title: "Marketplace Payment Risk Assessment: Why Platforms Get Extra Scrutiny",
-    description: "Building a marketplace? Understand why payment providers scrutinise platforms differently — and which providers actually fit your compliance and payout needs.",
-    keywords: ["marketplace payment risk", "platform payment assessment", "split payments UK", "marketplace compliance"],
-  });
 
   return (
     <div className="min-h-screen bg-background">
