@@ -6,15 +6,9 @@ const BASE_URL = 'https://chosepayments.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    // Homepage & US — priority 1.0
+    // Homepage — priority 1.0
     {
       url: `${BASE_URL}/`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${BASE_URL}/us`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1.0,
@@ -35,12 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/us/insights`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
     },
 
     // SEO landing pages — priority 0.8
