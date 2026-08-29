@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ShoppingCart, Repeat, Network, Store, UtensilsCrossed } from "lucide-react";
 
 const USE_CASES = [
@@ -36,7 +36,7 @@ const CpUseCases = () => (
           We work with businesses at every stage, from <b>$30k a month to eight figures</b>.
           If you&apos;ve started receiving payments, we can tell you where you stand.
         </p>
-        <Link to="/#book" className="cp-btn cp-btn-ghost">Let&apos;s talk</Link>
+        <Link href="/#book" className="cp-btn cp-btn-ghost">Let&apos;s talk</Link>
       </div>
     </div>
   </section>

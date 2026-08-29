@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
 
@@ -101,7 +101,7 @@ const RejectedHighRiskStrategy = () => {
         </div>
         
         <p>
-          The solution is not to keep trying the same type of provider; it is to change the type of provider you are targeting. Learn more about <Link to="/insights/why-some-businesses-never-get-approved" className="text-primary hover:underline">why some businesses struggle to get approved</Link>.
+          The solution is not to keep trying the same type of provider; it is to change the type of provider you are targeting. Learn more about <Link href="/insights/why-some-businesses-never-get-approved" className="text-primary hover:underline">why some businesses struggle to get approved</Link>.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
@@ -109,7 +109,7 @@ const RejectedHighRiskStrategy = () => {
         </h2>
         
         <p>
-          If you have been rejected by a major PSP, your business requires a <strong className="text-foreground">Merchant Account</strong> from a provider with a higher risk tolerance, often referred to as a High-Risk Merchant Account Provider or a specialized <Link to="/insights/what-is-an-acquirer" className="text-primary hover:underline">Acquirer</Link>.
+          If you have been rejected by a major PSP, your business requires a <strong className="text-foreground">Merchant Account</strong> from a provider with a higher risk tolerance, often referred to as a High-Risk Merchant Account Provider or a specialized <Link href="/insights/what-is-an-acquirer" className="text-primary hover:underline">Acquirer</Link>.
         </p>
         
         <p>These providers operate differently:</p>
@@ -122,7 +122,7 @@ const RejectedHighRiskStrategy = () => {
             <strong className="text-foreground">Specialized Risk Management:</strong> They have systems in place to manage the specific risks of your industry (e.g., advanced fraud tools for high-ticket items, compliance expertise for regulated goods).
           </li>
           <li>
-            <strong className="text-foreground">Stability:</strong> Because they underwrite you based on your actual risk, they are far less likely to <Link to="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">freeze your account</Link> later on, as they have priced the risk into their service from day one.
+            <strong className="text-foreground">Stability:</strong> Because they underwrite you based on your actual risk, they are far less likely to <Link href="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">freeze your account</Link> later on, as they have priced the risk into their service from day one.
           </li>
         </ol>
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation';
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { BOOKING_URL } from "@/lib/booking";
@@ -35,21 +35,21 @@ const Header = () => {
     <header className={`cp-header${scrolled ? " cp-scrolled" : ""}`}>
       <div className="cp-wrap">
         <nav className="cp-nav">
-          <Link to="/" className="cp-nav-logo" aria-label="ChosePayments home">
+          <Link href="/" className="cp-nav-logo" aria-label="ChosePayments home">
             <img src="/logo-mark.png" alt="" width={176} height={192} />
             <span className="cp-logotype">Chose<em>Payments</em></span>
           </Link>
 
           <div className="cp-nav-links">
             {navLinks.map((link) => (
-              <Link key={link.to} to={link.to}>
+              <Link key={link.to} href={link.to}>
                 {link.label}
               </Link>
             ))}
           </div>
 
           <div className="cp-nav-right">
-            <Link to="/assessment" className="cp-btn cp-btn-ghost cp-nav-cta-ghost">
+            <Link href="/assessment" className="cp-btn cp-btn-ghost cp-nav-cta-ghost">
               Risk analysis
             </Link>
             <a
@@ -80,7 +80,7 @@ const Header = () => {
                     {navLinks.map((link) => (
                       <SheetClose asChild key={link.to}>
                         <Link
-                          to={link.to}
+                          href={link.to}
                           className="text-[color:var(--cp-text)] text-lg font-medium py-2.5"
                           onClick={() => setIsOpen(false)}
                         >
@@ -90,7 +90,7 @@ const Header = () => {
                     ))}
                     <SheetClose asChild>
                       <Link
-                        to="/assessment"
+                        href="/assessment"
                         className="cp-btn cp-btn-ghost mt-4 justify-center"
                         onClick={() => setIsOpen(false)}
                       >

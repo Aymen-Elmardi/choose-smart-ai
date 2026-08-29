@@ -11,25 +11,11 @@
  * a compile error instead of a value that is silently always wrong. Router
  * state and `location.search` are the two notable absences.
  *
- * `Link` accounts for 118 of the ~122 usages and is a one-line wrapper over
- * next/link; the remaining hooks are used in three files. This file should be
- * deleted once those are migrated to next/link and next/navigation directly.
+ * `Link` has been migrated out: all 118 call sites now import next/link
+ * directly. What remains is three hooks used by three files — Quiz,
+ * NotFound and Recommendation. This file goes away once those move to
+ * next/navigation.
  */
-
-import NextLink from 'next/link'
-import type { ComponentProps } from 'react'
-
-// Compat Link: maps react-router-dom's `to` prop to Next.js `href`.
-// Also accepts `href` directly for code already updated.
-type LinkProps = Omit<ComponentProps<typeof NextLink>, 'href'> & {
-  to?: string
-  href?: string
-  replace?: boolean
-}
-
-export function Link({ to, href, replace, ...rest }: LinkProps) {
-  return <NextLink href={to || href || '/'} replace={replace} {...rest} />
-}
 
 import { useCallback } from 'react'
 import {

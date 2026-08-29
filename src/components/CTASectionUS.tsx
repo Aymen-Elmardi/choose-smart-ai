@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 
 const CTASectionUS = () => {
@@ -27,7 +27,7 @@ const CTASectionUS = () => {
                 className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                 asChild
               >
-                <Link to="/statement-review?us=1">
+                <Link href="/statement-review?us=1">
                   See if you're overpaying
                   <ArrowRight className="w-5 h-5" />
                 </Link>

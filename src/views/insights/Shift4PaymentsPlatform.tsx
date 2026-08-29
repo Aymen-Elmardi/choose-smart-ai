@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
 import { Shield, Globe, Building2, Zap, CreditCard, BarChart3 } from "lucide-react";
@@ -245,7 +245,7 @@ const Shift4PaymentsPlatform = () => {
         <ul className="space-y-2">
           <li>
             <Link 
-              to="/insights/why-accounts-get-flagged-after-growth"
+              href="/insights/why-accounts-get-flagged-after-growth"
               className="text-primary hover:underline"
             >
               Why payment accounts get frozen after sudden growth
@@ -253,7 +253,7 @@ const Shift4PaymentsPlatform = () => {
           </li>
           <li>
             <Link 
-              to="/insights/industry-verification" 
+              href="/insights/industry-verification" 
               className="text-primary hover:underline"
             >
               High risk industries and payment approval requirements
@@ -261,7 +261,7 @@ const Shift4PaymentsPlatform = () => {
           </li>
           <li>
             <Link 
-              to="/insights/why-some-businesses-never-get-approved" 
+              href="/insights/why-some-businesses-never-get-approved" 
               className="text-primary hover:underline"
             >
               How payment providers assess business risk before approval

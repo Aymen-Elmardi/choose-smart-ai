@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const paymentSchemeRulesSources = [
@@ -144,7 +144,7 @@ const PaymentSchemeRulesExplained = () => {
           1. Chargeback Ratio Thresholds
         </h3>
         <p>
-          Crossing certain percentages can automatically move you into monitoring programs. Learn more about <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">how chargebacks work and how to avoid them</Link>.
+          Crossing certain percentages can automatically move you into monitoring programs. Learn more about <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">how chargebacks work and how to avoid them</Link>.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">
@@ -158,7 +158,7 @@ const PaymentSchemeRulesExplained = () => {
           3. High Charge Volume Status
         </h3>
         <p>
-          In some cases, merchants processing above certain annual volumes are treated differently and may be required to move to direct acquiring relationships. You can learn more about <Link to="/insights/what-is-an-acquirer" className="text-primary hover:underline">what an acquirer is and why it matters</Link>.
+          In some cases, merchants processing above certain annual volumes are treated differently and may be required to move to direct acquiring relationships. You can learn more about <Link href="/insights/what-is-an-acquirer" className="text-primary hover:underline">what an acquirer is and why it matters</Link>.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">
@@ -181,7 +181,7 @@ const PaymentSchemeRulesExplained = () => {
           Very few assess how scheme rules affect their industry, how their growth trajectory changes risk classification, what thresholds apply to their model, or whether their chargeback exposure is structurally risky.
         </p>
         <p>
-          The provider enforces the rules. An advisor helps you understand how those rules apply before you sign. You can explore our <Link to="/insights/visa-mastercard-control-card-payments" className="text-primary hover:underline">guide to how Visa and Mastercard control card payments</Link> for more context.
+          The provider enforces the rules. An advisor helps you understand how those rules apply before you sign. You can explore our <Link href="/insights/visa-mastercard-control-card-payments" className="text-primary hover:underline">guide to how Visa and Mastercard control card payments</Link> for more context.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -207,7 +207,7 @@ const PaymentSchemeRulesExplained = () => {
           If you want stability, long term approval, and fewer surprises, you need to understand the layer above your provider. Most merchants never look there. That is where risk truly lives.
         </p>
         <p>
-          You can also read about <Link to="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">why payment accounts get frozen without warning</Link> and <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">why providers re-underwrite existing accounts</Link> for related context.
+          You can also read about <Link href="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">why payment accounts get frozen without warning</Link> and <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">why providers re-underwrite existing accounts</Link> for related context.
         </p>
 
         {/* Advisory CTA */}
@@ -219,7 +219,7 @@ const PaymentSchemeRulesExplained = () => {
             If you are choosing or changing a payment provider and want independent guidance before applying, apply for advisory. We review your business model, risk profile, growth plans, and approval probability before you commit.
           </p>
           <Link
-            to="/recommendation"
+            href="/recommendation"
             className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-all duration-150 hover:translate-y-[-1px] active:translate-y-0"
           >
             Apply for Advisory

@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const SalesIncrease = () => {
@@ -32,7 +32,7 @@ const SalesIncrease = () => {
         </ul>
         
         <p>
-          This is common for businesses that go viral, launch ads, or onboard many customers at once. The <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> vary in how they handle rapid scaling.
+          This is common for businesses that go viral, launch ads, or onboard many customers at once. The <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> vary in how they handle rapid scaling.
         </p>
         
         <p>
@@ -40,7 +40,7 @@ const SalesIncrease = () => {
         </p>
         
         <p>
-          Planning for growth before it happens makes these reviews much smoother. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> upfront helps you scale without interruption.
+          Planning for growth before it happens makes these reviews much smoother. <Link href="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> upfront helps you scale without interruption.
         </p>
       </div>
     </InsightsArticleLayout>

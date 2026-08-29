@@ -1,6 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 
 const sources = [
   {
@@ -72,7 +72,7 @@ const PaymentProviderRiskModels = () => {
 
       <p className="mb-4">
         Behind every approval, review, reserve, or{" "}
-        <Link to="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">
+        <Link href="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">
           account freeze
         </Link>{" "}
         sits a risk model. It is not a single rule. It is a layered scoring system that constantly evaluates how safe it is for a provider to process payments on your behalf.
@@ -170,7 +170,7 @@ const PaymentProviderRiskModels = () => {
         <li>Average ticket size changes</li>
         <li>Refund patterns</li>
         <li>
-          <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">
+          <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">
             Chargeback ratios
           </Link>
         </li>
@@ -181,7 +181,7 @@ const PaymentProviderRiskModels = () => {
 
       <p className="mb-4">
         Rapid growth is not always positive.{" "}
-        <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
+        <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
           Sudden volume spikes
         </Link>
         , new countries, or higher ticket sizes often increase risk scores even when sales are legitimate.
@@ -214,7 +214,7 @@ const PaymentProviderRiskModels = () => {
 
       <p className="mb-8">
         This is why{" "}
-        <Link to="/insights/why-some-businesses-never-get-approved" className="text-primary hover:underline">
+        <Link href="/insights/why-some-businesses-never-get-approved" className="text-primary hover:underline">
           two similar merchants can receive very different outcomes
         </Link>{" "}
         from different providers. Each provider's model is trained on its own data and loss history.
@@ -225,7 +225,7 @@ const PaymentProviderRiskModels = () => {
       </h2>
 
       <p className="mb-4">
-        <Link to="/insights/what-to-do-when-provider-asks-for-documents" className="text-primary hover:underline">
+        <Link href="/insights/what-to-do-when-provider-asks-for-documents" className="text-primary hover:underline">
           Document requests
         </Link>{" "}
         are not random. They are triggered when risk scores cross internal thresholds.
@@ -244,7 +244,7 @@ const PaymentProviderRiskModels = () => {
 
       <p className="mb-4">
         When providers ask for bank statements, contracts, forecasts, or{" "}
-        <Link to="/insights/source-of-funds" className="text-primary hover:underline">
+        <Link href="/insights/source-of-funds" className="text-primary hover:underline">
           source of funds
         </Link>
         , they are trying to answer one question:
@@ -306,7 +306,7 @@ const PaymentProviderRiskModels = () => {
       <ul className="list-disc pl-6 space-y-2 mb-8">
         <li>
           A business{" "}
-          <Link to="/insights/crisis/rejected-high-risk-strategy" className="text-primary hover:underline">
+          <Link href="/insights/crisis/rejected-high-risk-strategy" className="text-primary hover:underline">
             rejected by one provider
           </Link>{" "}
           may be approved by another
@@ -346,7 +346,7 @@ const PaymentProviderRiskModels = () => {
       </h3>
       <p className="mb-4">
         Different providers are built for different risk profiles.{" "}
-        <Link to="/insights/enterprise-provider-comparison" className="text-primary hover:underline">
+        <Link href="/insights/enterprise-provider-comparison" className="text-primary hover:underline">
           Matching your business to the wrong model
         </Link>{" "}
         creates friction later.
@@ -357,11 +357,11 @@ const PaymentProviderRiskModels = () => {
       </h3>
       <p className="mb-4">
         Some methods reduce disputes and fraud exposure.{" "}
-        <Link to="/insights/apple-pay-google-pay-explained" className="text-primary hover:underline">
+        <Link href="/insights/apple-pay-google-pay-explained" className="text-primary hover:underline">
           Digital wallets
         </Link>{" "}
         and{" "}
-        <Link to="/insights/open-banking-payments-uk" className="text-primary hover:underline">
+        <Link href="/insights/open-banking-payments-uk" className="text-primary hover:underline">
           Open Banking
         </Link>{" "}
         can materially improve risk scoring over time.
@@ -418,7 +418,7 @@ const PaymentProviderRiskModels = () => {
 
       <p className="mb-8">
         If you want to avoid surprises, reviews, and rework,{" "}
-        <Link to="/assessment" className="text-primary hover:underline font-medium">
+        <Link href="/assessment" className="text-primary hover:underline font-medium">
           a short assessment before applying
         </Link>{" "}
         can save months of friction.

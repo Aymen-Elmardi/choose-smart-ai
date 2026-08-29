@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -256,7 +256,7 @@ const CheckoutComEnterprisePlatform = () => {
               <p className="text-muted-foreground mb-3">
                 Our dedicated pricing guide breaks down Checkout.com's negotiated pricing model, including card processing fees, international costs, and when this platform makes financial sense.
               </p>
-              <Link to="/insights/checkout-com-fees-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
+              <Link href="/insights/checkout-com-fees-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
                 Read: Checkout.com Fees Explained <ArrowRight className="w-4 h-4" />
               </Link>
             </section>
@@ -277,7 +277,7 @@ const CheckoutComEnterprisePlatform = () => {
                 Use the ChosePayments 60 second assessment to find your ideal operational alignment.
               </p>
               <Link
-                to="/assessment?start=true"
+                href="/assessment?start=true"
                 replace
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
               >
@@ -291,7 +291,7 @@ const CheckoutComEnterprisePlatform = () => {
             <h2 className="text-2xl font-bold text-foreground mb-6">Related Reading</h2>
             <div className="grid gap-4 md:grid-cols-2">
               <Link
-                to="/insights/stripe-payment-platform"
+                href="/insights/stripe-payment-platform"
                 className="p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors group"
               >
                 <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
@@ -302,7 +302,7 @@ const CheckoutComEnterprisePlatform = () => {
                 </p>
               </Link>
               <Link
-                to="/insights/adyen-enterprise-payments-platform"
+                href="/insights/adyen-enterprise-payments-platform"
                 className="p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors group"
               >
                 <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-2">

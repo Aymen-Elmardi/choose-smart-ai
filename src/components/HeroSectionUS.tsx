@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 
 const HeroSectionUS = () => {
@@ -20,7 +20,7 @@ const HeroSectionUS = () => {
           </div>
           <div className="mt-12 flex flex-col items-center">
             <Button variant="hero" size="xl" asChild>
-              <Link to="/statement-review?us=1">
+              <Link href="/statement-review?us=1">
                 See if you're overpaying
                 <ArrowRight className="w-5 h-5" />
               </Link>

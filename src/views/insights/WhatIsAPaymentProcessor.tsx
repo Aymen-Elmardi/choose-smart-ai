@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
@@ -227,7 +227,7 @@ const WhatIsAPaymentProcessor = () => {
         </ol>
         <p className="text-muted-foreground">
           The processor is directly responsible for steps 2, 3, and 6. The rest of the chain involves the card network, the issuing bank, and the merchant acquirer, each of which has a different job and a different relationship to your business.{" "}
-          <Link to="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">Confusing the processor with the merchant acquirer</Link>{" "}
+          <Link href="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">Confusing the processor with the merchant acquirer</Link>{" "}
           is one of the most common misunderstandings business owners have, and it matters the moment a dispute or account freeze happens, because the acquirer, not the processor, is usually the party holding your funds.
         </p>
       </section>
@@ -273,12 +273,12 @@ const WhatIsAPaymentProcessor = () => {
         <p className="text-muted-foreground mb-4">
           FreedomPay frames the distinction cleanly: the gateway shapes how a transaction is captured, the processor moves the message, and the acquirer is the licensed financial institution that actually settles the money and carries the risk ({" "}
           <a href="https://corporate.freedompay.com/resources/blogs/payment-gateway-vs-payment-processor-vs-merchant-acquirer-understanding-and-choosing-the-right-payment-solutions" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">FreedomPay, Payment Gateway vs Payment Processor vs Merchant Acquirer</a>). For a deeper breakdown of the gateway-versus-processor distinction specifically, see our{" "}
-          <Link to="/payment-gateway-vs-payment-processor" className="text-primary hover:underline">full comparison of payment gateways and payment processors</Link>.
+          <Link href="/payment-gateway-vs-payment-processor" className="text-primary hover:underline">full comparison of payment gateways and payment processors</Link>.
         </p>
 
         <p className="text-muted-foreground">
           When a single company like Stripe, Square, or PayPal performs all three roles, it is operating as a payment facilitator or aggregator: your business does not get its own merchant account, it becomes a sub-merchant under the aggregator's master account. That arrangement is why signup takes minutes instead of weeks, and it is also why aggregator account freezes can happen with less warning than a traditionally underwritten merchant account would allow. See our full explainer on{" "}
-          <Link to="/insights/third-party-payment-processors" className="text-primary hover:underline">third-party payment processors</Link>{" "}
+          <Link href="/insights/third-party-payment-processors" className="text-primary hover:underline">third-party payment processors</Link>{" "}
           for how that model works in more detail.
         </p>
       </section>
@@ -304,7 +304,7 @@ const WhatIsAPaymentProcessor = () => {
         </ul>
         <p className="text-muted-foreground">
           For a closer look at how these providers actually compare, including architecture, risk appetite, and who each one fits, see our{" "}
-          <Link to="/insights/providers" className="text-primary hover:underline">payment provider deep dives</Link>.
+          <Link href="/insights/providers" className="text-primary hover:underline">payment provider deep dives</Link>.
         </p>
       </section>
 
@@ -333,13 +333,13 @@ const WhatIsAPaymentProcessor = () => {
         </p>
         <p className="text-muted-foreground mb-4">
           First, headline rates are rarely the full cost. Monthly minimums, PCI compliance fees, chargeback fees, and early termination clauses are often not visible until a business is already signed up. See our{" "}
-          <Link to="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">full breakdown of hidden payment processor fees</Link>{" "}
+          <Link href="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">full breakdown of hidden payment processor fees</Link>{" "}
           for what gets buried in processor contracts.
         </p>
         <p className="text-muted-foreground">
           Second, and more consequentially, a processor's risk appetite for your specific business model matters more than its rate once you scale past a basic retail profile. A business generating high chargeback volume, operating in a vertical flagged as high-risk, or running a marketplace model with sub-merchant payouts needs a processor (and, underneath it, an acquirer) that has actually underwritten that model before. Hyperswitch describes the acquirer as the party that "assumes credit and chargeback risk" ({" "}
           <a href="https://hyperswitch.io/blog/merchant-acquirer-vs-payment-processors-explained" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Hyperswitch, Merchant Acquirer vs Payment Processors Explained</a>), and mismatched risk profiles are the single most common reason accounts get frozen or terminated with little warning. See our guide on{" "}
-          <Link to="/risk-alignment-payment-processor" className="text-primary hover:underline">risk alignment with payment processors</Link>{" "}
+          <Link href="/risk-alignment-payment-processor" className="text-primary hover:underline">risk alignment with payment processors</Link>{" "}
           for how that risk-matching actually works in practice.
         </p>
       </section>
@@ -351,7 +351,7 @@ const WhatIsAPaymentProcessor = () => {
         </h2>
         <p className="text-muted-foreground">
           Every processor and acquirer assigns your business a Merchant Category Code (MCC) at signup, a four-digit classification that determines your baseline risk tier, interchange rate, and how closely your account gets monitored. A restaurant with online ordering gets classified differently than a general retailer, and a marketplace or subscription business gets scrutinized differently again. Understanding this classification step before you apply saves businesses from being declined or mis-priced later. See our guide to{" "}
-          <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>{" "}
+          <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>{" "}
           for the full mechanics of how that classification works.
         </p>
       </section>
@@ -366,7 +366,7 @@ const WhatIsAPaymentProcessor = () => {
         </p>
         <p className="text-muted-foreground">
           Choosing the right processor is not a rate-shopping exercise. It is a matching exercise between your business model, your risk profile, and a provider that has actually built for your specific transaction pattern. If you are not sure which type of processor fits your business,{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">the free risk assessment</Link>{" "}
+          <Link href="/assessment" className="text-primary hover:underline font-medium">the free risk assessment</Link>{" "}
           will give you a clear read on where your business sits before you sign anything.
         </p>
       </section>

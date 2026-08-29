@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
@@ -294,7 +294,7 @@ const AchPaymentProcessors = () => {
 
         <p className="text-muted-foreground mb-3">
           <strong className="text-foreground">Stripe</strong> charges 0.8 percent per ACH transaction with a $5 cap, and its documentation and integration ecosystem make it a common default for platforms already using Stripe for cards. For more on how ACH-friendly processors differ from traditional card acquirers, see our guide to{" "}
-          <Link to="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">the difference between a merchant acquirer and a payment processor</Link>.
+          <Link href="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">the difference between a merchant acquirer and a payment processor</Link>.
         </p>
 
         <p className="text-muted-foreground mb-3">
@@ -317,7 +317,7 @@ const AchPaymentProcessors = () => {
         </h2>
         <p className="text-muted-foreground">
           Ask three questions before defaulting to cards for a given payment type: Is the transaction with a known, recurring counterpart rather than a first-time anonymous buyer? Is the transaction size large enough that a percentage-based fee meaningfully outweighs a flat fee? Can the business tolerate a one to three day settlement delay for this specific payment? If the answer to all three is yes, ACH is very likely the cheaper and often the more appropriate rail. For a fuller picture of what processors charge beyond the headline rate, see{" "}
-          <Link to="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">hidden payment processor fees to look for before you sign</Link>.
+          <Link href="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">hidden payment processor fees to look for before you sign</Link>.
         </p>
       </section>
 
@@ -328,12 +328,12 @@ const AchPaymentProcessors = () => {
         </h2>
         <p className="text-muted-foreground mb-4">
           ACH is not a replacement for card acceptance, most consumer-facing checkout still needs cards. But for B2B invoicing, subscription billing, marketplace payouts, and vendor payments, the flat-fee structure of ACH generates savings that scale with transaction size in exactly the way card fees do not. The trade-off is speed and a different fraud profile, both manageable with the account validation practices Nacha now expects, the same kind of aggregate-risk oversight that shapes how{" "}
-          <Link to="/insights/third-party-payment-processors" className="text-primary hover:underline">third-party payment processors</Link>{" "}
+          <Link href="/insights/third-party-payment-processors" className="text-primary hover:underline">third-party payment processors</Link>{" "}
           monitor every payment rail they support, not just ACH.
         </p>
         <p className="text-muted-foreground">
           Not sure which mix of ACH and card processing fits your payment flows?{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">The free risk assessment</Link>{" "}
+          <Link href="/assessment" className="text-primary hover:underline font-medium">The free risk assessment</Link>{" "}
           maps your transaction types against processors that handle both well.
         </p>
       </section>

@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
@@ -205,7 +205,7 @@ const StripePaymentPlatform = () => {
               </h2>
               
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                What sets Stripe apart from competitors is their expansion beyond payments into a comprehensive financial operating system. Understanding how <Link to="/insights/what-is-an-acquirer" className="text-primary hover:underline">acquiring relationships work</Link> can help you appreciate what Stripe handles behind the scenes.
+                What sets Stripe apart from competitors is their expansion beyond payments into a comprehensive financial operating system. Understanding how <Link href="/insights/what-is-an-acquirer" className="text-primary hover:underline">acquiring relationships work</Link> can help you appreciate what Stripe handles behind the scenes.
               </p>
 
               <div className="overflow-x-auto mb-6">
@@ -253,7 +253,7 @@ const StripePaymentPlatform = () => {
                   Our role isn't to question whether Stripe is a good choice. It's to help ensure your business is <strong className="text-foreground">perfectly aligned</strong> with Stripe's platform to maximize its benefits.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  This includes helping you understand how to present your business effectively, what triggers automated review systems, and how to leverage Stripe's ecosystem products strategically. For businesses that may need something different, we can help identify <Link to="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">alternatives built for different use cases</Link>.
+                  This includes helping you understand how to present your business effectively, what triggers automated review systems, and how to leverage Stripe's ecosystem products strategically. For businesses that may need something different, we can help identify <Link href="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">alternatives built for different use cases</Link>.
                 </p>
               </div>
             </section>
@@ -285,7 +285,7 @@ const StripePaymentPlatform = () => {
               <p className="text-muted-foreground mb-3">
                 Our dedicated pricing guide breaks down Stripe's card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs.
               </p>
-              <Link to="/insights/stripe-fees-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
+              <Link href="/insights/stripe-fees-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
                 Read: Stripe Fees Explained <ArrowRight className="w-4 h-4" />
               </Link>
             </section>
@@ -306,7 +306,7 @@ const StripePaymentPlatform = () => {
                 <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
                   Our 60-second assessment helps ensure your business is perfectly aligned with Stripe's automated systems to maximize platform benefits.
                 </p>
-                <Link to="/assessment">
+                <Link href="/assessment">
                   <Button size="lg" className="gap-2">
                     Take the Assessment
                     <ArrowRight className="w-4 h-4" />
@@ -322,7 +322,7 @@ const StripePaymentPlatform = () => {
               </h2>
               <div className="grid gap-4 md:grid-cols-2">
                 <Link 
-                  to="/insights/what-is-an-acquirer" 
+                  href="/insights/what-is-an-acquirer" 
                   className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors group"
                 >
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
@@ -333,7 +333,7 @@ const StripePaymentPlatform = () => {
                   </p>
                 </Link>
                 <Link 
-                  to="/insights/adyen-enterprise-payments-platform" 
+                  href="/insights/adyen-enterprise-payments-platform" 
                   className="p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors group"
                 >
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">

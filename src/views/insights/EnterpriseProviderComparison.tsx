@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ComparisonTableSchema from "@/components/ComparisonTableSchema";
 import FAQSchema from "@/components/FAQSchema";
@@ -232,7 +232,7 @@ const EnterpriseProviderComparison = () => {
                 <TableHead className="font-semibold text-foreground w-[20%] bg-muted">Area</TableHead>
                 <TableHead className="font-semibold text-foreground w-[26%] bg-muted">
                   <Link 
-                    to="/insights/adyen-enterprise-payments-platform"
+                    href="/insights/adyen-enterprise-payments-platform"
                     className="text-primary hover:underline"
                   >
                     Adyen
@@ -240,7 +240,7 @@ const EnterpriseProviderComparison = () => {
                 </TableHead>
                 <TableHead className="font-semibold text-foreground w-[26%] bg-muted">
                   <Link 
-                    to="/insights/shift4-payments-platform" 
+                    href="/insights/shift4-payments-platform" 
                     className="text-primary hover:underline"
                   >
                     Shift4
@@ -248,7 +248,7 @@ const EnterpriseProviderComparison = () => {
                 </TableHead>
                 <TableHead className="font-semibold text-foreground w-[28%] bg-muted">
                   <Link 
-                    to="/insights/checkout-com-enterprise-platform" 
+                    href="/insights/checkout-com-enterprise-platform" 
                     className="text-primary hover:underline"
                   >
                     Checkout.com
@@ -460,22 +460,22 @@ const EnterpriseProviderComparison = () => {
         </h2>
         <ul className="space-y-2">
           <li>
-            <Link to="/insights/adyen-enterprise-payments-platform"className="text-primary hover:underline">
+            <Link href="/insights/adyen-enterprise-payments-platform"className="text-primary hover:underline">
               Adyen: The Enterprise Payments Giant
             </Link>
           </li>
           <li>
-            <Link to="/insights/shift4-payments-platform" className="text-primary hover:underline">
+            <Link href="/insights/shift4-payments-platform" className="text-primary hover:underline">
               Shift4 Payments: The Global Payments Giant Most Businesses Have Never Heard Of
             </Link>
           </li>
           <li>
-            <Link to="/insights/checkout-com-enterprise-platform" className="text-primary hover:underline">
+            <Link href="/insights/checkout-com-enterprise-platform" className="text-primary hover:underline">
               Checkout.com: The API-First Payments Platform
             </Link>
           </li>
           <li>
-            <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
+            <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
               Why Payment Accounts Get Flagged After Sudden Growth
             </Link>
           </li>

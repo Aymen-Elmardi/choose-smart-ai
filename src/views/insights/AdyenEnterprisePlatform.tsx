@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -269,7 +269,7 @@ const AdyenEnterprisePlatform = () => {
               <p className="text-muted-foreground mb-3">
                 Our dedicated pricing guide breaks down Adyen's interchange plus model, what affects your rate, and when Adyen pricing makes sense compared to other providers.
               </p>
-              <Link to="/insights/adyen-pricing-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
+              <Link href="/insights/adyen-pricing-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
                 Read: Adyen Pricing Explained <ArrowRight className="w-4 h-4" />
               </Link>
             </section>
@@ -290,7 +290,7 @@ const AdyenEnterprisePlatform = () => {
                 Take our short assessment to get personalized recommendations based on your business model, volume, and operational needs.
               </p>
               <Link
-                to="/assessment?start=true"
+                href="/assessment?start=true"
                 replace
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
               >
@@ -304,7 +304,7 @@ const AdyenEnterprisePlatform = () => {
             <h2 className="text-2xl font-bold text-foreground mb-6">Related Reading</h2>
             <div className="grid gap-4 md:grid-cols-2">
               <Link
-                to="/insights/what-is-an-acquirer"
+                href="/insights/what-is-an-acquirer"
                 className="p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors group"
               >
                 <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
@@ -315,7 +315,7 @@ const AdyenEnterprisePlatform = () => {
                 </p>
               </Link>
               <Link
-                to="/insights/merchant-acquirer-vs-payment-processor"
+                href="/insights/merchant-acquirer-vs-payment-processor"
                 className="p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors group"
               >
                 <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-2">

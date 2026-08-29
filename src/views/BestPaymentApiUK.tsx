@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from "react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, Check, X, Code, Webhook, FileText, TestTube, Shield, Clock, Headphones, BookOpen, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
@@ -95,7 +95,7 @@ const BestPaymentApiUK = () => {
               </div>
               <div className="flex flex-col items-center">
                 <Button size="xl" asChild>
-                  <Link to="/assessment?start=true" replace>
+                  <Link href="/assessment?start=true" replace>
                     Answer a few quick questions
                     <ArrowRight className="w-5 h-5" />
                   </Link>
@@ -451,7 +451,7 @@ const BestPaymentApiUK = () => {
                     className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                     asChild
                   >
-                    <Link to="/assessment?start=true" replace>
+                    <Link href="/assessment?start=true" replace>
                       Answer a few quick questions
                       <ArrowRight className="w-5 h-5" />
                     </Link>

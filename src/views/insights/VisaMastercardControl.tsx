@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import SourcesCitation from "@/components/SourcesCitation";
 
@@ -68,7 +68,7 @@ const VisaMastercardControl = () => {
         </p>
         <p>
           These obligations include anti money laundering requirements, fraud prevention thresholds, and ongoing merchant monitoring. This includes{" "}
-          <Link to="/insights/why-payment-providers-ask-for-source-of-funds" className="text-primary hover:underline">
+          <Link href="/insights/why-payment-providers-ask-for-source-of-funds" className="text-primary hover:underline">
             source of funds checks
           </Link>{" "}
           that may seem intrusive but are required by the system.
@@ -78,7 +78,7 @@ const VisaMastercardControl = () => {
         </p>
         <p>
           Complaints, escalation tickets, or switching providers rarely change this reality. In fact,{" "}
-          <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
+          <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
             accounts can be flagged even when nothing changes
           </Link>.
         </p>
@@ -104,7 +104,7 @@ const VisaMastercardControl = () => {
         <ul className="list-disc pl-6 space-y-2">
           <li>
             Whether your business model fits your provider's risk appetite — especially for{" "}
-             <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">
+             <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">
                marketplace and platform models
             </Link>
           </li>
@@ -126,7 +126,7 @@ const VisaMastercardControl = () => {
           <li>Rapid increase in volume</li>
           <li>
             Expansion into new countries —{" "}
-            <Link to="/insights/international-sales" className="text-primary hover:underline">
+            <Link href="/insights/international-sales" className="text-primary hover:underline">
               international sales often trigger reviews
             </Link>
           </li>
@@ -139,7 +139,7 @@ const VisaMastercardControl = () => {
         </p>
         <p>
           From the system's perspective, it is recalibration. This process is known as{" "}
-          <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">
+          <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">
             re-underwriting after growth
           </Link>.
         </p>

@@ -1,6 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 
 const sources = [
   {
@@ -93,7 +93,7 @@ const ProviderAppetiteIndex = () => {
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Chargeback and Fraud History</h3>
       <p className="text-muted-foreground mb-6 leading-relaxed">
         Nearly every provider closely watches past disputes. A high chargeback ratio (generally over ~1%) is a common red flag. Many underwriters treat a chargeback rate above 1% as cause for concern. Visa has a formal{" "}
-        <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline font-medium">
+        <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline font-medium">
           Dispute Monitoring Program
         </Link>{" "}
         that penalises merchants exceeding its thresholds (about 1% to 1.5% depending on category). If your application shows chronic refund/chargeback issues, underwriters may demand reserves or refuse onboarding.
@@ -158,11 +158,11 @@ const ProviderAppetiteIndex = () => {
 
       <p className="text-muted-foreground mb-6 leading-relaxed">
         ChosePayments was built for exactly this challenge. Rather than randomly applying to a provider and hoping for the best, our{" "}
-        <Link to="/assessment" className="text-primary hover:underline font-medium">
+        <Link href="/assessment" className="text-primary hover:underline font-medium">
           diagnostic assessment
         </Link>{" "}
         maps your business profile against each processor's risk appetite. We ask about your industry, model, countries, volumes, chargeback history and more, then use an internal{" "}
-        <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline font-medium">
+        <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline font-medium">
           scoring model
         </Link>{" "}
         to suggest gateways whose underwriting criteria align with you.
@@ -189,7 +189,7 @@ const ProviderAppetiteIndex = () => {
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Mind Your Chargebacks and Fraud Controls</h3>
       <p className="text-muted-foreground mb-6 leading-relaxed">
         Processors reward low dispute rates. If you can, keep your{" "}
-        <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline font-medium">
+        <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline font-medium">
           chargeback rate
         </Link>{" "}
         well below 1%. Use clear billing descriptors (so customers recognise charges) and set customer service channels to resolve issues before they become chargebacks. Demonstrating active risk management (like AVS/CVV checks or address verification) shows you take disputes seriously.

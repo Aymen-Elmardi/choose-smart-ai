@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, Shield, CheckCircle, AlertTriangle, ChevronDown } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -50,13 +50,13 @@ const RiskProfileMatching = () => {
               </div>
               <div className="mt-12 flex flex-col items-center gap-4">
                 <Button variant="hero" size="xl" asChild>
-                  <Link to="/assessment">
+                  <Link href="/assessment">
                     Run My Risk Profile
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </Button>
                 <Link
-                  to="/insights"
+                  href="/insights"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Already having payment issues? Learn why →
@@ -195,7 +195,7 @@ const RiskProfileMatching = () => {
               {/* CTA */}
               <div className="mt-10 text-center">
                 <Button variant="hero" size="xl" asChild>
-                  <Link to="/assessment">
+                  <Link href="/assessment">
                     Run My Risk Profile
                     <ArrowRight className="w-5 h-5" />
                   </Link>

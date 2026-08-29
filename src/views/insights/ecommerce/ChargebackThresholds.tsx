@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
@@ -149,7 +149,7 @@ const ChargebackThresholds = () => {
       <h3 className="text-lg font-semibold text-foreground mb-3">Stripe</h3>
       <p className="text-muted-foreground mb-6">
         Stripe typically expects merchants to maintain dispute rates well below one percent. Businesses approaching this level may receive warnings or be asked to improve dispute management processes. For more context on how Stripe handles risk, see our guide on{" "}
-        <Link to="/insights/why-stripe-freezes-accounts-uk" className="text-primary hover:underline">
+        <Link href="/insights/why-stripe-freezes-accounts-uk" className="text-primary hover:underline">
           why Stripe freezes accounts
         </Link>.
       </p>
@@ -174,7 +174,7 @@ const ChargebackThresholds = () => {
       </ul>
       <p className="text-muted-foreground mb-8">
         For businesses operating in high risk sectors these specialized processors can provide significantly more stability. Learn more about how{" "}
-        <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">
+        <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">
           payment provider risk models
         </Link>{" "}
         determine what level of dispute activity they can tolerate.
@@ -218,7 +218,7 @@ const ChargebackThresholds = () => {
       <h3 className="text-lg font-semibold text-foreground mb-3">Strengthen fraud screening</h3>
       <p className="text-muted-foreground mb-6">
         Fraudulent transactions are one of the most common causes of chargebacks. Modern fraud detection tools can identify suspicious transactions before they are processed. For a deeper look at this topic, see our guide on{" "}
-        <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">
+        <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">
           chargebacks and how to avoid them
         </Link>.
       </p>

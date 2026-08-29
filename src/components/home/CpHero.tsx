@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from "react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 
 const PROCESSORS = [
@@ -88,7 +88,7 @@ const CpHero = () => {
           <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="cp-btn cp-btn-primary">
             Book a call <span className="cp-arrow" aria-hidden="true">→</span>
           </a>
-          <Link to="/#how" className="cp-btn cp-btn-ghost">See how it works</Link>
+          <Link href="/#how" className="cp-btn cp-btn-ghost">See how it works</Link>
         </div>
 
         <div className="cp-hero-stats" ref={statsRef}>

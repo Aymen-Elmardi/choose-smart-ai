@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -81,7 +81,7 @@ const Guides = () => {
       <main className="pt-24 pb-16">
         <div className="section-container max-w-4xl mx-auto">
           <Link 
-            to="/insights" 
+            href="/insights" 
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -105,7 +105,7 @@ const Guides = () => {
             {guideArticles.map((article) => (
               <Link
                 key={article.slug}
-                to={`/insights/${article.slug}`}
+                href={`/insights/${article.slug}`}
                 className="block p-6 rounded-xl border border-border bg-card hover:border-primary/50 transition-colors"
               >
                 <h2 className="text-xl font-semibold text-foreground mb-2">
@@ -121,7 +121,7 @@ const Guides = () => {
           <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border">
             <p className="text-muted-foreground">
               Not sure which provider is right for your business? Take our{" "}
-              <Link to="/assessment?start=true" replace className="text-primary hover:underline">
+              <Link href="/assessment?start=true" replace className="text-primary hover:underline">
                 short assessment
               </Link>{" "}
               to get a personalised recommendation.

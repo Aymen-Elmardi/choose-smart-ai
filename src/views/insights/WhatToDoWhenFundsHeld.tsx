@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
@@ -25,8 +25,8 @@ const WhatToDoWhenFundsHeld = () => {
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Hold vs Freeze vs Reserve: Understanding What's Happening</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>A hold</strong> means your provider has paused payouts while they review something. Your account is still active and may still be processing transactions.</li>
-          <li><strong>A freeze</strong> means your provider has suspended your account — no processing, no payouts. This is more severe. Learn about <Link to="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">why Stripe freezes accounts</Link>.</li>
-          <li><strong>A reserve</strong> is a planned withholding — a percentage of your settlements held as security. This is ongoing, not a response to a specific event. Learn about <Link to="/insights/why-providers-impose-reserves" className="text-primary hover:underline">why reserves are imposed</Link>.</li>
+          <li><strong>A freeze</strong> means your provider has suspended your account — no processing, no payouts. This is more severe. Learn about <Link href="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">why Stripe freezes accounts</Link>.</li>
+          <li><strong>A reserve</strong> is a planned withholding — a percentage of your settlements held as security. This is ongoing, not a response to a specific event. Learn about <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">why reserves are imposed</Link>.</li>
         </ul>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Common Reasons Funds Are Held</h2>
@@ -75,7 +75,7 @@ const WhatToDoWhenFundsHeld = () => {
           <li>Keep your provider informed of business changes <em>before</em> they happen — new products, higher volumes, market expansion</li>
           <li>Monitor your chargeback ratio and address disputes promptly</li>
           <li>Maintain documentation that demonstrates legitimate business activity</li>
-          <li>Choose a provider whose <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk model</Link> matches your business type from the start</li>
+          <li>Choose a provider whose <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk model</Link> matches your business type from the start</li>
         </ul>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>

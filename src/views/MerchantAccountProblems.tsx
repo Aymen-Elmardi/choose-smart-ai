@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import { useCanonical } from "@/hooks/useCanonical";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight } from "lucide-react";
 
 const clusters = [
@@ -84,7 +84,7 @@ const MerchantAccountProblems = () => {
                 {cluster.articles.map((article) => (
                   <Link
                     key={article.slug}
-                    to={`/insights/${article.slug}`}
+                    href={`/insights/${article.slug}`}
                     className="flex items-center justify-between gap-4 px-5 py-4 rounded-lg border border-border bg-secondary/30 hover:border-primary/40 transition-colors group"
                   >
                     <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">

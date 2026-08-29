@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -296,11 +296,11 @@ const MarketplaceLiquidity = () => {
         </p>
 
         <p>
-          This isn&apos;t a matching problem, and no amount of better search or recommendation logic will fix it. It&apos;s a <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">payment infrastructure problem</Link>, and it hides inside your seller liquidity number without showing up anywhere obvious on your dashboard.
+          This isn&apos;t a matching problem, and no amount of better search or recommendation logic will fix it. It&apos;s a <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">payment infrastructure problem</Link>, and it hides inside your seller liquidity number without showing up anywhere obvious on your dashboard.
         </p>
 
         <p>
-          If your <Link to="/marketplace-payment-provider" className="text-primary hover:underline">split payments</Link> are slow or confusing, sellers notice within their first payout cycle, and they draw conclusions fast. They rarely file a support ticket explaining it. They just quietly stop listing, and your seller liquidity number starts sliding for reasons that have nothing to do with matching at all.
+          If your <Link href="/marketplace-payment-provider" className="text-primary hover:underline">split payments</Link> are slow or confusing, sellers notice within their first payout cycle, and they draw conclusions fast. They rarely file a support ticket explaining it. They just quietly stop listing, and your seller liquidity number starts sliding for reasons that have nothing to do with matching at all.
         </p>
 
         <p>
@@ -350,15 +350,15 @@ const MarketplaceLiquidity = () => {
         </p>
 
         <p>
-          <Link to="/assessment" className="text-primary hover:underline">Get a free marketplace payment stack review</Link> and find out if your payout process is helping your liquidity or quietly working against it.
+          <Link href="/assessment" className="text-primary hover:underline">Get a free marketplace payment stack review</Link> and find out if your payout process is helping your liquidity or quietly working against it.
         </p>
 
         <p>
-          Still working through your cold-start problem? Read our guide on the <Link to="/insights/marketplace-chicken-and-egg-problem" className="text-primary hover:underline">marketplace chicken and egg problem</Link>.
+          Still working through your cold-start problem? Read our guide on the <Link href="/insights/marketplace-chicken-and-egg-problem" className="text-primary hover:underline">marketplace chicken and egg problem</Link>.
         </p>
 
         <p>
-          Thinking about pricing next? Check our full breakdown of <Link to="/insights/marketplace-take-rate" className="text-primary hover:underline">marketplace take rate</Link>.
+          Thinking about pricing next? Check our full breakdown of <Link href="/insights/marketplace-take-rate" className="text-primary hover:underline">marketplace take rate</Link>.
         </p>
       </div>
     </InsightsArticleLayout>

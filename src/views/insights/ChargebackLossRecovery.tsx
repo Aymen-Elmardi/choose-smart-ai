@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const ChargebackLossRecovery = () => {
@@ -25,7 +25,7 @@ const ChargebackLossRecovery = () => {
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>The disputed amount is permanently deducted</strong> from your settlements (or withheld from future payouts if already paid out).</li>
           <li><strong>A chargeback fee is applied</strong> — typically £15–25 per dispute, regardless of the outcome.</li>
-          <li><strong>Your chargeback ratio increases.</strong> Card networks track this as a percentage of total transactions. Crossing 1% on Visa or 1.5% on Mastercard triggers <Link to="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">monitoring programs</Link> with escalating fines.</li>
+          <li><strong>Your chargeback ratio increases.</strong> Card networks track this as a percentage of total transactions. Crossing 1% on Visa or 1.5% on Mastercard triggers <Link href="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">monitoring programs</Link> with escalating fines.</li>
           <li><strong>Your provider records the loss.</strong> Multiple losses affect your risk score and may trigger reserves or enhanced monitoring.</li>
         </ul>
 
@@ -47,7 +47,7 @@ const ChargebackLossRecovery = () => {
             <strong>Check your chargeback ratio.</strong> Calculate your current ratio: (number of chargebacks in the month) ÷ (total transactions in the month). If you're approaching 0.9%, take immediate action.
           </li>
           <li>
-            <strong>Improve your evidence package.</strong> For future disputes, prepare delivery tracking, signed agreements, communication logs, and clear refund policy documentation. Learn the fundamentals in our <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargebacks guide</Link>.
+            <strong>Improve your evidence package.</strong> For future disputes, prepare delivery tracking, signed agreements, communication logs, and clear refund policy documentation. Learn the fundamentals in our <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargebacks guide</Link>.
           </li>
           <li>
             <strong>Consider prevention tools.</strong> Services like Ethoca alerts and Verifi CDRN let you refund transactions before they become formal chargebacks — removing them from your ratio entirely.
@@ -64,12 +64,12 @@ const ChargebackLossRecovery = () => {
           <li>Chargebacks that exceed the value covered by your reserves</li>
         </ul>
         <p>
-          If your provider sees a pattern, they may impose a <Link to="/insights/why-providers-impose-reserves" className="text-primary hover:underline">reserve</Link>, request additional documentation, or in extreme cases, terminate your account.
+          If your provider sees a pattern, they may impose a <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">reserve</Link>, request additional documentation, or in extreme cases, terminate your account.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">When to Consider Switching Providers</h2>
         <p>
-          If you operate in an industry with inherently higher dispute rates (subscriptions, digital goods, travel), standard providers may not be the right fit. Some providers have higher risk tolerances and <Link to="/best-payment-processors-high-chargebacks" className="text-primary hover:underline">specialise in high-chargeback businesses</Link>.
+          If you operate in an industry with inherently higher dispute rates (subscriptions, digital goods, travel), standard providers may not be the right fit. Some providers have higher risk tolerances and <Link href="/best-payment-processors-high-chargebacks" className="text-primary hover:underline">specialise in high-chargeback businesses</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>

@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import { BOOKING_URL } from "@/lib/booking";
@@ -93,7 +93,7 @@ const HighRiskToHighGrowth = () => {
         None of these necessarily indicate wrongdoing. They often reflect how the payment ecosystem protects itself from financial exposure.
       </p>
       <p className="text-muted-foreground mb-4">
-        Visa's risk standards explicitly require acquirers to define their <Link to="/insights/provider-appetite-index" className="text-primary hover:underline">risk appetite</Link> and adjust underwriting policies depending on merchant activity, geography, and transaction patterns.
+        Visa's risk standards explicitly require acquirers to define their <Link href="/insights/provider-appetite-index" className="text-primary hover:underline">risk appetite</Link> and adjust underwriting policies depending on merchant activity, geography, and transaction patterns.
       </p>
       <p className="text-muted-foreground mb-10">
         In other words, approval decisions are rarely random. They are based on structured risk evaluation.
@@ -116,7 +116,7 @@ const HighRiskToHighGrowth = () => {
         <li>CBD or emerging regulated products</li>
       </ul>
       <p className="text-muted-foreground mb-6">
-        These industries tend to experience higher refund rates or delayed fulfillment, both of which increase the probability of <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargebacks</Link>.
+        These industries tend to experience higher refund rates or delayed fulfillment, both of which increase the probability of <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargebacks</Link>.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">2. Business Model Risk</h3>
@@ -144,7 +144,7 @@ const HighRiskToHighGrowth = () => {
         <li>Weak fraud controls</li>
       </ul>
       <p className="text-muted-foreground mb-6">
-        A chargeback rate above 1% of transactions is commonly viewed as a warning threshold in card network <Link to="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">monitoring programs</Link>.
+        A chargeback rate above 1% of transactions is commonly viewed as a warning threshold in card network <Link href="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">monitoring programs</Link>.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">4. Geographic Exposure</h3>
@@ -217,7 +217,7 @@ const HighRiskToHighGrowth = () => {
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">1. Flexible Underwriting</h3>
       <p className="text-muted-foreground mb-6">
-        Some processors specialize in early-stage merchants but become restrictive as volume grows. Others are built to support scale from the beginning. Choosing a provider aligned with your growth trajectory reduces the risk of future <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">account reviews</Link> or sudden closures.
+        Some processors specialize in early-stage merchants but become restrictive as volume grows. Others are built to support scale from the beginning. Choosing a provider aligned with your growth trajectory reduces the risk of future <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">account reviews</Link> or sudden closures.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">2. Advanced Fraud Prevention</h3>
@@ -246,7 +246,7 @@ const HighRiskToHighGrowth = () => {
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">4. Chargeback Management</h3>
       <p className="text-muted-foreground mb-10">
-        Processors that provide detailed dispute data and automated alerts allow merchants to respond quickly before chargebacks accumulate. Maintaining dispute rates below <Link to="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">card network thresholds</Link> is critical to long-term processing stability.
+        Processors that provide detailed dispute data and automated alerts allow merchants to respond quickly before chargebacks accumulate. Maintaining dispute rates below <Link href="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">card network thresholds</Link> is critical to long-term processing stability.
       </p>
 
       <h2 className="heading-md text-foreground mt-12 mb-4">How ChosePayments Supports High-Growth eCommerce Businesses</h2>
@@ -264,7 +264,7 @@ const HighRiskToHighGrowth = () => {
         <li>Chargeback exposure</li>
       </ul>
       <p className="text-muted-foreground mb-10">
-        These signals are mapped against the known underwriting preferences of different payment providers. Instead of guessing which processor might approve the business, merchants receive guidance on providers whose <Link to="/insights/provider-appetite-index" className="text-primary hover:underline">risk appetite</Link> aligns with their profile.
+        These signals are mapped against the known underwriting preferences of different payment providers. Instead of guessing which processor might approve the business, merchants receive guidance on providers whose <Link href="/insights/provider-appetite-index" className="text-primary hover:underline">risk appetite</Link> aligns with their profile.
       </p>
 
       <h2 className="heading-md text-foreground mt-12 mb-4">Preparing Your Business for Payment Processor Approval</h2>

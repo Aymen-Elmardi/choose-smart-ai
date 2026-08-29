@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
 import FAQSchema from "@/components/FAQSchema";
@@ -107,7 +107,7 @@ const StripeAccountFrozen = () => {
         </ol>
         
         <p className="mt-4">
-          For detailed guidance on document requests, see our guide on <Link to="/insights/what-to-do-when-provider-asks-for-documents" className="text-primary hover:underline">what to do when a provider asks for documents</Link>.
+          For detailed guidance on document requests, see our guide on <Link href="/insights/what-to-do-when-provider-asks-for-documents" className="text-primary hover:underline">what to do when a provider asks for documents</Link>.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
@@ -126,7 +126,7 @@ const StripeAccountFrozen = () => {
         </p>
         <div className="bg-primary/5 border-l-4 border-primary p-4 my-4">
           <p className="text-foreground">
-            <strong>The Insight:</strong> Stripe's risk model establishes a baseline for your business. A spike of 200% or more in a short period (e.g., 7 days) is flagged as a potential bust-out fraud attempt, where a fraudster processes a large volume of stolen cards before disappearing. Learn more about <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">why growth triggers account reviews</Link>.
+            <strong>The Insight:</strong> Stripe's risk model establishes a baseline for your business. A spike of 200% or more in a short period (e.g., 7 days) is flagged as a potential bust-out fraud attempt, where a fraudster processes a large volume of stolen cards before disappearing. Learn more about <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">why growth triggers account reviews</Link>.
           </p>
         </div>
 
@@ -147,14 +147,14 @@ const StripeAccountFrozen = () => {
         </p>
 
         <p>
-          This matters beyond the freeze itself. Your MCC affects your interchange rate, your rolling reserve requirements, and how closely your account gets monitored going forward. If you've pivoted your product line in the last twelve months, checking whether your MCC still matches what you actually sell is a five-minute task that can prevent the next review before it starts. For a fuller breakdown of how this classification works, see our guide on <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business</Link>.
+          This matters beyond the freeze itself. Your MCC affects your interchange rate, your rolling reserve requirements, and how closely your account gets monitored going forward. If you've pivoted your product line in the last twelve months, checking whether your MCC still matches what you actually sell is a five-minute task that can prevent the next review before it starts. For a fuller breakdown of how this classification works, see our guide on <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business</Link>.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
           3. The Chargeback Ratio Creep (The Silent Killer)
         </h3>
         <p>
-          Your <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback ratio</Link> (the number of chargebacks divided by the number of transactions) has exceeded the acceptable threshold, typically 0.9% to 1.0% of total transactions.
+          Your <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback ratio</Link> (the number of chargebacks divided by the number of transactions) has exceeded the acceptable threshold, typically 0.9% to 1.0% of total transactions.
         </p>
         <div className="bg-destructive/10 border-l-4 border-destructive p-4 my-4">
           <p className="text-foreground">
@@ -170,7 +170,7 @@ const StripeAccountFrozen = () => {
         </p>
         <div className="bg-primary/5 border-l-4 border-primary p-4 my-4">
           <p className="text-foreground">
-            <strong>The Insight:</strong> This creates a significant financial liability. If your business fails before delivering the service, the payment provider is liable for all future refunds. Stripe's system will often hold a <Link to="/insights/crisis/hidden-fee-crisis" className="text-primary hover:underline">rolling reserve</Link> or freeze funds to cover this potential liability, especially if your business is new or rapidly growing.
+            <strong>The Insight:</strong> This creates a significant financial liability. If your business fails before delivering the service, the payment provider is liable for all future refunds. Stripe's system will often hold a <Link href="/insights/crisis/hidden-fee-crisis" className="text-primary hover:underline">rolling reserve</Link> or freeze funds to cover this potential liability, especially if your business is new or rapidly growing.
           </p>
         </div>
 
@@ -266,7 +266,7 @@ const StripeAccountFrozen = () => {
         </p>
         
         <p className="mt-4">
-          If you've been rejected elsewhere, read our guide on <Link to="/insights/crisis/rejected-high-risk-strategy" className="text-primary hover:underline">finding a risk-aligned provider after rejection</Link>.
+          If you've been rejected elsewhere, read our guide on <Link href="/insights/crisis/rejected-high-risk-strategy" className="text-primary hover:underline">finding a risk-aligned provider after rejection</Link>.
         </p>
 
         {/* INSERT 4 */}

@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -103,7 +103,7 @@ const ProvidersIndex = () => {
       <Header />
       <main className="max-w-4xl mx-auto px-4 py-16">
         <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8" aria-label="Breadcrumb">
-          <Link to="/insights" className="hover:text-foreground transition-colors">Insights</Link>
+          <Link href="/insights" className="hover:text-foreground transition-colors">Insights</Link>
           <span aria-hidden="true">/</span>
           <span className="text-foreground/70">Provider Deep Dives</span>
         </nav>
@@ -122,7 +122,7 @@ const ProvidersIndex = () => {
           {providerArticles.map((article) => (
             <Link
               key={article.slug}
-              to={article.slug}
+              href={article.slug}
               className="block p-6 rounded-xl border border-border bg-card hover:border-primary/40 hover:shadow-md transition-all"
             >
               <div className="flex items-start gap-4">

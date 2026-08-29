@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
@@ -297,7 +297,7 @@ const RiskAlignmentPaymentProcessor = () => {
         </h2>
         <p className="text-muted-foreground mb-4">
           Ask the processor directly what MCC they intend to use for your account and whether it matches how you actually operate, not just what your business is called. Ask what would trigger a rolling reserve, at what percentage, and for how long funds would be held. Ask what volume increase would trigger a manual review, and what the process looks like if you tell them about a growth spike in advance versus if they discover it themselves. For more on how classification works, see our guide to{" "}
-          <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>.
+          <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>.
         </p>
         <p className="text-muted-foreground">
           A processor that answers these questions specifically, with numbers, is telling you they have actually underwritten businesses like yours before. A processor that answers vaguely is telling you they will figure out your risk profile after something goes wrong, which is the worst time to find out.
@@ -311,7 +311,7 @@ const RiskAlignmentPaymentProcessor = () => {
         </h2>
         <p className="text-muted-foreground">
           If you are already on a processor whose risk model doesn't match your business, the fix is rarely to wait it out. Document your chargeback rate, your refund policy, and any operational changes in writing and proactively send them to your processor rather than waiting to be asked. If a rolling reserve was imposed, ask specifically what performance would get it reduced or removed, most contracts have a stated path even if it isn't offered upfront. If the relationship is fundamentally mismatched, for instance a marketplace on a processor that has never underwritten split payouts, moving to a processor built for your actual model is usually cheaper over 12 months than absorbing repeated reserve holds and review delays. Our guide on{" "}
-          <Link to="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>{" "}
+          <Link href="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>{" "}
           walks through that comparison in more depth.
         </p>
       </section>
@@ -326,7 +326,7 @@ const RiskAlignmentPaymentProcessor = () => {
         </p>
         <p className="text-muted-foreground">
           If you're not sure whether your current processor's risk model matches your business,{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">the free risk assessment</Link>{" "}
+          <Link href="/assessment" className="text-primary hover:underline font-medium">the free risk assessment</Link>{" "}
           compares your operating profile against processors that have already underwritten businesses like yours.
         </p>
       </section>

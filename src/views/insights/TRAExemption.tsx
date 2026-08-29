@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
 
@@ -175,7 +175,7 @@ const TRAExemption = () => {
 
             <p className="text-muted-foreground mb-8">
               This also has a direct cost angle: Mastercard's per-authentication scheme fee{" "}
-              <Link to="/insights/mastercard-3ds-authentication-fee-changes-europe" className="text-primary hover:underline">
+              <Link href="/insights/mastercard-3ds-authentication-fee-changes-europe" className="text-primary hover:underline">
                 increased in Europe from July 2026
               </Link>
               , which makes qualifying for a TRA exemption worth more than it used to.
@@ -192,7 +192,7 @@ const TRAExemption = () => {
 
             <div className="mt-12 p-6 rounded-xl bg-muted/50 border border-border">
               <p className="text-muted-foreground mb-4">
-                <Link to="/assessment?start=true" replace className="text-primary hover:underline font-medium">
+                <Link href="/assessment?start=true" replace className="text-primary hover:underline font-medium">
                   Understand how different providers handle risk and friction for your business.
                 </Link>
               </p>

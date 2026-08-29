@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from "react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
@@ -481,7 +481,7 @@ const StripeVsSquareVsPaypal = () => {
                     className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                     asChild
                   >
-                    <Link to="/assessment?start=true" replace>
+                    <Link href="/assessment?start=true" replace>
                       Answer a few quick questions
                       <ArrowRight className="w-5 h-5" />
                     </Link>
@@ -501,7 +501,7 @@ const StripeVsSquareVsPaypal = () => {
                 There's no single "best" provider. Stripe, Square, and PayPal each serve different business models. The right choice depends on how you sell, your volume, and your growth plans.
               </p>
               <p className="text-lg text-muted-foreground mt-4">
-                If none of these feel like a clean fit, we use a <Link to="/assessment" className="text-primary hover:underline">short assessment</Link> to sanity-check payment decisions before businesses lock themselves in.
+                If none of these feel like a clean fit, we use a <Link href="/assessment" className="text-primary hover:underline">short assessment</Link> to sanity-check payment decisions before businesses lock themselves in.
               </p>
             </div>
           </div>

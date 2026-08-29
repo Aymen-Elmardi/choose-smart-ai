@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -42,7 +42,7 @@ const PricingModelsIndex = () => {
           {pricingArticles.map((article) => (
             <Link
               key={article.slug}
-              to={article.slug}
+              href={article.slug}
               className="block p-6 rounded-xl border border-border bg-card hover:border-primary/40 hover:shadow-md transition-all"
             >
               <div className="flex items-start gap-4">

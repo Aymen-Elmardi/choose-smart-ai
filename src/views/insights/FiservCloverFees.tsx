@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -423,7 +423,7 @@ const FiservCloverFees = () => {
         </ul>
         <p className="text-muted-foreground">
           This structure matters because it affects who sets processing rates and terms. Merchants who receive Clover through a bank or reseller may see different pricing than those who go directly to Clover. In some cases, reseller pricing can be less transparent than direct pricing, so it is worth comparing. This is similar to how{" "}
-          <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment provider risk models</Link> determine pricing outcomes for all providers.
+          <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment provider risk models</Link> determine pricing outcomes for all providers.
         </p>
       </section>
 
@@ -491,7 +491,7 @@ const FiservCloverFees = () => {
         </ul>
         <p className="text-muted-foreground">
           For merchants receiving Clover through a bank or reseller partner, it is worth understanding that the pricing and terms you receive may have been set by the reseller, not Clover directly. Comparing offers across multiple channels is advisable before committing. For a broader look at{" "}
-          <Link to="/insights/fiserv-payments-platform" className="text-primary hover:underline">Fiserv's capabilities and where it fits in the payment landscape</Link>, our provider deep dive covers the full picture.
+          <Link href="/insights/fiserv-payments-platform" className="text-primary hover:underline">Fiserv's capabilities and where it fits in the payment landscape</Link>, our provider deep dive covers the full picture.
         </p>
       </section>
 
@@ -514,7 +514,7 @@ const FiservCloverFees = () => {
         </p>
         <p className="text-muted-foreground">
           For North American merchants with physical locations and a need for robust POS features, Clover is a credible option. For UK and European merchants, it is worth comparing alternatives that have stronger local availability. If you want to understand whether Fiserv or a different provider would be the best fit for your business,{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">start a short assessment</Link>.
+          <Link href="/assessment" className="text-primary hover:underline font-medium">start a short assessment</Link>.
         </p>
       </section>
     </InsightsArticleLayout>

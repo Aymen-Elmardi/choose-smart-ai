@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, Shield, Info } from "lucide-react";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Button } from "@/components/ui/button";
@@ -58,9 +58,9 @@ const SchemeRulesByPaymentMethod = () => {
       </p>
       <p className="mb-2">That means:</p>
       <ul className="list-disc pl-6 mb-4 space-y-1">
-        <li>Your <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback ratio</Link> is measured directly</li>
+        <li>Your <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback ratio</Link> is measured directly</li>
         <li>Your fraud rate is attributed directly</li>
-        <li><Link to="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">Monitoring programs</Link> apply directly</li>
+        <li><Link href="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">Monitoring programs</Link> apply directly</li>
         <li>PCI compliance obligations sit with you</li>
       </ul>
       <p className="mb-4">In this structure, there is no buffer.</p>
@@ -71,7 +71,7 @@ const SchemeRulesByPaymentMethod = () => {
       {/* Section 2 */}
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Digital Wallets: Risk Can Shift, But Not Disappear</h2>
       <p className="mb-4">
-        Digital wallets such as <Link to="/insights/apple-pay-google-pay-explained" className="text-primary hover:underline">Apple Pay and Google Pay</Link> still run on underlying card networks.
+        Digital wallets such as <Link href="/insights/apple-pay-google-pay-explained" className="text-primary hover:underline">Apple Pay and Google Pay</Link> still run on underlying card networks.
       </p>
       <p className="mb-4">However, the authentication layer changes.</p>
       <p className="mb-2">Wallets often use:</p>
@@ -84,7 +84,7 @@ const SchemeRulesByPaymentMethod = () => {
       <p className="mb-4">This can reduce fraud rates significantly compared to manual card entry.</p>
       <p className="mb-4">Lower fraud can indirectly protect your chargeback ratio.</p>
       <p className="mb-4">
-        However, <Link to="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">scheme rules</Link> still apply at the merchant level if disputes occur.
+        However, <Link href="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">scheme rules</Link> still apply at the merchant level if disputes occur.
       </p>
       <p className="mb-6">The wallet improves security. It does not eliminate scheme obligations.</p>
 
@@ -108,7 +108,7 @@ const SchemeRulesByPaymentMethod = () => {
       {/* Section 4 */}
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Marketplaces and Platforms</h2>
       <p className="mb-4">
-        If you operate a <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplace or platform</Link>, scheme rules become more layered.
+        If you operate a <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplace or platform</Link>, scheme rules become more layered.
       </p>
       <p className="mb-2">There are rules governing:</p>
       <ul className="list-disc pl-6 mb-4 space-y-1">
@@ -134,7 +134,7 @@ const SchemeRulesByPaymentMethod = () => {
       <p className="mb-4">From a merchant perspective, this reduces direct chargeback exposure on those transactions.</p>
       <p className="mb-2">However:</p>
       <ul className="list-disc pl-6 mb-4 space-y-1">
-        <li>Your overall dispute ratios across payment methods can still affect <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">provider risk classification</Link></li>
+        <li>Your overall dispute ratios across payment methods can still affect <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">provider risk classification</Link></li>
         <li>Refund handling obligations still apply</li>
         <li>Disclosure and advertising standards may be governed by scheme or regulatory rules</li>
       </ul>
@@ -162,7 +162,7 @@ const SchemeRulesByPaymentMethod = () => {
       {/* Section 7 */}
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">The Bottom Line</h2>
       <p className="mb-4">
-        <Link to="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">Scheme rules</Link> do not apply identically across payment methods.
+        <Link href="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">Scheme rules</Link> do not apply identically across payment methods.
       </p>
       <p className="mb-4">Your structure, authentication model, billing logic and merchant classification all influence how risk is measured.</p>
       <p className="mb-4">Understanding this before you scale gives you leverage.</p>
@@ -191,7 +191,7 @@ const SchemeRulesByPaymentMethod = () => {
               size="lg"
               className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg hover:shadow-xl transition-all w-full sm:w-auto h-auto sm:h-12 py-3 sm:py-0"
             >
-              <Link to="/recommendation" className="flex items-center justify-center gap-2">
+              <Link href="/recommendation" className="flex items-center justify-center gap-2">
                 Apply for Advisory
                 <ArrowRight className="w-5 h-5" />
               </Link>

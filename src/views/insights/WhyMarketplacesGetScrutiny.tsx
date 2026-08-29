@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const WhyMarketplacesGetScrutiny = () => {
@@ -26,7 +26,7 @@ const WhyMarketplacesGetScrutiny = () => {
         </p>
         
         <p>
-          Providers must understand who is selling, how funds are distributed, and whether sellers meet regulatory requirements. This is why marketplaces are often reviewed more deeply and more frequently. The <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> differ significantly for marketplace models.
+          Providers must understand who is selling, how funds are distributed, and whether sellers meet regulatory requirements. This is why marketplaces are often reviewed more deeply and more frequently. The <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> differ significantly for marketplace models.
         </p>
         
         <p>
@@ -34,7 +34,7 @@ const WhyMarketplacesGetScrutiny = () => {
         </p>
         
         <p>
-          If your business involves multiple sellers or revenue sharing, selecting the right payment infrastructure early is critical. Our guide on <Link to="/best-payment-processor-uk" className="text-primary hover:underline">which UK payment processors are likely to approve you</Link> covers marketplace-friendly options.
+          If your business involves multiple sellers or revenue sharing, selecting the right payment infrastructure early is critical. Our guide on <Link href="/best-payment-processor-uk" className="text-primary hover:underline">which UK payment processors are likely to approve you</Link> covers marketplace-friendly options.
         </p>
       </div>
     </InsightsArticleLayout>

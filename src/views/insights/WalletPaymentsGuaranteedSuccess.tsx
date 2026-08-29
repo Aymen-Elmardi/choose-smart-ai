@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
@@ -137,7 +137,7 @@ const WalletPaymentsGuaranteedSuccess = () => {
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>It guarantees future payment success.</strong> When that balance is spent, it cannot fail.</li>
           <li><strong>It avoids paying processing fees again.</strong> Wallet spend does not trigger interchange or scheme fees.</li>
-          <li><strong>It almost eliminates <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargebacks</Link>.</strong> Customers do not dispute transactions when the money is already visible and usable.</li>
+          <li><strong>It almost eliminates <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargebacks</Link>.</strong> Customers do not dispute transactions when the money is already visible and usable.</li>
           <li><strong>It keeps funds inside your ecosystem.</strong> Cash does not immediately leave your platform.</li>
         </ul>
         <p>
@@ -160,7 +160,7 @@ const WalletPaymentsGuaranteedSuccess = () => {
           Because the money is already usable, customers do not escalate to their bank. For merchants, this means lower dispute ratios and fewer account reviews from payment providers.
         </p>
         <p>
-          Over time, this directly improves how stable your business looks from a <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk perspective</Link>.
+          Over time, this directly improves how stable your business looks from a <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk perspective</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -229,7 +229,7 @@ const WalletPaymentsGuaranteedSuccess = () => {
           <li>Risk controls that scale</li>
         </ul>
         <p>
-          This is often the difference between smooth approvals and <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">constant reviews</Link>.
+          This is often the difference between smooth approvals and <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">constant reviews</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -252,7 +252,7 @@ const WalletPaymentsGuaranteedSuccess = () => {
           If you are exploring this model, the key question is not whether wallets work. It is whether your current payment setup allows you to use them without introducing risk.
         </p>
         <p>
-          If you want to understand whether wallets fit your business and which providers handle them properly, start with a <Link to="/assessment" className="text-primary hover:underline">short assessment</Link>. It helps you avoid building something that looks good on paper but fails under real payment rules.
+          If you want to understand whether wallets fit your business and which providers handle them properly, start with a <Link href="/assessment" className="text-primary hover:underline">short assessment</Link>. It helps you avoid building something that looks good on paper but fails under real payment rules.
         </p>
       </div>
 

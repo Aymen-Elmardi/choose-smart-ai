@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const WhyProvidersReUnderwrite = () => {
@@ -26,7 +26,7 @@ const WhyProvidersReUnderwrite = () => {
         </p>
         
         <p>
-          Re-underwriting can involve requests for updated documents, explanations of recent transactions, or confirmation of business operations. Each provider handles this differently. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help you prepare.
+          Re-underwriting can involve requests for updated documents, explanations of recent transactions, or confirmation of business operations. Each provider handles this differently. Understanding <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help you prepare.
         </p>
         
         <p>
@@ -34,7 +34,7 @@ const WhyProvidersReUnderwrite = () => {
         </p>
         
         <p>
-          Understanding when re-underwriting occurs helps businesses avoid surprises and downtime. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> upfront can reduce the impact of these reviews.
+          Understanding when re-underwriting occurs helps businesses avoid surprises and downtime. <Link href="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> upfront can reduce the impact of these reviews.
         </p>
       </div>
     </InsightsArticleLayout>

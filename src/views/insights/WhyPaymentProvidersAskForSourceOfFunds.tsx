@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const WhyPaymentProvidersAskForSourceOfFunds = () => {
@@ -38,7 +38,7 @@ const WhyPaymentProvidersAskForSourceOfFunds = () => {
         </p>
         
         <p>
-          Payment providers are required to understand how money moves into the system, particularly when volumes increase or patterns change. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help clarify these requirements.
+          Payment providers are required to understand how money moves into the system, particularly when volumes increase or patterns change. Understanding <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help clarify these requirements.
         </p>
         
         <p>
@@ -160,7 +160,7 @@ const WhyPaymentProvidersAskForSourceOfFunds = () => {
         </p>
         
         <p>
-          Understanding the process reduces stress and keeps payments flowing. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> can also help reduce how often these checks occur.
+          Understanding the process reduces stress and keeps payments flowing. <Link href="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> can also help reduce how often these checks occur.
         </p>
       </div>
     </InsightsArticleLayout>

@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
@@ -145,7 +145,7 @@ const HiddenPaymentProcessorFees = () => {
       </p>
       <p className="text-foreground/90 mb-8">
         Interchange-plus pricing avoids this by passing the actual network interchange rate through with a fixed, disclosed markup. For 2026, a competitive interchange-plus markup for a small to mid-size business sits around 0.15% to 0.30% plus $0.08 to $0.10 per transaction. If your markup is meaningfully above that, you are very likely overpaying relative to market rate — see how a{" "}
-        <Link to="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">payment gateway and the processor sitting behind it</Link>{" "}
+        <Link href="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">payment gateway and the processor sitting behind it</Link>{" "}
         actually divide up that margin.
       </p>
 
@@ -199,7 +199,7 @@ const HiddenPaymentProcessorFees = () => {
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Key Takeaways</h2>
       <p className="text-foreground/90 mb-8">
         Hidden fees are rarely illegal and almost never disclosed clearly at the point of sale. They live in the fee schedule, not the sales pitch, and they compound: a business paying a PCI fee, a statement fee, and a handful of batch fees every month can be paying several hundred dollars a year in charges that were never part of the advertised rate. The businesses that avoid this read the fee schedule before signing and negotiate the line items that are actually negotiable, which is most of them. For a broader framework on evaluating a processor beyond just its fee schedule, see{" "}
-        <Link to="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>.
+        <Link href="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>.
       </p>
 
       <InlineAssessmentCTA

@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from '@/lib/booking';
 
@@ -31,7 +31,7 @@ const HeroSection = () => {
               </a>
             </Button>
             <Button variant="link" asChild>
-              <Link to="/statement-review">
+              <Link href="/statement-review">
                 See if you're overpaying
                 <ArrowRight className="w-4 h-4" />
               </Link>

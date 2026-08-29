@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -84,16 +84,16 @@ const SourceOfFunds = () => {
             </p>
             
             <p>
-              This usually happens for new businesses or when volumes change. Different providers have varying requirements — understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help you prepare.
+              This usually happens for new businesses or when volumes change. Different providers have varying requirements — understanding <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help you prepare.
             </p>
             
             <p>
-              Having clean separation between personal and business finances helps a lot here. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start can reduce these friction points.
+              Having clean separation between personal and business finances helps a lot here. <Link href="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start can reduce these friction points.
             </p>
             
             <p className="mt-12 pt-8 border-t border-border">
               If you want to avoid these issues before choosing a payment provider, you can start a{" "}
-              <Link to="/assessment?start=true" replace className="text-primary hover:underline">
+              <Link href="/assessment?start=true" replace className="text-primary hover:underline">
                 short assessment
               </Link>.
             </p>

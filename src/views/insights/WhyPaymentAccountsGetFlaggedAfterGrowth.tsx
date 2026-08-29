@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const WhyPaymentAccountsGetFlaggedAfterGrowth = () => {
@@ -38,7 +38,7 @@ const WhyPaymentAccountsGetFlaggedAfterGrowth = () => {
         </p>
         
         <p>
-          If transaction volume or value increases faster than anticipated, providers are required to reassess whether the account still fits the original risk profile. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help clarify why these reviews happen.
+          If transaction volume or value increases faster than anticipated, providers are required to reassess whether the account still fits the original risk profile. Understanding <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help clarify why these reviews happen.
         </p>
         
         <p>
@@ -160,7 +160,7 @@ const WhyPaymentAccountsGetFlaggedAfterGrowth = () => {
         </p>
         
         <p>
-          Knowing how and when providers reassess risk helps prevent surprises and keeps payment operations stable as the business scales. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start can also reduce friction during growth phases.
+          Knowing how and when providers reassess risk helps prevent surprises and keeps payment operations stable as the business scales. <Link href="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start can also reduce friction during growth phases.
         </p>
       </div>
     </InsightsArticleLayout>

@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const ContractsInvoices = () => {
@@ -37,7 +37,7 @@ const ContractsInvoices = () => {
           <li>During periodic compliance or account reviews</li>
         </ul>
         <p>
-          These checks are common and do not automatically mean there is a problem with your account. Understanding <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">why providers re-underwrite existing accounts</Link> can help you anticipate when these requests might appear.
+          These checks are common and do not automatically mean there is a problem with your account. Understanding <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">why providers re-underwrite existing accounts</Link> can help you anticipate when these requests might appear.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -53,7 +53,7 @@ const ContractsInvoices = () => {
           <li>That transaction amounts and billing frequency match expectations</li>
         </ul>
         <p>
-          The goal is to assess refund risk and chargeback exposure, not to evaluate your legal paperwork. The <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> vary in how strictly they enforce documentation.
+          The goal is to assess refund risk and chargeback exposure, not to evaluate your legal paperwork. The <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">approval requirements across major payment providers</Link> vary in how strictly they enforce documentation.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -87,7 +87,7 @@ const ContractsInvoices = () => {
           <li>Submitting documents that do not match the business model</li>
         </ul>
         <p>
-          Clear, simple documentation is usually more effective than detailed or polished files. For a complete walkthrough on handling document requests, see our guide on <Link to="/insights/what-to-do-when-provider-asks-for-documents" className="text-primary hover:underline">what to do when a provider asks for more documents</Link>.
+          Clear, simple documentation is usually more effective than detailed or polished files. For a complete walkthrough on handling document requests, see our guide on <Link href="/insights/what-to-do-when-provider-asks-for-documents" className="text-primary hover:underline">what to do when a provider asks for more documents</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -115,7 +115,7 @@ const ContractsInvoices = () => {
           Different payment providers apply documentation checks differently. Some are more flexible with early-stage businesses, while others expect formal processes from day one.
         </p>
         <p>
-          Understanding these differences before onboarding can help avoid delays and repeated verification requests. Our guide on <Link to="/best-payment-processor-uk" className="text-primary hover:underline">UK payment processor approval criteria</Link> can help you understand what to expect from different providers.
+          Understanding these differences before onboarding can help avoid delays and repeated verification requests. Our guide on <Link href="/best-payment-processor-uk" className="text-primary hover:underline">UK payment processor approval criteria</Link> can help you understand what to expect from different providers.
         </p>
       </div>
     </InsightsArticleLayout>

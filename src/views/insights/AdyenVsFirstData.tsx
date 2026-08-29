@@ -1,6 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 
 const AdyenVsFirstData = () => {
   const sources = [
@@ -102,7 +102,7 @@ const AdyenVsFirstData = () => {
       </p>
 
       <p className="mb-8">
-        If you fit their model, the result is a very clean and powerful setup. If you do not, approval can be slow or declined entirely. For a deeper look at how Adyen operates, see our <Link to="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">Adyen platform analysis</Link>.
+        If you fit their model, the result is a very clean and powerful setup. If you do not, approval can be slow or declined entirely. For a deeper look at how Adyen operates, see our <Link href="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">Adyen platform analysis</Link>.
       </p>
 
       <h2 className="text-2xl font-semibold mt-10 mb-4">How First Data works in practice</h2>
@@ -134,7 +134,7 @@ const AdyenVsFirstData = () => {
       </p>
 
       <p className="mb-8">
-        The tradeoff is complexity. You gain flexibility and coverage, but you lose transparency and simplicity unless the relationship is managed carefully. For more on this model, read our <Link to="/insights/fiserv-payments-platform" className="text-primary hover:underline">Fiserv platform deep dive</Link>.
+        The tradeoff is complexity. You gain flexibility and coverage, but you lose transparency and simplicity unless the relationship is managed carefully. For more on this model, read our <Link href="/insights/fiserv-payments-platform" className="text-primary hover:underline">Fiserv platform deep dive</Link>.
       </p>
 
       <h2 className="text-2xl font-semibold mt-10 mb-4">Approval behaviour: where businesses feel the difference</h2>
@@ -156,7 +156,7 @@ const AdyenVsFirstData = () => {
       </p>
 
       <p className="mb-8">
-        It is not about being good or bad. It is about fitting the model. Understanding <Link to="/insights/why-payment-providers-reject-growing-businesses" className="text-primary hover:underline">why providers reject growing businesses</Link> can help you position your application correctly.
+        It is not about being good or bad. It is about fitting the model. Understanding <Link href="/insights/why-payment-providers-reject-growing-businesses" className="text-primary hover:underline">why providers reject growing businesses</Link> can help you position your application correctly.
       </p>
 
       <h2 className="text-2xl font-semibold mt-10 mb-4">Pricing and contracts explained simply</h2>
@@ -174,7 +174,7 @@ const AdyenVsFirstData = () => {
       </p>
 
       <p className="mb-8">
-        This makes benchmarking essential. It also makes negotiation unavoidable. If you want to understand how pricing models affect your business, see our guide on <Link to="/insights/pricing-models/blended-vs-interchange" className="text-primary hover:underline">blended vs interchange pricing</Link>.
+        This makes benchmarking essential. It also makes negotiation unavoidable. If you want to understand how pricing models affect your business, see our guide on <Link href="/insights/pricing-models/blended-vs-interchange" className="text-primary hover:underline">blended vs interchange pricing</Link>.
       </p>
 
       <h2 className="text-2xl font-semibold mt-10 mb-4">Which businesses usually fit Adyen best</h2>
@@ -257,7 +257,7 @@ const AdyenVsFirstData = () => {
 
       <div className="my-8 p-6 bg-primary/5 border border-primary/20 rounded-lg">
         <p className="text-base">
-          <strong>Ready to find your fit?</strong> If you want to understand which model suits your business before applying, <Link to="/assessment" className="text-primary hover:underline font-medium">start a short assessment</Link>. It looks at your business structure and routes you toward the type of provider most likely to approve and support you long term.
+          <strong>Ready to find your fit?</strong> If you want to understand which model suits your business before applying, <Link href="/assessment" className="text-primary hover:underline font-medium">start a short assessment</Link>. It looks at your business structure and routes you toward the type of provider most likely to approve and support you long term.
         </p>
       </div>
 

@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
@@ -232,7 +232,7 @@ const PaymentProcessorBusinessVerticalClassification = () => {
       </p>
       <p className="text-foreground/90 mb-8">
         The right processor selection for a high-risk MCC starts with identifying who actually underwrites that vertical, what their reserve requirements are, what compliance documentation they require, and what contractual protection exists if the account is reviewed. That's a different evaluation than comparing flat transaction rates. If your business is in the digital goods space, also read about{" "}
-        <Link to="/insights/digital-product-chargebacks-refunds-payment-processor" className="text-primary hover:underline">digital product chargeback rates and what processors do about them</Link>{" "}
+        <Link href="/insights/digital-product-chargebacks-refunds-payment-processor" className="text-primary hover:underline">digital product chargeback rates and what processors do about them</Link>{" "}
         - chargeback history is a second underwriting variable on top of the MCC.
       </p>
 

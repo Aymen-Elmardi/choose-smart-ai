@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import { BOOKING_URL } from "@/lib/booking";
@@ -319,7 +319,7 @@ const FiservPaymentsPlatform = () => {
         <p className="text-muted-foreground mb-3">
           Our dedicated pricing guide breaks down how negotiated fees, hardware bundles, and value added services create real business value for resellers and multi-location businesses.
         </p>
-        <Link to="/insights/fiserv-clover-pricing-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
+        <Link href="/insights/fiserv-clover-pricing-explained" className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline">
           Read: Fiserv and Clover Pricing Explained <ArrowRight className="w-4 h-4" />
         </Link>
       </section>
@@ -337,7 +337,7 @@ const FiservPaymentsPlatform = () => {
         </p>
         <p className="text-muted-foreground">
           If you want help assessing whether Fiserv fits your business profile, or comparing it against alternatives based on your transaction volume, geography, and risk profile, you can{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">
+          <Link href="/assessment" className="text-primary hover:underline font-medium">
             start a short assessment
           </Link>{" "}
           and we will guide you through the trade-offs before you commit.
@@ -353,7 +353,7 @@ const FiservPaymentsPlatform = () => {
         <ul className="space-y-2">
           <li>
             <Link 
-              to="/insights/enterprise-provider-comparison" 
+              href="/insights/enterprise-provider-comparison" 
               className="text-primary hover:underline"
             >
               Enterprise Payment Providers: Strength Comparison
@@ -361,7 +361,7 @@ const FiservPaymentsPlatform = () => {
           </li>
           <li>
             <Link 
-              to="/insights/crisis/hidden-fee-crisis" 
+              href="/insights/crisis/hidden-fee-crisis" 
               className="text-primary hover:underline"
             >
               The Hidden Fee Crisis: How Your 'Low Rate' Processor is Costing You Thousands
@@ -369,7 +369,7 @@ const FiservPaymentsPlatform = () => {
           </li>
           <li>
             <Link 
-              to="/insights/pricing-models/blended-vs-interchange" 
+              href="/insights/pricing-models/blended-vs-interchange" 
               className="text-primary hover:underline"
             >
               Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy

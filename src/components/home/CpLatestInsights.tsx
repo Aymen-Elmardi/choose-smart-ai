@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { allInsights, categoryLabels, getInsightUrl } from "@/data/insightsArticles";
 
 /**
@@ -40,7 +40,7 @@ const CpLatestInsights = () => {
 
         <div className="cp-insights-grid">
           {articles.map((article) => (
-            <Link key={article.slug} to={getInsightUrl(article)} className="cp-i-card cp-reveal">
+            <Link key={article.slug} href={getInsightUrl(article)} className="cp-i-card cp-reveal">
               <div className="cp-i-meta">
                 <span>{categoryLabels[article.category]}</span>
                 <span className="cp-i-dot" aria-hidden="true">•</span>
@@ -52,7 +52,7 @@ const CpLatestInsights = () => {
           ))}
         </div>
 
-        <Link to="/insights" className="cp-i-more cp-reveal">
+        <Link href="/insights" className="cp-i-more cp-reveal">
           Read all insights <span className="cp-arrow" aria-hidden="true">→</span>
         </Link>
       </div>

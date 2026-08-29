@@ -1,4 +1,4 @@
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ShieldAlert, BarChart3, Receipt, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BOOKING_URL } from "@/lib/booking";
@@ -43,7 +43,7 @@ const HowPaymentsWorkSection = () => {
             {boxes.map((box) => (
               <Link
                 key={box.title}
-                to={box.link}
+                href={box.link}
                 className="border border-border rounded-lg bg-secondary/30 p-7 md:p-8 shadow-sm hover:border-primary/40 transition-colors group"
               >
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-5">

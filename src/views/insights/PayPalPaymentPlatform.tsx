@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import { ArrowRight } from "lucide-react";
@@ -103,9 +103,9 @@ const PayPalPaymentPlatform = () => {
       </ul>
       <p className="text-foreground/90 mb-8">
         PayPal sits in a slightly different category from providers like{" "}
-        <Link to="/insights/stripe-payment-platform" className="text-primary hover:underline">Stripe</Link>,{" "}
-        <Link to="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">Adyen</Link>, or{" "}
-        <Link to="/insights/checkout-com-enterprise-platform" className="text-primary hover:underline">Checkout.com</Link>.
+        <Link href="/insights/stripe-payment-platform" className="text-primary hover:underline">Stripe</Link>,{" "}
+        <Link href="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">Adyen</Link>, or{" "}
+        <Link href="/insights/checkout-com-enterprise-platform" className="text-primary hover:underline">Checkout.com</Link>.
         It is not purely an acquirer, and it is not purely a wallet. It is a hybrid model that blends payments, consumer identity, and dispute handling into a single ecosystem.
       </p>
 
@@ -239,7 +239,7 @@ const PayPalPaymentPlatform = () => {
           See how PayPal's blended pricing compares to Adyen's interchange-plus model, with a real cost comparison on £10,000 in monthly volume.
         </p>
         <Link
-          to="/insights/paypal-fees-explained"
+          href="/insights/paypal-fees-explained"
           className="inline-flex items-center gap-1.5 text-primary font-medium hover:underline"
         >
           Read: PayPal Pricing Explained
@@ -260,7 +260,7 @@ const PayPalPaymentPlatform = () => {
       </p>
       <p className="text-foreground/90 mb-8">
         If you want to understand whether PayPal fits your business model, growth stage, and customer base, a{" "}
-        <Link to="/assessment" className="text-primary hover:underline">short assessment</Link>{" "}
+        <Link href="/assessment" className="text-primary hover:underline">short assessment</Link>{" "}
         can help clarify where it adds value and where another provider may be a better core option.
       </p>
     </InsightsArticleLayout>

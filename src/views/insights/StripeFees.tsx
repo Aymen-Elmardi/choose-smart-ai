@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import { Source } from "@/components/SourcesCitation";
@@ -303,7 +303,7 @@ const StripeFees = () => {
           </p>
 
           <p className="text-muted-foreground">
-            For <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplaces</Link>, Stripe Connect fees are one of the most commonly overlooked costs. A platform scaling from 100 to 5,000 active sellers can see its monthly Stripe commission jump by thousands of pounds before any growth in transaction volume.
+            For <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplaces</Link>, Stripe Connect fees are one of the most commonly overlooked costs. A platform scaling from 100 to 5,000 active sellers can see its monthly Stripe commission jump by thousands of pounds before any growth in transaction volume.
            </p>
          </div>
 
@@ -351,7 +351,7 @@ const StripeFees = () => {
           </div>
 
           <p className="text-muted-foreground mb-4">
-            If your business relies on frequent payouts or faster cash flow, these fees add up quickly. A business moving £50,000/month via instant payouts pays approximately £500/month in payout commission alone. Learn more about <Link to="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:underline">same-day settlement and instant payouts</Link>.
+            If your business relies on frequent payouts or faster cash flow, these fees add up quickly. A business moving £50,000/month via instant payouts pays approximately £500/month in payout commission alone. Learn more about <Link href="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:underline">same-day settlement and instant payouts</Link>.
           </p>
 
           <p className="text-muted-foreground">
@@ -370,7 +370,7 @@ const StripeFees = () => {
           </p>
 
           <p className="text-muted-foreground">
-            For businesses with high transaction volumes or subscription models, this can become a meaningful operational cost. Understanding <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">how chargebacks work and how to avoid them</Link> is essential.
+            For businesses with high transaction volumes or subscription models, this can become a meaningful operational cost. Understanding <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">how chargebacks work and how to avoid them</Link> is essential.
           </p>
 
           <InlineAssessmentCTA
@@ -410,7 +410,7 @@ const StripeFees = () => {
           </ul>
 
           <p className="text-muted-foreground">
-            These tools are valuable but they increase your effective processing rate beyond the headline number. Understanding <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">how payment provider risk models work</Link> helps you assess whether these tools are necessary.
+            These tools are valuable but they increase your effective processing rate beyond the headline number. Understanding <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">how payment provider risk models work</Link> helps you assess whether these tools are necessary.
           </p>
         </div>
       </section>
@@ -686,7 +686,7 @@ const StripeFees = () => {
         </div>
 
         <p className="text-muted-foreground">
-          Stripe is competitive at low to medium volumes for UK card transactions. It becomes less competitive when you add Connect, high FX exposure, or frequent payouts. For a deeper comparison, see our <Link to="/insights/stripe-payment-platform" className="text-primary hover:underline">Stripe platform deep dive</Link> or explore <Link to="/stripe-alternatives-marketplace" className="text-primary hover:underline">Stripe alternatives</Link>.
+          Stripe is competitive at low to medium volumes for UK card transactions. It becomes less competitive when you add Connect, high FX exposure, or frequent payouts. For a deeper comparison, see our <Link href="/insights/stripe-payment-platform" className="text-primary hover:underline">Stripe platform deep dive</Link> or explore <Link href="/stripe-alternatives-marketplace" className="text-primary hover:underline">Stripe alternatives</Link>.
         </p>
       </section>
 
@@ -763,7 +763,7 @@ const StripeFees = () => {
         </ul>
 
         <p className="text-muted-foreground">
-          If you want to understand whether Stripe is cost effective for your business or whether another provider would be a better fit, you can <Link to="/assessment" className="text-primary hover:underline">start a short assessment</Link>. It looks at how you operate and what providers typically charge for businesses like yours.
+          If you want to understand whether Stripe is cost effective for your business or whether another provider would be a better fit, you can <Link href="/assessment" className="text-primary hover:underline">start a short assessment</Link>. It looks at how you operate and what providers typically charge for businesses like yours.
         </p>
       </section>
 

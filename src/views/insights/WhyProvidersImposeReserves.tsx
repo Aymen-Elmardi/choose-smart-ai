@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const WhyProvidersImposeReserves = () => {
@@ -31,7 +31,7 @@ const WhyProvidersImposeReserves = () => {
           <li>Rapid volume growth that outpaces your underwriting profile</li>
           <li>Long delivery timescales creating extended refund windows</li>
           <li>Operating in industries classified as higher risk (travel, events, subscriptions)</li>
-          <li>Entering <Link to="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">Visa or Mastercard monitoring programs</Link></li>
+          <li>Entering <Link href="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">Visa or Mastercard monitoring programs</Link></li>
         </ul>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Rolling Reserve vs Fixed Reserve</h2>
@@ -50,7 +50,7 @@ const WhyProvidersImposeReserves = () => {
           <li><strong>Build a clean track record:</strong> 3–6 months of low chargebacks and stable volume gives you leverage to request a review.</li>
           <li><strong>Provide documentation proactively:</strong> Share delivery confirmation data, customer service metrics, and refund policies.</li>
           <li><strong>Request a formal reserve review:</strong> Many providers will reassess reserves quarterly if asked — but rarely volunteer it.</li>
-          <li><strong>Compare terms across providers:</strong> If a competitor offers lower reserves, use that as a negotiation tool. Some providers offer <Link to="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">interchange++ pricing</Link> with more favourable reserve terms for established businesses.</li>
+          <li><strong>Compare terms across providers:</strong> If a competitor offers lower reserves, use that as a negotiation tool. Some providers offer <Link href="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">interchange++ pricing</Link> with more favourable reserve terms for established businesses.</li>
         </ul>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">When Reserves Become a Problem</h2>
@@ -58,7 +58,7 @@ const WhyProvidersImposeReserves = () => {
           Reserves strain cash flow, especially for businesses with thin margins or seasonal revenue. If your reserve is absorbing 10% of revenue on a 180-day hold, you're effectively lending your provider six months of working capital interest-free.
         </p>
         <p>
-          If your current provider's reserve terms are unsustainable, it may be worth exploring providers whose <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk models</Link> better match your business profile.
+          If your current provider's reserve terms are unsustainable, it may be worth exploring providers whose <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk models</Link> better match your business profile.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>

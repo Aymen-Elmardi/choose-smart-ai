@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, Shield, AlertTriangle } from "lucide-react";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Button } from "@/components/ui/button";
@@ -58,7 +58,7 @@ const SchemeRulesReservesMonitoring = () => {
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">1. Chargeback Monitoring Thresholds</h3>
       <p className="mb-4">
         Visa and Mastercard operate structured monitoring programs. When your{" "}
-        <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback ratio</Link>{" "}
+        <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback ratio</Link>{" "}
         crosses certain percentages, you are automatically classified into a risk tier.
       </p>
       <p className="mb-4">Your provider does not "decide" this tier. It is defined by scheme thresholds.</p>
@@ -78,7 +78,7 @@ const SchemeRulesReservesMonitoring = () => {
       <p className="mb-4">Card networks monitor fraud to sales ratios.</p>
       <p className="mb-4">
         If your fraud rate exceeds scheme benchmarks, the{" "}
-        <Link to="/insights/what-is-an-acquirer" className="text-primary hover:underline">acquirer</Link>{" "}
+        <Link href="/insights/what-is-an-acquirer" className="text-primary hover:underline">acquirer</Link>{" "}
         can face fines. Those fines are passed through contractually.
       </p>
       <p className="mb-2">To manage that exposure, providers may:</p>
@@ -104,7 +104,7 @@ const SchemeRulesReservesMonitoring = () => {
       </ul>
       <p className="mb-6">
         Growth without infrastructure upgrades can trigger scrutiny. This is one of the most misunderstood dynamics in{" "}
-        <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">scaling businesses</Link>.
+        <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">scaling businesses</Link>.
       </p>
 
       {/* Section: Why Reserves Appear Suddenly */}
@@ -124,7 +124,7 @@ const SchemeRulesReservesMonitoring = () => {
       {/* Section: Monitoring Programs */}
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Monitoring Programs Most Merchants Never Read About</h2>
       <p className="mb-4">
-        <Link to="/insights/visa-mastercard-control-card-payments" className="text-primary hover:underline">Visa and Mastercard</Link>{" "}
+        <Link href="/insights/visa-mastercard-control-card-payments" className="text-primary hover:underline">Visa and Mastercard</Link>{" "}
         operate structured monitoring programs that escalate in stages.
       </p>
       <p className="mb-2">These programs often include:</p>
@@ -151,7 +151,7 @@ const SchemeRulesReservesMonitoring = () => {
       <p className="mb-4">The scheme does not care that you were historically clean. It measures current ratios.</p>
       <p className="mb-6">
         This is why{" "}
-        <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">proactive risk management</Link>{" "}
+        <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">proactive risk management</Link>{" "}
         matters even when everything looks stable.
       </p>
 
@@ -177,7 +177,7 @@ const SchemeRulesReservesMonitoring = () => {
       {/* Section: Advisory */}
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Where Advisory Makes the Difference</h2>
       <p className="mb-4">Providers enforce{" "}
-        <Link to="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">scheme rules</Link>. They do not redesign your business model.
+        <Link href="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">scheme rules</Link>. They do not redesign your business model.
       </p>
       <p className="mb-2">An independent advisor looks at:</p>
       <ul className="list-disc pl-6 mb-4 space-y-1">
@@ -193,7 +193,7 @@ const SchemeRulesReservesMonitoring = () => {
       {/* Section: Bottom Line */}
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">The Bottom Line</h2>
       <p className="mb-4">
-        <Link to="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">Scheme rules</Link>{" "}
+        <Link href="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">Scheme rules</Link>{" "}
         sit above your provider.
       </p>
       <p className="mb-4">Monitoring programs, reserves and reviews are often mechanical responses to predefined metrics.</p>
@@ -223,7 +223,7 @@ const SchemeRulesReservesMonitoring = () => {
               size="lg"
               className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg hover:shadow-xl transition-all w-full sm:w-auto h-auto sm:h-12 py-3 sm:py-0"
             >
-              <Link to="/recommendation" className="flex items-center justify-center gap-2">
+              <Link href="/recommendation" className="flex items-center justify-center gap-2">
                 Apply for Advisory
                 <ArrowRight className="w-5 h-5" />
               </Link>

@@ -1,4 +1,4 @@
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, Clock } from "lucide-react";
 import { ContentCluster, getRelatedArticles, buildInsightUrl } from "@/lib/insightsArchitecture";
 
@@ -35,7 +35,7 @@ const RelatedArticles = ({
         {relatedArticles.map((article) => (
           <Link
             key={article.slug}
-            to={buildInsightUrl(article.slug, article.cluster)}
+            href={buildInsightUrl(article.slug, article.cluster)}
             className="group p-5 rounded-xl border border-border bg-card hover:border-primary/50 transition-all"
           >
             <div className="flex items-center gap-2 mb-2">

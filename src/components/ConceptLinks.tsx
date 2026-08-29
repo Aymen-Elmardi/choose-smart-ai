@@ -1,4 +1,4 @@
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, BookOpen } from "lucide-react";
 import { 
   getConceptRelatedArticles, 
@@ -64,7 +64,7 @@ const ConceptLinks = ({
           return (
             <Link
               key={article.slug}
-              to={buildConceptArticleUrl(article.slug)}
+              href={buildConceptArticleUrl(article.slug)}
               className="group flex items-start gap-3 p-4 rounded-lg border border-border bg-card/50 hover:border-primary/40 hover:bg-card transition-all"
             >
               <div className="flex-1 min-w-0">

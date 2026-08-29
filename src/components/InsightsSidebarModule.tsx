@@ -1,4 +1,4 @@
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -13,7 +13,7 @@ const InsightsSidebarModule = () => {
         Enter your business details and see which payment providers match your risk profile.
       </p>
       <Button asChild size="sm" className="w-full">
-        <Link to="/assessment">
+        <Link href="/assessment">
           Run My Risk Profile
           <ArrowRight className="w-4 h-4 ml-2" />
         </Link>

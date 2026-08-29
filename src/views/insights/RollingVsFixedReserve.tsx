@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
@@ -35,7 +35,7 @@ const RollingVsFixedReserve = () => {
           A fixed reserve (sometimes called an upfront reserve or minimum reserve) requires you to deposit a set amount before processing begins — or the provider withholds settlements until the target is reached.
         </p>
         <p>
-          Fixed reserves are more common for businesses with elevated risk profiles, those recovering from compliance issues, or merchants entering <Link to="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">card network monitoring programs</Link>.
+          Fixed reserves are more common for businesses with elevated risk profiles, those recovering from compliance issues, or merchants entering <Link href="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">card network monitoring programs</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">How They Compare</h2>
@@ -80,10 +80,10 @@ const RollingVsFixedReserve = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Can You Negotiate Reserve Terms?</h2>
         <p>
-          Yes. After demonstrating consistent low-risk processing — typically 3 to 6 months — many providers will review reserve terms on request. Learn more about <Link to="/insights/why-providers-impose-reserves" className="text-primary hover:underline">how to negotiate reserves</Link>.
+          Yes. After demonstrating consistent low-risk processing — typically 3 to 6 months — many providers will review reserve terms on request. Learn more about <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">how to negotiate reserves</Link>.
         </p>
         <p>
-          If reserve terms are a dealbreaker, consider providers whose <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk models</Link> align better with your business type — some providers specialise in categories that others over-reserve.
+          If reserve terms are a dealbreaker, consider providers whose <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk models</Link> align better with your business type — some providers specialise in categories that others over-reserve.
         </p>
 
         <InlineAssessmentCTA

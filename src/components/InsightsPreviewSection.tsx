@@ -1,4 +1,4 @@
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { allInsights, categoryLabels } from "@/data/insightsArticles";
@@ -38,7 +38,7 @@ const InsightsPreviewSection = () => {
             return (
               <Link
                 key={article.slug}
-                to={url}
+                href={url}
                 className={`group p-6 rounded-xl border border-border bg-card transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary/50 reveal stagger-${index + 1} ${isInView ? "visible" : ""}`}
               >
                 <span className="inline-block text-xs font-medium text-primary bg-primary/10 px-2.5 py-1 rounded-full mb-4">
@@ -56,7 +56,7 @@ const InsightsPreviewSection = () => {
 
         <div className={`text-center mt-10 reveal stagger-4 ${isInView ? "visible" : ""}`}>
           <Link
-            to="/insights"
+            href="/insights"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
             View all insights

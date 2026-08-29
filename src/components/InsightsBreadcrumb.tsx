@@ -1,4 +1,4 @@
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ChevronRight, Home } from "lucide-react";
 
 interface InsightsBreadcrumbProps {
@@ -27,7 +27,7 @@ const InsightsBreadcrumb = ({
       aria-label="Breadcrumb"
     >
       <Link 
-        to="/insights" 
+        href="/insights" 
         className="hover:text-foreground transition-colors flex items-center gap-1"
       >
         <Home className="w-3.5 h-3.5" />
@@ -35,7 +35,7 @@ const InsightsBreadcrumb = ({
       </Link>
       <ChevronRight className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
       <Link 
-        to={categoryUrl} 
+        href={categoryUrl} 
         className="hover:text-foreground transition-colors"
       >
         {category.name}

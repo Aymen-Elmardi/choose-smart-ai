@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -173,7 +173,7 @@ const WhatToDoWhenProviderAsksForDocuments = () => {
             </p>
             
             <p>
-              If you want clarity on which payment providers are better suited to your business, <Link to="/assessment?start=true" replace className="text-primary hover:text-primary/80 font-medium underline underline-offset-4">start a short assessment</Link>.
+              If you want clarity on which payment providers are better suited to your business, <Link href="/assessment?start=true" replace className="text-primary hover:text-primary/80 font-medium underline underline-offset-4">start a short assessment</Link>.
             </p>
 
             {/* Share & Like Actions */}

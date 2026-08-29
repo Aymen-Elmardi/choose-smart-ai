@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { useInView } from "@/hooks/useInView";
 
@@ -21,7 +21,7 @@ const CTASection = () => {
             size="xl"
             asChild
           >
-            <Link to="/statement-review">
+            <Link href="/statement-review">
               See if you're overpaying
               <ArrowRight className="w-5 h-5" />
             </Link>

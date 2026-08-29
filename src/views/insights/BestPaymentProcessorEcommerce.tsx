@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
@@ -198,7 +198,7 @@ const BestPaymentProcessorEcommerce = () => {
         </p>
         <p className="text-muted-foreground">
           <strong className="text-foreground">Where this breaks down:</strong> subscription businesses that generate high refund or dispute rates (common in continuity/negative-option models) get flagged by aggregator risk models faster than by a dedicated subscription processor with underwriting built for the vertical. If your churn is driven by disputed charges rather than card failures, that's a risk-alignment problem, not a billing-tooling problem. See our guide on{" "}
-          <Link to="/risk-alignment-payment-processor" className="text-primary hover:underline">risk alignment with payment processors</Link>.
+          <Link href="/risk-alignment-payment-processor" className="text-primary hover:underline">risk alignment with payment processors</Link>.
         </p>
       </section>
 
@@ -220,7 +220,7 @@ const BestPaymentProcessorEcommerce = () => {
         </p>
         <p className="text-muted-foreground">
           <strong className="text-foreground">Where this breaks down:</strong> running high-ticket goods through a standard flat-rate aggregator without adjusting fraud settings or authentication flows is the single most common way a growing high-ticket store gets its account frozen mid-quarter. See{" "}
-          <Link to="/payment-processors-high-risk-ecommerce" className="text-primary hover:underline">payment processors for high-risk e-commerce businesses</Link>{" "}
+          <Link href="/payment-processors-high-risk-ecommerce" className="text-primary hover:underline">payment processors for high-risk e-commerce businesses</Link>{" "}
           for how to evaluate a specialist fit.
         </p>
       </section>
@@ -307,7 +307,7 @@ const BestPaymentProcessorEcommerce = () => {
         </h2>
         <p className="text-muted-foreground">
           Nearly every "best payment processor for e-commerce" article ranks processors against each other in isolation. Almost none of them address the businesses that don't fit neatly into one category, a marketplace that is both high-volume and international, or a subscription business that is also high-ticket (annual enterprise SaaS contracts, for example). These blended profiles are common among the platform builders and marketplace operators ChosePayments works with, and they are exactly where a single processor recommendation breaks down. A marketplace processing $500,000 a month across the US and Canada, with subscription and one-time fees both flowing through the same rails, needs a processor evaluated against all four variables simultaneously, not just the one the business happens to Google first. Our{" "}
-          <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplace founder's guide to payment processing</Link>{" "}
+          <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplace founder's guide to payment processing</Link>{" "}
           covers this case specifically.
         </p>
       </section>
@@ -322,7 +322,7 @@ const BestPaymentProcessorEcommerce = () => {
         </p>
         <p className="text-muted-foreground">
           If more than one variable applies at meaningful scale, for example, a subscription marketplace selling internationally at $200,000 a month, no single processor from a generic listicle will fit cleanly, and the decision needs to weigh trade-offs across providers rather than pick a single winner. Our{" "}
-          <Link to="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">full framework for choosing a payment processor</Link>{" "}
+          <Link href="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">full framework for choosing a payment processor</Link>{" "}
           walks through that trade-off analysis in more depth.
         </p>
       </section>
@@ -337,7 +337,7 @@ const BestPaymentProcessorEcommerce = () => {
         </p>
         <p className="text-muted-foreground">
           Not sure which category your business actually falls into, or whether you're a blended profile that needs a more tailored match?{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">Run the free risk assessment</Link>{" "}
+          <Link href="/assessment" className="text-primary hover:underline font-medium">Run the free risk assessment</Link>{" "}
           and get matched against processors that already handle businesses like yours.
         </p>
       </section>

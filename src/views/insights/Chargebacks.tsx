@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -369,7 +369,7 @@ const Chargebacks = () => {
 
             <p>
               This is often connected to the same risk checks that cause{" "}
-              <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
+              <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
                 payment accounts to get flagged
               </Link>{" "}
               or payout delays.
@@ -377,7 +377,7 @@ const Chargebacks = () => {
 
             <p>
               Understanding this link helps businesses act early instead of reacting when money is already held. It also explains why providers may trigger{" "}
-              <Link to="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">
+              <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">
                 re-underwriting
               </Link>{" "}
               on accounts with rising dispute rates.
@@ -408,7 +408,7 @@ const Chargebacks = () => {
 
             <p>
               If you want to reduce risk before it turns into chargebacks or account issues, you can start a{" "}
-              <Link to="/assessment?start=true" className="text-primary hover:underline">
+              <Link href="/assessment?start=true" className="text-primary hover:underline">
                 short assessment
               </Link>{" "}
               to understand which payment providers are best suited to your business model.

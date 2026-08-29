@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
@@ -319,7 +319,7 @@ const ThirdPartyPaymentProcessors = () => {
         </p>
         <p className="text-muted-foreground">
           For classification purposes, marketplaces that handle multiple, unrelated lines of business are typically assigned MCC 5262, a category built specifically because a marketplace's transaction mix does not fit neatly under any single merchant category code. A restaurant delivery platform, by contrast, is usually classified under a single MCC tied to its dominant business line, which carries its own interchange and risk implications. See our guide to{" "}
-          <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>{" "}
+          <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>{" "}
           for the full mechanics.
         </p>
       </section>
@@ -340,7 +340,7 @@ const ThirdPartyPaymentProcessors = () => {
         </p>
         <p className="text-muted-foreground">
           <strong className="text-foreground">Do you need to pay out other parties?</strong> If your business model involves splitting or forwarding funds to restaurants, sellers, or contractors, you need a payment facilitator architecture from day one, not a standard third-party processor bolted on later. Retrofitting this after launch is a much harder engineering and compliance problem than building it in from the start. Our{" "}
-          <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplace founder's guide to payment processing</Link>{" "}
+          <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplace founder's guide to payment processing</Link>{" "}
           covers this in more depth.
         </p>
       </section>
@@ -409,12 +409,12 @@ const ThirdPartyPaymentProcessors = () => {
         </p>
         <p className="text-muted-foreground mb-4">
           If your business pays out to other parties, get the payment facilitator architecture right from the start. If your monthly volume is approaching $50,000 or more, it is worth running the actual numbers on interchange-plus pricing rather than assuming the switch isn't worth the effort. See our{" "}
-          <Link to="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">full breakdown of hidden payment processor fees</Link>{" "}
+          <Link href="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">full breakdown of hidden payment processor fees</Link>{" "}
           for what to check before you sign.
         </p>
         <p className="text-muted-foreground">
           Not sure whether your business has outgrown its current processor, or whether a marketplace payout structure needs a payment facilitator instead of a standard setup?{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">Run the free risk assessment</Link>{" "}
+          <Link href="/assessment" className="text-primary hover:underline font-medium">Run the free risk assessment</Link>{" "}
           and get matched to a processor built for how your business actually operates.
         </p>
       </section>

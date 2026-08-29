@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ChevronDown, ArrowRight, HelpCircle, Shield, ClipboardCheck } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -136,7 +136,7 @@ const AccordionItem = ({ item }: { item: FAQItem }) => {
                 "{item.excerpt}"
               </p>
               <Link
-                to={item.readMoreLink}
+                href={item.readMoreLink}
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
               >
                 {item.readMoreLabel || "Read more"}
@@ -210,7 +210,7 @@ const FAQ = () => {
           <div className="mt-16 text-center border-t border-border pt-10">
             <p className="text-lg text-muted-foreground mb-4">Still have questions?</p>
             <Link
-              to="/contact"
+              href="/contact"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
             >
               Get in touch

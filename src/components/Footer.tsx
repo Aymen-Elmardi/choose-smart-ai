@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { usePathname } from 'next/navigation';
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { Linkedin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -95,7 +95,7 @@ const Footer = () => {
         <div className="cp-wrap">
           <div className="cp-footer-top">
             <div className="flex items-center gap-4">
-              <Link to="/" className="cp-nav-logo" aria-label="ChosePayments home">
+              <Link href="/" className="cp-nav-logo" aria-label="ChosePayments home">
                 <img src="/logo-mark.png" alt="" width={176} height={192} loading="lazy" decoding="async" />
                 <span className="cp-logotype">Chose<em>Payments</em></span>
               </Link>
@@ -111,12 +111,12 @@ const Footer = () => {
             </div>
 
             <nav className="cp-footer-links">
-              <Link to="/about">About</Link>
-              <Link to={insightsHref}>Insights</Link>
-              <Link to="/contact">Contact</Link>
-              <Link to="/faq">FAQ</Link>
-              <Link to="/privacy">Privacy Policy</Link>
-              <Link to="/terms">Terms of Service</Link>
+              <Link href="/about">About</Link>
+              <Link href={insightsHref}>Insights</Link>
+              <Link href="/contact">Contact</Link>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/terms">Terms of Service</Link>
             </nav>
           </div>
 

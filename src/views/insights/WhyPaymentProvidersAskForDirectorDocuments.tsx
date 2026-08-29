@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const WhyPaymentProvidersAskForDirectorDocuments = () => {
@@ -38,7 +38,7 @@ const WhyPaymentProvidersAskForDirectorDocuments = () => {
         </p>
         
         <p>
-          Directors and significant shareholders carry legal responsibility. Verifying their identity helps providers meet anti money laundering and financial crime regulations. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help clarify these requirements.
+          Directors and significant shareholders carry legal responsibility. Verifying their identity helps providers meet anti money laundering and financial crime regulations. Understanding <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help clarify these requirements.
         </p>
         
         <p>
@@ -163,7 +163,7 @@ const WhyPaymentProvidersAskForDirectorDocuments = () => {
         </p>
         
         <p>
-          Understanding this process helps businesses respond calmly and avoid unnecessary disruption. <Link to="/assessment" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> can also reduce how often these checks occur.
+          Understanding this process helps businesses respond calmly and avoid unnecessary disruption. <Link href="/assessment" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> can also reduce how often these checks occur.
         </p>
       </div>
     </InsightsArticleLayout>

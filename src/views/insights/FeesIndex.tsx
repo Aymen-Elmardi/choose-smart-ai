@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -85,7 +85,7 @@ const FeesIndex = () => {
       <Header />
       <main className="max-w-4xl mx-auto px-4 py-16">
         <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8" aria-label="Breadcrumb">
-          <Link to="/insights" className="hover:text-foreground transition-colors">Insights</Link>
+          <Link href="/insights" className="hover:text-foreground transition-colors">Insights</Link>
           <span aria-hidden="true">/</span>
           <span className="text-foreground/70">Fees & Costs</span>
         </nav>
@@ -97,14 +97,14 @@ const FeesIndex = () => {
           The headline rate on a pricing page is rarely what you actually pay. Connect fees, chargeback costs, FX markups, and volume-based add-ons all sit outside the number a provider leads with. These guides break down the full, real cost of the major payment platforms so you can compare them properly.
         </p>
         <p className="text-muted-foreground mb-12">
-          If you're comparing pricing models rather than specific providers, see our <Link to="/insights/pricing-models" className="text-primary hover:underline">Pricing Models guide</Link> for how blended and interchange++ pricing actually work.
+          If you're comparing pricing models rather than specific providers, see our <Link href="/insights/pricing-models" className="text-primary hover:underline">Pricing Models guide</Link> for how blended and interchange++ pricing actually work.
         </p>
 
         <div className="space-y-6 mb-16">
           {feesArticles.map((article) => (
             <Link
               key={article.slug}
-              to={article.slug}
+              href={article.slug}
               className="block p-6 rounded-xl border border-border bg-card hover:border-primary/40 hover:shadow-md transition-all"
             >
               <div className="flex items-start gap-4">

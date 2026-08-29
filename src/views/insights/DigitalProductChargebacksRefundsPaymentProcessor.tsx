@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
@@ -274,7 +274,7 @@ const DigitalProductChargebacksRefundsPaymentProcessor = () => {
       </p>
       <p className="text-foreground/90 mb-8">
         The practical implication: managing chargebacks proactively, before they trigger processor action, is less expensive and less disruptive than managing the consequences after a processor takes action. Understanding{" "}
-        <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how your business vertical is classified by payment processors</Link>{" "}
+        <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how your business vertical is classified by payment processors</Link>{" "}
         is the related question - your MCC and your chargeback history are evaluated together when a processor decides whether to keep your account. A chargeback rate of 0.5-0.7% is manageable for most processors. A rate above 1% starts generating intervention. A rate above 1.5% generates network-level fines and account terminations.
       </p>
 

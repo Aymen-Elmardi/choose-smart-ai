@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from "react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowLeft, Users, TrendingUp, Shield, AlertTriangle, CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -30,7 +30,7 @@ const ReferralCommissionGuide = () => {
         <article className="section-container max-w-3xl mx-auto">
           {/* Breadcrumb */}
           <Link 
-            to="/insights" 
+            href="/insights" 
             className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -243,7 +243,7 @@ const ReferralCommissionGuide = () => {
                 For businesses referring other businesses, this means better recommendations, fewer client headaches, and sustainable recurring commission without needing to become a payments expert yourself.
               </p>
               
-              <Link to="/assessment">
+              <Link href="/assessment">
                 <Button variant="default" size="lg">
                   Try the Assessment
                 </Button>
@@ -294,7 +294,7 @@ const ReferralCommissionGuide = () => {
             <p className="text-background/70 mb-6 max-w-xl mx-auto">
               If you're a platform, agency, or advisor interested in exploring referral arrangements, get in touch. We can help you understand how this works and whether it's right for your business.
             </p>
-            <Link to="/contact">
+            <Link href="/contact">
               <Button variant="hero" size="lg">
                 Get in Touch
               </Button>

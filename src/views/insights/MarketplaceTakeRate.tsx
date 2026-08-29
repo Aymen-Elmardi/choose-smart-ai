@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -69,7 +69,7 @@ const MarketplaceTakeRate = () => {
         </p>
 
         <p>
-          Charge too little and you can&apos;t cover the cost of actually running the thing, <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">payment processing included</Link>, which is the part most take rate advice leaves out entirely.
+          Charge too little and you can&apos;t cover the cost of actually running the thing, <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">payment processing included</Link>, which is the part most take rate advice leaves out entirely.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
@@ -205,7 +205,7 @@ const MarketplaceTakeRate = () => {
         </p>
 
         <p>
-          This matters even more for marketplaces using <Link to="/marketplace-payment-provider" className="text-primary hover:underline">split payments</Link>, where funds have to be divided between the platform and multiple sellers on every transaction.
+          This matters even more for marketplaces using <Link href="/marketplace-payment-provider" className="text-primary hover:underline">split payments</Link>, where funds have to be divided between the platform and multiple sellers on every transaction.
         </p>
 
         <p>
@@ -250,7 +250,7 @@ const MarketplaceTakeRate = () => {
         </p>
 
         <p>
-          For more on how split payments interact with your commission structure, see our <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">guide to marketplace payments</Link>.
+          For more on how split payments interact with your commission structure, see our <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">guide to marketplace payments</Link>.
         </p>
 
         <p>

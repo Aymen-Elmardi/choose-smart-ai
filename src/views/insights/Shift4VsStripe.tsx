@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
@@ -255,22 +255,22 @@ const Shift4VsStripe = () => {
         </p>
         <ul className="space-y-2">
           <li>
-            <Link to="/insights/shift4-payments-platform" className="text-primary hover:underline">
+            <Link href="/insights/shift4-payments-platform" className="text-primary hover:underline">
               Shift4 Payments: The global payments giant most businesses have never heard of
             </Link>
           </li>
           <li>
-            <Link to="/insights/stripe-payment-platform" className="text-primary hover:underline">
+            <Link href="/insights/stripe-payment-platform" className="text-primary hover:underline">
               Stripe: The engine that built the modern internet economy
             </Link>
           </li>
           <li>
-            <Link to="/insights/enterprise-provider-comparison" className="text-primary hover:underline">
+            <Link href="/insights/enterprise-provider-comparison" className="text-primary hover:underline">
               Enterprise payment providers: Strength comparison
             </Link>
           </li>
           <li>
-            <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
+            <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
               Why payment accounts get frozen after sudden growth
             </Link>
           </li>

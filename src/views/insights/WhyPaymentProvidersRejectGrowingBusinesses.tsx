@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
 
@@ -268,7 +268,7 @@ const WhyPaymentProvidersRejectGrowingBusinesses = () => {
             Our short assessment highlights common approval risks and helps you find the right fit.
           </p>
           <Link 
-            to="/assessment" 
+            href="/assessment" 
             className="inline-flex items-center text-primary hover:underline font-medium"
           >
             Start the assessment →

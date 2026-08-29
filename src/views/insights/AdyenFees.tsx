@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
@@ -105,7 +105,7 @@ const AdyenFees = () => {
         </h2>
         <p className="mb-4">
           Adyen primarily uses an{" "}
-          <Link to="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">interchange plus pricing model</Link>, not blended rates.
+          <Link href="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">interchange plus pricing model</Link>, not blended rates.
         </p>
         <p className="mb-4">
           That means your total cost per transaction is made up of three parts:
@@ -149,7 +149,7 @@ const AdyenFees = () => {
         </ul>
         <p className="mb-4">
           Two merchants using Adyen can pay very different effective rates even if they process similar volumes. This is why Adyen pricing discussions usually happen after underwriting, not before. Understanding how{" "}
-          <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment provider risk models</Link> work helps explain why rates vary so widely.
+          <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment provider risk models</Link> work helps explain why rates vary so widely.
         </p>
 
         <InlineAssessmentCTA
@@ -186,7 +186,7 @@ const AdyenFees = () => {
         </ul>
         <p>
           These are not hidden fees, but they are not always obvious during early sales conversations. For a broader look at how costs stack up, see our guide on the{" "}
-          <Link to="/insights/crisis/hidden-fee-crisis" className="text-primary hover:underline">hidden fee crisis</Link> that affects many merchants.
+          <Link href="/insights/crisis/hidden-fee-crisis" className="text-primary hover:underline">hidden fee crisis</Link> that affects many merchants.
         </p>
       </section>
 
@@ -211,7 +211,7 @@ const AdyenFees = () => {
         </p>
         <p>
           To understand how Adyen's acquiring model compares to traditional bank-led infrastructure, see our comparison of{" "}
-          <Link to="/insights/adyen-vs-first-data" className="text-primary hover:underline">Adyen vs First Data</Link>.
+          <Link href="/insights/adyen-vs-first-data" className="text-primary hover:underline">Adyen vs First Data</Link>.
         </p>
       </section>
 
@@ -222,7 +222,7 @@ const AdyenFees = () => {
         </h2>
         <p className="mb-4">
           Adyen pricing becomes more attractive as volume increases. For lower volumes, the cost difference between Adyen and modern PSPs is often negligible or even higher. As volume scales, interchange plus pricing combined with local acquiring can become materially cheaper than{" "}
-          <Link to="/insights/pricing-models/blended-vs-interchange" className="text-primary hover:underline">blended pricing</Link>.
+          <Link href="/insights/pricing-models/blended-vs-interchange" className="text-primary hover:underline">blended pricing</Link>.
         </p>
         <p className="mb-4">This is why Adyen is typically a better fit for:</p>
         <ul className="list-disc pl-6 space-y-2 mb-4">
@@ -245,15 +245,15 @@ const AdyenFees = () => {
           Adyen, Stripe, and Checkout.com all serve large merchants, but their pricing philosophy differs.
         </p>
         <p className="mb-4">
-          <Link to="/insights/stripe-fees-explained" className="text-primary hover:underline">Stripe</Link> defaults to blended pricing and adds platform fees for many features.{" "}
-          <Link to="/insights/checkout-com-fees-explained" className="text-primary hover:underline">Checkout.com</Link> also negotiates pricing but operates more like a modern PSP with less infrastructure depth than Adyen.
+          <Link href="/insights/stripe-fees-explained" className="text-primary hover:underline">Stripe</Link> defaults to blended pricing and adds platform fees for many features.{" "}
+          <Link href="/insights/checkout-com-fees-explained" className="text-primary hover:underline">Checkout.com</Link> also negotiates pricing but operates more like a modern PSP with less infrastructure depth than Adyen.
         </p>
         <p className="mb-4">
           Adyen sits closer to the acquiring layer. Its pricing reflects that. The key difference is not "who is cheaper," but how fees scale as your business grows.
         </p>
         <p>
           Adyen rewards scale and operational maturity. Stripe rewards speed and ease of setup. For a full comparison of enterprise providers, see our{" "}
-          <Link to="/insights/enterprise-provider-comparison" className="text-primary hover:underline">enterprise provider comparison</Link>.
+          <Link href="/insights/enterprise-provider-comparison" className="text-primary hover:underline">enterprise provider comparison</Link>.
         </p>
       </section>
 
@@ -319,7 +319,7 @@ const AdyenFees = () => {
         </p>
         <p>
           If you want to understand whether Adyen is likely to be cost-effective for your business,{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">start with a short assessment</Link>. It helps identify whether Adyen pricing will work for you or whether another provider would be a better fit.
+          <Link href="/assessment" className="text-primary hover:underline font-medium">start with a short assessment</Link>. It helps identify whether Adyen pricing will work for you or whether another provider would be a better fit.
         </p>
       </section>
 

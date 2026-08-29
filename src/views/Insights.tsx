@@ -1,6 +1,6 @@
 'use client'
 import { useState, useMemo, useEffect } from "react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
@@ -96,7 +96,7 @@ const Insights = ({ globalOnly = false }: { globalOnly?: boolean }) => {
           {activeFilter !== "all" && featuredInsights[activeFilter] && (!globalOnly || featuredInsights[activeFilter].global) && (
             <div className="mb-12">
               <Link
-                to={getInsightUrl(featuredInsights[activeFilter])}
+                href={getInsightUrl(featuredInsights[activeFilter])}
                 className="block group"
               >
                 <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-background border border-primary/20 rounded-2xl p-8 md:p-10 transition-all hover:border-primary/40 hover:shadow-lg">
@@ -135,7 +135,7 @@ const Insights = ({ globalOnly = false }: { globalOnly?: boolean }) => {
             {filteredInsights.map((insight) => (
               <Link
                 key={insight.slug}
-                to={getInsightUrl(insight)}
+                href={getInsightUrl(insight)}
                 className="group block bg-card border border-border rounded-xl p-6 transition-all hover:border-primary/30 hover:shadow-md"
               >
                 <div className="flex items-center gap-2 mb-3">
@@ -199,7 +199,7 @@ const Insights = ({ globalOnly = false }: { globalOnly?: boolean }) => {
                 Get your personalized risk assessment in under 60 seconds. We'll tell you which providers actually match your business — or why now isn't the right time.
               </p>
               <Link
-                to="/assessment"
+                href="/assessment"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-colors"
               >
                 Get Your Risk Assessment

@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import { BOOKING_URL } from "@/lib/booking";
@@ -137,7 +137,7 @@ const MarketplacePaymentsGuide = () => {
         </p>
 
         <p>
-          For marketplaces processing significant volume, <Link to="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">Interchange++ pricing</Link> often provides greater transparency and lower overall costs. This model passes the actual interchange fees directly to the merchant, along with a transparent markup. However, qualifying for Interchange++ requires a strong risk profile and significant processing volume.
+          For marketplaces processing significant volume, <Link href="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">Interchange++ pricing</Link> often provides greater transparency and lower overall costs. This model passes the actual interchange fees directly to the merchant, along with a transparent markup. However, qualifying for Interchange++ requires a strong risk profile and significant processing volume.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground pt-4">The Devastating Impact of Account Freezes</h3>

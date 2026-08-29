@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
@@ -190,7 +190,7 @@ const MerchantAcquirerVsPaymentProcessor = () => {
       </ul>
       <p className="text-foreground/90 mb-8">
         The acquirer is ultimately the counterparty that determines whether your business can take card payments. Picking the right one - matched to your volume, vertical, and risk profile - is a more consequential decision than picking a payment gateway. See how{" "}
-        <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">payment processors classify your business vertical</Link>{" "}
+        <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">payment processors classify your business vertical</Link>{" "}
         before you apply.
       </p>
 

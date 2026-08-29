@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 
@@ -91,7 +91,7 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         SCA adds friction to checkout. If your provider does not apply exemptions properly, your{" "}
-        <Link to="/insights/tra-exemption-reduces-payment-friction" className="text-primary hover:underline">approval rates drop and abandonment rises</Link>.
+        <Link href="/insights/tra-exemption-reduces-payment-friction" className="text-primary hover:underline">approval rates drop and abandonment rises</Link>.
         The acronym itself is less important than whether your provider handles it well.
       </p>
 
@@ -101,7 +101,7 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         When applied correctly, TRA lets trusted customers complete purchases without extra steps. This directly improves conversion. Not all providers enable it by default, and{" "}
-        <Link to="/insights/tra-exemption-reduces-payment-friction" className="text-primary hover:underline">qualifying for TRA depends on your fraud and chargeback profile</Link>.
+        <Link href="/insights/tra-exemption-reduces-payment-friction" className="text-primary hover:underline">qualifying for TRA depends on your fraud and chargeback profile</Link>.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Authorisation Rate</h3>
@@ -110,7 +110,7 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         This is arguably the most important metric for any merchant accepting card payments. A low authorisation rate means lost revenue on every transaction that fails. Different providers achieve different rates depending on their{" "}
-        <Link to="/insights/why-card-approval-speed-affects-checkout-abandonment" className="text-primary hover:underline">routing, retry logic, and exemption handling</Link>.
+        <Link href="/insights/why-card-approval-speed-affects-checkout-abandonment" className="text-primary hover:underline">routing, retry logic, and exemption handling</Link>.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Soft Decline vs Hard Decline</h3>
@@ -124,11 +124,11 @@ const PaymentAcronymsExplained = () => {
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Chargeback Ratio</h3>
       <p className="text-muted-foreground mb-2">
         The percentage of your transactions that result in a{" "}
-        <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback dispute</Link>.
+        <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback dispute</Link>.
       </p>
       <p className="text-muted-foreground mb-6">
         Card networks like Visa and Mastercard monitor this ratio closely. If it exceeds their thresholds (typically around 1 percent), your account can be placed into a monitoring programme, fined, or terminated. This is one of the most common reasons{" "}
-        <Link to="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">accounts are frozen without warning</Link>.
+        <Link href="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">accounts are frozen without warning</Link>.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">MATCH List</h3>
@@ -137,7 +137,7 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         Being placed on the MATCH list makes it extremely difficult to get approved by mainstream providers. It is one of the most serious consequences of account termination and can{" "}
-        <Link to="/insights/why-some-businesses-never-get-approved" className="text-primary hover:underline">block approval for years</Link>.
+        <Link href="/insights/why-some-businesses-never-get-approved" className="text-primary hover:underline">block approval for years</Link>.
       </p>
 
 
@@ -164,7 +164,7 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         Payout schedules vary widely between providers. Some pay daily, some weekly, and some hold funds for longer during onboarding or high risk periods. Understanding your payout schedule is essential for{" "}
-        <Link to="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:underline">managing cash flow</Link>.
+        <Link href="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:underline">managing cash flow</Link>.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Rolling Reserve</h3>
@@ -220,7 +220,7 @@ const PaymentAcronymsExplained = () => {
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Scheme Fees</h3>
       <p className="text-muted-foreground mb-2">
         Fees charged by{" "}
-        <Link to="/insights/visa-mastercard-control-card-payments" className="text-primary hover:underline">Visa and Mastercard</Link>{" "}
+        <Link href="/insights/visa-mastercard-control-card-payments" className="text-primary hover:underline">Visa and Mastercard</Link>{" "}
         for using their network.
       </p>
       <p className="text-muted-foreground mb-6">
@@ -233,7 +233,7 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         Tokenisation is what allows one click payments, saved cards, and{" "}
-        <Link to="/insights/apple-pay-google-pay-explained" className="text-primary hover:underline">wallet payments</Link>{" "}
+        <Link href="/insights/apple-pay-google-pay-explained" className="text-primary hover:underline">wallet payments</Link>{" "}
         to work securely. It is important infrastructure, but it is handled entirely by your provider. Merchants do not need to manage it directly.
       </p>
 
@@ -248,7 +248,7 @@ const PaymentAcronymsExplained = () => {
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Issuer vs Acquirer</h3>
       <p className="text-muted-foreground mb-2">
         The issuer is the bank that gave your customer their card. The{" "}
-        <Link to="/insights/what-is-an-acquirer" className="text-primary hover:underline">acquirer</Link>{" "}
+        <Link href="/insights/what-is-an-acquirer" className="text-primary hover:underline">acquirer</Link>{" "}
         is the bank or provider that processes the payment on your behalf.
       </p>
       <p className="text-muted-foreground mb-6">
@@ -271,7 +271,7 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         PSD2 is the regulatory framework behind most of the authentication rules that affect UK and EU merchants today. You do not need to read the regulation, but you should understand that SCA, TRA, and{" "}
-        <Link to="/insights/low-value-transaction-exemption" className="text-primary hover:underline">low value exemptions</Link>{" "}
+        <Link href="/insights/low-value-transaction-exemption" className="text-primary hover:underline">low value exemptions</Link>{" "}
         all flow from it.
       </p>
 
@@ -286,7 +286,7 @@ const PaymentAcronymsExplained = () => {
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">LTV Exemption (Low Transaction Value)</h3>
       <p className="text-muted-foreground mb-2">
         Often used interchangeably with LVT, this refers to the same{" "}
-        <Link to="/insights/low-value-transaction-exemption" className="text-primary hover:underline">SCA exemption for small value payments</Link>.
+        <Link href="/insights/low-value-transaction-exemption" className="text-primary hover:underline">SCA exemption for small value payments</Link>.
       </p>
       <p className="text-muted-foreground mb-6">
         The terminology varies between providers, but the principle is the same. Payments below the threshold can be processed without full authentication, reducing friction for the buyer.
@@ -306,7 +306,7 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         Velocity rules are part of your provider's fraud and risk management. They can trigger temporary blocks on your account if your{" "}
-        <Link to="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">volume spikes suddenly</Link>{" "}
+        <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">volume spikes suddenly</Link>{" "}
         or if transaction patterns change. As you grow, understanding how your provider sets these thresholds helps you avoid unnecessary disruption.
       </p>
 
@@ -361,7 +361,7 @@ const PaymentAcronymsExplained = () => {
 
       <p className="text-muted-foreground mb-10">
         If you want to translate these concepts into a personalised provider recommendation, you can{" "}
-        <Link to="/assessment" className="text-primary hover:underline font-medium">start a short assessment</Link>{" "}
+        <Link href="/assessment" className="text-primary hover:underline font-medium">start a short assessment</Link>{" "}
         on ChosePayments. It is designed to surface which of these factors are most relevant to your business and match you with providers that align.
       </p>
     </InsightsArticleLayout>

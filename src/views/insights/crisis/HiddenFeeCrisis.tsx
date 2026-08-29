@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
 
@@ -93,7 +93,7 @@ const HiddenFeeCrisis = () => {
         </p>
         <div className="bg-primary/5 border-l-4 border-primary p-4 my-4">
           <p className="text-foreground">
-            <strong>The Insight:</strong> A transaction is considered "cross-border" if the cardholder's bank is in a different country than your acquiring bank. These fees can add 0.5% to 1.5% to the transaction cost, significantly inflating your Effective Rate if you have a global customer base. Learn more about <Link to="/insights/international-sales" className="text-primary hover:underline">international sales verification</Link>.
+            <strong>The Insight:</strong> A transaction is considered "cross-border" if the cardholder's bank is in a different country than your acquiring bank. These fees can add 0.5% to 1.5% to the transaction cost, significantly inflating your Effective Rate if you have a global customer base. Learn more about <Link href="/insights/international-sales" className="text-primary hover:underline">international sales verification</Link>.
           </p>
         </div>
 
@@ -113,7 +113,7 @@ const HiddenFeeCrisis = () => {
           4. Refund and Chargeback Fees
         </h3>
         <p>
-          While a <Link to="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback</Link> is a crisis in itself, the fees associated with them are a hidden cost.
+          While a <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargeback</Link> is a crisis in itself, the fees associated with them are a hidden cost.
         </p>
         <div className="bg-primary/5 border-l-4 border-primary p-4 my-4">
           <p className="text-foreground">

@@ -1,6 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { Source } from "@/components/SourcesCitation";
 
 const sources: Source[] = [
@@ -247,7 +247,7 @@ const LowValueTransactionExemption = () => {
 
       <p className="mb-8">
         If you are unsure how your current setup handles low value transactions, or whether your provider is optimising exemptions correctly, a short{" "}
-        <Link to="/assessment" className="text-primary hover:underline font-medium">
+        <Link href="/assessment" className="text-primary hover:underline font-medium">
           payment assessment
         </Link>{" "}
         can help you understand which providers are more likely to support your business model.
@@ -271,7 +271,7 @@ const LowValueTransactionExemption = () => {
 
       <p className="mb-8">
         It is also increasingly about cost: Mastercard's{" "}
-        <Link to="/insights/mastercard-3ds-authentication-fee-changes-europe" className="text-primary hover:underline">
+        <Link href="/insights/mastercard-3ds-authentication-fee-changes-europe" className="text-primary hover:underline">
           per-authentication fee in Europe went up from July 2026
         </Link>
         , so every transaction correctly routed through the LVT exemption instead of a full 3DS challenge now saves more than it used to.

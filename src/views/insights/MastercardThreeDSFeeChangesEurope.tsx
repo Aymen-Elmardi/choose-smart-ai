@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
@@ -182,10 +182,10 @@ const MastercardThreeDSFeeChangesEurope = () => {
       </p>
       <ul className="list-disc pl-6 space-y-3 text-foreground/90 mb-8">
         <li>
-          <strong><Link to="/insights/tra-exemption-reduces-payment-friction" className="text-primary hover:underline">Transaction Risk Analysis (TRA) exemption</Link></strong> - available to acquirers and issuers with a low enough fraud rate, and applicable up to higher transaction values than the low-value exemption. If your provider qualifies and your fraud rate is clean, this is usually the highest-leverage exemption to pursue.
+          <strong><Link href="/insights/tra-exemption-reduces-payment-friction" className="text-primary hover:underline">Transaction Risk Analysis (TRA) exemption</Link></strong> - available to acquirers and issuers with a low enough fraud rate, and applicable up to higher transaction values than the low-value exemption. If your provider qualifies and your fraud rate is clean, this is usually the highest-leverage exemption to pursue.
         </li>
         <li>
-          <strong><Link to="/insights/low-value-transaction-exemption" className="text-primary hover:underline">Low Value Transaction (LVT) exemption</Link></strong> - lets transactions under a set threshold (currently €30 in most of Europe, with a rolling cumulative cap) skip SCA entirely. If you run a lot of small-ticket transactions, this is the more straightforward exemption to configure.
+          <strong><Link href="/insights/low-value-transaction-exemption" className="text-primary hover:underline">Low Value Transaction (LVT) exemption</Link></strong> - lets transactions under a set threshold (currently €30 in most of Europe, with a rolling cumulative cap) skip SCA entirely. If you run a lot of small-ticket transactions, this is the more straightforward exemption to configure.
         </li>
       </ul>
       <p className="text-foreground/90 mb-8">
@@ -199,14 +199,14 @@ const MastercardThreeDSFeeChangesEurope = () => {
         <li>If your fraud rate is low and your provider supports it, ask specifically about TRA exemption eligibility - it's usually not applied automatically.</li>
         <li>For subscription or recurring-billing businesses, confirm your provider is correctly flagging renewal transactions as recurring/MIT rather than running them through full non-recurring authentication each time - that flag is what determines which rate in the table above applies.</li>
         <li>Factor scheme fee movements like this one into your effective rate calculations going forward - they happen periodically and are outside any processor's control, but they compound with everything else on your statement. See our{" "}
-          <Link to="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">breakdown of hidden payment processor fees</Link>{" "}
+          <Link href="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">breakdown of hidden payment processor fees</Link>{" "}
           for the full picture of what else shows up on a statement beyond the headline rate.
         </li>
       </ol>
 
       <p className="text-foreground/90 mb-8">
         Scheme fee changes like this one are a useful reminder that a payment processor's headline rate is only part of the cost structure - Visa and Mastercard set fees like this one independently, and no processor can absorb or negotiate them away. Understanding{" "}
-        <Link to="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">how scheme rules actually work</Link>{" "}
+        <Link href="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">how scheme rules actually work</Link>{" "}
         explains why these changes land on your statement with little warning, and why the businesses that manage cost proactively are the ones tracking exemption eligibility and authentication rates, not just the advertised processing percentage.
       </p>
 

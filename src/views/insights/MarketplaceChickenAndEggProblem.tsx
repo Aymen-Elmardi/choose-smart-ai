@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -256,7 +256,7 @@ const MarketplaceChickenAndEggProblem = () => {
           <li>If the split between what the buyer paid</li>
           <li>And what they actually receive isn&apos;t clear</li>
           <li>
-            Or if a <Link to="/insights/what-to-do-when-funds-held" className="text-primary hover:underline">dispute freezes their funds</Link> with no explanation
+            Or if a <Link href="/insights/what-to-do-when-funds-held" className="text-primary hover:underline">dispute freezes their funds</Link> with no explanation
           </li>
         </ul>
 
@@ -265,11 +265,11 @@ const MarketplaceChickenAndEggProblem = () => {
         </p>
 
         <p>
-          This is where a lot of early-stage marketplaces default to whatever their initial payment setup happened to be, usually a <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">general-purpose split-payments product</Link> bolted on quickly, without checking whether it actually fits how their specific marketplace pays sellers.
+          This is where a lot of early-stage marketplaces default to whatever their initial payment setup happened to be, usually a <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">general-purpose split-payments product</Link> bolted on quickly, without checking whether it actually fits how their specific marketplace pays sellers.
         </p>
 
         <p>
-          A marketplace with same-day service completion needs <Link to="/insights/payout-settlement-explained" className="text-primary hover:underline">faster payout timing</Link> than one with a 30-day delivery window. A marketplace with high-value, infrequent transactions has different <Link to="/insights/why-providers-impose-reserves" className="text-primary hover:underline">dispute and reserve exposure</Link> than one with high-volume, low-value ones.
+          A marketplace with same-day service completion needs <Link href="/insights/payout-settlement-explained" className="text-primary hover:underline">faster payout timing</Link> than one with a 30-day delivery window. A marketplace with high-value, infrequent transactions has different <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">dispute and reserve exposure</Link> than one with high-volume, low-value ones.
         </p>
 
         <p>

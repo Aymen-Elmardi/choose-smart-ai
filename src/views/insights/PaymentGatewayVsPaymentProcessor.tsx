@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
@@ -280,11 +280,11 @@ const PaymentGatewayVsPaymentProcessor = () => {
         </p>
         <p className="text-muted-foreground mb-4">
           Getting this wrong at the platform level is expensive to unwind later. A platform that launches on a standard single-merchant processor and later needs to add restaurant payouts often has to rebuild its entire payment integration from scratch. Understanding how processors classify different business models by risk and structure before you build is worth doing early, as covered in our guide to{" "}
-          <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>.
+          <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>.
         </p>
         <p className="text-muted-foreground">
           It is also worth understanding how the processor relates to the merchant acquirer, the institution that actually holds the underlying merchant account and carries the financial risk, since that is a separate relationship again from both the gateway and the processor. Our guide on{" "}
-          <Link to="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">merchant acquirer vs payment processor</Link>{" "}
+          <Link href="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">merchant acquirer vs payment processor</Link>{" "}
           covers that distinction in full.
         </p>
       </section>
@@ -357,12 +357,12 @@ const PaymentGatewayVsPaymentProcessor = () => {
         </h2>
         <p className="text-muted-foreground mb-4">
           The gateway captures and moves the data. The processor decides whether the money moves and gets it into your account. Most businesses will use a single provider that bundles both, and that is a perfectly reasonable choice for most standard use cases. What matters is knowing which layer you are actually evaluating when a sales rep describes their product, so you are comparing gateway features to gateway features and processor risk terms to processor risk terms, rather than treating every vendor conversation as the same decision. Our guide on{" "}
-          <Link to="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>{" "}
+          <Link href="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>{" "}
           walks through that comparison in more depth.
         </p>
         <p className="text-muted-foreground">
           If you are not sure whether your current setup, or a provider you are evaluating, actually fits how your business processes payments,{" "}
-          <Link to="/assessment" className="text-primary hover:underline font-medium">the free risk assessment</Link>{" "}
+          <Link href="/assessment" className="text-primary hover:underline font-medium">the free risk assessment</Link>{" "}
           compares your transaction profile against processors and gateways that have already been matched to businesses like yours.
         </p>
       </section>

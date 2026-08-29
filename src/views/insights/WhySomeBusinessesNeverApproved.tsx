@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const WhySomeBusinessesNeverApproved = () => {
@@ -26,7 +26,7 @@ const WhySomeBusinessesNeverApproved = () => {
         </p>
         
         <p>
-          Approval failures often result from misalignment between the business model and the provider's risk appetite. Applying to the wrong provider repeatedly can actually make approval harder over time. Understanding the <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">payment provider approval differences</Link> is essential before applying.
+          Approval failures often result from misalignment between the business model and the provider's risk appetite. Applying to the wrong provider repeatedly can actually make approval harder over time. Understanding the <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">payment provider approval differences</Link> is essential before applying.
         </p>
         
         <p>
@@ -34,7 +34,7 @@ const WhySomeBusinessesNeverApproved = () => {
         </p>
         
         <p>
-          Businesses that understand approval logic early save time, reduce friction, and avoid unnecessary rejections. Our guide on <Link to="/best-payment-processor-uk" className="text-primary hover:underline">UK payment processor approval criteria</Link> can help you apply correctly the first time.
+          Businesses that understand approval logic early save time, reduce friction, and avoid unnecessary rejections. Our guide on <Link href="/best-payment-processor-uk" className="text-primary hover:underline">UK payment processor approval criteria</Link> can help you apply correctly the first time.
         </p>
       </div>
     </InsightsArticleLayout>

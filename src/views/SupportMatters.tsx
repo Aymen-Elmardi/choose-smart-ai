@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from "react";
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, Check, HeadphonesIcon, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
@@ -153,7 +153,7 @@ const SupportMatters = () => {
                 Answer a few questions and we'll guide you to the right provider for your business.
               </p>
               <Button size="lg" asChild>
-                <Link to="/assessment?start=true" replace>
+                <Link href="/assessment?start=true" replace>
                   Take the quiz
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>

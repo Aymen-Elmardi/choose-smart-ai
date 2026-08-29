@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
@@ -113,7 +113,7 @@ const InterchangePlusPlus = () => {
       </ol>
 
       <p className="mb-4">
-        Unlike <Link to="/insights/crisis/hidden-fee-crisis" className="text-primary hover:underline">Blended Pricing</Link>, where all transactions are averaged into a single headline rate (e.g., 1.75% + 20p), Interchange++ passes through the true costs of the first two layers and only charges you a transparent margin on top.
+        Unlike <Link href="/insights/crisis/hidden-fee-crisis" className="text-primary hover:underline">Blended Pricing</Link>, where all transactions are averaged into a single headline rate (e.g., 1.75% + 20p), Interchange++ passes through the true costs of the first two layers and only charges you a transparent margin on top.
       </p>
 
       {/* The Math of Transparency */}
@@ -155,7 +155,7 @@ const InterchangePlusPlus = () => {
       </p>
 
       <p className="mb-4">
-        <strong>Merchant Category Code (MCC).</strong> The card networks assign different rates to different industries. This is one of the more overlooked levers, and it connects directly to how <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">payment processors classify your business</Link>, since your assigned MCC affects both your interchange rate and your underwriting risk profile.
+        <strong>Merchant Category Code (MCC).</strong> The card networks assign different rates to different industries. This is one of the more overlooked levers, and it connects directly to how <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">payment processors classify your business</Link>, since your assigned MCC affects both your interchange rate and your underwriting risk profile.
       </p>
 
       <p className="mb-4">
@@ -353,7 +353,7 @@ const InterchangePlusPlus = () => {
 
       <div className="bg-accent/10 border border-accent/30 rounded-lg p-4 my-8">
         <p className="text-foreground">
-          <strong>The Bottom Line:</strong> Interchange++ is only cheaper if your risk profile supports it consistently. If your business has high chargebacks or long delivery timelines, forcing an IC++ model can actually lead to higher "hidden" costs or sudden <Link to="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">account freezes</Link>.
+          <strong>The Bottom Line:</strong> Interchange++ is only cheaper if your risk profile supports it consistently. If your business has high chargebacks or long delivery timelines, forcing an IC++ model can actually lead to higher "hidden" costs or sudden <Link href="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">account freezes</Link>.
         </p>
       </div>
 

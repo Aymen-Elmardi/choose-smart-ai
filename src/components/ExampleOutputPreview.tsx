@@ -1,4 +1,4 @@
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { ArrowRight, ShieldX, CheckCircle, Building2, Globe, TrendingUp, CreditCard, ShoppingCart, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useInView } from "@/hooks/useInView";
@@ -111,7 +111,7 @@ const ExampleOutputPreview = () => {
           {/* CTA */}
           <div className="mt-8 text-center">
             <Button variant="hero" size="xl" asChild>
-              <Link to="/assessment">
+              <Link href="/assessment">
                 Run My Risk Profile Free
                 <ArrowRight className="w-5 h-5" />
               </Link>

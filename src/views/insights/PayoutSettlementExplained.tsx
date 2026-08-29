@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
@@ -34,7 +34,7 @@ const PayoutSettlementExplained = () => {
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Processing fees:</strong> Per-transaction charges, percentage fees, and any monthly minimums</li>
           <li><strong>Chargeback deductions:</strong> The full disputed amount plus chargeback fees (typically £15–25 per dispute)</li>
-          <li><strong>Reserves:</strong> If you have a <Link to="/insights/rolling-vs-fixed-reserve" className="text-primary hover:underline">rolling or fixed reserve</Link>, a portion of each settlement is withheld</li>
+          <li><strong>Reserves:</strong> If you have a <Link href="/insights/rolling-vs-fixed-reserve" className="text-primary hover:underline">rolling or fixed reserve</Link>, a portion of each settlement is withheld</li>
           <li><strong>Refunds:</strong> Refunds issued are deducted from your next settlement, not charged back to the original transaction date</li>
           <li><strong>Currency conversion fees:</strong> If you accept international payments, FX margins are deducted at settlement</li>
         </ul>
@@ -44,7 +44,7 @@ const PayoutSettlementExplained = () => {
           Most providers batch transactions and settle them T+1 to T+3 (one to three business days after the transaction). But weekends, bank holidays, and provider cut-off times mean your Monday sales might land on Wednesday or Thursday.
         </p>
         <p>
-          This batching also means a single payout may include transactions from multiple days — or exclude transactions processed late in the day. Learn more about <Link to="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:underline">same-day settlement options</Link>.
+          This batching also means a single payout may include transactions from multiple days — or exclude transactions processed late in the day. Learn more about <Link href="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:underline">same-day settlement options</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">How to Reconcile Payouts</h2>
@@ -61,7 +61,7 @@ const PayoutSettlementExplained = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">When Payout Mismatches Signal a Real Problem</h2>
         <p>
-          Most discrepancies are normal. But if payouts stop entirely, amounts drop dramatically without explanation, or you notice deductions you can't identify, contact your provider immediately. Unexplained holds may indicate a <Link to="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">risk review or account freeze</Link>.
+          Most discrepancies are normal. But if payouts stop entirely, amounts drop dramatically without explanation, or you notice deductions you can't identify, contact your provider immediately. Unexplained holds may indicate a <Link href="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">risk review or account freeze</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>

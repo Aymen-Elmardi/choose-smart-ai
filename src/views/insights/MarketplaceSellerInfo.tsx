@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import { Source } from "@/components/SourcesCitation";
 import FAQSchema from "@/components/FAQSchema";
@@ -209,10 +209,10 @@ const MarketplaceSellerInfo = () => {
             <strong className="text-foreground">Fuller KYB triggered by thresholds.</strong> As a seller&apos;s volume or payout total crosses a defined threshold, automatically require the fuller document set: business registration, beneficial ownership, tax ID.
           </li>
           <li>
-            <strong className="text-foreground">Explain why, not just what.</strong> Sellers who understand that document requests come from regulatory requirements, not platform policy, complete them faster. See our guide on <Link to="/insights/what-to-do-when-provider-asks-for-documents" className="text-primary hover:underline">how to respond to provider document requests</Link>.
+            <strong className="text-foreground">Explain why, not just what.</strong> Sellers who understand that document requests come from regulatory requirements, not platform policy, complete them faster. See our guide on <Link href="/insights/what-to-do-when-provider-asks-for-documents" className="text-primary hover:underline">how to respond to provider document requests</Link>.
           </li>
           <li>
-            <strong className="text-foreground">Build monitoring into ongoing operations, not just onboarding.</strong> Track dispute rates, sudden volume changes, and payout-detail changes per seller, since providers expect platforms to catch these signals before they escalate. This is closely tied to <Link to="/insights/why-providers-impose-reserves" className="text-primary hover:underline">why providers impose reserves</Link>.
+            <strong className="text-foreground">Build monitoring into ongoing operations, not just onboarding.</strong> Track dispute rates, sudden volume changes, and payout-detail changes per seller, since providers expect platforms to catch these signals before they escalate. This is closely tied to <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">why providers impose reserves</Link>.
           </li>
         </ol>
 
@@ -229,7 +229,7 @@ const MarketplaceSellerInfo = () => {
         </p>
 
         <p>
-          <strong className="text-foreground">UK/EU:</strong> The <strong className="text-foreground">Digital Services Act (DSA)</strong> requires marketplaces to collect and verify trader name, address, phone number, email, an ID document, payment account details, and, where applicable, the trade register number, before a trader can sell. This sits on top of PSD2 and AML5-driven KYC/KYB obligations your payment provider already enforces contractually. For the wider context, see <Link to="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">how scheme rules apply to marketplaces</Link>.
+          <strong className="text-foreground">UK/EU:</strong> The <strong className="text-foreground">Digital Services Act (DSA)</strong> requires marketplaces to collect and verify trader name, address, phone number, email, an ID document, payment account details, and, where applicable, the trade register number, before a trader can sell. This sits on top of PSD2 and AML5-driven KYC/KYB obligations your payment provider already enforces contractually. For the wider context, see <Link href="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">how scheme rules apply to marketplaces</Link>.
         </p>
 
         <p>
@@ -245,11 +245,11 @@ const MarketplaceSellerInfo = () => {
         </h2>
 
         <p>
-          Not every payment provider handles split payments, staged payouts, and marketplace-specific KYB well. <Link to="/insights/marketplace-payments-guide" className="text-primary hover:underline">Our full marketplace payments guide</Link> covers the broader payment infrastructure question if you&apos;re still choosing a provider; this page is specifically about the verification layer once you have one.
+          Not every payment provider handles split payments, staged payouts, and marketplace-specific KYB well. <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">Our full marketplace payments guide</Link> covers the broader payment infrastructure question if you&apos;re still choosing a provider; this page is specifically about the verification layer once you have one.
         </p>
 
         <p>
-          If you&apos;re not sure whether your current or prospective provider&apos;s verification requirements fit how your marketplace operates, that mismatch is exactly what <Link to="/assessment" className="text-primary hover:underline">our free risk assessment</Link> is built to catch before it costs you a frozen payout.
+          If you&apos;re not sure whether your current or prospective provider&apos;s verification requirements fit how your marketplace operates, that mismatch is exactly what <Link href="/assessment" className="text-primary hover:underline">our free risk assessment</Link> is built to catch before it costs you a frozen payout.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-10 mb-6">

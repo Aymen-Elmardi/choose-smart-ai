@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
@@ -147,7 +147,7 @@ const HowToChoosePaymentProcessor = () => {
       </p>
       <p className="text-foreground/90 mb-8">
         Ask every processor for a complete list of fees beyond the headline rate before signing anything: PCI compliance, statement or gateway fees, chargeback fees, early termination fees, and any minimum monthly processing requirement. See our full breakdown of{" "}
-        <Link to="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">hidden payment processor fees</Link>{" "}
+        <Link href="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">hidden payment processor fees</Link>{" "}
         for what to look for line by line.
       </p>
 
@@ -157,12 +157,12 @@ const HowToChoosePaymentProcessor = () => {
       </p>
       <p className="text-foreground/90 mb-4">
         The restaurant and delivery sector is generally classified as medium-to-high risk by payment service providers because of elevated chargeback exposure and fraud susceptibility. A processor that has never underwritten a restaurant delivery platform before will treat your normal operating pattern, mixed card-present and card-not-present transactions, third-party delivery disputes, variable order sizes, as anomalous. Read more about how{" "}
-        <Link to="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment providers assess risk</Link>{" "}
+        <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">payment providers assess risk</Link>{" "}
         when they build that model.
       </p>
       <p className="text-foreground/90 mb-8">
         Ask directly what Merchant Category Code the processor intends to assign your business, and check that it actually reflects how you operate, not just what your business is called on paper. See{" "}
-        <Link to="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>{" "}
+        <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>{" "}
         for the full mechanics of MCC assignment.
       </p>
 
@@ -194,7 +194,7 @@ const HowToChoosePaymentProcessor = () => {
       </p>
       <p className="text-foreground/90 mb-6">
         It is worth understanding, separately from the processor itself, what a payment gateway actually does versus{" "}
-        <Link to="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">the acquirer sitting behind it</Link>, because sales reps at every layer will describe themselves as "your payment processor."
+        <Link href="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">the acquirer sitting behind it</Link>, because sales reps at every layer will describe themselves as "your payment processor."
       </p>
 
       <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">Payout Speed and Structure</h3>

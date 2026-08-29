@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const NetVsGrossSettlement = () => {
@@ -34,7 +34,7 @@ const NetVsGrossSettlement = () => {
           With gross settlement, the provider pays you the full transaction amount and invoices fees separately — typically monthly. This gives you access to 100% of your sales revenue upfront, with fees paid as a separate line item.
         </p>
         <p>
-          Enterprise providers like <Link to="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">Adyen</Link> and <Link to="/insights/checkout-com-enterprise-platform" className="text-primary hover:underline">Checkout.com</Link> commonly offer gross settlement for qualified merchants.
+          Enterprise providers like <Link href="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">Adyen</Link> and <Link href="/insights/checkout-com-enterprise-platform" className="text-primary hover:underline">Checkout.com</Link> commonly offer gross settlement for qualified merchants.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">How They Compare</h2>
@@ -87,7 +87,7 @@ const NetVsGrossSettlement = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Why This Matters for Payout Reconciliation</h2>
         <p>
-          If you're using net settlement and your <Link to="/insights/payout-settlement-explained" className="text-primary hover:underline">payouts don't match your sales</Link>, the gap is almost certainly fees, reserves, and timing — not an error. Understanding your settlement model is the first step to eliminating confusion about where your money is.
+          If you're using net settlement and your <Link href="/insights/payout-settlement-explained" className="text-primary hover:underline">payouts don't match your sales</Link>, the gap is almost certainly fees, reserves, and timing — not an error. Understanding your settlement model is the first step to eliminating confusion about where your money is.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>

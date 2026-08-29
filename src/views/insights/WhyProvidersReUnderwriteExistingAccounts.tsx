@@ -1,5 +1,5 @@
 'use client'
-import { Link } from '@/lib/router-compat';
+import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 
 const WhyProvidersReUnderwriteExistingAccounts = () => {
@@ -38,7 +38,7 @@ const WhyProvidersReUnderwriteExistingAccounts = () => {
         </p>
         
         <p>
-          It does not mean the account is failing or in trouble. It means the provider needs to confirm that the business still fits their regulatory and risk requirements. Understanding <Link to="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help clarify why these reviews occur.
+          It does not mean the account is failing or in trouble. It means the provider needs to confirm that the business still fits their regulatory and risk requirements. Understanding <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help clarify why these reviews occur.
         </p>
         
         <p>
@@ -176,7 +176,7 @@ const WhyProvidersReUnderwriteExistingAccounts = () => {
         </p>
         
         <p>
-          Understanding why it happens helps avoid panic, reduces downtime, and keeps payment operations stable over the long term. <Link to="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start can also reduce the frequency and friction of these reviews.
+          Understanding why it happens helps avoid panic, reduces downtime, and keeps payment operations stable over the long term. <Link href="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start can also reduce the frequency and friction of these reviews.
         </p>
       </div>
     </InsightsArticleLayout>
