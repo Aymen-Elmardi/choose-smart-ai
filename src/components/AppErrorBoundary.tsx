@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { reportError } from "@/lib/errorReporting";
 
 type Props = {
   children: React.ReactNode;
@@ -24,11 +25,25 @@ export default class AppErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: unknown) {
+    // Report before anything else, so a failure in the recovery logic below
+    // cannot cost us the report.
+    reportError("boundary", error);
+
     // Best-effort auto-recovery for transient Vite/asset chunk mismatches.
-    const message =
-      typeof error === "object" && error && "message" in error
-        ? String((error as any).message)
-        : String(error);
+    //
+    // String() is wrapped: a thrown value is not necessarily coercible. A Proxy
+    // whose traps return objects makes String(value) throw "Cannot convert
+    // object to primitive value", which would mean the boundary throwing while
+    // handling the error it caught.
+    let message: string;
+    try {
+      message =
+        typeof error === "object" && error && "message" in error
+          ? String((error as any).message)
+          : String(error);
+    } catch {
+      message = "";
+    }
 
     const isChunkError =
       message.includes("Failed to fetch dynamically imported module") ||
@@ -37,11 +52,14 @@ export default class AppErrorBoundary extends React.Component<Props, State> {
       message.includes("Importing a module script failed");
 
     if (isChunkError) {
-      const key = "__cp_chunk_reload_once__";
-      const alreadyTried = sessionStorage.getItem(key) === "1";
-      if (!alreadyTried) {
-        sessionStorage.setItem(key, "1");
-        window.location.reload();
+      try {
+        const key = "__cp_chunk_reload_once__";
+        if (sessionStorage.getItem(key) !== "1") {
+          sessionStorage.setItem(key, "1");
+          window.location.reload();
+        }
+      } catch {
+        /* storage unavailable (private browsing); skip the auto-reload */
       }
     }
 
