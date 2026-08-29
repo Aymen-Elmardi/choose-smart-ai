@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { adminClient, checkRateLimit, getClientIp } from "../_shared/rateLimit.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
@@ -22,29 +23,7 @@ const jsonResponse = (data: unknown, status: number = 200): Response => {
 const successResponse = (data: Record<string, unknown> = {}): Response => jsonResponse({ success: true, ...data }, 200);
 const errorResponse = (error: string, status: number = 400): Response => jsonResponse({ success: false, error }, status);
 
-const getClientIp = (req: Request): string => {
-  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
-};
 
-const rateLimitStore = new Map<string, { count: number; timestamp: number }>();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000;
-
-const checkIpRateLimit = (clientIp: string, max: number = 3): boolean => {
-  const now = Date.now();
-  const record = rateLimitStore.get(clientIp);
-  if (rateLimitStore.size > 1000) {
-    for (const [key, value] of rateLimitStore.entries()) {
-      if (now - value.timestamp > RATE_LIMIT_WINDOW_MS) rateLimitStore.delete(key);
-    }
-  }
-  if (!record || now - record.timestamp > RATE_LIMIT_WINDOW_MS) {
-    rateLimitStore.set(clientIp, { count: 1, timestamp: now });
-    return true;
-  }
-  if (record.count >= max) return false;
-  record.count++;
-  return true;
-};
 
 const escapeHtml = (str: string): string => {
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
@@ -149,7 +128,8 @@ const handler = async (req: Request): Promise<Response> => {
   const clientIp = getClientIp(req);
   console.log(`Request from IP: ${clientIp}`);
 
-  if (!checkIpRateLimit(clientIp, 3)) {
+  const limit = await checkRateLimit(adminClient(), { fn: "send-lead-email", perIp: 3, windowMinutes: 1 }, clientIp);
+  if (!limit.allowed) {
     console.warn(`Rate limit exceeded for IP: ${clientIp}`);
     return errorResponse("Too many requests. Please try again later.", 429);
   }

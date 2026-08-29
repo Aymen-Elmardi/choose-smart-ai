@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { adminClient, checkRateLimit, getClientIp } from "../_shared/rateLimit.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 // ============================================================================
@@ -20,35 +21,7 @@ const jsonResponse = (data: unknown, status: number = 200): Response => {
 const successResponse = (data: Record<string, unknown> = {}): Response => jsonResponse({ success: true, ...data }, 200);
 const errorResponse = (error: string, status: number = 400): Response => jsonResponse({ success: false, error }, status);
 
-const getClientIp = (req: Request): string => {
-  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
-};
 
-// Rate limiting: 20 engagements per minute per IP (generous for legitimate users)
-const rateLimitStore = new Map<string, { count: number; timestamp: number }>();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000;
-const RATE_LIMIT_MAX = 20;
-
-const checkIpRateLimit = (clientIp: string): boolean => {
-  const now = Date.now();
-  const record = rateLimitStore.get(clientIp);
-  
-  // Clean up old entries periodically
-  if (rateLimitStore.size > 1000) {
-    for (const [key, value] of rateLimitStore.entries()) {
-      if (now - value.timestamp > RATE_LIMIT_WINDOW_MS) rateLimitStore.delete(key);
-    }
-  }
-  
-  if (!record || now - record.timestamp > RATE_LIMIT_WINDOW_MS) {
-    rateLimitStore.set(clientIp, { count: 1, timestamp: now });
-    return true;
-  }
-  
-  if (record.count >= RATE_LIMIT_MAX) return false;
-  record.count++;
-  return true;
-};
 
 // Validate visitor_id format: v_<timestamp>_<random9chars>
 const isValidVisitorId = (id: string): boolean => {
@@ -95,7 +68,8 @@ const handler = async (req: Request): Promise<Response> => {
   const clientIp = getClientIp(req);
   console.log(`Request from IP: ${clientIp}`);
 
-  if (!checkIpRateLimit(clientIp)) {
+  const limit = await checkRateLimit(adminClient(), { fn: "record-engagement", perIp: 20, windowMinutes: 1 }, clientIp);
+  if (!limit.allowed) {
     console.warn(`Rate limit exceeded for IP: ${clientIp}`);
     return errorResponse("Too many requests. Please try again later.", 429);
   }
