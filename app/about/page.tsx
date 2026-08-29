@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import About from '@/views/About'
 
 export const metadata: Metadata = {
-  title: 'Independent Payment Advisory | Why ChosePayments is Different',
+  // `absolute` opts out of the root layout's '%s | ChosePayments' template.
+  // This title already ends in the brand, so the template appended it twice.
+  title: { absolute: 'Independent Payment Advisory | Why ChosePayments is Different' },
   description: "We're not a comparison site. ChosePayments provides expert risk assessment and strategic guidance, helping businesses avoid payment provider mismatch before it costs them.",
   keywords: [
     'independent payment advisory',

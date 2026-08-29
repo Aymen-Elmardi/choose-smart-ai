@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import CaseStudies from '@/views/insights/CaseStudies'
 
 export const metadata: Metadata = {
-  title: "Case Studies | ChosePayments Insights",
+  // `absolute` opts out of the root layout's '%s | ChosePayments' template.
+  // This title already ends in the brand, so the template appended it twice.
+  title: { absolute: "Case Studies | ChosePayments Insights" },
   description: "Real-world examples of how businesses navigate payment provider challenges, account reviews, and compliance requirements.",
   alternates: {
     canonical: '/insights/case-studies',

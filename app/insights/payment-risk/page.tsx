@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import PaymentRisk from '@/views/insights/PaymentRisk'
 
 export const metadata: Metadata = {
-  title: "Payment Risk & Account Freezes | ChosePayments Insights",
+  // `absolute` opts out of the root layout's '%s | ChosePayments' template.
+  // This title already ends in the brand, so the template appended it twice.
+  title: { absolute: "Payment Risk & Account Freezes | ChosePayments Insights" },
   description: "Understand why payment accounts get flagged, frozen, or reviewed. Learn about account freezes, re-underwriting, and how to reduce payment risk.",
   alternates: {
     canonical: '/insights/payment-risk',
