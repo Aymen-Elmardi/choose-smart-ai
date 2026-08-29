@@ -17,3 +17,10 @@ verify_jwt = false
 
 [functions.record-engagement]
 verify_jwt = false
+
+# Called from the browser by anonymous visitors reporting a crash, exactly like
+# the other public functions above. Without this it would inherit the default
+# verify_jwt = true, which is not what an error reporter wants standing between
+# a broken page and the report.
+[functions.report-error]
+verify_jwt = false
