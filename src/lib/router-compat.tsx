@@ -3,11 +3,17 @@
 /**
  * router-compat.ts
  *
- * Drop-in compatibility shim: re-exports Next.js navigation utilities
- * with the same interface as react-router-dom.
+ * Compatibility shim left over from the Vite + react-router era, kept so the
+ * ~120 call sites did not all have to change during the Next.js migration.
  *
- * Usage: replace `from '@/lib/router-compat'` with `from '@/lib/router-compat'`
- * throughout the codebase — no changes to individual hook call-sites needed.
+ * It is deliberately NOT a faithful react-router implementation. Anything this
+ * shim cannot actually do has been removed rather than stubbed, so callers get
+ * a compile error instead of a value that is silently always wrong. Router
+ * state and `location.search` are the two notable absences.
+ *
+ * `Link` accounts for 118 of the ~122 usages and is a one-line wrapper over
+ * next/link; the remaining hooks are used in three files. This file should be
+ * deleted once those are migrated to next/link and next/navigation directly.
  */
 
 import NextLink from 'next/link'
@@ -25,7 +31,7 @@ export function Link({ to, href, replace, ...rest }: LinkProps) {
   return <NextLink href={to || href || '/'} replace={replace} {...rest} />
 }
 
-import { useCallback, useEffect } from 'react'
+import { useCallback } from 'react'
 import {
   useRouter,
   usePathname,
@@ -41,8 +47,11 @@ import {
 export function useNavigate() {
   const router = useRouter()
   return (
+    // `state` is deliberately absent. react-router's navigate accepts it, but
+    // there is no router state to carry it in, so it was accepted and dropped
+    // on the floor — a caller passing it got no error and no effect.
     to: string | number,
-    options?: { replace?: boolean; state?: unknown }
+    options?: { replace?: boolean }
   ) => {
     if (typeof to === 'number') {
       if (to === -1) router.back()
@@ -57,19 +66,21 @@ export function useNavigate() {
 }
 
 // ---------------------------------------------------------------------------
-// useLocation — matches react-router-dom's return shape
+// useLocation — pathname only.
+//
+// Deliberately narrower than react-router's location. The previous version
+// returned `search`, `hash`, `state` and `key` too, but three of those were
+// hardcoded empty and could never be anything else: there is no router state
+// to carry, so `state: null` silently broke every caller that read it. Callers
+// now get a type error instead of a value that is always wrong.
+//
+// It also called useSearchParams to build `search`, which nothing read. That
+// one call opted every route rendering a useLocation consumer out of static
+// rendering entirely — Next bails a page to client-side rendering when it sees
+// useSearchParams, which is why /assessment shipped no prerendered content.
 // ---------------------------------------------------------------------------
-export function useLocation() {
-  const pathname = usePathname()
-  const searchParams = useNextSearchParams()
-  const search = searchParams.toString() ? `?${searchParams.toString()}` : ''
-  return {
-    pathname,
-    search,
-    hash: '',
-    state: null,
-    key: 'default',
-  }
+export function useLocation(): { pathname: string } {
+  return { pathname: usePathname() }
 }
 
 // ---------------------------------------------------------------------------
@@ -113,26 +124,4 @@ export function useSearchParams(): [URLSearchParams, SetSearchParams] {
 
   // Convert ReadonlyURLSearchParams → URLSearchParams for full compat
   return [new URLSearchParams(params.toString()), setSearchParams]
-}
-
-// ---------------------------------------------------------------------------
-// Navigate component — renders null, triggers push on mount
-// (Only used for redirect cases; prefer next.config.mjs redirects instead)
-// ---------------------------------------------------------------------------
-export function Navigate({
-  to,
-  replace = false,
-}: {
-  to: string
-  replace?: boolean
-}) {
-  const router = useRouter()
-  useEffect(() => {
-    if (replace) {
-      router.replace(to)
-    } else {
-      router.push(to)
-    }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
-  return null
 }

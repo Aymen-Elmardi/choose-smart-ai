@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useNavigate, useLocation, Link } from '@/lib/router-compat';
+import { useNavigate, Link } from '@/lib/router-compat';
 import { ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,6 @@ import { initializeSessionTracking, markQuizStart } from "@/lib/sessionTracking"
 
 const Quiz = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   // Always start at Question 1 (no intro screen)
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_QUIZ_ANSWERS);
@@ -38,11 +37,16 @@ const Quiz = () => {
   const [pendingInsightText, setPendingInsightText] = useState<string | null>(null);
   const [pendingAdvance, setPendingAdvance] = useState<(() => void) | null>(null);
 
-  // Detect market based on referrer path (if coming from /us page)
+  // Detect market based on referrer path (if coming from /us page).
+  //
+  // This initialiser runs during the first render, which now also happens on
+  // the server at build time, so `document` is not always available. The old
+  // `location.state?.market` check was dropped: nothing ever navigates here
+  // with router state, and the shim had no way to carry it, so that half of
+  // the condition was never true.
   const [market] = useState<Market>(() => {
-    const referrer = document.referrer;
-    const isFromUS = referrer.includes("/us") || location.state?.market === "US";
-    return isFromUS ? "US" : "UK";
+    const referrer = typeof document !== "undefined" ? document.referrer : "";
+    return referrer.includes("/us") ? "US" : "UK";
   });
 
   // Track whether assessment_start has already been pushed

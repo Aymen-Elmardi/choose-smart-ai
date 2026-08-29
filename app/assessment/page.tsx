@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import Quiz from '@/views/Quiz'
 
 export const metadata: Metadata = {
@@ -12,9 +11,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-background" />}>
-      <Quiz />
-    </Suspense>
-  )
+  return <Quiz />
 }
