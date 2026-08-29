@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect } from "react";
-
 interface BreadcrumbItem {
   name: string;
   url?: string;
@@ -14,9 +12,14 @@ interface BreadcrumbSchemaProps {
 const BASE_URL = "https://chosepayments.com";
 
 /**
- * Injects BreadcrumbList structured data (JSON-LD) for SEO.
+ * Renders BreadcrumbList structured data (JSON-LD) for SEO.
  * Mirrors the visual breadcrumb navigation.
- * 
+ *
+ * The <script> is returned as JSX rather than appended to document.head in an
+ * effect, so the JSON-LD is present in the prerendered HTML. Under
+ * `output: 'export'` an effect-injected tag only exists once client JS has run,
+ * which means crawlers reading the static file never see it.
+ *
  * Usage:
  * <BreadcrumbSchema items={[
  *   { name: "Home", url: "/" },
@@ -24,42 +27,31 @@ const BASE_URL = "https://chosepayments.com";
  *   { name: "Article Title" } // No URL for current page
  * ]} />
  */
+/**
+ * JSON.stringify does not escape "<", so a literal "</script>" anywhere in the
+ * data would terminate the tag early. Escaping it keeps the payload inert.
+ */
+const serializeJsonLd = (data: unknown) =>
+  JSON.stringify(data).replace(/</g, "\\u003c");
+
 const BreadcrumbSchema = ({ items }: BreadcrumbSchemaProps) => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.id = "breadcrumb-schema";
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      ...(item.url ? { "item": `${BASE_URL}${item.url}` } : {}),
+    })),
+  };
 
-    const schemaData = {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": items.map((item, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "name": item.name,
-        ...(item.url && { "item": `${BASE_URL}${item.url}` }),
-      })),
-    };
-
-    script.textContent = JSON.stringify(schemaData);
-
-    // Remove existing breadcrumb schema if present
-    const existingScript = document.getElementById("breadcrumb-schema");
-    if (existingScript) {
-      existingScript.remove();
-    }
-
-    document.head.appendChild(script);
-
-    return () => {
-      const scriptToRemove = document.getElementById("breadcrumb-schema");
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
-  }, [items]);
-
-  return null;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(schemaData) }}
+    />
+  );
 };
 
 export default BreadcrumbSchema;

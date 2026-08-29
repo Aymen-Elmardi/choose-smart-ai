@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useCallback } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SUPABASE_NOT_CONFIGURED } from "@/integrations/supabase/client";
 import { useVisitorId } from "./useVisitorId";
 
 type ActionType = "like" | "share_twitter" | "share_linkedin" | "share_facebook";
@@ -10,6 +10,22 @@ interface EngagementState {
   isLiked: boolean;
   isLoading: boolean;
 }
+
+/**
+ * Coerces whatever the backend returned into a finite number.
+ *
+ * `likeCount` is rendered directly, so a non-numeric value here becomes a
+ * render-time crash rather than a quietly wrong count. Anything unusable
+ * degrades to 0 instead.
+ */
+const toLikeCount = (value: unknown): number => {
+  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
+  if (typeof value === "string") {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+  return 0;
+};
 
 /**
  * Hook for managing article likes and tracking share clicks.
@@ -37,7 +53,9 @@ export const useArticleEngagement = (articleSlug: string) => {
           .eq("action_type", "like")
           .maybeSingle();
 
-        if (countError) {
+        // A missing Supabase config is a deployment state, not a fault worth
+        // an error on every article view — the count just stays at 0.
+        if (countError && (countError as { code?: string }).code !== SUPABASE_NOT_CONFIGURED) {
           console.error("Error fetching engagement count:", countError);
         }
 
@@ -48,7 +66,7 @@ export const useArticleEngagement = (articleSlug: string) => {
         const hasLiked = localStorage.getItem(likedKey) === "true";
 
         setState({
-          likeCount: countData?.count || 0,
+          likeCount: toLikeCount(countData?.count),
           isLiked: hasLiked,
           isLoading: false,
         });

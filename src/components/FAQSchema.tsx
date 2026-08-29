@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect } from "react";
-
 interface FAQItem {
   question: string;
   answer: string;
@@ -11,44 +9,41 @@ interface FAQSchemaProps {
   faqs: FAQItem[];
 }
 
-const FAQSchema = ({ faqs }: FAQSchemaProps) => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.id = "faq-schema";
-    
-    const schemaData = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map((faq) => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
-        }
-      }))
-    };
-    
-    script.textContent = JSON.stringify(schemaData);
-    
-    // Remove existing FAQ schema if present
-    const existingScript = document.getElementById("faq-schema");
-    if (existingScript) {
-      existingScript.remove();
-    }
-    
-    document.head.appendChild(script);
-    
-    return () => {
-      const scriptToRemove = document.getElementById("faq-schema");
-      if (scriptToRemove) {
-        scriptToRemove.remove();
-      }
-    };
-  }, [faqs]);
+/**
+ * Renders FAQPage structured data (JSON-LD).
+ *
+ * The <script> is returned as JSX rather than appended to document.head in an
+ * effect, so the JSON-LD is present in the prerendered HTML. Under
+ * `output: 'export'` an effect-injected tag only exists once client JS has run,
+ * which means crawlers reading the static file never see it.
+ */
+/**
+ * JSON.stringify does not escape "<", so a literal "</script>" anywhere in the
+ * data would terminate the tag early. Escaping it keeps the payload inert.
+ */
+const serializeJsonLd = (data: unknown) =>
+  JSON.stringify(data).replace(/</g, "\\u003c");
 
-  return null;
+const FAQSchema = ({ faqs }: FAQSchemaProps) => {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(schemaData) }}
+    />
+  );
 };
 
 export default FAQSchema;

@@ -274,6 +274,13 @@ export const allInsights: Insight[] = [
     readTime: "6 min read"
   },
   {
+    title: "What Is Marketplace Liquidity? A Founder's Guide",
+    slug: "marketplace-liquidity",
+    description: "Marketplace liquidity explained with real formulas, benchmarks by stage, and the payout problem most guides never mention.",
+    category: "guides",
+    readTime: "9 min read"
+  },
+  {
     title: "Source of Funds Requests: What They Mean and How to Respond",
     slug: "source-of-funds",
     description: "Learn why providers request bank statements and source of funds documentation.",

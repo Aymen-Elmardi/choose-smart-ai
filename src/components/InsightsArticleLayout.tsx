@@ -32,6 +32,11 @@ interface InsightsArticleLayoutProps {
   sources?: Source[];
   breadcrumbSchemaItems?: { name: string; url?: string }[];
   /**
+   * Article schema `image`, for articles with their own cover image.
+   * Defaults to the shared OG card inside ArticleSchema.
+   */
+  image?: string;
+  /**
    * Article schema `headline`, when it should differ from the SEO title.
    * Used where the title tag is trimmed for the SERP but the schema headline
    * should still match the visible H1. Defaults to `title`.
@@ -76,6 +81,7 @@ const InsightsArticleLayout = ({
   keywords,
   sources,
   breadcrumbSchemaItems,
+  image,
   schemaHeadline,
 }: InsightsArticleLayoutProps) => {
   // Set SEO meta tags
@@ -108,6 +114,7 @@ const InsightsArticleLayout = ({
         description={description}
         publishedTime={publishedTime}
         modifiedTime={modifiedTime}
+        image={image}
         sources={sources}
         keywords={keywords}
       />

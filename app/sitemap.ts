@@ -617,6 +617,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
+    {
+      url: `${BASE_URL}/insights/marketplace-liquidity`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
     // Crisis pages
     {
       url: `${BASE_URL}/insights/crisis`,
