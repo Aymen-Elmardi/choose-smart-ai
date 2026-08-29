@@ -318,13 +318,27 @@ const Quiz = () => {
     setPendingInsightText(null);
   }, [pendingAdvance]);
 
+  // The question list is derived from the answers, so the step index can fall
+  // out of range if an earlier answer shortens it. Recover in place rather than
+  // navigating: this is already the /assessment route, so a router replace
+  // would not remount the component, the step would still be out of range, and
+  // the guard below would fire again on the next render. (The previous version
+  // navigated to /quiz, which is not a route at all — it survived only because
+  // a Cloudflare _redirects rule turned it into a full page load.)
+  useEffect(() => {
+    const available = getQuestions(answers).length;
+    if (available > 0 && currentStep > available) {
+      setCurrentStep(available);
+    }
+  }, [answers, currentStep]);
+
   // Question Screens
   const questions = getQuestions(answers);
   const question = questions[currentStep - 1];
 
   if (!question) {
-    // Safety: redirect if question not found
-    navigate("/quiz", { replace: true });
+    // The effect above clamps the step back into range; render nothing for the
+    // single frame before it does.
     return null;
   }
 
