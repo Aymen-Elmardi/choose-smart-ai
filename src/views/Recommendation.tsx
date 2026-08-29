@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from "react";
-import { useSearchParams, useNavigate } from '@/lib/router-compat';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { Check, ArrowRight, Loader2, Mail, ShieldX, AlertTriangle, CheckCircle, Building2, Globe, CreditCard as CardIcon, TrendingUp, ShoppingCart, Tag, Calendar, ChevronDown } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
@@ -118,8 +118,9 @@ const ProfileItem = ({ label, value, icon: Icon }: { label: string; value: strin
 );
 
 const Recommendation = () => {
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const startedFromQuizRef = useRef(searchParams.get("fromQuiz") === "true");
   const [showLoader, setShowLoader] = useState(() => startedFromQuizRef.current);
   const [answers] = useState<QuizAnswers | null>(() => readStoredAnswers());
@@ -153,9 +154,9 @@ const Recommendation = () => {
   useEffect(() => {
     initializeSessionTracking();
     if (!answers || !quizComplete) {
-      navigate("/assessment?start=true", { replace: true });
+      router.replace("/assessment?start=true");
     }
-  }, [answers, quizComplete, navigate]);
+  }, [answers, quizComplete, router]);
 
   useEffect(() => {
     if (!answers || !quizComplete) return;
@@ -179,12 +180,16 @@ const Recommendation = () => {
       setShowLoader(false);
       return;
     }
-    const newParams = new URLSearchParams(window.location.search);
-    newParams.delete("fromQuiz");
-    setSearchParams(newParams, { replace: true });
+    // Drop ?fromQuiz so a refresh or a shared link does not replay the loader.
+    // router and pathname are both stable, so this effect runs once rather than
+    // re-firing after the navigation it performs.
+    const next = new URLSearchParams(window.location.search);
+    next.delete("fromQuiz");
+    const query = next.toString();
+    router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
     const timer = setTimeout(() => setShowLoader(false), 1200);
     return () => clearTimeout(timer);
-  }, [setSearchParams]);
+  }, [router, pathname]);
 
   useEffect(() => {
     if (isSubmitted) setShowLoader(false);

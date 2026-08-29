@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from 'next/link';
-import { useNavigate } from '@/lib/router-compat';
+import { useRouter } from 'next/navigation';
 import { ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,7 @@ import { deriveSegment, deriveVolumeTier } from "@/lib/quiz/quizSegment";
 import { initializeSessionTracking, markQuizStart } from "@/lib/sessionTracking";
 
 const Quiz = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   // Always start at Question 1 (no intro screen)
   const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<QuizAnswers>(INITIAL_QUIZ_ANSWERS);
@@ -168,7 +168,7 @@ const Quiz = () => {
            (window as any).dataLayer = (window as any).dataLayer || [];
            (window as any).dataLayer.push({ event: "assessment_complete" });
           // OPTIMISTIC: Navigate immediately, save in background
-          navigate("/recommendation?fromQuiz=true");
+          router.push("/recommendation?fromQuiz=true");
           // Prepare engine-compatible answers
           const engineAnswers = prepareEngineAnswers(updatedAnswers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
@@ -209,7 +209,7 @@ const Quiz = () => {
     if (isLastQuestion) {
           (window as any).dataLayer = (window as any).dataLayer || [];
           (window as any).dataLayer.push({ event: "assessment_complete" });
-          navigate("/recommendation?fromQuiz=true");
+          router.push("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(updatedAnswers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
           sessionStorage.setItem("quizAnswersRaw", JSON.stringify(updatedAnswers));
@@ -272,7 +272,7 @@ const Quiz = () => {
         if (isLastQuestion) {
           (window as any).dataLayer = (window as any).dataLayer || [];
           (window as any).dataLayer.push({ event: "assessment_complete" });
-          navigate("/recommendation?fromQuiz=true");
+          router.push("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(answers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
           sessionStorage.setItem("quizAnswersRaw", JSON.stringify(answers));
@@ -287,7 +287,7 @@ const Quiz = () => {
   const handleBack = () => {
     if (currentStep === 1) {
       // On first question, navigate to homepage (never exit to external referrer)
-      navigate("/", { replace: true });
+      router.replace("/");
     } else if (currentStep > 1) {
       setCurrentStep((prev) => prev - 1);
     }
