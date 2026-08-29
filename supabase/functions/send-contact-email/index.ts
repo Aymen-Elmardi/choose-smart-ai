@@ -1,4 +1,10 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import {
+  corsHeaders as sharedCorsHeaders,
+  jsonResponse as sharedJsonResponse,
+  successResponse as sharedSuccessResponse,
+  errorResponse as sharedErrorResponse,
+} from "../_shared/cors.ts";
 import { adminClient, checkRateLimit, getClientIp } from "../_shared/rateLimit.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
@@ -8,20 +14,6 @@ const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 // SHARED UTILITIES (inlined for edge function bundling)
 // ============================================================================
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
-
-const jsonResponse = (data: unknown, status: number = 200): Response => {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: { "Content-Type": "application/json", ...corsHeaders },
-  });
-};
-
-const successResponse = (data: Record<string, unknown> = {}): Response => jsonResponse({ success: true, ...data }, 200);
-const errorResponse = (error: string, status: number = 400): Response => jsonResponse({ success: false, error }, status);
 
 
 
@@ -54,6 +46,11 @@ interface ContactEmailRequest {
 }
 
 const handler = async (req: Request): Promise<Response> => {
+  const corsHeaders = sharedCorsHeaders(req);
+  const jsonResponse = (data: unknown, status = 200) => sharedJsonResponse(req, data, status);
+  const successResponse = (data: Record<string, unknown> = {}) => sharedSuccessResponse(req, data);
+  const errorResponse = (error: string, status = 400) => sharedErrorResponse(req, error, status);
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
