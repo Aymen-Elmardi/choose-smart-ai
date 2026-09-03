@@ -1,300 +1,280 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
-import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
-import { BOOKING_URL } from "@/lib/booking";
+import FAQSchema from "@/components/FAQSchema";
+
+const sources = [
+  { name: "Checkout.com: A Guide to Marketplace Payments", url: "https://www.checkout.com/blog/a-guide-to-marketplace-payments", type: "industry" as const },
+  { name: "Rapyd: What Causes Marketplace Chargebacks and How to Prevent Them", url: "https://www.rapyd.net/blog/8-marketplace-chargeback-reasons-how-to-reduce/", type: "industry" as const },
+  { name: "Stripe: Know Your Business (KYB) Guide", url: "https://stripe.com/resources/more/know-your-business-kyb", type: "industry" as const },
+  { name: "Visa: Payment Facilitator and Marketplace Risk Guide", url: "https://usa.visa.com/content/dam/VCOM/regional/na/us/partner-with-us/documents/visa-payment-facilitator-and-marketplace-risk-guide.pdf", type: "official" as const },
+  { name: "SVB: How to Tackle Top Challenges in E-Commerce Payments", url: "https://www.svb.com/payment-management-insights/merchant-services/tackle-top-challenges-ecommerce-payments/", type: "industry" as const },
+];
+
+/**
+ * Single source of truth for the FAQ: the visible section and the FAQPage
+ * JSON-LD both render from this array, so the two cannot drift apart.
+ *
+ * The phrasing is deliberate. These near-verbatim questions already rank in
+ * positions 1 to 5 in Search Console for this page; rewording them risks
+ * losing rankings that are already working.
+ */
+const faqs = [
+  {
+    question: "How do marketplace payments work for platforms and sellers?",
+    answer: "A buyer pays once, the marketplace's payment provider splits that payment between the marketplace's commission and each seller involved, then pays sellers out on a schedule the marketplace sets, sometimes immediately, sometimes held until the sale is confirmed complete.",
+  },
+  {
+    question: "What is a marketplace payment and how does it work?",
+    answer: "A marketplace payment is a single transaction that gets divided among multiple recipients, the platform and one or more sellers, rather than paid entirely to one merchant. It requires split-payment routing and seller-level verification that standard merchant accounts don't need.",
+  },
+  {
+    question: "How do marketplaces manage multiparty payment compliance?",
+    answer: "By pushing KYC/KYB verification down to every seller before they can be paid, screening sellers against sanctions lists, and holding or delaying payouts until disputes are resolved. The marketplace is compliant on behalf of every seller at once, not just its own transactions.",
+  },
+  {
+    question: "How do merchant payment solutions handle split payments?",
+    answer: "Payment providers built for marketplaces (rather than standard merchants) support split-payment APIs that divide one transaction across multiple destination accounts automatically, calculating commission and routing the remainder to each seller's verified bank account.",
+  },
+  {
+    question: "How do I handle disputes and refunds across multiple sellers?",
+    answer: "Route disputes to the specific seller involved, not the whole platform, using clear billing descriptors so buyers recognise charges. Delay payouts until a sale is confirmed, so disputed funds haven't already left the marketplace when a chargeback lands.",
+  },
+  {
+    question: "Do marketplaces need a payment facilitator license?",
+    answer: "It depends on how funds are held and moved. Marketplaces holding funds on behalf of sellers, rather than passing payments straight through, may need a payment institution license or a partnership with a licensed provider, particularly under EU rules like PSD2. Requirements vary by jurisdiction and business model.",
+  },
+];
+
+const toc = [
+  { id: "why-different", label: "Why Marketplace Payments Work Differently" },
+  { id: "risk-assessment", label: "How Providers Assess Marketplace Risk" },
+  { id: "real-cost", label: "The Real Cost of the Wrong Provider" },
+  { id: "compliance", label: "Compliance: AML, KYB, and PSD2/PSD3" },
+  { id: "positioning", label: "How to Position Your Marketplace for the Right Partner" },
+  { id: "one-or-several", label: "One Provider or Several?" },
+  { id: "faq", label: "FAQ" },
+];
 
 const MarketplacePaymentsGuide = () => {
   return (
     <InsightsArticleLayout
-      title="The Marketplace Founder's Guide to Payment Processing"
-      description="Building a marketplace means navigating split payments, seller verification, chargeback risk, and provider scrutiny. This guide explains what payment providers don't tell marketplace founders and how to secure the right payment partnership."
+      title="Marketplace Payments Guide: Splits, Risk & Compliance"
+      description="A complete guide to marketplace payments: how split payments, seller compliance, chargebacks, and risk reviews work, and how to avoid a frozen account."
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"
       currentSlug="marketplace-payments-guide"
-      keywords={["marketplace payments", "split payments", "seller verification", "marketplace chargebacks", "KYB", "marketplace risk", "payment processing marketplace"]}
-      sources={[
-        { name: "Checkout.com: A Guide to Marketplace Payments", url: "https://www.checkout.com/blog/a-guide-to-marketplace-payments" },
-        { name: "Rapyd: What Causes Marketplace Chargebacks and How to Prevent Them", url: "https://www.rapyd.net/blog/8-marketplace-chargeback-reasons-how-to-reduce/" },
-        { name: "Stripe: Know Your Business (KYB) Guide", url: "https://stripe.com/resources/more/know-your-business-kyb" },
-        { name: "Visa: Payment Facilitator and Marketplace Risk Guide", url: "https://usa.visa.com/content/dam/VCOM/regional/na/us/partner-with-us/documents/visa-payment-facilitator-and-marketplace-risk-guide.pdf" },
-        { name: "SVB: How to Tackle Top Challenges in E-Commerce Payments", url: "https://www.svb.com/payment-management-insights/merchant-services/tackle-top-challenges-ecommerce-payments/" },
+      publishedTime="2026-08-26"
+      modifiedTime="2026-08-26"
+      image="https://chosepayments.com/insights/marketplace-payments-guide-cover.png"
+      sources={sources}
+      // The layout's own assessment CTA serves as the closing call to action,
+      // which keeps this page at the two CTA blocks its brief allows.
+      showCTA={false}
+      keywords={[
+        "marketplace payments",
+        "marketplace payments guide",
+        "marketplace payment processing",
+        "marketplace split payments",
+        "marketplace compliance chargebacks",
+        "multiparty payment compliance",
       ]}
     >
-      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-        The Marketplace Founder's Guide to Payment Processing: What Providers Don't Tell You
+      <FAQSchema faqs={faqs} />
+
+      <img
+        src="/insights/marketplace-payments-guide-cover.png"
+        alt="One buyer payment branching to three sellers, illustrating how a marketplace splits a single transaction"
+        width={1200}
+        height={630}
+        className="w-full rounded-lg border border-border mb-8"
+      />
+
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+        Marketplace Payments Guide: Splits, Risk &amp; Compliance
       </h1>
+
+      <p className="text-sm text-muted-foreground italic mb-8">
+        Last updated 26 August 2026 by the ChosePayments Editorial Team.
+      </p>
 
       <div className="text-muted-foreground space-y-6">
         <p>
-          Building a marketplace is fundamentally different from running a traditional e-commerce store. You are not just selling products; you are orchestrating a complex ecosystem of buyers, sellers, and transactions. This complexity extends directly into your payment infrastructure. While a standard online retailer simply needs to accept money, a marketplace must accept funds, hold them securely, split them accurately, deduct commissions, and distribute payouts, often across multiple borders and currencies.
+          Running a marketplace is not the same as running a store, and payment providers know it before you do. This guide is for marketplace founders, operators, and finance leads who need to understand how marketplace payments actually work before choosing, or fixing, a payment setup.
         </p>
 
         <p>
-          For marketplace founders, the payment processor you choose is not just a vendor; it is a critical infrastructure partner. However, the reality that many founders discover too late is that payment providers view marketplaces through a lens of heightened risk. The multi-party nature of your business model introduces vulnerabilities that traditional merchants rarely face. This fundamental misunderstanding of how payment providers assess risk leads to frozen accounts, withheld funds, and rejected applications.
+          By the end, you&apos;ll know: why marketplaces get treated as higher risk, what payment providers actually monitor, what a mismatched provider costs you, and how to position your platform for a stable setup that survives growth.
+        </p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          In This Guide
+        </h2>
+
+        <ul className="list-disc pl-6 space-y-2">
+          {toc.map((item) => (
+            <li key={item.id}>
+              <a href={`#${item.id}`} className="text-primary hover:underline">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          Key Takeaways
+        </h2>
+
+        <ul className="list-disc pl-6 space-y-2">
+          <li>A marketplace collects one payment and splits it between itself and multiple sellers, often holding funds until a sale is confirmed complete. That structure alone is why providers treat marketplaces as higher risk than a normal store.</li>
+          <li>Providers watch four things continuously after approval: chargeback ratio, growth rate, cross-border activity, and payout timing.</li>
+          <li>The most expensive mistake is picking a provider on rate alone. A frozen marketplace account doesn&apos;t just cost you, it stops every seller on your platform from getting paid at once.</li>
+          <li>Seller verification (KYB/KYC) is a regulatory requirement that flows down to you from your payment provider, not an optional extra step.</li>
+        </ul>
+
+        <h2 id="why-different" className="text-2xl font-bold text-foreground mt-10 mb-4 scroll-mt-24">
+          Why Marketplace Payments Work Differently
+        </h2>
+
+        <p>
+          A standard retailer accepts money for its own goods. A marketplace accepts money, holds it, splits it between itself and its sellers, and pays each one out on its own schedule, often across different countries and currencies. That&apos;s what makes marketplace payments structurally harder than standard e-commerce, and it&apos;s why payment providers treat marketplaces as higher risk from day one.
         </p>
 
         <p>
-          This comprehensive guide explores the unique payment challenges marketplaces face, the specific risk signals providers look for during underwriting, and how you can position your platform to secure the right payment partnership.
-        </p>
-
-        <h2 className="text-2xl font-bold text-foreground pt-6">The Unique Complexity of Marketplace Payments</h2>
-
-        <p>
-          The core function of a marketplace is to act as an intermediary. This intermediary role creates a web of financial obligations and regulatory requirements that standard payment processors are often ill-equipped to handle. Understanding these complexities is the first step toward building a resilient payment strategy.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">The Mechanics of Split Payments and Payouts</h3>
-
-        <p>
-          In a traditional retail transaction, the flow of funds is linear: the customer pays, and the merchant receives the money. In a marketplace, the flow is fractured. A single customer transaction might involve purchasing items from three different sellers. The payment processor must accept the total amount, calculate the marketplace's commission, split the remaining funds among the three sellers, and route those funds to different bank accounts.
+          A single customer order might involve three different sellers. The provider has to take the full payment, calculate the marketplace&apos;s commission, split the rest between three separate bank accounts, and get it right every time. That&apos;s split payments, and it needs routing logic most standard payment processors were never built for.
         </p>
 
         <p>
-          This process, known as split payments, requires sophisticated routing capabilities. Furthermore, marketplaces often employ delayed payouts to build trust. Funds are held in escrow until the buyer confirms receipt of the goods or services. Holding funds on behalf of others introduces significant regulatory scrutiny, often requiring specific licenses or partnerships with licensed financial institutions.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">The Multi-Party Chargeback Dilemma</h3>
-
-        <p>
-          Chargebacks are a persistent threat to any online business, but for marketplaces, they are exponentially more complicated. When a buyer initiates a chargeback, the dispute is often rooted in a multi-party misunderstanding.
+          Many marketplaces also delay payouts on purpose, holding funds in escrow until a buyer confirms delivery. This builds buyer trust, but it also means the marketplace is holding money on behalf of other people, exactly the kind of activity that draws regulatory scrutiny and can require a specific license or a licensed partner.
         </p>
 
         <p>
-          Customers frequently experience confusion when reviewing their bank statements. They may have purchased a handmade craft from "Sarah's Designs" on your platform, but the charge appears as a generic descriptor or under the marketplace's name. Failing to recognise the charge, the customer assumes it is fraudulent and initiates a dispute.
+          Chargebacks compound the problem. A buyer who doesn&apos;t recognise a charge (because it shows the marketplace&apos;s name instead of the seller&apos;s) is more likely to dispute it. When a dispute happens, the seller may be unreachable, and the marketplace is often left liable for a chargeback on money it already paid out.
         </p>
 
         <p>
-          Furthermore, when a dispute arises over product quality or delivery, the marketplace is caught in the middle. The seller may be unresponsive, operating in a different time zone, or have abandoned their account entirely. Meanwhile, the marketplace remains liable for the chargeback, often forced to absorb the loss if the funds have already been paid out to the seller.
+          Then there&apos;s seller verification. Every seller who can receive a payout has to be checked under Know Your Business (KYB) and Know Your Customer (KYC) rules: identity, business registration, beneficial ownership, sanctions screening. Marketplaces carry the operational burden of collecting this, even though it&apos;s the provider&apos;s regulatory requirement, not the marketplace&apos;s choice. <Link href="/insights/marketplace-seller-info" className="text-primary hover:underline">See exactly what documents seller verification requires →</Link>
         </p>
 
-        <h3 className="text-xl font-semibold text-foreground pt-4">The Burden of Seller Verification (KYB)</h3>
+        <h2 id="risk-assessment" className="text-2xl font-bold text-foreground mt-10 mb-4 scroll-mt-24">
+          How Providers Assess Marketplace Risk
+        </h2>
 
         <p>
-          Marketplaces are only as reliable as the sellers they host. Payment providers understand this, which is why they impose stringent Know Your Business (KYB) and Know Your Customer (KYC) requirements on marketplace platforms.
-        </p>
-
-        <p>
-          Before a seller can receive payouts, their identity and business legitimacy must be verified. This involves collecting registration documents, identifying beneficial owners, and screening against international sanctions lists. The burden of this verification often falls on the marketplace, requiring robust onboarding processes that balance compliance with a frictionless user experience. Failure to adequately vet sellers exposes the marketplace and its payment provider to significant fraud and money laundering risks.
-        </p>
-
-        <InlineAssessmentCTA
-          context="Running a marketplace? Find out which payment providers are built to handle split payments and seller verification."
-        />
-
-        <h2 className="text-2xl font-bold text-foreground pt-6">How Payment Providers Assess Marketplace Risk</h2>
-
-        <p>
-          Payment providers do not reject applications or freeze accounts arbitrarily. Their actions are driven by sophisticated risk models designed to protect them from financial loss and regulatory penalties. To secure a stable payment partnership, marketplace founders must understand the specific risk signals these models monitor.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">The Underwriting Process: Beyond the Surface</h3>
-
-        <p>
-          When you apply for a merchant account, the payment provider conducts a thorough underwriting process. For a marketplace, this assessment goes far beyond reviewing your business plan. Providers scrutinise your entire operational model to gauge your exposure to risk.
+          Providers don&apos;t reject or freeze accounts at random. Underwriting for a marketplace goes beyond a standard merchant application, and it continues after approval as ongoing monitoring.
         </p>
 
         <p>
-          They evaluate the quality of your seller base and the rigour of your verification processes. A marketplace that allows anyone to sell with minimal vetting is viewed as a high-risk environment for fraud. Providers also analyse your dispute resolution mechanisms. How do you handle customer complaints? What is your policy for holding funds? A lack of clear, enforceable policies signals a high likelihood of escalating chargebacks.
+          At application, providers look at how rigorously you vet sellers before letting them list or get paid, whether your dispute resolution process is clear and enforceable, and how you structure payouts.
         </p>
 
-        <h3 className="text-xl font-semibold text-foreground pt-4">Key Risk Signals That Trigger Reviews</h3>
+        <p>After approval, four signals get watched on an ongoing basis:</p>
+
+        <ol className="list-decimal pl-6 space-y-3">
+          <li>
+            <strong className="text-foreground">Chargeback ratio.</strong> Most providers flag accounts once chargebacks cross roughly 1% of transactions. For marketplaces, a spike often points to one compromised seller or a systemic product issue, not the whole platform.
+          </li>
+          <li>
+            <strong className="text-foreground">Growth rate.</strong> A sudden, unexplained volume increase can look identical to fraud from a risk system&apos;s point of view, even when the growth is entirely legitimate. <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">How sudden growth triggers account reviews →</Link>
+          </li>
+          <li>
+            <strong className="text-foreground">Cross-border activity.</strong> International buyers and sellers introduce currency risk, inconsistent consumer protection law, and more exposure to fraud, all of which raise scrutiny.
+          </li>
+          <li>
+            <strong className="text-foreground">Payout timing.</strong> Paying sellers out immediately shifts chargeback risk onto the provider. Delayed payouts, held until the transaction is confirmed complete, are what most providers prefer.
+          </li>
+        </ol>
+
+        <h2 id="real-cost" className="text-2xl font-bold text-foreground mt-10 mb-4 scroll-mt-24">
+          The Real Cost of the Wrong Provider
+        </h2>
 
         <p>
-          Even after approval, your account remains under continuous surveillance. Payment providers monitor transaction patterns for deviations that suggest increased risk. Understanding these triggers can help you anticipate and mitigate potential issues.
-        </p>
-
-        <p className="font-semibold text-foreground">Chargeback Velocity and Ratios</p>
-        <p>
-          The most critical metric is your chargeback ratio. If your chargebacks exceed the industry standard threshold, typically around 1% of total transactions, your account will be flagged. For marketplaces, a sudden spike in chargebacks often indicates a compromised seller account or a systemic issue with product quality.
-        </p>
-
-        <p className="font-semibold text-foreground">Rapid and Unexplained Growth</p>
-        <p>
-          While growth is the goal of every founder, sudden, exponential increases in processing volume can trigger automated security protocols. Payment providers view rapid growth as a potential indicator of fraud or a business scaling beyond its operational capacity. If your volume spikes unexpectedly, providers may impose reserves or temporarily freeze funds until they can verify the legitimacy of the transactions.
-        </p>
-
-        <p className="font-semibold text-foreground">Cross-Border Transaction Patterns</p>
-        <p>
-          Marketplaces that facilitate international transactions face heightened scrutiny. Cross-border payments involve complex currency conversions, varying consumer protection laws, and increased exposure to organised fraud rings. Providers monitor the geographic distribution of your buyers and sellers, flagging unusual patterns or concentrations in high-risk jurisdictions.
-        </p>
-
-        <p className="font-semibold text-foreground">Settlement Timing and Fund Movement</p>
-        <p>
-          The timing of your payouts is a significant risk factor. If you release funds to sellers immediately upon purchase, the payment provider bears the risk if a chargeback occurs weeks later. Providers prefer marketplaces that utilise delayed payouts, holding funds until the transaction is successfully completed.
-        </p>
-
-        <h2 className="text-2xl font-bold text-foreground pt-6">The Hidden Costs of the Wrong Payment Partner</h2>
-
-        <p>
-          Choosing a payment processor based solely on the lowest advertised rate is a common mistake that can cost marketplace founders dearly. The true cost of a payment partnership extends far beyond the transaction fee.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">The Reality of Blended Pricing</h3>
-
-        <p>
-          Many popular payment processors offer blended pricing models, advertising a single, flat rate for all transactions. While this appears simple, it often obscures the true cost of processing. Blended rates are designed to cover the provider's costs across a wide range of card types and risk profiles. As a result, you may be overpaying for low-risk transactions to subsidise the provider's exposure to higher-risk activities.
+          Picking a processor on advertised rate alone is a common, expensive mistake for marketplaces specifically.
         </p>
 
         <p>
-          For marketplaces processing significant volume, <Link href="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">Interchange++ pricing</Link> often provides greater transparency and lower overall costs. This model passes the actual interchange fees directly to the merchant, along with a transparent markup. However, qualifying for Interchange++ requires a strong risk profile and significant processing volume.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">The Devastating Impact of Account Freezes</h3>
-
-        <p>
-          The most severe consequence of a mismatched payment partnership is an unexpected account freeze. When a provider's risk models are triggered, they may suspend your ability to process payments or hold your funds in reserve.
+          Blended pricing hides your real cost. A single flat rate looks simple, but it means low-risk transactions subsidise the provider&apos;s exposure to riskier ones. At real marketplace volume, <Link href="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">Interchange++ pricing</Link> is usually more transparent and cheaper, though it takes a stronger risk profile and higher volume to qualify.
         </p>
 
         <p>
-          For a marketplace, an account freeze is catastrophic. You are unable to accept new orders, and more importantly, you cannot pay your sellers. This destroys trust within your ecosystem, leading to seller churn and irreparable reputational damage. Many founders discover too late that their chosen provider has a low tolerance for marketplace risk, resulting in sudden and devastating disruptions to their business.
+          An account freeze is the worst-case outcome, and it&apos;s a marketplace-specific catastrophe. You lose the ability to accept new orders, and you can&apos;t pay sellers who are already owed money. That breaks trust across your entire seller base at once, not just one transaction, and the reputational damage tends to outlast the freeze itself.
         </p>
 
-        <InlineAssessmentCTA
-          context="Worried about account freezes? See which providers have the right risk appetite for your marketplace model."
-        />
-
-        <h2 className="text-2xl font-bold text-foreground pt-6">Navigating Compliance and Regulatory Frameworks</h2>
-
-        <p>
-          Marketplaces operate in a highly regulated environment, and compliance is not optional. Payment providers act as the gatekeepers to the financial system, and they will not partner with platforms that fail to meet regulatory standards.
+        <p className="italic">
+          If you&apos;d like a second pair of eyes on your current setup before it becomes a problem, our <Link href="/assessment" className="text-primary hover:underline not-italic">free risk assessment</Link> takes about a minute and tells you where the mismatch is, if there is one.
         </p>
 
-        <h3 className="text-xl font-semibold text-foreground pt-4">Anti-Money Laundering (AML) and KYC/KYB</h3>
+        <h2 id="compliance" className="text-2xl font-bold text-foreground mt-10 mb-4 scroll-mt-24">
+          Compliance: AML, KYB, and PSD2/PSD3
+        </h2>
 
         <p>
-          Anti-Money Laundering (AML) regulations require financial institutions to monitor transactions for suspicious activity and report potential money laundering. While marketplaces themselves may not always be classified as financial institutions, their payment providers are. Therefore, providers require marketplaces to implement robust KYC and KYB procedures to verify the identity of their users.
+          Payment providers are regulated financial gatekeepers, and they won&apos;t work with platforms that can&apos;t meet the same standards.
         </p>
 
         <p>
-          This involves collecting and verifying government-issued IDs, business registration documents, and proof of address. Marketplaces must also screen users against global watchlists and sanctions lists. Failure to comply with these requirements can result in severe penalties, including account termination and legal action.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">The Impact of PSD2 and PSD3 in Europe</h3>
-
-        <p>
-          For marketplaces operating in Europe, the Payment Services Directive (PSD2) and the upcoming PSD3 introduce additional layers of complexity. These regulations mandate Strong Customer Authentication (SCA) for online payments, requiring multi-factor authentication to reduce fraud.
+          <strong className="text-foreground">AML and KYC/KYB.</strong> Anti-money laundering rules require providers to know who they&apos;re moving money for. Because a marketplace sits between the provider and its sellers, that obligation flows down to the marketplace: collecting government IDs, business registration documents, and sanctions-list screening before a seller can be paid.
         </p>
 
         <p>
-          Furthermore, PSD2 introduced strict rules regarding the holding of funds. Marketplaces that hold funds on behalf of sellers may be required to obtain a payment institution license or partner with a licensed provider. Navigating these regulatory frameworks requires specialised expertise and a payment partner with deep knowledge of the European market.
-        </p>
-
-        <h2 className="text-2xl font-bold text-foreground pt-6">Strategic Steps to Secure the Right Payment Processor</h2>
-
-        <p>
-          Securing a stable, scalable payment infrastructure requires a proactive approach. Marketplace founders must present their business as a well-managed, low-risk entity to potential payment partners.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">Implement Robust Seller Verification</h3>
-
-        <p>
-          Your first line of defence against payment risk is a rigorous seller onboarding process. Implement comprehensive KYB and KYC procedures to verify the identity and legitimacy of every seller on your platform.
+          <strong className="text-foreground">PSD2 and PSD3 in Europe.</strong> Marketplaces operating in the EU face Strong Customer Authentication requirements under PSD2, plus stricter rules on holding funds for sellers. Depending on your model, you may need a payment institution license or a partnership with a licensed provider to hold funds legally. <Link href="/insights/payment-scheme-rules-explained" className="text-primary hover:underline">How scheme rules apply across payment methods →</Link>
         </p>
 
         <p>
-          Require official business registration documents, verify bank account ownership, and screen sellers against relevant watchlists. By demonstrating to payment providers that you actively manage the quality of your seller base, you significantly reduce your perceived risk profile.
+          This is also where &quot;multiparty payment compliance&quot; gets genuinely complicated: a marketplace isn&apos;t just complying with rules for its own transactions, it&apos;s enforcing compliance on behalf of every seller on the platform, at the same time, continuously.
         </p>
 
-        <h3 className="text-xl font-semibold text-foreground pt-4">Optimise Dispute Resolution and Chargeback Management</h3>
+        <h2 id="positioning" className="text-2xl font-bold text-foreground mt-10 mb-4 scroll-mt-24">
+          How to Position Your Marketplace for the Right Partner
+        </h2>
+
+        <p>A stable payment setup gets built before you apply, not fixed after a freeze.</p>
+
+        <ol className="list-decimal pl-6 space-y-3">
+          <li>
+            <strong className="text-foreground">Verify sellers properly from day one.</strong> Collect registration documents, confirm bank ownership, and screen against watchlists. A marketplace that visibly manages seller quality looks like a lower-risk business to underwrite.
+          </li>
+          <li>
+            <strong className="text-foreground">Make disputes easy to resolve before they become chargebacks.</strong> Use billing descriptors buyers recognise, and give sellers a fast, clear process for responding to complaints.
+          </li>
+          <li>
+            <strong className="text-foreground">Delay payouts until a transaction is confirmed.</strong> This protects both your marketplace and your provider from paying out on funds that get disputed later.
+          </li>
+          <li>
+            <strong className="text-foreground">Build a real risk process, not just a policy document.</strong> Monitor your own chargeback and dispute trends, and fix the root causes, not just the symptoms.
+          </li>
+        </ol>
+
+        <h2 id="one-or-several" className="text-2xl font-bold text-foreground mt-10 mb-4 scroll-mt-24">
+          One Provider or Several?
+        </h2>
 
         <p>
-          Develop clear, transparent policies for handling customer disputes and chargebacks. Ensure that your merchant descriptors are recognisable to buyers, reducing the likelihood of confusion-based disputes.
-        </p>
-
-        <p>
-          Implement automated systems to notify sellers of disputes and require timely responses. Consider utilising fraud detection tools that analyse transaction patterns in real time to identify and block suspicious activity before it results in a chargeback.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">Align Your Payout Strategy with Risk Tolerance</h3>
-
-        <p>
-          Design your payout schedule to balance seller satisfaction with risk mitigation. Implement delayed payouts, holding funds in escrow until the buyer confirms receipt of the goods or services. This ensures that funds are available to cover potential refunds or chargebacks, reducing the financial exposure of both your marketplace and your payment provider.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">Build a Comprehensive Risk Management Framework</h3>
-
-        <p>
-          A strong risk management framework is essential for securing and maintaining a stable payment partnership. This framework should include continuous monitoring of transaction patterns, automated fraud detection systems, and clear protocols for handling suspicious activity.
-        </p>
-
-        <p>
-          Regularly review your chargeback ratios and identify the root causes of disputes. Work closely with your sellers to improve product quality and customer service, reducing the likelihood of future chargebacks. By demonstrating a proactive approach to risk management, you build trust with your payment provider and ensure the long-term stability of your platform.
-        </p>
-
-        <h2 className="text-2xl font-bold text-foreground pt-6">The Hidden Opportunity: Payment Processing as a Revenue Stream</h2>
-
-        <p>
-          Most marketplace founders view payment processing as a necessary cost centre. A line item on the balance sheet that needs to be minimised. However, the most sophisticated marketplace operators have discovered that payment processing, when managed strategically, can become a significant revenue stream.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">Beyond Single Provider Dependency</h3>
-
-        <p>
-          Traditionally, marketplaces have been locked into agreements with a single payment processor. This creates a precarious situation: if that provider freezes your account or becomes uncompetitive on pricing, you have limited options. You are at the mercy of their risk appetite and their fee structure.
+          Most marketplaces default to a single payment provider and stay there, which works fine until that provider&apos;s risk appetite no longer matches your business as it grows or diversifies. At that point, you&apos;re stuck: renegotiating from a weak position, or migrating everything at the worst possible time.
         </p>
 
         <p>
-          The breakthrough comes from working with payment infrastructure partners who understand marketplace dynamics and can facilitate relationships with multiple payment providers. Instead of being confined to one processor's risk tolerance, you gain the ability to route different merchant segments to providers whose appetites align with their risk profiles.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">Intelligent Merchant Routing Based on Risk</h3>
-
-        <p>
-          With access to multiple payment providers, you can implement sophisticated merchant routing strategies. New sellers with limited transaction history might be routed to providers with higher risk tolerance and more flexible underwriting. As these sellers mature and build track records, you can migrate them to premium providers offering better rates.
+          Marketplaces with meaningful volume increasingly work with more than one provider, routing different sellers to whichever provider&apos;s risk appetite fits them best. A new seller with no track record might sit with a provider that tolerates more risk; an established seller with a clean history can move to a provider offering better rates. This also gives you real negotiating leverage, since providers compete for your volume instead of assuming they&apos;re your only option.
         </p>
 
         <p>
-          High-risk sellers, those in industries with elevated chargeback rates or those processing high volumes, can be routed to specialised providers equipped to handle that risk. This approach accomplishes two critical objectives: it ensures that every seller can successfully process payments on your platform, and it protects your relationship with premium providers by keeping your overall risk profile manageable.
+          This isn&apos;t the right setup for every marketplace, especially smaller ones where the overhead of managing multiple provider relationships outweighs the benefit. But if you&apos;re processing meaningful volume and haven&apos;t reviewed whether a single-provider setup still fits, it&apos;s worth checking before a mismatch becomes a frozen account.
         </p>
 
-        <h3 className="text-xl font-semibold text-foreground pt-4">Optimising Rates Through Provider Competition</h3>
+        <h2 id="faq" className="text-2xl font-bold text-foreground mt-10 mb-6 scroll-mt-24">
+          FAQ
+        </h2>
 
-        <p>
-          When you have agreements with multiple payment providers, you gain negotiating leverage. Providers compete for your volume, and you can leverage that competition to secure better rates. As your transaction volume grows, you can renegotiate terms with your providers or shift volume to competitors.
-        </p>
+        {faqs.map((faq) => (
+          <div key={faq.question}>
+            <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
+              {faq.question}
+            </h3>
+            <p>{faq.answer}</p>
+          </div>
+        ))}
 
-        <p>
-          This dynamic is particularly powerful for marketplaces with significant processing volume. A marketplace processing millions of pounds annually can negotiate Interchange++ rates, volume-based discounts, and favourable reserve policies that would be unavailable to a single-provider merchant.
-        </p>
-
-        <h3 className="text-xl font-semibold text-foreground pt-4">Monetising Payment Processing</h3>
-
-        <p>
-          The most sophisticated marketplace operators have discovered that payment processing itself can be monetised. By maintaining relationships with multiple providers and routing merchants intelligently, you can capture the spread between what you pay providers and what you charge sellers.
-        </p>
-
-        <p>
-          For example, if you negotiate a 2.5% all-in rate with a provider but charge your sellers 2.9%, you capture a 0.4% margin on every transaction. On a marketplace processing £10 million annually, this represents £40,000 in additional revenue. Revenue that requires no additional product development or customer acquisition.
-        </p>
-
-        <p>
-          Furthermore, as you scale, you can offer tiered pricing to your sellers based on their risk profiles and transaction volumes. Premium sellers with strong track records might qualify for lower rates, while newer sellers pay standard rates. This creates a natural incentive structure that encourages sellers to build strong performance metrics on your platform.
-        </p>
-
-        <InlineAssessmentCTA
-          context="Ready to find payment providers that match your marketplace's risk profile and support split payments?"
-        />
-
-        <h2 className="text-2xl font-bold text-foreground pt-6">Find the Payment Processor That Won't Freeze Your Account</h2>
-
-        <p>
-          Navigating the complex landscape of marketplace payments requires specialised knowledge and strategic alignment. The payment provider that works perfectly for a SaaS company or a traditional retailer may be entirely unsuited for the unique demands of a multi-party marketplace.
-        </p>
-
-        <p>
-          At ChosePayments, we understand that payment providers don't act randomly. They operate based on strict risk thresholds, scheme rules, and statistical triggers. We built our platform after watching businesses lose revenue, get frozen, or churn providers repeatedly because nobody checked the fit before they signed up.
-        </p>
-
-        <p>
-          We match your industry, volume, and specific marketplace risk signals to the right provider's appetite before you apply. Our independent methodology ensures that you partner with a processor equipped to handle split payments, complex payouts, and marketplace compliance without unexpected freezes or hidden fees.
-        </p>
-
-        <p>
-          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
-            Book a 15-Minute Call
-          </a>{" "}
-          today. It's free, with no sales pitch, just a straight read on which providers fit your marketplace model, which are acceptable, and which to avoid, with clear, actionable reasons.
+        <p className="mt-10">
+          Every marketplace&apos;s risk profile is different, and there&apos;s no substitute for checking your specific setup against real provider criteria rather than general advice.
         </p>
       </div>
     </InsightsArticleLayout>

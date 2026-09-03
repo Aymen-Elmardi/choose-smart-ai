@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import MarketplacePaymentsGuide from '@/views/insights/MarketplacePaymentsGuide'
 
 export const metadata: Metadata = {
-  title: 'Marketplace Payments Guide: Split Payments & Platform Compliance',
-  description: 'Marketplaces have complex payment needs: split payments, seller onboarding, KYC, reserves. A complete guide to payments for platform businesses.',
+  title: 'Marketplace Payments Guide: Splits, Risk & Compliance',
+  description: 'A complete guide to marketplace payments: how split payments, seller compliance, chargebacks, and risk reviews work, and how to avoid a frozen account.',
   alternates: { canonical: '/insights/marketplace-payments-guide' },
   openGraph: {
     url: 'https://chosepayments.com/insights/marketplace-payments-guide',
-    images: ['/og-default.png'],
-    title: 'Marketplace Payments Guide: Split Payments & Platform Compliance | ChosePayments',
-    description: 'Marketplaces have complex payment needs: split payments, seller onboarding, KYC, reserves. A complete guide to payments for platform businesses.',
+    images: ['/insights/marketplace-payments-guide-cover.png'],
+    title: 'Marketplace Payments Guide: Splits, Risk & Compliance | ChosePayments',
+    description: 'A complete guide to marketplace payments: how split payments, seller compliance, chargebacks, and risk reviews work, and how to avoid a frozen account.',
     type: 'article',
   },
 }
