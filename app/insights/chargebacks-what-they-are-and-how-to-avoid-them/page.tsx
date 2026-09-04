@@ -2,12 +2,16 @@ import type { Metadata } from 'next'
 import Chargebacks from '@/views/insights/Chargebacks'
 
 export const metadata: Metadata = {
-  title: 'Chargebacks Explained: Costs, Causes, and How to Reduce Them (UK & EU)',
-  description: 'Too many chargebacks can freeze your account. Learn what a chargeback fee is, how chargebacks work, and how to reduce them before they damage your business.',
+  title: 'Chargebacks: Why They Happen and How to Avoid Them',
+  description: 'Too many chargebacks can freeze your payment account. See what actually triggers a dispute, what it costs, and how to reduce them before providers notice.',
   alternates: { canonical: '/insights/chargebacks-what-they-are-and-how-to-avoid-them' },
   openGraph: {
     url: 'https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them',
-    images: ['/og-default.png'], title: 'Chargebacks Explained: Costs, Causes, and How to Reduce Them', description: 'Too many chargebacks can freeze your account. Learn how chargebacks work and how to reduce them.', type: 'article' },
+    images: ['/insights/chargebacks-guide-cover.png'],
+    title: 'Chargebacks: Why They Happen and How to Avoid Them | ChosePayments',
+    description: 'Too many chargebacks can freeze your payment account. See what actually triggers a dispute, what it costs, and how to reduce them before providers notice.',
+    type: 'article',
+  },
 }
 
 export default function Page() {

@@ -1,424 +1,196 @@
 'use client'
-import { useState } from "react";
 import Link from 'next/link';
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
-import { Button } from "@/components/ui/button";
-import FraudPreventionModal from "@/components/FraudPreventionModal";
+import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
-import SourcesCitation from "@/components/SourcesCitation";
-import ArticleActions from "@/components/ArticleActions";
-import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
+import FAQAccordion from "@/components/FAQAccordion";
 
 const chargebackSources = [
   { name: "Visa Dispute Management Guidelines", url: "https://usa.visa.com/support/small-business/dispute-resolution.html", type: "official" as const },
-  { name: "Mastercard Chargeback Guide", url: "https://www.mastercard.co.uk/en-gb/vision/who-we-are/terms-of-use/chargeback-guide.html", type: "official" as const },
-  { name: "UK Finance – Fraud Facts", url: "https://www.ukfinance.org.uk/", type: "industry" as const },
-  { name: "Chargebacks911 – Chargeback Statistics", url: "https://chargebacks911.com/chargeback-stats/", type: "industry" as const }
+  { name: "Mastercard: Chargebacks Made Simple Guide", url: "https://www.mastercard.com/content/dam/mccom/shared/business/support/rules-pdfs/chargebacks-made-simple-guide.pdf", type: "official" as const },
+  { name: "UK Finance: Fraud Facts", url: "https://www.ukfinance.org.uk/", type: "industry" as const },
+  { name: "Chargebacks911: Chargeback Statistics", url: "https://chargebacks911.com/chargeback-stats/", type: "industry" as const },
+  { name: "Chargeflow: 100+ Chargeback Statistics for 2026", url: "https://www.chargeflow.io/blog/chargeback-statistics-trends-costs-solutions", type: "industry" as const },
+];
+
+/**
+ * Single source of truth for the FAQ: the visible accordion and the FAQPage
+ * JSON-LD both render from this array, so the two cannot drift apart.
+ */
+const faqs = [
+  {
+    question: "What is the difference between a chargeback and a refund?",
+    answer: "A refund is agreed directly between you and the customer, and you control the process. A chargeback is initiated by the customer's bank, often without warning, and the bank pulls the funds back from your payment provider while you're asked to prove the transaction was legitimate.",
+  },
+  {
+    question: "How much does a chargeback cost a business?",
+    answer: "Beyond losing the transaction amount and the product or service already delivered, most providers charge a dispute fee, typically £15 to £50. Once you include admin time and the increased scrutiny a chargeback adds to your risk profile, businesses often lose an additional £4 to £5 in total impact for every £1 directly disputed.",
+  },
+  {
+    question: "What chargeback ratio triggers a payment provider review?",
+    answer: "Thresholds vary by provider, but many treat a chargeback ratio above roughly 1% of total transactions as a trigger for closer monitoring, reserves, or a formal account review.",
+  },
+  {
+    question: "Can I prevent chargebacks caused by customers not recognising a charge?",
+    answer: "Yes, this is one of the most fixable causes. Confirm with your payment provider exactly how your business name will appear on customer bank statements, use your trading name rather than your legal entity name if they differ, and keep that name consistent across your website, receipts, and order confirmations.",
+  },
+  {
+    question: "What should I do if I receive a chargeback notice?",
+    answer: "Respond within the deadline your provider gives you, gather evidence (order confirmations, delivery proof, customer communications, and the terms agreed at checkout), and submit it through your provider's dispute process. Even if you don't plan to contest every chargeback, responding on time avoids compounding the impact on your account's risk profile.",
+  },
 ];
 
 const Chargebacks = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  const faqs = [
-    {
-      question: "What is a chargeback?",
-      answer: "A chargeback happens when a customer contacts their bank and disputes a payment. The bank pulls the money back from your payment provider and asks you to prove the transaction was legitimate. Unlike refunds which are handled between you and the customer, chargebacks are handled by the bank often without warning."
-    },
-    {
-      question: "How much do chargebacks cost businesses?",
-      answer: "For every £1 lost to a chargeback, businesses often lose £4 to £5 in total impact once fees, admin time, and future risk are included. Direct costs include the transaction amount, dispute fees of £15 to £50, and the product or service already delivered."
-    },
-    {
-      question: "What causes chargebacks?",
-      answer: "The three main causes are: stolen card details (real fraud), business mistakes like duplicate charges or delivery delays, and customers not recognising the charge on their bank statement. The last one is often overlooked but very common."
-    },
-    {
-      question: "How can I reduce chargebacks?",
-      answer: "Key strategies include: making your business name familiar on bank statements, making refunds easier than chargebacks, reducing fraud at checkout with security checks, and keeping proof of transactions and deliveries."
-    },
-    {
-      question: "What happens if I get too many chargebacks?",
-      answer: "If chargebacks rise suddenly or stay high over time, payment providers may delay payouts, hold reserves from your funds, increase processing fees, or suspend or close your account entirely."
-    }
-  ];
-
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Header />
+    <InsightsArticleLayout
+      title="Chargebacks: Why They Happen and How to Avoid Them"
+      description="Too many chargebacks can freeze your payment account. See what actually triggers a dispute, what it costs, and how to reduce them before providers notice."
+      category={{ name: "Practical Guides", slug: "guides" }}
+      cluster="hub"
+      currentSlug="chargebacks-what-they-are-and-how-to-avoid-them"
+      publishedTime="2026-08-27"
+      modifiedTime="2026-08-27"
+      image="https://chosepayments.com/insights/chargebacks-guide-cover.png"
+      sources={chargebackSources}
+      // The layout's own assessment block is the single closing CTA this page
+      // is allowed. showCTA={false} suppresses the second one the layout would
+      // otherwise add, and there is deliberately no in-body CTA.
+      showCTA={false}
+      keywords={[
+        "chargebacks and account freezes",
+        "how chargebacks affect your payment account",
+        "how to reduce chargebacks",
+        "chargeback fees UK",
+        "chargeback ratio",
+      ]}
+    >
       <FAQSchema faqs={faqs} />
-      <main className="flex-grow pt-24 pb-16">
-        <article className="container max-w-3xl mx-auto px-4">
-          <InsightsBreadcrumb 
-            category={{ name: "Practical Guides", slug: "guides" }}
-            currentTitle="Chargebacks"
-          />
-          
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Chargebacks: Why They Happen, How Much They Really Cost, and How Merchants Can Avoid Them
-          </h1>
 
-          <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
-            <p className="text-xl font-medium text-foreground">
-              In 2023 alone, chargebacks cost businesses over $100 billion worldwide.
-            </p>
-            
-            <p>
-              By 2026, losses linked to disputed card payments are expected to pass $28 billion per year.
-            </p>
-
-            <p>
-              For many businesses, chargebacks are not just annoying. Too many of them can lead to higher fees, frozen funds, or even account shutdowns.
-            </p>
-
-            <p>
-              This guide explains, in plain terms, what chargebacks are, why they happen, and what you can do to reduce them before they start damaging your business.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
-              What Is a Chargeback (in simple terms)?
-            </h2>
-
-            <p>
-              A chargeback happens when a customer contacts their bank, not you, and says:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>"I don't recognize this payment"</li>
-              <li>"I didn't receive what I paid for"</li>
-              <li>"This charge shouldn't be there"</li>
-            </ul>
-
-            <p>
-              The bank then pulls the money back from your payment provider and asks you to prove the transaction was legitimate.
-            </p>
-
-            <p>
-              This is very different from a refund.
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>A refund is handled between you and the customer</li>
-              <li>A chargeback is handled by the bank, often without warning</li>
-            </ul>
-
-            <p>
-              Even if you later win the dispute, chargebacks still cost time, money, and trust.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
-              Why Chargebacks Are a Bigger Problem Than Most Businesses Realize
-            </h2>
-
-            <p>
-              A single chargeback usually means:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>The transaction amount is removed from your balance</li>
-              <li>You pay a dispute fee (often £15–£50, sometimes more)</li>
-              <li>You lose the product or service already delivered</li>
-              <li>Your account risk level increases</li>
-            </ul>
-
-            <p>
-              But the real danger is patterns.
-            </p>
-
-            <p>
-              If chargebacks happen too often, payment providers may:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Delay your payouts</li>
-              <li>Hold a reserve from your funds</li>
-              <li>Increase your processing fees</li>
-              <li>Suspend or close your account entirely</li>
-            </ul>
-
-            <p>
-              For every £1 lost to a chargeback, businesses often lose £4–£5 in total impact once fees, admin time, and future risk are included.
-            </p>
-
-            <InlineAssessmentCTA
-              context="See which providers have better chargeback policies and lower dispute fees for your industry."
-            />
-
-            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
-              The Three Main Reasons Chargebacks Happen
-            </h2>
-
-            <p>
-              Most chargebacks fall into one of these categories.
-            </p>
-
-            <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
-              1. Stolen Card Details (Real Fraud)
-            </h3>
-
-            <p>
-              This is when someone uses card details without the cardholder's permission.
-            </p>
-
-            <p>
-              You usually have very little control here, but strong security checks can reduce it.
-            </p>
-
-            <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
-              2. Business Mistakes (More Common Than You Think)
-            </h3>
-
-            <p>
-              Many chargebacks are triggered by simple issues, such as:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Customers being charged twice</li>
-              <li>Payments taken earlier than expected</li>
-              <li>Long delivery delays</li>
-              <li>Confusing refund processes</li>
-              <li>Poor or slow customer support</li>
-            </ul>
-
-            <p>
-              In these cases, customers often go straight to their bank because it feels faster than contacting the business.
-            </p>
-
-            <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
-              3. Customers Don't Recognize the Charge
-            </h3>
-
-            <p>
-              This is one of the most overlooked causes of chargebacks.
-            </p>
-
-            <p>
-              A customer checks their bank app and sees a name they don't recognize. They assume the payment is wrong and dispute it.
-            </p>
-
-            <p>
-              This often happens when:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Your company name is different from the name customers know you by</li>
-              <li>The payment shows a legal entity name instead of your shop or brand name</li>
-            </ul>
-
-            <p>
-              For example:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Customers know you as "Heathrow Kebab"</li>
-              <li>Their bank app shows "Heathrow UK Limited"</li>
-            </ul>
-
-            <p>
-              Even though the payment is legitimate, the customer doesn't connect the two.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
-              How to Reduce Chargebacks (What You Can Control)
-            </h2>
-
-            <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
-              1. Make Your Name Familiar Before and After the Payment
-            </h3>
-
-            <p>
-              To reduce "I don't recognize this charge" disputes:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Give your payment provider the name customers know you by, not just your legal company name</li>
-              <li>Ask how your business name will appear on customers' bank statements and apps</li>
-              <li>Keep that name consistent across your website, receipts, and confirmations</li>
-            </ul>
-
-            <p>
-              Familiarity matters.
-            </p>
-
-            <p>
-              Businesses that regularly appear in a customer's inbox or messages are far less likely to be disputed later.
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Send order confirmations and receipts</li>
-              <li>Use SMS or WhatsApp updates where appropriate</li>
-              <li>Always display your business name clearly</li>
-            </ul>
-
-            <p>
-              The more often customers see your name, the less likely they are to forget it.
-            </p>
-
-            <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
-              2. Make Refunds Easier Than Chargebacks
-            </h3>
-
-            <p>
-              Many customers file chargebacks simply because refunds feel slow or unclear.
-            </p>
-
-            <p>
-              To prevent this:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Clearly explain your refund policy before purchase</li>
-              <li>Make it easy to contact you</li>
-              <li>Respond quickly when something goes wrong</li>
-            </ul>
-
-            <p>
-              If customers trust that you'll help them, they won't go straight to their bank.
-            </p>
-
-            <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
-              3. Reduce Fraud at Checkout
-            </h3>
-
-            <p>
-              Simple protections can dramatically reduce stolen-card disputes:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Extra security checks for online payments</li>
-              <li>Strong authentication for higher-value transactions</li>
-              <li>Tools that block suspicious behaviour automatically</li>
-            </ul>
-
-            <p>
-              These not only reduce fraud, they also protect your account reputation with payment providers.
-            </p>
-
-            {/* Inline Lead Capture CTA */}
-            <div className="my-10 p-6 bg-muted/50 rounded-lg border border-border">
-              <h3 className="text-lg font-semibold text-foreground mb-3">
-                Want help reducing chargebacks before they become a problem?
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                Some businesses benefit from dedicated fraud prevention tools. If you'd like an introduction or guidance on whether these tools make sense for your business, leave your email and we'll point you in the right direction.
-              </p>
-              <Button 
-                onClick={() => setIsModalOpen(true)}
-                variant="outline"
-                className="font-medium"
-              >
-                Get guidance on fraud prevention tools
-              </Button>
-            </div>
-
-            <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
-              4. Keep Proof (Even If You Never Use It)
-            </h3>
-
-            <p>
-              If a chargeback happens, banks expect evidence.
-            </p>
-
-            <p>
-              This can include:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Order confirmations</li>
-              <li>Delivery confirmations</li>
-              <li>Customer emails or messages</li>
-              <li>Terms agreed at checkout</li>
-            </ul>
-
-            <p>
-              Even if you never plan to fight disputes, having this information protects you if your provider reviews your account.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
-              Why Chargebacks Often Lead to Account Reviews or Freezes
-            </h2>
-
-            <p>
-              Payment providers track dispute levels closely.
-            </p>
-
-            <p>
-              If chargebacks rise suddenly or stay high over time, providers may:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Ask for more documents</li>
-              <li>Change your payout schedule</li>
-              <li>Flag your account for review</li>
-            </ul>
-
-            <p>
-              This is often connected to the same risk checks that cause{" "}
-              <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">
-                payment accounts to get flagged
-              </Link>{" "}
-              or payout delays.
-            </p>
-
-            <p>
-              Understanding this link helps businesses act early instead of reacting when money is already held. It also explains why providers may trigger{" "}
-              <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">
-                re-underwriting
-              </Link>{" "}
-              on accounts with rising dispute rates.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
-              Final Thought
-            </h2>
-
-            <p>
-              Chargebacks are not just a payments issue. They are a trust issue.
-            </p>
-
-            <p>
-              Most can be reduced by:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Clear communication</li>
-              <li>Familiar business naming</li>
-              <li>Better customer experience</li>
-              <li>Basic fraud protection</li>
-            </ul>
-
-            <p>
-              Understanding how chargebacks work — and how providers see them — gives you far more control than most businesses realize.
-            </p>
-
-            <p>
-              If you want to reduce risk before it turns into chargebacks or account issues, you can start a{" "}
-              <Link href="/assessment?start=true" className="text-primary hover:underline">
-                short assessment
-              </Link>{" "}
-              to understand which payment providers are best suited to your business model.
-            </p>
-
-            <SourcesCitation sources={chargebackSources} />
-
-            {/* Share & Like Actions */}
-            <ArticleActions
-              slug="chargebacks-what-they-are-and-how-to-avoid-them"
-              title="Chargebacks Explained: Costs, Causes, and How to Reduce Them"
-              className="mt-8 mb-12 pt-6 border-t border-border"
-            />
-          </div>
-        </article>
-      </main>
-      <Footer />
-      
-      <FraudPreventionModal 
-        open={isModalOpen} 
-        onOpenChange={setIsModalOpen}
-        pageSource="/insights/chargebacks-what-they-are-and-how-to-avoid-them"
+      <img
+        src="/insights/chargebacks-guide-cover.png"
+        alt="A circular arrow reversing direction around a pound sign, representing a chargeback pulling a payment back"
+        width={1200}
+        height={630}
+        className="w-full rounded-lg border border-border mb-8"
       />
-    </div>
+
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+        Chargebacks: Why They Happen and How to Avoid Them
+      </h1>
+
+      <p className="text-sm text-muted-foreground italic mb-8">
+        Last updated 27 August 2026 by the ChosePayments Editorial Team.
+      </p>
+
+      <div className="text-muted-foreground space-y-6">
+        <p>
+          This guide is for business owners who&apos;ve either just received a chargeback notice or want to understand why disputes happen before one shows up. By the end, you&apos;ll know what a chargeback actually is, why it&apos;s different from a refund, the three real reasons they happen, what you can do to reduce them, and why they matter to your payment provider far beyond the transaction itself.
+        </p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          What Is a Chargeback?
+        </h2>
+
+        <p>
+          A chargeback happens when a customer contacts their bank, not you, and disputes a charge. Common reasons include &quot;I don&apos;t recognise this payment,&quot; &quot;I didn&apos;t receive what I paid for,&quot; or &quot;this charge shouldn&apos;t be there.&quot;
+        </p>
+
+        <p>
+          The bank pulls the money back from your payment provider and asks you to prove the transaction was legitimate.
+        </p>
+
+        <p>
+          This is different from a refund in one important way. A refund is a conversation between you and the customer. A chargeback is a decision made by the bank, often without warning to you first.
+        </p>
+
+        <p>
+          Even if you eventually win the dispute, a chargeback still costs you time, money, and trust in the meantime.
+        </p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          Why Chargebacks Are a Bigger Problem Than Most Businesses Realise
+        </h2>
+
+        <p>
+          A single chargeback usually means the transaction amount is removed from your balance, you pay a dispute fee (often £15 to £50, sometimes more), you lose the product or service you already delivered, and your account&apos;s internal risk score ticks up.
+        </p>
+
+        <p>
+          The real danger isn&apos;t one chargeback. It&apos;s a pattern. If disputes happen too often, payment providers can delay your payouts, hold a reserve from your funds, raise your processing fees, or suspend your account entirely.
+        </p>
+
+        <p>
+          For every £1 lost directly to a chargeback, businesses often lose another £4 to £5 in total impact once fees, admin time, and future risk exposure are factored in.
+        </p>
+
+        <p>
+          Card-not-present fraud, the kind that drives many chargebacks, is projected to cost businesses globally over $28 billion by 2026, up roughly 40% from 2023. That&apos;s the fraud-driven slice of the problem specifically; poor customer experience and unrecognised charges add substantially more disputes on top of it.
+        </p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          The Three Main Reasons Chargebacks Happen
+        </h2>
+
+        <p>Most chargebacks fall into one of three categories.</p>
+
+        <p>
+          <strong className="text-foreground">1. Stolen card details (real fraud).</strong> Someone uses card details without the cardholder&apos;s permission. You have very little control here individually, but strong checkout security checks reduce your exposure.
+        </p>
+
+        <p>
+          <strong className="text-foreground">2. Business mistakes.</strong> More common than most businesses expect. Customers charged twice, payments taken earlier than agreed, long delivery delays, confusing refund processes, or slow customer support all push customers to their bank instead of to you, because it feels faster.
+        </p>
+
+        <p>
+          <strong className="text-foreground">3. Customers don&apos;t recognise the charge.</strong> Often overlooked, and often avoidable. A customer checks their bank app, sees a name they don&apos;t recognise, and assumes something&apos;s wrong. This happens when your company&apos;s legal name differs from the trading name customers actually know. If customers know you as &quot;Heathrow Kebab&quot; but their bank statement shows &quot;Heathrow UK Limited,&quot; the payment is legitimate, but the customer doesn&apos;t connect the two, and disputes it.
+        </p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          How to Reduce Chargebacks
+        </h2>
+
+        <p>
+          <strong className="text-foreground">Make your name familiar, before and after payment.</strong> Give your payment provider the trading name customers actually know you by, not just your legal entity name, and confirm how it will appear on bank statements. Keep that name consistent across your website, receipts, and confirmations. Businesses that regularly show up in a customer&apos;s inbox (order confirmations, shipping updates) are far less likely to get disputed later.
+        </p>
+
+        <p>
+          <strong className="text-foreground">Make refunds easier than chargebacks.</strong> Many customers file a chargeback simply because a refund feels slow or unclear. A clear refund policy, an easy way to contact you, and a fast response when something goes wrong all remove the reason to go straight to the bank.
+        </p>
+
+        <p>
+          <strong className="text-foreground">Reduce fraud at checkout.</strong> Extra verification for online payments, stronger authentication on higher-value transactions, and tools that flag suspicious behaviour automatically cut stolen-card disputes and protect your standing with your payment provider at the same time.
+        </p>
+
+        <p>
+          <strong className="text-foreground">Keep proof, even if you never need it.</strong> Order confirmations, delivery confirmations, customer messages, and terms agreed at checkout all count as evidence if a dispute happens. Even if you never plan to formally contest a chargeback, this documentation protects you if your provider reviews the account.
+        </p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">
+          Why Chargebacks Often Lead to Account Reviews or Freezes
+        </h2>
+
+        <p>
+          Payment providers track dispute levels closely, not just per transaction but as a trend. If chargebacks rise suddenly or stay elevated, providers may ask for more documentation, change your payout schedule, <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">impose a reserve on your funds</Link>, or flag the account for review.
+        </p>
+
+        <p>
+          This is the same underlying risk monitoring that causes <Link href="/insights/why-accounts-get-flagged-after-growth" className="text-primary hover:underline">payment accounts to get flagged after unrelated growth spikes</Link>, and it&apos;s frequently what triggers a provider to <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">re-underwrite an existing account</Link>. A rising chargeback ratio is one of the clearest, earliest signals a provider watches, understanding that link lets you act before funds are already held, instead of reacting after.
+        </p>
+
+        <p>
+          Marketplaces face a version of this problem that&apos;s even harder to manage, since a single seller&apos;s disputes can put the whole platform&apos;s account at risk. <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">See how chargeback liability works differently for marketplaces →</Link>
+        </p>
+
+        <h2 className="text-2xl font-bold text-foreground mt-10 mb-6">
+          FAQ
+        </h2>
+
+        <FAQAccordion faqs={faqs} />
+
+        <p className="mt-10">
+          Chargebacks are a trust problem as much as a payments one, and providers read a rising dispute rate as a risk signal well before it becomes a frozen account.
+        </p>
+      </div>
+    </InsightsArticleLayout>
   );
 };
 
