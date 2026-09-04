@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import FAQSchema from "@/components/FAQSchema";
+import FAQAccordion from "@/components/FAQAccordion";
 
 const sources = [
   { name: "Checkout.com: A Guide to Marketplace Payments", url: "https://www.checkout.com/blog/a-guide-to-marketplace-payments", type: "industry" as const },
@@ -264,14 +265,7 @@ const MarketplacePaymentsGuide = () => {
           FAQ
         </h2>
 
-        {faqs.map((faq) => (
-          <div key={faq.question}>
-            <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">
-              {faq.question}
-            </h3>
-            <p>{faq.answer}</p>
-          </div>
-        ))}
+        <FAQAccordion faqs={faqs} />
 
         <p className="mt-10">
           Every marketplace&apos;s risk profile is different, and there&apos;s no substitute for checking your specific setup against real provider criteria rather than general advice.
