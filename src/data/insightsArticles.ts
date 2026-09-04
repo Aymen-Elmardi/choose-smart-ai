@@ -281,6 +281,13 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Marketplace Split Payments: How They Work, What Breaks",
+    slug: "marketplace-split-payments",
+    description: "How marketplace split payments actually work, the two models to choose between, and the five ways they quietly break trust with sellers.",
+    category: "guides",
+    readTime: "9 min read"
+  },
+  {
     title: "Source of Funds Requests: What They Mean and How to Respond",
     slug: "source-of-funds",
     description: "Learn why providers request bank statements and source of funds documentation.",
