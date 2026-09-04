@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/insights/chargebacks-what-they-are-and-how-to-avoid-them' },
   openGraph: {
     url: 'https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them',
-    images: ['/insights/chargebacks-guide-cover.png'],
+    images: ['/insights/chargebacks-guide-cover.jpg'],
     title: 'Chargebacks: Why They Happen and How to Avoid Them | ChosePayments',
     description: 'Too many chargebacks can freeze your payment account. See what actually triggers a dispute, what it costs, and how to reduce them before providers notice.',
     type: 'article',

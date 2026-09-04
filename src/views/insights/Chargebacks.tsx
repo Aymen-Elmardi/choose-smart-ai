@@ -49,7 +49,7 @@ const Chargebacks = () => {
       currentSlug="chargebacks-what-they-are-and-how-to-avoid-them"
       publishedTime="2026-08-27"
       modifiedTime="2026-08-27"
-      image="https://chosepayments.com/insights/chargebacks-guide-cover.png"
+      image="https://chosepayments.com/insights/chargebacks-guide-cover.jpg"
       sources={chargebackSources}
       // The layout's own assessment block is the single closing CTA this page
       // is allowed. showCTA={false} suppresses the second one the layout would
@@ -66,10 +66,10 @@ const Chargebacks = () => {
       <FAQSchema faqs={faqs} />
 
       <img
-        src="/insights/chargebacks-guide-cover.png"
-        alt="A circular arrow reversing direction around a pound sign, representing a chargeback pulling a payment back"
+        src="/insights/chargebacks-guide-cover.jpg"
+        alt="A warning symbol encircled by two reversing arrows, representing a payment being pulled back as a chargeback"
         width={1200}
-        height={630}
+        height={800}
         className="w-full rounded-lg border border-border mb-8"
       />
 
