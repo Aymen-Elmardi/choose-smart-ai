@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -140,7 +141,7 @@ const ThirdPartyPaymentProcessors = () => {
     <InsightsArticleLayout
       title="Third-Party Payment Processors Explained: What They Are and When They Make Sense"
       description="A third-party payment processor lets you accept cards without your own merchant account. Here is how they work, what they cost, and when to move on from one."
-      category={{ name: "Explainer", slug: "explainer" }}
+      category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"
       currentSlug="third-party-payment-processors"
       publishedTime="2026-07-21"
@@ -164,7 +165,7 @@ const ThirdPartyPaymentProcessors = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Third-Party Payment Processors Explained: What They Are and When They Make Sense
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
         Most businesses that take their first card payment never apply for a merchant account. They sign up for Stripe, Square, or PayPal, enter a bank account number, and start processing within the hour. That speed is the entire product. It is also the reason a business owner can wake up one morning to find their account frozen with no phone number to call.
       </p>
@@ -283,7 +284,11 @@ const ThirdPartyPaymentProcessors = () => {
           Sudden Holds and Freezes
         </h3>
         <p className="text-muted-foreground mb-8">
-          Because risk is monitored in aggregate, a legitimate volume spike, a shift in average transaction size, or a change in customer geography can trip an automated fraud model even when nothing fraudulent is happening. A subscription software company or a fast-growing food ordering platform is especially exposed here because both experience the exact volume and geography changes that automated risk models are built to flag. When that happens, processors can hold 5 to 10 percent of processing volume for 90 to 180 days with limited immediate explanation, a pattern well documented across payment industry forums and merchant advisory firms alike ({" "}
+          Because risk is monitored in aggregate, a legitimate volume spike, a shift in average transaction size, or a change in customer geography can trip an automated fraud model even when nothing fraudulent is happening. A subscription software company or a fast-growing food ordering platform is especially exposed here because both experience the exact volume and geography changes that automated risk models are built to flag.
+        </p>
+
+        <p className="text-muted-foreground mb-8">
+          When that happens, processors can hold 5 to 10 percent of processing volume for 90 to 180 days with limited immediate explanation, a pattern well documented across payment industry forums and merchant advisory firms alike ({" "}
           <a href="https://www.swipesum.com/insights/6-hidden-processing-fees-to-watch-out-for" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Swipesum, hidden processing fees and risk practices</a>).
         </p>
 

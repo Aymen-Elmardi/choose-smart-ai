@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import ComparisonTableSchema from "@/components/ComparisonTableSchema";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -151,7 +152,7 @@ const EnterpriseProviderComparison = () => {
     <InsightsArticleLayout
       title="Enterprise Payment Processors: Adyen vs Shift4 vs Checkout"
       description="Comparing enterprise payment providers? We break down Adyen, Shift4, and Checkout.com across pricing, global acquiring, risk appetite, and UK suitability for 2026."
-      category={{ name: "Provider Deep Dive", slug: "providers" }}
+      category={{ name: "Provider Deep Dives", slug: "providers" }}
       cluster="provider"
       currentSlug="enterprise-provider-comparison"
       publishedTime="2026-01-24"
@@ -179,6 +180,7 @@ const EnterpriseProviderComparison = () => {
         listDescription="A founder-level comparison of Adyen, Shift4, and Checkout.com focusing on risk appetite, underwriting depth, and operational fit."
       />
       <FAQSchema faqs={faqs} />
+      <ArticleByline />
       {/* Introduction */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">

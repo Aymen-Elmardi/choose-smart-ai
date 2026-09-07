@@ -350,7 +350,7 @@ export const allInsights: Insight[] = [
     slug: "why-providers-impose-reserves",
     global: true,
     description: "Reserves protect providers from future losses. Learn why they're imposed, how rolling and fixed reserves work, and what you can do to reduce or release them.",
-    category: "compliance",
+    category: "risk",
     readTime: "7 min read"
   },
   {
@@ -449,7 +449,7 @@ export const allInsights: Insight[] = [
     title: "Rolling Reserve vs Fixed Reserve: What Merchants Need to Know",
     slug: "rolling-vs-fixed-reserve",
     description: "Understand the difference between rolling and fixed reserves, how each affects your cash flow, and which reserve type you're most likely to encounter.",
-    category: "explainer",
+    category: "risk",
     readTime: "6 min read"
   },
   {
@@ -500,7 +500,7 @@ export const allInsights: Insight[] = [
     slug: "payment-provider-risk-models",
     global: true,
     description: "Learn why two similar businesses get very different outcomes from payment providers. Understand how risk models work and how to position your business for approval.",
-    category: "explainer",
+    category: "risk",
     readTime: "10 min read"
   },
   {
@@ -530,14 +530,14 @@ export const allInsights: Insight[] = [
     slug: "provider-appetite-index",
     global: true,
     description: "Payment processors don't randomly accept or decline merchants. Learn how underwriting appetite works, why applications get rejected, and how to match your business to the right provider.",
-    category: "explainer",
+    category: "risk",
     readTime: "12 min read"
   },
   // Guides
   {
     title: "Buy Now Pay Later for UK Merchants: The Practical Guide",
     slug: "buy-now-pay-later-uk",
-    description: "BNPL can lift conversion rates by 20–30% and increase average order value significantly. How to evaluate Klarna, Clearpay, and other providers — and what it means for your payment stack.",
+    description: "BNPL can lift conversion rates by 20–30% and increase average order value significantly. How to evaluate Klarna, Clearpay, and other providers, and what it means for your payment stack.",
     category: "guides",
     readTime: "6 min read"
   },
@@ -546,7 +546,7 @@ export const allInsights: Insight[] = [
     slug: "what-to-do-when-provider-asks-for-documents",
     global: true,
     description: "Learn why document requests happen, what they usually mean, and how to respond with confidence.",
-    category: "guides",
+    category: "compliance",
     readTime: "6 min read"
   },
   {
@@ -738,7 +738,7 @@ export const allInsights: Insight[] = [
     slug: "mastercard-3ds-authentication-fee-changes-europe",
     global: true,
     description: "What changed in Mastercard's EMV 3DS Authentication Fee from 29 July 2026, and how SCA exemptions reduce your exposure to it.",
-    category: "guides",
+    category: "fees",
     readTime: "8 min read"
   }
 ];
@@ -765,7 +765,7 @@ export const filterInsights = (
 ): Insight[] => {
   return insights.filter((insight) => {
     const text = `${insight.title} ${insight.description}`.toLowerCase();
-    // Split query on spaces — match if ANY word is found (OR logic)
+    // Split query on spaces, match if ANY word is found (OR logic)
     const words = searchQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
     const matchesSearch = words.length === 0 || words.some((word) => text.includes(word));
     const matchesFilter = category === "all" || insight.category === category;

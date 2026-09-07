@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { ArrowRight, Shield, AlertTriangle } from "lucide-react";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Button } from "@/components/ui/button";
 
 const SchemeRulesReservesMonitoring = () => {
@@ -29,7 +30,7 @@ const SchemeRulesReservesMonitoring = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         How Scheme Rules Trigger Reserves, Monitoring Programs and Account Reviews
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-4">
         Most merchants believe payment risk decisions are made by their provider.
       </p>

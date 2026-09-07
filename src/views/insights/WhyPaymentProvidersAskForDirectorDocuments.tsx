@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhyPaymentProvidersAskForDirectorDocuments = () => {
   return (
@@ -16,6 +17,8 @@ const WhyPaymentProvidersAskForDirectorDocuments = () => {
         Director ID Verification: What Providers Ask For
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           If your payment provider has asked for a director's passport or proof of address, it can feel intrusive, especially if your account was already live and processing payments.

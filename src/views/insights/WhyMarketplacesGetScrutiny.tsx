@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhyMarketplacesGetScrutiny = () => {
   return (
@@ -16,6 +17,8 @@ const WhyMarketplacesGetScrutiny = () => {
         Marketplaces Face Extra Scrutiny: What Providers Look For
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Marketplaces introduce additional layers of risk for payment providers.

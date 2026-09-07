@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -69,7 +70,7 @@ const DigitalProductChargebacksRefundsPaymentProcessor = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Digital Product Chargebacks and Refunds: What Your Payment Processor Does About It
       </h1>
-
+      <ArticleByline />
       <p className="text-foreground/90 mb-4">
         Digital products - software, SaaS subscriptions, ebooks, online courses, downloadable templates, gaming items - have a chargeback rate that is more than triple the rate for physical goods. The global average for digital goods is 1.8%, compared to 0.5% for physical product ecommerce. That gap is not accidental. It reflects structural features of digital transactions: no physical delivery to confirm, no shipping signature, easier anonymity for bad actors, and a customer behaviour pattern called friendly fraud that accounts for approximately 75% of all ecommerce disputes.
       </p>
@@ -253,7 +254,11 @@ const DigitalProductChargebacksRefundsPaymentProcessor = () => {
         <strong>Email receipts with cancellation instructions:</strong> For subscriptions, the receipt email sent at the time of each billing should include the cancellation link or instructions. Removing ambiguity about how to cancel reduces "I didn't know how to stop it" disputes - a meaningful category of friendly fraud that is more effectively treated as a customer service failure than deliberate abuse.
       </p>
       <p className="text-foreground/90 mb-4">
-        <strong>3DS2 for card-not-present transactions:</strong> 3D Secure 2 (3DS2) is a cardholder authentication protocol that shifts liability for fraudulent disputes from the merchant to the issuer. When a transaction passes 3DS2 authentication successfully, a fraudulent chargeback becomes the issuer's liability, not the merchant's. 3DS2 adds friction to checkout for a subset of transactions (those the issuer flags for challenge), but it eliminates merchant liability on confirmed fraud disputes. Stripe Radar, Adyen's authentication management, and Checkout.com's 3DS implementation all support 3DS2 with configurable exemption rules.
+        <strong>3DS2 for card-not-present transactions:</strong> 3D Secure 2 (3DS2) is a cardholder authentication protocol that shifts liability for fraudulent disputes from the merchant to the issuer. When a transaction passes 3DS2 authentication successfully, a fraudulent chargeback becomes the issuer's liability, not the merchant's.
+      </p>
+
+      <p className="text-foreground/90 mb-4">
+        3DS2 adds friction to checkout for a subset of transactions (those the issuer flags for challenge), but it eliminates merchant liability on confirmed fraud disputes. Stripe Radar, Adyen's authentication management, and Checkout.com's 3DS implementation all support 3DS2 with configurable exemption rules.
       </p>
       <p className="text-foreground/90 mb-4">
         <strong>Purchase documentation and access logs:</strong> For every digital transaction, log the IP address, timestamp, email address used, and access events (logins, downloads, activations). When responding to a chargeback, this evidence demonstrates the product was accessed by the cardholder's device after purchase. Card network dispute resolution includes an evidence submission window (typically 20-30 days) in which the merchant can upload this documentation.
@@ -275,7 +280,11 @@ const DigitalProductChargebacksRefundsPaymentProcessor = () => {
       <p className="text-foreground/90 mb-8">
         The practical implication: managing chargebacks proactively, before they trigger processor action, is less expensive and less disruptive than managing the consequences after a processor takes action. Understanding{" "}
         <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how your business vertical is classified by payment processors</Link>{" "}
-        is the related question - your MCC and your chargeback history are evaluated together when a processor decides whether to keep your account. A chargeback rate of 0.5-0.7% is manageable for most processors. A rate above 1% starts generating intervention. A rate above 1.5% generates network-level fines and account terminations.
+        is the related question - your MCC and your chargeback history are evaluated together when a processor decides whether to keep your account.
+      </p>
+
+      <p className="text-foreground/90 mb-8">
+        A chargeback rate of 0.5-0.7% is manageable for most processors. A rate above 1% starts generating intervention. A rate above 1.5% generates network-level fines and account terminations.
       </p>
 
       <InlineAssessmentCTA

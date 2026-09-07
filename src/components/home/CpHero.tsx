@@ -88,7 +88,7 @@ const CpHero = () => {
           <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="cp-btn cp-btn-primary">
             Book a call <span className="cp-arrow" aria-hidden="true">→</span>
           </a>
-          <Link href="/#how" className="cp-btn cp-btn-ghost">See how it works</Link>
+          <Link href="/contact" className="cp-btn cp-btn-ghost">Write to Us</Link>
         </div>
 
         <div className="cp-hero-stats" ref={statsRef}>

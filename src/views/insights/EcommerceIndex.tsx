@@ -38,7 +38,7 @@ const faqs = [
   {
     question: "How is this different from the Provider Fit Guides section?",
     answer:
-      "Provider Fit Guides match a business model to specific providers worth applying to. This section covers the underlying ecommerce payment strategy — scaling past a high-risk label, structuring recurring billing, managing chargeback thresholds — that applies regardless of which provider you eventually choose.",
+      "Provider Fit Guides match a business model to specific providers worth applying to. This section covers the underlying ecommerce payment strategy (scaling past a high-risk label, structuring recurring billing, managing chargeback thresholds), that applies regardless of which provider you eventually choose.",
   },
   {
     question: "What counts as 'high-risk' ecommerce?",
@@ -48,7 +48,7 @@ const faqs = [
   {
     question: "Do chargeback thresholds apply the same way to every processor?",
     answer:
-      "No — the Visa and Mastercard scheme thresholds are consistent, but how quickly a processor acts on them (reserves, account review, or termination) varies significantly. Some processors specialise in supporting merchants above standard thresholds; the chargeback thresholds guide covers which ones.",
+      "No, the Visa and Mastercard scheme thresholds are consistent, but how quickly a processor acts on them (reserves, account review, or termination) varies significantly. Some processors specialise in supporting merchants above standard thresholds; the chargeback thresholds guide covers which ones.",
   },
 ];
 
@@ -76,7 +76,7 @@ const EcommerceIndex = () => {
           Ecommerce Payment Strategy
         </h1>
         <p className="text-lg text-muted-foreground mb-6">
-          Fast-growing ecommerce businesses run into the same handful of payment problems — a high-risk label that won't shift, recurring billing that leaks revenue through failed payments, or a chargeback ratio creeping toward a scheme threshold. These guides cover the strategy behind each one, not just which provider to switch to.
+          Fast-growing ecommerce businesses run into the same handful of payment problems: a high-risk label that won't shift, recurring billing that leaks revenue through failed payments, or a chargeback ratio creeping toward a scheme threshold. These guides cover the strategy behind each one, not just which provider to switch to.
         </p>
         <p className="text-muted-foreground mb-12">
           For providers built specifically for your business model, see our <Link href="/insights/provider-fit" className="text-primary hover:underline">Provider Fit Guides</Link>.

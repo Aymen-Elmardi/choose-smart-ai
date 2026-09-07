@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { BOOKING_URL } from "@/lib/booking";
 import { Source } from "@/components/SourcesCitation";
@@ -125,7 +126,7 @@ const FiservPaymentsPlatform = () => {
     <InsightsArticleLayout
       title="Fiserv and the First Data Payment Gateway: What Merchants Need to Know"
       description="Fiserv acquired First Data in 2019, creating one of the largest payment gateway and merchant processing networks in the world. What merchants need to know before choosing Fiserv."
-      category={{ name: "Provider Deep Dive", slug: "providers" }}
+      category={{ name: "Provider Deep Dives", slug: "providers" }}
       cluster="provider"
       currentSlug="fiserv-payments-platform"
       publishedTime="2026-02-02"
@@ -140,6 +141,8 @@ const FiservPaymentsPlatform = () => {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
           Fiserv - the First Data Payment Gateway: What Merchants Need to Know
         </h1>
+
+        <ArticleByline />
         <p className="text-lg text-muted-foreground leading-relaxed">
           Fiserv sits very high up the payments stack. It is not just a payment processor. It operates across acquiring, issuing technology, bank infrastructure, and point-of-sale through Clover. When Fiserv acquired First Data in 2019, it absorbed one of the largest global merchant acquirers into an already bank-centric technology business. Today, Fiserv First Data represents one of the largest first data payment processing networks in the world.
         </p>

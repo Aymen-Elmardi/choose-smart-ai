@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 
 const articleSources: Source[] = [
@@ -25,6 +26,8 @@ const WhyPaymentProvidersRejectGrowingBusinesses = () => {
         Why Payment Providers Reject Growing Businesses
       </h1>
       
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         And what to fix before applying
       </p>

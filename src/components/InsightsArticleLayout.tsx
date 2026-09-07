@@ -10,6 +10,7 @@ import ArticleSchema from "@/components/ArticleSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
+import { ArticleBylineProvider, DEFAULT_ARTICLE_AUTHOR } from "@/components/ArticleByline";
 import { ContentCluster } from "@/lib/insightsArchitecture";
 
 interface InsightsArticleLayoutProps {
@@ -22,7 +23,14 @@ interface InsightsArticleLayoutProps {
   };
   cluster?: ContentCluster;
   currentSlug?: string;
+  /**
+   * Renders the large closing CTA block. Off by default: the layout already
+   * injects InlineAssessmentCTA, and showing both stacked two CTAs directly
+   * on top of each other at the foot of every article.
+   */
   showCTA?: boolean;
+  /** Byline author, as "Name (Expertise)". */
+  author?: string;
   showRelated?: boolean;
   ctaVariant?: "default" | "compact";
   publishedTime?: string;
@@ -72,17 +80,22 @@ const InsightsArticleLayout = ({
   category,
   cluster = "hub",
   currentSlug,
-  showCTA = true,
+  showCTA = false,
   showRelated = true,
   ctaVariant = "default",
-  publishedTime = "2026-01-01",
+  publishedTime,
   modifiedTime,
+  author = DEFAULT_ARTICLE_AUTHOR,
   keywords,
   sources,
   breadcrumbSchemaItems,
   image,
   schemaHeadline,
 }: InsightsArticleLayoutProps) => {
+
+  // Articles that never carried a real date still emit the long-standing
+  // schema fallback, but display no date rather than showing an invented one.
+  const schemaPublishedTime = publishedTime ?? "2026-01-01";
 
   // Build breadcrumb items for schema (overridable per article)
   const breadcrumbItems = breadcrumbSchemaItems ?? [
@@ -102,7 +115,7 @@ const InsightsArticleLayout = ({
       <ArticleSchema
         title={schemaHeadline ?? title}
         description={description}
-        publishedTime={publishedTime}
+        publishedTime={schemaPublishedTime}
         modifiedTime={modifiedTime}
         image={image}
         sources={sources}
@@ -116,8 +129,10 @@ const InsightsArticleLayout = ({
           <InsightsBreadcrumb category={category} currentTitle={title} />
           
           {/* Article Content */}
-          <div className="insight-body prose prose-lg max-w-none">
-            {children}
+          <div className="insight-body max-w-none">
+            <ArticleBylineProvider value={{ publishedTime, author }}>
+              {children}
+            </ArticleBylineProvider>
           </div>
           
           {/* Share & Like Actions */}

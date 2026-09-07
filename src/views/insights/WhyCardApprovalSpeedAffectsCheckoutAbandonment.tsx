@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhyCardApprovalSpeedAffectsCheckoutAbandonment = () => {
   return (
@@ -15,7 +16,7 @@ const WhyCardApprovalSpeedAffectsCheckoutAbandonment = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Card Approval Speed and Checkout Abandonment: The Connection Explained
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           When a customer pays by card, they expect the result to be immediate.

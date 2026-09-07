@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import { Source } from "@/components/SourcesCitation";
 
@@ -166,7 +167,7 @@ const StripeFees = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
         Stripe Fees Explained: Real Costs for UK Businesses in 2026
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6">
         Stripe fees explained clearly: what UK businesses actually pay.
       </p>

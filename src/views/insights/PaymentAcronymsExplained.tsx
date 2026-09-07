@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 
 const PaymentAcronymsExplained = () => {
@@ -54,7 +55,7 @@ const PaymentAcronymsExplained = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Payment Acronyms Merchants Actually Need to Understand (And Which Ones You Can Ignore)
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6">
         The payments industry has more acronyms than most businesses know what to do with. Every provider pitch, every pricing page, and every compliance document introduces another set of letters that sound important but rarely get explained clearly.
       </p>

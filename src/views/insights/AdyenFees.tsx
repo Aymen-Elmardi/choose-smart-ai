@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
@@ -85,7 +86,7 @@ const AdyenFees = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Adyen Pricing Explained: How Fees Really Work and When Adyen Is Worth It
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
         Adyen does not publish a simple price list. That is not an accident, and it does not mean Adyen is expensive.
       </p>

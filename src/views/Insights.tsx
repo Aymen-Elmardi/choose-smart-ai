@@ -190,7 +190,7 @@ const Insights = ({ globalOnly = false }: { globalOnly?: boolean }) => {
                 Not sure which provider fits your risk profile?
               </h2>
               <p className="text-muted-foreground text-lg mb-6 max-w-2xl mx-auto">
-                Get your personalized risk assessment in under 60 seconds. We'll tell you which providers actually match your business — or why now isn't the right time.
+                Get your personalized risk assessment in under 60 seconds. We'll tell you which providers actually match your business, or why now isn't the right time.
               </p>
               <Link
                 href="/assessment"

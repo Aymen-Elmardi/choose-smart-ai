@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { BOOKING_URL } from "@/lib/booking";
 
@@ -35,6 +36,9 @@ const HighChargebackProcessors = () => {
         Best Payment Processors for High Chargeback Businesses
       </h1>
 
+
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         If your business has a higher-than-average chargeback rate, most mainstream payment processors will either reject your application or freeze your account after onboarding. This is not because your business is doing anything wrong. It is because their risk model was never built for your profile.
       </p>
@@ -44,7 +48,7 @@ const HighChargebackProcessors = () => {
         Card networks like Visa and Mastercard impose strict monitoring thresholds. When a merchant's chargeback ratio exceeds 0.9% (Visa) or 1.0% (Mastercard), the <em>processor</em> faces fines and compliance programs. Most mainstream providers like Stripe and Square use blended risk models that treat any elevated dispute rate as a red flag, regardless of context.
       </p>
       <p className="text-muted-foreground mb-6">
-        This means businesses in industries with inherently higher dispute rates — travel, digital goods, subscription services, event ticketing — are systematically penalised by providers that were designed for low-risk, high-volume retail.
+        This means businesses in industries with inherently higher dispute rates (travel, digital goods, subscription services, event ticketing), are systematically penalised by providers that were designed for low-risk, high-volume retail.
       </p>
 
       <h2 className="heading-md text-foreground mt-10 mb-4">Risk Tolerance Differs Between Providers</h2>

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
 const WhatToDoWhenFundsHeld = () => {
@@ -16,17 +17,17 @@ const WhatToDoWhenFundsHeld = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         What to Do When Your Payment Provider Holds Your Funds
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
-          Discovering that your payment provider is holding your funds is stressful — especially when you rely on those funds for payroll, suppliers, or day-to-day operations. But fund holds are common, usually temporary, and almost always resolvable if you respond correctly.
+          Discovering that your payment provider is holding your funds is stressful, especially when you rely on those funds for payroll, suppliers, or day-to-day operations. But fund holds are common, usually temporary, and almost always resolvable if you respond correctly.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Hold vs Freeze vs Reserve: Understanding What's Happening</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>A hold</strong> means your provider has paused payouts while they review something. Your account is still active and may still be processing transactions.</li>
-          <li><strong>A freeze</strong> means your provider has suspended your account — no processing, no payouts. This is more severe. Learn about <Link href="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">why Stripe freezes accounts</Link>.</li>
-          <li><strong>A reserve</strong> is a planned withholding — a percentage of your settlements held as security. This is ongoing, not a response to a specific event. Learn about <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">why reserves are imposed</Link>.</li>
+          <li><strong>A freeze</strong> means your provider has suspended your account: no processing, no payouts. This is more severe. Learn about <Link href="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">why Stripe freezes accounts</Link>.</li>
+          <li><strong>A reserve</strong> is a planned withholding: a percentage of your settlements held as security. This is ongoing, not a response to a specific event. Learn about <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">why reserves are imposed</Link>.</li>
         </ul>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Common Reasons Funds Are Held</h2>
@@ -64,7 +65,7 @@ const WhatToDoWhenFundsHeld = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">How Long Do Holds Last?</h2>
         <p>
-          Simple verification holds typically resolve within 1–5 business days once documents are submitted. More complex reviews — especially those involving card network inquiries or regulatory checks — can take 2–8 weeks.
+          Simple verification holds typically resolve within 1–5 business days once documents are submitted. More complex reviews (especially those involving card network inquiries or regulatory checks), can take 2–8 weeks.
         </p>
         <p>
           If your hold extends beyond 30 days without clear communication, escalate in writing and request a specific timeline and the name of the reviewing team.
@@ -72,7 +73,7 @@ const WhatToDoWhenFundsHeld = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">How to Prevent Future Holds</h2>
         <ul className="list-disc pl-6 space-y-2">
-          <li>Keep your provider informed of business changes <em>before</em> they happen — new products, higher volumes, market expansion</li>
+          <li>Keep your provider informed of business changes <em>before</em> they happen: new products, higher volumes, market expansion</li>
           <li>Monitor your chargeback ratio and address disputes promptly</li>
           <li>Maintain documentation that demonstrates legitimate business activity</li>
           <li>Choose a provider whose <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk model</Link> matches your business type from the start</li>

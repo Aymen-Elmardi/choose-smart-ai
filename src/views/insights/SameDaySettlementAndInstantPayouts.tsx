@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const SameDaySettlementAndInstantPayouts = () => {
   return (
@@ -15,7 +16,7 @@ const SameDaySettlementAndInstantPayouts = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Same-Day Settlement and Instant Payouts: What Businesses Should Know
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           For many businesses, getting paid quickly matters just as much as making the sale.

@@ -12,14 +12,14 @@ const stages = [
   {
     id: "eliminate",
     label: "Stage 1: Eliminate",
-    detail: "Hard disqualifiers — payment type, region, volume, exclusions, risk appetite",
+    detail: "Hard disqualifiers: payment type, region, volume, exclusions, risk appetite",
     color: "hsl(0 84% 60%)",
     bgColor: "hsl(0 84% 60% / 0.1)",
   },
   {
     id: "score",
     label: "Stage 2: Score",
-    detail: "Multi-axis points — risk fit, volume alignment, priority match, feature fit",
+    detail: "Multi-axis points: risk fit, volume alignment, priority match, feature fit",
     color: "hsl(38 92% 50%)",
     bgColor: "hsl(38 92% 50% / 0.1)",
   },

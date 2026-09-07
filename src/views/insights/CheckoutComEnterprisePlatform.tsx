@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link';
+import ArticleByline from "@/components/ArticleByline";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
@@ -63,6 +64,8 @@ const CheckoutComEnterprisePlatform = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
               Checkout.com: The High Performance Platform Built for Global Ambition
             </h1>
+
+            <ArticleByline />
             <p className="text-xl text-muted-foreground leading-relaxed">
               In the competitive landscape of enterprise payments, Checkout.com has carved out a unique and highly respected position. While Stripe pioneered the developer first approach and Adyen perfected the unified platform, Checkout.com has focused on delivering a high performance, modular solution tailored for high growth, global merchants who demand granular control and superior authorization rates.
             </p>

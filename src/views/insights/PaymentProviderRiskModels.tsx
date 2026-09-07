@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import Link from 'next/link';
 
 const sources = [
@@ -35,7 +36,7 @@ const PaymentProviderRiskModels = () => {
     <InsightsArticleLayout
       title="Payment Provider Risk Models: Why You Get Rejected or Approved"
       description="Understand why payment providers approve some merchants and reject others. Underwriting criteria, risk models, and how to improve your approval odds."
-      category={{ name: "Explainer", slug: "explainer" }}
+      category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"
       currentSlug="payment-provider-risk-models"
       publishedTime="2026-02-05"
@@ -56,7 +57,7 @@ const PaymentProviderRiskModels = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Payment Provider Risk Models Explained in Plain English
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
         Why two similar businesses get very different answers from payment providers
       </p>

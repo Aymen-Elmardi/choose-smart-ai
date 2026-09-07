@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -60,7 +61,7 @@ const HiddenPaymentProcessorFees = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Hidden Payment Processor Fees: What to Look For Before You Sign
       </h1>
-
+      <ArticleByline />
       <p className="text-foreground/90 mb-4">
         Every payment processor quotes you a headline rate. Almost none of them quote you the seven or eight line items that show up on your statement three months later. That gap between the number in the sales pitch and the number on the invoice is not an accident. It is the business model.
       </p>
@@ -144,7 +145,7 @@ const HiddenPaymentProcessorFees = () => {
         Beyond individual line items, the pricing model itself can function as a hidden fee. Tiered pricing groups transactions into "qualified," "mid-qualified," and "non-qualified" buckets, each with a different rate. The most common issue merchants run into is transactions being manually or automatically reclassified into the non-qualified tier, increasing the processor's margin without any change in how the transaction was actually run.
       </p>
       <p className="text-foreground/90 mb-8">
-        Interchange-plus pricing avoids this by passing the actual network interchange rate through with a fixed, disclosed markup. For 2026, a competitive interchange-plus markup for a small to mid-size business sits around 0.15% to 0.30% plus $0.08 to $0.10 per transaction. If your markup is meaningfully above that, you are very likely overpaying relative to market rate — see how a{" "}
+        Interchange-plus pricing avoids this by passing the actual network interchange rate through with a fixed, disclosed markup. For 2026, a competitive interchange-plus markup for a small to mid-size business sits around 0.15% to 0.30% plus $0.08 to $0.10 per transaction. If your markup is meaningfully above that, you are very likely overpaying relative to market rate, see how a{" "}
         <Link href="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">payment gateway and the processor sitting behind it</Link>{" "}
         actually divide up that margin.
       </p>
@@ -198,7 +199,11 @@ const HiddenPaymentProcessorFees = () => {
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Key Takeaways</h2>
       <p className="text-foreground/90 mb-8">
-        Hidden fees are rarely illegal and almost never disclosed clearly at the point of sale. They live in the fee schedule, not the sales pitch, and they compound: a business paying a PCI fee, a statement fee, and a handful of batch fees every month can be paying several hundred dollars a year in charges that were never part of the advertised rate. The businesses that avoid this read the fee schedule before signing and negotiate the line items that are actually negotiable, which is most of them. For a broader framework on evaluating a processor beyond just its fee schedule, see{" "}
+        Hidden fees are rarely illegal and almost never disclosed clearly at the point of sale. They live in the fee schedule, not the sales pitch, and they compound: a business paying a PCI fee, a statement fee, and a handful of batch fees every month can be paying several hundred dollars a year in charges that were never part of the advertised rate.
+      </p>
+
+      <p className="text-foreground/90 mb-8">
+        The businesses that avoid this read the fee schedule before signing and negotiate the line items that are actually negotiable, which is most of them. For a broader framework on evaluating a processor beyond just its fee schedule, see{" "}
         <Link href="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>.
       </p>
 

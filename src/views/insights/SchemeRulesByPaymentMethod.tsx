@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { ArrowRight, Shield, Info } from "lucide-react";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Button } from "@/components/ui/button";
 
 const SchemeRulesByPaymentMethod = () => {
@@ -29,7 +30,7 @@ const SchemeRulesByPaymentMethod = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         When Scheme Rules Apply Differently: Cards, Wallets, Marketplaces and BNPL Explained
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-4">
         Most merchants assume scheme rules apply the same way to every transaction.
       </p>

@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import Link from 'next/link';
 import { Source } from "@/components/SourcesCitation";
 
@@ -57,7 +58,7 @@ const LowValueTransactionExemption = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Low Value Transaction (LVT) Exemption: How Small Payments Unlock Higher Approval Rates
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Most merchants focus on pricing, fraud tools, and checkout design when trying to improve payment performance. Very few look at something simpler and often more powerful: how small transactions are treated by banks under SCA rules.
       </p>

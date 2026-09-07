@@ -52,7 +52,7 @@ const providerArticles = [
   },
   {
     title: "Shift4 vs Stripe for Enterprise: Which Is Right for Your Business?",
-    description: "Shift4 and Stripe both serve enterprise merchants — but in very different ways. Compare their strengths, pricing, and risk appetites.",
+    description: "Shift4 and Stripe both serve enterprise merchants, but in very different ways. Compare their strengths, pricing, and risk appetites.",
     slug: "/insights/shift4-vs-stripe-enterprise",
     icon: Scale3d,
   },
@@ -68,7 +68,7 @@ const faqs = [
   {
     question: "How is a provider deep dive different from a fees article?",
     answer:
-      "Deep dives cover the platform as a whole — architecture, risk appetite, who it's built for, and where it fits against alternatives. Our Fees & Costs section covers the pricing detail for the same providers if that's specifically what you need.",
+      "Deep dives cover the platform as a whole: architecture, risk appetite, who it's built for, and where it fits against alternatives. Our Fees & Costs section covers the pricing detail for the same providers if that's specifically what you need.",
   },
   {
     question: "Which provider should I pick for an enterprise business?",
@@ -78,7 +78,7 @@ const faqs = [
   {
     question: "Do these reviews cover UK-specific considerations?",
     answer:
-      "Yes — each review notes UK acquiring, settlement currency, and onboarding considerations specifically, since a platform's US strengths don't always translate directly to UK merchant needs.",
+      "Yes, each review notes UK acquiring, settlement currency, and onboarding considerations specifically, since a platform's US strengths don't always translate directly to UK merchant needs.",
   },
 ];
 
@@ -106,7 +106,7 @@ const ProvidersIndex = () => {
           Payment Provider Deep Dives
         </h1>
         <p className="text-lg text-muted-foreground mb-6">
-          Marketing pages tell you a provider is "fast" and "trusted." They don't tell you its actual risk appetite, how its architecture affects authorization rates, or which business types it quietly declines. These deep dives cover the major payment platforms the way an underwriter or a payments consultant would — architecture, commercial model, and genuine fit.
+          Marketing pages tell you a provider is "fast" and "trusted." They don't tell you its actual risk appetite, how its architecture affects authorization rates, or which business types it quietly declines. These deep dives cover the major payment platforms the way an underwriter or a payments consultant would, architecture, commercial model, and genuine fit.
         </p>
         <p className="text-muted-foreground mb-12">
           Use the head-to-head comparisons if you're choosing between two specific platforms, or the individual reviews if you want the full picture on one provider.

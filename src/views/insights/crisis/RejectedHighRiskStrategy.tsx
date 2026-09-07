@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 
 const rejectedSources: Source[] = [
@@ -26,6 +27,8 @@ const RejectedHighRiskStrategy = () => {
         Rejected by Stripe or Square? Why Your 'High-Risk' Business Needs a Risk-Aligned Payment Strategy
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p className="text-lg">
           Receiving a rejection email from a major payment facilitator like Stripe or Square can feel like a personal judgment on your business. The email is often vague, citing "risk" or "policy violations" without providing actionable details.

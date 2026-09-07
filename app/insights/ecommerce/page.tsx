@@ -3,7 +3,7 @@ import EcommerceIndex from '@/views/insights/EcommerceIndex'
 
 export const metadata: Metadata = {
   title: 'Ecommerce Payment Strategy: Growth, Recurring Billing & Chargebacks',
-  description: 'Payment strategy guides for scaling ecommerce businesses — moving past a high-risk label, structuring recurring billing, and managing chargeback thresholds.',
+  description: 'Payment strategy guides for scaling ecommerce businesses, moving past a high-risk label, structuring recurring billing, and managing chargeback thresholds.',
   alternates: { canonical: '/insights/ecommerce' },
   openGraph: {
     url: 'https://chosepayments.com/insights/ecommerce',

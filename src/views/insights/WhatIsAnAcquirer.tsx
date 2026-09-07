@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 
 const WhatIsAnAcquirer = () => {
@@ -37,7 +38,8 @@ const WhatIsAnAcquirer = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         What Is an Acquirer and Why Your Payment Provider Needs One
       </h1>
-
+      
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Most businesses never hear the word "acquirer" until something goes wrong.

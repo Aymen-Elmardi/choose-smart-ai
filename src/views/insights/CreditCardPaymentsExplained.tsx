@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 
 const sources: Source[] = [
@@ -60,7 +61,7 @@ const CreditCardPaymentsExplained = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Credit Card Payments Explained: How They Affect Approval, Risk, and Business Growth
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Credit card payments are the most widely used payment method in the world. For many businesses, they are the first and sometimes only way customers pay.
       </p>

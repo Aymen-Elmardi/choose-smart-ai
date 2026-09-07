@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
 import { BOOKING_URL } from "@/lib/booking";
@@ -26,22 +27,22 @@ const SubscriptionRevenue = () => {
 
   const sources: Source[] = [
     {
-      name: "Visa — Account Updater Services Overview",
+      name: "Visa, Account Updater Services Overview",
       url: "https://developer.visa.com/capabilities/vau",
       type: "official"
     },
     {
-      name: "Stripe — Reducing Involuntary Churn in Subscription Businesses",
+      name: "Stripe, Reducing Involuntary Churn in Subscription Businesses",
       url: "https://stripe.com/resources/more/involuntary-churn-101-what-it-is-why-it-happens-and-seven-ways-to-reduce-it",
       type: "industry"
     },
     {
-      name: "Adyen — Optimizing Recurring Payments and Authorization Rates",
+      name: "Adyen, Optimizing Recurring Payments and Authorization Rates",
       url: "https://www.adyen.com/knowledge-hub/recurring-payments",
       type: "industry"
     },
     {
-      name: "Paddle — Subscription Billing and Revenue Recovery Strategies",
+      name: "Paddle, Subscription Billing and Revenue Recovery Strategies",
       url: "https://www.paddle.com/resources/subscription-billing",
       type: "industry"
     }
@@ -64,6 +65,9 @@ const SubscriptionRevenue = () => {
         Maximizing Subscription Revenue: Payment Success Rates and Risk Management for Recurring Billing
       </h1>
 
+
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-4">
         Subscription businesses live and die by one number most founders rarely see.
       </p>

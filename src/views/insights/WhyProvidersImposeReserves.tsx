@@ -1,13 +1,14 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhyProvidersImposeReserves = () => {
   return (
     <InsightsArticleLayout
       title="Why Payment Providers Impose Reserves and How to Negotiate Them"
       description="Reserves protect providers from future losses. Learn why they're imposed, how rolling and fixed reserves work, and what you can do to reduce or release them."
-      category={{ name: "Compliance", slug: "compliance" }}
+      category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"
       currentSlug="why-providers-impose-reserves"
       keywords={["reserve", "rolling reserve", "fixed reserve", "funds held", "payment provider reserve"]}
@@ -15,10 +16,10 @@ const WhyProvidersImposeReserves = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Why Payment Providers Impose Reserves and How to Negotiate Them
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
-          A reserve is money your payment provider withholds from your settlements as a safeguard against future chargebacks, refunds, or regulatory action. It is one of the most common — and most misunderstood — risk management tools in payments.
+          A reserve is money your payment provider withholds from your settlements as a safeguard against future chargebacks, refunds, or regulatory action. It is one of the most common (and most misunderstood), risk management tools in payments.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Why Providers Impose Reserves</h2>
@@ -49,7 +50,7 @@ const WhyProvidersImposeReserves = () => {
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Build a clean track record:</strong> 3–6 months of low chargebacks and stable volume gives you leverage to request a review.</li>
           <li><strong>Provide documentation proactively:</strong> Share delivery confirmation data, customer service metrics, and refund policies.</li>
-          <li><strong>Request a formal reserve review:</strong> Many providers will reassess reserves quarterly if asked — but rarely volunteer it.</li>
+          <li><strong>Request a formal reserve review:</strong> Many providers will reassess reserves quarterly if asked, but rarely volunteer it.</li>
           <li><strong>Compare terms across providers:</strong> If a competitor offers lower reserves, use that as a negotiation tool. Some providers offer <Link href="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">interchange++ pricing</Link> with more favourable reserve terms for established businesses.</li>
         </ul>
 
@@ -63,7 +64,7 @@ const WhyProvidersImposeReserves = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>
         <p>
-          Reserves are not punishments — they're risk management. But they are negotiable. Businesses that understand why reserves are imposed and maintain strong operational metrics are in the best position to reduce them over time.
+          Reserves are not punishments. They're risk management. But they are negotiable. Businesses that understand why reserves are imposed and maintain strong operational metrics are in the best position to reduce them over time.
         </p>
       </div>
     </InsightsArticleLayout>

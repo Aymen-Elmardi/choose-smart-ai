@@ -1,5 +1,6 @@
 'use client'
 import { useState } from "react";
+import ArticleByline from "@/components/ArticleByline";
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -46,6 +47,8 @@ const WhatToDoWhenProviderAsksForDocuments = () => {
             What To Do When a Payment Provider Asks for More Documents
           </h1>
           
+
+          <ArticleByline />
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
             <p>
               When a payment provider asks for additional documents, it often feels sudden and uncomfortable. Many businesses worry that something has gone wrong or that their account is about to be restricted.

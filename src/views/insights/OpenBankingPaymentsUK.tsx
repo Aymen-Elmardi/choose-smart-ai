@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
 
@@ -67,7 +68,8 @@ const OpenBankingPaymentsUK = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Open Banking Payments in the UK: Faster Settlement, Lower Risk, Fewer Chargebacks
       </h1>
-
+      
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           For most UK businesses, card payments still feel like the default. Customers recognise them, providers push them, and they work well enough. But quietly, another payment method has been gaining ground, especially among businesses that care about approval stability, cash flow, and risk.

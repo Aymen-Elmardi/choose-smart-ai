@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -65,7 +66,7 @@ const MarketplaceSellerInfo = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Marketplace Seller Verification: What Payment Providers Require
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p className="text-lg text-foreground font-medium">
           Every seller you onboard is a liability your payment provider has to underwrite.

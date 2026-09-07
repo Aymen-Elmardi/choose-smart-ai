@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 
 const hiddenFeeSources: Source[] = [
@@ -26,9 +27,11 @@ const HiddenFeeCrisis = () => {
         The Hidden Fee Crisis: How Your 'Low Rate' Payment Processor is Quietly Costing You Thousands
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p className="text-lg">
-          You signed up for a payment processor advertising a competitive rate—perhaps "1.4% + 20p" or a flat 2.9%. Yet, when your monthly statement arrives, the total fees deducted are significantly higher than you calculated. This is the <strong className="text-foreground">Hidden Fee Crisis</strong>, and it is costing businesses thousands every year.
+          You signed up for a payment processor advertising a competitive rate, perhaps "1.4% + 20p" or a flat 2.9%. Yet, when your monthly statement arrives, the total fees deducted are significantly higher than you calculated. This is the <strong className="text-foreground">Hidden Fee Crisis</strong>, and it is costing businesses thousands every year.
         </p>
         
         <p>
@@ -138,7 +141,7 @@ const HiddenFeeCrisis = () => {
         </h2>
         
         <p>
-          The only way to avoid the Hidden Fee Crisis is to get a comparison that is tailored to your business's specific operational profile—not a generic, one-size-fits-all headline rate.
+          The only way to avoid the Hidden Fee Crisis is to get a comparison that is tailored to your business's specific operational profile, not a generic, one-size-fits-all headline rate.
         </p>
         
         <p>You need a partner who can analyze:</p>

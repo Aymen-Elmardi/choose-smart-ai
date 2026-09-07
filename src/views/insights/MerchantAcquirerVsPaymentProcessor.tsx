@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -50,7 +51,7 @@ const MerchantAcquirerVsPaymentProcessor = () => {
     <InsightsArticleLayout
       title="Merchant Acquirer vs Payment Processor: What's the Difference?"
       description="A merchant acquirer holds your merchant account and takes the financial risk. A payment processor routes the transaction. Here is exactly how they differ, and why it matters when your account gets frozen."
-      category={{ name: "Explainer", slug: "explainer" }}
+      category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"
       currentSlug="merchant-acquirer-vs-payment-processor"
       publishedTime="2026-06-01"
@@ -67,7 +68,7 @@ const MerchantAcquirerVsPaymentProcessor = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Merchant Acquirer vs Payment Processor: What's the Difference?
       </h1>
-
+      <ArticleByline />
       <p className="text-foreground/90 mb-4">
         When a customer taps their card at a terminal or clicks Pay on a checkout page, the transaction touches two types of institution before money reaches the merchant's bank account: a payment processor and a merchant acquirer. Most businesses use them interchangeably. The terms refer to different functions, and the distinction matters the moment a dispute is raised, an account is frozen, or a business applies for merchant services in a higher-risk category.
       </p>

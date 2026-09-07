@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { ArrowRight } from "lucide-react";
 
@@ -40,7 +41,7 @@ const PayPalPaymentPlatform = () => {
     <InsightsArticleLayout
       title="PayPal: From Online Payments Pioneer to Global Consumer Network"
       description="Understand where PayPal fits in the payments landscape, how its consumer trust drives conversion, and which businesses benefit most from adding PayPal to their payment stack."
-      category={{ name: "Provider Deep Dive", slug: "providers" }}
+      category={{ name: "Provider Deep Dives", slug: "providers" }}
       cluster="provider"
       currentSlug="paypal-payment-platform"
       publishedTime="2026-02-09"
@@ -60,7 +61,7 @@ const PayPalPaymentPlatform = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
         PayPal: From Online Payments Pioneer to Global Consumer Network
       </h1>
-
+      <ArticleByline />
       <p className="text-xl text-muted-foreground mb-8">
         Who It Really Works For, and Where It Falls Short
       </p>

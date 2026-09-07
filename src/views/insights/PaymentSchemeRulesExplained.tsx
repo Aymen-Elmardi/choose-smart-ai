@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const paymentSchemeRulesSources = [
   { name: "Visa Core Rules and Visa Product and Service Rules", url: "https://usa.visa.com/dam/VCOM/download/about-visa/visa-rules-public.pdf", type: "official" as const },
@@ -23,7 +24,7 @@ const PaymentSchemeRulesExplained = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         What Are Payment Scheme Rules and Why They Matter More Than Your Contract
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Most merchants believe their payment relationship is defined by the contract they sign with Stripe, Adyen, Checkout, Fiserv, or another provider.

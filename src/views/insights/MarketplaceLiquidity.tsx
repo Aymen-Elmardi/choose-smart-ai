@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
 
@@ -69,7 +70,7 @@ const MarketplaceLiquidity = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         What Is Marketplace Liquidity? A Founder&apos;s Guide
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Your marketplace has users, maybe even thousands of them. But does it have liquidity, and do you actually know the difference?
@@ -244,7 +245,11 @@ const MarketplaceLiquidity = () => {
         </h2>
 
         <p>
-          <strong className="text-foreground">Geographic and category density.</strong> MobyPark, a European parking marketplace, learned that drivers mostly search for parking near airports, train stations, and big city event venues, not randomly across a whole city. So they focused supply acquisition on hotels and property owners sitting near exactly those demand hotspots, instead of chasing parking listings anywhere they could find them. According to <a href="https://www.cobbleweb.co.uk/projects/mobypark-marketplace-case-study/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CobbleWeb&apos;s published case study</a>, the platform saw a 5x drop in failed searches and a 10x increase in revenue after this focus, along with 4x growth in repeat purchases. That&apos;s density working exactly as intended: concentrated supply where concentrated demand already exists.
+          <strong className="text-foreground">Geographic and category density.</strong> MobyPark, a European parking marketplace, learned that drivers mostly search for parking near airports, train stations, and big city event venues, not randomly across a whole city. So they focused supply acquisition on hotels and property owners sitting near exactly those demand hotspots, instead of chasing parking listings anywhere they could find them.
+        </p>
+
+        <p>
+          According to <a href="https://www.cobbleweb.co.uk/projects/mobypark-marketplace-case-study/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CobbleWeb&apos;s published case study</a>, the platform saw a 5x drop in failed searches and a 10x increase in revenue after this focus, along with 4x growth in repeat purchases. That&apos;s density working exactly as intended: concentrated supply where concentrated demand already exists.
         </p>
 
         <p>

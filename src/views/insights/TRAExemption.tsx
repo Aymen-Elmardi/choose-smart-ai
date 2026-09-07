@@ -1,5 +1,6 @@
 'use client'
 import Header from "@/components/Header";
+import ArticleByline from "@/components/ArticleByline";
 import Footer from "@/components/Footer";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import Link from 'next/link';
@@ -21,7 +22,7 @@ const TRAExemption = () => {
       <main className="pt-24 pb-16">
         <div className="section-container max-w-3xl mx-auto">
           <InsightsBreadcrumb 
-            category={{ name: "Practical Guides", slug: "guides" }}
+            category={{ name: "Guides", slug: "guides" }}
             currentTitle="TRA Exemption"
           />
           
@@ -29,7 +30,7 @@ const TRAExemption = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
               What Is TRA Exemption and How TRA Exemptions Reduce Payment Friction
             </h1>
-
+            <ArticleByline />
             <p className="text-lg text-muted-foreground mb-6">
               When customers abandon a checkout, it is rarely because they changed their mind.
             </p>

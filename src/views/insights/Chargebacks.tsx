@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
 
@@ -44,7 +45,7 @@ const Chargebacks = () => {
     <InsightsArticleLayout
       title="Chargebacks: Why They Happen and How to Avoid Them"
       description="Too many chargebacks can freeze your payment account. See what actually triggers a dispute, what it costs, and how to reduce them before providers notice."
-      category={{ name: "Practical Guides", slug: "guides" }}
+      category={{ name: "Guides", slug: "guides" }}
       cluster="hub"
       currentSlug="chargebacks-what-they-are-and-how-to-avoid-them"
       publishedTime="2026-08-27"
@@ -76,10 +77,7 @@ const Chargebacks = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
         Chargebacks: Why They Happen and How to Avoid Them
       </h1>
-
-      <p className="text-sm text-muted-foreground italic mb-8">
-        Last updated 27 August 2026 by the ChosePayments Editorial Team.
-      </p>
+      <ArticleByline />
 
       <div className="text-muted-foreground space-y-6">
         <p>

@@ -1,6 +1,7 @@
 'use client'
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -79,7 +80,7 @@ const PayPalFees = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         PayPal Fees Explained: The Complete UK Guide for 2026
       </h1>
-
+      <ArticleByline />
       <p className="text-foreground/90 mb-4">
         PayPal does not charge a fee for most personal transactions between UK users. But the moment money moves in a commercial context, the fees kick in, and they can range from 1.2% to 5% depending on what you are doing and where the money is coming from.
       </p>

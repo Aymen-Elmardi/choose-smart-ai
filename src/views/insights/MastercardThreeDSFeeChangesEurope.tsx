@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -39,7 +40,7 @@ const MastercardThreeDSFeeChangesEurope = () => {
     <InsightsArticleLayout
       title="Mastercard's 2026 3DS Authentication Fee Changes in Europe: What Merchants Should Know"
       description="Mastercard restructured its EMV 3DS Authentication Fee across Europe from 29 July 2026, splitting rates by recurring vs one-off transactions and by approved vs declined outcomes. Here's what changed and how SCA exemptions reduce your exposure to it."
-      category={{ name: "Guides", slug: "guides" }}
+      category={{ name: "Fees & Costs", slug: "fees" }}
       cluster="hub"
       currentSlug="mastercard-3ds-authentication-fee-changes-europe"
       publishedTime="2026-07-29"
@@ -56,7 +57,7 @@ const MastercardThreeDSFeeChangesEurope = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Mastercard's 2026 3DS Authentication Fee Changes in Europe: What Merchants Should Know
       </h1>
-
+      <ArticleByline />
       <p className="text-foreground/90 mb-4">
         From 29 July 2026, Mastercard restructured its EMV 3DS Authentication Fee for merchants across Europe. This is a card scheme fee - set by Mastercard, not by your processor - charged on card-not-present transactions that go through 3D Secure authentication. Acquirers and processors have no discretion over it; they're contractually required to pass it through, and every merchant using Mastercard in the affected countries will see the updated rate on their next statement whether or not anyone told them it was coming.
       </p>
@@ -189,7 +190,11 @@ const MastercardThreeDSFeeChangesEurope = () => {
         </li>
       </ul>
       <p className="text-foreground/90 mb-8">
-        Both exemptions are requested by the merchant's acquirer at the point of authorisation - the issuer can still decline the exemption and force a full challenge if their own risk model disagrees, which is why exemption approval rates vary by issuer and shouldn't be assumed at 100%. Recurring, tokenised transactions (subscriptions, saved cards) are also generally exempt from a full SCA challenge after the first authentication, which is part of why the new recurring rate in the table above is priced so much lower - Mastercard is pricing in the fact that these transactions carry less authentication overhead in the first place.
+        Both exemptions are requested by the merchant's acquirer at the point of authorisation - the issuer can still decline the exemption and force a full challenge if their own risk model disagrees, which is why exemption approval rates vary by issuer and shouldn't be assumed at 100%.
+      </p>
+
+      <p className="text-foreground/90 mb-8">
+        Recurring, tokenised transactions (subscriptions, saved cards) are also generally exempt from a full SCA challenge after the first authentication, which is part of why the new recurring rate in the table above is priced so much lower - Mastercard is pricing in the fact that these transactions carry less authentication overhead in the first place.
       </p>
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">What to Actually Do About This</h2>

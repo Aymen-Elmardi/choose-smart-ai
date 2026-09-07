@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
 
@@ -68,7 +69,8 @@ const WalletPaymentsGuaranteedSuccess = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         The Only Payment Method With a 100% Success Rate (On Part of Your Transactions)
       </h1>
-
+      
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           There is only one payment method that can reach a 100 percent success rate.

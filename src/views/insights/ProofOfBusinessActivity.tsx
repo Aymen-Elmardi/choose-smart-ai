@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link';
+import ArticleByline from "@/components/ArticleByline";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
@@ -48,7 +49,7 @@ const ProofOfBusinessActivity = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <InsightsBreadcrumb 
-            category={{ name: "Practical Guides", slug: "guides" }}
+            category={{ name: "Guides", slug: "guides" }}
             currentTitle="Proof of Business Activity"
           />
           
@@ -56,6 +57,9 @@ const ProofOfBusinessActivity = () => {
             Understanding Proof of Business Activity Requests
           </h1>
           
+
+          
+          <ArticleByline />
           <div className="prose prose-lg text-foreground/80 space-y-6">
             <p>
               When a payment provider asks for proof of business activity, they are trying to confirm that your business is real, active, and operating as described.

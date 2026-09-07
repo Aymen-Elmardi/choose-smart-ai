@@ -44,7 +44,7 @@ const faqs = [
   {
     question: "What makes a business a 'fit' problem rather than a general risk problem?",
     answer:
-      "Fit is about your specific business model — subscription billing, high chargeback rates, restaurant MCC codes, marketplace payouts — not just your overall risk score. A business can be low-risk overall and still get declined by a provider that simply doesn't support its model. These guides match business models to providers built to support them.",
+      "Fit is about your specific business model (subscription billing, high chargeback rates, restaurant MCC codes, marketplace payouts), not just your overall risk score. A business can be low-risk overall and still get declined by a provider that simply doesn't support its model. These guides match business models to providers built to support them.",
   },
   {
     question: "Why do restaurants and food businesses need a specific guide?",
@@ -54,7 +54,7 @@ const faqs = [
   {
     question: "If none of these fit my business, what should I do?",
     answer:
-      "Take our free assessment — it matches you to providers based on your actual risk profile, volume, and industry rather than a fixed category, which covers business models not listed here.",
+      "Take our free assessment. It matches you to providers based on your actual risk profile, volume, and industry rather than a fixed category, which covers business models not listed here.",
   },
 ];
 
@@ -85,7 +85,7 @@ const ProviderFitIndex = () => {
           Not every payment provider is built for every business model. Subscription businesses need dunning logic and MRR-aware billing. High chargeback merchants need providers that won't freeze funds at the first spike. Restaurants and food delivery platforms need infrastructure suited to their specific MCC codes and payout structures.
         </p>
         <p className="text-muted-foreground mb-12">
-          These guides match specific business models to the providers actually built to support them — not just providers with the lowest headline rate.
+          These guides match specific business models to the providers actually built to support them, not just providers with the lowest headline rate.
         </p>
 
         <div className="space-y-6 mb-16">

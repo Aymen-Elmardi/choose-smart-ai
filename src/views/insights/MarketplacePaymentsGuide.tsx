@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
 
@@ -94,10 +95,7 @@ const MarketplacePaymentsGuide = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
         Marketplace Payments Guide: Splits, Risk &amp; Compliance
       </h1>
-
-      <p className="text-sm text-muted-foreground italic mb-8">
-        Last updated 26 August 2026 by the ChosePayments Editorial Team.
-      </p>
+      <ArticleByline />
 
       <div className="text-muted-foreground space-y-6">
         <p>

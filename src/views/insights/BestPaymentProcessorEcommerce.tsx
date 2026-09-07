@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -162,7 +163,7 @@ const BestPaymentProcessorEcommerce = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Best Payment Processor for E-Commerce (US 2026)
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
         Search "best payment processor for e-commerce" and you'll get a listicle ranking Stripe, PayPal, Square, and Adyen against each other as if one wins outright. None of them does, because the question is incomplete. A subscription software company, a high-ticket furniture store, a marketplace selling internationally, and a high-volume consumer brand each have different failure modes, and the processor that suits one will actively hurt another.
       </p>
@@ -235,8 +236,16 @@ const BestPaymentProcessorEcommerce = () => {
         </p>
         <p className="text-muted-foreground mb-4">
           <strong className="text-foreground">Airwallex</strong> stands out here because it holds 150+ currencies without forcing conversion, letting a merchant settle in the same currency the customer paid in and largely eliminating the typical FX markup that legacy processors charge ({" "}
-          <a href="https://www.airwallex.com/en-us/blog/cross-border-payment-services-solutions" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Airwallex, Best Cross Border Payment Solutions 2026</a>). <strong className="text-foreground">Adyen</strong> is the stronger fit for enterprise merchants selling globally in-store and online simultaneously, supporting 150+ currencies with local acquiring in the regions it operates, and is used by companies like Uber, Spotify, and Microsoft for exactly this reason ({" "}
-          <a href="https://www.fincoro.com/insights/stripe-vs-braintree-vs-adyen" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fincoro, Stripe vs Braintree vs Adyen</a>). <strong className="text-foreground">Stripe</strong> offers the broadest developer toolkit for 135+ currencies and 100+ payment methods but layers on a 1.5% international card surcharge plus a 1% currency conversion fee, a cost structure worth modeling carefully before committing at volume ({" "}
+          <a href="https://www.airwallex.com/en-us/blog/cross-border-payment-services-solutions" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Airwallex, Best Cross Border Payment Solutions 2026</a>).
+        </p>
+
+        <p className="text-muted-foreground mb-4">
+          <strong className="text-foreground">Adyen</strong> is the stronger fit for enterprise merchants selling globally in-store and online simultaneously, supporting 150+ currencies with local acquiring in the regions it operates, and is used by companies like Uber, Spotify, and Microsoft for exactly this reason ({" "}
+          <a href="https://www.fincoro.com/insights/stripe-vs-braintree-vs-adyen" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Fincoro, Stripe vs Braintree vs Adyen</a>).
+        </p>
+
+        <p className="text-muted-foreground mb-4">
+          <strong className="text-foreground">Stripe</strong> offers the broadest developer toolkit for 135+ currencies and 100+ payment methods but layers on a 1.5% international card surcharge plus a 1% currency conversion fee, a cost structure worth modeling carefully before committing at volume ({" "}
           <a href="https://www.airwallex.com/en-us/blog/best-online-payment-processing" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Airwallex, Best Online Payment Processing 2026</a>).
         </p>
         <p className="text-muted-foreground">
@@ -306,7 +315,11 @@ const BestPaymentProcessorEcommerce = () => {
           The Competitive Gap Most Comparison Articles Miss
         </h2>
         <p className="text-muted-foreground">
-          Nearly every "best payment processor for e-commerce" article ranks processors against each other in isolation. Almost none of them address the businesses that don't fit neatly into one category, a marketplace that is both high-volume and international, or a subscription business that is also high-ticket (annual enterprise SaaS contracts, for example). These blended profiles are common among the platform builders and marketplace operators ChosePayments works with, and they are exactly where a single processor recommendation breaks down. A marketplace processing $500,000 a month across the US and Canada, with subscription and one-time fees both flowing through the same rails, needs a processor evaluated against all four variables simultaneously, not just the one the business happens to Google first. Our{" "}
+          Nearly every "best payment processor for e-commerce" article ranks processors against each other in isolation. Almost none of them address the businesses that don't fit neatly into one category, a marketplace that is both high-volume and international, or a subscription business that is also high-ticket (annual enterprise SaaS contracts, for example). These blended profiles are common among the platform builders and marketplace operators ChosePayments works with, and they are exactly where a single processor recommendation breaks down.
+        </p>
+
+        <p className="text-muted-foreground">
+          A marketplace processing $500,000 a month across the US and Canada, with subscription and one-time fees both flowing through the same rails, needs a processor evaluated against all four variables simultaneously, not just the one the business happens to Google first. Our{" "}
           <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">marketplace founder's guide to payment processing</Link>{" "}
           covers this case specifically.
         </p>
@@ -333,7 +346,11 @@ const BestPaymentProcessorEcommerce = () => {
           Conclusion
         </h2>
         <p className="text-muted-foreground mb-4">
-          There is no universal best payment processor for e-commerce in 2026. Subscription businesses need Stripe Billing's dunning and card-updater tooling. High-ticket sellers need fraud tuning and realistic chargeback underwriting from a processor that has actually handled the category before. International sellers need FX-efficient rails like Airwallex or Adyen's local acquiring. High-volume merchants need interchange-plus pricing before flat-rate fees quietly become the biggest line item on their statement. Picking correctly means identifying which of these four profiles actually describes your business, not picking whichever processor ranks first on a generic list.
+          There is no universal best payment processor for e-commerce in 2026. Subscription businesses need Stripe Billing's dunning and card-updater tooling. High-ticket sellers need fraud tuning and realistic chargeback underwriting from a processor that has actually handled the category before. International sellers need FX-efficient rails like Airwallex or Adyen's local acquiring. High-volume merchants need interchange-plus pricing before flat-rate fees quietly become the biggest line item on their statement.
+        </p>
+
+        <p className="text-muted-foreground mb-4">
+          Picking correctly means identifying which of these four profiles actually describes your business, not picking whichever processor ranks first on a generic list.
         </p>
         <p className="text-muted-foreground">
           Not sure which category your business actually falls into, or whether you're a blended profile that needs a more tailored match?{" "}

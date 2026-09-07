@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
 
@@ -55,7 +56,7 @@ const MarketplaceChickenAndEggProblem = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         The Chicken and Egg Problem: How Marketplaces Actually Solve It
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Every marketplace founder hits the same wall in the first few weeks. Sellers won&apos;t list on a platform with no buyers. Buyers won&apos;t visit a platform with nothing to buy. Each side is waiting for the other to show up first, and neither one does.

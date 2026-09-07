@@ -1,8 +1,3 @@
-/* Font imports */
-@import '@fontsource/dm-sans/400.css';
-@import '@fontsource/dm-sans/500.css';
-@import '@fontsource/dm-sans/700.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -104,6 +99,10 @@
   /* Enterprise typography */
   h1, h2, h3, h4, h5, h6 {
     @apply tracking-tight;
+    /* The homepage sets headings in the display face via `.cp-page`. This is
+       the same rule for every other page, so Insights and the articles stop
+       rendering their headings in the body face. */
+    font-family: var(--cp-font-display);
   }
 }
 
@@ -203,6 +202,12 @@
 .insight-body .text-muted-foreground,
 .insight-body .text-foreground\/90 {
   color: hsl(var(--foreground));
+}
+
+/* Long-form reading rhythm. Paragraph spacing already comes from each
+   article's own `space-y-*` wrapper, so only the line-height is set here. */
+.insight-body {
+  line-height: 1.75;
 }
 
 /* ==========================================================================

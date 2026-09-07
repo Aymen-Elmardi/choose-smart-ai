@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -157,7 +158,7 @@ const RiskAlignmentPaymentProcessor = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Risk Alignment: Why Your Business Needs the Right Payment Processor, Not Just the Cheapest
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
         Most businesses choose a payment processor the way they choose a phone plan: whoever quotes the lowest rate wins. That approach works fine until the processor's risk team looks at your account and decides you are not who they thought you were. Then the money stops moving, sometimes for months, and the rate you were quoted stops mattering entirely.
       </p>
@@ -310,7 +311,11 @@ const RiskAlignmentPaymentProcessor = () => {
           What to Do If You're Already Misaligned
         </h2>
         <p className="text-muted-foreground">
-          If you are already on a processor whose risk model doesn't match your business, the fix is rarely to wait it out. Document your chargeback rate, your refund policy, and any operational changes in writing and proactively send them to your processor rather than waiting to be asked. If a rolling reserve was imposed, ask specifically what performance would get it reduced or removed, most contracts have a stated path even if it isn't offered upfront. If the relationship is fundamentally mismatched, for instance a marketplace on a processor that has never underwritten split payouts, moving to a processor built for your actual model is usually cheaper over 12 months than absorbing repeated reserve holds and review delays. Our guide on{" "}
+          If you are already on a processor whose risk model doesn't match your business, the fix is rarely to wait it out. Document your chargeback rate, your refund policy, and any operational changes in writing and proactively send them to your processor rather than waiting to be asked. If a rolling reserve was imposed, ask specifically what performance would get it reduced or removed, most contracts have a stated path even if it isn't offered upfront.
+        </p>
+
+        <p className="text-muted-foreground">
+          If the relationship is fundamentally mismatched, for instance a marketplace on a processor that has never underwritten split payouts, moving to a processor built for your actual model is usually cheaper over 12 months than absorbing repeated reserve holds and review delays. Our guide on{" "}
           <Link href="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>{" "}
           walks through that comparison in more depth.
         </p>

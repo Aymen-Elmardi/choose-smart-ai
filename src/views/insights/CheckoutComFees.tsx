@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
 import { BOOKING_URL } from "@/lib/booking";
@@ -101,7 +102,7 @@ const CheckoutComFees = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Checkout.com Pricing and Fees Explained: What Businesses Actually Pay in 2026
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Checkout.com is widely regarded as one of the most capable payment infrastructure providers for fast-growing and enterprise businesses. Unlike providers that publish clear pricing on their websites, Checkout.com uses negotiated pricing, meaning fees depend on your business model, transaction volume, and global footprint.
       </p>

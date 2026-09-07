@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhyProvidersReUnderwrite = () => {
   return (
@@ -16,6 +17,8 @@ const WhyProvidersReUnderwrite = () => {
         Re-Underwriting Explained: When Providers Review Existing Accounts
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Approval is not a one-time event.

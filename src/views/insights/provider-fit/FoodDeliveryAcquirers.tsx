@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { BOOKING_URL } from "@/lib/booking";
 
@@ -31,6 +32,9 @@ const FoodDeliveryAcquirers = () => {
         Best Payment Acquirers for Food Delivery Platforms
       </h1>
 
+
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Food delivery platforms have one of the most complex payment profiles in ecommerce. High transaction velocity, elevated refund rates, marketplace payout requirements, and fraud exposure create a risk profile that eliminates most mainstream processors from consideration.
       </p>
@@ -42,7 +46,7 @@ const FoodDeliveryAcquirers = () => {
 
       <h2 className="heading-md text-foreground mt-10 mb-4">Refund Patterns</h2>
       <p className="text-muted-foreground mb-6">
-        Food delivery inherently generates more refunds than typical ecommerce. Wrong orders, missing items, late deliveries, and quality complaints all result in partial or full refunds. Providers that treat a high refund rate as a risk flag — rather than a normal operating characteristic — will cause ongoing friction. You need a provider that understands your refund rate is structural, not a sign of fraud.
+        Food delivery inherently generates more refunds than typical ecommerce. Wrong orders, missing items, late deliveries, and quality complaints all result in partial or full refunds. Providers that treat a high refund rate as a risk flag (rather than a normal operating characteristic), will cause ongoing friction. You need a provider that understands your refund rate is structural, not a sign of fraud.
       </p>
 
       <h2 className="heading-md text-foreground mt-10 mb-4">Fraud Exposure</h2>
@@ -52,7 +56,7 @@ const FoodDeliveryAcquirers = () => {
 
       <h2 className="heading-md text-foreground mt-10 mb-4">Marketplace Payouts</h2>
       <p className="text-muted-foreground mb-8">
-        If your platform pays restaurant partners, you need split payment functionality and potentially daily or same-day settlement for your sellers. This requires a provider with marketplace infrastructure — not just basic card processing. Providers like Adyen, Stripe Connect, and Checkout.com offer marketplace payout capabilities, but their risk appetite for food delivery varies significantly.
+        If your platform pays restaurant partners, you need split payment functionality and potentially daily or same-day settlement for your sellers. This requires a provider with marketplace infrastructure, not just basic card processing. Providers like Adyen, Stripe Connect, and Checkout.com offer marketplace payout capabilities, but their risk appetite for food delivery varies significantly.
       </p>
 
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">

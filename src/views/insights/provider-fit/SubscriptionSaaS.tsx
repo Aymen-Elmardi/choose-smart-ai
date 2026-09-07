@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { BOOKING_URL } from "@/lib/booking";
 
@@ -31,6 +32,9 @@ const SubscriptionSaaS = () => {
         Choosing the Right Payment Provider for Subscription and SaaS Businesses
       </h1>
 
+
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Subscription and SaaS businesses have payment requirements that most standard processors do not handle well. Recurring billing, dunning, failed payment retries, and subscription-specific fraud all require a provider whose infrastructure was built for this model.
       </p>
@@ -40,9 +44,9 @@ const SubscriptionSaaS = () => {
         A payment provider for subscription businesses must support:
       </p>
       <ul className="list-disc pl-6 space-y-3 text-muted-foreground mb-6">
-        <li><strong className="text-foreground">Tokenised card storage</strong> — securely storing payment credentials for future charges without re-entering card details.</li>
-        <li><strong className="text-foreground">Scheduled billing</strong> — automated charges on defined intervals (weekly, monthly, annual) with proration support.</li>
-        <li><strong className="text-foreground">Multi-currency support</strong> — if you serve international customers, you need local currency billing to reduce failed payments and disputes.</li>
+        <li><strong className="text-foreground">Tokenised card storage</strong>, securely storing payment credentials for future charges without re-entering card details.</li>
+        <li><strong className="text-foreground">Scheduled billing</strong>, automated charges on defined intervals (weekly, monthly, annual) with proration support.</li>
+        <li><strong className="text-foreground">Multi-currency support</strong>, if you serve international customers, you need local currency billing to reduce failed payments and disputes.</li>
       </ul>
 
       <h2 className="heading-md text-foreground mt-10 mb-4">Dunning and Retry Logic</h2>
@@ -50,9 +54,9 @@ const SubscriptionSaaS = () => {
         Failed payments are the silent killer of subscription revenue. Between 5% and 15% of recurring charges fail each month due to expired cards, insufficient funds, or bank declines. A strong provider offers:
       </p>
       <ul className="list-disc pl-6 space-y-3 text-muted-foreground mb-6">
-        <li><strong className="text-foreground">Smart retry scheduling</strong> — retrying failed charges at optimal times based on historical success patterns.</li>
-        <li><strong className="text-foreground">Card updater services</strong> — automatically updating expired or replaced card details through network token services.</li>
-        <li><strong className="text-foreground">Dunning email integration</strong> — notifying customers of failed payments before cancellation.</li>
+        <li><strong className="text-foreground">Smart retry scheduling</strong>, retrying failed charges at optimal times based on historical success patterns.</li>
+        <li><strong className="text-foreground">Card updater services</strong>, automatically updating expired or replaced card details through network token services.</li>
+        <li><strong className="text-foreground">Dunning email integration</strong>, notifying customers of failed payments before cancellation.</li>
       </ul>
 
       <h2 className="heading-md text-foreground mt-10 mb-4">Subscription Fraud Exposure</h2>

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 
@@ -39,6 +40,9 @@ const WhyStripeFreezes = () => {
         Stripe Account Freezes in the UK: Common Triggers and Prevention
       </h1>
       
+
+      
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Stripe does not freeze accounts at random. In the UK, freezes usually happen when automated risk systems detect activity that no longer matches the information originally provided at signup.
@@ -57,7 +61,7 @@ const WhyStripeFreezes = () => {
         </p>
 
         <InlineAssessmentCTA
-          context="Find out if your business profile is a good fit for Stripe — or if another provider would be safer."
+          context="Find out if your business profile is a good fit for Stripe, or if another provider would be safer."
         />
         
         <p>

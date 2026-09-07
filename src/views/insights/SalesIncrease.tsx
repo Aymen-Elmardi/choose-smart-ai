@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const SalesIncrease = () => {
   return (
@@ -16,6 +17,8 @@ const SalesIncrease = () => {
         Sales Growth Triggers Document Requests: How to Prepare
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Sudden growth can look risky from a payment provider's point of view.

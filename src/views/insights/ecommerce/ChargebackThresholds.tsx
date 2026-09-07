@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
 import { BOOKING_URL } from "@/lib/booking";
@@ -65,6 +66,9 @@ const ChargebackThresholds = () => {
         Beyond the 1%: Navigating Chargeback Thresholds With High Risk Payment Processors
       </h1>
 
+
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-4">
         For many online businesses the moment chargebacks cross one percent something unexpected happens.
       </p>

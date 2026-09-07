@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -73,6 +74,9 @@ const StripeAccountFrozen = () => {
         Stripe Account Frozen? The 5 Hidden Reasons Why (And How to Prevent the Next Freeze)
       </h1>
       
+
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p className="text-lg">
           When your Stripe account is frozen, the immediate feeling is panic. Your revenue stream is cut off, and your funds are inaccessible. <strong className="text-foreground">This is a business crisis</strong>, and your first priority is to stabilize the situation.

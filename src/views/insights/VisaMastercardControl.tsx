@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import SourcesCitation from "@/components/SourcesCitation";
 
 const visaMastercardSources = [
@@ -23,7 +24,7 @@ const VisaMastercardControl = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Visa and Mastercard Control Card Payments. What Businesses Can and Cannot Do
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           If you accept card payments, your business operates inside a system you do not control.
@@ -103,7 +104,7 @@ const VisaMastercardControl = () => {
         <p>Specifically:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            Whether your business model fits your provider's risk appetite — especially for{" "}
+            Whether your business model fits your provider's risk appetite, especially for{" "}
              <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">
                marketplace and platform models
             </Link>
@@ -125,7 +126,7 @@ const VisaMastercardControl = () => {
         <ul className="list-disc pl-6 space-y-2">
           <li>Rapid increase in volume</li>
           <li>
-            Expansion into new countries —{" "}
+            Expansion into new countries,{" "}
             <Link href="/insights/international-sales" className="text-primary hover:underline">
               international sales often trigger reviews
             </Link>

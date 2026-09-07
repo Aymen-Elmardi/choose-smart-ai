@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { BOOKING_URL } from "@/lib/booking";
 
@@ -60,6 +61,9 @@ const HighRiskToHighGrowth = () => {
         From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing
       </h1>
 
+
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6">
         The phrase "high-risk eCommerce" is often misunderstood.
       </p>

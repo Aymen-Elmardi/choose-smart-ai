@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 
 const sources: Source[] = [
@@ -56,7 +57,7 @@ const ApplePayGooglePayExplained = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
         Apple Pay and Google Pay Explained: Faster Checkout, Lower Risk, Higher Approval Rates
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Apple Pay and Google Pay are often treated as simple convenience features. A nice to have. A logo at checkout.
       </p>

@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import SourcesCitation, { Source } from "@/components/SourcesCitation";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
@@ -8,7 +9,7 @@ const BuyNowPayLaterUK = () => {
   const faqs = [
     {
       question: "What is Buy Now Pay Later and how does it work for merchants?",
-      answer: "Buy Now Pay Later (BNPL) lets customers split a purchase into instalments — usually interest-free — while the merchant receives the full payment upfront from the BNPL provider. The provider assumes the credit and fraud risk, so merchants are paid immediately regardless of whether the customer completes their instalments."
+      answer: "Buy Now Pay Later (BNPL) lets customers split a purchase into instalments (usually interest-free), while the merchant receives the full payment upfront from the BNPL provider. The provider assumes the credit and fraud risk, so merchants are paid immediately regardless of whether the customer completes their instalments."
     },
     {
       question: "Which BNPL providers work best for UK merchants?",
@@ -64,8 +65,8 @@ const BuyNowPayLaterUK = () => {
   return (
     <InsightsArticleLayout
       title="Buy Now Pay Later for UK Merchants: The Practical Guide"
-      description="BNPL can lift conversion rates by 20–30% and increase average order value significantly. Here's how UK merchants should evaluate Klarna, Clearpay, and other providers — and what it means for your payment stack."
-      category={{ name: "Provider Fit Guides", slug: "guides" }}
+      description="BNPL can lift conversion rates by 20–30% and increase average order value significantly. Here's how UK merchants should evaluate Klarna, Clearpay, and other providers, and what it means for your payment stack."
+      category={{ name: "Guides", slug: "guides" }}
       cluster="hub"
       currentSlug="buy-now-pay-later-uk"
       keywords={["buy now pay later UK", "BNPL merchants", "Klarna for merchants", "Clearpay merchant", "BNPL payment provider", "instalment payments UK"]}
@@ -77,7 +78,7 @@ const BuyNowPayLaterUK = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
         Buy Now Pay Later for UK Merchants: The Practical Guide
       </h1>
-
+      <ArticleByline />
       <p className="text-sm text-muted-foreground mb-8">Provider Fit Guides · 6 min read</p>
 
       <div className="text-muted-foreground space-y-6">
@@ -96,7 +97,7 @@ const BuyNowPayLaterUK = () => {
           How BNPL works from a merchant's perspective
         </h2>
         <p>
-          The customer splits their purchase into instalments — usually three or four payments over six to eight weeks, interest-free. The merchant receives the full transaction amount upfront from the BNPL provider. The provider takes on all the credit and fraud risk.
+          The customer splits their purchase into instalments, usually three or four payments over six to eight weeks, interest-free. The merchant receives the full transaction amount upfront from the BNPL provider. The provider takes on all the credit and fraud risk.
         </p>
         <p>
           This is the key structural point: you are not extending credit to your customer. You are selling to the BNPL provider, who then collects from the customer. If the customer misses payments, that is the provider's problem, not yours.
@@ -205,7 +206,7 @@ const BuyNowPayLaterUK = () => {
         </p>
 
         <InlineAssessmentCTA
-          context="Not sure which payment setup — including BNPL — fits your business model? See how your risk profile matches across 21 providers."
+          context="Not sure which payment setup (including BNPL) fits your business model? See how your risk profile matches across 21 providers."
         />
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -222,7 +223,7 @@ const BuyNowPayLaterUK = () => {
           Lower chargeback exposure
         </h3>
         <p>
-          When a customer pays via BNPL, the BNPL provider is the merchant of record for that transaction. If there is a dispute, it sits with the BNPL provider, not you. This means your card processor sees a lower volume of chargebacks relative to your total sales volume — which improves your chargeback ratio and makes your account look lower risk during underwriting reviews.
+          When a customer pays via BNPL, the BNPL provider is the merchant of record for that transaction. If there is a dispute, it sits with the BNPL provider, not you. This means your card processor sees a lower volume of chargebacks relative to your total sales volume, which improves your chargeback ratio and makes your account look lower risk during underwriting reviews.
         </p>
         <p>
           For businesses operating close to Visa and Mastercard's chargeback thresholds, this can be a meaningful structural improvement.
@@ -239,7 +240,7 @@ const BuyNowPayLaterUK = () => {
           Underwriting perception
         </h3>
         <p>
-          When payment providers underwrite your account, they look at your entire payment mix. A business using Klarna alongside a card processor signals a more mature, diversified payment setup — which generally leads to smoother approvals and more favourable terms.
+          When payment providers underwrite your account, they look at your entire payment mix. A business using Klarna alongside a card processor signals a more mature, diversified payment setup, which generally leads to smoother approvals and more favourable terms.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -252,7 +253,7 @@ const BuyNowPayLaterUK = () => {
           The FCA has confirmed that unregulated BNPL products will come under its oversight. This will require providers to carry out affordability checks, give consumers clearer rights, and hold appropriate authorisations. The timeline has shifted several times, but the direction is clear.
         </p>
         <p>
-          For merchants, this means two things. First, smaller or less well-capitalised BNPL providers may exit the market or reduce availability as compliance costs rise. Second, the larger providers — Klarna, Clearpay, PayPal — are already aligned with FCA requirements and are unlikely to be affected materially.
+          For merchants, this means two things. First, smaller or less well-capitalised BNPL providers may exit the market or reduce availability as compliance costs rise. Second, the larger providers (Klarna, Clearpay, PayPal), are already aligned with FCA requirements and are unlikely to be affected materially.
         </p>
         <p>
           Integrating with a regulated or FCA-ready BNPL provider now avoids future disruption to your checkout flow.
@@ -265,10 +266,10 @@ const BuyNowPayLaterUK = () => {
           BNPL is not the right option in every situation.
         </p>
         <ul className="list-disc pl-6 space-y-2">
-          <li>Average transaction values below £30 — the conversion uplift rarely offsets the higher merchant fee at low ticket sizes</li>
-          <li>B2B-only businesses — BNPL is a consumer product and does not map well onto business invoice cycles</li>
-          <li>Subscription models requiring recurring automated billing — BNPL works for fixed instalments, not ongoing recurring charges</li>
-          <li>Heavily regulated sectors — healthcare prescriptions, financial services, and gambling typically cannot use BNPL due to sector-specific restrictions</li>
+          <li>Average transaction values below £30: the conversion uplift rarely offsets the higher merchant fee at low ticket sizes</li>
+          <li>B2B-only businesses: BNPL is a consumer product and does not map well onto business invoice cycles</li>
+          <li>Subscription models requiring recurring automated billing: BNPL works for fixed instalments, not ongoing recurring charges</li>
+          <li>Heavily regulated sectors such as healthcare prescriptions, financial services, and gambling typically cannot use BNPL due to sector-specific restrictions</li>
         </ul>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
@@ -295,7 +296,7 @@ const BuyNowPayLaterUK = () => {
           BNPL works best as part of a coherent payment strategy, not as a standalone addition. The providers that are most likely to support your business long-term are those whose risk appetite, approval criteria, and sector experience match where your business actually sits.
         </p>
         <p>
-          If you are evaluating your payment mix — whether that includes BNPL, card acquiring, or both — understanding your risk profile first gives you a much clearer picture of which providers are genuinely open to your business.
+          If you are evaluating your payment mix (whether that includes BNPL, card acquiring, or both), understanding your risk profile first gives you a much clearer picture of which providers are genuinely open to your business.
         </p>
       </div>
 

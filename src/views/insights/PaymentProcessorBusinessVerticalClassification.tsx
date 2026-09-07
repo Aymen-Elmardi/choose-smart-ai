@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -68,7 +69,7 @@ const PaymentProcessorBusinessVerticalClassification = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         How Payment Processors Classify Your Business Vertical (and Why It Matters)
       </h1>
-
+      <ArticleByline />
       <p className="text-foreground/90 mb-4">
         When a business applies for a merchant account or signs up with a payment processor, one of the first things that happens is classification. The processor assigns a four-digit Merchant Category Code (MCC) to the business, and that code determines almost everything that follows: the interchange rate applied to every transaction, whether specific processors will accept the business at all, the level of compliance scrutiny from the card networks, and the reserve requirements the processor will impose.
       </p>
@@ -83,7 +84,11 @@ const PaymentProcessorBusinessVerticalClassification = () => {
       <p className="text-foreground/90 mb-6">
         There are approximately 600 MCC codes in active use. Each one corresponds to a specific type of business.{" "}
         <a href="https://stripe.com/guides/merchant-category-codes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Stripe's MCC reference guide</a>{" "}
-        is one of the more readable public databases of active codes. A garden centre and a pharmaceutical retailer both accept card payments, but they operate under different MCCs with different interchange rates and different risk profiles. When a cardholder pays a garden centre on a Visa Signature Rewards card, the interchange rate might be 1.65% + 10¢. The same card at a pharmaceutical retailer may carry a different rate. Across millions of transactions, these differences are material.
+        is one of the more readable public databases of active codes. A garden centre and a pharmaceutical retailer both accept card payments, but they operate under different MCCs with different interchange rates and different risk profiles.
+      </p>
+
+      <p className="text-foreground/90 mb-6">
+        When a cardholder pays a garden centre on a Visa Signature Rewards card, the interchange rate might be 1.65% + 10¢. The same card at a pharmaceutical retailer may carry a different rate. Across millions of transactions, these differences are material.
       </p>
 
       <h3 className="text-lg font-semibold text-foreground mt-8 mb-3">How MCCs are assigned</h3>

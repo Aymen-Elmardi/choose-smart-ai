@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const InternationalSales = () => {
   return (
@@ -16,6 +17,8 @@ const InternationalSales = () => {
         International Sales and Payment Provider Checks: What to Expect
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Selling internationally adds complexity.

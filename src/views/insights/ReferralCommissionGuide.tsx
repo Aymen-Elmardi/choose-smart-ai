@@ -1,5 +1,6 @@
 'use client'
 import { useEffect } from "react";
+import ArticleByline from "@/components/ArticleByline";
 import Link from 'next/link';
 import { ArrowLeft, Users, TrendingUp, Shield, AlertTriangle, CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
@@ -47,6 +48,8 @@ const ReferralCommissionGuide = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
               How Businesses Earn Recurring Commission by Referring Payment Providers
             </h1>
+
+            <ArticleByline />
             <p className="text-xl text-muted-foreground leading-relaxed">
               If you run an agency, consultancy, platform, or any business that advises other businesses, you're probably already influencing one of the most valuable decisions they make: which payment provider to use.
             </p>

@@ -1,13 +1,14 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const NetVsGrossSettlement = () => {
   return (
     <InsightsArticleLayout
       title="Net vs Gross Settlement: How Payment Providers Calculate Your Payout"
       description="Understand the difference between net and gross settlement, how each model affects your cash flow, and which providers offer which approach."
-      category={{ name: "Explainer", slug: "explainer" }}
+      category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"
       currentSlug="net-vs-gross-settlement"
       keywords={["net settlement", "gross settlement", "payout", "settlement model", "fees deducted"]}
@@ -15,15 +16,15 @@ const NetVsGrossSettlement = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Net vs Gross Settlement: How Payment Providers Calculate Your Payout
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
-          How your payment provider settles funds to your bank account is one of the most important operational details in your payment setup — and one of the least discussed.
+          How your payment provider settles funds to your bank account is one of the most important operational details in your payment setup, and one of the least discussed.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">What Is Net Settlement?</h2>
         <p>
-          With net settlement, your provider deducts all fees, chargebacks, refunds, and reserves before transferring funds to your bank account. The amount you receive is the "net" — what's left after all deductions.
+          With net settlement, your provider deducts all fees, chargebacks, refunds, and reserves before transferring funds to your bank account. The amount you receive is the "net", what's left after all deductions.
         </p>
         <p>
           This is the default model for most providers including Stripe, PayPal, and Square. It's simpler because you receive a single deposit with everything already accounted for.
@@ -31,7 +32,7 @@ const NetVsGrossSettlement = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">What Is Gross Settlement?</h2>
         <p>
-          With gross settlement, the provider pays you the full transaction amount and invoices fees separately — typically monthly. This gives you access to 100% of your sales revenue upfront, with fees paid as a separate line item.
+          With gross settlement, the provider pays you the full transaction amount and invoices fees separately, typically monthly. This gives you access to 100% of your sales revenue upfront, with fees paid as a separate line item.
         </p>
         <p>
           Enterprise providers like <Link href="/insights/adyen-enterprise-payments-platform" className="text-primary hover:underline">Adyen</Link> and <Link href="/insights/checkout-com-enterprise-platform" className="text-primary hover:underline">Checkout.com</Link> commonly offer gross settlement for qualified merchants.
@@ -87,12 +88,12 @@ const NetVsGrossSettlement = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Why This Matters for Payout Reconciliation</h2>
         <p>
-          If you're using net settlement and your <Link href="/insights/payout-settlement-explained" className="text-primary hover:underline">payouts don't match your sales</Link>, the gap is almost certainly fees, reserves, and timing — not an error. Understanding your settlement model is the first step to eliminating confusion about where your money is.
+          If you're using net settlement and your <Link href="/insights/payout-settlement-explained" className="text-primary hover:underline">payouts don't match your sales</Link>, the gap is almost certainly fees, reserves, and timing, not an error. Understanding your settlement model is the first step to eliminating confusion about where your money is.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>
         <p>
-          Your settlement model directly affects cash flow visibility and reconciliation complexity. Choose the model that matches your operational capacity — and if your current provider only offers net settlement, that's worth considering when evaluating alternatives.
+          Your settlement model directly affects cash flow visibility and reconciliation complexity. Choose the model that matches your operational capacity, and if your current provider only offers net settlement, that's worth considering when evaluating alternatives.
         </p>
       </div>
     </InsightsArticleLayout>

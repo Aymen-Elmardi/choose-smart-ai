@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
 const RollingVsFixedReserve = () => {
@@ -8,7 +9,7 @@ const RollingVsFixedReserve = () => {
     <InsightsArticleLayout
       title="Rolling Reserve vs Fixed Reserve: What Merchants Need to Know"
       description="Understand the difference between rolling and fixed reserves, how each affects your cash flow, and which reserve type you're most likely to encounter."
-      category={{ name: "Explainer", slug: "explainer" }}
+      category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"
       currentSlug="rolling-vs-fixed-reserve"
       keywords={["rolling reserve", "fixed reserve", "upfront reserve", "reserve release", "cash flow"]}
@@ -16,7 +17,7 @@ const RollingVsFixedReserve = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Rolling Reserve vs Fixed Reserve: What Merchants Need to Know
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           When a payment provider imposes a reserve on your account, the type of reserve determines how much cash is locked, for how long, and how it affects your day-to-day operations.
@@ -24,7 +25,7 @@ const RollingVsFixedReserve = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">What Is a Rolling Reserve?</h2>
         <p>
-          A rolling reserve withholds a fixed percentage of each settlement — typically 5% to 10% — and holds it for a defined period, usually 90 to 180 days. After the holding period, funds are released on a rolling basis.
+          A rolling reserve withholds a fixed percentage of each settlement (typically 5% to 10%) and holds it for a defined period, usually 90 to 180 days. After the holding period, funds are released on a rolling basis.
         </p>
         <p>
           For example, with a 10% rolling reserve on a 180-day hold, funds processed in January become available in July. The reserve balance rises as you process more, then stabilises once the oldest funds begin releasing.
@@ -32,7 +33,7 @@ const RollingVsFixedReserve = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">What Is a Fixed Reserve?</h2>
         <p>
-          A fixed reserve (sometimes called an upfront reserve or minimum reserve) requires you to deposit a set amount before processing begins — or the provider withholds settlements until the target is reached.
+          A fixed reserve (sometimes called an upfront reserve or minimum reserve) requires you to deposit a set amount before processing begins, or the provider withholds settlements until the target is reached.
         </p>
         <p>
           Fixed reserves are more common for businesses with elevated risk profiles, those recovering from compliance issues, or merchants entering <Link href="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">card network monitoring programs</Link>.
@@ -80,10 +81,10 @@ const RollingVsFixedReserve = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Can You Negotiate Reserve Terms?</h2>
         <p>
-          Yes. After demonstrating consistent low-risk processing — typically 3 to 6 months — many providers will review reserve terms on request. Learn more about <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">how to negotiate reserves</Link>.
+          Yes. After demonstrating consistent low-risk processing (typically 3 to 6 months), many providers will review reserve terms on request. Learn more about <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">how to negotiate reserves</Link>.
         </p>
         <p>
-          If reserve terms are a dealbreaker, consider providers whose <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk models</Link> align better with your business type — some providers specialise in categories that others over-reserve.
+          If reserve terms are a dealbreaker, consider providers whose <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk models</Link> align better with your business type, some providers specialise in categories that others over-reserve.
         </p>
 
         <InlineAssessmentCTA
@@ -92,7 +93,7 @@ const RollingVsFixedReserve = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>
         <p>
-          Understanding which type of reserve you're subject to — and why — is essential for managing cash flow and choosing the right provider. Reserves are negotiable, and the right provider match can eliminate the need for excessive reserves entirely.
+          Understanding which type of reserve you're subject to (and why) is essential for managing cash flow and choosing the right provider. Reserves are negotiable, and the right provider match can eliminate the need for excessive reserves entirely.
         </p>
       </div>
     </InsightsArticleLayout>

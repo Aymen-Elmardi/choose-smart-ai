@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
 
@@ -54,7 +55,7 @@ const MarketplaceTakeRate = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Marketplace Take Rate: How Much Should You Actually Charge?
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Every marketplace founder eventually asks the same question: what percentage should we actually keep?

@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { BOOKING_URL } from "@/lib/booking";
 
@@ -7,7 +8,7 @@ const HighRiskEcommerce = () => {
   const faqs = [
     {
       question: "Why do high-risk ecommerce businesses struggle with Stripe or Square?",
-      answer: "Stripe and Square use automated, blended risk models designed for low-risk merchants. High-risk ecommerce businesses — selling supplements, electronics, adult products, or CBD — trigger risk flags that lead to account freezes, holds, or termination, often without warning."
+      answer: "Stripe and Square use automated, blended risk models designed for low-risk merchants. High-risk ecommerce businesses (selling supplements, electronics, adult products, or CBD), trigger risk flags that lead to account freezes, holds, or termination, often without warning."
     },
     {
       question: "Which payment processors accept high-risk ecommerce?",
@@ -31,8 +32,11 @@ const HighRiskEcommerce = () => {
         Payment Processors for High-Risk E-commerce Businesses
       </h1>
 
+
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
-        If your ecommerce business has been rejected by Stripe, Square, or PayPal, it is almost certainly because of how those providers classify risk — not because of anything wrong with your business.
+        If your ecommerce business has been rejected by Stripe, Square, or PayPal, it is almost certainly because of how those providers classify risk, not because of anything wrong with your business.
       </p>
 
       <h2 className="heading-md text-foreground mt-10 mb-4">Why High-Risk Ecommerce Struggles with Mainstream Providers</h2>
@@ -55,7 +59,7 @@ const HighRiskEcommerce = () => {
 
       <h2 className="heading-md text-foreground mt-10 mb-4">How Risk Appetite Differs Across Providers</h2>
       <p className="text-muted-foreground mb-4">
-        Every payment provider has a risk appetite — the range of businesses they are willing to underwrite. This appetite is shaped by their acquiring bank relationships, their reserve capital, and their regulatory exposure. A provider that is comfortable with travel businesses may still reject CBD merchants, because the risk profile is entirely different.
+        Every payment provider has a risk appetite, the range of businesses they are willing to underwrite. This appetite is shaped by their acquiring bank relationships, their reserve capital, and their regulatory exposure. A provider that is comfortable with travel businesses may still reject CBD merchants, because the risk profile is entirely different.
       </p>
       <p className="text-muted-foreground mb-8">
         This is why matching matters more than marketing. A provider may advertise "high-risk support" but still reject your specific combination of industry, volume, and business model.

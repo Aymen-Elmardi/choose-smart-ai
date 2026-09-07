@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -62,7 +63,7 @@ const HowToChoosePaymentProcessor = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         How to Choose a Payment Processor: The Business Owner's Guide
       </h1>
-
+      <ArticleByline />
       <p className="text-foreground/90 mb-4">
         Most guides to choosing a payment processor start and end with a rate comparison. Compare the percentages, pick the lowest number, move on. That approach misses almost everything that actually determines whether a processor works for your business six months from now: whether it matches your risk profile, whether it integrates with what you already run, and whether the "low rate" is still low once you add the fees that never make it into the headline quote.
       </p>
@@ -207,7 +208,11 @@ const HowToChoosePaymentProcessor = () => {
         Choosing badly the first time is expensive to fix. Plan for one to three percent of annual processing volume in total transition costs if you switch later, plus three to twelve weeks of a team member's partial attention managing the migration. A standard e-commerce migration with a supported platform connector typically runs $500 to $2,500 in developer and integration time on top of that.
       </p>
       <p className="text-foreground/90 mb-8">
-        One in five small businesses that accept card payments switched their primary processor within the past two years, most commonly chasing lower cost, better reporting, or faster setup. That is a normal, manageable process if you plan for it. It is a considerably more painful one if you are forced into it by a sudden account freeze rather than choosing the timing yourself. Watch for stranded costs too: a five-terminal lease at $69 a month over four years works out to over $16,000 in committed payments that switching processors does not cancel, since the leasing company is a separate legal entity from the processor.
+        One in five small businesses that accept card payments switched their primary processor within the past two years, most commonly chasing lower cost, better reporting, or faster setup. That is a normal, manageable process if you plan for it. It is a considerably more painful one if you are forced into it by a sudden account freeze rather than choosing the timing yourself.
+      </p>
+
+      <p className="text-foreground/90 mb-8">
+        Watch for stranded costs too: a five-terminal lease at $69 a month over four years works out to over $16,000 in committed payments that switching processors does not cancel, since the leasing company is a separate legal entity from the processor.
       </p>
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">A Practical Checklist Before You Sign</h2>

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline, { GROWTH_ARTICLE_AUTHOR } from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
 
@@ -49,6 +50,7 @@ const MarketplaceSplitPayments = () => {
       category={{ name: "Guides", slug: "guides" }}
       cluster="hub"
       currentSlug="marketplace-split-payments"
+      author={GROWTH_ARTICLE_AUTHOR}
       publishedTime="2026-08-27"
       modifiedTime="2026-08-27"
       image="https://chosepayments.com/insights/marketplace-split-payments-cover.png"
@@ -74,10 +76,7 @@ const MarketplaceSplitPayments = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
         Marketplace Split Payments: How They Work and What Actually Goes Wrong
       </h1>
-
-      <p className="text-sm text-muted-foreground italic mb-8">
-        By Madalsa Bhat, Growth Strategist. Published August 27, 2026.
-      </p>
+      <ArticleByline />
 
       <div className="text-muted-foreground space-y-6">
         <p>

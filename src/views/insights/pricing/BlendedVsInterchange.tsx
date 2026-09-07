@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 
 const blendedSources: Source[] = [
@@ -26,6 +27,8 @@ const BlendedVsInterchange = () => {
         Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy
       </h1>
 
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Most businesses believe they are choosing between Blended Pricing and Interchange++ (IC++) based on which one is "cheaper." In reality, you are choosing between predictability and exposure, simplicity and scrutiny, and operational tolerance versus financial optimization.
       </p>

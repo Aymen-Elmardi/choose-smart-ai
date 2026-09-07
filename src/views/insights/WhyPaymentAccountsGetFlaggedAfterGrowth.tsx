@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhyPaymentAccountsGetFlaggedAfterGrowth = () => {
   return (
@@ -16,6 +17,8 @@ const WhyPaymentAccountsGetFlaggedAfterGrowth = () => {
         Growth-Related Account Flags: What Triggers Them
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Seeing your payment account reviewed or flagged just after your business starts growing can feel confusing and frustrating.

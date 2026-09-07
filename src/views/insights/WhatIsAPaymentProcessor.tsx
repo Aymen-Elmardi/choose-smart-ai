@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -152,7 +153,7 @@ const WhatIsAPaymentProcessor = () => {
     <InsightsArticleLayout
       title="What Is a Payment Processor? How It Works and Why It Matters"
       description="A payment processor moves the transaction data between a merchant, the card networks, and the issuing bank. Here is exactly how that works, who the major players are, and why the choice matters more than the rate on the page."
-      category={{ name: "Explainer", slug: "explainer" }}
+      category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"
       currentSlug="what-is-a-payment-processor"
       publishedTime="2026-07-29"
@@ -175,7 +176,7 @@ const WhatIsAPaymentProcessor = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         What Is a Payment Processor? How It Works and Why It Matters
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
         Every time a customer pays with a card, online or in person, a payment processor is the piece of infrastructure that makes the money move. Most business owners never think about it until something goes wrong: a transaction declines for no obvious reason, a payout is delayed, or an account gets frozen mid-growth. At that point, understanding what a payment processor actually does, and what it does not do, becomes suddenly important.
       </p>
@@ -316,7 +317,11 @@ const WhatIsAPaymentProcessor = () => {
         <p className="text-muted-foreground mb-4">
           The reason this chain exists, rather than money moving directly from customer to merchant, is risk allocation. Visa alone processed an estimated $14.2 trillion in payments volume and 257.5 billion transactions in a recent year, an 8 to 10% year-over-year increase ({" "}
           <a href="https://coinlaw.io/visa-statistics/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CoinLaw, Visa Statistics 2026</a>). Mastercard processed roughly $10.6 trillion in the same period ({" "}
-          <a href="https://coinlaw.io/global-payment-network-statistics/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CoinLaw, Global Payment Network Statistics</a>). At that scale, every participant in the chain, issuer, network, acquirer, and processor, needs a defined, auditable role, because fraud, disputes, and credit risk have to be allocated somewhere specific when something goes wrong.
+          <a href="https://coinlaw.io/global-payment-network-statistics/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CoinLaw, Global Payment Network Statistics</a>).
+        </p>
+
+        <p className="text-muted-foreground mb-4">
+          At that scale, every participant in the chain, issuer, network, acquirer, and processor, needs a defined, auditable role, because fraud, disputes, and credit risk have to be allocated somewhere specific when something goes wrong.
         </p>
         <p className="text-muted-foreground">
           That is also why PCI DSS (Payment Card Industry Data Security Standard) compliance sits at the processor and gateway layer: the standard governs how card data is captured, transmitted, and stored, and a processor's PCI compliance is part of what a merchant is buying when they choose one over another.
@@ -337,7 +342,11 @@ const WhatIsAPaymentProcessor = () => {
           for what gets buried in processor contracts.
         </p>
         <p className="text-muted-foreground">
-          Second, and more consequentially, a processor's risk appetite for your specific business model matters more than its rate once you scale past a basic retail profile. A business generating high chargeback volume, operating in a vertical flagged as high-risk, or running a marketplace model with sub-merchant payouts needs a processor (and, underneath it, an acquirer) that has actually underwritten that model before. Hyperswitch describes the acquirer as the party that "assumes credit and chargeback risk" ({" "}
+          Second, and more consequentially, a processor's risk appetite for your specific business model matters more than its rate once you scale past a basic retail profile. A business generating high chargeback volume, operating in a vertical flagged as high-risk, or running a marketplace model with sub-merchant payouts needs a processor (and, underneath it, an acquirer) that has actually underwritten that model before.
+        </p>
+
+        <p className="text-muted-foreground">
+          Hyperswitch describes the acquirer as the party that "assumes credit and chargeback risk" ({" "}
           <a href="https://hyperswitch.io/blog/merchant-acquirer-vs-payment-processors-explained" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Hyperswitch, Merchant Acquirer vs Payment Processors Explained</a>), and mismatched risk profiles are the single most common reason accounts get frozen or terminated with little warning. See our guide on{" "}
           <Link href="/risk-alignment-payment-processor" className="text-primary hover:underline">risk alignment with payment processors</Link>{" "}
           for how that risk-matching actually works in practice.
@@ -350,7 +359,11 @@ const WhatIsAPaymentProcessor = () => {
           How Payment Processors Assess Your Business
         </h2>
         <p className="text-muted-foreground">
-          Every processor and acquirer assigns your business a Merchant Category Code (MCC) at signup, a four-digit classification that determines your baseline risk tier, interchange rate, and how closely your account gets monitored. A restaurant with online ordering gets classified differently than a general retailer, and a marketplace or subscription business gets scrutinized differently again. Understanding this classification step before you apply saves businesses from being declined or mis-priced later. See our guide to{" "}
+          Every processor and acquirer assigns your business a Merchant Category Code (MCC) at signup, a four-digit classification that determines your baseline risk tier, interchange rate, and how closely your account gets monitored. A restaurant with online ordering gets classified differently than a general retailer, and a marketplace or subscription business gets scrutinized differently again.
+        </p>
+
+        <p className="text-muted-foreground">
+          Understanding this classification step before you apply saves businesses from being declined or mis-priced later. See our guide to{" "}
           <Link href="/insights/payment-processor-business-vertical-classification" className="text-primary hover:underline">how payment processors classify your business vertical</Link>{" "}
           for the full mechanics of how that classification works.
         </p>

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const ContractsInvoices = () => {
   return (
@@ -16,6 +17,8 @@ const ContractsInvoices = () => {
         Document Requests Explained: Contracts, Invoices, and Agreements
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Payment providers sometimes ask for contracts, invoices, or customer agreements even after an account has already been approved. This can feel confusing or unnecessary, especially when nothing has changed in your business.

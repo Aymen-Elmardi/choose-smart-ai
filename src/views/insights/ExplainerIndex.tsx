@@ -44,7 +44,7 @@ const explainerArticles = [
   },
   {
     title: "Credit Card Payments Explained: How They Work Behind the Scenes",
-    description: "What actually happens when a customer pays by credit card? The full journey from tap to settlement — and what it means for your merchant fees.",
+    description: "What actually happens when a customer pays by credit card? The full journey from tap to settlement, and what it means for your merchant fees.",
     slug: "/insights/credit-card-payments-explained",
     icon: CreditCard,
   },
@@ -90,7 +90,7 @@ const faqs = [
   {
     question: "What's the difference between an explainer and a guide?",
     answer:
-      "Our explainers break down a single payments concept — a fee structure, a settlement mechanic, a piece of terminology — in plain English. Guides (in a separate section) walk through a process end to end, like switching providers or preparing for underwriting.",
+      "Our explainers break down a single payments concept (a fee structure, a settlement mechanic, a piece of terminology) in plain English. Guides (in a separate section) walk through a process end to end, like switching providers or preparing for underwriting.",
   },
   {
     question: "Why do payment terms matter if I'm not a developer?",
@@ -100,7 +100,7 @@ const faqs = [
   {
     question: "Do these explainers apply to both UK and EU businesses?",
     answer:
-      "Most of the mechanics — settlement, reserves, wallet payments, scheme terminology — are the same across UK and EU card schemes. Where a rule is UK-specific (for example, certain SCA thresholds), the individual article calls that out.",
+      "Most of the mechanics (settlement, reserves, wallet payments, scheme terminology) are the same across UK and EU card schemes. Where a rule is UK-specific (for example, certain SCA thresholds), the individual article calls that out.",
   },
 ];
 
@@ -128,7 +128,7 @@ const ExplainerIndex = () => {
           Payment Explainers
         </h1>
         <p className="text-lg text-muted-foreground mb-6">
-          Payments has its own vocabulary — settlement, reserves, SCA exemptions, scheme rules — and most of it is never explained anywhere a merchant would actually read it. These explainers cover the mechanics behind the terms, in plain English, so you can read a provider's contract or a processing statement and know exactly what you're looking at.
+          Payments has its own vocabulary (settlement, reserves, SCA exemptions, scheme rules), and most of it is never explained anywhere a merchant would actually read it. These explainers cover the mechanics behind the terms, in plain English, so you can read a provider's contract or a processing statement and know exactly what you're looking at.
         </p>
         <p className="text-muted-foreground mb-12">
           Start with whichever concept is costing you time right now, or work through them in order if you're new to how payment processing actually works end to end.

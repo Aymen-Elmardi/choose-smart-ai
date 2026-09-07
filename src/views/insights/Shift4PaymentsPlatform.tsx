@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 import { Shield, Globe, Building2, Zap, CreditCard, BarChart3 } from "lucide-react";
 
@@ -65,7 +66,7 @@ const Shift4PaymentsPlatform = () => {
     <InsightsArticleLayout
       title="Shift4 Payments: The Global Payments Giant Most Businesses Have Never Heard Of"
       description="Shift4 Payments is one of the largest payment technology companies in the world. Learn what they offer, who they serve best, and why they matter for long term payment stability."
-      category={{ name: "Provider Deep Dive", slug: "providers" }}
+      category={{ name: "Provider Deep Dives", slug: "providers" }}
       cluster="provider"
       currentSlug="shift4-payments-platform"
       publishedTime="2026-01-24"
@@ -77,6 +78,8 @@ const Shift4PaymentsPlatform = () => {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
           Shift4 Payments: The Global Payments Giant Most Businesses Have Never Heard Of
         </h1>
+
+        <ArticleByline />
         <p className="text-xl text-muted-foreground leading-relaxed">
           Shift4 Payments is one of the largest payment technology companies in the world, yet many business owners have never heard of it. That is not because it is small or new. It is because Shift4 has grown by powering complex, high volume businesses behind the scenes rather than marketing aggressively to startups.
         </p>

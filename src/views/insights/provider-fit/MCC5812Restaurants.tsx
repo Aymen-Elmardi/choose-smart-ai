@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { BOOKING_URL } from "@/lib/booking";
 
@@ -31,13 +32,16 @@ const MCC5812Restaurants = () => {
         MCC 5812: Payment Gateways for UK Restaurants and Food Businesses
       </h1>
 
+
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         If you operate a restaurant, takeaway, or food business in the UK, your payment provider classifies you under MCC 5812. This code directly affects your processing rates, reserve requirements, and which providers will approve your application.
       </p>
 
       <h2 className="heading-md text-foreground mt-10 mb-4">What MCC 5812 Means</h2>
       <p className="text-muted-foreground mb-6">
-        Merchant Category Codes are four-digit codes assigned by card networks to classify businesses. MCC 5812 covers eating places, restaurants, and food delivery operations. This code determines your interchange rate tier, your risk classification, and how acquirers evaluate your application. It is not something you choose — your provider assigns it based on your business description.
+        Merchant Category Codes are four-digit codes assigned by card networks to classify businesses. MCC 5812 covers eating places, restaurants, and food delivery operations. This code determines your interchange rate tier, your risk classification, and how acquirers evaluate your application. It is not something you choose, your provider assigns it based on your business description.
       </p>
 
       <h2 className="heading-md text-foreground mt-10 mb-4">Why Hospitality Businesses Trigger Reserves</h2>

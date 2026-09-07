@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import Link from 'next/link';
 
 const AdyenVsFirstData = () => {
@@ -30,7 +31,7 @@ const AdyenVsFirstData = () => {
     <InsightsArticleLayout
       title="Adyen vs First Data: Which Enterprise Processor Wins?"
       description="Adyen vs First Data comparison: pricing, features, approval speed. Which enterprise processor fits your volume and risk profile?"
-      category={{ name: "Provider Deep Dive", slug: "providers" }}
+      category={{ name: "Provider Deep Dives", slug: "providers" }}
       cluster="provider"
       currentSlug="adyen-vs-first-data"
       publishedTime="2026-02-05"
@@ -49,6 +50,7 @@ const AdyenVsFirstData = () => {
         "enterprise payments"
       ]}
     >
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Many businesses compare Adyen and First Data as if they are two versions of the same thing. They are not. On the surface, both are used by large merchants, both operate at scale, and both sit far beyond simple plug and play payment tools. That is where the similarity ends.
       </p>

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 
 const sources = [
@@ -64,7 +65,7 @@ const WhyAccountsFlaggedAfterGrowth = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Why Payment Accounts Get Flagged After a Business Grows
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Rapid growth is one of the most common reasons payment accounts get reviewed, held, or placed on a reserve.

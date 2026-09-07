@@ -1,13 +1,14 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhySomeBusinessesNeverApproved = () => {
   return (
     <InsightsArticleLayout
       title="Some Businesses Struggle to Get Approved: The Real Reason"
       description="Not all businesses are declined because they are doing something wrong. Learn why approval failures happen and how to apply correctly the first time."
-      category={{ name: "Risk & Freezes", slug: "payment-risk" }}
+      category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"
       currentSlug="why-some-businesses-never-get-approved"
       keywords={["payment provider rejection", "business approval", "payment processing approval", "merchant account declined"]}
@@ -16,6 +17,8 @@ const WhySomeBusinessesNeverApproved = () => {
         Some Businesses Struggle to Get Approved: The Real Reason
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Not all businesses are declined because they are doing something wrong.

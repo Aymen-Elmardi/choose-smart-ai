@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { BOOKING_URL } from "@/lib/booking";
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 import FAQSchema from "@/components/FAQSchema";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -75,6 +76,9 @@ const InterchangePlusPlus = () => {
         Interchange++ Pricing: The "Secret" to Lower Fees (And Why Most Businesses Never Qualify)
       </h1>
 
+
+
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Interchange++ pricing is often marketed as the ultimate goal for any serious business: the most transparent, the fairest, and the cheapest way to accept card payments.
       </p>

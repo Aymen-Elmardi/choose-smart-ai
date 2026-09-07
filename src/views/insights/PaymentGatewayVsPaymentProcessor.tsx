@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -140,7 +141,7 @@ const PaymentGatewayVsPaymentProcessor = () => {
     <InsightsArticleLayout
       title="Payment Gateway vs Payment Processor: The Actual Difference"
       description="A payment gateway captures and encrypts card data. A payment processor authorizes the transaction and moves the money. Here is what that split actually means when you're building a checkout."
-      category={{ name: "Explainer", slug: "explainer" }}
+      category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"
       currentSlug="payment-gateway-vs-payment-processor"
       publishedTime="2026-07-23"
@@ -164,7 +165,7 @@ const PaymentGatewayVsPaymentProcessor = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         Payment Gateway vs Payment Processor: The Actual Difference
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
         Ask three vendors what they sell and you will get three different answers to the same question. One calls itself a payment gateway. Another calls itself a payment processor. A third calls itself both. The confusion is not accidental: many providers, including Stripe and Square, sell both functions bundled into a single product, so the distinction disappears from the sales pitch even though it still matters technically and, for some businesses, financially.
       </p>
@@ -200,7 +201,11 @@ const PaymentGatewayVsPaymentProcessor = () => {
           Hosted vs API-Based Gateways
         </h3>
         <p className="text-muted-foreground mb-4">
-          A hosted gateway redirects the customer to a page controlled by the gateway provider to enter payment details, then redirects them back once the transaction completes. It is faster to implement and shifts most of the PCI compliance burden onto the gateway provider. A self-hosted or API-based gateway keeps the customer on your own checkout page throughout, giving you full control over branding and user experience, but it means more of your own infrastructure sits inside PCI scope, and self-hosted checkouts generally convert faster because the customer never leaves the page ({" "}
+          A hosted gateway redirects the customer to a page controlled by the gateway provider to enter payment details, then redirects them back once the transaction completes. It is faster to implement and shifts most of the PCI compliance burden onto the gateway provider.
+        </p>
+
+        <p className="text-muted-foreground mb-4">
+          A self-hosted or API-based gateway keeps the customer on your own checkout page throughout, giving you full control over branding and user experience, but it means more of your own infrastructure sits inside PCI scope, and self-hosted checkouts generally convert faster because the customer never leaves the page ({" "}
           <a href="https://www.shopify.com/ca/blog/payment-gateway-integration" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Shopify, payment gateway integration strategic guide</a>).
         </p>
         <p className="text-muted-foreground mb-8">
@@ -276,7 +281,11 @@ const PaymentGatewayVsPaymentProcessor = () => {
           Why This Distinction Matters for a Food Ordering Platform or Marketplace
         </h2>
         <p className="text-muted-foreground mb-4">
-          For a platform routing payouts to individual restaurants rather than collecting payment for itself, the gateway and processor questions compound. The platform needs a gateway that can handle a checkout experience embedded in someone else's app or website, and a processor built for split payments, meaning it can hold funds temporarily and disburse a portion to the platform and a portion to the restaurant on each order, with correct tax and compliance handling for every sub-merchant. This is a fundamentally different technical requirement than a single merchant taking payment for itself, and it is why marketplace-specific tools like Stripe Connect, Adyen for Platforms, and Braintree Marketplace exist as distinct products from their standard checkout offerings.
+          For a platform routing payouts to individual restaurants rather than collecting payment for itself, the gateway and processor questions compound. The platform needs a gateway that can handle a checkout experience embedded in someone else's app or website, and a processor built for split payments, meaning it can hold funds temporarily and disburse a portion to the platform and a portion to the restaurant on each order, with correct tax and compliance handling for every sub-merchant.
+        </p>
+
+        <p className="text-muted-foreground mb-4">
+          This is a fundamentally different technical requirement than a single merchant taking payment for itself, and it is why marketplace-specific tools like Stripe Connect, Adyen for Platforms, and Braintree Marketplace exist as distinct products from their standard checkout offerings.
         </p>
         <p className="text-muted-foreground mb-4">
           Getting this wrong at the platform level is expensive to unwind later. A platform that launches on a standard single-merchant processor and later needs to add restaurant payouts often has to rebuild its entire payment integration from scratch. Understanding how processors classify different business models by risk and structure before you build is worth doing early, as covered in our guide to{" "}
@@ -356,7 +365,11 @@ const PaymentGatewayVsPaymentProcessor = () => {
           The Bottom Line
         </h2>
         <p className="text-muted-foreground mb-4">
-          The gateway captures and moves the data. The processor decides whether the money moves and gets it into your account. Most businesses will use a single provider that bundles both, and that is a perfectly reasonable choice for most standard use cases. What matters is knowing which layer you are actually evaluating when a sales rep describes their product, so you are comparing gateway features to gateway features and processor risk terms to processor risk terms, rather than treating every vendor conversation as the same decision. Our guide on{" "}
+          The gateway captures and moves the data. The processor decides whether the money moves and gets it into your account. Most businesses will use a single provider that bundles both, and that is a perfectly reasonable choice for most standard use cases.
+        </p>
+
+        <p className="text-muted-foreground mb-4">
+          What matters is knowing which layer you are actually evaluating when a sales rep describes their product, so you are comparing gateway features to gateway features and processor risk terms to processor risk terms, rather than treating every vendor conversation as the same decision. Our guide on{" "}
           <Link href="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>{" "}
           walks through that comparison in more depth.
         </p>

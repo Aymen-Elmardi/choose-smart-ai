@@ -3,13 +3,13 @@ import Shift4VsStripe from '@/views/insights/Shift4VsStripe'
 
 export const metadata: Metadata = {
   title: 'Shift4 vs Stripe for Enterprise: Which Is Right for Your Business?',
-  description: 'Shift4 and Stripe both serve enterprise merchants — but in very different ways. Compare their strengths, pricing, and risk appetites.',
+  description: 'Shift4 and Stripe both serve enterprise merchants, but in very different ways. Compare their strengths, pricing, and risk appetites.',
   alternates: { canonical: '/insights/shift4-vs-stripe-enterprise' },
   openGraph: {
     url: 'https://chosepayments.com/insights/shift4-vs-stripe-enterprise',
     images: ['/og-default.png'],
     title: 'Shift4 vs Stripe for Enterprise: Which Is Right for Your Business? | ChosePayments',
-    description: 'Shift4 and Stripe both serve enterprise merchants — but in very different ways. Compare their strengths, pricing, and risk appetites.',
+    description: 'Shift4 and Stripe both serve enterprise merchants, but in very different ways. Compare their strengths, pricing, and risk appetites.',
     type: 'article',
   },
 }

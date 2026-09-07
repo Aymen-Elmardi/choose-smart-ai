@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link';
+import ArticleByline from "@/components/ArticleByline";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
@@ -44,7 +45,7 @@ const SourceOfFunds = () => {
       <main className="pt-24 pb-16">
         <article className="section-container max-w-3xl mx-auto">
           <InsightsBreadcrumb 
-            category={{ name: "Practical Guides", slug: "guides" }}
+            category={{ name: "Guides", slug: "guides" }}
             currentTitle="Source of Funds"
           />
           
@@ -52,6 +53,9 @@ const SourceOfFunds = () => {
             Source of Funds Requests: What They Mean and How to Respond
           </h1>
           
+
+          
+          <ArticleByline />
           <div className="prose prose-lg text-foreground/80 space-y-6">
             <p>
               "Source of funds" simply means where the money in your account comes from.
@@ -72,7 +76,7 @@ const SourceOfFunds = () => {
             </p>
             
             <p>
-              This usually happens for new businesses or when volumes change. Different providers have varying requirements — understanding <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help you prepare.
+              This usually happens for new businesses or when volumes change. Different providers have varying requirements, so understanding <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">how Stripe, Square, and PayPal assess risk</Link> can help you prepare.
             </p>
             
             <p>

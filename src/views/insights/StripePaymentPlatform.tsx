@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link';
+import ArticleByline from "@/components/ArticleByline";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
@@ -92,6 +93,8 @@ const StripePaymentPlatform = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
               Stripe: The Engine That Built the Modern Internet Economy
             </h1>
+
+            <ArticleByline />
             <p className="text-xl text-muted-foreground leading-relaxed">
               For those of us who remember the complexity of integrating payments before 2010, Stripe is nothing short of a revelation. It didn't just simplify online transactions; it fundamentally changed the barrier to entry for digital commerce.
             </p>
@@ -108,7 +111,7 @@ const StripePaymentPlatform = () => {
             </section>
 
             <InlineAssessmentCTA
-              context="Is your business optimised for Stripe's platform — or would another provider be a better fit?"
+              context="Is your business optimised for Stripe's platform, or would another provider be a better fit?"
             />
 
             {/* The API Revolution */}

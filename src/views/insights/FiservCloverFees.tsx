@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
@@ -113,7 +114,7 @@ const FiservCloverFees = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
         Fiserv Clover Pricing Explained: What Merchants Pay in 2026
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6">
         Clover Pricing for Merchants: Hardware, Software, and Processing Fees
       </p>

@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhyPaymentAccountsGetFlaggedWithoutChanges = () => {
   return (
@@ -16,6 +17,8 @@ const WhyPaymentAccountsGetFlaggedWithoutChanges = () => {
         Account Flagged Without Changes? Here's What Providers Are Reacting To
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           If your payment account was flagged, reviewed, or temporarily restricted and you are certain you did not change anything, you are not alone.

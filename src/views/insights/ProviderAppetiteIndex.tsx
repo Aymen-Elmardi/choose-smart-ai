@@ -1,5 +1,6 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import Link from 'next/link';
 
 const sources = [
@@ -35,7 +36,7 @@ const ProviderAppetiteIndex = () => {
     <InsightsArticleLayout
       title="The Provider Appetite Index: Why Payment Processors Say No (And How to Get a Yes)"
       description="Payment processors don't randomly accept or decline merchants. Learn how underwriting appetite works, why applications get rejected, and how to match your business to the right provider."
-      category={{ name: "Explainer", slug: "explainer" }}
+      category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"
       currentSlug="provider-appetite-index"
       publishedTime="2026-03-12"
@@ -57,9 +58,13 @@ const ProviderAppetiteIndex = () => {
       <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 leading-tight">
         The Provider Appetite Index: Why Payment Processors Say "No" (And How to Get a "Yes")
       </h1>
+      <ArticleByline />
+      <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+        Payment processors don't randomly accept or decline merchants. Behind the scenes, each gateway or acquiring bank has an underwriting process that weighs how much risk the merchant brings. Stripe explains that fraud, chargebacks, or compliance lapses can lead processors to deem a business "high-risk," sometimes even cutting them off entirely. Visa rules require acquirers to maintain a defined risk appetite and tailor underwriting policies by merchant segment.
+      </p>
 
       <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-        Payment processors don't randomly accept or decline merchants. Behind the scenes, each gateway or acquiring bank has an underwriting process that weighs how much risk the merchant brings. Stripe explains that fraud, chargebacks, or compliance lapses can lead processors to deem a business "high-risk," sometimes even cutting them off entirely. Visa rules require acquirers to maintain a defined risk appetite and tailor underwriting policies by merchant segment. Every processor has a mental checklist of what businesses they feel comfortable supporting. If your company falls outside that appetite, you'll likely get a "no," often with only a vague explanation.
+        Every processor has a mental checklist of what businesses they feel comfortable supporting. If your company falls outside that appetite, you'll likely get a "no," often with only a vague explanation.
       </p>
 
       <p className="text-muted-foreground mb-10 leading-relaxed">

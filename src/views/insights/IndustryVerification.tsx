@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const IndustryVerification = () => {
   return (
@@ -16,6 +17,8 @@ const IndustryVerification = () => {
         High-Risk Industries Face Extra Verification: Is Yours One?
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Some industries trigger additional checks because they historically have higher refund rates or disputes.

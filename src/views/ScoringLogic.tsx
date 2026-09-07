@@ -26,7 +26,7 @@ const ScoringLogic = () => {
             How We Match You to a Provider
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-            The scoring logic behind every recommendation — no black boxes.
+            The scoring logic behind every recommendation, no black boxes.
           </p>
           <p className="text-sm text-muted-foreground">
             Based on {PROVIDER_REGISTRY.length} providers, 6 scoring axes, and real elimination rules.
@@ -43,7 +43,7 @@ const ScoringLogic = () => {
               Stage 1: Hard Elimination
             </h2>
             <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
-              Before scoring, providers that can't serve you are removed entirely. These are binary — pass or fail.
+              Before scoring, providers that can't serve you are removed entirely. These are binary: pass or fail.
             </p>
 
             <div className="grid gap-3">
@@ -98,7 +98,7 @@ const ScoringLogic = () => {
               Stage 2: Multi-Axis Scoring
             </h2>
             <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
-              Every surviving provider starts at 50 points. Risk fit dominates — it's worth more than any other dimension.
+              Every surviving provider starts at 50 points. Risk fit dominates: it's worth more than any other dimension.
             </p>
 
             <div className="overflow-x-auto rounded-xl border border-border bg-card">
@@ -201,7 +201,7 @@ const ScoringLogic = () => {
               Why Some Providers Are Avoided
             </h2>
             <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
-              The engine doesn't just show you the best match — it explicitly tells you which providers to avoid and why. This prevents businesses from wasting time applying to providers that will reject them or impose punitive conditions.
+              The engine doesn't just show you the best match: it explicitly tells you which providers to avoid and why. This prevents businesses from wasting time applying to providers that will reject them or impose punitive conditions.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -267,12 +267,12 @@ const ScoringLogic = () => {
                         {p.paymentTypes.map(t => t === "in-person" ? "🏪" : t === "online" ? "🌐" : t === "marketplace" ? "🏬" : "🔄").join(" ")}
                       </td>
                       <td className="p-3 text-center text-muted-foreground">
-                        {p.terminalSupport.includes("none") ? "—" : "✓"}
+                        {p.terminalSupport.includes("none") ? "✗" : "✓"}
                       </td>
                       <td className="p-3 text-center">
                         {p.marketplaceCapability ? (
                           <span style={{ color: "hsl(142 71% 45%)" }}>✓</span>
-                        ) : "—"}
+                        ) : "✗"}
                       </td>
                       <td className="p-3 text-center text-muted-foreground">{p.regions.join(", ")}</td>
                       <td className="p-3 text-center text-muted-foreground">

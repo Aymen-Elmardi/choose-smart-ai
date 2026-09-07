@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhyProvidersReUnderwriteExistingAccounts = () => {
   return (
@@ -16,6 +17,8 @@ const WhyProvidersReUnderwriteExistingAccounts = () => {
         When Providers Re-Underwrite Existing Accounts
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Many businesses assume underwriting only happens when a payment account is first approved.

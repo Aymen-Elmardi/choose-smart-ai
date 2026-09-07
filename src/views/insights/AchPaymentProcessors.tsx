@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -157,7 +158,7 @@ const AchPaymentProcessors = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
         ACH Payment Processors: When Bank Transfer Makes More Sense Than Cards
       </h1>
-
+      <ArticleByline />
       <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
         Card processing charges a percentage of every transaction. ACH charges a flat fee that barely moves regardless of transaction size. For a $30 order, that difference is trivial. For a $10,000 invoice, it is the difference between paying $250 in card fees and paying less than a dollar. Once your average transaction size climbs, the case for ACH stops being a minor optimization and starts being one of the more consequential decisions in how you accept payment.
       </p>
@@ -279,7 +280,11 @@ const AchPaymentProcessors = () => {
         </h2>
         <p className="text-muted-foreground">
           Same-Day ACH has expanded steadily since its introduction, with the per-payment limit raised from $1 million to $100,000 in 2020 and up to the current level in the years since. Nacha's most recent risk management rule package, effective June 2026, requires more robust monitoring of outgoing ACH entries specifically to combat fraud, and underwriters are now expected to review how merchants validate account identities before initiating transfers ({" "}
-          <a href="https://www.nacha.org/content/summary-upcoming-rule-changes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Nacha, summary of upcoming rule changes</a>). If you are processing ACH at any real volume, account validation at the point of setup is no longer optional, it is becoming a compliance expectation.
+          <a href="https://www.nacha.org/content/summary-upcoming-rule-changes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Nacha, summary of upcoming rule changes</a>).
+        </p>
+
+        <p className="text-muted-foreground">
+          If you are processing ACH at any real volume, account validation at the point of setup is no longer optional, it is becoming a compliance expectation.
         </p>
       </section>
 

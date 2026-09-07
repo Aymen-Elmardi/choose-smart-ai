@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import { Source } from "@/components/SourcesCitation";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import FAQSchema from "@/components/FAQSchema";
@@ -53,7 +54,7 @@ const Shift4VsStripe = () => {
     <InsightsArticleLayout
       title="Shift4 vs Stripe: Choosing the Right Payment Engine for Your Enterprise"
       description="A strategic comparison of Shift4 and Stripe for enterprise payments. Learn how their pricing, risk models, and commerce capabilities differ to find the right fit for your business."
-      category={{ name: "Provider Deep Dive", slug: "providers" }}
+      category={{ name: "Provider Deep Dives", slug: "providers" }}
       cluster="provider"
       currentSlug="shift4-vs-stripe-enterprise"
       publishedTime="2026-03-26"
@@ -67,6 +68,8 @@ const Shift4VsStripe = () => {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
           Shift4 vs Stripe: Choosing the Right Payment Engine for Your Enterprise
         </h1>
+
+        <ArticleByline />
         <p className="text-xl text-muted-foreground leading-relaxed">
           When evaluating enterprise grade payment processors, businesses are often presented with a choice between two fundamentally different philosophies. On one side is Stripe, the API first engine that arguably built the modern internet economy. On the other is Shift4, a global payments giant that powers complex, multi location commerce for some of the world's most demanding industries.
         </p>

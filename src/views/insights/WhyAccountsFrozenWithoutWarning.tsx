@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
 const WhyAccountsFrozenWithoutWarning = () => {
@@ -17,6 +18,8 @@ const WhyAccountsFrozenWithoutWarning = () => {
         Account Freezes Without Warning: What Triggers Them
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Payment providers are not always able to warn merchants before taking action.
@@ -31,7 +34,7 @@ const WhyAccountsFrozenWithoutWarning = () => {
         </p>
         
         <InlineAssessmentCTA
-          context="Find out if your business is at risk of an account freeze — and which providers are a safer fit."
+          context="Find out if your business is at risk of an account freeze, and which providers are a safer fit."
         />
         
         <p>

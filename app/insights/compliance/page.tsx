@@ -3,7 +3,7 @@ import ComplianceIndex from '@/views/insights/ComplianceIndex'
 
 export const metadata: Metadata = {
   title: 'Payment Compliance: Scheme Rules, Reserves & Monitoring',
-  description: 'How Visa and Mastercard scheme rules, reserve requirements, and monitoring programmes actually work — and what triggers them for merchants.',
+  description: 'How Visa and Mastercard scheme rules, reserve requirements, and monitoring programmes actually work, and what triggers them for merchants.',
   alternates: { canonical: '/insights/compliance' },
   openGraph: {
     url: 'https://chosepayments.com/insights/compliance',

@@ -42,9 +42,9 @@ const complianceArticles = [
 
 const faqs = [
   {
-    question: "Who actually sets these rules — the provider or the card schemes?",
+    question: "Who actually sets these rules, the provider or the card schemes?",
     answer:
-      "Card schemes (Visa, Mastercard) set the underlying rules; your payment provider and acquirer are contractually required to enforce them. That's why a rule can feel like 'your provider's decision' when it's actually a scheme requirement being passed down — providers have limited discretion to waive it.",
+      "Card schemes (Visa, Mastercard) set the underlying rules; your payment provider and acquirer are contractually required to enforce them. That's why a rule can feel like 'your provider's decision' when it's actually a scheme requirement being passed down, providers have limited discretion to waive it.",
   },
   {
     question: "If I'm flagged by a scheme monitoring programme, is that permanent?",
@@ -82,7 +82,7 @@ const ComplianceIndex = () => {
           Payment Compliance
         </h1>
         <p className="text-lg text-muted-foreground mb-6">
-          Reserves, monitoring programmes, and scheme rules can feel arbitrary when you're on the receiving end of them — but they follow specific rules set by Visa and Mastercard that your provider is required to enforce. These guides explain the actual mechanics, so you know what's driving a decision and what levers you have to respond to it.
+          Reserves, monitoring programmes, and scheme rules can feel arbitrary when you're on the receiving end of them, but they follow specific rules set by Visa and Mastercard that your provider is required to enforce. These guides explain the actual mechanics, so you know what's driving a decision and what levers you have to respond to it.
         </p>
         <p className="text-muted-foreground mb-12">
           If you're dealing with a specific document or verification request rather than reserves or scheme monitoring, see our <Link href="/insights/guides" className="text-primary hover:underline">onboarding guides</Link> instead.

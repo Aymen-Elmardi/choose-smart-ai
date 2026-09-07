@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 
 const PayoutSettlementExplained = () => {
@@ -8,7 +9,7 @@ const PayoutSettlementExplained = () => {
     <InsightsArticleLayout
       title="Why Your Payout Doesn't Match Your Sales: Settlement Timing Explained"
       description="Learn why the amount you receive from your payment provider rarely matches your daily sales, and how fees, reserves, chargebacks, and settlement timing create payout discrepancies."
-      category={{ name: "Explainer", slug: "explainer" }}
+      category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"
       currentSlug="payout-settlement-explained"
       keywords={["payout", "settlement", "payout mismatch", "net settlement", "gross settlement", "fees deducted"]}
@@ -16,10 +17,10 @@ const PayoutSettlementExplained = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         Why Your Payout Doesn't Match Your Sales: Settlement Timing Explained
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
-          If you've ever compared your daily sales to the amount landing in your bank account and found they don't match, you're not alone. Payout discrepancies are one of the most common sources of confusion for merchants — and they're almost always explainable.
+          If you've ever compared your daily sales to the amount landing in your bank account and found they don't match, you're not alone. Payout discrepancies are one of the most common sources of confusion for merchants, and they're almost always explainable.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Net Settlement vs Gross Settlement</h2>
@@ -44,14 +45,14 @@ const PayoutSettlementExplained = () => {
           Most providers batch transactions and settle them T+1 to T+3 (one to three business days after the transaction). But weekends, bank holidays, and provider cut-off times mean your Monday sales might land on Wednesday or Thursday.
         </p>
         <p>
-          This batching also means a single payout may include transactions from multiple days — or exclude transactions processed late in the day. Learn more about <Link href="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:underline">same-day settlement options</Link>.
+          This batching also means a single payout may include transactions from multiple days, or exclude transactions processed late in the day. Learn more about <Link href="/insights/same-day-settlement-and-instant-payouts" className="text-primary hover:underline">same-day settlement options</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">How to Reconcile Payouts</h2>
         <ul className="list-disc pl-6 space-y-2">
-          <li>Download settlement reports from your provider dashboard — they break down exactly what was deducted</li>
+          <li>Download settlement reports from your provider dashboard: they break down exactly what was deducted</li>
           <li>Match by settlement date, not transaction date</li>
-          <li>Track chargebacks and refunds separately — they create negative entries in future settlements</li>
+          <li>Track chargebacks and refunds separately: they create negative entries in future settlements</li>
           <li>If using multiple payment methods, each may settle on different schedules</li>
         </ul>
 

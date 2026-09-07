@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const WhyPaymentProvidersAskForSourceOfFunds = () => {
   return (
@@ -16,6 +17,8 @@ const WhyPaymentProvidersAskForSourceOfFunds = () => {
         Understanding Source of Funds Verification
       </h1>
       
+
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
           Being asked to explain your source of funds can feel alarming, especially if your business has been operating normally and payments are flowing as expected.

@@ -1,13 +1,14 @@
 'use client'
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
+import ArticleByline from "@/components/ArticleByline";
 
 const ChargebackLossRecovery = () => {
   return (
     <InsightsArticleLayout
       title="You Lost a Chargeback: What Happens Next and How to Recover"
       description="Lost a chargeback dispute? Learn what happens to your account, how it affects your standing with providers and card networks, and what steps to take next."
-      category={{ name: "Guide", slug: "guides" }}
+      category={{ name: "Guides", slug: "guides" }}
       cluster="hub"
       currentSlug="chargeback-loss-recovery"
       keywords={["chargeback lost", "lost chargeback", "chargeback dispute", "chargeback recovery", "chargeback ratio"]}
@@ -15,16 +16,16 @@ const ChargebackLossRecovery = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
         You Lost a Chargeback: What Happens Next and How to Recover
       </h1>
-
+      <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
-          Losing a chargeback feels like being found guilty in a trial you didn't know was happening. The money is gone, there's a fee on top, and you're left wondering what it means for your account. Here's what actually happens — and what you should do next.
+          Losing a chargeback feels like being found guilty in a trial you didn't know was happening. The money is gone, there's a fee on top, and you're left wondering what it means for your account. Here's what actually happens, and what you should do next.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">What Happens When You Lose</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>The disputed amount is permanently deducted</strong> from your settlements (or withheld from future payouts if already paid out).</li>
-          <li><strong>A chargeback fee is applied</strong> — typically £15–25 per dispute, regardless of the outcome.</li>
+          <li><strong>A chargeback fee is applied</strong>, typically £15–25 per dispute, regardless of the outcome.</li>
           <li><strong>Your chargeback ratio increases.</strong> Card networks track this as a percentage of total transactions. Crossing 1% on Visa or 1.5% on Mastercard triggers <Link href="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">monitoring programs</Link> with escalating fines.</li>
           <li><strong>Your provider records the loss.</strong> Multiple losses affect your risk score and may trigger reserves or enhanced monitoring.</li>
         </ul>
@@ -50,7 +51,7 @@ const ChargebackLossRecovery = () => {
             <strong>Improve your evidence package.</strong> For future disputes, prepare delivery tracking, signed agreements, communication logs, and clear refund policy documentation. Learn the fundamentals in our <Link href="/insights/chargebacks-what-they-are-and-how-to-avoid-them" className="text-primary hover:underline">chargebacks guide</Link>.
           </li>
           <li>
-            <strong>Consider prevention tools.</strong> Services like Ethoca alerts and Verifi CDRN let you refund transactions before they become formal chargebacks — removing them from your ratio entirely.
+            <strong>Consider prevention tools.</strong> Services like Ethoca alerts and Verifi CDRN let you refund transactions before they become formal chargebacks, removing them from your ratio entirely.
           </li>
         </ol>
 

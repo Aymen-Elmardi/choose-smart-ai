@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link';
+import ArticleByline from "@/components/ArticleByline";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
@@ -67,6 +68,8 @@ const AdyenEnterprisePlatform = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
               Adyen: The Single Platform That Rewrote the Enterprise Payments Playbook
             </h1>
+
+            <ArticleByline />
             <p className="text-xl text-muted-foreground leading-relaxed">
               For those of us who have spent years navigating the fragmented, opaque world of payment processing, Adyen is not just a provider; it is a paradigm shift. They didn't just build a better payment gateway; they built a single, unified platform that seamlessly handles everything from acquiring to risk management.
             </p>
