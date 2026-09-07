@@ -65,9 +65,9 @@ const MarketplaceSplitPayments = () => {
 
       <img
         src="/insights/marketplace-split-payments-cover.png"
-        alt="A single one hundred pound payment splitting into a seller payout, marketplace commission, and fees"
-        width={1200}
-        height={630}
+        alt="A single buyer payment branching into three parts: seller payout, commission, and fees"
+        width={1536}
+        height={1024}
         className="w-full rounded-lg border border-border mb-8"
       />
 
