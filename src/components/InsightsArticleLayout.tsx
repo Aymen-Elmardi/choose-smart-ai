@@ -31,6 +31,18 @@ interface InsightsArticleLayoutProps {
   showCTA?: boolean;
   /** Byline author, as "Name (Expertise)". */
   author?: string;
+  /**
+   * Injects the contextual assessment CTA and the closing advisory note.
+   * Turn off for an article that supplies its own single CTA and must not
+   * end up with several stacked together.
+   */
+  showInlineCTA?: boolean;
+  /**
+   * Emits the layout's own Article JSON-LD. Turn off for an article that
+   * renders a hand-written schema graph, so the page does not carry two
+   * competing Article nodes.
+   */
+  showArticleSchema?: boolean;
   showRelated?: boolean;
   ctaVariant?: "default" | "compact";
   publishedTime?: string;
@@ -86,6 +98,8 @@ const InsightsArticleLayout = ({
   publishedTime,
   modifiedTime,
   author = DEFAULT_ARTICLE_AUTHOR,
+  showInlineCTA = true,
+  showArticleSchema = true,
   keywords,
   sources,
   breadcrumbSchemaItems,
@@ -112,6 +126,7 @@ const InsightsArticleLayout = ({
       <Header />
       
       {/* Structured Data */}
+      {showArticleSchema && (
       <ArticleSchema
         title={schemaHeadline ?? title}
         description={description}
@@ -121,6 +136,7 @@ const InsightsArticleLayout = ({
         sources={sources}
         keywords={keywords}
       />
+      )}
       <BreadcrumbSchema items={breadcrumbItems} />
       
       <main className="pt-24 pb-16">
@@ -145,9 +161,11 @@ const InsightsArticleLayout = ({
           )}
 
           {/* Auto-injected contextual assessment CTA */}
-          <InlineAssessmentCTA
-            context="Wondering if your current provider is the right fit? See how your business matches against 21 providers."
-          />
+          {showInlineCTA && (
+            <InlineAssessmentCTA
+              context="Wondering if your current provider is the right fit? See how your business matches against 21 providers."
+            />
+          )}
           
           {/* Sources & References */}
           {sources && sources.length > 0 && (
@@ -172,6 +190,7 @@ const InsightsArticleLayout = ({
           )}
           
           {/* Inline advisory note */}
+          {showInlineCTA && (
           <p className="mt-10 text-muted-foreground text-base leading-relaxed">
             If you're making a payment provider decision where getting it wrong is expensive, we offer{" "}
             <a href="/assessment" className="text-primary hover:underline font-medium">
@@ -179,6 +198,7 @@ const InsightsArticleLayout = ({
             </a>{" "}
             before you apply.
           </p>
+          )}
 
           {/* Standardized CTA Block */}
           {showCTA && <InsightsCTA variant={ctaVariant} />}

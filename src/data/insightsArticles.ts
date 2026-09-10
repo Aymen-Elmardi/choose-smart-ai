@@ -617,6 +617,14 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Stripe vs Adyen: Fees and Features Comparison",
+    slug: "stripe-vs-adyen",
+    global: true,
+    description: "Stripe charges a flat 2.9% + $0.30. Adyen uses interchange-plus with no published rate. Real pricing math, contract terms, and verified reviews.",
+    category: "providers",
+    readTime: "10 min read"
+  },
+  {
     title: "Shift4 vs Stripe: Choosing the Right Payment Engine for Your Enterprise",
     slug: "shift4-vs-stripe-enterprise",
     global: true,

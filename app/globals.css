@@ -204,6 +204,22 @@
   color: hsl(var(--foreground));
 }
 
+/* Single-CTA button used by comparison articles that supply their own CTA
+   block, in the brand green with a lighter hover. */
+.cp-cta-btn {
+  display: inline-block;
+  background: #11AC64;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background .2s ease;
+}
+.cp-cta-btn:hover { background: #15D179; }
+
 /* Long-form reading rhythm. Paragraph spacing already comes from each
    article's own `space-y-*` wrapper, so only the line-height is set here. */
 .insight-body {
