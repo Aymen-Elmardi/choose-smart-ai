@@ -617,6 +617,15 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Stripe vs Checkout.com: Fees and Features Comparison",
+    slug: "comparisons/stripe-vs-checkout-com",
+    global: true,
+    description: "Stripe publishes a flat 2.9% + $0.30 rate. Checkout.com quotes custom interchange-plus pricing. Real numbers, verified ratings, and an honest verdict.",
+    category: "providers",
+    readTime: "9 min read",
+    isSubfolder: true
+  },
+  {
     title: "Stripe vs Adyen: Fees and Features Comparison",
     slug: "stripe-vs-adyen",
     global: true,
