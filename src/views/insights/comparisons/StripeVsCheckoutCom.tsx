@@ -41,12 +41,7 @@ const faqs = [
   },
 ];
 
-/**
- * Article + FAQPage graph as supplied, with one change: `image` points at the
- * shared OG card rather than the named cover, which does not exist yet. A
- * schema image that 404s is worse than a generic one, so swap this back when
- * the real cover lands.
- */
+/** Article + FAQPage graph exactly as supplied with the copy. */
 const schemaGraph = {
   "@context": "https://schema.org",
   "@graph": [
@@ -59,7 +54,7 @@ const schemaGraph = {
       "publisher": { "@id": "https://chosepayments.com/#organization" },
       "datePublished": "2026-08-27",
       "dateModified": "2026-08-31",
-      "image": "https://chosepayments.com/og-default.png",
+      "image": "https://chosepayments.com/insights/comparisons/stripe-vs-checkout-com-cover.png",
       "articleSection": "Provider Comparisons",
     },
     {
@@ -110,6 +105,14 @@ const StripeVsCheckoutCom = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(schemaGraph) }}
+      />
+
+      <img
+        src="/insights/comparisons/stripe-vs-checkout-com-cover.png"
+        alt="Stripe and Checkout.com logos on facing tiles, either side of a diagonal split"
+        width={1128}
+        height={592}
+        className="w-full rounded-lg border border-border mb-8"
       />
 
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
