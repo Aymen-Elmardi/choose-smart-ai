@@ -617,6 +617,15 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Stripe vs TrustCommerce: Which Fits Your Healthcare Business",
+    slug: "comparisons/stripe-vs-trustcommerce",
+    global: true,
+    description: "Stripe is a general-purpose processor with flat pricing. TrustCommerce is a HIPAA-native healthcare payments platform. See which one actually fits.",
+    category: "providers",
+    readTime: "8 min read",
+    isSubfolder: true
+  },
+  {
     title: "Stripe vs Checkout.com: Fees and Features Comparison",
     slug: "comparisons/stripe-vs-checkout-com",
     global: true,
