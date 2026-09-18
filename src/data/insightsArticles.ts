@@ -617,6 +617,15 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Stripe vs PayPal: Fees and Features Comparison",
+    slug: "comparisons/stripe-vs-paypal",
+    global: true,
+    description: "Stripe charges 2.9% + $0.30. PayPal charges 2.99% to 3.49% + $0.49. Real cost math, verified ratings, and an honest verdict for 2026.",
+    category: "providers",
+    readTime: "8 min read",
+    isSubfolder: true
+  },
+  {
     title: "Stripe vs TrustCommerce: Which Fits Your Healthcare Business",
     slug: "comparisons/stripe-vs-trustcommerce",
     global: true,
