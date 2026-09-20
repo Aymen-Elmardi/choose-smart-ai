@@ -617,6 +617,15 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Adyen vs Checkout.com: Enterprise Payments Compared",
+    slug: "comparisons/adyen-vs-checkout-com",
+    global: true,
+    description: "Both use custom interchange-plus pricing and target enterprise merchants. Verified ratings and real architectural differences, not just marketing claims.",
+    category: "providers",
+    readTime: "8 min read",
+    isSubfolder: true
+  },
+  {
     title: "Stripe vs PayPal: Fees and Features Comparison",
     slug: "comparisons/stripe-vs-paypal",
     global: true,
