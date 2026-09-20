@@ -617,6 +617,15 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Adyen vs TrustCommerce: Enterprise vs Healthcare Payments",
+    slug: "comparisons/adyen-vs-trustcommerce",
+    global: true,
+    description: "Adyen is a global enterprise commerce platform. TrustCommerce is a HIPAA-native healthcare payments specialist. See which one actually applies to you.",
+    category: "providers",
+    readTime: "8 min read",
+    isSubfolder: true
+  },
+  {
     title: "Adyen vs Checkout.com: Enterprise Payments Compared",
     slug: "comparisons/adyen-vs-checkout-com",
     global: true,
