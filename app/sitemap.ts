@@ -665,6 +665,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
+    {
+      url: `${BASE_URL}/insights/comparisons/adyen-vs-paypal`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
     // Crisis pages
     {
       url: `${BASE_URL}/insights/crisis`,

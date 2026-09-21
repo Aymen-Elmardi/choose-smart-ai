@@ -617,6 +617,15 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Adyen vs PayPal: Fees and Features Comparison",
+    slug: "comparisons/adyen-vs-paypal",
+    global: true,
+    description: "Adyen vs PayPal compared: fees, enterprise fit, and whether PayPal works as a payment method on Adyen. Real numbers, verified ratings.",
+    category: "providers",
+    readTime: "8 min read",
+    isSubfolder: true
+  },
+  {
     title: "Adyen vs TrustCommerce: Enterprise vs Healthcare Payments",
     slug: "comparisons/adyen-vs-trustcommerce",
     global: true,
