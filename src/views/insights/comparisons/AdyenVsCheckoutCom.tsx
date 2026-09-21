@@ -53,7 +53,7 @@ const schemaGraph = {
       "author": { "@type": "Organization", "name": "ChosePayments" },
       "publisher": { "@id": "https://chosepayments.com/#organization" },
       "datePublished": "2026-08-27",
-      "dateModified": "2026-08-31",
+      "dateModified": "2026-09-21",
       "image": "https://chosepayments.com/insights/comparisons/adyen-vs-checkout-com-cover.png",
       "articleSection": "Provider Comparisons",
     },
@@ -86,7 +86,7 @@ const AdyenVsCheckoutCom = () => {
       cluster="provider"
       currentSlug="comparisons/adyen-vs-checkout-com"
       publishedTime="2026-08-27"
-      modifiedTime="2026-08-31"
+      modifiedTime="2026-09-21"
       sources={sources}
       // The article carries its own single CTA block, so the layout must not
       // add the inline assessment CTA or the closing advisory note on top.
@@ -121,7 +121,7 @@ const AdyenVsCheckoutCom = () => {
       <ArticleByline />
 
       <p className="text-sm text-muted-foreground italic mb-8">
-        Last updated 31 August 2026
+        Last updated 21 September 2026
       </p>
 
       <div className="text-muted-foreground space-y-6">
@@ -239,7 +239,7 @@ const AdyenVsCheckoutCom = () => {
             <tbody>
               <tr><td className={td}>Best fit</td><td className={td}>Large, global omnichannel brands needing one platform for online and in-person</td><td className={td}>High-growth and enterprise merchants prioritizing configurability and cross-border authorization</td></tr>
               <tr><td className={td}>Typical customer profile</td><td className={td}>Global enterprise, $1M+/year</td><td className={td}>High-growth and enterprise merchants, often global</td></tr>
-              <tr><td className={td}>G2 Product Direction score (% positive)</td><td className={td}>8.0</td><td className={td}>9.8, a notably wide gap</td></tr>
+              <tr><td className={td}>G2 Product Direction score (% positive)</td><td className={td}>80%</td><td className={td}>98%, a notably wide gap</td></tr>
             </tbody>
           </table>
         </div>
@@ -318,7 +318,7 @@ const AdyenVsCheckoutCom = () => {
         <p>Adyen assumes a standardized platform serves most large merchants well enough.</p>
 
         <p>
-          Checkout.com markets configurability and cross-border authorization-rate optimization as its core differentiators, and G2&apos;s Product Direction score (9.8% positive vs Adyen&apos;s 8.0%) suggests reviewers currently see Checkout.com iterating faster on that promise.
+          Checkout.com markets configurability and cross-border authorization-rate optimization as its core differentiators, and G2&apos;s Product Direction score (98% positive vs Adyen&apos;s 80%) suggests reviewers currently see Checkout.com iterating faster on that promise.
         </p>
 
         <p>
