@@ -56,7 +56,7 @@ const schemaGraph = {
       "author": { "@type": "Organization", "name": "ChosePayments" },
       "publisher": { "@id": "https://chosepayments.com/#organization" },
       "datePublished": "2026-08-27",
-      "dateModified": "2026-09-21",
+      "dateModified": "2026-09-22",
       "image": "https://chosepayments.com/insights/comparisons/adyen-vs-paypal-cover.png",
       "articleSection": "Provider Comparisons",
     },
@@ -89,7 +89,7 @@ const AdyenVsPayPal = () => {
       cluster="provider"
       currentSlug="comparisons/adyen-vs-paypal"
       publishedTime="2026-08-27"
-      modifiedTime="2026-09-21"
+      modifiedTime="2026-09-22"
       author={GROWTH_ARTICLE_AUTHOR}
       sources={sources}
       // The article carries its own single CTA block, so the layout must not
@@ -126,7 +126,7 @@ const AdyenVsPayPal = () => {
       <ArticleByline />
 
       <p className="text-sm text-muted-foreground italic mb-8">
-        Last updated: 21 September 2026
+        Last updated: 22 September 2026
       </p>
 
       <div className="text-muted-foreground space-y-6">
@@ -264,7 +264,7 @@ const AdyenVsPayPal = () => {
         </p>
 
         <p>
-          PayPal, despite publishing its rate upfront, draws hundreds of fee complaints (&quot;High Fees&quot;: 177, &quot;Expensive&quot;: 196).
+          PayPal, despite publishing its rate upfront, draws hundreds of fee complaints (&quot;High Fees&quot;: 234, &quot;Expensive&quot;: 196).
         </p>
 
         <p>

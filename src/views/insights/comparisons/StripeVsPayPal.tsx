@@ -54,7 +54,7 @@ const schemaGraph = {
       "author": { "@type": "Organization", "name": "ChosePayments" },
       "publisher": { "@id": "https://chosepayments.com/#organization" },
       "datePublished": "2026-08-27",
-      "dateModified": "2026-08-31",
+      "dateModified": "2026-09-22",
       "image": "https://chosepayments.com/insights/comparisons/stripe-vs-paypal-cover.png",
       "articleSection": "Provider Comparisons",
     },
@@ -87,7 +87,7 @@ const StripeVsPayPal = () => {
       cluster="provider"
       currentSlug="comparisons/stripe-vs-paypal"
       publishedTime="2026-08-27"
-      modifiedTime="2026-08-31"
+      modifiedTime="2026-09-22"
       author={GROWTH_ARTICLE_AUTHOR}
       sources={sources}
       // The article carries its own single CTA block, so the layout must not
@@ -123,7 +123,7 @@ const StripeVsPayPal = () => {
       <ArticleByline />
 
       <p className="text-sm text-muted-foreground italic mb-8">
-        Last updated: 31 August 2026
+        Last updated: 22 September 2026
       </p>
 
       <div className="text-muted-foreground space-y-6">
@@ -205,7 +205,7 @@ const StripeVsPayPal = () => {
               <tr><td className={td}>Published rate</td><td className={td}>Yes, 2.9% + $0.30 for US online cards</td><td className={td}>Yes, 2.99% + $0.49 (card via PayPal Checkout) or 3.49% + $0.49 (PayPal/Venmo)</td></tr>
               <tr><td className={td}>International surcharge</td><td className={td}>Varies by card and region</td><td className={td}>Additional 1.5% on cross-border transactions</td></tr>
               <tr><td className={td}>Dispute fee</td><td className={td}>$15, refunded if you win</td><td className={td}>Commonly cited $8 to $30 depending on dispute rate tier; sources vary, confirm your current tier</td></tr>
-              <tr><td className={td}>G2 &quot;High Fees&quot; mentions</td><td className={td}>20 all-time</td><td className={td}>177 all-time (234 including &quot;Expensive&quot;)</td></tr>
+              <tr><td className={td}>G2 &quot;High Fees&quot; mentions</td><td className={td}>20 all-time</td><td className={td}>234 all-time (plus &quot;Expensive&quot;: 196)</td></tr>
             </tbody>
           </table>
         </div>
