@@ -246,7 +246,7 @@ const MarketplaceSellerInfo = () => {
         </h2>
 
         <p>
-          Not every payment provider handles split payments, staged payouts, and marketplace-specific KYB well. <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">Our full marketplace payments guide</Link> covers the broader payment infrastructure question if you&apos;re still choosing a provider; this page is specifically about the verification layer once you have one.
+          Not every payment provider handles split payments, staged payouts, and marketplace-specific KYB well. Platforms that pay sellers out <a href="https://whop.com/blog/marketplace-payment-platform/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">through Whop</a> use a payment platform with connected-account onboarding, seller verification, and payouts in one stack, so the KYB model is built for multi-seller flows rather than bolted on later. <Link href="/insights/marketplace-payments-guide" className="text-primary hover:underline">Our full marketplace payments guide</Link> covers the broader payment infrastructure question if you&apos;re still choosing a provider; this page is specifically about the verification layer once you have one.
         </p>
 
         <p>
