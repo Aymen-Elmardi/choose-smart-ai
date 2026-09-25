@@ -626,6 +626,15 @@ export const allInsights: Insight[] = [
     isSubfolder: true
   },
   {
+    title: "Checkout.com vs PayPal: Enterprise Rates vs Consumer Trust",
+    slug: "comparisons/checkout-com-vs-paypal",
+    global: true,
+    description: "Checkout.com quotes custom enterprise pricing. PayPal publishes a flat 2.99% to 3.49% + $0.49. Verified ratings and an honest fit-based verdict.",
+    category: "providers",
+    readTime: "8 min read",
+    isSubfolder: true
+  },
+  {
     title: "Adyen vs TrustCommerce: Enterprise vs Healthcare Payments",
     slug: "comparisons/adyen-vs-trustcommerce",
     global: true,
