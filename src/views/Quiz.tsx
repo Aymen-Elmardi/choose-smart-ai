@@ -25,6 +25,7 @@ import {
 import { getActiveMicroInsight } from "@/lib/quiz/quizMicroInsights";
 import { deriveSegment, deriveVolumeTier } from "@/lib/quiz/quizSegment";
 import { initializeSessionTracking, markQuizStart } from "@/lib/sessionTracking";
+import { trackEvent } from "@/lib/analytics";
 
 const Quiz = () => {
   const router = useRouter();
@@ -59,11 +60,10 @@ const Quiz = () => {
     window.scrollTo(0, 0);
     markQuizStart();
 
-    // Push assessment_start event once
+    // Send assessment_start once
     if (!assessmentStartFired.current) {
       assessmentStartFired.current = true;
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      (window as any).dataLayer.push({ event: "assessment_start" });
+      trackEvent("assessment_start");
     }
   }, []);
 
@@ -164,9 +164,7 @@ const Quiz = () => {
         const isLastQuestion = currentQuestionIndex === questions.length - 1;
         
         if (isLastQuestion) {
-          // Push assessment_complete event
-           (window as any).dataLayer = (window as any).dataLayer || [];
-           (window as any).dataLayer.push({ event: "assessment_complete" });
+          trackEvent("assessment_complete", { segment: updatedAnswers.segment });
           // OPTIMISTIC: Navigate immediately, save in background
           router.push("/recommendation?fromQuiz=true");
           // Prepare engine-compatible answers
@@ -207,8 +205,7 @@ const Quiz = () => {
     const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
     if (isLastQuestion) {
-          (window as any).dataLayer = (window as any).dataLayer || [];
-          (window as any).dataLayer.push({ event: "assessment_complete" });
+          trackEvent("assessment_complete", { segment: updatedAnswers.segment });
           router.push("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(updatedAnswers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
@@ -270,8 +267,7 @@ const Quiz = () => {
       if (question?.multiSelect) {
         const isLastQuestion = currentStep === questionCount;
         if (isLastQuestion) {
-          (window as any).dataLayer = (window as any).dataLayer || [];
-          (window as any).dataLayer.push({ event: "assessment_complete" });
+          trackEvent("assessment_complete", { segment: answers.segment });
           router.push("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(answers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
@@ -336,6 +332,24 @@ const Quiz = () => {
   // Question Screens
   const questions = getQuestions(answers);
   const question = questions[currentStep - 1];
+
+  // One GA event per question shown, since the questions share the
+  // /assessment URL. question_id is the stable key for drop-off: the list
+  // branches by segment, so the same question_number can be different
+  // questions for different visitors.
+  const questionId = question?.id;
+  useEffect(() => {
+    if (!questionId) return;
+    trackEvent("assessment_question_view", {
+      question_id: questionId,
+      question_number: currentStep,
+      question_total: questions.length,
+      segment: answers.segment || undefined,
+    });
+    // Only a change of question should send a new view, not every answer
+    // edit on the same one.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questionId, currentStep]);
 
   if (!question) {
     // The effect above clamps the step back into range; render nothing for the

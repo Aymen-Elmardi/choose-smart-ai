@@ -13,6 +13,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
 import type { QuizAnswers, Provider, QuizSegment, VolumeTier } from "@/types/quiz";
 import { initializeSessionTracking } from "@/lib/sessionTracking";
+import { trackEvent } from "@/lib/analytics";
 import { SEGMENT_LABELS } from "@/lib/quiz/quizSegment";
 import { SEGMENT_RESULTS, estimateSavings, formatGBP } from "@/lib/quiz/segmentResults";
 
@@ -274,8 +275,7 @@ const Recommendation = () => {
     setIsSubmitting(true);
     setBackgroundError(null);
 
-    (window as any).dataLayer = (window as any).dataLayer || [];
-    (window as any).dataLayer.push({ event: "advisory_form_submit" });
+    trackEvent("advisory_form_submit");
 
     const payload = {
       fullName: formData.fullName,
