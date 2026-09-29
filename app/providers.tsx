@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
 import { installGlobalErrorReporting } from '@/lib/errorReporting'
+import BookingDialog from '@/components/BookingDialog'
 import { useEffect, useState } from 'react'
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -35,6 +36,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           <Toaster />
           <Sonner />
           {children}
+          <BookingDialog />
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>
