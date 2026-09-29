@@ -14,6 +14,7 @@ import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
 import type { QuizAnswers, Provider, QuizSegment, VolumeTier } from "@/types/quiz";
 import { initializeSessionTracking } from "@/lib/sessionTracking";
 import { trackEvent } from "@/lib/analytics";
+import { BOOKING_URL } from "@/lib/booking";
 import { SEGMENT_LABELS } from "@/lib/quiz/quizSegment";
 import { SEGMENT_RESULTS, estimateSavings, formatGBP } from "@/lib/quiz/segmentResults";
 
@@ -428,16 +429,16 @@ const Recommendation = () => {
                 </div>
               </div>
 
-              {/* Calendly CTA */}
+              {/* Booking CTA */}
               <div className="text-center pt-4 border-t border-border">
                 <a
-                  href="https://calendly.com/hello-chosepayments/30min"
+                  href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
                 >
                   <Calendar className="w-4 h-4" />
-                  Prefer to talk? Book a 30-minute call
+                  Prefer to talk? Book a 15-minute call
                 </a>
               </div>
 
@@ -872,7 +873,7 @@ const Recommendation = () => {
               </div>
             )}
 
-            {/* Retake + Calendly */}
+            {/* Retake + booking */}
             <div className="text-center mt-10 animate-fade-up animation-delay-200 space-y-4">
               <div>
                 <p className="text-muted-foreground mb-4">Need to change your answers?</p>
@@ -882,13 +883,13 @@ const Recommendation = () => {
               </div>
               <div className="pt-2">
                 <a
-                  href="https://calendly.com/hello-chosepayments/30min"
+                  href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-medium"
                 >
                   <Calendar className="w-4 h-4" />
-                  Prefer to talk? Book a 30-minute call
+                  Prefer to talk? Book a 15-minute call
                 </a>
               </div>
             </div>
