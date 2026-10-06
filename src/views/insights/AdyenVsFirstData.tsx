@@ -50,6 +50,9 @@ const AdyenVsFirstData = () => {
         "enterprise payments"
       ]}
     >
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
+        Adyen vs First Data: Which Enterprise Processor Wins?
+      </h1>
       <ArticleByline />
       <p className="text-lg text-muted-foreground mb-8">
         Many businesses compare Adyen and First Data as if they are two versions of the same thing. They are not. On the surface, both are used by large merchants, both operate at scale, and both sit far beyond simple plug and play payment tools. That is where the similarity ends.
