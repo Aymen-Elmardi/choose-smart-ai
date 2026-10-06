@@ -696,7 +696,7 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
-    title: "Adyen vs First Data: Two Very Different Ways to Process Payments",
+    title: "Adyen vs First Data: Which Enterprise Processor Wins?",
     slug: "adyen-vs-first-data",
     description: "A strategic comparison of Adyen's unified global platform versus First Data's bank led acquiring infrastructure. Learn which payment model fits your business.",
     category: "providers",
