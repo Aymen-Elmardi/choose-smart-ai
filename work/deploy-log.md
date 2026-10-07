@@ -78,3 +78,20 @@ What changed:
 - /insights/paypal-payment-platform: CTAs unified, /assessment links removed (T01).
 Next deploy not before: 1 to 2 days after the merge date.
 /insights/adyen-vs-first-data moved to the next batch (5-page limit).
+
+## Deploy 6a (prepared 2026-10-07, not yet merged)
+
+DEPLOY 6a | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/adyen-vs-first-data
+https://chosepayments.com/insights/stripe-vs-adyen
+https://chosepayments.com/insights/what-is-a-payment-processor
+https://chosepayments.com/insights/third-party-payment-processors
+https://chosepayments.com/insights/best-payment-processor-ecommerce
+What changed:
+- /insights/adyen-vs-first-data: CTAs unified to Write to us / Book a call; /assessment links removed (T01).
+- /insights/stripe-vs-adyen: closing "free processor match" CTA replaced with Write to us / Book a call (T01). Content untouched (ranking page).
+- /insights/what-is-a-payment-processor: CTAs unified; /assessment links removed (T01).
+- /insights/third-party-payment-processors: CTAs unified; /assessment links removed (T01).
+- /insights/best-payment-processor-ecommerce: CTAs unified; /assessment links removed (T01).
+Next deploy not before: 1 to 2 days after the merge date.
