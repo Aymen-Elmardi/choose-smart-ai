@@ -60,3 +60,21 @@ What changed:
 - /payment-processors-high-risk-ecommerce: CTAs unified to Write to us / Book a call; /assessment link removed (T01).
 - /payment-provider-subscription-business: CTAs unified to Write to us / Book a call; /assessment link removed (T01).
 Next deploy not before: 1 to 2 days after the merge date.
+
+## Deploy 5 (prepared 2026-10-07, not yet merged)
+
+DEPLOY 5 | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/adyen-enterprise-payments-platform
+https://chosepayments.com/insights/stripe-payment-platform
+https://chosepayments.com/insights/checkout-com-enterprise-platform
+https://chosepayments.com/insights/fiserv-payments-platform
+https://chosepayments.com/insights/paypal-payment-platform
+What changed:
+- /insights/adyen-enterprise-payments-platform: assessment CTAs replaced with Write to us / Book a call (T01); og:title matches title (T03).
+- /insights/stripe-payment-platform: assessment CTAs replaced with Write to us / Book a call (T01).
+- /insights/checkout-com-enterprise-platform: assessment CTAs replaced with Write to us / Book a call (T01); og:title matches title (T03).
+- /insights/fiserv-payments-platform: CTAs unified, /assessment links removed (T01); og:title matches title (T03).
+- /insights/paypal-payment-platform: CTAs unified, /assessment links removed (T01).
+Next deploy not before: 1 to 2 days after the merge date.
+/insights/adyen-vs-first-data moved to the next batch (5-page limit).
