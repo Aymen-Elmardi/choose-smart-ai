@@ -108,3 +108,24 @@ What changed:
 - /ach-payment-processors: CTAs unified to Write to us / Book a call; /assessment links removed (T01).
 - /insights/payment-scheme-rules-explained: "Apply for Advisory" (/recommendation) and /assessment CTAs replaced with Write to us / Book a call (T01).
 Next deploy not before: 1 to 2 days after the merge date.
+
+## Deploy 7 (prepared 2026-10-08, not yet merged)
+
+DEPLOY 7 | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/marketplace-payment-provider
+https://chosepayments.com/best-payment-provider-small-business
+https://chosepayments.com/switch-payment-provider
+https://chosepayments.com/best-payment-api-uk
+https://chosepayments.com/stripe-vs-square-vs-paypal-uk
+https://chosepayments.com/authors/aymen-elmardi
+https://chosepayments.com/authors/madalsa-bhat
+What changed:
+- /marketplace-payment-provider: byline "Aymen Elmardi, Payments Expert", Published/Last updated dates, Article JSON-LD with Person author (T05, T06).
+- /best-payment-provider-small-business: byline "Madalsa Bhat, Growth Expert", Published date, Article JSON-LD (T05, T06).
+- /switch-payment-provider: byline "Madalsa Bhat, Growth Expert", Published date, Article JSON-LD (T05, T06).
+- /best-payment-api-uk: byline "Madalsa Bhat, Growth Expert", Published/Last updated dates, Article JSON-LD (T05, T06).
+- /stripe-vs-square-vs-paypal-uk: byline "Madalsa Bhat, Growth Expert", Published/Last updated dates, Article JSON-LD (T05, T06).
+- /authors/aymen-elmardi: article list +1.
+- /authors/madalsa-bhat: article list +4.
+Next deploy not before: 1 to 2 days after the merge date.
