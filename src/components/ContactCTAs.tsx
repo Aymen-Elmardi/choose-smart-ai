@@ -36,9 +36,20 @@ interface TalkItThroughBoxProps {
   tone?: "default" | "inverted";
   /** h3 when the box sits inside an article section; smaller type to match. */
   headingLevel?: "h2" | "h3";
+  /**
+   * Shows "Free. No sales pitch. No strings attached." under the buttons.
+   * Use it where the CTA being replaced carried that line: T01 and D1 keep
+   * that sentence unchanged.
+   */
+  reassurance?: boolean;
 }
 
-export const TalkItThroughBox = ({ placement = "mid", tone = "default", headingLevel = "h2" }: TalkItThroughBoxProps) => {
+export const TalkItThroughBox = ({
+  placement = "mid",
+  tone = "default",
+  headingLevel = "h2",
+  reassurance = false,
+}: TalkItThroughBoxProps) => {
   const inverted = tone === "inverted";
   const compact = headingLevel === "h3";
   const Heading = headingLevel;
@@ -75,6 +86,11 @@ export const TalkItThroughBox = ({ placement = "mid", tone = "default", headingL
           </a>
         </Button>
       </div>
+      {reassurance && (
+        <p className={`text-sm mt-4 ${inverted ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+          Free. No sales pitch. No strings attached.
+        </p>
+      )}
     </div>
   );
 };

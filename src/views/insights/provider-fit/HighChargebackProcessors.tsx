@@ -79,7 +79,7 @@ const HighChargebackProcessors = () => {
       </p>
 
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
-        <TalkItThroughBox placement="mid" headingLevel="h3" />
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
       </div>
     </InsightsArticleLayout>
   );
