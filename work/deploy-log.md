@@ -26,3 +26,20 @@ What changed:
 - /authors/aymen-elmardi: new profile page with Person schema (T05).
 - /authors/madalsa-bhat: new profile page with Person schema (T05).
 Next deploy not before: 1 to 2 days after the merge date.
+
+## Deploy 3 (prepared 2026-10-07, not yet merged)
+
+DEPLOY 3 | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/marketplace-payment-provider
+https://chosepayments.com/best-payment-provider-small-business
+https://chosepayments.com/switch-payment-provider
+https://chosepayments.com/best-payment-api-uk
+https://chosepayments.com/stripe-vs-square-vs-paypal-uk
+What changed:
+- /marketplace-payment-provider: quiz CTAs replaced with Write to us / Book a call (T01); og:title matches title (T03).
+- /best-payment-provider-small-business: quiz CTAs replaced with Write to us / Book a call (T01); og:title matches title (T03).
+- /switch-payment-provider: quiz CTAs replaced with Write to us / Book a call (T01); og:title matches title (T03).
+- /best-payment-api-uk: quiz CTAs replaced (T01); "paid by providers" line removed (D1); og:title matches title (T03).
+- /stripe-vs-square-vs-paypal-uk: quiz CTA and "short assessment" link replaced (T01); og:title matches title (T03).
+Next deploy not before: 1 to 2 days after the merge date.
