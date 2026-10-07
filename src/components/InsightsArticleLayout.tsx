@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Link from "next/link";
 import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -37,6 +38,14 @@ interface InsightsArticleLayoutProps {
    * end up with several stacked together.
    */
   showInlineCTA?: boolean;
+  /**
+   * Opts an article into the two-CTA system (Write to us / Book a call):
+   * drops the injected "Book a 15-Minute Call" box and points the closing
+   * advisory note at /contact instead of /assessment. The article places its
+   * own WriteToUsLine and TalkItThroughBox. Articles move over in small
+   * batches, so this stays off by default.
+   */
+  unifiedCTAs?: boolean;
   /**
    * Emits the layout's own Article JSON-LD. Turn off for an article that
    * renders a hand-written schema graph, so the page does not carry two
@@ -99,6 +108,7 @@ const InsightsArticleLayout = ({
   modifiedTime,
   author = DEFAULT_ARTICLE_AUTHOR,
   showInlineCTA = true,
+  unifiedCTAs = false,
   showArticleSchema = true,
   keywords,
   sources,
@@ -161,7 +171,7 @@ const InsightsArticleLayout = ({
           )}
 
           {/* Auto-injected contextual assessment CTA */}
-          {showInlineCTA && (
+          {showInlineCTA && !unifiedCTAs && (
             <InlineAssessmentCTA
               context="Wondering if your current provider is the right fit? See how your business matches against 21 providers."
             />
@@ -193,9 +203,15 @@ const InsightsArticleLayout = ({
           {showInlineCTA && (
           <p className="mt-10 text-muted-foreground text-base leading-relaxed">
             If you're making a payment provider decision where getting it wrong is expensive, we offer{" "}
-            <a href="/assessment" className="text-primary hover:underline font-medium">
-              independent advisory support
-            </a>{" "}
+            {unifiedCTAs ? (
+              <Link href="/contact" data-cta="write" data-placement="end" className="text-primary hover:underline font-medium">
+                independent advisory support
+              </Link>
+            ) : (
+              <a href="/assessment" className="text-primary hover:underline font-medium">
+                independent advisory support
+              </a>
+            )}{" "}
             before you apply.
           </p>
           )}
