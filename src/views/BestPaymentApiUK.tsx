@@ -1,8 +1,7 @@
 'use client'
 import { useEffect } from "react";
-import Link from 'next/link';
-import { ArrowRight, Check, X, Code, Webhook, FileText, TestTube, Shield, Clock, Headphones, BookOpen, Lock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Check, X, Code, Webhook, FileText, TestTube, Shield, Clock, Headphones, BookOpen, Lock } from "lucide-react";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
@@ -87,15 +86,7 @@ const BestPaymentApiUK = () => {
                   This guide compares the leading payment APIs honestly — so you can choose well the first time.
                 </p>
               </div>
-              <div className="flex flex-col items-center">
-                <Button size="xl" asChild>
-                  <Link href="/assessment?start=true" replace>
-                    Answer a few quick questions
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
-                <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
-              </div>
+              <WriteToUsLine className="text-lg text-muted-foreground" />
               <p className="text-sm text-muted-foreground mt-6">
                 Independent guidance. We're paid by providers — not by you.
               </p>
@@ -435,23 +426,7 @@ const BestPaymentApiUK = () => {
               </div>
               
               <div className="relative z-10">
-                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-                  Not sure which payment API fits your build? Tell us a bit about your project and we'll match you with the right provider based on developer needs, UK requirements, and your business model.
-                </p>
-                <div className="flex flex-col items-center">
-                  <Button 
-                    variant="secondary" 
-                    size="xl" 
-                    className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-                    asChild
-                  >
-                    <Link href="/assessment?start=true" replace>
-                      Answer a few quick questions
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </Button>
-                  <span className="text-sm text-primary-foreground/70 mt-3">Takes under 1 minute • No spam</span>
-                </div>
+                <TalkItThroughBox placement="end" tone="inverted" />
               </div>
             </div>
           </div>
