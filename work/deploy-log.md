@@ -13,3 +13,16 @@ Next deploy not before: 1 to 2 days after the merge date.
 Owner actions after merge:
 - Run `supabase functions deploy send-contact-email` so the notification email shows the landing page.
 - Send one test contact form and check GA4 DebugView and the email.
+
+## Deploy 2 (prepared 2026-10-07, not yet merged)
+
+DEPLOY 2 | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/crisis/hidden-fee-crisis
+https://chosepayments.com/authors/aymen-elmardi
+https://chosepayments.com/authors/madalsa-bhat
+What changed:
+- /insights/crisis/hidden-fee-crisis: new meta description and og:description (T03).
+- /authors/aymen-elmardi: new profile page with Person schema (T05).
+- /authors/madalsa-bhat: new profile page with Person schema (T05).
+Next deploy not before: 1 to 2 days after the merge date.
