@@ -95,3 +95,16 @@ What changed:
 - /insights/third-party-payment-processors: CTAs unified; /assessment links removed (T01).
 - /insights/best-payment-processor-ecommerce: CTAs unified; /assessment links removed (T01).
 Next deploy not before: 1 to 2 days after the merge date.
+
+## Deploy 6b (prepared 2026-10-07, not yet merged)
+
+DEPLOY 6b | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/payment-gateway-vs-payment-processor
+https://chosepayments.com/ach-payment-processors
+https://chosepayments.com/insights/payment-scheme-rules-explained
+What changed:
+- /payment-gateway-vs-payment-processor: CTAs unified to Write to us / Book a call; /assessment links removed (T01).
+- /ach-payment-processors: CTAs unified to Write to us / Book a call; /assessment links removed (T01).
+- /insights/payment-scheme-rules-explained: "Apply for Advisory" (/recommendation) and /assessment CTAs replaced with Write to us / Book a call (T01).
+Next deploy not before: 1 to 2 days after the merge date.
