@@ -2,7 +2,7 @@
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
-import { BOOKING_URL } from "@/lib/booking";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 
 const HighChargebackProcessors = () => {
   const faqs = [
@@ -22,6 +22,7 @@ const HighChargebackProcessors = () => {
 
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="Best Payment Processors for High Chargeback Businesses"
       description="Learn why many processors reject high chargeback merchants, how risk tolerance differs between providers, and how to find the right fit for your business."
       category={{ name: "Provider Fit Guides", slug: "provider-fit" }}
@@ -51,6 +52,8 @@ const HighChargebackProcessors = () => {
         This means businesses in industries with inherently higher dispute rates (travel, digital goods, subscription services, event ticketing), are systematically penalised by providers that were designed for low-risk, high-volume retail.
       </p>
 
+      <WriteToUsLine className="text-muted-foreground mb-6" />
+
       <h2 className="heading-md text-foreground mt-10 mb-4">Risk Tolerance Differs Between Providers</h2>
       <p className="text-muted-foreground mb-4">
         Not all providers react the same way to chargebacks. The difference comes down to how they underwrite risk:
@@ -76,13 +79,7 @@ const HighChargebackProcessors = () => {
       </p>
 
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
-        <h3 className="font-semibold text-foreground mb-2">Find your best fit</h3>
-        <p className="text-muted-foreground text-sm mb-4">
-          Book a free 15-minute call to find out which providers tolerate your chargeback level.
-        </p>
-        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-          Book a 15-Minute Call <span aria-hidden>→</span>
-        </a>
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
       </div>
     </InsightsArticleLayout>
   );

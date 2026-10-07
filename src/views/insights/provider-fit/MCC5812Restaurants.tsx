@@ -2,7 +2,7 @@
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
-import { BOOKING_URL } from "@/lib/booking";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 
 const MCC5812Restaurants = () => {
   const faqs = [
@@ -18,6 +18,7 @@ const MCC5812Restaurants = () => {
 
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="MCC 5812: Payment Gateways for UK Restaurants and Food Businesses"
       description="What MCC 5812 means for your restaurant or food business, why hospitality triggers reserves, and which payment processors support restaurant business models."
       category={{ name: "Provider Fit Guides", slug: "provider-fit" }}
@@ -44,6 +45,8 @@ const MCC5812Restaurants = () => {
         Merchant Category Codes are four-digit codes assigned by card networks to classify businesses. MCC 5812 covers eating places, restaurants, and food delivery operations. This code determines your interchange rate tier, your risk classification, and how acquirers evaluate your application. It is not something you choose, your provider assigns it based on your business description.
       </p>
 
+      <WriteToUsLine className="text-muted-foreground mb-6" />
+
       <h2 className="heading-md text-foreground mt-10 mb-4">Why Hospitality Businesses Trigger Reserves</h2>
       <p className="text-muted-foreground mb-4">
         Payment providers apply reserves to hospitality businesses more frequently than other sectors because of several structural factors:
@@ -66,13 +69,7 @@ const MCC5812Restaurants = () => {
       </ul>
 
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
-        <h3 className="font-semibold text-foreground mb-2">See which providers fit your food business</h3>
-        <p className="text-muted-foreground text-sm mb-4">
-          Book a free 15-minute call and we'll match you with the right processor.
-        </p>
-        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-          Book a 15-Minute Call <span aria-hidden>→</span>
-        </a>
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
       </div>
     </InsightsArticleLayout>
   );

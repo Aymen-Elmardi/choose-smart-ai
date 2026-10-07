@@ -43,3 +43,20 @@ What changed:
 - /best-payment-api-uk: quiz CTAs replaced (T01); "paid by providers" line removed (D1); og:title matches title (T03).
 - /stripe-vs-square-vs-paypal-uk: quiz CTA and "short assessment" link replaced (T01); og:title matches title (T03).
 Next deploy not before: 1 to 2 days after the merge date.
+
+## Deploy 4 (prepared 2026-10-07, not yet merged)
+
+DEPLOY 4 | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/mcc-5812-payment-gateway-uk
+https://chosepayments.com/best-acquirers-food-delivery
+https://chosepayments.com/best-payment-processors-high-chargebacks
+https://chosepayments.com/payment-processors-high-risk-ecommerce
+https://chosepayments.com/payment-provider-subscription-business
+What changed:
+- /mcc-5812-payment-gateway-uk: CTAs unified to Write to us / Book a call; /assessment link removed (T01).
+- /best-acquirers-food-delivery: CTAs unified to Write to us / Book a call; /assessment link removed (T01).
+- /best-payment-processors-high-chargebacks: CTAs unified to Write to us / Book a call; /assessment link removed (T01).
+- /payment-processors-high-risk-ecommerce: CTAs unified to Write to us / Book a call; /assessment link removed (T01).
+- /payment-provider-subscription-business: CTAs unified to Write to us / Book a call; /assessment link removed (T01).
+Next deploy not before: 1 to 2 days after the merge date.

@@ -2,7 +2,7 @@
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
-import { BOOKING_URL } from "@/lib/booking";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 
 const FoodDeliveryAcquirers = () => {
   const faqs = [
@@ -18,6 +18,7 @@ const FoodDeliveryAcquirers = () => {
 
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="Best Payment Acquirers for Food Delivery Platforms"
       description="Why food delivery platforms face unique payment challenges and which acquirers can handle high transaction velocity, refund patterns, and marketplace payouts."
       category={{ name: "Provider Fit Guides", slug: "provider-fit" }}
@@ -44,6 +45,8 @@ const FoodDeliveryAcquirers = () => {
         Food delivery platforms can process thousands of transactions per hour during peak periods. Mainstream processors with automated risk systems often flag this velocity as unusual activity, triggering account reviews or temporary holds at the worst possible time. The right acquirer must be configured for high-frequency, low-value transactions without treating normal operating patterns as risk signals.
       </p>
 
+      <WriteToUsLine className="text-muted-foreground mb-6" />
+
       <h2 className="heading-md text-foreground mt-10 mb-4">Refund Patterns</h2>
       <p className="text-muted-foreground mb-6">
         Food delivery inherently generates more refunds than typical ecommerce. Wrong orders, missing items, late deliveries, and quality complaints all result in partial or full refunds. Providers that treat a high refund rate as a risk flag (rather than a normal operating characteristic), will cause ongoing friction. You need a provider that understands your refund rate is structural, not a sign of fraud.
@@ -60,13 +63,7 @@ const FoodDeliveryAcquirers = () => {
       </p>
 
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
-        <h3 className="font-semibold text-foreground mb-2">Find the right acquirer for your platform</h3>
-        <p className="text-muted-foreground text-sm mb-4">
-          Book a free 15-minute call and we'll match you with providers built for delivery platforms.
-        </p>
-        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-          Book a 15-Minute Call <span aria-hidden>→</span>
-        </a>
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
       </div>
     </InsightsArticleLayout>
   );
