@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
+import { SecondOpinionLine, TalkItThroughBox } from "@/components/ContactCTAs";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -139,6 +140,7 @@ const schemaGraph = {
 const ThirdPartyPaymentProcessors = () => {
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="Third-Party Payment Processors Explained: What They Are and When They Make Sense"
       description="A third-party payment processor lets you accept cards without your own merchant account. Here is how they work, what they cost, and when to move on from one."
       category={{ name: "Explainers", slug: "explainer" }}
@@ -270,6 +272,10 @@ const ThirdPartyPaymentProcessors = () => {
           <a href="https://www.helcim.com/guides/interchange-plus-pricing-explained/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim, interchange-plus pricing guide</a>).
         </p>
       </section>
+
+      <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mb-12">
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
+      </div>
 
       {/* Aggregator squeeze */}
       <section className="mb-12">
@@ -417,11 +423,7 @@ const ThirdPartyPaymentProcessors = () => {
           <Link href="/insights/hidden-payment-processor-fees" className="text-primary hover:underline">full breakdown of hidden payment processor fees</Link>{" "}
           for what to check before you sign.
         </p>
-        <p className="text-muted-foreground">
-          Not sure whether your business has outgrown its current processor, or whether a marketplace payout structure needs a payment facilitator instead of a standard setup?{" "}
-          <Link href="/assessment" className="text-primary hover:underline font-medium">Run the free risk assessment</Link>{" "}
-          and get matched to a processor built for how your business actually operates.
-        </p>
+        <SecondOpinionLine className="text-muted-foreground" />
       </section>
 
       {/* FAQ */}
