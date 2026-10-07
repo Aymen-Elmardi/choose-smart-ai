@@ -68,6 +68,7 @@ const ARTICLES: Record<string, AuthorArticle[]> = {
     { href: "/payment-gateway-vs-payment-processor", title: "Payment Gateway vs Payment Processor: The Actual Difference" },
     { href: "/payment-processors-high-risk-ecommerce", title: "Payment Processors for High-Risk E-commerce Businesses" },
     { href: "/insights/payment-provider-risk-models", title: "Payment Provider Risk Models Explained in Plain English" },
+    { href: "/marketplace-payment-provider", title: "Payment Providers for Marketplaces and Platforms" },
     { href: "/insights/paypal-fees-explained", title: "PayPal Fees Explained: The Complete UK Guide for 2026" },
     { href: "/insights/paypal-payment-platform", title: "PayPal: From Online Payments Pioneer to Global Consumer Network" },
     { href: "/insights/why-providers-re-underwrite-accounts", title: "Re-Underwriting Explained: When Providers Review Existing Accounts" },
