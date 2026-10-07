@@ -87,9 +87,6 @@ const BestPaymentApiUK = () => {
                 </p>
               </div>
               <WriteToUsLine className="text-lg text-muted-foreground" />
-              <p className="text-sm text-muted-foreground mt-6">
-                Independent guidance. We're paid by providers — not by you.
-              </p>
             </div>
           </div>
         </section>
