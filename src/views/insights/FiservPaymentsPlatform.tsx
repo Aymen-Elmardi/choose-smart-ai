@@ -3,7 +3,7 @@ import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
-import { BOOKING_URL } from "@/lib/booking";
+import { SecondOpinionLine, TalkItThroughBox } from "@/components/ContactCTAs";
 import { Source } from "@/components/SourcesCitation";
 import { Shield, Globe, Building2, Zap, CreditCard, BarChart3, CheckCircle, AlertTriangle, ArrowRight } from "lucide-react";
 
@@ -124,6 +124,7 @@ const FiservPaymentsPlatform = () => {
 
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="Fiserv and the First Data Payment Gateway: What Merchants Need to Know"
       description="Fiserv acquired First Data in 2019, creating one of the largest payment gateway and merchant processing networks in the world. What merchants need to know before choosing Fiserv."
       category={{ name: "Provider Deep Dives", slug: "providers" }}
@@ -252,18 +253,7 @@ const FiservPaymentsPlatform = () => {
       {/* Mid-article CTA (Change 7) */}
       <div style={{ background: "#0D1117", border: "1px solid #1F2937", borderRadius: "14px", padding: "2.5rem 2.8rem", margin: "3rem 0", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg,#10B981,#059669)" }} />
-        <p style={{ color: "#10B981", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", margin: "0 0 1rem 0" }}>
-          Free Consultation
-        </p>
-        <p style={{ color: "#F9FAFB", fontSize: "1.35rem", fontWeight: 700, lineHeight: 1.4, margin: "0 0 0.75rem 0" }}>
-          Not sure if Fiserv is right for your business?
-        </p>
-        <p style={{ color: "#9CA3AF", fontSize: "1rem", lineHeight: 1.65, margin: "0 0 1.75rem 0" }}>
-          Book a free 15-minute call with our team. We will help you work out which processor actually fits your volume, industry, and risk profile. No sales pitch. No strings attached.
-        </p>
-        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#10B981", color: "#ffffff", fontWeight: 700, fontSize: "0.95rem", padding: "0.85rem 2rem", borderRadius: "8px", textDecoration: "none", letterSpacing: "0.02em" }}>
-          Book a Free 15-Minute Call
-        </a>
+        <TalkItThroughBox placement="mid" tone="inverted" headingLevel="h3" reassurance />
       </div>
 
       {/* How to Evaluate */}
@@ -338,13 +328,7 @@ const FiservPaymentsPlatform = () => {
         <p className="text-muted-foreground mb-4">
           If you operate at scale, across multiple locations, or within regulated environments where stability and consolidation matter, Fiserv's breadth and infrastructure can justify the complexity. If you are small, cost-sensitive, or need rapid experimentation, you should compare newer payment providers first and only proceed with Fiserv once the commercial and operational details are clear.
         </p>
-        <p className="text-muted-foreground">
-          If you want help assessing whether Fiserv fits your business profile, or comparing it against alternatives based on your transaction volume, geography, and risk profile, you can{" "}
-          <Link href="/assessment" className="text-primary hover:underline font-medium">
-            start a short assessment
-          </Link>{" "}
-          and we will guide you through the trade-offs before you commit.
-        </p>
+        <SecondOpinionLine className="text-muted-foreground" />
       </section>
 
       {/* Related Articles */}
