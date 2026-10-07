@@ -111,6 +111,7 @@ const ARTICLES: Record<string, AuthorArticle[]> = {
   ],
   "madalsa-bhat": [
     { href: "/insights/comparisons/adyen-vs-paypal", title: "Adyen vs PayPal: Fees and Features Comparison" },
+    { href: "/best-payment-api-uk", title: "Best Payment APIs in the UK \u2014 and Which Ones Will Actually Approve You" },
     { href: "/insights/comparisons/checkout-com-vs-paypal", title: "Checkout.com vs PayPal: Enterprise Rates vs Consumer Trust" },
     { href: "/insights/marketplace-split-payments", title: "Marketplace Split Payments: How They Work and What Actually Goes Wrong" },
     { href: "/best-payment-provider-small-business", title: "Payment Providers for Small Businesses (UK & EU)" },
