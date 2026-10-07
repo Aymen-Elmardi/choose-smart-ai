@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { AUTHORS } from '@/data/authors'
 
 export const dynamic = 'force-static'
 
@@ -748,6 +749,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
+    ...AUTHORS.map((author) => ({
+      url: `${BASE_URL}/authors/${author.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    })),
     {
       url: `${BASE_URL}/faq`,
       lastModified: new Date(),
