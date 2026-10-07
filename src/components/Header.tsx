@@ -54,6 +54,8 @@ const Header = () => {
             </Link>
             <a
               href={BOOKING_URL}
+              data-cta="call"
+              data-placement="header"
               target="_blank"
               rel="noopener noreferrer"
               className="cp-btn cp-btn-primary cp-nav-cta-primary"
@@ -100,6 +102,8 @@ const Header = () => {
                     <SheetClose asChild>
                       <a
                         href={BOOKING_URL}
+                        data-cta="call"
+                        data-placement="header"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="cp-btn cp-btn-primary mt-2 justify-center"
