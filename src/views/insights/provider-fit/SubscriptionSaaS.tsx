@@ -2,7 +2,7 @@
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
-import { BOOKING_URL } from "@/lib/booking";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 
 const SubscriptionSaaS = () => {
   const faqs = [
@@ -18,6 +18,7 @@ const SubscriptionSaaS = () => {
 
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="Choosing the Right Payment Provider for Subscription and SaaS Businesses"
       description="Learn what subscription and SaaS businesses need from a payment provider, including recurring billing, dunning logic, and fraud exposure specific to subscription models."
       category={{ name: "Provider Fit Guides", slug: "provider-fit" }}
@@ -49,6 +50,8 @@ const SubscriptionSaaS = () => {
         <li><strong className="text-foreground">Multi-currency support</strong>, if you serve international customers, you need local currency billing to reduce failed payments and disputes.</li>
       </ul>
 
+      <WriteToUsLine className="text-muted-foreground mb-6" />
+
       <h2 className="heading-md text-foreground mt-10 mb-4">Dunning and Retry Logic</h2>
       <p className="text-muted-foreground mb-4">
         Failed payments are the silent killer of subscription revenue. Between 5% and 15% of recurring charges fail each month due to expired cards, insufficient funds, or bank declines. A strong provider offers:
@@ -70,13 +73,7 @@ const SubscriptionSaaS = () => {
       </p>
 
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
-        <h3 className="font-semibold text-foreground mb-2">Find your best provider fit</h3>
-        <p className="text-muted-foreground text-sm mb-4">
-          Book a free 15-minute call and we'll match you with providers built for recurring revenue.
-        </p>
-        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-          Book a 15-Minute Call <span aria-hidden>→</span>
-        </a>
+        <TalkItThroughBox placement="mid" headingLevel="h3" />
       </div>
     </InsightsArticleLayout>
   );
