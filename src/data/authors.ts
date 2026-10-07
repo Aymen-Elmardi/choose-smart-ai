@@ -113,6 +113,7 @@ const ARTICLES: Record<string, AuthorArticle[]> = {
     { href: "/insights/comparisons/adyen-vs-paypal", title: "Adyen vs PayPal: Fees and Features Comparison" },
     { href: "/insights/comparisons/checkout-com-vs-paypal", title: "Checkout.com vs PayPal: Enterprise Rates vs Consumer Trust" },
     { href: "/insights/marketplace-split-payments", title: "Marketplace Split Payments: How They Work and What Actually Goes Wrong" },
+    { href: "/best-payment-provider-small-business", title: "Payment Providers for Small Businesses (UK & EU)" },
     { href: "/insights/stripe-vs-adyen", title: "Stripe vs Adyen: Fees and Features Comparison" },
     { href: "/insights/comparisons/stripe-vs-checkout-com", title: "Stripe vs Checkout.com: Fees and Features Comparison" },
     { href: "/insights/comparisons/stripe-vs-paypal", title: "Stripe vs PayPal: Fees and Features Comparison" },
