@@ -7,7 +7,7 @@ import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
-import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 import { ArrowRight, CheckCircle2, Building2, Shield, Globe, Users } from "lucide-react";
 
 const adyenSources = [
@@ -85,9 +85,7 @@ const AdyenEnterprisePlatform = () => {
               </p>
             </section>
 
-            <InlineAssessmentCTA
-              context="See if your business qualifies for Adyen's enterprise platform and how your risk profile aligns."
-            />
+            <WriteToUsLine className="text-lg text-muted-foreground mb-12" />
 
             {/* Single Platform Advantage */}
             <section className="mb-12">
@@ -269,19 +267,7 @@ const AdyenEnterprisePlatform = () => {
 
             {/* CTA Section */}
             <section className="p-8 md:p-12 rounded-2xl bg-muted/30 border border-border text-center">
-              <h2 className="text-2xl font-bold text-foreground mb-3">
-                Ready to find the right payment provider for your stage?
-              </h2>
-              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-                Take our short assessment to get personalized recommendations based on your business model, volume, and operational needs.
-              </p>
-              <Link
-                href="/assessment?start=true"
-                replace
-                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors"
-              >
-                Take the assessment <ArrowRight className="w-4 h-4" />
-              </Link>
+              <TalkItThroughBox placement="end" reassurance />
             </section>
           </div>
 
