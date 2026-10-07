@@ -40,6 +40,10 @@ interface ContactEmailRequest {
   businessName: string;
   message: string;
   honeypot?: string;
+  /** First-touch URL of the session and the last page viewed before /contact.
+   *  Sent by the contact form; absent for the footer newsletter signup. */
+  landingPage?: string;
+  previousPage?: string;
   /** "newsletter" swaps the auto-reply for signup wording. Defaults to the
    *  contact-form copy so existing callers are unaffected. */
   type?: "contact" | "newsletter";
@@ -63,7 +67,7 @@ const handler = async (req: Request): Promise<Response> => {
       return errorResponse("Too many requests. Please try again later.", 429);
     }
 
-    const { name, email, businessName, message, honeypot, type }: ContactEmailRequest = await req.json();
+    const { name, email, businessName, message, honeypot, type, landingPage, previousPage }: ContactEmailRequest = await req.json();
     const isNewsletter = type === "newsletter";
 
     if (honeypot) {
@@ -75,6 +79,8 @@ const handler = async (req: Request): Promise<Response> => {
     const sanitizedEmail = sanitizeString(email, 255);
     const sanitizedBusinessName = sanitizeString(businessName, 200);
     const sanitizedMessage = sanitizeString(message, 2000);
+    const sanitizedLandingPage = sanitizeString(landingPage, 500);
+    const sanitizedPreviousPage = sanitizeString(previousPage, 500);
 
     if (!sanitizedName || !sanitizedEmail || !sanitizedMessage) {
       return errorResponse("Missing required fields", 400);
@@ -108,6 +114,8 @@ const handler = async (req: Request): Promise<Response> => {
         <p><strong>Name:</strong> ${escapeHtml(sanitizedName)}</p>
         <p><strong>Email:</strong> ${escapeHtml(sanitizedEmail)}</p>
         <p><strong>Business:</strong> ${escapeHtml(sanitizedBusinessName)}</p>
+        <p><strong>Landing page:</strong> ${escapeHtml(sanitizedLandingPage || "Unknown")}</p>
+        <p><strong>Came from:</strong> ${escapeHtml(sanitizedPreviousPage || "Unknown")}</p>
         <hr />
         <h3>Message:</h3>
         <p>${escapeHtml(sanitizedMessage).replace(/\n/g, "<br />")}</p>

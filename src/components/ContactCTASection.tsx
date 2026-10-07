@@ -36,6 +36,8 @@ const ContactCTASection = () => (
         </p>
         <a
           href={BOOKING_URL}
+          data-cta="call"
+          data-placement="end"
           target="_blank"
           rel="noopener noreferrer"
           style={{
