@@ -1,6 +1,8 @@
 'use client'
 import { Check, Building2 } from "lucide-react";
 import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
+import ArticleByline from "@/components/ArticleByline";
+import ArticleSchema from "@/components/ArticleSchema";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
@@ -11,6 +13,13 @@ const SmallBusiness = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ArticleSchema
+        title={"Payment Providers for Small Businesses (UK & EU)"}
+        description={"Most small businesses choose a payment provider too quickly \u2014 and regret it. Understand your risk profile and find a provider that actually fits your business."}
+        publishedTime="2025-12-24"
+        modifiedTime="2025-12-24"
+        authorSlug="madalsa-bhat"
+      />
       <Header />
       
       <main className="section-padding pt-24">
@@ -19,6 +28,7 @@ const SmallBusiness = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Payment Providers for Small Businesses (UK & EU)
             </h1>
+            <ArticleByline authorSlug="madalsa-bhat" publishedTime="2025-12-24" modifiedTime="2025-12-24" />
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               When you're running a small business, choosing a payment provider often happens in a hurry. You go with what a friend uses, or what shows up first in a search, or whatever lets you start accepting payments fastest. That's understandable — but it's also how many businesses end up with a provider that doesn't quite fit. Fees turn out to be higher than expected. Support is hard to reach. And by the time you realise, switching feels like more trouble than it's worth. If you're still choosing, it's worth taking a bit more time to get this right.

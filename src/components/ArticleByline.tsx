@@ -1,5 +1,7 @@
 'use client'
 import { createContext, useContext } from "react";
+import Link from "next/link";
+import { getAuthorProfile } from "@/data/authorProfiles";
 
 export interface ArticleBylineData {
   /**
@@ -49,7 +51,18 @@ const formatPublished = (iso: string) => {
  * byline (directly under its H1) and the layout stays the single source of
  * the date and author. That keeps the two from drifting apart.
  */
-const ArticleByline = ({ publishedTime, author }: Partial<ArticleBylineData> = {}) => {
+interface ArticleBylineProps extends Partial<ArticleBylineData> {
+  /**
+   * Slug of a named expert (src/data/authors.ts). Switches to the T05 byline
+   * format, "Name, Role" with the name linking to the profile page, and shows
+   * "Last updated" when modifiedTime differs from the published date.
+   * Articles move over in batches, so the old format stays the default.
+   */
+  authorSlug?: string;
+  modifiedTime?: string;
+}
+
+const ArticleByline = ({ publishedTime, author, authorSlug, modifiedTime }: ArticleBylineProps = {}) => {
   // Articles inside InsightsArticleLayout read the date and author from
   // context. The handful that predate that layout and roll their own markup
   // pass them directly, or fall back to the house author with no date.
@@ -58,6 +71,23 @@ const ArticleByline = ({ publishedTime, author }: Partial<ArticleBylineData> = {
   const resolvedDate = publishedTime ?? data?.publishedTime;
 
   const published = resolvedDate ? formatPublished(resolvedDate) : null;
+
+  const person = authorSlug ? getAuthorProfile(authorSlug) : undefined;
+  if (person) {
+    const updated = modifiedTime && modifiedTime !== resolvedDate ? formatPublished(modifiedTime) : null;
+    return (
+      <div className="mb-8 text-sm text-muted-foreground not-italic">
+        {published && <div>Published {published}</div>}
+        {updated && <div>Last updated {updated}</div>}
+        <div>
+          <Link href={`/authors/${person.slug}`} rel="author" className="text-foreground hover:underline">
+            {person.name}
+          </Link>
+          , {person.jobTitle}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mb-8 text-sm text-muted-foreground not-italic">

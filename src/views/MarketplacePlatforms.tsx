@@ -1,6 +1,8 @@
 'use client'
 import { Check, Network, Shield } from "lucide-react";
 import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
+import ArticleByline from "@/components/ArticleByline";
+import ArticleSchema from "@/components/ArticleSchema";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
@@ -11,6 +13,13 @@ const MarketplacePlatforms = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ArticleSchema
+        title={"Payment Providers for Marketplaces and Platforms"}
+        description={"Building a marketplace? Understand why payment providers scrutinise platforms differently \u2014 and which providers actually fit your compliance and payout needs."}
+        publishedTime="2025-12-24"
+        modifiedTime="2025-12-25"
+        authorSlug="aymen-elmardi"
+      />
       <Header />
       
       <main className="section-padding pt-24">
@@ -19,6 +28,7 @@ const MarketplacePlatforms = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Payment Providers for Marketplaces and Platforms
             </h1>
+            <ArticleByline authorSlug="aymen-elmardi" publishedTime="2025-12-24" modifiedTime="2025-12-25" />
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               If you're building a marketplace, franchise, or multi-vendor platform, you've probably already discovered that most payment providers aren't built for what you're doing. You need to split funds between parties, manage payouts on different schedules, and handle compliance for sellers you don't fully control. Standard tools make this harder than it should be. That friction isn't your fault. It's a mismatch. Choosing the wrong provider here creates real problems later: blocked funds, compliance issues, or having to rebuild your payments layer from scratch. This page is here to help you understand what actually matters for platform payments before you commit.
