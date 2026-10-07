@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/insights/adyen-enterprise-payments-platform' },
   openGraph: {
     url: 'https://chosepayments.com/insights/adyen-enterprise-payments-platform',
-    images: ['/og-default.png'], title: 'Adyen for Enterprises: When It\'s Better Than Stripe', description: 'Adyen vs Stripe for enterprise. Unified platform, global reach, lower fees at scale.', type: 'article' },
+    images: ['/og-default.png'], title: 'Adyen for Enterprises: When It\'s Better Than Stripe | ChosePayments', description: 'Adyen vs Stripe for enterprise. Unified platform, global reach, lower fees at scale.', type: 'article' },
 }
 
 export default function Page() {

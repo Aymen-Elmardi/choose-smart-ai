@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
+import { SecondOpinionLine, TalkItThroughBox } from "@/components/ContactCTAs";
 import FAQSchema from "@/components/FAQSchema";
 import { ArrowRight } from "lucide-react";
 
@@ -39,6 +40,7 @@ const PayPalPaymentPlatform = () => {
 
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="PayPal: From Online Payments Pioneer to Global Consumer Network"
       description="Understand where PayPal fits in the payments landscape, how its consumer trust drives conversion, and which businesses benefit most from adding PayPal to their payment stack."
       category={{ name: "Provider Deep Dives", slug: "providers" }}
@@ -191,6 +193,10 @@ const PayPalPaymentPlatform = () => {
       </p>
 
       {/* Which Businesses Should Seriously Consider PayPal */}
+      <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
+      </div>
+
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Which Businesses Should Seriously Consider PayPal</h2>
       <p className="text-foreground/90 mb-4">PayPal is often a strong fit for:</p>
       <ul className="list-disc pl-6 space-y-2 text-foreground/90 mb-8">
@@ -259,11 +265,7 @@ const PayPalPaymentPlatform = () => {
       <p className="text-foreground/90 mb-4">
         The most effective payment setups rarely rely on a single provider. They combine infrastructure providers with consumer-facing wallets in a way that balances control, cost, and trust.
       </p>
-      <p className="text-foreground/90 mb-8">
-        If you want to understand whether PayPal fits your business model, growth stage, and customer base, a{" "}
-        <Link href="/assessment" className="text-primary hover:underline">short assessment</Link>{" "}
-        can help clarify where it adds value and where another provider may be a better core option.
-      </p>
+      <SecondOpinionLine className="text-foreground/90 mb-8" />
     </InsightsArticleLayout>
   );
 };
