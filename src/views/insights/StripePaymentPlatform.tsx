@@ -5,10 +5,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
 import InsightsBreadcrumb from "@/components/InsightsBreadcrumb";
-import { Button } from "@/components/ui/button";
 import SourcesCitation from "@/components/SourcesCitation";
 import ArticleActions from "@/components/ArticleActions";
-import InlineAssessmentCTA from "@/components/InlineAssessmentCTA";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 import { ArrowRight, CheckCircle2, Zap, Globe, Layers, Shield, CreditCard, Building } from "lucide-react";
 
 const stripeSources = [
@@ -110,9 +109,7 @@ const StripePaymentPlatform = () => {
               </p>
             </section>
 
-            <InlineAssessmentCTA
-              context="Is your business optimised for Stripe's platform, or would another provider be a better fit?"
-            />
+            <WriteToUsLine className="text-lg text-muted-foreground mb-12" />
 
             {/* The API Revolution */}
             <section className="mb-12">
@@ -297,20 +294,7 @@ const StripePaymentPlatform = () => {
 
             {/* CTA */}
             <section className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold text-foreground mb-4">
-                  Ready to Optimize for Stripe?
-                </h2>
-                <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Our 60-second assessment helps ensure your business is perfectly aligned with Stripe's automated systems to maximize platform benefits.
-                </p>
-                <Link href="/assessment">
-                  <Button size="lg" className="gap-2">
-                    Take the Assessment
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
+              <TalkItThroughBox placement="end" reassurance />
             </section>
 
             {/* Related Reading */}
