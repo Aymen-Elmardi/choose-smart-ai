@@ -117,6 +117,7 @@ const ARTICLES: Record<string, AuthorArticle[]> = {
     { href: "/best-payment-provider-small-business", title: "Payment Providers for Small Businesses (UK & EU)" },
     { href: "/insights/stripe-vs-adyen", title: "Stripe vs Adyen: Fees and Features Comparison" },
     { href: "/insights/comparisons/stripe-vs-checkout-com", title: "Stripe vs Checkout.com: Fees and Features Comparison" },
+    { href: "/stripe-vs-square-vs-paypal-uk", title: "Stripe vs PayPal vs Square UK: Which Payment Provider Will Actually Approve Your Business?" },
     { href: "/insights/comparisons/stripe-vs-paypal", title: "Stripe vs PayPal: Fees and Features Comparison" },
     { href: "/switch-payment-provider", title: "Switching Payment Providers: How to Do It Without Getting Stuck" },
   ],
