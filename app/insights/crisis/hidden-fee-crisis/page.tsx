@@ -3,13 +3,13 @@ import HiddenFeeCrisis from '@/views/insights/crisis/HiddenFeeCrisis'
 
 export const metadata: Metadata = {
   title: 'Hidden Fee Crisis: When Your Provider Costs More Than You Thought',
-  description: 'Discovered hidden fees eating your margins? A practical guide to auditing your payment costs and switching without disruption.',
+  description: 'Low headline rate, high real cost? Learn how to calculate your all-in effective rate and spot the fees that quietly inflate your processing bill. Ask us.',
   alternates: { canonical: '/insights/crisis/hidden-fee-crisis' },
   openGraph: {
     url: 'https://chosepayments.com/insights/crisis/hidden-fee-crisis',
     images: ['/og-default.png'],
     title: 'Hidden Fee Crisis: When Your Provider Costs More Than You Thought | ChosePayments',
-    description: 'Discovered hidden fees eating your margins? A practical guide to auditing your payment costs and switching without disruption.',
+    description: 'Low headline rate, high real cost? Learn how to calculate your all-in effective rate and spot the fees that quietly inflate your processing bill. Ask us.',
     type: 'article',
   },
 }
