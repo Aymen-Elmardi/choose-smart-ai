@@ -37,7 +37,7 @@ const StripePaymentPlatform = () => {
     },
     {
       question: "How can I optimize my business for Stripe?",
-      answer: "To maximize Stripe's benefits, ensure your business profile aligns with their automated systems, maintain clean transaction patterns, leverage their ecosystem products strategically, and have technical resources available for integration. Our assessment can help identify optimization opportunities."
+      answer: "To maximize Stripe's benefits, ensure your business profile aligns with their automated systems, maintain clean transaction patterns, leverage their ecosystem products strategically, and have technical resources available for integration. Write to us and we can help identify optimization opportunities."
     }
   ];
 
