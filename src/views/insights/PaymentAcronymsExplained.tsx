@@ -16,7 +16,7 @@ const PaymentAcronymsExplained = () => {
     },
     {
       question: "What is a rolling reserve in payment processing?",
-      answer: "A rolling reserve is when a provider withholds a percentage of your revenue for a set period, typically 6 to 12 months, as protection against chargebacks and disputes. It directly affects your available cash flow even though the money is eventually released."
+      answer: "A rolling reserve is when a provider withholds a percentage of your revenue for a set period, typically 90 to 180 days, as protection against chargebacks and disputes. It directly affects your available cash flow even though the money is eventually released."
     },
     {
       question: "What is the difference between settlement and payout?",
@@ -170,7 +170,7 @@ const PaymentAcronymsExplained = () => {
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Rolling Reserve</h3>
       <p className="text-muted-foreground mb-2">
-        A percentage of your revenue that a provider withholds for a set period, typically 6 to 12 months.
+        A percentage of your revenue that a provider withholds for a set period, typically 90 to 180 days.
       </p>
       <p className="text-muted-foreground mb-6">
         Rolling reserves are common for businesses that providers consider higher risk. The withheld funds act as insurance against future chargebacks. While the money is eventually released, it directly reduces your available working capital. This is one of the most common reasons merchants feel their money is "stuck."
@@ -282,15 +282,6 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         For businesses processing many small transactions, LVT exemptions can meaningfully improve approval rates. But not all providers request this exemption from issuers. If your average transaction value is low, it is worth asking whether your provider applies it.
-      </p>
-
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">LTV Exemption (Low Transaction Value)</h3>
-      <p className="text-muted-foreground mb-2">
-        Often used interchangeably with LVT, this refers to the same{" "}
-        <Link href="/insights/low-value-transaction-exemption" className="text-primary hover:underline">SCA exemption for small value payments</Link>.
-      </p>
-      <p className="text-muted-foreground mb-6">
-        The terminology varies between providers, but the principle is the same. Payments below the threshold can be processed without full authentication, reducing friction for the buyer.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">3DS Friction</h3>
