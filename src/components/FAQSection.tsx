@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "Is ChosePayments really free for merchants?",
     answer:
-      "Yes, completely free. We are paid by the payment processors when we make a successful introduction. You never pay us a fee, a commission, or anything else. Our incentive is to find you the right fit, because that is how we get paid.",
+      "Yes, completely free. You never pay us a fee, a commission, or anything else.",
   },
   {
     question: "What is a payment processor risk profile?",
