@@ -146,3 +146,21 @@ What changed:
 - /insights/payment-acronyms-explained: fake "LTV Exemption" entry removed; rolling reserve duration now 90 to 180 days (T11.4).
 - /insights/wallet-payments-guaranteed-success: H1 no longer claims a 100% success rate (T11.5, interim).
 Next deploy not before: 1 to 2 days after the merge date.
+
+## Deploy 8b (prepared 2026-10-08, not yet merged)
+
+DEPLOY 8b | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/ecommerce/chargeback-thresholds-high-risk-processors
+https://chosepayments.com/insights/payment-processor-business-vertical-classification
+https://chosepayments.com/best-payment-processor-uk
+https://chosepayments.com/insights/stripe-payment-platform
+https://chosepayments.com/
+What changed:
+- /insights/ecommerce/chargeback-thresholds-high-risk-processors: visible note that the table shows legacy Visa programmes (T11.6).
+- /insights/payment-processor-business-vertical-classification: unsourced "Visa/MC Risk Tier" column hidden (T11.7).
+- /best-payment-processor-uk: "We're paid by providers" line removed (D1, owner).
+- /insights/stripe-payment-platform: FAQ answer points to Write to us instead of the assessment (owner).
+- /: commission FAQ "How does ChosePayments make money?" removed (D1, owner).
+- Every page: footer now reads "Independent Payment Advisory – US, UK & EU" (D1, owner). Not listed per page; no indexing request needed for a footer label.
+Next deploy not before: 1 to 2 days after the merge date.
