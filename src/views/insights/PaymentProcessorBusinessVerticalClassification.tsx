@@ -116,14 +116,16 @@ const PaymentProcessorBusinessVerticalClassification = () => {
         <li>Mandatory reserve requirements from acquirers willing to underwrite them</li>
       </ul>
 
-      <p className="text-foreground/90 mb-4">Specific high-risk MCCs and their Visa/Mastercard tier classifications:</p>
+      {/* TODO(verify): the "Visa/MC Risk Tier" values below (Tier 1, Tier 2,
+          Elevated, ...) have no source. The column is hidden until they are
+          verified; the data stays in the array so it can be restored. */}
+      <p className="text-foreground/90 mb-4">Specific high-risk MCCs and their typical concerns:</p>
       <div className="overflow-x-auto mb-6">
         <table className="w-full border-collapse border border-border text-sm">
           <thead>
             <tr className="bg-muted">
               <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">MCC</th>
               <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Category</th>
-              <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Visa/MC Risk Tier</th>
               <th className="border border-border px-4 py-3 text-left font-semibold text-foreground">Typical Concern</th>
             </tr>
           </thead>
@@ -139,11 +141,10 @@ const PaymentProcessorBusinessVerticalClassification = () => {
               ["5999", "Miscellaneous and specialty retail", "Processor-defined", "Catch-all, used when no specific code fits"],
               ["6211", "Security brokers and dealers", "Elevated", "Regulatory, financial services"],
               ["7841", "Video tape rental (used for some streaming services)", "Standard-to-elevated", "Subscription dispute patterns"],
-            ].map(([mcc, cat, tier, concern], i) => (
+            ].map(([mcc, cat, , concern], i) => (
               <tr key={mcc} className={i % 2 === 1 ? "bg-muted/30" : ""}>
                 <td className="border border-border px-4 py-3 text-foreground/90">{mcc}</td>
                 <td className="border border-border px-4 py-3 text-foreground/90">{cat}</td>
-                <td className="border border-border px-4 py-3 text-foreground/90">{tier}</td>
                 <td className="border border-border px-4 py-3 text-foreground/90">{concern}</td>
               </tr>
             ))}
