@@ -129,3 +129,20 @@ What changed:
 - /authors/aymen-elmardi: article list +1.
 - /authors/madalsa-bhat: article list +4.
 Next deploy not before: 1 to 2 days after the merge date.
+
+## Deploy 8a (prepared 2026-10-08, not yet merged)
+
+DEPLOY 8a | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/ach-payment-processors
+https://chosepayments.com/insights/third-party-payment-processors
+https://chosepayments.com/insights/digital-product-chargebacks-refunds-payment-processor
+https://chosepayments.com/insights/payment-acronyms-explained
+https://chosepayments.com/insights/wallet-payments-guaranteed-success
+What changed:
+- /ach-payment-processors: wrong Same Day ACH limit history replaced (T11.1).
+- /insights/third-party-payment-processors: Square in-person rate corrected to 2.6% + $0.15 (Free plan) (T11.2).
+- /insights/digital-product-chargebacks-refunds-payment-processor: example phone number labelled "1-800-000-0000 (example)" (T11.3).
+- /insights/payment-acronyms-explained: fake "LTV Exemption" entry removed; rolling reserve duration now 90 to 180 days (T11.4).
+- /insights/wallet-payments-guaranteed-success: H1 no longer claims a 100% success rate (T11.5, interim).
+Next deploy not before: 1 to 2 days after the merge date.
