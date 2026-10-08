@@ -122,7 +122,7 @@ const Footer = () => {
 
           <div className="cp-footer-bottom">
             <span>© 2026 ChosePayments. All rights reserved.</span>
-            <span>Independent Payment Risk Analysis – US, UK &amp; EU</span>
+            <span>Independent Payment Advisory – US, UK &amp; EU</span>
           </div>
         </div>
       </footer>
