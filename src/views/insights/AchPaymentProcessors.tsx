@@ -50,6 +50,7 @@ const faqs = [
   },
   {
     question: "Is ACH safe for business payments?",
+    // TODO(verify): "0.08 basis points" ACH fraud rate; source is a vendor blog, not Nacha.
     answer: "ACH fraud rates are very low, around 0.08 basis points, but unauthorized returns are handled under Nacha rules that require participants to keep unauthorized return rates below 0.5 percent, making account validation at setup important for maintaining compliance."
   },
   {
@@ -273,6 +274,7 @@ const AchPaymentProcessors = () => {
           ACH is not free of downsides. Standard settlement takes one to three business days, materially slower than the near-instant authorization of a card transaction. For a business that needs funds available immediately, that lag is a real cost even if the fee is lower.
         </p>
         <p className="text-muted-foreground">
+          {/* TODO(verify): "0.08 basis points" ACH fraud rate; source is a vendor blog, not Nacha. */}
           Fraud risk is also different in kind, not just in degree. ACH fraud rates are low, roughly 0.08 basis points, meaning for every $10,000 sent, ACH sees about $0.08 in fraud ({" "}
           <a href="https://technologyadvice.com/blog/sales/ach-payment-processing-guide/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">TechnologyAdvice, ACH payment processing ultimate guide</a>), but unauthorized ACH returns are handled differently than card chargebacks, with the Nacha network requiring participants to keep unauthorized return rates below a 0.5 percent threshold as a compliance requirement ({" "}
           <a href="https://www.bottomline.com/learning-center/2026-nacha-compliance-rules-risks-and-how-prepare" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Bottomline, 2026 Nacha compliance</a>).
@@ -285,7 +287,7 @@ const AchPaymentProcessors = () => {
           What Changed with Same-Day ACH in 2026
         </h2>
         <p className="text-muted-foreground">
-          Same-Day ACH has expanded steadily since its introduction, with the per-payment limit raised from $1 million to $100,000 in 2020 and up to the current level in the years since. Nacha's most recent risk management rule package, effective June 2026, requires more robust monitoring of outgoing ACH entries specifically to combat fraud, and underwriters are now expected to review how merchants validate account identities before initiating transfers ({" "}
+          Same Day ACH per-payment limits have risen in steps, most recently toward $10 million (see Nacha's announcement linked below). Nacha's most recent risk management rule package, effective June 2026, requires more robust monitoring of outgoing ACH entries specifically to combat fraud, and underwriters are now expected to review how merchants validate account identities before initiating transfers ({" "}
           <a href="https://www.nacha.org/content/summary-upcoming-rule-changes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Nacha, summary of upcoming rule changes</a>).
         </p>
 
@@ -304,6 +306,7 @@ const AchPaymentProcessors = () => {
         </p>
 
         <p className="text-muted-foreground mb-3">
+          {/* TODO(verify): Stripe ACH Direct Debit "0.8 percent with a $5 cap" against stripe.com/pricing. */}
           <strong className="text-foreground">Stripe</strong> charges 0.8 percent per ACH transaction with a $5 cap, and its documentation and integration ecosystem make it a common default for platforms already using Stripe for cards. For more on how ACH-friendly processors differ from traditional card acquirers, see our guide to{" "}
           <Link href="/insights/merchant-acquirer-vs-payment-processor" className="text-primary hover:underline">the difference between a merchant acquirer and a payment processor</Link>.
         </p>
