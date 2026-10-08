@@ -141,9 +141,6 @@ const BestPaymentProcessorUK = () => {
                 </Button>
                 <span className="text-sm text-muted-foreground mt-2">Takes under 1 minute • No spam</span>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
-                Independent guidance. We're paid by providers — not by you.
-              </p>
             </div>
           </div>
         </section>
