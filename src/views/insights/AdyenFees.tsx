@@ -250,7 +250,8 @@ const AdyenFees = () => {
           <Link href="/insights/checkout-com-fees-explained" className="text-primary hover:underline">Checkout.com</Link> also negotiates pricing but operates more like a modern PSP with less infrastructure depth than Adyen.
         </p>
         <p className="mb-4">
-          Adyen sits closer to the acquiring layer. Its pricing reflects that. The key difference is not "who is cheaper," but how fees scale as your business grows.
+          Adyen sits closer to the acquiring layer. Its pricing reflects that. The key difference is not "who is cheaper," but how fees scale as your business grows. To see how that plays out in numbers, read our{" "}
+          <Link href="/insights/stripe-vs-adyen" className="text-primary hover:underline">worked Stripe vs Adyen cost example</Link>.
         </p>
         <p>
           Adyen rewards scale and operational maturity. Stripe rewards speed and ease of setup. For a full comparison of enterprise providers, see our{" "}
