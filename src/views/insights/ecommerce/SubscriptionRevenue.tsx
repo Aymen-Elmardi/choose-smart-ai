@@ -4,6 +4,7 @@ import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
 import { Source } from "@/components/SourcesCitation";
 import { BOOKING_URL } from "@/lib/booking";
+import Link from 'next/link';
 
 const SubscriptionRevenue = () => {
   const faqs = [
@@ -98,7 +99,8 @@ const SubscriptionRevenue = () => {
         <li>Cross-border payment issues</li>
       </ul>
       <p className="text-muted-foreground mb-4">
-        Without proper recovery mechanisms, these failed renewals often lead to lost subscribers.
+        Without proper recovery mechanisms, these failed renewals often lead to lost subscribers. Disputes are the other side of the same problem: if you sell software or other digital products, see our guide to{" "}
+        <Link href="/insights/digital-product-chargebacks-refunds-payment-processor" className="text-primary hover:underline">chargebacks on digital products</Link>.
       </p>
 
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mb-8">
