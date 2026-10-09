@@ -164,3 +164,18 @@ What changed:
 - /: commission FAQ "How does ChosePayments make money?" removed (D1, owner).
 - Every page: footer now reads "Independent Payment Advisory – US, UK & EU" (D1, owner). Not listed per page; no indexing request needed for a footer label.
 Next deploy not before: 1 to 2 days after the merge date.
+
+## Deploy 9a (prepared 2026-10-09, not yet merged)
+
+DEPLOY 9a | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/pricing-models/interchange-plus-plus
+https://chosepayments.com/insights/crisis/stripe-account-frozen
+https://chosepayments.com/insights/hidden-payment-processor-fees
+https://chosepayments.com/insights/ecommerce/subscription-revenue-recurring-billing
+What changed:
+- /insights/pricing-models/interchange-plus-plus: "Blended Pricing" now links to /insights/pricing-models/blended-vs-interchange (T10).
+- /insights/crisis/stripe-account-frozen: "rolling reserve" now links to /insights/rolling-vs-fixed-reserve (T10).
+- /insights/hidden-payment-processor-fees: one sentence + link to /statement-review (Section 4).
+- /insights/ecommerce/subscription-revenue-recurring-billing: one sentence + link to the digital-product chargebacks guide (Section 4).
+Next deploy not before: 1 to 2 days after the merge date.

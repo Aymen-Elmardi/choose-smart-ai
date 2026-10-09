@@ -137,7 +137,8 @@ const HiddenPaymentProcessorFees = () => {
         </table>
       </div>
       <p className="text-foreground/90 mb-8">
-        None of these appear on the rate sheet you're shown before signing. They appear on your statement afterward, usually grouped under generic labels like "Miscellaneous Fees" or "Service Charges."
+        None of these appear on the rate sheet you're shown before signing. They appear on your statement afterward, usually grouped under generic labels like "Miscellaneous Fees" or "Service Charges." To check your own, upload a month of your statement to our{" "}
+        <Link href="/statement-review" className="text-primary hover:underline">free statement review</Link>.
       </p>
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Tiered Pricing: The Structural Version of a Hidden Fee</h2>

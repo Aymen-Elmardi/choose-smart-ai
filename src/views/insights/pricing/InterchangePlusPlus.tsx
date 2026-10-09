@@ -117,7 +117,7 @@ const InterchangePlusPlus = () => {
       </ol>
 
       <p className="mb-4">
-        Unlike <Link href="/insights/crisis/hidden-fee-crisis" className="text-primary hover:underline">Blended Pricing</Link>, where all transactions are averaged into a single headline rate (e.g., 1.75% + 20p), Interchange++ passes through the true costs of the first two layers and only charges you a transparent margin on top.
+        Unlike <Link href="/insights/pricing-models/blended-vs-interchange" className="text-primary hover:underline">Blended Pricing</Link>, where all transactions are averaged into a single headline rate (e.g., 1.75% + 20p), Interchange++ passes through the true costs of the first two layers and only charges you a transparent margin on top.
       </p>
 
       {/* The Math of Transparency */}
