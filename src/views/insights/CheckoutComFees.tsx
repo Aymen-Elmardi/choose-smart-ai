@@ -519,7 +519,8 @@ const CheckoutComFees = () => {
         <p className="text-muted-foreground mt-4">
           Compare this with{" "}
           <Link href="/insights/stripe-fees-explained" className="text-primary hover:underline">Stripe's transparent pricing model</Link>{" "}
-          to understand the tradeoffs.
+          to understand the tradeoffs, or see{" "}
+          <Link href="/insights/comparisons/stripe-vs-checkout-com" className="text-primary hover:underline">Stripe vs Checkout.com side by side</Link>.
         </p>
       </section>
 
