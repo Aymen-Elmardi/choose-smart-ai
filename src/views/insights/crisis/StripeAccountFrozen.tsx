@@ -174,7 +174,7 @@ const StripeAccountFrozen = () => {
         </p>
         <div className="bg-primary/5 border-l-4 border-primary p-4 my-4">
           <p className="text-foreground">
-            <strong>The Insight:</strong> This creates a significant financial liability. If your business fails before delivering the service, the payment provider is liable for all future refunds. Stripe's system will often hold a <Link href="/insights/crisis/hidden-fee-crisis" className="text-primary hover:underline">rolling reserve</Link> or freeze funds to cover this potential liability, especially if your business is new or rapidly growing.
+            <strong>The Insight:</strong> This creates a significant financial liability. If your business fails before delivering the service, the payment provider is liable for all future refunds. Stripe's system will often hold a <Link href="/insights/rolling-vs-fixed-reserve" className="text-primary hover:underline">rolling reserve</Link> or freeze funds to cover this potential liability, especially if your business is new or rapidly growing.
           </p>
         </div>
 
