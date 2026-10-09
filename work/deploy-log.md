@@ -179,3 +179,14 @@ What changed:
 - /insights/hidden-payment-processor-fees: one sentence + link to /statement-review (Section 4).
 - /insights/ecommerce/subscription-revenue-recurring-billing: one sentence + link to the digital-product chargebacks guide (Section 4).
 Next deploy not before: 1 to 2 days after the merge date.
+
+## Deploy 9b (prepared 2026-10-09, not yet merged)
+
+DEPLOY 9b | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/adyen-pricing-explained
+https://chosepayments.com/insights/checkout-com-fees-explained
+What changed:
+- /insights/adyen-pricing-explained: one sentence + link to /insights/stripe-vs-adyen (Section 4). Ranking page, additive only.
+- /insights/checkout-com-fees-explained: one clause + link to /insights/comparisons/stripe-vs-checkout-com (Section 4). Ranking page, additive only.
+Next deploy not before: 1 to 2 days after the merge date. Deploy 12 (title test 1) is on /insights/checkout-com-fees-explained: leave at least a few days after this merge so the two changes can be told apart in GSC.
