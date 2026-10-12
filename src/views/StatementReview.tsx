@@ -8,6 +8,26 @@ import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { useCanonical } from "@/hooks/useCanonical";
 import { Upload, ShieldCheck, ArrowRight, Loader2, Check, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import FAQSchema from "@/components/FAQSchema";
+import { BOOKING_URL } from "@/lib/booking";
+
+// Shown under the form and emitted as FAQPage JSON-LD from the same array, so
+// the visible FAQ and the structured data cannot drift apart.
+const FAQS = [
+  {
+    question: "What file types can I upload?",
+    answer: "A PDF or CSV of your payment processing statement, the monthly statement your processor sends you. One month is enough to work out your all-in effective rate.",
+  },
+  {
+    question: "Is the statement review free?",
+    answer: "Yes. The review is free, whatever it finds and whether or not you decide to change provider. The result is indicative guidance, not a quote.",
+  },
+  {
+    question: "Do you need my bank details?",
+    answer: "No. This form only asks for your processing statement and an email address to send your result to. It never asks for card numbers, passwords or bank logins.",
+  },
+];
 
 // Providers cycled through in the loader while the statement is analysed.
 const PROVIDERS = [
@@ -146,6 +166,40 @@ const StatementReview = () => {
                 </p>
               </div>
 
+              {/* T13 body copy (owner-supplied; owner may edit). */}
+              <div className="space-y-4 text-muted-foreground mb-10">
+                <p>
+                  <strong className="text-foreground">What we check.</strong> Upload one month of your processing
+                  statement. We calculate your all-in effective rate: total fees divided by total card volume. We
+                  also look for the line items that raise it: monthly minimums, PCI fees, statement fees, batch fees
+                  and tiered downgrades.
+                </p>
+                <p>
+                  <strong className="text-foreground">Why it matters.</strong> A headline rate of 2.9% can sit on top
+                  of $20 to $60 a month in extra fees. On $20,000 of monthly sales, $40 of extra fees adds 0.2
+                  percentage points to your real rate.
+                </p>
+                <p>
+                  <strong className="text-foreground">What you get.</strong> An indicative read on whether you are
+                  overpaying and the three line items worth challenging. It is guidance, not a quote.
+                </p>
+                <p>
+                  <strong className="text-foreground">Your data.</strong> We use your statement only to prepare your
+                  result and do not share it.
+                </p>
+                <p>
+                  <strong className="text-foreground">Want to talk it through?</strong>{" "}
+                  <Link href="/contact" data-cta="write" data-placement="inline" className="text-primary font-medium hover:underline">
+                    Write to us
+                  </Link>{" "}
+                  or{" "}
+                  <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-cta="call" data-placement="inline" className="text-primary font-medium hover:underline">
+                    book a short call
+                  </a>
+                  .
+                </p>
+              </div>
+
               <form onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-6 md:p-8 space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">Your statement (PDF or CSV)</label>
@@ -213,6 +267,19 @@ const StatementReview = () => {
                   <ShieldCheck className="w-3.5 h-3.5" /> Independent and confidential. Indicative guidance only.
                 </p>
               </form>
+
+              <section className="mt-14">
+                <FAQSchema faqs={FAQS} />
+                <h2 className="text-2xl font-bold text-foreground mb-6">Frequently asked questions</h2>
+                <div className="space-y-6">
+                  {FAQS.map((faq) => (
+                    <div key={faq.question}>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">{faq.question}</h3>
+                      <p className="text-muted-foreground">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
             </>
           ) : (
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
