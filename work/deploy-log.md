@@ -190,3 +190,14 @@ What changed:
 - /insights/adyen-pricing-explained: one sentence + link to /insights/stripe-vs-adyen (Section 4). Ranking page, additive only.
 - /insights/checkout-com-fees-explained: one clause + link to /insights/comparisons/stripe-vs-checkout-com (Section 4). Ranking page, additive only.
 Next deploy not before: 1 to 2 days after the merge date. Deploy 12 (title test 1) is on /insights/checkout-com-fees-explained: leave at least a few days after this merge so the two changes can be told apart in GSC.
+
+## Deploy 10 (prepared 2026-10-12, not yet merged)
+
+DEPLOY 10 | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/statement-review
+https://chosepayments.com/insights/crisis/hidden-fee-crisis
+What changed:
+- /statement-review: T13 body copy above the form, 3-question FAQ with FAQPage JSON-LD, new meta/og description (T13).
+- /insights/crisis/hidden-fee-crisis: "Next step" sentence linking to /statement-review (T13).
+Next deploy not before: 1 to 2 days after the merge date.
