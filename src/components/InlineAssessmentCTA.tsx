@@ -11,6 +11,8 @@ const InlineAssessmentCTA = ({ context }: InlineAssessmentCTAProps) => {
       <p className="text-foreground font-medium mb-3">{context}</p>
       <a
         href={BOOKING_URL}
+        data-cta="call"
+        data-placement="inline"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"

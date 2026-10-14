@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -11,6 +11,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/analytics";
+import { getLeadAttribution } from "@/lib/leadAttribution";
 import { Mail, Building, MessageSquare } from "lucide-react";
 
 const contactSchema = z.object({
@@ -18,6 +20,10 @@ const contactSchema = z.object({
   email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
   businessName: z.string().trim().max(200, "Business name must be less than 200 characters").optional(),
   message: z.string().trim().min(10, "Message must be at least 10 characters").max(2000, "Message must be less than 2000 characters"),
+  // Hidden: where the visitor started and what they were reading before
+  // /contact, so the notification email says which article the lead came from.
+  landingPage: z.string().max(500).optional(),
+  previousPage: z.string().max(500).optional(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -35,8 +41,17 @@ const Contact = () => {
       email: "",
       businessName: "",
       message: "",
+      landingPage: "",
+      previousPage: "",
     },
   });
+
+  // sessionStorage only exists in the browser, so fill these after mount.
+  useEffect(() => {
+    const { landingPage, previousPage } = getLeadAttribution();
+    form.setValue("landingPage", landingPage);
+    form.setValue("previousPage", previousPage);
+  }, [form]);
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -48,10 +63,17 @@ const Contact = () => {
           email: data.email,
           businessName: data.businessName || "Not provided",
           message: data.message,
+          landingPage: data.landingPage || "",
+          previousPage: data.previousPage || "",
         },
       });
 
       if (error) throw error;
+
+      trackEvent("contact_submit", {
+        page_path: data.previousPage || "(direct)",
+        form_id: "contact",
+      });
 
       setIsSubmitted(true);
       toast({
@@ -110,6 +132,8 @@ const Contact = () => {
             <div className="bg-card border border-border rounded-lg p-6 md:p-8">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <input type="hidden" {...form.register("landingPage")} />
+                  <input type="hidden" {...form.register("previousPage")} />
                   <FormField
                     control={form.control}
                     name="name"

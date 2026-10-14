@@ -32,6 +32,8 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
           </div>
           <a
             href={BOOKING_URL}
+            data-cta="call"
+            data-placement="mid"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -88,6 +90,8 @@ const InsightsCTA = ({ variant = "default" }: InsightsCTAProps) => {
         </p>
         <a
           href={BOOKING_URL}
+          data-cta="call"
+          data-placement="end"
           target="_blank"
           rel="noopener noreferrer"
           style={{

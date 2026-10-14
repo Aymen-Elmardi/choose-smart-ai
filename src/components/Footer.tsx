@@ -113,7 +113,7 @@ const Footer = () => {
             <nav className="cp-footer-links">
               <Link href="/about">About</Link>
               <Link href={insightsHref}>Insights</Link>
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact" data-cta="write" data-placement="footer">Contact</Link>
               <Link href="/faq">FAQ</Link>
               <Link href="/privacy">Privacy Policy</Link>
               <Link href="/terms">Terms of Service</Link>
