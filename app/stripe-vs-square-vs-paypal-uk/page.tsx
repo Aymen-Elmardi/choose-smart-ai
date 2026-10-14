@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     url: 'https://chosepayments.com/stripe-vs-square-vs-paypal-uk',
     images: ['/og-default.png'],
-    title: "Stripe vs Square vs PayPal: UK Comparison & Costs",
+    title: "Stripe vs Square vs PayPal: UK Comparison & Costs | ChosePayments",
     description: "Pricing, fees, approval odds, and which processor fits high-growth merchants. Avoid the wrong choice.",
     type: 'article',
   },

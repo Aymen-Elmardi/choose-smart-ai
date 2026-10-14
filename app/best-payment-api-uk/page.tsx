@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     url: 'https://chosepayments.com/best-payment-api-uk',
     images: ['/og-default.png'],
-    title: "Best Payment APIs for UK Developers & High-Growth Apps",
+    title: "Best Payment APIs for UK Developers & High-Growth Apps | ChosePayments",
     description: "Compare payment APIs for UK developers: Stripe, Adyen, Checkout.com. Pricing, integration speed, approval rates. Find the API that fits your tech stack.",
     type: 'article',
   },

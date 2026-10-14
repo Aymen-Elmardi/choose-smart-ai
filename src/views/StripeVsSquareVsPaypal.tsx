@@ -1,8 +1,7 @@
 'use client'
 import { useEffect } from "react";
-import Link from 'next/link';
-import { ArrowRight, Check, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Check, X } from "lucide-react";
+import { TalkItThroughBox, SecondOpinionLine } from "@/components/ContactCTAs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
@@ -452,23 +451,7 @@ const StripeVsSquareVsPaypal = () => {
               </div>
               
               <div className="relative z-10">
-                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-                  Still unsure which provider fits your business? Tell us a bit about what you need and we'll match you instantly.
-                </p>
-                <div className="flex flex-col items-center">
-                  <Button 
-                    variant="secondary" 
-                    size="xl" 
-                    className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-                    asChild
-                  >
-                    <Link href="/assessment?start=true" replace>
-                      Answer a few quick questions
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  </Button>
-                  <span className="text-sm text-primary-foreground/70 mt-3">Takes under 1 minute • No spam</span>
-                </div>
+                <TalkItThroughBox placement="mid" tone="inverted" />
               </div>
             </div>
           </div>
@@ -481,9 +464,7 @@ const StripeVsSquareVsPaypal = () => {
               <p className="text-lg text-muted-foreground">
                 There's no single "best" provider. Stripe, Square, and PayPal each serve different business models. The right choice depends on how you sell, your volume, and your growth plans.
               </p>
-              <p className="text-lg text-muted-foreground mt-4">
-                If none of these feel like a clean fit, we use a <Link href="/assessment" className="text-primary hover:underline">short assessment</Link> to sanity-check payment decisions before businesses lock themselves in.
-              </p>
+              <SecondOpinionLine className="text-lg text-muted-foreground mt-4" />
             </div>
           </div>
         </section>
