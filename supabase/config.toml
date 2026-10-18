@@ -24,3 +24,8 @@ verify_jwt = false
 # a broken page and the report.
 [functions.report-error]
 verify_jwt = false
+
+# Called by anonymous visitors at the end of the risk assessment. It calculates
+# the recommendation server-side and emails it, so the browser never sees it.
+[functions.submit-assessment]
+verify_jwt = false

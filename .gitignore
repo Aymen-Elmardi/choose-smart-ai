@@ -44,3 +44,5 @@ supabase/.branches/
 # Local tooling / session notes (not part of the build)
 .claude/
 PROGRESS.md
+.env.local
+supabase/functions/.env
