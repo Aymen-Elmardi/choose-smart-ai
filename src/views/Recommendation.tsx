@@ -1,56 +1,21 @@
 'use client'
 import { useState, useRef, useEffect } from "react";
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { Check, ArrowRight, Loader2, Mail, ShieldX, AlertTriangle, CheckCircle, Building2, Globe, CreditCard as CardIcon, TrendingUp, ShoppingCart, Tag, Calendar, ChevronDown } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Check, ArrowRight, Loader2, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
-import { fetchServerRecommendation } from "@/lib/quizRecommendationService";
-import type { QuizAnswers, Provider, QuizSegment, VolumeTier } from "@/types/quiz";
+import type { QuizAnswers } from "@/types/quiz";
 import { initializeSessionTracking } from "@/lib/sessionTracking";
 import { trackEvent } from "@/lib/analytics";
 import { BOOKING_URL } from "@/lib/booking";
-import { SEGMENT_LABELS } from "@/lib/quiz/quizSegment";
-import { SEGMENT_RESULTS, estimateSavings, formatGBP } from "@/lib/quiz/segmentResults";
 
-interface EliminatedProvider {
-  name: string;
-  reason: string;
-}
-
-interface RawQuizAnswers {
-  salesChannel?: string;
-  businessType?: string;
-  industry?: string;
-  monthlyVolume?: string;
-  avgTransaction?: string;
-  location?: string;
-  priorities?: string[];
-  deliveryTimeline?: string;
-  previousRestriction?: string;
-  terminalType?: string;
-  buyingIntent?: string;
-  contactTime?: string;
-  // Platform & segmentation
-  platform?: string;
-  segment?: QuizSegment;
-  volumeTier?: VolumeTier;
-  // Segment-specific answers
-  currentProcessor?: string;
-  painPoints?: string[];
-  marketplaceModel?: string;
-  marketplaceChallenge?: string;
-  revenueModel?: string;
-  billingChallenge?: string;
-  locationCount?: string;
-  salesMix?: string;
-  declineHistory?: string;
-}
+// The recommendation is calculated by the submit-assessment edge function once
+// the visitor has given a name and email, and is emailed to them. It is never
+// fetched or rendered here.
 
 const readStoredAnswers = (): QuizAnswers | null => {
   try {
@@ -80,11 +45,11 @@ const readStoredAnswers = (): QuizAnswers | null => {
   }
 };
 
-const readRawAnswers = (): RawQuizAnswers | null => {
+const readRawAnswers = (): Record<string, unknown> | null => {
   try {
     const raw = sessionStorage.getItem("quizAnswersRaw");
     if (!raw) return null;
-    return JSON.parse(raw) as RawQuizAnswers;
+    return JSON.parse(raw) as Record<string, unknown>;
   } catch {
     return null;
   }
@@ -105,19 +70,24 @@ const readStoredMarket = (): Market => {
   }
 };
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Business profile detail item
-const ProfileItem = ({ label, value, icon: Icon }: { label: string; value: string; icon: React.ElementType }) => (
-  <div className="flex items-start gap-3">
-    <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center shrink-0 mt-0.5">
-      <Icon className="w-4 h-4 text-muted-foreground" />
-    </div>
-    <div className="min-w-0">
-      <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">{label}</div>
-      <div className="text-sm font-medium text-foreground truncate">{value}</div>
-    </div>
-  </div>
-);
+interface FieldErrors {
+  fullName?: string;
+  email?: string;
+}
+
+// Mirrors the server-side checks in submit-assessment.
+const validate = (fullName: string, email: string): FieldErrors => {
+  const errors: FieldErrors = {};
+  const name = fullName.trim();
+  if (!name) errors.fullName = "Name is required.";
+  else if (name.length < 2 || /^[0-9]+$/.test(name)) errors.fullName = "Please enter your name.";
+  const mail = email.trim();
+  if (!mail) errors.email = "Email is required.";
+  else if (!EMAIL_PATTERN.test(mail) || mail.length > 254) errors.email = "Please enter a valid email address.";
+  return errors;
+};
 
 const Recommendation = () => {
   const router = useRouter();
@@ -126,30 +96,15 @@ const Recommendation = () => {
   const startedFromQuizRef = useRef(searchParams.get("fromQuiz") === "true");
   const [showLoader, setShowLoader] = useState(() => startedFromQuizRef.current);
   const [answers] = useState<QuizAnswers | null>(() => readStoredAnswers());
-  const [rawAnswers] = useState<RawQuizAnswers | null>(() => readRawAnswers());
+  const [rawAnswers] = useState<Record<string, unknown> | null>(() => readRawAnswers());
   const [market] = useState<Market>(() => readStoredMarket());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isConfirmationSent, setIsConfirmationSent] = useState(false);
-  const [backgroundError, setBackgroundError] = useState<string | null>(null);
-  const [guidanceSubmitted, setGuidanceSubmitted] = useState(false);
-  const [guidanceEmail, setGuidanceEmail] = useState("");
-  const [showFullForm, setShowFullForm] = useState(false);
-  const { toast } = useToast();
-
-  const [primary, setPrimary] = useState<Provider | null>(null);
-  const [avoid, setAvoid] = useState<EliminatedProvider[]>([]);
-  const [resultsLoaded, setResultsLoaded] = useState(false);
-
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    companyName: "",
-    notes: "",
-    websiteUrl: "",
-    currentProvider: "",
-    painPoints: "",
-  });
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [touched, setTouched] = useState(false);
 
   const quizComplete = answers ? isQuizComplete(answers) : false;
 
@@ -159,23 +114,6 @@ const Recommendation = () => {
       router.replace("/assessment?start=true");
     }
   }, [answers, quizComplete, router]);
-
-  useEffect(() => {
-    if (!answers || !quizComplete) return;
-    fetchServerRecommendation(answers).then((result) => {
-      // Whitelist for the "avoid" list shown on the results page. Names must
-      // match the engine roster exactly or they are silently dropped.
-      const CURATED_PROVIDERS = [
-        "Square", "PayPal", "Adyen", "Datman", "SumUp",
-        "Braintree", "Shift4", "Fiserv (Clover)", "Authorize.Net",
-        // US roster
-        "Quantum ePay", "Easy Pay Direct", "Payline Data",
-      ];
-      setPrimary(result.primary);
-      setAvoid(result.avoid.filter(p => CURATED_PROVIDERS.includes(p.name)));
-      setResultsLoaded(true);
-    });
-  }, [answers, quizComplete]);
 
   useEffect(() => {
     if (!startedFromQuizRef.current) {
@@ -193,158 +131,54 @@ const Recommendation = () => {
     return () => clearTimeout(timer);
   }, [router, pathname]);
 
-  useEffect(() => {
-    if (isSubmitted) setShowLoader(false);
-  }, [isSubmitted]);
-
   if (!answers || !quizComplete) return null;
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (isSubmitting) return;
 
-  const handleGuidanceSubmit = async () => {
-    if (!formData.fullName.trim()) {
-      toast({ title: "Please enter your name", variant: "destructive" });
-      return;
-    }
-    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      toast({ title: "Please enter a valid email address", variant: "destructive" });
-      return;
-    }
+    setTouched(true);
+    const fieldErrors = validate(fullName, email);
+    setErrors(fieldErrors);
+    if (fieldErrors.fullName || fieldErrors.email) return;
 
     setIsSubmitting(true);
-    setGuidanceEmail(formData.email);
-
-    const firstName = formData.fullName.trim().split(/\s+/)[0] || formData.fullName;
-
-    const payload = {
-      fullName: formData.fullName,
-      email: formData.email,
-      businessName: formData.companyName,
-      notes: "",
-      websiteUrl: "",
-      currentProvider: rawAnswers?.currentProcessor || "",
-      painPoints: (rawAnswers?.painPoints || []).join(", "),
-      businessType: answers.businessType,
-      monthlyVolume: answers.monthlyVolume,
-      avgTransaction: answers.avgTransaction,
-      region: answers.location,
-      salesChannel: answers.salesChannel,
-      priorities: answers.priorities,
-      features: answers.features,
-      market: market,
-      recommendedProvider: primary?.name || "Advisory Review",
-      logicPath: "tiered-engine",
-      // Segmentation + routing context
-      segment,
-      segmentLabel,
-      volumeTier: rawAnswers?.volumeTier || answers.volumeTier || "unknown",
-      platform: rawAnswers?.platform || "",
-      industry: rawAnswers?.industry || "",
-      marketplaceModel: rawAnswers?.marketplaceModel || "",
-      marketplaceChallenge: rawAnswers?.marketplaceChallenge || "",
-      revenueModel: rawAnswers?.revenueModel || "",
-      billingChallenge: rawAnswers?.billingChallenge || "",
-      locationCount: rawAnswers?.locationCount || "",
-      salesMix: rawAnswers?.salesMix || "",
-      declineHistory: rawAnswers?.declineHistory || "",
-    };
-
-    try {
-      const { data, error } = await supabase.functions.invoke("send-lead-email", { body: payload });
-      if (error) throw error;
-      if (!data?.success) throw new Error(data?.error || "Failed to send");
-
-      try {
-        const { data: confirmData, error: confirmError } = await supabase.functions.invoke("send-confirmation-email", {
-          body: { email: formData.email, firstName },
-        });
-        if (!confirmError && confirmData?.success) setIsConfirmationSent(true);
-      } catch (confirmErr) {
-        console.error("Confirmation email error:", confirmErr);
-      }
-    } catch (error) {
-      console.error("Error submitting application:", error);
-    } finally {
-      setIsSubmitting(false);
-      setGuidanceSubmitted(true);
-    }
-  };
-
-  const handleFullFormSubmit = async () => {
-    setIsSubmitting(true);
-    setBackgroundError(null);
-
     trackEvent("advisory_form_submit");
 
-    const payload = {
-      fullName: formData.fullName,
-      email: formData.email,
-      businessName: formData.companyName,
-      notes: formData.notes,
-      websiteUrl: formData.websiteUrl,
-      currentProvider: formData.currentProvider || rawAnswers?.currentProcessor || "",
-      painPoints: formData.painPoints || (rawAnswers?.painPoints || []).join(", "),
-      businessType: answers.businessType,
-      monthlyVolume: answers.monthlyVolume,
-      avgTransaction: answers.avgTransaction,
-      region: answers.location,
-      salesChannel: answers.salesChannel,
-      priorities: answers.priorities,
-      features: answers.features,
-      market: market,
-      recommendedProvider: primary?.name || "Advisory Review",
-      logicPath: "tiered-engine-detailed",
-      // Segmentation + routing context
-      segment,
-      segmentLabel,
-      volumeTier: rawAnswers?.volumeTier || answers.volumeTier || "unknown",
-      platform: rawAnswers?.platform || "",
-      industry: rawAnswers?.industry || "",
-      marketplaceModel: rawAnswers?.marketplaceModel || "",
-      marketplaceChallenge: rawAnswers?.marketplaceChallenge || "",
-      revenueModel: rawAnswers?.revenueModel || "",
-      billingChallenge: rawAnswers?.billingChallenge || "",
-      locationCount: rawAnswers?.locationCount || "",
-      salesMix: rawAnswers?.salesMix || "",
-      declineHistory: rawAnswers?.declineHistory || "",
-    };
-
     try {
-      const { data, error } = await supabase.functions.invoke("send-lead-email", { body: payload });
-      if (error) throw error;
-      if (!data?.success) throw new Error(data?.error || "Failed to send");
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error("Error submitting details:", error);
-      setBackgroundError("Something went wrong. Please try again.");
-      setTimeout(() => setBackgroundError(null), 5000);
+      const { data, error } = await supabase.functions.invoke("submit-assessment", {
+        body: {
+          fullName: fullName.trim(),
+          email: email.trim(),
+          market,
+          answers,
+          raw: rawAnswers ?? {},
+          _honeypot: honeypot,
+        },
+      });
+      if (error || !data?.success) {
+        console.error("Assessment submission failed:", error ?? data?.error);
+      }
+    } catch (err) {
+      // The visitor sees the thank-you screen regardless; failures are logged
+      // server-side and here.
+      console.error("Assessment submission failed:", err);
     } finally {
       setIsSubmitting(false);
+      setIsSubmitted(true);
+      window.scrollTo(0, 0);
     }
   };
 
-  // Resolve display values from raw answers
-  
-  const displaySalesChannel = (rawAnswers?.salesChannel || answers.salesChannel) || "—";
-  const displayBusinessType = (rawAnswers?.businessType || answers.businessType) || "—";
-  const displayIndustry = rawAnswers?.industry || "—";
-  const displayVolume = (rawAnswers?.monthlyVolume || answers.monthlyVolume) || "—";
-  const displayAvgTx = (rawAnswers?.avgTransaction || answers.avgTransaction) || "—";
-  const displayLocation = (rawAnswers?.location || answers.location) || "—";
-  const displayPriorities = rawAnswers?.priorities || answers.priorities || [];
-  const displayDelivery = rawAnswers?.deliveryTimeline || null;
-  const displayRestriction = rawAnswers?.previousRestriction || null;
-
-  // Segmentation-driven presentation
-  const segment: QuizSegment = rawAnswers?.segment || answers.segment || "unknown";
-  const segmentContent = SEGMENT_RESULTS[segment] || SEGMENT_RESULTS.unknown;
-  const segmentLabel = SEGMENT_LABELS[segment] || SEGMENT_LABELS.unknown;
-  const isShopify = segment === "shopify";
-  const savings = estimateSavings(rawAnswers?.currentProcessor, rawAnswers?.monthlyVolume);
-
-  const providerName = primary?.name || "the right provider";
+  // Re-validate as the visitor types once they have tried to submit, so an
+  // error clears as soon as it is fixed.
+  const updateField = (field: "fullName" | "email", value: string) => {
+    if (field === "fullName") setFullName(value);
+    else setEmail(value);
+    if (touched) {
+      setErrors(validate(field === "fullName" ? value : fullName, field === "email" ? value : email));
+    }
+  };
 
   if (showLoader) {
     return (
@@ -367,6 +201,8 @@ const Recommendation = () => {
     );
   }
 
+  const inputClass = "h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20";
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -386,51 +222,19 @@ const Recommendation = () => {
 
       <main className="max-w-3xl mx-auto px-4 py-8 md:py-12">
         {isSubmitted ? (
-          /* ── FINAL CONFIRMATION (after full form submit) ── */
+          /* ── THANK YOU ── */
           <Card className="border border-primary/30 bg-primary/5 animate-fade-up">
             <CardContent className="p-8 md:p-10">
-              <div className="text-center mb-6">
+              <div className="text-center">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
                   <Check className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-semibold text-foreground mb-3">
-                  Thanks! Our founder will review your profile and email you within 24 hours.
-                </h3>
-                <p className="text-muted-foreground text-lg max-w-lg mx-auto">
-                  Personalized guidance and a warm introduction to {providerName} are on the way.
-                </p>
+                <h2 className="text-2xl font-semibold text-foreground mb-3 max-w-lg mx-auto">
+                  Thank you for completing the assessment. We'll email your results within the next 5 minutes.
+                </h2>
               </div>
 
-              <div className="bg-background rounded-xl border border-border p-5 mb-6 text-left">
-                <p className="text-sm font-medium text-foreground mb-3">
-                  You'll receive an email at <span className="text-primary font-semibold">{guidanceEmail || formData.email}</span> with:
-                </p>
-                <ul className="space-y-2">
-                  {[
-                    "Your full risk analysis",
-                    `Why ${providerName} is a fit for your business`,
-                    `Direct introduction to ${providerName}'s partnership team`,
-                    "Next steps to get approved",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex items-center justify-center gap-2 mb-6">
-                <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
-                  isConfirmationSent ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
-                }`}>
-                  {isConfirmationSent ? <Mail className="w-4 h-4" /> : <Loader2 className="w-4 h-4 animate-spin" />}
-                  <span>{isConfirmationSent ? "Confirmation sent to your email" : "Sending confirmation..."}</span>
-                </div>
-              </div>
-
-              {/* Booking CTA */}
-              <div className="text-center pt-4 border-t border-border">
+              <div className="text-center pt-6 mt-6 border-t border-border">
                 <a
                   href={BOOKING_URL}
                   target="_blank"
@@ -441,224 +245,24 @@ const Recommendation = () => {
                   Prefer to talk? Book a 15-minute call
                 </a>
               </div>
-
-              {backgroundError && (
-                <p className="mt-4 text-sm text-muted-foreground animate-fade-in text-center">{backgroundError}</p>
-              )}
             </CardContent>
           </Card>
         ) : (
           <>
-            {/* Results */}
-            {resultsLoaded && primary ? (
-              <div className="animate-fade-up">
-                {/* Header — segment-specific */}
-                <div className="text-center mb-8">
-                  <span className="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 rounded-full px-3 py-1 mb-3">
-                    {segmentLabel}
-                  </span>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                    {segmentContent.headline}
-                  </h2>
-                  <p className="text-muted-foreground max-w-xl mx-auto">
-                    {segmentContent.intro}
-                  </p>
-                </div>
+            <div className="text-center mb-8 animate-fade-up">
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Your assessment is complete
+              </h1>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Tell us where to send your results. You'll get your recommended provider and the reasoning behind it by email.
+              </p>
+            </div>
 
-                {/* Section 1 — Business Profile (HIGHLIGHTED) */}
-                <Card className="border-2 border-primary/30 bg-primary/5 mb-8 shadow-sm">
-                  <CardContent className="p-6 md:p-8">
-                    <h3 className="text-lg font-bold text-foreground mb-5">Your Business Profile</h3>
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                      <ProfileItem icon={ShoppingCart} label="Sales Channel" value={displaySalesChannel} />
-                      <ProfileItem icon={Building2} label="Business Type" value={displayBusinessType} />
-                      {displayIndustry !== "—" && (
-                        <ProfileItem icon={Tag} label="Industry" value={displayIndustry} />
-                      )}
-                      <ProfileItem icon={TrendingUp} label="Monthly Volume" value={displayVolume} />
-                      <ProfileItem icon={CardIcon} label="Avg. Transaction" value={displayAvgTx} />
-                      <ProfileItem icon={Globe} label="Location" value={displayLocation} />
-                    </div>
-                    {displayPriorities.length > 0 && (
-                      <div className="mt-5 pt-5 border-t border-primary/15">
-                        <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-2">Priorities</div>
-                        <div className="flex flex-wrap gap-2">
-                          {displayPriorities.map((p) => (
-                            <span key={p} className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                              {p}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    {(displayDelivery || displayRestriction) && (
-                      <div className="mt-5 pt-5 border-t border-primary/15 grid grid-cols-2 gap-x-6 gap-y-3">
-                        {displayDelivery && (
-                          <div>
-                            <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Delivery Timeline</div>
-                            <div className="text-sm font-medium text-foreground">{displayDelivery}</div>
-                          </div>
-                        )}
-                        {displayRestriction && (
-                          <div>
-                            <div className="text-xs text-muted-foreground font-medium uppercase tracking-wide">Previous Restrictions</div>
-                            <div className="text-sm font-medium text-foreground">{displayRestriction}</div>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-
-                {/* Shopify soft-capture explainer (replaces provider push) */}
-                {isShopify && (
-                  <Card className="border-2 border-primary/30 bg-primary/5 mb-8">
-                    <CardContent className="p-6 md:p-8">
-                      <div className="flex items-center gap-2 mb-3">
-                        <CheckCircle className="w-5 h-5 text-primary" />
-                        <span className="text-sm font-bold text-primary uppercase tracking-wider">{segmentContent.alertLabel}</span>
-                      </div>
-                      <p className="text-foreground mb-4">
-                        You're on Shopify, which means you already have access to <span className="font-semibold">Shopify Payments</span> — a solution optimised for your platform. We specialise in helping businesses on self-hosted platforms (WooCommerce, Magento), marketplaces and SaaS companies find better processors.
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        If you'd like to compare Shopify Payments to other options, understand your true payment costs, or get strategic advice, leave your details below — otherwise, best of luck with Shopify.
-                      </p>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Self-hosted savings / misalignment analysis */}
-                {!isShopify && segment === "self-hosted" && savings.applicable && (
-                  <Card className="border-2 border-amber-400/40 bg-amber-50/60 mb-8">
-                    <CardContent className="p-6 md:p-8">
-                      <div className="flex items-center gap-2 mb-4">
-                        <AlertTriangle className="w-5 h-5 text-amber-600" />
-                        <span className="text-sm font-bold text-amber-700 uppercase tracking-wider">Misalignment detected</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4 mb-5 text-sm">
-                        <div>
-                          <div className="text-muted-foreground">Currently with</div>
-                          <div className="font-semibold text-foreground">{rawAnswers?.currentProcessor}</div>
-                        </div>
-                        <div>
-                          <div className="text-muted-foreground">Est. current fees</div>
-                          <div className="font-semibold text-foreground">~{formatGBP(savings.currentMonthlyFees)}/mo</div>
-                        </div>
-                        <div>
-                          <div className="text-muted-foreground">On Interchange++</div>
-                          <div className="font-semibold text-foreground">~{formatGBP(savings.optimizedMonthlyFees)}/mo</div>
-                        </div>
-                        <div>
-                          <div className="text-muted-foreground">Potential saving</div>
-                          <div className="font-semibold text-primary">{formatGBP(savings.monthlySavingsLow)}–{formatGBP(savings.monthlySavingsHigh)}/mo</div>
-                        </div>
-                      </div>
-                      <div className="rounded-lg bg-primary/10 border border-primary/20 px-4 py-3 text-center">
-                        <span className="text-sm font-semibold text-primary">
-                          Estimated annual impact: {formatGBP(savings.annualSavingsLow)}–{formatGBP(savings.annualSavingsHigh)}
-                        </span>
-                      </div>
-                      <p className="mt-3 text-xs text-muted-foreground text-center">
-                        Illustrative estimate based on typical blended flat rates vs. Interchange++. Your actual rates depend on card mix and negotiation.
-                      </p>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Risk Alignment Score (hidden for Shopify) */}
-                {!isShopify && primary.matchScore && (
-                  <div className="flex justify-center mb-6">
-                    <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-primary/10 border border-primary/20">
-                      <div className="text-3xl font-bold text-primary">
-                        {Math.min(Math.round((primary.matchScore / 155) * 100), 99)}%
-                      </div>
-                      <div className="text-left">
-                        <div className="text-sm font-semibold text-foreground">{segment === "high-risk" ? "Approval Fit" : "Match Alignment"}</div>
-                        <div className="text-xs text-muted-foreground">Match confidence score</div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Section 2 — Recommended Provider (hidden for Shopify) */}
-                {!isShopify && (
-                  <Card className="border border-border/60 bg-card mb-6">
-                    <CardContent className="p-5 md:p-6">
-                      <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Recommended Provider</span>
-                      </div>
-                      <h3 className="text-lg font-semibold text-foreground mb-1">{primary.name}</h3>
-                      <p className="text-muted-foreground text-sm mb-3">{primary.description}</p>
-                      {primary.reasons?.length > 0 && (
-                        <ul className="space-y-1.5">
-                          {primary.reasons.map((r, i) => (
-                            <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                              <Check className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                              <span>{r}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Section 3 — Providers to Avoid (hidden for Shopify) */}
-                {!isShopify && avoid.length > 0 && (
-                  <Card className="border-2 border-destructive/20 bg-destructive/5 mb-8">
-                    <CardContent className="p-5 md:p-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <AlertTriangle className="w-5 h-5 text-destructive" />
-                        <span className="text-sm font-bold text-destructive uppercase tracking-wider">Providers to Avoid</span>
-                      </div>
-                      <div className="space-y-3">
-                        {avoid.slice(0, 2).map((p) => (
-                          <div key={p.name} className="flex items-start gap-3 px-4 py-3 rounded-lg bg-background border border-destructive/15">
-                            <ShieldX className="w-4 h-4 text-destructive/70 shrink-0 mt-0.5" />
-                            <div>
-                              <span className="text-sm font-semibold text-foreground">{p.name}</span>
-                              <p className="text-xs text-muted-foreground mt-0.5">{p.reason}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
-              </div>
-            ) : resultsLoaded && !primary ? (
-              <div className="text-center mb-12 animate-fade-up">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                  Assessment Complete
-                </h2>
-                <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-                  We couldn't generate an automated match for your profile. Leave your details below and our team will review your situation manually.
-                </p>
-              </div>
-            ) : (
-              <div className="text-center mb-12">
-                <div className="flex justify-center mb-4">
-                  <Loader2 className="w-8 h-8 text-primary animate-spin" />
-                </div>
-                <p className="text-muted-foreground">Calculating your risk profile...</p>
-              </div>
-            )}
-
-            {/* ── STEP 1: Lightweight Guidance Capture ── */}
-            {resultsLoaded && !guidanceSubmitted && (
-              <div className="animate-fade-up animation-delay-100">
-                <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
-                  <CardContent className="p-6 md:p-8">
-                    <div className="text-center mb-6">
-                      <h3 className="text-xl font-bold text-foreground mb-2">
-                        Get personalized guidance on your next steps
-                      </h3>
-                      <p className="text-muted-foreground max-w-md mx-auto">
-                        We'll review your profile and email you within 24 hours with tailored advice.
-                      </p>
-                    </div>
+            {/* ── Name + email capture ── */}
+            <div className="animate-fade-up animation-delay-100">
+              <Card className="border-2 border-primary/40 bg-primary/5 shadow-md">
+                <CardContent className="p-6 md:p-8">
+                  <form onSubmit={handleSubmit} noValidate>
                     <div className="space-y-4 max-w-md mx-auto">
                       <div className="space-y-2">
                         <Label htmlFor="fullName" className="text-sm font-medium text-foreground">
@@ -669,11 +273,16 @@ const Recommendation = () => {
                           type="text"
                           autoComplete="name"
                           placeholder="Your full name"
-                          value={formData.fullName}
-                          onChange={(e) => handleInputChange("fullName", e.target.value)}
-                          className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                          value={fullName}
+                          onChange={(e) => updateField("fullName", e.target.value)}
+                          aria-invalid={!!errors.fullName}
+                          aria-describedby={errors.fullName ? "fullName-error" : undefined}
+                          className={cn(inputClass, errors.fullName && "border-destructive focus:border-destructive")}
                           required
                         />
+                        {errors.fullName && (
+                          <p id="fullName-error" className="text-sm text-destructive">{errors.fullName}</p>
+                        )}
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-sm font-medium text-foreground">
@@ -684,194 +293,52 @@ const Recommendation = () => {
                           type="email"
                           autoComplete="email"
                           placeholder="you@company.com"
-                          value={formData.email}
-                          onChange={(e) => handleInputChange("email", e.target.value)}
-                          className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
+                          value={email}
+                          onChange={(e) => updateField("email", e.target.value)}
+                          aria-invalid={!!errors.email}
+                          aria-describedby={errors.email ? "email-error" : undefined}
+                          className={cn(inputClass, errors.email && "border-destructive focus:border-destructive")}
                           required
+                        />
+                        {errors.email && (
+                          <p id="email-error" className="text-sm text-destructive">{errors.email}</p>
+                        )}
+                      </div>
+                      {/* Honeypot: hidden from people, filled in by bots. */}
+                      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                        <label htmlFor="company-website">Company website</label>
+                        <input
+                          id="company-website"
+                          type="text"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          value={honeypot}
+                          onChange={(e) => setHoneypot(e.target.value)}
                         />
                       </div>
                     </div>
                     <div className="mt-6 text-center">
-                      <Button variant="hero" size="xl" onClick={handleGuidanceSubmit} disabled={isSubmitting}>
+                      <Button type="submit" variant="hero" size="xl" disabled={isSubmitting}>
                         {isSubmitting ? (
                           <>
                             <Loader2 className="w-5 h-5 animate-spin" />
-                            Submitting...
+                            Sending...
                           </>
                         ) : (
                           <>
-                            {segmentContent.ctaLabel}
+                            Email my results
                             <ArrowRight className="w-5 h-5" />
                           </>
                         )}
                       </Button>
                       <p className="mt-3 text-sm text-muted-foreground">
-                        {segmentContent.ctaSubtext}
+                        Free. No commitment.
                       </p>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-            )}
-
-            {/* ── STEP 2: Guidance Confirmation + Secondary Full Form ── */}
-            {resultsLoaded && guidanceSubmitted && (
-              <div className="space-y-6 animate-fade-up animation-delay-100">
-                {/* Confirmation card */}
-                <Card className="border border-primary/30 bg-primary/5">
-                  <CardContent className="p-6 md:p-8">
-                    <div className="text-center mb-5">
-                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 mb-3">
-                        <Check className="w-7 h-7 text-primary" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2">
-                        Thanks! Our founder will review your profile and email you within 24 hours.
-                      </h3>
-                      <p className="text-muted-foreground max-w-lg mx-auto">
-                        Personalized guidance and a warm introduction to {providerName} are on the way.
-                      </p>
-                    </div>
-
-                    <div className="bg-background rounded-xl border border-border p-5 mb-5 text-left">
-                      <p className="text-sm font-medium text-foreground mb-3">
-                        You'll receive an email at <span className="text-primary font-semibold">{guidanceEmail}</span> with:
-                      </p>
-                      <ul className="space-y-2">
-                        {[
-                          "Your full risk analysis",
-                          `Why ${providerName} is a fit for your business`,
-                          `Direct introduction to ${providerName}'s partnership team`,
-                          "Next steps to get approved",
-                        ].map((item, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                            <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex items-center justify-center gap-2">
-                      <div className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-500 ${
-                        isConfirmationSent ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
-                      }`}>
-                        {isConfirmationSent ? <Mail className="w-4 h-4" /> : <Loader2 className="w-4 h-4 animate-spin" />}
-                        <span>{isConfirmationSent ? "Confirmation sent to your email" : "Sending confirmation..."}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Secondary: Full introduction form (collapsible) */}
-                <Card className="border border-border/60 bg-card">
-                  <CardContent className="p-6 md:p-8">
-                    <button
-                      onClick={() => setShowFullForm(!showFullForm)}
-                      className="w-full flex items-center justify-between text-left"
-                    >
-                      <div>
-                        <h3 className="text-lg font-semibold text-foreground">
-                          Want to speed things up?
-                        </h3>
-                        <p className="text-sm text-muted-foreground mt-1">
-                          Share more details for a faster, more targeted introduction.
-                        </p>
-                      </div>
-                      <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${showFullForm ? "rotate-180" : ""}`} />
-                    </button>
-
-                    {showFullForm && (
-                      <div className="mt-6 space-y-5 animate-fade-up">
-                        <div className="space-y-2">
-                          <Label htmlFor="websiteUrl" className="text-sm font-medium text-foreground">
-                            Website URL
-                          </Label>
-                          <Input
-                            id="websiteUrl"
-                            type="url"
-                            autoComplete="url"
-                            placeholder="https://yoursite.com"
-                            value={formData.websiteUrl}
-                            onChange={(e) => handleInputChange("websiteUrl", e.target.value)}
-                            className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="currentProvider" className="text-sm font-medium text-foreground">
-                            Current Payment Provider
-                          </Label>
-                          <Select
-                            value={formData.currentProvider}
-                            onValueChange={(value) => handleInputChange("currentProvider", value)}
-                          >
-                            <SelectTrigger className="h-14 text-base px-4 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20">
-                              <SelectValue placeholder="Select your current provider" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="none">None / New business</SelectItem>
-                              
-                              <SelectItem value="PayPal">PayPal</SelectItem>
-                              <SelectItem value="Square">Square</SelectItem>
-                              <SelectItem value="Adyen">Adyen</SelectItem>
-                              <SelectItem value="Checkout.com">Checkout.com</SelectItem>
-                              <SelectItem value="Braintree">Braintree</SelectItem>
-                              <SelectItem value="SumUp">SumUp</SelectItem>
-                              <SelectItem value="Worldpay">Worldpay</SelectItem>
-                              <SelectItem value="Fiserv (Clover)">Fiserv (Clover)</SelectItem>
-                              <SelectItem value="Shift4">Shift4</SelectItem>
-                              <SelectItem value="Authorize.Net">Authorize.Net</SelectItem>
-                              <SelectItem value="other">Other</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="painPoints" className="text-sm font-medium text-foreground">
-                            Specific Pain Points
-                          </Label>
-                          <Textarea
-                            id="painPoints"
-                            placeholder="e.g. High chargebacks, poor support, account frozen"
-                            value={formData.painPoints}
-                            onChange={(e) => handleInputChange("painPoints", e.target.value)}
-                            className="min-h-[80px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="notes" className="text-sm font-medium text-foreground">
-                            Anything else we should know?
-                          </Label>
-                          <Textarea
-                            id="notes"
-                            placeholder="Optional. Add any context that might help us advise you better."
-                            value={formData.notes}
-                            onChange={(e) => handleInputChange("notes", e.target.value)}
-                            className="min-h-[80px] text-base px-4 py-3 rounded-xl border-border/60 focus:border-primary focus:ring-primary/20 resize-none"
-                          />
-                        </div>
-                        <div className="text-center pt-2">
-                          <Button variant="hero" size="lg" onClick={handleFullFormSubmit} disabled={isSubmitting}>
-                            {isSubmitting ? (
-                              <>
-                                <Loader2 className="w-5 h-5 animate-spin" />
-                                Submitting...
-                              </>
-                            ) : (
-                              <>
-                                Request Introduction
-                                <ArrowRight className="w-5 h-5" />
-                              </>
-                            )}
-                          </Button>
-                          {backgroundError && (
-                            <p className="mt-3 text-sm text-destructive">{backgroundError}</p>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </div>
-            )}
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
 
             {/* Retake + booking */}
             <div className="text-center mt-10 animate-fade-up animation-delay-200 space-y-4">
