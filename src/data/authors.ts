@@ -93,7 +93,6 @@ const ARTICLES: Record<string, AuthorArticle[]> = {
     { href: "/insights/provider-appetite-index", title: "The Provider Appetite Index: Why Payment Processors Say \"No\" (And How to Get a \"Yes\")" },
     { href: "/insights/third-party-payment-processors", title: "Third-Party Payment Processors Explained: What They Are and When They Make Sense" },
     { href: "/insights/proof-of-business-activity", title: "Understanding Proof of Business Activity Requests" },
-    { href: "/insights/why-payment-providers-ask-for-source-of-funds", title: "Understanding Source of Funds Verification" },
     { href: "/insights/visa-mastercard-control-card-payments", title: "Visa and Mastercard Control Card Payments. What Businesses Can and Cannot Do" },
     { href: "/insights/payment-scheme-rules-explained", title: "What Are Payment Scheme Rules and Why They Matter More Than Your Contract" },
     { href: "/insights/what-is-a-payment-processor", title: "What Is a Payment Processor? How It Works and Why It Matters" },
