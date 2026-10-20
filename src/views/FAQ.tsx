@@ -50,7 +50,7 @@ const paymentFAQs: FAQItem[] = [
     answer:
       "Payment providers freeze accounts when their automated risk systems detect activity that falls outside the expected pattern. This can include sudden volume spikes, changes in average transaction value, or operating in an industry the provider considers higher risk.",
     excerpt:
-      "Stripe does not freeze accounts at random. In the UK, freezes usually happen when automated risk systems detect activity that deviates from the merchant's expected profile. A sudden spike in volume, a shift in average transaction value, or a product category the system flags as higher risk can all trigger a review.",
+      "Stripe does not freeze accounts at random. Freezes usually happen when automated risk systems detect activity that deviates from the merchant's expected profile. A sudden spike in volume, a shift in average transaction value, or a product category the system flags as higher risk can all trigger a review.",
     readMoreLink: "/insights/why-stripe-freezes-accounts-uk",
     readMoreLabel: "Why Stripe freezes accounts",
   },
