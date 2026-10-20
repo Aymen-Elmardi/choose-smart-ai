@@ -323,13 +323,6 @@ export const allInsights: Insight[] = [
     readTime: "4 min read"
   },
   {
-    title: "Understanding Source of Funds Verification",
-    slug: "why-payment-providers-ask-for-source-of-funds",
-    description: "Understand why payment providers request source of funds documentation and how to respond effectively.",
-    category: "compliance",
-    readTime: "5 min read"
-  },
-  {
     title: "What Are Payment Scheme Rules and Why They Matter More Than Your Contract",
     slug: "payment-scheme-rules-explained",
     global: true,
