@@ -356,7 +356,7 @@ export const allInsights: Insight[] = [
   },
   // Risk articles
   {
-    title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",
+    title: "Stripe Account Freezes: Common Triggers and Prevention",
     slug: "why-stripe-freezes-accounts-uk",
     description: "Stripe does not freeze accounts at random. Learn the common triggers and how to prevent them.",
     category: "risk",

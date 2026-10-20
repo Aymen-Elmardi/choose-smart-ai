@@ -24,7 +24,7 @@ export const conceptArticles: ConceptArticle[] = [
   // Articles about account freezes, flags, reserves, chargebacks
   {
     slug: "why-stripe-freezes-accounts-uk",
-    title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",
+    title: "Stripe Account Freezes: Common Triggers and Prevention",
     shortTitle: "Why Stripe Freezes Accounts",
     concepts: ["risk", "provider-behaviour"],
     keywords: ["freeze", "frozen", "stripe", "account freeze", "funds held", "stripe frozen"]

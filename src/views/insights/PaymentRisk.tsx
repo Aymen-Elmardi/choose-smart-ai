@@ -6,7 +6,7 @@ import { ArrowLeft, AlertTriangle } from "lucide-react";
 
 const paymentRiskArticles = [
   {
-    title: "Why Stripe Freezes Accounts in the UK",
+    title: "Why Stripe Freezes Accounts",
     slug: "why-stripe-freezes-accounts-uk",
     description: "Stripe does not freeze accounts at random. Learn the common triggers and how to prevent them."
   },
