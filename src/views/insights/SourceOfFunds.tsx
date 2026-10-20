@@ -82,7 +82,117 @@ const SourceOfFunds = () => {
             <p>
               Having clean separation between personal and business finances helps a lot here. <Link href="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start can reduce these friction points.
             </p>
-            
+
+            {/* Merged from /insights/why-payment-providers-ask-for-source-of-funds (M5a,
+                Section 5). Only sections this page did not already cover. */}
+            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
+              Why this request often appears after growth
+            </h2>
+
+            <p>
+              Many businesses first encounter source of funds checks after a positive change, such as:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2">
+              <li>A sudden increase in monthly processing</li>
+              <li>Larger than usual transactions</li>
+              <li>New customer types or markets</li>
+              <li>A shift from low volume testing to real commercial activity</li>
+            </ul>
+
+            <p>
+              From a provider&apos;s perspective, growth increases exposure. That means deeper checks are required.
+            </p>
+
+            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
+              Why providers cannot rely on your original application
+            </h2>
+
+            <p>
+              When you first applied for a payment account, your expected volumes and business model were estimates.
+            </p>
+
+            <p>
+              Once real money starts moving, providers are required to confirm that reality matches those expectations.
+              Source of funds checks help them verify that your activity aligns with what was originally approved.
+            </p>
+
+            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
+              Other evidence providers may ask for
+            </h2>
+
+            <p>
+              Beyond bank statements, requests commonly include:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Contracts or invoices with customers</li>
+              <li>Proof of business income or investment</li>
+              <li>Explanations of how the business was funded initially</li>
+            </ul>
+
+            <p>
+              These requests are standard and usually proportional to the level of activity.
+            </p>
+
+            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
+              What this does and does not indicate
+            </h2>
+
+            <p>
+              This does indicate that your provider is monitoring activity as required by regulation.
+            </p>
+
+            <p>
+              This does not automatically mean your account is at risk. Most accounts continue operating normally once
+              the information is reviewed.
+            </p>
+
+            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
+              Common mistakes that cause delays
+            </h2>
+
+            <p>
+              Problems usually arise when:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Responses are incomplete or vague</li>
+              <li>Documents do not match transaction patterns</li>
+              <li>Information conflicts with earlier disclosures</li>
+            </ul>
+
+            <p>
+              Clear and consistent explanations matter more than volume of documentation.
+            </p>
+
+            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
+              How to respond calmly and effectively
+            </h2>
+
+            <p>
+              The best approach is to:
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Explain the business model in simple terms</li>
+              <li>Match documents to actual activity</li>
+              <li>Respond within the requested timeframe</li>
+            </ul>
+
+            <p>
+              If growth or behaviour has changed, transparency helps more than silence.
+            </p>
+
+            <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
+              Why this check protects both sides
+            </h2>
+
+            <p>
+              Source of funds reviews protect payment providers from regulatory risk, but they also protect businesses
+              from sudden account restrictions caused by unanswered questions.
+            </p>
+
             <p className="mt-12 pt-8 border-t border-border">
               If you want to avoid these issues before choosing a payment provider, you can start a{" "}
               <Link href="/assessment?start=true" replace className="text-primary hover:underline">

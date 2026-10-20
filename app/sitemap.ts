@@ -300,12 +300,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/insights/why-payment-providers-ask-for-source-of-funds`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
       url: `${BASE_URL}/insights/visa-mastercard-control-card-payments`,
       lastModified: new Date(),
       changeFrequency: 'weekly',

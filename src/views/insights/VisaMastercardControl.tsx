@@ -69,7 +69,7 @@ const VisaMastercardControl = () => {
         </p>
         <p>
           These obligations include anti money laundering requirements, fraud prevention thresholds, and ongoing merchant monitoring. This includes{" "}
-          <Link href="/insights/why-payment-providers-ask-for-source-of-funds" className="text-primary hover:underline">
+          <Link href="/insights/source-of-funds" className="text-primary hover:underline">
             source of funds checks
           </Link>{" "}
           that may seem intrusive but are required by the system.

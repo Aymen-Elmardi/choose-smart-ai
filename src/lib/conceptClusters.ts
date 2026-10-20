@@ -148,13 +148,6 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["source of funds", "bank statement", "AML", "money origin", "why is bank asking for source of funds"]
   },
   {
-    slug: "why-payment-providers-ask-for-source-of-funds",
-    title: "Understanding Source of Funds Verification",
-    shortTitle: "Source of Funds Verification",
-    concepts: ["provider-behaviour"],
-    keywords: ["source of funds", "verification", "AML", "compliance", "why is bank asking for source of funds"]
-  },
-  {
     slug: "why-payment-providers-ask-for-director-documents",
     title: "Director ID Verification: What Providers Ask For",
     shortTitle: "Director Verification",
