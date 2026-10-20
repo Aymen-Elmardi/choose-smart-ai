@@ -25,7 +25,6 @@ export const AUTHORS: Author[] = [
     jobTitle: "Payments Expert",
     focus: "Writes on payment risk, compliance, provider deep dives and marketplace payments.",
     articles: [
-      { href: "/insights/why-payment-accounts-get-frozen-without-warning", title: "Account Freezes Without Warning: What Triggers Them" },
       { href: "/ach-payment-processors", title: "ACH Payment Processors: When Bank Transfer Makes More Sense Than Cards" },
       { href: "/insights/adyen-pricing-explained", title: "Adyen Pricing Explained: How Fees Really Work and When Adyen Is Worth It" },
       { href: "/insights/comparisons/adyen-vs-checkout-com", title: "Adyen vs Checkout.com: US Enterprise Payments Compared" },
@@ -86,7 +85,7 @@ export const AUTHORS: Author[] = [
       { href: "/insights/shift4-vs-stripe-enterprise", title: "Shift4 vs Stripe: Choosing the Right Payment Engine for Your Enterprise" },
       { href: "/insights/why-some-businesses-never-get-approved", title: "Some Businesses Struggle to Get Approved: The Real Reason" },
       { href: "/insights/source-of-funds", title: "Source of Funds Requests: What They Mean and How to Respond" },
-      { href: "/insights/why-stripe-freezes-accounts-uk", title: "Stripe Account Freezes in the UK: Common Triggers and Prevention" },
+      { href: "/insights/why-stripe-freezes-accounts-uk", title: "Stripe Account Freezes: Common Triggers and Prevention" },
       { href: "/insights/crisis/stripe-account-frozen", title: "Stripe Account Frozen? The 5 Hidden Reasons Why (And How to Prevent the Next Freeze)" },
       { href: "/insights/stripe-fees-explained", title: "Stripe Fees Explained: Real Costs for UK Businesses in 2026" },
       { href: "/insights/stripe-vs-adyen", title: "Stripe vs Adyen: Fees and Features Comparison" },
