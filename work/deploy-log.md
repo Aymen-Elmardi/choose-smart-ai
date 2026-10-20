@@ -32,6 +32,7 @@ What changed:
 - /insights/why-payment-accounts-get-frozen-without-warning: page deleted; 301 to the target; removed from the sitemap; internal links repointed (M1b revised).
 - /insights/crisis/stripe-account-frozen: redirect target; page itself unchanged.
 - /insights/why-stripe-freezes-accounts-uk: "UK" removed from the H1, schema headline, breadcrumb, first paragraph, FAQ question, schema description, one link anchor and the keyword list; URL and <title> unchanged (M1a cancelled).
+- /faq: "In the UK" removed from the Stripe-freezes answer preview (owner request, 2026-10-20).
 - Related-article cards and lists on about 20 other pages: new Stripe-freezes title, deleted article no longer shown (not worth an indexing request).
 Next deploy not before: 1 to 2 days after the previous production deploy.
 Watch for 14 days: /insights/crisis/stripe-account-frozen and /insights/why-stripe-freezes-accounts-uk clicks, CTR and position (the H1 change is a title change; revert if CTR drops more than 25% with stable impressions).
