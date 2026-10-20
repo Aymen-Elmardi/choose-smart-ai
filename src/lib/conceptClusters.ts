@@ -37,13 +37,6 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["frozen", "freeze", "stripe frozen", "funds frozen", "reserve"]
   },
   {
-    slug: "why-payment-accounts-get-frozen-without-warning",
-    title: "Account Freezes Without Warning: What Triggers Them",
-    shortTitle: "Why Accounts Freeze Without Warning",
-    concepts: ["risk", "provider-behaviour"],
-    keywords: ["freeze", "frozen", "warning", "sudden freeze", "without notice"]
-  },
-  {
     slug: "chargebacks-what-they-are-and-how-to-avoid-them",
     title: "Chargebacks: Why They Happen and How to Avoid Them",
     shortTitle: "Understanding Chargebacks",

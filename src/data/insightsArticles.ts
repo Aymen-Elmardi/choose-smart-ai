@@ -370,13 +370,6 @@ export const allInsights: Insight[] = [
     readTime: "5 min read"
   },
   {
-    title: "Account Freezes Without Warning: What Triggers Them",
-    slug: "why-payment-accounts-get-frozen-without-warning",
-    description: "Payment providers are not always able to warn merchants before taking action.",
-    category: "risk",
-    readTime: "6 min read"
-  },
-  {
     title: "Re-Underwriting Explained: When Providers Review Existing Accounts",
     slug: "why-providers-re-underwrite-accounts",
     description: "Approval is not a one-time event. Learn why providers periodically re-underwrite accounts.",

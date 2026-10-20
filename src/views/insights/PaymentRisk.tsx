@@ -16,9 +16,9 @@ const paymentRiskArticles = [
     description: "Rapid growth is one of the most common reasons payment accounts are reviewed."
   },
   {
-    title: "Why PayPal and Stripe Freeze Accounts Without Warning",
-    slug: "why-payment-accounts-get-frozen-without-warning",
-    description: "Payment providers are not always able to warn merchants before taking action."
+    title: "Stripe Account Frozen? The 5 Hidden Reasons Why & How to Prevent the Next Freeze",
+    slug: "crisis/stripe-account-frozen",
+    description: "Funds frozen? Learn the 5 hidden triggers that cause account freezes, immediate recovery steps, and how to find a stable long-term provider."
   },
   {
     title: "The Marketplace Founder's Guide to Payment Processing",

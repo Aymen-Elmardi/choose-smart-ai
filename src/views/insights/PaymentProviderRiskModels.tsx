@@ -73,7 +73,7 @@ const PaymentProviderRiskModels = () => {
 
       <p className="mb-4">
         Behind every approval, review, reserve, or{" "}
-        <Link href="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">
+        <Link href="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">
           account freeze
         </Link>{" "}
         sits a risk model. It is not a single rule. It is a layered scoring system that constantly evaluates how safe it is for a provider to process payments on your behalf.

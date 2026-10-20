@@ -9,7 +9,6 @@ const clusters = [
   {
     heading: "Funds Held or Frozen",
     articles: [
-      { title: "Why Payment Accounts Get Frozen Without Warning", slug: "why-payment-accounts-get-frozen-without-warning" },
       { title: "Stripe Account Freezes: Common Triggers", slug: "why-stripe-freezes-accounts-uk" },
       { title: "Stripe Account Frozen? 5 Hidden Reasons Why", slug: "crisis/stripe-account-frozen" },
     ],
