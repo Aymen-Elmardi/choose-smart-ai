@@ -81,7 +81,7 @@ const RollingVsFixedReserve = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Can You Negotiate Reserve Terms?</h2>
         <p>
-          Yes. After demonstrating consistent low-risk processing (typically 3 to 6 months), many providers will review reserve terms on request. Learn more about <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">how to negotiate reserves</Link>.
+          Yes. After demonstrating consistent low-risk processing (typically 3 to 6 months), many providers will review reserve terms on request. Learn more about <a href="#negotiate-or-reduce-a-reserve" className="text-primary hover:underline">how to negotiate reserves</a>.
         </p>
         <p>
           If reserve terms are a dealbreaker, consider providers whose <Link href="/insights/payment-provider-risk-models" className="text-primary hover:underline">risk models</Link> align better with your business type, some providers specialise in categories that others over-reserve.
@@ -90,6 +90,40 @@ const RollingVsFixedReserve = () => {
         <InlineAssessmentCTA
           context="Want to find providers that won't impose excessive reserves on your business?"
         />
+
+        {/* Merged from /insights/why-providers-impose-reserves (M5b, Section 5).
+            Only what this page did not already cover; added before the closing
+            Key Takeaway, existing sections unchanged. */}
+        <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Why Providers Impose Reserves</h2>
+        <p>
+          A reserve is money your payment provider withholds from your settlements as a safeguard against future chargebacks, refunds, or regulatory action. Providers are financially liable for chargebacks even after funds have been paid out to you. If your business generates disputes that exceed your balance, the provider absorbs the loss. Reserves exist to offset that exposure.
+        </p>
+        <p>Common triggers include:</p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>High chargeback ratios (approaching or exceeding 1%)</li>
+          <li>Rapid volume growth that outpaces your underwriting profile</li>
+          <li>Long delivery timescales creating extended refund windows</li>
+          <li>Operating in industries classified as higher risk (travel, events, subscriptions)</li>
+          <li>Entering <Link href="/insights/scheme-rules-reserves-monitoring" className="text-primary hover:underline">Visa or Mastercard monitoring programs</Link></li>
+        </ul>
+
+        <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Capped Rolling Reserves</h2>
+        <p>
+          Some providers also use <strong>capped rolling reserves</strong>, which stop withholding once a target balance is reached. Understanding which type you&apos;re subject to is the first step toward negotiating it down.
+        </p>
+
+        <h2 id="negotiate-or-reduce-a-reserve" className="text-2xl font-semibold text-foreground mt-10 mb-4 scroll-mt-28">How to Negotiate or Reduce a Reserve</h2>
+        <ul className="list-disc pl-6 space-y-2">
+          <li><strong>Build a clean track record:</strong> 3–6 months of low chargebacks and stable volume gives you leverage to request a review.</li>
+          <li><strong>Provide documentation proactively:</strong> Share delivery confirmation data, customer service metrics, and refund policies.</li>
+          <li><strong>Request a formal reserve review:</strong> Many providers will reassess reserves quarterly if asked, but rarely volunteer it.</li>
+          <li><strong>Compare terms across providers:</strong> If a competitor offers lower reserves, use that as a negotiation tool. Some providers offer <Link href="/insights/pricing-models/interchange-plus-plus" className="text-primary hover:underline">interchange++ pricing</Link> with more favourable reserve terms for established businesses.</li>
+        </ul>
+
+        <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">When Reserves Become a Problem</h2>
+        <p>
+          Reserves strain cash flow, especially for businesses with thin margins or seasonal revenue. If your reserve is absorbing 10% of revenue on a 180-day hold, you&apos;re effectively lending your provider six months of working capital interest-free.
+        </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>
         <p>

@@ -172,7 +172,7 @@ const WhyAccountsFlaggedAfterGrowth = () => {
         </p>
 
         <p>
-          At the more serious end, a provider may request updated documentation, ask for an explanation of the recent volume, or pause payouts entirely until the account is reviewed. See <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">how reserves work and how to negotiate them</Link>.
+          At the more serious end, a provider may request updated documentation, ask for an explanation of the recent volume, or pause payouts entirely until the account is reviewed. See <Link href="/insights/rolling-vs-fixed-reserve" className="text-primary hover:underline">how reserves work and how to negotiate them</Link>.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-10 mb-4">

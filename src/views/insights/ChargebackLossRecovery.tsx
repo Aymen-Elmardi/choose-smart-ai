@@ -65,7 +65,7 @@ const ChargebackLossRecovery = () => {
           <li>Chargebacks that exceed the value covered by your reserves</li>
         </ul>
         <p>
-          If your provider sees a pattern, they may impose a <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">reserve</Link>, request additional documentation, or in extreme cases, terminate your account.
+          If your provider sees a pattern, they may impose a <Link href="/insights/rolling-vs-fixed-reserve" className="text-primary hover:underline">reserve</Link>, request additional documentation, or in extreme cases, terminate your account.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">When to Consider Switching Providers</h2>

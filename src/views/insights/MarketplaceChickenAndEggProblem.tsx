@@ -270,7 +270,7 @@ const MarketplaceChickenAndEggProblem = () => {
         </p>
 
         <p>
-          A marketplace with same-day service completion needs <Link href="/insights/payout-settlement-explained" className="text-primary hover:underline">faster payout timing</Link> than one with a 30-day delivery window. A marketplace with high-value, infrequent transactions has different <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">dispute and reserve exposure</Link> than one with high-volume, low-value ones.
+          A marketplace with same-day service completion needs <Link href="/insights/payout-settlement-explained" className="text-primary hover:underline">faster payout timing</Link> than one with a 30-day delivery window. A marketplace with high-value, infrequent transactions has different <Link href="/insights/rolling-vs-fixed-reserve" className="text-primary hover:underline">dispute and reserve exposure</Link> than one with high-volume, low-value ones.
         </p>
 
         <p>

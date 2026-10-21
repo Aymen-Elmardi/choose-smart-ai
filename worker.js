@@ -27,6 +27,8 @@
 const MERGED_PAGES = {
   // M5a, 2026-10-20
   '/insights/why-payment-providers-ask-for-source-of-funds': '/insights/source-of-funds',
+  // M5b, 2026-10-21
+  '/insights/why-providers-impose-reserves': '/insights/rolling-vs-fixed-reserve',
   // M1b (revised: page deleted, not merged), 2026-10-20
   '/insights/why-payment-accounts-get-frozen-without-warning': '/insights/crisis/stripe-account-frozen',
 }
