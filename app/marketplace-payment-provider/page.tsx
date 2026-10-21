@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     url: 'https://chosepayments.com/marketplace-payment-provider',
     images: ['/og-default.png'],
-    title: "Marketplace Payment Risk Assessment: Why Platforms Get Extra Scrutiny",
+    title: "Marketplace Payment Risk Assessment: Why Platforms Get Extra Scrutiny | ChosePayments",
     description: "Building a marketplace? Understand why payment providers scrutinise platforms differently — and which providers actually fit your compliance and payout needs.",
     type: 'article',
   },

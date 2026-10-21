@@ -1,7 +1,6 @@
 'use client'
-import Link from 'next/link';
-import { ArrowRight, Check, Network, Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Check, Network, Shield } from "lucide-react";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
@@ -25,9 +24,7 @@ const MarketplacePlatforms = () => {
               If you're building a marketplace, franchise, or multi-vendor platform, you've probably already discovered that most payment providers aren't built for what you're doing. You need to split funds between parties, manage payouts on different schedules, and handle compliance for sellers you don't fully control. Standard tools make this harder than it should be. That friction isn't your fault. It's a mismatch. Choosing the wrong provider here creates real problems later: blocked funds, compliance issues, or having to rebuild your payments layer from scratch. This page is here to help you understand what actually matters for platform payments before you commit.
             </p>
             
-            <p className="text-base text-muted-foreground/80 mb-8">
-              Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
-            </p>
+            <WriteToUsLine className="text-base text-muted-foreground/80 mb-8" />
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
               What makes platform payments different
@@ -125,23 +122,7 @@ const MarketplacePlatforms = () => {
 
           {/* CTA Section */}
           <div className="mt-12 pt-8 border-t border-border">
-            <div className="text-center">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
-                Find the right payment provider for your business
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                Answer a few questions and we'll guide you to the right provider for your business.
-              </p>
-              <Button size="lg" asChild>
-                <Link href="/assessment?start=true" replace>
-                  Take the quiz
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-              <p className="text-sm text-muted-foreground/70 mt-3">
-                Takes under 2 minutes • No cost • No obligation
-              </p>
-            </div>
+            <TalkItThroughBox placement="end" />
           </div>
         </div>
       </main>
