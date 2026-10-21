@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     url: 'https://chosepayments.com/insights/fiserv-payments-platform',
     images: ['/og-default.png'],
-    title: 'Fiserv Payments Platform 2026: Clover, Carat & Who It Fits',
+    title: 'Fiserv Payments Platform 2026: Clover, Carat & Who It Fits | ChosePayments',
     description: 'Fiserv is one of the world\'s largest payment processors. See how Clover and Carat work, and when Fiserv actually makes sense for your business.',
     type: 'article',
   },
