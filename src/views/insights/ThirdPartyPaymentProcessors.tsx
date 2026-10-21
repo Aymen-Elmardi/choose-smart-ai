@@ -387,7 +387,7 @@ const ThirdPartyPaymentProcessors = () => {
               <tr className="border-b border-border">
                 <td className="py-3 px-3 font-medium text-foreground">Square</td>
                 <td className="py-3 px-3">Processor + acquirer</td>
-                <td className="py-3 px-3">2.6% + $0.10 (in-person)</td>
+                <td className="py-3 px-3">2.6% + $0.15 (in-person, Free plan)</td>
                 <td className="py-3 px-3">Point-of-sale and small retail/restaurant hardware</td>
               </tr>
               <tr className="border-b border-border">

@@ -55,7 +55,7 @@ const WalletPaymentsGuaranteedSuccess = () => {
 
   return (
     <InsightsArticleLayout
-      title="The Only Payment Method With a 100% Success Rate (On Part of Your Transactions)"
+      title="Wallet Payments: Higher Authorisation Success on Part of Your Transactions"
       description="Wallet payments are the only method that can reach a 100% success rate. Learn why wallet spend never fails, how refund-to-wallet strategies reduce chargebacks, and when wallets make sense for your business."
       category={{ name: "Explainers", slug: "explainer" }}
       cluster="hub"
@@ -66,8 +66,14 @@ const WalletPaymentsGuaranteedSuccess = () => {
     >
       <FAQSchema faqs={faqs} />
       
+      {/* TODO(owner): interim fix (T11). The H1 no longer claims a 100% success
+          rate, but the body, FAQ and layout description still say wallet spend
+          "never fails" / reaches "100 percent". Decide: rewrite the page around
+          higher authorisation success, or noindex it. The meta description also
+          talks about Apple Pay / Google Pay while the page is about stored-value
+          balances. */}
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-        The Only Payment Method With a 100% Success Rate (On Part of Your Transactions)
+        Wallet Payments: Higher Authorisation Success on Part of Your Transactions
       </h1>
       
       <ArticleByline />
