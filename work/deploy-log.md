@@ -18,9 +18,9 @@ Next deploy not before: 2026-10-21 (1 to 2 days later).
 Post-deploy checks (2026-10-20): first production run failed on a transient next/font Google Fonts fetch; re-run passed. Old URL 301 -> target in one hop (also with trailing slash, .html, query string, www); target 200, self canonical, no noindex, new sections live; sitemap 124 URLs without the old one; every other sitemap URL unchanged vs work/baseline-onpage.csv apart from the three list pages.
 Watch for 14 days: /insights/source-of-funds clicks and position vs work/baseline-onpage.csv and the GSC baseline; propose a revert if clicks fall more than 25% with stable impressions.
 
-### M5b (GO M5b pre-approved for 2026-10-21; prepared and merged 2026-10-21)
+### M5b (merged 2026-10-21)
 
-DEPLOY M5b | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY M5b | 2026-10-21 | commit 4bb73db
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/rolling-vs-fixed-reserve
 Redirects added (301):
@@ -28,8 +28,28 @@ https://chosepayments.com/insights/why-providers-impose-reserves -> https://chos
 What changed:
 - /insights/rolling-vs-fixed-reserve (ranking page, additive only): 4 sections folded in from the old page before the closing Key Takeaway; H1, title, meta and existing sections unchanged; "how to negotiate reserves" now jumps to the new section on the page.
 - Six articles' links, the /insights/compliance card and the Insights hub list now point to the target or drop the old entry (not worth an indexing request).
-Next deploy not before: 1 to 2 days after the merge date.
+Next deploy not before: 2026-10-22 (1 to 2 days later).
+Post-deploy checks (2026-10-21): production deploy passed first time. Old URL 301 -> target in one hop (also with trailing slash, .html, query string, www); target 200, self canonical, no noindex, new sections and in-page anchor live; sitemap 123 URLs; every other sitemap URL keeps its title, meta, H1 and canonical vs work/baseline-onpage.csv; only the list pages changed word count. Author list on seo/deploy-2..10 updated (old URL removed).
 Watch for 14 days: /insights/rolling-vs-fixed-reserve clicks and position (it ranks around 3.5); propose a revert if clicks fall more than 25% with stable impressions.
+
+### M1 revised (prepared 2026-10-20, not yet merged)
+
+Owner update 2026-10-20: M1a cancelled (page kept, "UK" removed from its title and copy); M1b changed from a merge to a deletion with a 301.
+
+DEPLOY M1-revised | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/crisis/stripe-account-frozen
+https://chosepayments.com/insights/why-stripe-freezes-accounts-uk
+Redirects added (301):
+https://chosepayments.com/insights/why-payment-accounts-get-frozen-without-warning -> https://chosepayments.com/insights/crisis/stripe-account-frozen
+What changed:
+- /insights/why-payment-accounts-get-frozen-without-warning: page deleted; 301 to the target; removed from the sitemap; internal links repointed (M1b revised).
+- /insights/crisis/stripe-account-frozen: redirect target; page itself unchanged.
+- /insights/why-stripe-freezes-accounts-uk: "UK" removed from the H1, schema headline, breadcrumb, first paragraph, FAQ question, schema description, one link anchor and the keyword list; URL and <title> unchanged (M1a cancelled).
+- /faq: "In the UK" removed from the Stripe-freezes answer preview (owner request, 2026-10-20).
+- Related-article cards and lists on about 20 other pages: new Stripe-freezes title, deleted article no longer shown (not worth an indexing request).
+Next deploy not before: merge no earlier than 2026-10-22 (M5b went live 2026-10-21).
+Watch for 14 days: /insights/crisis/stripe-account-frozen and /insights/why-stripe-freezes-accounts-uk clicks, CTR and position (the H1 change is a title change; revert if CTR drops more than 25% with stable impressions).
 
 One entry per production deploy, in the format from Section 0.5 rule 8 of the fix list.
 

@@ -8,7 +8,7 @@ const boxes = [
     icon: ShieldAlert,
     title: "Holds and Reviews",
     description: "Why funds get frozen and what triggers it. Your account type, chargeback rate, and volume pattern all feed into this decision automatically.",
-    link: "/insights/why-payment-accounts-get-frozen-without-warning",
+    link: "/insights/crisis/stripe-account-frozen",
   },
   {
     icon: BarChart3,

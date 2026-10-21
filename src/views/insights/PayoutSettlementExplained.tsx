@@ -62,7 +62,7 @@ const PayoutSettlementExplained = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">When Payout Mismatches Signal a Real Problem</h2>
         <p>
-          Most discrepancies are normal. But if payouts stop entirely, amounts drop dramatically without explanation, or you notice deductions you can't identify, contact your provider immediately. Unexplained holds may indicate a <Link href="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">risk review or account freeze</Link>.
+          Most discrepancies are normal. But if payouts stop entirely, amounts drop dramatically without explanation, or you notice deductions you can't identify, contact your provider immediately. Unexplained holds may indicate a <Link href="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">risk review or account freeze</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>
