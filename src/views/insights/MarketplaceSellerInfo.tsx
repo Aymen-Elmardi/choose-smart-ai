@@ -213,7 +213,7 @@ const MarketplaceSellerInfo = () => {
             <strong className="text-foreground">Explain why, not just what.</strong> Sellers who understand that document requests come from regulatory requirements, not platform policy, complete them faster. See our guide on <Link href="/insights/what-to-do-when-provider-asks-for-documents" className="text-primary hover:underline">how to respond to provider document requests</Link>.
           </li>
           <li>
-            <strong className="text-foreground">Build monitoring into ongoing operations, not just onboarding.</strong> Track dispute rates, sudden volume changes, and payout-detail changes per seller, since providers expect platforms to catch these signals before they escalate. This is closely tied to <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">why providers impose reserves</Link>.
+            <strong className="text-foreground">Build monitoring into ongoing operations, not just onboarding.</strong> Track dispute rates, sudden volume changes, and payout-detail changes per seller, since providers expect platforms to catch these signals before they escalate. This is closely tied to <Link href="/insights/rolling-vs-fixed-reserve" className="text-primary hover:underline">why providers impose reserves</Link>.
           </li>
         </ol>
 

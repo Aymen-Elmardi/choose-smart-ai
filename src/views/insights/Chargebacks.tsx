@@ -167,7 +167,7 @@ const Chargebacks = () => {
         </h2>
 
         <p>
-          Payment providers track dispute levels closely, not just per transaction but as a trend. If chargebacks rise suddenly or stay elevated, providers may ask for more documentation, change your payout schedule, <Link href="/insights/why-providers-impose-reserves" className="text-primary hover:underline">impose a reserve on your funds</Link>, or flag the account for review.
+          Payment providers track dispute levels closely, not just per transaction but as a trend. If chargebacks rise suddenly or stay elevated, providers may ask for more documentation, change your payout schedule, <Link href="/insights/rolling-vs-fixed-reserve" className="text-primary hover:underline">impose a reserve on your funds</Link>, or flag the account for review.
         </p>
 
         <p>

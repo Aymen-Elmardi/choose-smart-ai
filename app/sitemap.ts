@@ -558,12 +558,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/insights/why-providers-impose-reserves`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
       url: `${BASE_URL}/insights/rolling-vs-fixed-reserve`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
