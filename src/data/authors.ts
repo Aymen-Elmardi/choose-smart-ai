@@ -107,7 +107,6 @@ export const AUTHORS: Author[] = [
       { href: "/insights/what-to-do-when-funds-held", title: "What to Do When Your Payment Provider Holds Your Funds" },
       { href: "/insights/scheme-rules-by-payment-method", title: "When Scheme Rules Apply Differently: Cards, Wallets, Marketplaces and BNPL Explained" },
       { href: "/insights/why-accounts-get-flagged-after-growth", title: "Why Payment Accounts Get Flagged After a Business Grows" },
-      { href: "/insights/why-providers-impose-reserves", title: "Why Payment Providers Impose Reserves and How to Negotiate Them" },
       { href: "/insights/why-payment-providers-reject-growing-businesses", title: "Why Payment Providers Reject Growing Businesses" },
       { href: "/insights/payout-settlement-explained", title: "Why Your Payout Doesn't Match Your Sales: Settlement Timing Explained" },
       { href: "/insights/chargeback-loss-recovery", title: "You Lost a Chargeback: What Happens Next and How to Recover" },
