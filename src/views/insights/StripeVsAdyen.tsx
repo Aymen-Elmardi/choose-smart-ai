@@ -1,8 +1,8 @@
 'use client'
-import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
 import FAQAccordion from "@/components/FAQAccordion";
+import { TalkItThroughBox } from "@/components/ContactCTAs";
 
 const sources = [
   { name: "Stripe Pricing (official)", url: "https://stripe.com/pricing", type: "official" as const },
@@ -640,26 +640,12 @@ const StripeVsAdyen = () => {
           Treat the worked example as a guide to how the two price models behave at volume. Do not treat it as your exact quote. Check your own terms with Adyen before you switch.
         </p>
 
-        {/* The single CTA for this article, per the supplied design spec. */}
+        {/* The single CTA for this article (T01: Write to us / Book a call). */}
         <section
           className="mt-12 rounded-xl overflow-hidden"
           style={{ background: "#0C141D", border: "1px solid #1F2937", padding: "2.5rem 2.8rem" }}
         >
-          <h2 style={{ color: "#F3F5F7", fontSize: "1.35rem", fontWeight: 700, lineHeight: 1.4, margin: "0 0 1rem 0" }}>
-            See exactly what you would pay before you switch
-          </h2>
-          <p style={{ color: "#67737E", fontSize: "1rem", lineHeight: 1.65, margin: "0 0 0.75rem 0" }}>
-            Reading a comparison page tells you how Stripe and Adyen work.
-          </p>
-          <p style={{ color: "#67737E", fontSize: "1rem", lineHeight: 1.65, margin: "0 0 1.75rem 0" }}>
-            It does not tell you which one is cheaper for your own volume and card mix. That takes your real numbers.
-          </p>
-          <Link href="/assessment" className="cp-cta-btn">
-            Get your free processor match
-          </Link>
-          <p style={{ color: "#67737E", fontSize: "0.95rem", lineHeight: 1.65, margin: "1.25rem 0 0 0" }}>
-            Answer a few questions about your business and see how you stack up against 21 providers, including both of these, in about a minute. No sales call needed.
-          </p>
+          <TalkItThroughBox placement="end" tone="inverted" />
         </section>
       </div>
     </InsightsArticleLayout>

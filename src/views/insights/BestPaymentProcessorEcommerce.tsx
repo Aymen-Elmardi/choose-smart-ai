@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
+import { SecondOpinionLine, TalkItThroughBox } from "@/components/ContactCTAs";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -138,6 +139,7 @@ const schemaGraph = {
 const BestPaymentProcessorEcommerce = () => {
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="Best Payment Processor for E-Commerce (US 2026)"
       description="There is no single best payment processor for e-commerce. Subscription, high-ticket, international, and high-volume stores each need a different answer. Here is how to pick correctly."
       category={{ name: "Provider Fit Guides", slug: "provider-fit" }}
@@ -309,6 +311,10 @@ const BestPaymentProcessorEcommerce = () => {
         </div>
       </section>
 
+      <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mb-12">
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
+      </div>
+
       {/* Blended profiles */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
@@ -352,11 +358,7 @@ const BestPaymentProcessorEcommerce = () => {
         <p className="text-muted-foreground mb-4">
           Picking correctly means identifying which of these four profiles actually describes your business, not picking whichever processor ranks first on a generic list.
         </p>
-        <p className="text-muted-foreground">
-          Not sure which category your business actually falls into, or whether you're a blended profile that needs a more tailored match?{" "}
-          <Link href="/assessment" className="text-primary hover:underline font-medium">Run the free risk assessment</Link>{" "}
-          and get matched against processors that already handle businesses like yours.
-        </p>
+        <SecondOpinionLine className="text-muted-foreground" />
       </section>
 
       {/* FAQ */}
