@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import { Check, X, Code, Webhook, FileText, TestTube, Shield, Clock, Headphones, BookOpen, Lock } from "lucide-react";
 import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
+import ArticleByline from "@/components/ArticleByline";
+import ArticleSchema from "@/components/ArticleSchema";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
@@ -58,6 +60,13 @@ const BestPaymentApiUK = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ArticleSchema
+        title={"Best Payment APIs in the UK \u2014 and Which Ones Will Actually Approve You"}
+        description={"Compare payment APIs for UK developers: Stripe, Adyen, Checkout.com. Pricing, integration speed, approval rates. Find the API that fits your tech stack."}
+        publishedTime="2025-12-17"
+        modifiedTime="2025-12-31"
+        authorSlug="madalsa-bhat"
+      />
       <FinancialProductSchema 
         products={providers}
         listName="Best Payment APIs UK 2026"
@@ -75,6 +84,7 @@ const BestPaymentApiUK = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 Best Payment APIs in the UK — and Which Ones Will Actually Approve You
               </h1>
+              <ArticleByline authorSlug="madalsa-bhat" publishedTime="2025-12-17" modifiedTime="2025-12-31" />
               <div className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto space-y-4 text-left">
                 <p>
                   Most developers pick Stripe by default. It's well-documented, widely supported, and works well for a lot of use cases. But it's not always the right choice, and switching later can be painful.

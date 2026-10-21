@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname } from "next/navigation";
+import { authorUrl as profileUrl, getAuthorProfile } from "@/data/authorProfiles";
 
 interface ArticleSchemaProps {
   title: string;
@@ -13,6 +14,11 @@ interface ArticleSchemaProps {
   sources?: Array<{ name: string; url: string }>;
   keywords?: string[];
   articleBody?: string;
+  /**
+   * Slug of a named expert (src/data/authors.ts). When set, the author is
+   * that Person, linked to their profile page, instead of the Organization.
+   */
+  authorSlug?: string;
 }
 
 const BASE_URL = "https://chosepayments.com";
@@ -45,10 +51,13 @@ const ArticleSchema = ({
   sources,
   keywords,
   articleBody,
+  authorSlug,
 }: ArticleSchemaProps) => {
   // Resolved at prerender time for statically exported routes, so the canonical
   // page URL is baked into the HTML instead of falling back to the site root.
   const pathname = usePathname();
+
+  const person = authorSlug ? getAuthorProfile(authorSlug) : undefined;
 
   const schemaData: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -56,11 +65,18 @@ const ArticleSchema = ({
     "headline": title,
     "description": description,
     "image": image,
-    "author": {
-      "@type": "Organization",
-      "name": author,
-      "url": authorUrl,
-    },
+    "author": person
+      ? {
+          "@type": "Person",
+          "name": person.name,
+          "jobTitle": person.jobTitle,
+          "url": profileUrl(person.slug),
+        }
+      : {
+          "@type": "Organization",
+          "name": author,
+          "url": authorUrl,
+        },
     "publisher": {
       "@type": "Organization",
       "name": "ChosePayments",
