@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
+import { SecondOpinionLine, TalkItThroughBox } from "@/components/ContactCTAs";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -133,6 +134,7 @@ const schemaGraph = {
 const AchPaymentProcessors = () => {
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="ACH Payment Processors: When Bank Transfer Makes More Sense Than Cards"
       description="ACH costs cents, cards cost percent. Here is when ACH payment processing makes sense for B2B, SaaS, and marketplace payouts, and which processors do it well."
       category={{ name: "Fees & Costs", slug: "fees" }}
@@ -258,6 +260,10 @@ const AchPaymentProcessors = () => {
         </p>
       </section>
 
+      <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mb-12">
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
+      </div>
+
       {/* Trade-offs */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
@@ -336,11 +342,7 @@ const AchPaymentProcessors = () => {
           <Link href="/insights/third-party-payment-processors" className="text-primary hover:underline">third-party payment processors</Link>{" "}
           monitor every payment rail they support, not just ACH.
         </p>
-        <p className="text-muted-foreground">
-          Not sure which mix of ACH and card processing fits your payment flows?{" "}
-          <Link href="/assessment" className="text-primary hover:underline font-medium">The free risk assessment</Link>{" "}
-          maps your transaction types against processors that handle both well.
-        </p>
+        <SecondOpinionLine className="text-muted-foreground" />
       </section>
 
       {/* FAQ */}

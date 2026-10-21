@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
+import { SecondOpinionLine, TalkItThroughBox } from "@/components/ContactCTAs";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -139,6 +140,7 @@ const schemaGraph = {
 const PaymentGatewayVsPaymentProcessor = () => {
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="Payment Gateway vs Payment Processor: The Actual Difference"
       description="A payment gateway captures and encrypts card data. A payment processor authorizes the transaction and moves the money. Here is what that split actually means when you're building a checkout."
       category={{ name: "Explainers", slug: "explainer" }}
@@ -275,6 +277,10 @@ const PaymentGatewayVsPaymentProcessor = () => {
         </p>
       </section>
 
+      <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mb-12">
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
+      </div>
+
       {/* Why it matters for platforms */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
@@ -373,11 +379,7 @@ const PaymentGatewayVsPaymentProcessor = () => {
           <Link href="/insights/how-to-choose-a-payment-processor" className="text-primary hover:underline">how to choose a payment processor</Link>{" "}
           walks through that comparison in more depth.
         </p>
-        <p className="text-muted-foreground">
-          If you are not sure whether your current setup, or a provider you are evaluating, actually fits how your business processes payments,{" "}
-          <Link href="/assessment" className="text-primary hover:underline font-medium">the free risk assessment</Link>{" "}
-          compares your transaction profile against processors and gateways that have already been matched to businesses like yours.
-        </p>
+        <SecondOpinionLine className="text-muted-foreground" />
       </section>
 
       {/* FAQ */}
