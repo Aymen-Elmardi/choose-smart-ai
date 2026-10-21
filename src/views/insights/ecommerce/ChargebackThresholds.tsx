@@ -69,6 +69,12 @@ const ChargebackThresholds = () => {
 
 
       <ArticleByline />
+      {/* TODO: link to canonical thresholds page when published (T12). */}
+      <div className="rounded-xl border border-primary/20 bg-primary/5 p-5 mb-8">
+        <p className="text-foreground text-base">
+          This table shows legacy programmes. Visa&apos;s VAMP merchant threshold is 1.5% from 1 April 2026.
+        </p>
+      </div>
       <p className="text-lg text-muted-foreground mb-4">
         For many online businesses the moment chargebacks cross one percent something unexpected happens.
       </p>
