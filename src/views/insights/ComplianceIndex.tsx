@@ -15,9 +15,9 @@ const complianceArticles = [
     icon: Fingerprint,
   },
   {
-    title: "Why Payment Providers Impose Rolling Reserves",
-    description: "Rolling reserves hold back a percentage of your revenue. Learn why providers impose them, how long they last, and how to negotiate their removal.",
-    slug: "/insights/why-providers-impose-reserves",
+    title: "Rolling Reserve vs Fixed Reserve: What Merchants Need to Know",
+    description: "Understand the difference between rolling and fixed reserves, how each affects your cash flow, and which reserve type you're most likely to encounter.",
+    slug: "/insights/rolling-vs-fixed-reserve",
     icon: ShieldAlert,
   },
   {
