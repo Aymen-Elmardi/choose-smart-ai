@@ -35,6 +35,7 @@ export const AUTHORS: Author[] = [
       { href: "/insights/apple-pay-google-pay-explained", title: "Apple Pay and Google Pay Explained: Faster Checkout, Lower Risk, Higher Approval Rates" },
       { href: "/best-acquirers-food-delivery", title: "Best Payment Acquirers for Food Delivery Platforms" },
       { href: "/insights/best-payment-processor-ecommerce", title: "Best Payment Processor for E-Commerce (US 2026)" },
+      { href: "/insights/best-payment-processor-for-small-business", title: "Best Payment Processor for Small US Business (2026)" },
       { href: "/best-payment-processors-high-chargebacks", title: "Best Payment Processors for High Chargeback Businesses" },
       { href: "/insights/ecommerce/chargeback-thresholds-high-risk-processors", title: "Beyond the 1%: Navigating Chargeback Thresholds With High Risk Payment Processors" },
       { href: "/insights/pricing-models/blended-vs-interchange", title: "Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy" },
