@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import { LOGO, IS_SEASONAL_LOGO } from "@/lib/brand";
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Linkedin } from "lucide-react";
@@ -96,7 +97,7 @@ const Footer = () => {
           <div className="cp-footer-top">
             <div className="flex items-center gap-4">
               <Link href="/" className="cp-nav-logo" aria-label="ChosePayments home">
-                <img src="/logo-mark.png" alt="" width={176} height={192} loading="lazy" decoding="async" />
+                <img src={LOGO.mark.src} alt="" width={LOGO.mark.width} height={LOGO.mark.height} loading="lazy" decoding="async" style={IS_SEASONAL_LOGO ? { borderRadius: 6 } : undefined} />
                 <span className="cp-logotype">Chose<em>Payments</em></span>
               </Link>
               <a

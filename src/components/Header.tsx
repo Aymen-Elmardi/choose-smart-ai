@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { BOOKING_URL } from "@/lib/booking";
+import { LOGO, IS_SEASONAL_LOGO } from "@/lib/brand";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ const Header = () => {
       <div className="cp-wrap">
         <nav className="cp-nav">
           <Link href="/" className="cp-nav-logo" aria-label="ChosePayments home">
-            <img src="/logo-mark.png" alt="" width={176} height={192} />
+            <img src={LOGO.mark.src} alt="" width={LOGO.mark.width} height={LOGO.mark.height} style={IS_SEASONAL_LOGO ? { borderRadius: 6 } : undefined} />
             <span className="cp-logotype">Chose<em>Payments</em></span>
           </Link>
 

@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useCallback, useRef } from "react";
+import { LOGO, IS_SEASONAL_LOGO } from "@/lib/brand";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ArrowRight, ArrowLeft, Check, ChevronDown } from "lucide-react";
@@ -532,7 +533,7 @@ const QuizHeader = ({
           </Button>
         ) : (
           <Link href="/" className="flex items-center gap-2" aria-label="ChosePayments home">
-            <img src="/logo-mark.png" alt="" width={176} height={192} className="h-7 w-auto" />
+            <img src={LOGO.mark.src} alt="" width={LOGO.mark.width} height={LOGO.mark.height} className={`h-7 w-auto${IS_SEASONAL_LOGO ? " rounded-md" : ""}`} />
             <span className="cp-logotype">Chose<em>Payments</em></span>
           </Link>
         )}
