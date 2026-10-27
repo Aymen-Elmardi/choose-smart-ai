@@ -696,6 +696,13 @@ export const allInsights: Insight[] = [
   },
   // Provider Fit Guides
   {
+    title: "Best Payment Processor for Small US Business (2026)",
+    slug: "best-payment-processor-for-small-business",
+    description: "Square, Stripe, PayPal and Helcim compared on one $15,000-a-month example: real monthly cost, approval requirements, and which ones decline you.",
+    category: "provider-fit",
+    readTime: "9 min read"
+  },
+  {
     title: "Best Payment Processors for High Chargeback Businesses",
     slug: "best-payment-processors-high-chargebacks",
     description: "Learn why many processors reject high chargeback merchants, how risk tolerance differs between providers, and how to find the right fit for your business.",
