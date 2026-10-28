@@ -1,6 +1,7 @@
 'use client'
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 import Link from 'next/link';
 
 const AdyenVsFirstData = () => {
@@ -29,6 +30,7 @@ const AdyenVsFirstData = () => {
 
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="Adyen vs First Data: Which Enterprise Processor Wins?"
       description="Adyen vs First Data comparison: pricing, features, approval speed. Which enterprise processor fits your volume and risk profile?"
       category={{ name: "Provider Deep Dives", slug: "providers" }}
@@ -82,6 +84,8 @@ const AdyenVsFirstData = () => {
       <p className="mb-8">
         That difference affects everything: approval likelihood, pricing structure, flexibility, reporting, and how much operational work sits on your side.
       </p>
+
+      <WriteToUsLine className="mb-6" />
 
       <h2 className="text-2xl font-semibold mt-10 mb-4">How Adyen actually works</h2>
 
@@ -261,9 +265,7 @@ const AdyenVsFirstData = () => {
       </p>
 
       <div className="my-8 p-6 bg-primary/5 border border-primary/20 rounded-lg">
-        <p className="text-base">
-          <strong>Ready to find your fit?</strong> If you want to understand which model suits your business before applying, <Link href="/assessment" className="text-primary hover:underline font-medium">start a short assessment</Link>. It looks at your business structure and routes you toward the type of provider most likely to approve and support you long term.
-        </p>
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
       </div>
 
       <h2 className="text-2xl font-semibold mt-10 mb-4">Final takeaway</h2>

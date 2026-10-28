@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
+import { SecondOpinionLine, TalkItThroughBox } from "@/components/ContactCTAs";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Source } from "@/components/SourcesCitation";
 
@@ -151,6 +152,7 @@ const schemaGraph = {
 const WhatIsAPaymentProcessor = () => {
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="What Is a Payment Processor? How It Works and Why It Matters"
       description="A payment processor moves the transaction data between a merchant, the card networks, and the issuing bank. Here is exactly how that works, who the major players are, and why the choice matters more than the rate on the page."
       category={{ name: "Explainers", slug: "explainer" }}
@@ -284,6 +286,10 @@ const WhatIsAPaymentProcessor = () => {
         </p>
       </section>
 
+      <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mb-12">
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
+      </div>
+
       {/* Major Processors */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-foreground mb-4">
@@ -378,10 +384,9 @@ const WhatIsAPaymentProcessor = () => {
           A payment processor is the messaging layer that moves your transaction data between your checkout, the card networks, and your customer's bank. It is not the same as the gateway that captures the card data, and it is not the same as the acquirer that holds your funds and your risk. Understanding the difference matters most at the two moments business owners usually get caught out: when comparing pricing across providers, and when an account gets frozen or a chargeback dispute goes wrong.
         </p>
         <p className="text-muted-foreground">
-          Choosing the right processor is not a rate-shopping exercise. It is a matching exercise between your business model, your risk profile, and a provider that has actually built for your specific transaction pattern. If you are not sure which type of processor fits your business,{" "}
-          <Link href="/assessment" className="text-primary hover:underline font-medium">the free risk assessment</Link>{" "}
-          will give you a clear read on where your business sits before you sign anything.
+          Choosing the right processor is not a rate-shopping exercise. It is a matching exercise between your business model, your risk profile, and a provider that has actually built for your specific transaction pattern.
         </p>
+        <SecondOpinionLine className="text-muted-foreground mt-4" />
       </section>
 
       {/* FAQ */}
