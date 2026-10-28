@@ -14,10 +14,6 @@ export const HOME_FAQS = [
     answer: "No. We don't process payments ourselves. We're an independent advisory that matches your business with the right processor from 50+ options across the US, UK, and EU.",
   },
   {
-    question: "How does ChosePayments make money?",
-    answer: "We're paid by the processor once you're matched and onboarded, similar to how a mortgage broker is paid by a lender. It costs you nothing, and it doesn't change who we recommend, we're not owned by or tied to any processor.",
-  },
-  {
     question: "Is the assessment actually free?",
     answer: "Yes. The review, the call, and the match are free, regardless of what we find or whether you go ahead with a new processor.",
   },

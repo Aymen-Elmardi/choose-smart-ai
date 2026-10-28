@@ -35,7 +35,7 @@ const ukValueProps = [
   {
     icon: Gift,
     title: "Always Free for Merchants",
-    description: "We are paid by the payment processors when we make a successful introduction. You pay nothing, ever.",
+    description: "You pay nothing, ever.",
   },
   {
     icon: ShieldCheck,
