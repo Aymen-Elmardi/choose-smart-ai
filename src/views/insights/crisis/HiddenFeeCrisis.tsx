@@ -159,6 +159,12 @@ const HiddenFeeCrisis = () => {
         <p className="text-foreground font-semibold mt-8 text-lg">
           Stop paying more than you should. Your current processor is optimized for their profit, not yours.
         </p>
+
+        <p className="mt-6">
+          <strong className="text-foreground">Next step:</strong> upload a month of your statement to our{" "}
+          <Link href="/statement-review" className="text-primary hover:underline">free statement review</Link>{" "}
+          to see your all-in effective rate.
+        </p>
       </div>
     </InsightsArticleLayout>
   );
