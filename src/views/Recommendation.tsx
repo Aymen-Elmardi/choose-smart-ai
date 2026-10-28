@@ -1,5 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from "react";
+import { LOGO, IS_SEASONAL_LOGO } from "@/lib/brand";
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { Check, ArrowRight, Loader2, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -210,7 +211,7 @@ const Recommendation = () => {
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <a href="/" className="flex items-center gap-2" aria-label="ChosePayments home">
-              <img src="/logo-mark.png" alt="" width={176} height={192} className="h-7 w-auto" />
+              <img src={LOGO.mark.src} alt="" width={LOGO.mark.width} height={LOGO.mark.height} className={`h-7 w-auto${IS_SEASONAL_LOGO ? " rounded-md" : ""}`} />
               <span className="cp-logotype">Chose<em>Payments</em></span>
             </a>
             <a href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">

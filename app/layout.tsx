@@ -4,6 +4,7 @@ import Script from 'next/script'
 import './globals.css'
 import { Providers } from './providers'
 import AppErrorBoundary from '@/components/AppErrorBoundary'
+import { LOGO } from '@/lib/brand'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -51,11 +52,11 @@ export const metadata: Metadata = {
     icon: [
       // No SVG variant for the 2026 mark yet. Left out deliberately: browsers
       // prefer an SVG icon over every PNG, so a stale one silently wins the tab.
-      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: LOGO.icons.png32, type: 'image/png', sizes: '32x32' },
+      { url: LOGO.icons.png16, type: 'image/png', sizes: '16x16' },
+      { url: LOGO.icons.ico, sizes: 'any' },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: LOGO.icons.apple,
   },
 }
 
