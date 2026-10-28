@@ -2,7 +2,7 @@
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
 import FAQSchema from "@/components/FAQSchema";
-import { BOOKING_URL } from "@/lib/booking";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 
 const HighRiskEcommerce = () => {
   const faqs = [
@@ -18,6 +18,7 @@ const HighRiskEcommerce = () => {
 
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="Payment Processors for High-Risk E-commerce Businesses"
       description="Learn why high-risk ecommerce struggles with Stripe or Square, which processors tolerate high risk industries, and how risk appetite differs across providers."
       category={{ name: "Provider Fit Guides", slug: "provider-fit" }}
@@ -47,6 +48,8 @@ const HighRiskEcommerce = () => {
         Industries commonly flagged include nutraceuticals, electronics resale, digital downloads, adult content, CBD products, and travel. Even businesses operating legally and transparently in these sectors get rejected or frozen because the provider's risk engine treats the entire category as high-liability.
       </p>
 
+      <WriteToUsLine className="text-muted-foreground mb-6" />
+
       <h2 className="heading-md text-foreground mt-10 mb-4">Which Processors Tolerate High-Risk Industries</h2>
       <p className="text-muted-foreground mb-4">
         The providers that accept high-risk ecommerce do so because they underwrite each merchant individually rather than applying blanket rules:
@@ -66,13 +69,7 @@ const HighRiskEcommerce = () => {
       </p>
 
       <div className="rounded-xl border border-primary/20 bg-primary/5 p-6 mt-10">
-        <h3 className="font-semibold text-foreground mb-2">See which providers fit your risk profile</h3>
-        <p className="text-muted-foreground text-sm mb-4">
-          Book a free 15-minute call and we'll match your industry, volume, and model against each provider's risk appetite.
-        </p>
-        <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-          Book a 15-Minute Call <span aria-hidden>→</span>
-        </a>
+        <TalkItThroughBox placement="mid" headingLevel="h3" reassurance />
       </div>
     </InsightsArticleLayout>
   );
