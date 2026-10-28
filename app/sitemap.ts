@@ -540,6 +540,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/insights/square-fees-explained`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/insights/payment-scheme-rules-explained`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
