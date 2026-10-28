@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import { Check, Clock } from "lucide-react";
 import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
+import ArticleByline from "@/components/ArticleByline";
+import ArticleSchema from "@/components/ArticleSchema";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
@@ -48,6 +50,13 @@ const SwitchProvider = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ArticleSchema
+        title={"Switching Payment Providers: How to Do It Without Getting Stuck"}
+        description={"Stuck with the wrong provider? Learn how to leave without exit fees, fund holds, or unnecessary disruption."}
+        publishedTime="2025-12-24"
+        modifiedTime="2025-12-24"
+        authorSlug="madalsa-bhat"
+      />
       <HowToSchema
         name="How to Switch Payment Providers Without Getting Stuck"
         description="Step-by-step guide to switching payment providers without exit fees, fund holds, or business disruption."
@@ -62,6 +71,7 @@ const SwitchProvider = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Switching Payment Providers: How to Do It Without Getting Stuck
             </h1>
+            <ArticleByline authorSlug="madalsa-bhat" publishedTime="2025-12-24" modifiedTime="2025-12-24" />
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               You want to leave your current provider, but you're not sure what will happen if you try. Will they hold your funds? Is there an exit fee buried somewhere? Will the switch disrupt your business? These worries are common — and often the reason businesses stay with a provider that's clearly not working. If you're in that position, this page is for you. You can switch, but it helps to understand what to check first.
