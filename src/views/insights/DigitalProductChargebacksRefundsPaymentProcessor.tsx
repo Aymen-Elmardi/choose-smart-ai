@@ -98,6 +98,8 @@ const DigitalProductChargebacksRefundsPaymentProcessor = () => {
         <a href="https://chargebacks911.com/visa-acquirer-monitoring-program/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Chargebacks911's breakdown of the Visa VAMP program</a>{" "}
         covers the acquirer-side mechanics in detail.
       </p>
+      {/* TODO(verify): "effective January 2026" for VAMP. Verified: the merchant
+          threshold dropped to 1.5% from 1 April 2026 (previously 2.2%). */}
       <p className="text-foreground/90 mb-2">
         <strong>Visa - VAMP (Visa Acquirer Monitoring Program), effective January 2026:</strong>
       </p>
@@ -248,7 +250,7 @@ const DigitalProductChargebacksRefundsPaymentProcessor = () => {
 
       <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">Chargeback Prevention for Digital Products</h2>
       <p className="text-foreground/90 mb-4">
-        <strong>Transaction descriptors:</strong> The single highest-ROI change for most digital businesses with elevated chargebacks is the billing descriptor. When a customer sees an unfamiliar name on their card statement, they dispute it. The descriptor should be recognisable: the business name as it appears in marketing materials, optionally with a support phone number (Stripe and PayPal both allow a phone number to be appended to the descriptor). A descriptor like "CHOSEPAYMENTS.COM +1555000000" gives the customer a path to contact before disputing.
+        <strong>Transaction descriptors:</strong> The single highest-ROI change for most digital businesses with elevated chargebacks is the billing descriptor. When a customer sees an unfamiliar name on their card statement, they dispute it. The descriptor should be recognisable: the business name as it appears in marketing materials, optionally with a support phone number (Stripe and PayPal both allow a phone number to be appended to the descriptor). A descriptor like "CHOSEPAYMENTS.COM 1-800-000-0000" (example) gives the customer a path to contact before disputing.
       </p>
       <p className="text-foreground/90 mb-4">
         <strong>Email receipts with cancellation instructions:</strong> For subscriptions, the receipt email sent at the time of each billing should include the cancellation link or instructions. Removing ambiguity about how to cancel reduces "I didn't know how to stop it" disputes - a meaningful category of friendly fraud that is more effectively treated as a customer service failure than deliberate abuse.
