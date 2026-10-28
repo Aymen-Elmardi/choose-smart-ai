@@ -1,5 +1,18 @@
 # Deploy log
 
+## New articles
+
+### square-fees-explained (prepared 2026-10-28, not yet merged)
+
+DEPLOY new-article-square-fees | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/square-fees-explained
+What changed:
+- /insights/square-fees-explained: new article (owner brief), Article + FAQPage + Breadcrumb JSON-LD, cover image, in the sitemap.
+- /insights and /insights/fees: new listing card (not worth an indexing request).
+Next deploy not before: 1 to 2 days after the previous production deploy.
+On merge: set PUBLISHED in src/views/insights/SquareFees.tsx to the merge date if it is not 2026-10-28.
+
 ## Merges (Section 5)
 
 Gated merges, each shipped on its own from main after the owner's "GO M<id>".
