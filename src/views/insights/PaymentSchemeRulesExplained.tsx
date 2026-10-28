@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import InsightsArticleLayout from "@/components/InsightsArticleLayout";
 import ArticleByline from "@/components/ArticleByline";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 
 const paymentSchemeRulesSources = [
   { name: "Visa Core Rules and Visa Product and Service Rules", url: "https://usa.visa.com/dam/VCOM/download/about-visa/visa-rules-public.pdf", type: "official" as const },
@@ -12,6 +13,7 @@ const paymentSchemeRulesSources = [
 const PaymentSchemeRulesExplained = () => {
   return (
     <InsightsArticleLayout
+      unifiedCTAs
       title="What Are Payment Scheme Rules and Why They Matter More Than Your Contract"
       description="Learn what payment scheme rules are, how flow down provisions work, and why the rules set by Visa and Mastercard often matter more than your provider contract."
       category={{ name: "Compliance", slug: "compliance" }}
@@ -71,6 +73,8 @@ const PaymentSchemeRulesExplained = () => {
         <p>
           This means you are indirectly bound by rules written by Visa, Mastercard, or American Express, even if you never signed a document with them directly.
         </p>
+
+        <WriteToUsLine />
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
           What Are Scheme Rules
@@ -211,20 +215,9 @@ const PaymentSchemeRulesExplained = () => {
           You can also read about <Link href="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">why payment accounts get frozen without warning</Link> and <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">why providers re-underwrite existing accounts</Link> for related context.
         </p>
 
-        {/* Advisory CTA */}
+        {/* Closing CTA */}
         <section className="mt-16 p-8 md:p-10 rounded-2xl border border-border bg-card">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Need Clarity Before You Sign With a Provider?
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-2xl">
-            If you are choosing or changing a payment provider and want independent guidance before applying, apply for advisory. We review your business model, risk profile, growth plans, and approval probability before you commit.
-          </p>
-          <Link
-            href="/recommendation"
-            className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-all duration-150 hover:translate-y-[-1px] active:translate-y-0"
-          >
-            Apply for Advisory
-          </Link>
+          <TalkItThroughBox placement="end" reassurance />
         </section>
       </div>
     </InsightsArticleLayout>
