@@ -13,6 +13,11 @@ export interface Insight {
   isSubfolder?: boolean;
   /** If true, the article is country-neutral and appears on the /us/insights hub. */
   global?: boolean;
+  /**
+   * Exact URL path, for an article whose URL does not follow its category's
+   * pattern (e.g. a provider-fit guide published under /insights/).
+   */
+  path?: string;
 }
 
 /**
@@ -696,6 +701,14 @@ export const allInsights: Insight[] = [
   },
   // Provider Fit Guides
   {
+    title: "Best Payment Processor for Small US Business (2026)",
+    slug: "best-payment-processor-for-small-business",
+    path: "/insights/best-payment-processor-for-small-business",
+    description: "Square, Stripe, PayPal and Helcim compared on one $15,000-a-month example: real monthly cost, approval requirements, and which ones decline you.",
+    category: "provider-fit",
+    readTime: "9 min read"
+  },
+  {
     title: "Best Payment Processors for High Chargeback Businesses",
     slug: "best-payment-processors-high-chargebacks",
     description: "Learn why many processors reject high chargeback merchants, how risk tolerance differs between providers, and how to find the right fit for your business.",
@@ -803,6 +816,7 @@ export const allInsights: Insight[] = [
  * Get the URL for an insight article
  */
 export const getInsightUrl = (insight: Insight): string => {
+  if (insight.path) return insight.path;
   // Provider fit guides use root-level URLs
   if (insight.category === "provider-fit") {
     return `/${insight.slug}`;

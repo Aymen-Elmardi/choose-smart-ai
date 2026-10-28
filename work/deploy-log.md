@@ -1,5 +1,19 @@
 # Deploy log
 
+## New articles
+
+### best-payment-processor-for-small-business (prepared 2026-10-27, merged 2026-10-28)
+
+DEPLOY new-article-small-business | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/best-payment-processor-for-small-business
+What changed:
+- /insights/best-payment-processor-for-small-business: new article (owner brief), Article + FAQPage + Breadcrumb JSON-LD, cover image, in the sitemap.
+- /insights and /insights/provider-fit: new listing card (not worth an indexing request).
+Next deploy not before: 1 to 2 days after the previous production deploy (M5b went live 2026-10-21).
+On merge: set PUBLISHED in src/views/insights/BestPaymentProcessorSmallBusiness.tsx to the merge date if it is not 2026-10-27.
+Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-business -> this URL) after GO M3.
+
 ## Merges (Section 5)
 
 Gated merges, each shipped on its own from main after the owner's "GO M<id>".
