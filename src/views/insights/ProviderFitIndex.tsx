@@ -5,9 +5,15 @@ import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
-import { RefreshCw, ShoppingCart, UtensilsCrossed, AlertTriangle, Truck } from "lucide-react";
+import { RefreshCw, ShoppingCart, UtensilsCrossed, AlertTriangle, Truck, Store } from "lucide-react";
 
 const providerFitArticles = [
+  {
+    title: "Best Payment Processor for Small US Business (2026)",
+    description: "Square, Stripe, PayPal and Helcim compared on one $15,000-a-month example: real monthly cost, approval requirements, and which ones decline you.",
+    slug: "/insights/best-payment-processor-for-small-business",
+    icon: Store,
+  },
   {
     title: "Best Payment Providers for Subscription & SaaS Businesses",
     description: "Recurring billing needs the right payment infrastructure. Find providers that support subscriptions, handle failed payments, and scale with your MRR.",

@@ -330,6 +330,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/insights/best-payment-processor-for-small-business`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/insights/payment-processor-business-vertical-classification`,
       lastModified: new Date(),
       changeFrequency: 'weekly',

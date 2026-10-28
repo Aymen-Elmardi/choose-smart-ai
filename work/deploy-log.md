@@ -2,7 +2,7 @@
 
 ## New articles
 
-### square-fees-explained (prepared 2026-10-28, not yet merged)
+### square-fees-explained (prepared and merged 2026-10-28)
 
 DEPLOY new-article-square-fees | merged: pending | commit: pending (fill in the merge commit after merge)
 URLs to request indexing (full https URLs, one per line):
@@ -10,8 +10,20 @@ https://chosepayments.com/insights/square-fees-explained
 What changed:
 - /insights/square-fees-explained: new article (owner brief), Article + FAQPage + Breadcrumb JSON-LD, cover image, in the sitemap.
 - /insights and /insights/fees: new listing card (not worth an indexing request).
-Next deploy not before: 1 to 2 days after the previous production deploy.
-On merge: set PUBLISHED in src/views/insights/SquareFees.tsx to the merge date if it is not 2026-10-28.
+Owner asked for this and the small-business article to go live together on 2026-10-28.
+Published date: 2026-10-28 (go-live).
+
+### best-payment-processor-for-small-business (prepared 2026-10-27, merged 2026-10-28)
+
+DEPLOY new-article-small-business | 2026-10-28 | commit 1a3dfbc
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/best-payment-processor-for-small-business
+What changed:
+- /insights/best-payment-processor-for-small-business: new article (owner brief), Article + FAQPage + Breadcrumb JSON-LD, cover image, in the sitemap.
+- /insights and /insights/provider-fit: new listing card (not worth an indexing request).
+Owner asked for this and the Square fees article to go live together on 2026-10-28 (two deploys the same day).
+Published date set to the go-live date, 2026-10-28.
+Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-business -> this URL) after GO M3.
 
 ## Merges (Section 5)
 
