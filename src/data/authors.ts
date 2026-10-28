@@ -81,6 +81,7 @@ const ARTICLES: Record<string, AuthorArticle[]> = {
     { href: "/insights/shift4-vs-stripe-enterprise", title: "Shift4 vs Stripe: Choosing the Right Payment Engine for Your Enterprise" },
     { href: "/insights/why-some-businesses-never-get-approved", title: "Some Businesses Struggle to Get Approved: The Real Reason" },
     { href: "/insights/source-of-funds", title: "Source of Funds Requests: What They Mean and How to Respond" },
+    { href: "/insights/square-fees-explained", title: "Square Fees Explained (2026): What You Actually Pay" },
     { href: "/insights/why-stripe-freezes-accounts-uk", title: "Stripe Account Freezes: Common Triggers and Prevention" },
     { href: "/insights/crisis/stripe-account-frozen", title: "Stripe Account Frozen? The 5 Hidden Reasons Why (And How to Prevent the Next Freeze)" },
     { href: "/insights/stripe-fees-explained", title: "Stripe Fees Explained: Real Costs for UK Businesses in 2026" },
