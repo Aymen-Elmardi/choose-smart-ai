@@ -1,7 +1,6 @@
 'use client'
-import Link from 'next/link';
-import { ArrowRight, Check, Building2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Check, Building2 } from "lucide-react";
+import { TalkItThroughBox, WriteToUsLine } from "@/components/ContactCTAs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCanonical } from "@/hooks/useCanonical";
@@ -25,9 +24,7 @@ const SmallBusiness = () => {
               When you're running a small business, choosing a payment provider often happens in a hurry. You go with what a friend uses, or what shows up first in a search, or whatever lets you start accepting payments fastest. That's understandable — but it's also how many businesses end up with a provider that doesn't quite fit. Fees turn out to be higher than expected. Support is hard to reach. And by the time you realise, switching feels like more trouble than it's worth. If you're still choosing, it's worth taking a bit more time to get this right.
             </p>
             
-            <p className="text-base text-muted-foreground/80 mb-8">
-              Not sure which provider fits? Answer a few quick questions to narrow it down before you commit.
-            </p>
+            <WriteToUsLine className="text-base text-muted-foreground/80 mb-8" />
 
             <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
               What small businesses actually need
@@ -103,23 +100,7 @@ const SmallBusiness = () => {
 
           {/* CTA Section */}
           <div className="mt-12 pt-8 border-t border-border">
-            <div className="text-center">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">
-                Find the right payment provider for your business
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                Answer a few questions and we'll guide you to the right provider for your business.
-              </p>
-              <Button size="lg" asChild>
-                <Link href="/assessment?start=true" replace>
-                  Take the quiz
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-              <p className="text-sm text-muted-foreground/70 mt-3">
-                Takes under 2 minutes • No cost • No obligation
-              </p>
-            </div>
+            <TalkItThroughBox placement="end" />
           </div>
         </div>
       </main>
