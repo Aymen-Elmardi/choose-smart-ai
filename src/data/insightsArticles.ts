@@ -177,6 +177,13 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
+    title: "Square Fees Explained (2026): What You Actually Pay",
+    slug: "square-fees-explained",
+    description: "Square Free, Plus and Premium rates for 2026, what a single sale really costs, worked examples by business size, and when Square stops being cheap.",
+    category: "fees",
+    readTime: "9 min read"
+  },
+  {
     title: "PayPal Pricing Explained and How It Compares to Adyen for UK Businesses",
     slug: "paypal-fees-explained",
     description: "A clear breakdown of PayPal's blended pricing model for UK businesses, how fees compare to Adyen's interchange-plus model, and when each provider makes financial sense.",

@@ -9,6 +9,12 @@ import { Receipt, DollarSign, CircleDollarSign } from "lucide-react";
 
 const feesArticles = [
   {
+    title: "Square Fees Explained (2026): What You Actually Pay",
+    description: "Square Free, Plus and Premium rates for 2026, what a single sale really costs, worked examples by business size, and when Square stops being cheap.",
+    slug: "/insights/square-fees-explained",
+    icon: Receipt,
+  },
+  {
     title: "Stripe Fees UK (2026): What Businesses Actually Pay",
     description: "Stripe's UK card fee is 1.5% + 20p, but that's just the start. This guide covers Connect fees, international charges, European rates, and what you actually pay at scale in 2026.",
     slug: "/insights/stripe-fees-explained",
