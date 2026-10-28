@@ -12,7 +12,7 @@ const HEADLINE = "Best Payment Processor for Small US Business (2026)";
 const DESCRIPTION =
   "Which payment processor actually fits your small business, what it really costs at real volume, and which ones will reject your application.";
 // Go-live date. Update to the merge date if the page ships later than this.
-const PUBLISHED = "2026-10-27";
+const PUBLISHED = "2026-10-28";
 const COVER = `/insights/${SLUG}-cover.jpg`;
 
 const faqs = [

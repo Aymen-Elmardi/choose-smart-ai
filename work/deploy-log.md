@@ -2,7 +2,7 @@
 
 ## New articles
 
-### best-payment-processor-for-small-business (prepared 2026-10-27, not yet merged)
+### best-payment-processor-for-small-business (prepared 2026-10-27, merged 2026-10-28)
 
 DEPLOY new-article-small-business | merged: pending | commit: pending (fill in the merge commit after merge)
 URLs to request indexing (full https URLs, one per line):
