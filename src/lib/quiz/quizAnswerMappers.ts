@@ -1,5 +1,6 @@
 // Answer mapping functions for the quiz
 // These translate user-friendly options into engine-compatible values
+import { BUSINESS_MODEL_OPTIONS, CHALLENGE_OPTIONS } from "@/lib/quiz/quizQuestions";
 
 /**
  * Map salesChannel selection to engine flags
@@ -50,6 +51,15 @@ export const mapMonthlyVolume = (option: string): string => {
       return "£20k–50k";
     case "£50k+":
       return "£50k–100k";
+    // US assessment (2026-10-29). Keys match parseMonthlyVolume in the engine.
+    case "Under $10k":
+      return "usd-under-10k";
+    case "$10k–$50k":
+      return "usd-10k-50k";
+    case "$50k–$250k":
+      return "usd-50k-250k";
+    case "$250k+":
+      return "usd-250k-plus";
     default:
       return "< £5k";
   }
@@ -131,3 +141,21 @@ export const prepareEngineAnswers = (answers: {
     features: [] as string[],
   };
 };
+
+/**
+ * Map the "main problem" answers to the engine's priority codes and features.
+ */
+export const mapChallenges = (challenges: string[]): { priorities: string[]; features: string[] } => {
+  const picked = CHALLENGE_OPTIONS.filter((o) => challenges.includes(o.label));
+  return {
+    priorities: [...new Set(picked.flatMap((o) => (o.priority ? [o.priority] : [])))],
+    features: [...new Set(picked.flatMap((o) => (o.feature ? [o.feature] : [])))],
+  };
+};
+
+/**
+ * Map the "What best describes your business?" answer to the platform and
+ * business type the segment logic reads.
+ */
+export const mapBusinessModel = (option: string) =>
+  BUSINESS_MODEL_OPTIONS.find((o) => o.label === option);

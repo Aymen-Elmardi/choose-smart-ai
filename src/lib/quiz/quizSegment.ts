@@ -118,10 +118,14 @@ export const deriveVolumeTier = (monthlyVolume: string): VolumeTier => {
   switch (monthlyVolume) {
     case "Just getting started":
     case "Under £10k":
+    case "Under $10k":
       return "too-small";
     case "£10k–£50k":
+    case "$10k–$50k":
       return "nurture";
     case "£50k+":
+    case "$50k–$250k":
+    case "$250k+":
       return "qualified";
     default:
       return "unknown";

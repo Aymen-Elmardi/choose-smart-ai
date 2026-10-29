@@ -62,6 +62,9 @@ export interface QuizAnswers {
   locationCount?: string; // multi-location
   salesMix?: string; // multi-location
   declineHistory?: string; // high-risk
+  // US assessment (2026-10-29)
+  businessModel?: string;
+  challenges?: string[];
 }
 
 /**
@@ -71,7 +74,8 @@ export const INITIAL_QUIZ_ANSWERS: QuizAnswers = {
   salesChannel: "",
   businessType: "",
   priorities: [],
-  location: "",
+  // Not asked any more: every assessment is a US business (2026-10-29).
+  location: "US",
   monthlyVolume: "",
   avgTransaction: "",
   features: [],
@@ -96,6 +100,8 @@ export const INITIAL_QUIZ_ANSWERS: QuizAnswers = {
   locationCount: "",
   salesMix: "",
   declineHistory: "",
+  businessModel: "",
+  challenges: [],
 };
 
 /**

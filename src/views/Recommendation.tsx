@@ -56,8 +56,23 @@ const readRawAnswers = (): Record<string, unknown> | null => {
   }
 };
 
+// The 5-question US assessment no longer asks for transaction size or
+// location, and "Paying out sellers" sets a feature rather than a priority.
 const isQuizComplete = (a: QuizAnswers) =>
-  Boolean(a.salesChannel && a.businessType && a.monthlyVolume && a.avgTransaction && a.location && a.priorities?.length);
+  Boolean(a.salesChannel && a.businessType && a.monthlyVolume && a.location && (a.priorities?.length || a.features?.length));
+
+// Optional, for the savings estimate in the results email. Names match
+// FLAT_RATE_PROCESSORS in supabase/functions/submit-assessment/results.ts.
+const CURRENT_PROCESSOR_OPTIONS = [
+  "Stripe",
+  "Square",
+  "PayPal",
+  "Shopify Payments",
+  "Clover / Fiserv",
+  "Authorize.net",
+  "Another processor",
+  "Not taking payments yet",
+];
 
 type Market = "UK" | "US";
 
@@ -103,6 +118,7 @@ const Recommendation = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [currentProcessor, setCurrentProcessor] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [touched, setTouched] = useState(false);
@@ -153,7 +169,7 @@ const Recommendation = () => {
           email: email.trim(),
           market,
           answers,
-          raw: rawAnswers ?? {},
+          raw: { ...(rawAnswers ?? {}), currentProcessor },
           _honeypot: honeypot,
         },
       });
@@ -304,6 +320,23 @@ const Recommendation = () => {
                         {errors.email && (
                           <p id="email-error" className="text-sm text-destructive">{errors.email}</p>
                         )}
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="currentProcessor" className="text-sm font-medium text-foreground">
+                          Who processes your payments now? <span className="font-normal text-muted-foreground">(optional)</span>
+                        </Label>
+                        <select
+                          id="currentProcessor"
+                          value={currentProcessor}
+                          onChange={(e) => setCurrentProcessor(e.target.value)}
+                          className={cn(inputClass, "w-full border bg-background text-foreground")}
+                        >
+                          <option value="">Choose one</option>
+                          {CURRENT_PROCESSOR_OPTIONS.map((name) => (
+                            <option key={name} value={name}>{name}</option>
+                          ))}
+                        </select>
+                        <p className="text-sm text-muted-foreground">Add it to get an estimate of what you could save.</p>
                       </div>
                       {/* Honeypot: hidden from people, filled in by bots. */}
                       <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">

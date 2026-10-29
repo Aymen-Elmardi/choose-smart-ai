@@ -7,29 +7,24 @@ import type { MicroInsightConfig } from "@/types/quiz";
  */
 export const MICRO_INSIGHTS: MicroInsightConfig[] = [
   {
-    questionId: "platform",
-    triggerAnswer: "Shopify / Shopify Plus",
+    questionId: "businessModel",
+    triggerAnswer: "Online store on Shopify",
     text: "You're on Shopify, so you already have access to Shopify Payments — optimised for your platform. We specialise in self-hosted, marketplace and SaaS businesses, but we'll still flag where you could save and how your costs compare.",
   },
   {
-    questionId: "salesChannel",
-    triggerAnswer: "Marketplace or platform",
+    questionId: "businessModel",
+    triggerAnswer: "Marketplace or platform that pays out sellers",
     text: "Marketplace models require specialized \"Split Payment\" logic to handle sub-merchant payouts and compliance.",
   },
   {
     questionId: "monthlyVolume",
-    triggerAnswer: "£50k+",
+    triggerAnswer: "$50k–$250k",
     text: "At this volume, you qualify for Interchange++ pricing, which is significantly cheaper than standard flat rates.",
   },
   {
-    questionId: "avgTransaction",
-    triggerAnswer: "£500+",
-    text: "High ticket sizes often trigger manual fraud reviews. We'll look for providers with advanced pre-authorization tools.",
-  },
-  {
-    questionId: "priorities",
-    triggerAnswer: "Lower fees",
-    text: "The \"Headline Rate\" is a trap. We focus on your Effective Rate—the true cost after all hidden fees are included.",
+    questionId: "monthlyVolume",
+    triggerAnswer: "$250k+",
+    text: "At this volume, you qualify for Interchange++ pricing, which is significantly cheaper than standard flat rates.",
   },
   {
     questionId: "industry",
@@ -40,16 +35,6 @@ export const MICRO_INSIGHTS: MicroInsightConfig[] = [
     questionId: "industry",
     triggerAnswer: "travel",
     text: "These are considered \"Future Delivery\" risks. We'll match you with providers who won't hold 100% of your funds.",
-  },
-  {
-    questionId: "location",
-    triggerAnswer: "UK & EU",
-    text: "Cross-border payments can carry heavy surcharges. We'll prioritize providers with local acquiring in both regions.",
-  },
-  {
-    questionId: "deliveryTimeline",
-    triggerAnswer: "More than 30 days",
-    text: "Long delivery timelines increase 'Future Delivery Risk.' We'll match you with providers who can manage this without freezing your funds.",
   },
 ];
 
