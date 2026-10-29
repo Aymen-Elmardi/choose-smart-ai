@@ -9,7 +9,7 @@ import {
   SEGMENT_LABELS,
   SEGMENT_RESULTS,
   estimateSavings,
-  formatGBP,
+  formatMoney,
   matchPercent,
   providersToAvoid,
 } from "./results.ts";
@@ -59,6 +59,9 @@ export interface RawAnswers {
   salesMix: string;
   declineHistory: string;
   volumeTier: string;
+  // US assessment (2026-10-29)
+  businessModel: string;
+  challenges: string[];
 }
 
 export interface AssessmentContext {
@@ -102,12 +105,15 @@ const checkList = (items: string[], color: string) =>
 const profileRows = (raw: RawAnswers): [string, string][] => {
   const rows: [string, string][] = [
     ["Sales channel", raw.salesChannel],
-    ["Business type", raw.businessType],
+    ["Business", raw.businessModel],
+    ["Business type", raw.businessModel ? "" : raw.businessType],
     ["Industry", raw.industry],
     ["Monthly volume", raw.monthlyVolume],
     ["Avg. transaction", raw.avgTransaction],
     ["Location", raw.location],
-    ["Priorities", raw.priorities.join(", ")],
+    ["Main challenges", raw.challenges.join(", ")],
+    ["Priorities", raw.challenges.length ? "" : raw.priorities.join(", ")],
+    ["Currently with", raw.currentProcessor],
     ["Delivery timeline", raw.deliveryTimeline],
     ["Previous restrictions", raw.previousRestriction],
   ];
@@ -118,8 +124,11 @@ export const buildResultsEmail = (ctx: AssessmentContext): { subject: string; ht
   const { raw, recommendation: rec, segment } = ctx;
   const content = SEGMENT_RESULTS[segment];
   const isShopify = segment === "shopify";
-  const savings = estimateSavings(raw.currentProcessor, raw.monthlyVolume);
-  const showSavings = !isShopify && segment === "self-hosted" && savings.applicable;
+  const savings = estimateSavings(raw.currentProcessor, raw.monthlyVolume, ctx.market);
+  // The current processor is now asked of everyone (results page), so the
+  // estimate is no longer limited to self-hosted. High-risk merchants are left
+  // out: their pricing is underwritten case by case.
+  const showSavings = !isShopify && segment !== "high-risk" && savings.applicable;
   const match = rec && !isShopify ? matchPercent(rec) : null;
   const avoid = rec && !isShopify ? providersToAvoid(rec.avoid) : [];
 
@@ -156,11 +165,11 @@ export const buildResultsEmail = (ctx: AssessmentContext): { subject: string; ht
     blocks.push(card(
       `${sectionLabel("Misalignment detected", C.amber)}
        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-         <tr>${cell("Currently with", raw.currentProcessor)}${cell("Est. current fees", `~${formatGBP(savings.currentMonthlyFees)}/mo`)}</tr>
-         <tr>${cell("On Interchange++", `~${formatGBP(savings.optimizedMonthlyFees)}/mo`)}${cell("Potential saving", `${formatGBP(savings.monthlySavingsLow)}–${formatGBP(savings.monthlySavingsHigh)}/mo`, C.primary)}</tr>
+         <tr>${cell("Currently with", raw.currentProcessor)}${cell("Est. current fees", `~${formatMoney(savings.currentMonthlyFees, ctx.market)}/mo`)}</tr>
+         <tr>${cell("On Interchange++", `~${formatMoney(savings.optimizedMonthlyFees, ctx.market)}/mo`)}${cell("Potential saving", `${formatMoney(savings.monthlySavingsLow, ctx.market)}–${formatMoney(savings.monthlySavingsHigh, ctx.market)}/mo`, C.primary)}</tr>
        </table>
        <div style="margin:12px 0 0;padding:10px 14px;border-radius:8px;background:${C.primaryTint};text-align:center;font-size:14px;font-weight:600;color:${C.primary};">
-         Estimated annual impact: ${e(formatGBP(savings.annualSavingsLow))}–${e(formatGBP(savings.annualSavingsHigh))}
+         Estimated annual impact: ${e(formatMoney(savings.annualSavingsLow, ctx.market))}–${e(formatMoney(savings.annualSavingsHigh, ctx.market))}
        </div>
        <p style="margin:10px 0 0;font-size:12px;line-height:18px;color:${C.muted};text-align:center;">Illustrative estimate based on typical blended flat rates vs. Interchange++. Your actual rates depend on card mix and negotiation.</p>`,
       C.amberTint, "#f3dca8",
@@ -286,7 +295,7 @@ export const buildResultsEmail = (ctx: AssessmentContext): { subject: string; ht
     lines.push(
       "MISALIGNMENT DETECTED",
       `- Currently with: ${raw.currentProcessor}`,
-      `- Potential saving: ${formatGBP(savings.monthlySavingsLow)}–${formatGBP(savings.monthlySavingsHigh)}/mo (illustrative)`,
+      `- Potential saving: ${formatMoney(savings.monthlySavingsLow, ctx.market)}–${formatMoney(savings.monthlySavingsHigh, ctx.market)}/mo (illustrative)`,
       "",
     );
   }
@@ -329,6 +338,11 @@ const formatValue = (value: unknown): string => {
 
 const row = (label: string, value: unknown, highlight = false) =>
   `<tr${highlight ? ' class="highlight"' : ""}><th>${e(label)}</th><td>${formatValue(value)}</td></tr>`;
+
+// Quiz answers only: the short US assessment leaves most of the old questions
+// blank, so empty ones are skipped rather than listed as "not provided".
+const answerRow = (label: string, value: string | string[]) =>
+  (Array.isArray(value) ? value.length : value) ? row(label, value) : "";
 
 export const buildLeadEmail = (ctx: AssessmentContext): { subject: string; html: string } => {
   const { raw, recommendation: rec } = ctx;
@@ -383,27 +397,29 @@ export const buildLeadEmail = (ctx: AssessmentContext): { subject: string; html:
 
   <h2>3. Quiz Answers</h2>
   <table>
-    ${row("Sales Channel", raw.salesChannel)}
-    ${row("Business Type", raw.businessType)}
-    ${row("Industry", raw.industry)}
-    ${row("Platform", raw.platform)}
-    ${row("Monthly Volume", raw.monthlyVolume)}
-    ${row("Volume Tier", raw.volumeTier)}
-    ${row("Average Transaction", raw.avgTransaction)}
-    ${row("Location", raw.location)}
-    ${row("Priorities", raw.priorities)}
-    ${row("Terminal Type", raw.terminalType)}
-    ${row("Delivery Timeline", raw.deliveryTimeline)}
-    ${row("Previous Restriction", raw.previousRestriction)}
-    ${row("Decline History", raw.declineHistory)}
-    ${row("Marketplace Model", raw.marketplaceModel)}
-    ${row("Marketplace Challenge", raw.marketplaceChallenge)}
-    ${row("Revenue Model", raw.revenueModel)}
-    ${row("Billing Challenge", raw.billingChallenge)}
-    ${row("Location Count", raw.locationCount)}
-    ${row("Sales Mix", raw.salesMix)}
-    ${row("Buying Intent", raw.buyingIntent)}
-    ${row("Contact Time", raw.contactTime)}
+    ${answerRow("Sales Channel", raw.salesChannel)}
+    ${answerRow("Business", raw.businessModel)}
+    ${answerRow("Main Challenges", raw.challenges)}
+    ${answerRow("Business Type", raw.businessType)}
+    ${answerRow("Industry", raw.industry)}
+    ${answerRow("Platform", raw.platform)}
+    ${answerRow("Monthly Volume", raw.monthlyVolume)}
+    ${answerRow("Volume Tier", raw.volumeTier)}
+    ${answerRow("Average Transaction", raw.avgTransaction)}
+    ${answerRow("Location", raw.location)}
+    ${answerRow("Priorities", raw.priorities)}
+    ${answerRow("Terminal Type", raw.terminalType)}
+    ${answerRow("Delivery Timeline", raw.deliveryTimeline)}
+    ${answerRow("Previous Restriction", raw.previousRestriction)}
+    ${answerRow("Decline History", raw.declineHistory)}
+    ${answerRow("Marketplace Model", raw.marketplaceModel)}
+    ${answerRow("Marketplace Challenge", raw.marketplaceChallenge)}
+    ${answerRow("Revenue Model", raw.revenueModel)}
+    ${answerRow("Billing Challenge", raw.billingChallenge)}
+    ${answerRow("Location Count", raw.locationCount)}
+    ${answerRow("Sales Mix", raw.salesMix)}
+    ${answerRow("Buying Intent", raw.buyingIntent)}
+    ${answerRow("Contact Time", raw.contactTime)}
   </table>
 
   <div class="meta-section">

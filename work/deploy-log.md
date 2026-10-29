@@ -35,12 +35,25 @@ Owner asked for this and the Square fees article to go live together on 2026-10-
 Published date set to the go-live date, 2026-10-28.
 Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-business -> this URL) after GO M3.
 
+## Assessment
+
+### 5-question US assessment (prepared 2026-10-29)
+
+DEPLOY short-us-assessment | merged: pending | commit: pending (fill in the merge commit after merge)
+Order: deploy the Supabase function submit-assessment first (supabase functions deploy submit-assessment), then merge the site PR. The new function still accepts the old quiz's answers, so the live site keeps working in between.
+No indexing request needed (/assessment and /recommendation are not ranking pages).
+What changed:
+- /assessment: 5 questions (how you take payments, business, industry, monthly volume in $, main problem). No location question: every assessment is US.
+- /recommendation: optional "Who processes your payments now?" for the savings estimate.
+- Engine: US coverage on Stripe, Stripe Connect, Square, PayPal, Braintree, Adyen, Checkout.com, Worldpay, Elavon, Airwallex, Recurly; Helcim and Stax added (risk appetite TODO(verify)); dollar volume bands; priorities and in-person detection fixed; the low-survivor fallback keeps the region filter.
+- Emails: dollar savings (US rates from insights/stripe-alternatives), new answers in the profile and lead email, empty answers skipped. Deploy log also records 189bc10 (cookie banner wording) below.
+
 ## Site-wide
 
 ### Goji website visitors + cookie banner (prepared and merged 2026-10-29)
 
 DEPLOY goji-visitors | 2026-10-29 | commit 3f3be89
-Follow-up (owner, 2026-10-29): banner text made generic (no Gojiberry name); the privacy policy still names it.
+Follow-up (owner, 2026-10-29): banner text made generic (no Gojiberry name) in PR #25, commit 189bc10; the privacy policy still names it.
 No indexing request needed (no visible content change apart from the banner, footer link and privacy policy).
 What changed:
 - Every page: Goji snippet in <head> with its consent stub; Goji only starts after Accept (CookieConsent.tsx). Footer gains a Cookie settings link.

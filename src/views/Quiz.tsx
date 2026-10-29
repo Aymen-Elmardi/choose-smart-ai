@@ -17,11 +17,10 @@ import {
 } from "@/lib/quiz/quizQuestions";
 import {
   mapSalesChannelToFlags,
-  mapTerminalType,
   mapMonthlyVolume,
-  mapPriority,
   mapBusinessType,
-  mapAvgTransaction,
+  mapBusinessModel,
+  mapChallenges,
 } from "@/lib/quiz/quizAnswerMappers";
 import { getActiveMicroInsight } from "@/lib/quiz/quizMicroInsights";
 import { deriveSegment, deriveVolumeTier } from "@/lib/quiz/quizSegment";
@@ -40,17 +39,9 @@ const Quiz = () => {
   const [pendingInsightText, setPendingInsightText] = useState<string | null>(null);
   const [pendingAdvance, setPendingAdvance] = useState<(() => void) | null>(null);
 
-  // Detect market based on referrer path (if coming from /us page).
-  //
-  // This initialiser runs during the first render, which now also happens on
-  // the server at build time, so `document` is not always available. The old
-  // `location.state?.market` check was dropped: nothing ever navigates here
-  // with router state, and the shim had no way to carry it, so that half of
-  // the condition was never true.
-  const [market] = useState<Market>(() => {
-    const referrer = typeof document !== "undefined" ? document.referrer : "";
-    return referrer.includes("/us") ? "US" : "UK";
-  });
+  // Every assessment is a US business now (owner decision, 2026-10-29); the
+  // results email uses this for dollar amounts.
+  const market: Market = "US";
 
   // Track whether assessment_start has already been pushed
   const assessmentStartFired = useRef(false);
@@ -108,21 +99,17 @@ const Quiz = () => {
         salesChannel: option,
         needsOnline: flags.needsOnline,
         needsInPerson: flags.needsInPerson,
-        needsMarketplace: flags.needsMarketplace,
-        // Reset terminal type if in-person is not needed
-        terminalType: flags.needsInPerson ? updatedAnswers.terminalType : "",
+        // The marketplace flag comes from the business question, not this one.
+        needsMarketplace: updatedAnswers.needsMarketplace,
       };
     }
-    // Handle terminal type mapping
-    else if (questionId === "terminalType") {
-      updatedAnswers.terminalType = mapTerminalType(option);
-    }
-    // Handle business type - set marketplace flag if applicable
-    else if (questionId === "businessType") {
-      updatedAnswers.businessType = option;
-      if (option === "Marketplace or platform" || option === "Platform") {
-        updatedAnswers.needsMarketplace = true;
-      }
+    // One answer sets the platform and business type the segment logic reads
+    else if (questionId === "businessModel") {
+      const model = mapBusinessModel(option);
+      updatedAnswers.businessModel = option;
+      updatedAnswers.platform = model?.platform ?? "";
+      updatedAnswers.businessType = model?.businessType ?? "";
+      updatedAnswers.needsMarketplace = !!model?.marketplace;
     }
     // Handle multi-select with max limit
     else if (multiSelect) {
@@ -229,14 +216,17 @@ const Quiz = () => {
       engineSalesChannel = "Through a marketplace or platform";
     }
 
+    const { priorities, features } = mapChallenges(ans.challenges ?? []);
+
     return {
       salesChannel: engineSalesChannel,
       businessType: mapBusinessType(ans.businessType),
-      priorities: ans.priorities.map(mapPriority),
-      location: ans.location,
+      priorities,
+      location: "US",
       monthlyVolume: mapMonthlyVolume(ans.monthlyVolume),
-      avgTransaction: mapAvgTransaction(ans.avgTransaction),
-      features: [], // Not collecting features in this flow
+      // Not asked any more; the engine requires the field but does not score it.
+      avgTransaction: "",
+      features,
       // Platform & segmentation
       platform: ans.platform,
       segment: ans.segment,
@@ -248,7 +238,9 @@ const Quiz = () => {
       contactTime: ans.contactTime,
       terminalType: ans.terminalType,
       previousRestriction: ans.previousRestriction,
-      // Segment-specific answers
+      businessModel: ans.businessModel,
+      challenges: ans.challenges,
+      // Segment-specific answers (no longer asked; kept for older sessions)
       currentProcessor: ans.currentProcessor,
       painPoints: ans.painPoints,
       marketplaceModel: ans.marketplaceModel,
@@ -382,7 +374,7 @@ const Quiz = () => {
                   We designed this to understand your business
                 </h1>
                 <p className="text-muted-foreground max-w-md mx-auto text-base">
-                  A short set of questions so we can match you to the right provider. Takes less than 2 minutes.
+                  Five quick questions so we can match you to the right provider. Takes about a minute.
                 </p>
               </div>
             )}

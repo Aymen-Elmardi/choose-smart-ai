@@ -75,6 +75,8 @@ const readRawAnswers = (value: unknown): RawAnswers => {
     salesMix: s("salesMix"),
     declineHistory: s("declineHistory"),
     volumeTier: s("volumeTier"),
+    businessModel: s("businessModel"),
+    challenges: sanitizeArray(r.challenges),
   };
 };
 

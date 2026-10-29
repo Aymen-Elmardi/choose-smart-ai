@@ -60,11 +60,13 @@ const CURATED_AVOID = [
   "Square", "PayPal", "Adyen", "Datman", "SumUp",
   "Braintree", "Shift4", "Fiserv (Clover)", "Authorize.Net",
   // US roster
-  "Quantum ePay", "Easy Pay Direct", "Payline Data",
+  "Quantum ePay", "Easy Pay Direct", "Payline Data", "Helcim", "Stax",
 ];
 
+// Region mismatches are left out: telling a US merchant to avoid a UK-only
+// provider is noise, not advice.
 export const providersToAvoid = (avoid: EliminatedProvider[]): EliminatedProvider[] =>
-  avoid.filter((p) => CURATED_AVOID.includes(p.name)).slice(0, 2);
+  avoid.filter((p) => CURATED_AVOID.includes(p.name) && !p.reason.startsWith("Region mismatch")).slice(0, 2);
 
 /** The "Match Alignment" percentage: engine score scaled to 155, capped at 99. */
 export const matchPercent = (rec: RecommendationResult): number | null =>
@@ -77,11 +79,24 @@ const VOLUME_MIDPOINTS: Record<string, number> = {
   "Under £10k": 7000,
   "£10k–£50k": 30000,
   "£50k+": 75000,
+  // US assessment (2026-10-29)
+  "Under $10k": 7000,
+  "$10k–$50k": 30000,
+  "$50k–$250k": 125000,
+  "$250k+": 400000,
 };
 
 const FLAT_RATE_PROCESSORS = new Set(["Stripe", "PayPal", "Square", "Wise / Skrill"]);
-const FLAT_RATE = 0.019;
-const ICPP_EFFECTIVE_RATE = 0.009;
+
+// Effective percentage rates. UK: the original figures. US: Stripe's 2.9%
+// flat rate against interchange-plus at an assumed 2.2% interchange and
+// network cost plus a 0.5% margin, the assumptions used in
+// insights/stripe-alternatives. Per-transaction fees are left out because the
+// assessment does not ask for an average ticket.
+const RATES: Record<"UK" | "US", { flat: number; icpp: number }> = {
+  UK: { flat: 0.019, icpp: 0.009 },
+  US: { flat: 0.029, icpp: 0.027 },
+};
 
 export interface SavingsEstimate {
   applicable: boolean;
@@ -93,12 +108,13 @@ export interface SavingsEstimate {
   annualSavingsHigh: number;
 }
 
-export const estimateSavings = (currentProcessor: string, monthlyVolumeRaw: string): SavingsEstimate => {
+export const estimateSavings = (currentProcessor: string, monthlyVolumeRaw: string, market: string): SavingsEstimate => {
   const monthlyVolume = VOLUME_MIDPOINTS[monthlyVolumeRaw] || 0;
   const applicable = FLAT_RATE_PROCESSORS.has(currentProcessor) && monthlyVolume >= 10000;
+  const rates = RATES[market === "US" ? "US" : "UK"];
 
-  const currentMonthlyFees = Math.round(monthlyVolume * FLAT_RATE);
-  const optimizedMonthlyFees = Math.round(monthlyVolume * ICPP_EFFECTIVE_RATE);
+  const currentMonthlyFees = Math.round(monthlyVolume * rates.flat);
+  const optimizedMonthlyFees = Math.round(monthlyVolume * rates.icpp);
   const monthlySavings = currentMonthlyFees - optimizedMonthlyFees;
   const monthlySavingsLow = Math.round((monthlySavings * 0.8) / 5) * 5;
   const monthlySavingsHigh = Math.round((monthlySavings * 1.2) / 5) * 5;
@@ -114,4 +130,7 @@ export const estimateSavings = (currentProcessor: string, monthlyVolumeRaw: stri
   };
 };
 
-export const formatGBP = (n: number): string => `£${Math.round(n).toLocaleString("en-GB")}`;
+export const formatMoney = (n: number, market: string): string =>
+  market === "US"
+    ? `$${Math.round(n).toLocaleString("en-US")}`
+    : `£${Math.round(n).toLocaleString("en-GB")}`;
