@@ -10,7 +10,7 @@ const Privacy = () => {
       <main className="flex-1 py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold text-foreground mb-2">Privacy Policy</h1>
-          <p className="text-muted-foreground mb-12">Last Updated: January 14, 2026</p>
+          <p className="text-muted-foreground mb-12">Last Updated: October 29, 2026</p>
 
           <section className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">1. Introduction</h2>
@@ -79,7 +79,9 @@ const Privacy = () => {
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 ml-4 mb-6">
               <li>Website hosting providers</li>
-              <li>Analytics services (e.g., Google Analytics)</li>
+              <li>Analytics services (Google Analytics, and Microsoft Clarity for anonymised page interaction and session recordings)</li>
+              <li>Live chat (Crisp)</li>
+              <li>Website visitor identification (Gojiberry), only if you accept it in our cookie banner</li>
               <li>Email service providers</li>
               <li>Customer support tools</li>
             </ul>
@@ -95,7 +97,7 @@ const Privacy = () => {
             </p>
           </section>
 
-          <section className="mb-10">
+          <section id="cookies" className="mb-10 scroll-mt-24">
             <h2 className="text-2xl font-semibold text-foreground mb-4">5. Cookies and Tracking Technologies</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               We use cookies and similar tracking technologies to track activity on our website and store certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our website.
@@ -108,8 +110,12 @@ const Privacy = () => {
               <li><strong className="text-foreground">Analytics Cookies</strong>: Help us understand how visitors interact with our website</li>
               <li><strong className="text-foreground">Preference Cookies</strong>: Remember your settings and preferences</li>
             </ul>
+            <h3 className="text-xl font-medium text-foreground mb-3">Website visitor identification (Gojiberry)</h3>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              With your consent, we use Gojiberry to identify which businesses visit our website, so we can understand who our content reaches. It does not run unless you click Accept in our cookie banner. If you click Reject, or make no choice, it stays off.
+            </p>
             <p className="text-muted-foreground leading-relaxed">
-              You can manage your cookie preferences through your browser settings.
+              You can change your choice at any time through Cookie settings at the bottom of every page. Your choice is stored on your device for 12 months. You can also manage cookies through your browser settings.
             </p>
           </section>
 

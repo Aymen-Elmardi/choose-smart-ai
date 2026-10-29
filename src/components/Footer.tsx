@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Linkedin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { OPEN_COOKIE_SETTINGS } from "@/components/CookieConsent";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -118,6 +119,7 @@ const Footer = () => {
               <Link href="/faq">FAQ</Link>
               <Link href="/privacy">Privacy Policy</Link>
               <Link href="/terms">Terms of Service</Link>
+              <button type="button" onClick={() => window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS))}>Cookie settings</button>
             </nav>
           </div>
 
