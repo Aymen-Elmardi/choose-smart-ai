@@ -546,6 +546,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/insights/stripe-alternatives`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/insights/square-fees-explained`,
       lastModified: new Date(),
       changeFrequency: 'weekly',

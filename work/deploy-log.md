@@ -2,9 +2,19 @@
 
 ## New articles
 
+### stripe-alternatives (prepared 2026-10-29)
+
+DEPLOY new-article-stripe-alternatives | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/stripe-alternatives
+What changed:
+- /insights/stripe-alternatives: new article (owner brief), Article + FAQPage + Breadcrumb JSON-LD, cover image, in the sitemap. Author Aymen Elmardi (owner's answer, 2026-10-29).
+- /insights and /insights/fees: new listing card (not worth an indexing request).
+Published date: 2026-10-29 (go-live). Update PUBLISHED in src/views/insights/StripeAlternativesGuide.tsx if it merges later.
+
 ### square-fees-explained (prepared and merged 2026-10-28)
 
-DEPLOY new-article-square-fees | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY new-article-square-fees | 2026-10-28 | commit e6e595d
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/square-fees-explained
 What changed:
@@ -24,6 +34,14 @@ What changed:
 Owner asked for this and the Square fees article to go live together on 2026-10-28 (two deploys the same day).
 Published date set to the go-live date, 2026-10-28.
 Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-business -> this URL) after GO M3.
+
+## Seasonal
+
+### Halloween 2026 logo (merged 2026-10-28)
+
+DEPLOY halloween-logo | 2026-10-28 | commit 5f3e7ae (PR #21)
+No indexing request needed (header logo and tab icons only, on every page).
+Revert after 2026-10-31: set SEASONAL_LOGO to null in src/lib/brand.ts.
 
 ## Merges (Section 5)
 

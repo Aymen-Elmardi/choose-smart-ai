@@ -9,6 +9,12 @@ import { Receipt, DollarSign, CircleDollarSign } from "lucide-react";
 
 const feesArticles = [
   {
+    title: "6 Best Stripe Alternatives in 2026: Pricing, Fees and Comparison",
+    description: "Helcim, Square, Braintree, Stax, Adyen and Checkout.com compared with Stripe on real fees, worked cost examples at three volumes, account risk and who each one fits.",
+    slug: "/insights/stripe-alternatives",
+    icon: Receipt,
+  },
+  {
     title: "Square Fees Explained (2026): What You Actually Pay",
     description: "Square Free, Plus and Premium rates for 2026, what a single sale really costs, worked examples by business size, and when Square stops being cheap.",
     slug: "/insights/square-fees-explained",
