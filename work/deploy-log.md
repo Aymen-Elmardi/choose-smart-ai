@@ -37,9 +37,10 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Site-wide
 
-### Goji website visitors + cookie banner (prepared 2026-10-29)
+### Goji website visitors + cookie banner (prepared and merged 2026-10-29)
 
-DEPLOY goji-visitors | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY goji-visitors | 2026-10-29 | commit 3f3be89
+Follow-up (owner, 2026-10-29): banner text made generic (no Gojiberry name); the privacy policy still names it.
 No indexing request needed (no visible content change apart from the banner, footer link and privacy policy).
 What changed:
 - Every page: Goji snippet in <head> with its consent stub; Goji only starts after Accept (CookieConsent.tsx). Footer gains a Cookie settings link.

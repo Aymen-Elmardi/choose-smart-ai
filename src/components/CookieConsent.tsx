@@ -65,7 +65,7 @@ const CookieConsent = () => {
   return (
     <div className="cp-consent" role="region" aria-label="Cookie consent">
       <p>
-        We&apos;d like to use Gojiberry, a visitor identification tool, to see which businesses visit our site. It only runs if you accept.{" "}
+        We&apos;d like to use optional cookies to understand which businesses visit our site. They&apos;re only set if you accept.{" "}
         <Link href="/privacy#cookies">Privacy Policy</Link>
       </p>
       <div className="cp-consent-actions">
