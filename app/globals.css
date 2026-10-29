@@ -529,6 +529,23 @@
 .cp-footer-links { display: flex; gap: 26px; flex-wrap: wrap; }
 .cp-footer-links a { font-size: 14px; color: var(--cp-text-2); transition: color .25s; }
 .cp-footer-links a:hover { color: var(--cp-text); }
+.cp-footer-links button { font-size: 14px; color: var(--cp-text-2); transition: color .25s; background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; }
+.cp-footer-links button:hover { color: var(--cp-text); }
+
+/* Cookie consent (src/components/CookieConsent.tsx). Bottom left, so the
+   Crisp chat bubble in the bottom right stays clickable. */
+.cp-consent {
+  position: fixed; left: 16px; bottom: 16px; z-index: 60;
+  width: min(420px, calc(100vw - 104px));
+  padding: 18px 20px; border-radius: 14px;
+  background: var(--cp-bg); color: var(--cp-text-2);
+  border: 1px solid var(--cp-border-strong);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.25);
+  font-family: var(--cp-font-body); font-size: 14px; line-height: 1.5;
+}
+.cp-consent a { color: var(--cp-text); text-decoration: underline; }
+.cp-consent-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.cp-consent-actions .cp-btn { padding: 10px 20px; flex: 1; justify-content: center; }
 .cp-footer-bottom { font-size: 13px; color: var(--cp-text-3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 
 /* ---------- responsive ---------- */

@@ -4,6 +4,7 @@ import Script from 'next/script'
 import './globals.css'
 import { Providers } from './providers'
 import AppErrorBoundary from '@/components/AppErrorBoundary'
+import CookieConsent from '@/components/CookieConsent'
 import { LOGO } from '@/lib/brand'
 
 const inter = Inter({
@@ -67,11 +68,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`} data-scroll-behavior="smooth">
+      <head>
+        {/* Goji Website visitors. Snippet as supplied, with its consent line
+            enabled: nothing is tracked until CookieConsent calls
+            GojiberryVisitors.init() after the visitor accepts. `defer`
+            instead of `async`: React hoists async scripts to the top of
+            <head>, ahead of the consent stub, which would let Goji start
+            before consent. A deferred script stays here and runs after it. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.GojiberryVisitors=window.GojiberryVisitors||{init:function(){window.GojiberryVisitors.initCalled=true}};`,
+          }}
+        />
+        <script defer src="https://visitor.wv.gojiberry.ai/wv.js?uid=40376&aid=38032"></script>
+      </head>
       <body>
         <Providers>
           <AppErrorBoundary>
             {children}
           </AppErrorBoundary>
+          <CookieConsent />
         </Providers>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-L6LB24F1J8" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">

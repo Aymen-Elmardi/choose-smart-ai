@@ -2,9 +2,9 @@
 
 ## New articles
 
-### stripe-alternatives (prepared 2026-10-29)
+### stripe-alternatives (prepared and merged 2026-10-29)
 
-DEPLOY new-article-stripe-alternatives | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY new-article-stripe-alternatives | 2026-10-29 | commit 3dd0ea3
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/stripe-alternatives
 What changed:
@@ -34,6 +34,17 @@ What changed:
 Owner asked for this and the Square fees article to go live together on 2026-10-28 (two deploys the same day).
 Published date set to the go-live date, 2026-10-28.
 Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-business -> this URL) after GO M3.
+
+## Site-wide
+
+### Goji website visitors + cookie banner (prepared 2026-10-29)
+
+DEPLOY goji-visitors | merged: pending | commit: pending (fill in the merge commit after merge)
+No indexing request needed (no visible content change apart from the banner, footer link and privacy policy).
+What changed:
+- Every page: Goji snippet in <head> with its consent stub; Goji only starts after Accept (CookieConsent.tsx). Footer gains a Cookie settings link.
+- /privacy: Gojiberry, Microsoft Clarity and Crisp listed; cookie section explains the banner. Last updated 2026-10-29.
+GA4 and Clarity are not behind the banner.
 
 ## Seasonal
 
