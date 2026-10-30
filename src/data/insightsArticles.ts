@@ -715,6 +715,13 @@ export const allInsights: Insight[] = [
   },
   // Provider Fit Guides
   {
+    title: "High-Risk Ecommerce Payment Processing: How Merchant Accounts, Reserves and Approval Work",
+    slug: "high-risk-ecommerce-payment-processing",
+    description: "What makes ecommerce high risk, 2026 Visa chargeback thresholds, reserves and costs, how underwriting works, and how to get approved and stay stable.",
+    category: "provider-fit",
+    readTime: "14 min read"
+  },
+  {
     title: "Best Payment Processor for Small US Business (2026)",
     slug: "best-payment-processor-for-small-business",
     path: "/insights/best-payment-processor-for-small-business",

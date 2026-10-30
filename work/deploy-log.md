@@ -2,6 +2,17 @@
 
 ## New articles
 
+### high-risk-ecommerce-payment-processing (prepared 2026-10-30)
+
+DEPLOY new-article-high-risk-ecommerce-hub | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/high-risk-ecommerce-payment-processing
+What changed:
+- /high-risk-ecommerce-payment-processing: new top-level hub (owner brief), Article + FAQPage JSON-LD in one @graph, rendered in the HTML, plus the usual Breadcrumb JSON-LD. Authors Aymen Elmardi and Madalsa Bhat. Cover image from the owner, in the sitemap. One CTA only (the risk analysis block); the layout's assessment CTA and advisory note are off.
+- /insights and /insights/provider-fit: new listing card (not worth an indexing request).
+Published date: 2026-10-30 (go-live). Update PUBLISHED in src/views/insights/HighRiskEcommercePaymentProcessing.tsx if it merges later.
+No redirects yet. M2a (/payment-processors-high-risk-ecommerce), M2b (/best-payment-processors-high-chargebacks) and M2c (/insights/ecommerce/high-risk-to-high-growth) move here later, one at a time, after "GO M2a", "GO M2b" and "GO M2c", once this page is live and returns 200.
+
 ### stripe-alternatives (prepared and merged 2026-10-29)
 
 DEPLOY new-article-stripe-alternatives | 2026-10-29 | commit 3dd0ea3
@@ -37,9 +48,9 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Assessment
 
-### 5-question US assessment (prepared 2026-10-29)
+### 5-question US assessment (prepared and merged 2026-10-29)
 
-DEPLOY short-us-assessment | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY short-us-assessment | 2026-10-29 | commit a7b2ca7 (submit-assessment v2 deployed first, the same day)
 Order: deploy the Supabase function submit-assessment first (supabase functions deploy submit-assessment), then merge the site PR. The new function still accepts the old quiz's answers, so the live site keeps working in between.
 No indexing request needed (/assessment and /recommendation are not ranking pages).
 What changed:

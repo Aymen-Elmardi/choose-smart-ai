@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
-import { RefreshCw, ShoppingCart, UtensilsCrossed, AlertTriangle, Truck, Store } from "lucide-react";
+import { RefreshCw, ShoppingCart, UtensilsCrossed, AlertTriangle, Truck, Store, ShieldCheck } from "lucide-react";
 
 const providerFitArticles = [
   {
@@ -19,6 +19,12 @@ const providerFitArticles = [
     description: "Recurring billing needs the right payment infrastructure. Find providers that support subscriptions, handle failed payments, and scale with your MRR.",
     slug: "/payment-provider-subscription-business",
     icon: RefreshCw,
+  },
+  {
+    title: "High-Risk Ecommerce Payment Processing",
+    description: "How high-risk merchant accounts, reserves and approval work: 2026 Visa chargeback thresholds, real cost ranges, underwriting and how to get approved.",
+    slug: "/high-risk-ecommerce-payment-processing",
+    icon: ShieldCheck,
   },
   {
     title: "Payment Processors for High-Risk Ecommerce",
