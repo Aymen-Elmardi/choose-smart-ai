@@ -63,6 +63,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/high-risk-ecommerce-payment-processing`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/payment-processors-high-risk-ecommerce`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
