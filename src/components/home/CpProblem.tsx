@@ -1,22 +1,29 @@
 'use client'
 
+import Link from 'next/link';
 import { AlertTriangle, Receipt, Puzzle } from "lucide-react";
 
-const PROBLEMS = [
-  {
-    Icon: AlertTriangle,
-    title: "Your account gets frozen without warning",
-    body: "One Friday afternoon, payments stop. No explanation, no timeline. You chose a provider that was never built for your business model.",
-  },
+const PATHS = [
   {
     Icon: Receipt,
-    title: "You're paying more than you should",
-    body: "Fees buried in blended rates, charges that appear months in. Most businesses overpay by thousands a year and never know it.",
+    title: "I'm switching processors",
+    body: "Fees crept up and you're not sure why. Send us your last processing statement and we'll show you what you're really paying, what's negotiable, and whether switching saves you money.",
+    linkText: "Check my statement for free",
+    href: "/statement-review",
   },
   {
     Icon: Puzzle,
-    title: "Your processor doesn't understand your business",
-    body: "Generic processors treat every business the same. If yours sits in a complex category, subscriptions, marketplaces, high volume, you're one review away from a hold.",
+    title: "I'm comparing payment processors",
+    body: "Stripe, Square, PayPal, Authorize.net or a merchant account? We compare real costs for your volume and order size, not the headline rate on a pricing page.",
+    linkText: "Compare my options",
+    href: "/assessment",
+  },
+  {
+    Icon: AlertTriangle,
+    title: "I've been frozen or rejected",
+    body: "A hold, a reserve or a rejection usually means a mismatch, not a bad business. We match you with processors that approve your business type and understand how it works.",
+    linkText: "Find a processor that says yes",
+    href: "/assessment",
   },
 ];
 
@@ -25,16 +32,20 @@ const CpProblem = () => (
     <div className="cp-wrap">
       <div className="cp-section-head cp-reveal">
         <span className="cp-section-tag">The problem</span>
-        <h2>Most businesses are on the wrong processor</h2>
+        <h2>Where are you right now?</h2>
+        <p>Most businesses come to us at one of three moments.</p>
       </div>
       <div className="cp-problem-grid">
-        {PROBLEMS.map(({ Icon, title, body }) => (
+        {PATHS.map(({ Icon, title, body, linkText, href }) => (
           <div className="cp-p-card cp-reveal" key={title}>
             <div className="cp-p-icon" aria-hidden="true">
               <Icon className="w-[21px] h-[21px]" strokeWidth={2} />
             </div>
             <h3>{title}</h3>
             <p>{body}</p>
+            <Link href={href} className="cp-i-more">
+              {linkText} <span className="cp-arrow" aria-hidden="true">→</span>
+            </Link>
           </div>
         ))}
       </div>

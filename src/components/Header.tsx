@@ -51,7 +51,7 @@ const Header = () => {
 
           <div className="cp-nav-right">
             <Link href="/assessment" className="cp-btn cp-btn-ghost cp-nav-cta-ghost">
-              Risk analysis
+              Find my processor
             </Link>
             <a
               href={BOOKING_URL}
@@ -97,7 +97,7 @@ const Header = () => {
                         className="cp-btn cp-btn-ghost mt-4 justify-center"
                         onClick={() => setIsOpen(false)}
                       >
-                        Risk analysis
+                        Find my processor
                       </Link>
                     </SheetClose>
                     <SheetClose asChild>

@@ -1,23 +1,23 @@
 'use client'
 
 import { useEffect, useRef } from "react";
-import { BOOKING_URL } from "@/lib/booking";
+import Link from 'next/link';
 
 const STEPS = [
   {
     num: "01",
-    title: "We review your current payment setup",
-    body: "A 15-minute call to go through what you're on, what you're paying, and where the gaps are.",
+    title: "Answer 5 quick questions",
+    body: "Your business type, monthly volume, current processor and what's going wrong. It takes about 30 seconds.",
   },
   {
     num: "02",
-    title: "We identify the right processor for your business",
-    body: "We tell you if you're overpaying or on the wrong processor, and match you to the right one across 50+ processors in the US, UK, and EU.",
+    title: "We compare processors for you",
+    body: "We check your answers against 50+ US processors and narrow it to the two or three that fit. Then we walk you through the real costs on a free 15-minute call.",
   },
   {
     num: "03",
-    title: "We get you a better deal",
-    body: "We negotiate directly with the processor on your behalf and introduce you to close it. You walk away paying less than you did yesterday.",
+    title: "We negotiate and help you switch",
+    body: "We negotiate your rates, help with the application, and make sure the new account is ready before you move a single payment.",
   },
 ];
 
@@ -35,7 +35,7 @@ const CpHowItWorks = () => {
     if (!row || !seg12 || !seg23) return;
 
     // Measure the real circle positions and pin each segment between them.
-    // Kept as a measured layout (rather than percentage CSS) deliberately —
+    // Kept as a measured layout (rather than percentage CSS) deliberately:
     // the percentage approach did not render reliably across breakpoints.
     const positionSegs = () => {
       const [n1, n2, n3] = numRefs.current;
@@ -122,8 +122,7 @@ const CpHowItWorks = () => {
       <div className="cp-wrap">
         <div className="cp-section-head cp-reveal">
           <span className="cp-section-tag">The process</span>
-          <h2>Find the right payment processor in 3 steps</h2>
-          <p>Takes 60 seconds to start. Free from beginning to end. No account needed.</p>
+          <h2>How we find your payment processor</h2>
         </div>
 
         <div className="cp-steps" ref={rowRef}>
@@ -145,10 +144,9 @@ const CpHowItWorks = () => {
         </div>
 
         <div className="cp-how-cta cp-reveal">
-          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="cp-btn cp-btn-primary">
-            Book a call
-          </a>
-          <p>A payment setup hygiene check never hurts. Your processor certainly isn&apos;t offering one.</p>
+          <Link href="/assessment" className="cp-btn cp-btn-primary">
+            Find my processor
+          </Link>
         </div>
       </div>
     </section>

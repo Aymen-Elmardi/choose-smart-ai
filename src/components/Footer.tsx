@@ -8,7 +8,14 @@ import { Linkedin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { OPEN_COOKIE_SETTINGS } from "@/components/CookieConsent";
 
-const Footer = () => {
+interface FooterProps {
+  /** Replaces the default tagline in the bottom row. Only the homepage sets it. */
+  tagline?: string;
+  /** Replaces the default newsletter heading and adds a line under it. Only the homepage sets it. */
+  newsletter?: { heading: string; body: string };
+}
+
+const Footer = ({ tagline, newsletter }: FooterProps = {}) => {
   const pathname = usePathname();
   const isUS = pathname === "/us" || (pathname?.startsWith("/us/") ?? false);
   const insightsHref = isUS ? "/us/insights" : "/insights";
@@ -65,7 +72,14 @@ const Footer = () => {
     <>
       <div className="cp-newsletter">
         <div className="cp-wrap cp-nl-row">
-          <h3>Stay updated on payment processor trends and tips for high-growth merchants</h3>
+          {newsletter ? (
+            <div>
+              <h3>{newsletter.heading}</h3>
+              <p className="text-sm text-[color:var(--cp-text-2)] mt-1 max-w-[360px]">{newsletter.body}</p>
+            </div>
+          ) : (
+            <h3>Stay updated on payment processor trends and tips for high-growth merchants</h3>
+          )}
           {subscribed ? (
             <p className="cp-nl-note" role="status">Thanks. You&apos;re subscribed.</p>
           ) : (
@@ -125,7 +139,7 @@ const Footer = () => {
 
           <div className="cp-footer-bottom">
             <span>© 2026 ChosePayments. All rights reserved.</span>
-            <span>Independent Payment Risk Analysis – US, UK &amp; EU</span>
+            <span>{tagline ?? "Independent Payment Risk Analysis \u2013 US, UK & EU"}</span>
           </div>
         </div>
       </footer>
