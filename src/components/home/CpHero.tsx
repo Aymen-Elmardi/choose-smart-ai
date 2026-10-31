@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import Link from 'next/link';
-import { BOOKING_URL } from "@/lib/booking";
 
 const PROCESSORS = [
   "Stripe", "Square", "PayPal", "Authorize.Net", "Clover", "Adyen", "Payline", "QuantumPay",
@@ -11,9 +10,9 @@ const PROCESSORS = [
 type Stat = { value: number; prefix?: string; suffix?: string; label: string };
 
 const STATS: Stat[] = [
-  { value: 50, suffix: "+", label: "Processors matched against" },
-  { value: 15, label: "Minutes to your first read" },
-  { value: 30, prefix: "$", suffix: "k+", label: "Starting volume we work with" },
+  { value: 50, suffix: "+", label: "US processors we compare" },
+  { value: 5, suffix: " questions", label: "to your first match" },
+  { value: 0, prefix: "$", label: "cost to you" },
 ];
 
 const CpHero = () => {
@@ -72,7 +71,7 @@ const CpHero = () => {
       <div className="cp-hero-grid" aria-hidden="true" />
       <div className="cp-wrap cp-hero-inner">
         <div className="cp-eyebrow">
-          <span className="cp-dot" aria-hidden="true" /> Independent Payment Advisory – US, UK &amp; EU
+          <span className="cp-dot" aria-hidden="true" /> Independent payment advisory for US businesses
         </div>
 
         <h1 className="cp-hero-h1">
@@ -80,15 +79,16 @@ const CpHero = () => {
         </h1>
 
         <p className="cp-hero-sub">
-          We review your payment setup for free, uncover hidden costs and account freeze risks,
-          and help you find the right payment processor – all in one call.
+          Switching, comparing, or just rejected? We match you with the processor built for your
+          business type, your volume and your risk profile. Free, and we negotiate your rates for you.
         </p>
 
         <div className="cp-hero-ctas">
-          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="cp-btn cp-btn-primary">
-            Book a call <span className="cp-arrow" aria-hidden="true">→</span>
-          </a>
-          <Link href="/contact" className="cp-btn cp-btn-ghost">Write to Us</Link>
+          <Link href="/assessment" className="cp-btn cp-btn-primary">
+            Find my processor <span className="cp-arrow" aria-hidden="true">→</span>
+          </Link>
+          <Link href="/contact" className="cp-btn cp-btn-ghost">Write to us</Link>
+          <p className="cp-stat-label w-full -mt-2">5 questions. About 30 seconds.</p>
         </div>
 
         <div className="cp-hero-stats" ref={statsRef}>
@@ -110,6 +110,7 @@ const CpHero = () => {
       </div>
 
       <div className="cp-logo-strip">
+        <p className="cp-stat-label text-center mb-5">We compare processors including</p>
         <div className="cp-marquee">
           <div className="cp-marquee-track" aria-hidden="true">
             {[...PROCESSORS, ...PROCESSORS].map((name, i) => (

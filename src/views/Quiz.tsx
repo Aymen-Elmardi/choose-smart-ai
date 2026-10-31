@@ -313,7 +313,7 @@ const Quiz = () => {
   // navigating: this is already the /assessment route, so a router replace
   // would not remount the component, the step would still be out of range, and
   // the guard below would fire again on the next render. (The previous version
-  // navigated to /quiz, which is not a route at all — it survived only because
+  // navigated to /quiz, which is not a route at all; it survived only because
   // a Cloudflare _redirects rule turned it into a full page load.)
   useEffect(() => {
     const available = getQuestions(answers).length;
@@ -371,10 +371,10 @@ const Quiz = () => {
             {currentStep === 1 && (
               <div className="text-center mb-10">
                 <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-3 leading-[1.35]">
-                  We designed this to understand your business
+                  Find the right payment processor in 5 questions
                 </h1>
                 <p className="text-muted-foreground max-w-md mx-auto text-base">
-                  Five quick questions so we can match you to the right provider. Takes about a minute.
+                  Tell us how you sell and what&apos;s going wrong. We&apos;ll show you which processors fit. About 30 seconds.
                 </p>
               </div>
             )}

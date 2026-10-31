@@ -2,9 +2,9 @@
 
 ## New articles
 
-### high-risk-ecommerce-payment-processing (prepared 2026-10-30)
+### high-risk-ecommerce-payment-processing (prepared and merged 2026-10-30)
 
-DEPLOY new-article-high-risk-ecommerce-hub | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY new-article-high-risk-ecommerce-hub | 2026-10-30 | commit dd6b468
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/high-risk-ecommerce-payment-processing
 What changed:
@@ -45,6 +45,20 @@ What changed:
 Owner asked for this and the Square fees article to go live together on 2026-10-28 (two deploys the same day).
 Published date set to the go-live date, 2026-10-28.
 Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-business -> this URL) after GO M3.
+
+## Homepage
+
+### Homepage rewrite, US focus (prepared 2026-10-31)
+
+DEPLOY homepage-rewrite | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/
+https://chosepayments.com/assessment
+What changed:
+- /: new copy in every section (owner's homepage-rewrite-instructions.md), new "How to choose a payment processor" section, 8 new FAQs (FAQPage schema built from the same text), new title, description and OG text, Service JSON-LD. Footer tagline and newsletter text changed on the homepage only.
+- /assessment: title tag, meta description, headline and intro line only.
+- Site-wide: nav button "Risk analysis" renamed "Find my processor" (same href, desktop and mobile menu). Organization + WebSite JSON-LD in the root layout now uses the US wording (areaServed US). Invisible on the page, including /insights/stripe-fees-explained.
+Note: the hero and How-it-works buttons were booking links and now go to /assessment, so homepage calendar_click counts will drop.
 
 ## Assessment
 

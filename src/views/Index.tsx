@@ -10,6 +10,7 @@ import { useCanonical } from "@/hooks/useCanonical";
 // Below-fold sections stay lazy, as before.
 const CpProblem = lazy(() => import("@/components/home/CpProblem"));
 const CpHowItWorks = lazy(() => import("@/components/home/CpHowItWorks"));
+const CpChoose = lazy(() => import("@/components/home/CpChoose"));
 const CpWhyUs = lazy(() => import("@/components/home/CpWhyUs"));
 const CpUseCases = lazy(() => import("@/components/home/CpUseCases"));
 const CpLatestInsights = lazy(() => import("@/components/home/CpLatestInsights"));
@@ -30,6 +31,7 @@ const Index = () => {
         <Suspense fallback={null}>
           <CpProblem />
           <CpHowItWorks />
+          <CpChoose />
           <CpWhyUs />
           <CpUseCases />
           <CpLatestInsights />
@@ -37,7 +39,13 @@ const Index = () => {
           <CpFinalCta />
         </Suspense>
       </main>
-      <Footer />
+      <Footer
+        tagline="Independent payment advisory for US businesses"
+        newsletter={{
+          heading: "Get our payments notes",
+          body: "One short email a month on fees, freezes and processor changes that affect US merchants.",
+        }}
+      />
     </div>
   );
 };

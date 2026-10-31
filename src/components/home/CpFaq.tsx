@@ -10,32 +10,36 @@ import FAQSchema from "@/components/FAQSchema";
  */
 export const HOME_FAQS = [
   {
-    question: "Is ChosePayments a payment processor?",
-    answer: "No. We don't process payments ourselves. We're an independent advisory that matches your business with the right processor from 50+ options across the US, UK, and EU.",
+    question: "How do I find the right payment processor for my business?",
+    answer: "Start with what your business needs, not the lowest rate. Your business type, monthly volume, average order size and how you sell decide which processors will approve you and what you'll really pay. Our 5-question match does this comparison for you in about 30 seconds.",
   },
   {
-    question: "How does ChosePayments make money?",
-    answer: "We're paid by the processor once you're matched and onboarded, similar to how a mortgage broker is paid by a lender. It costs you nothing, and it doesn't change who we recommend, we're not owned by or tied to any processor.",
+    question: "How do I switch payment processors without losing sales?",
+    answer: "Get the new account approved and tested before you leave the old one. Check your current contract for termination fees, ask whether your saved customer cards can be moved, and switch your checkout only once test payments have gone through. We plan each step with you.",
   },
   {
-    question: "Is the assessment actually free?",
-    answer: "Yes. The review, the call, and the match are free, regardless of what we find or whether you go ahead with a new processor.",
+    question: "Can you have more than one payment processor?",
+    answer: "Yes, and many growing businesses should. A second processor keeps you selling if your main one holds payouts or goes down. It usually costs little or nothing until you use it.",
   },
   {
-    question: "Why did my payment processor freeze or hold my account?",
-    answer: "Usually a chargeback spike, an unexpected jump in volume, or a mismatch between what your business actually does and how it was classified at signup. We can walk through your specific case on a call.",
+    question: "Which payment processor has the lowest fees?",
+    answer: "It depends on your volume and order size. Flat-rate processors like Stripe and Square are simple, but businesses with steady volume often pay less on interchange-plus pricing. We compare your real costs across processors before you choose.",
   },
   {
-    question: "What makes a business high-risk?",
-    answer: "Chargeback exposure, card-not-present sales, and certain categories like restaurants, subscriptions, and marketplaces. High-risk isn't a judgment, it just means you need a processor actually built to underwrite it.",
+    question: "What's a good alternative to Stripe, PayPal or Square?",
+    answer: "The right alternative depends on why you're leaving. If it's fees, an interchange-plus merchant account often costs less. If it's a freeze or a rejection, you need a processor that accepts your business type. Tell us what happened and we'll name the processors that fit.",
   },
   {
-    question: "Do you work with small or early-stage businesses?",
-    answer: "Yes, from around $30k a month in volume up. If you've started receiving payments, we can tell you where you stand.",
+    question: "How do I change the payment processor on Shopify?",
+    answer: "In Shopify, go to Settings, then Payments, and add a third-party provider. You need an approved account with that provider first, and Shopify charges an extra fee when you don't use Shopify Payments. We can tell you whether the switch is worth it at your volume.",
   },
   {
-    question: "Do you only work with US businesses?",
-    answer: "No. We cover the US, UK, and EU, and match across processors in all three.",
+    question: "Why did my payment processor freeze my account or reject me?",
+    answer: "Usually a mismatch, not a bad business. Sudden sales spikes, rising refunds or disputes, and business types the processor doesn't support are the common triggers. We match you with processors that understand your business so it doesn't happen again.",
+  },
+  {
+    question: "Are you a payment processor? How do you get paid?",
+    answer: "No. ChosePayments is an independent payment advisory, a bit like a mortgage broker for card processing. The processor you choose pays us after you're set up. It costs you nothing and doesn't change who we recommend.",
   },
 ];
 
@@ -49,7 +53,7 @@ const CpFaq = () => {
       <div className="cp-wrap">
         <div className="cp-section-head cp-reveal">
           <span className="cp-section-tag">FAQ</span>
-          <h2>Questions we get asked a lot</h2>
+          <h2>Questions about finding a payment processor</h2>
           <p>Straight answers, no sales pitch. Ask us anything else on the call.</p>
         </div>
 

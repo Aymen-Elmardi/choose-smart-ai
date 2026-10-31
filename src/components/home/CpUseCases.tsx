@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { ShoppingCart, Repeat, Network, Store, UtensilsCrossed } from "lucide-react";
 
 const USE_CASES = [
-  { Icon: ShoppingCart, title: "High-volume ecommerce", body: "Gateway audit and acceptance optimisation." },
-  { Icon: Repeat, title: "SaaS and subscription platforms", body: "Recurring billing and churn reduction strategy." },
-  { Icon: Network, title: "Marketplace operators", body: "Multi-seller payout and compliance review." },
-  { Icon: Store, title: "Omnichannel retailers", body: "Unified payment infrastructure advisory." },
-  { Icon: UtensilsCrossed, title: "F&B and online ordering platforms", body: "Restaurant and delivery-specific risk and payout review." },
+  { Icon: ShoppingCart, title: "Ecommerce and Shopify stores", body: "Find the best payment processor for ecommerce, with backup options ready before peak season." },
+  { Icon: Repeat, title: "SaaS and subscriptions", body: "Recurring billing, card updates and fewer failed payments." },
+  { Icon: Network, title: "Marketplaces and platforms", body: "Split payouts, seller checks and processors built for multi-seller businesses." },
+  { Icon: Store, title: "Retail, online and in store", body: "One setup for online and in-person payments, with one set of reports." },
+  { Icon: UtensilsCrossed, title: "Restaurants and online ordering", body: "Processors that understand delivery, tips and high order volume." },
 ];
 
 const CpUseCases = () => (
@@ -16,7 +16,7 @@ const CpUseCases = () => (
     <div className="cp-wrap">
       <div className="cp-section-head cp-reveal">
         <span className="cp-section-tag">Use cases</span>
-        <h2>Built for businesses that outgrow generic processors</h2>
+        <h2>Payment processors for growing US businesses</h2>
       </div>
 
       <div className="cp-who-grid">
@@ -33,10 +33,9 @@ const CpUseCases = () => (
 
       <div className="cp-fit-banner cp-reveal">
         <p>
-          We work with businesses at every stage, from <b>$30k a month to eight figures</b>.
-          If you&apos;ve started receiving payments, we can tell you where you stand.
+          We work with businesses processing <b>$30k a month and up</b>.
         </p>
-        <Link href="/#book" className="cp-btn cp-btn-ghost">Let&apos;s talk</Link>
+        <Link href="/assessment" className="cp-btn cp-btn-ghost">Find my processor</Link>
       </div>
     </div>
   </section>

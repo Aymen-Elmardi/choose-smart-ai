@@ -469,7 +469,7 @@
 .cp-why-item { background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 14px; padding: 20px; transition: border-color .3s, background .3s, transform .3s; }
 .cp-why-item:hover { border-color: var(--cp-sage-bright); background: var(--cp-surface-2); transform: translateY(-3px); }
 .cp-why-icon { width: 32px; height: 32px; border-radius: 9px; background: rgba(108, 137, 110, 0.14); color: var(--cp-sage-bright); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
-.cp-why-item h4 { font-size: 14.5px; font-weight: 600; margin-bottom: 5px; color: var(--cp-text); }
+.cp-why-item h3, .cp-why-item h4 { font-size: 14.5px; font-weight: 600; margin-bottom: 5px; color: var(--cp-text); }
 .cp-why-item p { font-size: 13px; color: var(--cp-text-2); }
 
 /* ---------- use cases ---------- */

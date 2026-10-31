@@ -9,7 +9,7 @@ import { allInsights, categoryLabels, getInsightUrl } from "@/data/insightsArtic
  * The 2026 prototype dropped the old insights preview entirely, which would
  * have left the homepage linking only to the /insights hub. That matters here:
  * a large share of /insights URLs are sitting in Search Console as
- * "Discovered – currently not indexed", i.e. a crawl-priority problem, and the
+ * "Discovered, currently not indexed", i.e. a crawl-priority problem, and the
  * homepage is the strongest internal link source available to fix it.
  *
  * Titles and descriptions are read from the shared article data rather than
@@ -34,8 +34,7 @@ const CpLatestInsights = () => {
       <div className="cp-wrap">
         <div className="cp-section-head cp-reveal">
           <span className="cp-section-tag">Insights</span>
-          <h2>What we&apos;ve learned about payment processors</h2>
-          <p>Independent breakdowns of pricing, risk and provider behaviour, written for operators.</p>
+          <h2>Guides to payment processors and fees</h2>
         </div>
 
         <div className="cp-insights-grid">
@@ -53,7 +52,7 @@ const CpLatestInsights = () => {
         </div>
 
         <Link href="/insights" className="cp-i-more cp-reveal">
-          Read all insights <span className="cp-arrow" aria-hidden="true">→</span>
+          Read all guides <span className="cp-arrow" aria-hidden="true">→</span>
         </Link>
       </div>
     </section>

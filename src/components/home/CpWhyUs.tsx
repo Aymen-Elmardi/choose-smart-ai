@@ -5,23 +5,23 @@ import { Receipt, Briefcase, ShieldCheck, Scale } from "lucide-react";
 const REASONS = [
   {
     Icon: Receipt,
-    title: "In-depth fee & interchange knowledge",
-    body: "We read processor pricing the way processors hope you won't.",
+    title: "We know the fees",
+    body: "Interchange, markups and the line items most people miss on a statement.",
   },
   {
     Icon: Briefcase,
     title: "10 years in payments",
-    body: "A decade advising businesses on payment stack decisions.",
+    body: "We've worked inside the industry and know how underwriters think.",
   },
   {
     Icon: ShieldCheck,
     title: "STEP-certified in AML",
-    body: "Formally certified in anti-money laundering and compliance.",
+    body: "We prepare your application so it gets approved the first time.",
   },
   {
     Icon: Scale,
-    title: "Independent, always",
-    body: "No commissions. No processor owns us.",
+    title: "Free for you",
+    body: "Processors pay us after you're set up, like a mortgage broker. It costs you nothing.",
   },
 ];
 
@@ -31,11 +31,10 @@ const CpWhyUs = () => (
       <div className="cp-why-grid">
         <div className="cp-why-lead cp-reveal">
           <span className="cp-section-tag">Why us</span>
-          <h2>Built on a decade of payments expertise</h2>
+          <h2>Independent payment advisors, on your side</h2>
           <p>
-            We&apos;ve spent 10 years inside the payments industry, advising businesses on the
-            processor fees, interchange rates, and fine print most owners never get shown.
-            Independent, STEP-certified in AML, and paid the same no matter which processor you choose.
+            We don&apos;t process payments and we don&apos;t work for one processor. We&apos;re paid the
+            same whichever processor you pick, so our only job is finding the right fit.
           </p>
         </div>
 
