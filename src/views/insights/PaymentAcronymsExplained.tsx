@@ -129,7 +129,7 @@ const PaymentAcronymsExplained = () => {
       </p>
       <p className="text-muted-foreground mb-6">
         Card networks like Visa and Mastercard monitor this ratio closely. If it exceeds their thresholds (typically around 1 percent), your account can be placed into a monitoring programme, fined, or terminated. This is one of the most common reasons{" "}
-        <Link href="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">accounts are frozen without warning</Link>.
+        <Link href="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">accounts are frozen without warning</Link>.
       </p>
 
       <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">MATCH List</h3>

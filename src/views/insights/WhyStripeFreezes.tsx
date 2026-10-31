@@ -8,7 +8,7 @@ import FAQSchema from "@/components/FAQSchema";
 const WhyStripeFreezes = () => {
   const faqs = [
     {
-      question: "Why does Stripe freeze accounts in the UK?",
+      question: "Why does Stripe freeze accounts?",
       answer: "Stripe freezes accounts when automated risk systems detect activity that no longer matches the information originally provided at signup. This includes sudden volume increases, customer type changes, or products in higher risk categories."
     },
     {
@@ -27,17 +27,17 @@ const WhyStripeFreezes = () => {
 
   return (
     <InsightsArticleLayout
-      title="Stripe Account Freezes in the UK: Common Triggers and Prevention"
-      description="Stripe does not freeze accounts at random. Learn the common triggers for Stripe account freezes in the UK and how to prevent them before they happen."
+      title="Stripe Account Freezes: Common Triggers and Prevention"
+      description="Stripe does not freeze accounts at random. Learn the common triggers for Stripe account freezes and how to prevent them before they happen."
       category={{ name: "Payment Risk", slug: "payment-risk" }}
       cluster="hub"
       currentSlug="why-stripe-freezes-accounts-uk"
-      keywords={["Stripe freeze", "account frozen", "Stripe UK", "payment hold"]}
+      keywords={["Stripe freeze", "account frozen", "payment hold"]}
     >
       <FAQSchema faqs={faqs} />
       
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
-        Stripe Account Freezes in the UK: Common Triggers and Prevention
+        Stripe Account Freezes: Common Triggers and Prevention
       </h1>
       
 
@@ -45,7 +45,7 @@ const WhyStripeFreezes = () => {
       <ArticleByline />
       <div className="text-muted-foreground space-y-6">
         <p>
-          Stripe does not freeze accounts at random. In the UK, freezes usually happen when automated risk systems detect activity that no longer matches the information originally provided at signup.
+          Stripe does not freeze accounts at random. Freezes usually happen when automated risk systems detect activity that no longer matches the information originally provided at signup.
         </p>
         
         <p>
@@ -65,7 +65,7 @@ const WhyStripeFreezes = () => {
         />
         
         <p>
-          If your business is growing or changing, understanding approval and risk signals early can prevent interruptions later. <Link href="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor in the UK</Link> from the start reduces this risk significantly.
+          If your business is growing or changing, understanding approval and risk signals early can prevent interruptions later. <Link href="/best-payment-processor-uk" className="text-primary hover:underline">Choosing the right payment processor</Link> from the start reduces this risk significantly.
         </p>
       </div>
     </InsightsArticleLayout>

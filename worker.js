@@ -4,7 +4,8 @@
  * Runs before static assets (assets.run_worker_first = true) so it can:
  *   1. 301-redirect the www host to the apex on every path.
  *   2. 301-redirect the retired /us section onto the main site.
- *   3. 301-redirect pages merged into a stronger page (fix list Section 5).
+ *   3. 301-redirect pages merged into, or deleted in favour of, a stronger
+ *      page (fix list Section 5).
  *
  * All other requests pass through to the static asset handler unchanged.
  *
@@ -16,10 +17,11 @@
  */
 
 /**
- * Merged pages (fix list Section 5): old path -> the page it was folded into.
- * These live here, not in public/_redirects, because the old pages are still
- * built as static assets (their source is kept until the owner approves a
- * cleanup), and an existing asset takes precedence over a _redirects rule.
+ * Merged or deleted pages (fix list Section 5): old path -> the page that
+ * replaces it. These live here, not in public/_redirects, because a merged
+ * page whose source is kept is still built as a static asset, and an existing
+ * asset takes precedence over a _redirects rule. Keeping every Section 5
+ * redirect in one place also avoids splitting them across two files.
  * One hop, straight to the final URL. Keys have no trailing slash.
  */
 const MERGED_PAGES = {
@@ -27,6 +29,8 @@ const MERGED_PAGES = {
   '/insights/why-payment-providers-ask-for-source-of-funds': '/insights/source-of-funds',
   // M5b, 2026-10-21
   '/insights/why-providers-impose-reserves': '/insights/rolling-vs-fixed-reserve',
+  // M1b (revised: page deleted, not merged), 2026-10-20
+  '/insights/why-payment-accounts-get-frozen-without-warning': '/insights/crisis/stripe-account-frozen',
 }
 
 export default {
