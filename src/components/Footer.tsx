@@ -8,14 +8,7 @@ import { Linkedin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { OPEN_COOKIE_SETTINGS } from "@/components/CookieConsent";
 
-interface FooterProps {
-  /** Replaces the default tagline in the bottom row. Only the homepage sets it. */
-  tagline?: string;
-  /** Replaces the default newsletter heading and adds a line under it. Only the homepage sets it. */
-  newsletter?: { heading: string; body: string };
-}
-
-const Footer = ({ tagline, newsletter }: FooterProps = {}) => {
+const Footer = () => {
   const pathname = usePathname();
   const isUS = pathname === "/us" || (pathname?.startsWith("/us/") ?? false);
   const insightsHref = isUS ? "/us/insights" : "/insights";
@@ -72,14 +65,12 @@ const Footer = ({ tagline, newsletter }: FooterProps = {}) => {
     <>
       <div className="cp-newsletter">
         <div className="cp-wrap cp-nl-row">
-          {newsletter ? (
-            <div>
-              <h3>{newsletter.heading}</h3>
-              <p className="text-sm text-[color:var(--cp-text-2)] mt-1 max-w-[360px]">{newsletter.body}</p>
-            </div>
-          ) : (
-            <h3>Stay updated on payment processor trends and tips for high-growth merchants</h3>
-          )}
+          <div>
+            <h3>Get our payments notes</h3>
+            <p className="text-sm text-[color:var(--cp-text-2)] mt-1 max-w-[360px]">
+              One short email a month on fees, freezes and processor changes that affect US merchants.
+            </p>
+          </div>
           {subscribed ? (
             <p className="cp-nl-note" role="status">Thanks. You&apos;re subscribed.</p>
           ) : (
@@ -139,7 +130,7 @@ const Footer = ({ tagline, newsletter }: FooterProps = {}) => {
 
           <div className="cp-footer-bottom">
             <span>© 2026 ChosePayments. All rights reserved.</span>
-            <span>{tagline ?? "Independent Payment Risk Analysis \u2013 US, UK & EU"}</span>
+            <span>Independent payment advisory for US businesses</span>
           </div>
         </div>
       </footer>
