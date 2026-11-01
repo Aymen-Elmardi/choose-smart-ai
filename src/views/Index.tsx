@@ -39,13 +39,7 @@ const Index = () => {
           <CpFinalCta />
         </Suspense>
       </main>
-      <Footer
-        tagline="Independent payment advisory for US businesses"
-        newsletter={{
-          heading: "Get our payments notes",
-          body: "One short email a month on fees, freezes and processor changes that affect US merchants.",
-        }}
-      />
+      <Footer />
     </div>
   );
 };

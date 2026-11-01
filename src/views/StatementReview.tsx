@@ -71,7 +71,7 @@ const StatementReview = () => {
   const [cur, setCur] = useState("£");
   const [market, setMarket] = useState<"uk" | "us">("uk");
 
-  // US visitors arrive with ?us=1 (from the /us CTAs) — show $ and use US benchmark.
+  // US visitors arrive with ?us=1 (from the /us CTAs); show $ and use US benchmark.
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
     if (p.get("us") === "1" || p.get("market") === "us") {
@@ -125,7 +125,7 @@ const StatementReview = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 max-w-xl mx-auto leading-snug">
                 Analysing your rate against other statements from businesses
               </h2>
-              <p className="text-muted-foreground mb-10">This usually takes a few seconds — hang tight.</p>
+              <p className="text-muted-foreground mb-10">This usually takes a few seconds. Hang tight.</p>
               <div className="flex items-center justify-center gap-2.5 text-foreground font-medium">
                 <Check className="w-5 h-5 text-primary shrink-0" />
                 <span>
@@ -142,7 +142,7 @@ const StatementReview = () => {
                 <p className="text-lg text-muted-foreground">
                   Upload your latest statement and we'll work out your true all-in rate, then compare
                   it against real statements from other businesses to show whether you're overpaying,
-                  and by how much. Free, independent, and about a minute.
+                  and by how much. Free, independent, and about 30 seconds to upload.
                 </p>
               </div>
 
@@ -244,7 +244,7 @@ const StatementReview = () => {
                   <p className="text-sm text-muted-foreground mt-3">
                     {isUS
                       ? <>For context, we can typically get US merchants to around {analysis.comparison.goodRate}% all-in on interchange-plus, versus the {analysis.comparison.typicalRate}%+ flat rate of providers like Stripe, Square, and PayPal.</>
-                      : <>For context, well-priced businesses pay around {analysis.comparison.goodRate}–{analysis.comparison.typicalRate}% all-in.</>}
+                      : <>For context, well-priced businesses pay around {analysis.comparison.goodRate}% to {analysis.comparison.typicalRate}% all-in.</>}
                   </p>
                 </div>
               ) : (
@@ -271,7 +271,7 @@ const StatementReview = () => {
               <div className="rounded-xl bg-primary/5 border border-primary/20 p-5 flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-medium text-foreground">All done — we've got your statement.</p>
+                  <p className="font-medium text-foreground">All done: we've got your statement.</p>
                   <p className="text-sm text-muted-foreground mt-1">
                     Our team will review it and reach out{email ? <> to <span className="text-foreground">{email}</span></> : null} with
                     better options for your business. Nothing more to do for now.
@@ -290,7 +290,7 @@ const StatementReview = () => {
 const Stat = ({ label, value }: { label: string; value: string | null }) => (
   <div className="border border-border rounded-lg p-3">
     <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-medium">{label}</div>
-    <div className="text-foreground font-medium">{value ?? "—"}</div>
+    <div className="text-foreground font-medium">{value ?? "n/a"}</div>
   </div>
 );
 

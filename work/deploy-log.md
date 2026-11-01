@@ -48,9 +48,19 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Homepage
 
-### Homepage rewrite, US focus (prepared 2026-10-31)
+### Footer, statement review text (prepared 2026-11-01)
 
-DEPLOY homepage-rewrite | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY footer-statement-review | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/statement-review
+What changed:
+- Site-wide footer: tagline "Independent payment advisory for US businesses" and newsletter "Get our payments notes" with the homepage body line, on every page with a footer (was homepage only). Includes /insights/stripe-fees-explained (template change).
+- /statement-review: title tag and share title "See If You're Overpaying: Free Statement Review | ChosePayments"; "about a minute" now "about 30 seconds to upload"; dashes removed from its copy (owner's choice): rate range "X% to Y%", empty result values show "n/a".
+- Organization schema logo unchanged: favicon.png is already the real logo at 512x512.
+
+### Homepage rewrite, US focus (prepared and merged 2026-10-31)
+
+DEPLOY homepage-rewrite | 2026-10-31 | commit 9711692
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/
 https://chosepayments.com/assessment
