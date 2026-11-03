@@ -38,8 +38,8 @@ const HALLOWEEN_2026: LogoSet = {
   },
 };
 
-/** Halloween 2026 logo. Set to null after the season. */
-const SEASONAL_LOGO: LogoSet | null = HALLOWEEN_2026;
+/** Everyday logo. Set to HALLOWEEN_2026 (or another set) for a season. */
+const SEASONAL_LOGO: LogoSet | null = null;
 
 export const LOGO: LogoSet = SEASONAL_LOGO ?? EVERYDAY;
 
