@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from "react";
-import Link from 'next/link';
 
 const STEPS = [
   {
@@ -141,12 +140,6 @@ const CpHowItWorks = () => {
               <p>{step.body}</p>
             </div>
           ))}
-        </div>
-
-        <div className="cp-how-cta cp-reveal">
-          <Link href="/assessment" className="cp-btn cp-btn-primary">
-            Find my processor
-          </Link>
         </div>
       </div>
     </section>
