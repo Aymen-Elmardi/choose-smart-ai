@@ -24,7 +24,7 @@ export const conceptArticles: ConceptArticle[] = [
   // Articles about account freezes, flags, reserves, chargebacks
   {
     slug: "why-stripe-freezes-accounts-uk",
-    title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",
+    title: "Stripe Account Freezes: Common Triggers and Prevention",
     shortTitle: "Why Stripe Freezes Accounts",
     concepts: ["risk", "provider-behaviour"],
     keywords: ["freeze", "frozen", "stripe", "account freeze", "funds held", "stripe frozen"]
@@ -35,13 +35,6 @@ export const conceptArticles: ConceptArticle[] = [
     shortTitle: "Stripe Account Frozen Recovery",
     concepts: ["risk"],
     keywords: ["frozen", "freeze", "stripe frozen", "funds frozen", "reserve"]
-  },
-  {
-    slug: "why-payment-accounts-get-frozen-without-warning",
-    title: "Account Freezes Without Warning: What Triggers Them",
-    shortTitle: "Why Accounts Freeze Without Warning",
-    concepts: ["risk", "provider-behaviour"],
-    keywords: ["freeze", "frozen", "warning", "sudden freeze", "without notice"]
   },
   {
     slug: "chargebacks-what-they-are-and-how-to-avoid-them",

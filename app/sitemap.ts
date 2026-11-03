@@ -282,12 +282,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/insights/why-payment-accounts-get-frozen-without-warning`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
       url: `${BASE_URL}/insights/why-providers-re-underwrite-accounts`,
       lastModified: new Date(),
       changeFrequency: 'weekly',

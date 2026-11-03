@@ -367,7 +367,7 @@ export const allInsights: Insight[] = [
   },
   // Risk articles
   {
-    title: "Stripe Account Freezes in the UK: Common Triggers and Prevention",
+    title: "Stripe Account Freezes: Common Triggers and Prevention",
     slug: "why-stripe-freezes-accounts-uk",
     description: "Stripe does not freeze accounts at random. Learn the common triggers and how to prevent them.",
     category: "risk",
@@ -379,13 +379,6 @@ export const allInsights: Insight[] = [
     description: "Rapid growth is one of the most common reasons payment accounts are reviewed.",
     category: "risk",
     readTime: "5 min read"
-  },
-  {
-    title: "Account Freezes Without Warning: What Triggers Them",
-    slug: "why-payment-accounts-get-frozen-without-warning",
-    description: "Payment providers are not always able to warn merchants before taking action.",
-    category: "risk",
-    readTime: "6 min read"
   },
   {
     title: "Re-Underwriting Explained: When Providers Review Existing Accounts",

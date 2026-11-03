@@ -208,7 +208,7 @@ const PaymentSchemeRulesExplained = () => {
           If you want stability, long term approval, and fewer surprises, you need to understand the layer above your provider. Most merchants never look there. That is where risk truly lives.
         </p>
         <p>
-          You can also read about <Link href="/insights/why-payment-accounts-get-frozen-without-warning" className="text-primary hover:underline">why payment accounts get frozen without warning</Link> and <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">why providers re-underwrite existing accounts</Link> for related context.
+          You can also read about <Link href="/insights/crisis/stripe-account-frozen" className="text-primary hover:underline">why payment accounts get frozen without warning</Link> and <Link href="/insights/why-providers-re-underwrite-accounts" className="text-primary hover:underline">why providers re-underwrite existing accounts</Link> for related context.
         </p>
 
         {/* Advisory CTA */}
