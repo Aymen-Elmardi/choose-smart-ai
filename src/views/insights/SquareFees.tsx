@@ -289,7 +289,7 @@ const SquareFees = () => {
         </p>
         <p>
           That convenience gets costly as you grow. If you process more than $250,000 a year, Square says you can ask its team about custom pricing. Take that call. Ask for the rate in writing and compare it with an interchange-plus quote from at least one other provider. Our guide to{" "}
-          <Link href="/insights/pricing-models/blended-vs-interchange" className={link}>blended versus interchange pricing</Link>{" "}
+          <Link href="/insights/pricing-models/interchange-plus-vs-blended-pricing" className={link}>blended versus interchange pricing</Link>{" "}
           shows how to read the two side by side.
         </p>
         <p>Flat rates also punish three kinds of business. Low-ticket sellers pay a high effective rate because of the fixed fee.</p>

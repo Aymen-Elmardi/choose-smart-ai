@@ -27,6 +27,8 @@ const MERGED_PAGES = {
   '/insights/why-payment-providers-ask-for-source-of-funds': '/insights/source-of-funds',
   // M5b, 2026-10-21
   '/insights/why-providers-impose-reserves': '/insights/rolling-vs-fixed-reserve',
+  // 2026-11-04: replaced by the new interchange plus vs. blended article
+  '/insights/pricing-models/blended-vs-interchange': '/insights/pricing-models/interchange-plus-vs-blended-pricing',
 }
 
 export default {

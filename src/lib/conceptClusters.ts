@@ -230,9 +230,9 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["interchange++", "IC++", "pricing", "transparent pricing", "cost plus"]
   },
   {
-    slug: "pricing-models/blended-vs-interchange",
-    title: "Blended vs Interchange++ Pricing Strategy",
-    shortTitle: "Blended vs Interchange++",
+    slug: "pricing-models/interchange-plus-vs-blended-pricing",
+    title: "Interchange Plus vs. Blended Pricing",
+    shortTitle: "Interchange Plus vs. Blended",
     concepts: ["provider-behaviour"],
     keywords: ["blended", "interchange", "pricing strategy", "fixed rate", "variable rate"]
   },

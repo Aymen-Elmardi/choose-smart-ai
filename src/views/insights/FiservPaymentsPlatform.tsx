@@ -372,10 +372,10 @@ const FiservPaymentsPlatform = () => {
           </li>
           <li>
             <Link 
-              href="/insights/pricing-models/blended-vs-interchange" 
+              href="/insights/pricing-models/interchange-plus-vs-blended-pricing" 
               className="text-primary hover:underline"
             >
-              Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy
+              Interchange Plus vs. Blended Pricing: Which Saves You More?
             </Link>
           </li>
         </ul>

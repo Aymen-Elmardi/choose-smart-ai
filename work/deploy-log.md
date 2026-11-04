@@ -2,6 +2,20 @@
 
 ## New articles
 
+### interchange-plus-vs-blended-pricing (prepared 2026-11-04, not yet merged)
+
+DEPLOY new-article-interchange-plus-vs-blended | merged: pending | commit: pending (fill in after push)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/pricing-models/interchange-plus-vs-blended-pricing
+Redirects added (301):
+https://chosepayments.com/insights/pricing-models/blended-vs-interchange -> https://chosepayments.com/insights/pricing-models/interchange-plus-vs-blended-pricing
+What changed:
+- /insights/pricing-models/interchange-plus-vs-blended-pricing: new article (owner brief), Article + FAQPage + Breadcrumb JSON-LD, hero, cost chart and decision flow images, in the sitemap. It replaces the old blended-vs-interchange page (owner's choice, 2026-11-04). The old page's source stays; worker.js does the 301.
+- Every internal link to the old page (homepage latest insights, /insights/pricing-models, merchant account problems, Adyen, Fiserv and Square articles, related-article lists) now points to the new URL. The old URL is out of both sitemaps.
+- Brief's VAMP wording ("2.2% today, tightening to 1.5% in April 2026") changed to the current 1.5%. The underwriting graphic says the same old wording, so it is not on the page.
+Published date: 2026-11-04 (go-live). Update PUBLISHED in src/views/insights/pricing/InterchangePlusVsBlended.tsx if it merges later.
+Watch for 14 days: the new URL replacing the old one in Search Console for "blended vs interchange" queries.
+
 ### high-risk-ecommerce-payment-processing (prepared and merged 2026-10-30)
 
 DEPLOY new-article-high-risk-ecommerce-hub | 2026-10-30 | commit dd6b468

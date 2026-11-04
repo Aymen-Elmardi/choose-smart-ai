@@ -17,7 +17,7 @@ import { allInsights, categoryLabels, getInsightUrl } from "@/data/insightsArtic
  */
 const FEATURED_SLUGS = [
   "pricing-models/interchange-plus-plus",
-  "pricing-models/blended-vs-interchange",
+  "pricing-models/interchange-plus-vs-blended-pricing",
   "hidden-payment-processor-fees",
   "marketplace-payments-guide",
 ];

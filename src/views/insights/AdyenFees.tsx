@@ -223,7 +223,7 @@ const AdyenFees = () => {
         </h2>
         <p className="mb-4">
           Adyen pricing becomes more attractive as volume increases. For lower volumes, the cost difference between Adyen and modern PSPs is often negligible or even higher. As volume scales, interchange plus pricing combined with local acquiring can become materially cheaper than{" "}
-          <Link href="/insights/pricing-models/blended-vs-interchange" className="text-primary hover:underline">blended pricing</Link>.
+          <Link href="/insights/pricing-models/interchange-plus-vs-blended-pricing" className="text-primary hover:underline">blended pricing</Link>.
         </p>
         <p className="mb-4">This is why Adyen is typically a better fit for:</p>
         <ul className="list-disc pl-6 space-y-2 mb-4">

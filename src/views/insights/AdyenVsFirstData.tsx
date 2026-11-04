@@ -179,7 +179,7 @@ const AdyenVsFirstData = () => {
       </p>
 
       <p className="mb-8">
-        This makes benchmarking essential. It also makes negotiation unavoidable. If you want to understand how pricing models affect your business, see our guide on <Link href="/insights/pricing-models/blended-vs-interchange" className="text-primary hover:underline">blended vs interchange pricing</Link>.
+        This makes benchmarking essential. It also makes negotiation unavoidable. If you want to understand how pricing models affect your business, see our guide on <Link href="/insights/pricing-models/interchange-plus-vs-blended-pricing" className="text-primary hover:underline">blended vs interchange pricing</Link>.
       </p>
 
       <h2 className="text-2xl font-semibold mt-10 mb-4">Which businesses usually fit Adyen best</h2>

@@ -26,7 +26,7 @@ const clusters = [
     heading: "Fees Higher Than Expected",
     articles: [
       { title: "The Hidden Fee Crisis: How Your 'Low Rate' Is Costing You Thousands", slug: "crisis/hidden-fee-crisis" },
-      { title: "Blended vs Interchange++: Choosing Your Pricing Strategy", slug: "pricing-models/blended-vs-interchange" },
+      { title: "Interchange Plus vs. Blended Pricing: Which Saves You More?", slug: "pricing-models/interchange-plus-vs-blended-pricing" },
       { title: "Interchange++ Pricing Explained", slug: "pricing-models/interchange-plus-plus" },
     ],
   },

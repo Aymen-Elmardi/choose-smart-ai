@@ -207,11 +207,11 @@ export const allInsights: Insight[] = [
     isSubfolder: true
   },
   {
-    title: "Blended vs Interchange++: The Expert's Guide to Choosing Your Pricing Strategy",
-    slug: "pricing-models/blended-vs-interchange",
-    description: "Discover the strategic trade off between blended pricing and Interchange++. Learn which model fits your business and why the wrong choice costs more than a higher rate.",
+    title: "Interchange Plus vs. Blended Pricing: Which Saves You More?",
+    slug: "pricing-models/interchange-plus-vs-blended-pricing",
+    description: "Compare interchange plus and blended credit card processing pricing with real 2026 rate data. See which model cuts costs for your business and when to switch.",
     category: "pricing",
-    readTime: "9 min read",
+    readTime: "8 min read",
     isSubfolder: true
   },
   // Crisis Intervention articles

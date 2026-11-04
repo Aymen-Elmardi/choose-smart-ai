@@ -728,7 +728,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/insights/pricing-models/blended-vs-interchange`,
+      url: `${BASE_URL}/insights/pricing-models/interchange-plus-vs-blended-pricing`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,

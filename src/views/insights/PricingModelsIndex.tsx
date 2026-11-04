@@ -12,9 +12,9 @@ const pricingArticles = [
     icon: Calculator,
   },
   {
-    title: "Blended vs Interchange++: Expert Pricing Guide",
-    description: "Discover the strategic trade off between blended pricing and Interchange++. Learn which model fits your business based on volume, risk, and growth stage.",
-    slug: "/insights/pricing-models/blended-vs-interchange",
+    title: "Interchange Plus vs. Blended Pricing",
+    description: "Real 2026 rate data and a side-by-side cost example. See which pricing model cuts costs for your business, and when underwriting decides for you.",
+    slug: "/insights/pricing-models/interchange-plus-vs-blended-pricing",
     icon: BarChart3,
   },
 ];
