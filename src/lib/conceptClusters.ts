@@ -75,8 +75,8 @@ export const conceptArticles: ConceptArticle[] = [
   // === APPROVAL CLUSTER ===
   // Articles about getting approved, underwriting, rejection, growing businesses
   {
-    slug: "crisis/rejected-high-risk-strategy",
-    title: "Rejected by Stripe or Square? Strategic Recovery Plan",
+    slug: "crisis/rejected-by-stripe-or-square-high-risk-merchant-account",
+    title: "Rejected by Stripe or Square? High-Risk Account Guide",
     shortTitle: "Rejected Merchant Recovery",
     concepts: ["approval", "provider-behaviour"],
     keywords: ["rejected", "declined", "high risk", "approval", "denied"]

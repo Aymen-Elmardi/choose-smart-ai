@@ -703,7 +703,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/insights/crisis/rejected-high-risk-strategy`,
+      url: `${BASE_URL}/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,

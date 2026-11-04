@@ -225,12 +225,12 @@ export const allInsights: Insight[] = [
     isSubfolder: true
   },
   {
-    title: "Rejected by Stripe or Square? A Strategic Recovery Plan for High-Risk Merchants",
-    slug: "crisis/rejected-high-risk-strategy",
+    title: "Rejected by Stripe or Square? High-Risk Account Guide",
+    slug: "crisis/rejected-by-stripe-or-square-high-risk-merchant-account",
     global: true,
-    description: "Rejected by a major payment provider? Learn why the 'high-risk' label is not a judgment and how to find a provider that actually wants your business.",
+    description: "Stripe or Square rejected your business? Learn why, what high-risk means, and how to get approved with a high-risk merchant account provider.",
     category: "crisis",
-    readTime: "7 min read",
+    readTime: "8 min read",
     isSubfolder: true
   },
   {

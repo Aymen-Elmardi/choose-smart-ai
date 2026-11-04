@@ -141,12 +141,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://chosepayments.com/insights/crisis/rejected-high-risk-strategy</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
   <!-- Priority 0.8 — Pricing Pages -->
   <url>

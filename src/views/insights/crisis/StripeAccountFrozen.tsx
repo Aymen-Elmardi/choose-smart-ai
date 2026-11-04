@@ -270,7 +270,7 @@ const StripeAccountFrozen = () => {
         </p>
         
         <p className="mt-4">
-          If you've been rejected elsewhere, read our guide on <Link href="/insights/crisis/rejected-high-risk-strategy" className="text-primary hover:underline">finding a risk-aligned provider after rejection</Link>.
+          If you've been rejected elsewhere, read our guide on <Link href="/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account" className="text-primary hover:underline">finding a risk-aligned provider after rejection</Link>.
         </p>
 
         {/* INSERT 4 */}

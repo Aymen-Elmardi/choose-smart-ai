@@ -18,9 +18,9 @@ const crisisArticles = [
     icon: DollarSign,
   },
   {
-    title: "Rejected by Stripe or Square? Recovery Plan",
-    description: "Rejected by a major payment provider? Learn why the high risk label is not a judgment and how to find a provider that actually wants your business.",
-    slug: "/insights/crisis/rejected-high-risk-strategy",
+    title: "Rejected by Stripe or Square? High-Risk Account Guide",
+    description: "Why Stripe and Square reject businesses, what the MATCH list means, and how to get approved with a high-risk merchant account provider.",
+    slug: "/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account",
     icon: AlertTriangle,
   },
 ];

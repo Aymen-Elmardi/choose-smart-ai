@@ -2,6 +2,20 @@
 
 ## New articles
 
+### rejected-by-stripe-or-square-high-risk-merchant-account (prepared 2026-11-04, not yet merged)
+
+DEPLOY new-article-rejected-by-stripe-or-square | merged: pending | commit: pending (fill in after push)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account
+Redirects added (301):
+https://chosepayments.com/insights/crisis/rejected-high-risk-strategy -> https://chosepayments.com/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account
+What changed:
+- /insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account: new article (owner brief), Article + FAQPage + Breadcrumb JSON-LD, four images, in the sitemap. It replaces the old rejected-high-risk-strategy page (owner's choice, 2026-11-04). The old page's source stays; worker.js does the 301.
+- Every internal link to the old page (/insights/crisis, high-risk e-commerce, provider risk models and Stripe frozen articles, related-article lists) now points to the new URL. The old URL is out of both sitemaps.
+- Added one "Book a free 15-minute call" line at the end, since the meta description promises it. The brief's "Content powered by SearchFit.ai" footer is not on the page.
+Published date: 2026-11-04 (go-live). Update PUBLISHED in src/views/insights/crisis/RejectedByStripeOrSquare.tsx if it merges later.
+Watch for 14 days: the new URL replacing the old one in Search Console for "rejected by stripe or square" queries.
+
 ### interchange-plus-vs-blended-pricing (prepared and merged 2026-11-04)
 
 DEPLOY new-article-interchange-plus-vs-blended | 2026-11-04 | commit a0cbb29

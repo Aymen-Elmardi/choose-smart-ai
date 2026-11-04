@@ -591,7 +591,7 @@ const HighRiskEcommercePaymentProcessing = () => {
         </ol>
         <p>
           If you were declined,{" "}
-          <Link href="/insights/crisis/rejected-high-risk-strategy" className={link}>this rejection recovery guide</Link>{" "}
+          <Link href="/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account" className={link}>this rejection recovery guide</Link>{" "}
           covers what to fix before reapplying.
         </p>
 

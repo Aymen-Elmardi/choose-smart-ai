@@ -29,6 +29,8 @@ const MERGED_PAGES = {
   '/insights/why-providers-impose-reserves': '/insights/rolling-vs-fixed-reserve',
   // 2026-11-04: replaced by the new interchange plus vs. blended article
   '/insights/pricing-models/blended-vs-interchange': '/insights/pricing-models/interchange-plus-vs-blended-pricing',
+  // 2026-11-04: replaced by the new rejected-by-Stripe-or-Square article
+  '/insights/crisis/rejected-high-risk-strategy': '/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account',
 }
 
 export default {

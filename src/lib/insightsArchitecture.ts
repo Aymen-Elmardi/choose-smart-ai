@@ -50,8 +50,8 @@ export const pricingArticles: ArticleMetadata[] = [
 // Crisis Intervention articles (high-intent, urgent problem solving)
 export const crisisArticles: ArticleMetadata[] = [
   {
-    slug: "rejected-high-risk-strategy",
-    title: "Rejected by Stripe or Square? A Strategic Recovery Plan for High-Risk Merchants",
+    slug: "rejected-by-stripe-or-square-high-risk-merchant-account",
+    title: "Rejected by Stripe or Square? High-Risk Account Guide",
     cluster: "crisis",
     category: "Crisis Intervention",
     keywords: ["rejected", "declined", "high-risk", "stripe", "square", "approval"]

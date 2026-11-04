@@ -307,7 +307,7 @@ const PaymentProviderRiskModels = () => {
       <ul className="list-disc pl-6 space-y-2 mb-8">
         <li>
           A business{" "}
-          <Link href="/insights/crisis/rejected-high-risk-strategy" className="text-primary hover:underline">
+          <Link href="/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account" className="text-primary hover:underline">
             rejected by one provider
           </Link>{" "}
           may be approved by another
