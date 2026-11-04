@@ -2,9 +2,9 @@
 
 ## New articles
 
-### interchange-plus-vs-blended-pricing (prepared 2026-11-04, not yet merged)
+### interchange-plus-vs-blended-pricing (prepared and merged 2026-11-04)
 
-DEPLOY new-article-interchange-plus-vs-blended | merged: pending | commit: pending (fill in after push)
+DEPLOY new-article-interchange-plus-vs-blended | 2026-11-04 | commit a0cbb29
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/pricing-models/interchange-plus-vs-blended-pricing
 Redirects added (301):
