@@ -2,9 +2,9 @@
 
 ## New articles
 
-### rejected-by-stripe-or-square-high-risk-merchant-account (prepared 2026-11-04, not yet merged)
+### rejected-by-stripe-or-square-high-risk-merchant-account (prepared and merged 2026-11-04)
 
-DEPLOY new-article-rejected-by-stripe-or-square | merged: pending | commit: pending (fill in after push)
+DEPLOY new-article-rejected-by-stripe-or-square | 2026-11-04 | commit 7198eaa
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account
 Redirects added (301):
