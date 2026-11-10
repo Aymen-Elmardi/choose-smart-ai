@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Quiz from '@/views/Quiz'
 
 export const metadata: Metadata = {
-  title: 'Find Your Payment Processor: 5-Question Match',
-  description: 'Answer 5 quick questions about your business and get matched with the US payment processors that fit you. Free, and takes about 30 seconds.',
+  title: 'Which Payment Providers Will Accept Your Business?',
+  description: 'Answer five questions and get matched with payment providers suited to your business model, processing volume and requirements. Free, and about 30 seconds.',
   alternates: { canonical: '/assessment' },
   openGraph: {
     url: 'https://chosepayments.com/assessment',
