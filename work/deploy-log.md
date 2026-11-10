@@ -76,9 +76,17 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Homepage
 
-### Footer, statement review text (prepared 2026-11-01)
+### Assessment first-page text (prepared 2026-11-10)
 
-DEPLOY footer-statement-review | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY assessment-intro-copy | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/assessment
+What changed:
+- /assessment: first-page headline "Find out which payment providers will actually accept your business." and intro "Answer five questions and get matched with providers suited to your business model, processing volume and requirements." Title tag, meta description, questions, logic and tracking unchanged.
+
+### Footer, statement review text (prepared and merged 2026-11-01)
+
+DEPLOY footer-statement-review | 2026-11-01 | commit b10af7d
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/statement-review
 What changed:

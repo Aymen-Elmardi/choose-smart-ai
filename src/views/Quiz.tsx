@@ -371,10 +371,10 @@ const Quiz = () => {
             {currentStep === 1 && (
               <div className="text-center mb-10">
                 <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-3 leading-[1.35]">
-                  Find the right payment processor in 5 questions
+                  Find out which payment providers will actually accept your business.
                 </h1>
                 <p className="text-muted-foreground max-w-md mx-auto text-base">
-                  Tell us how you sell and what&apos;s going wrong. We&apos;ll show you which processors fit. About 30 seconds.
+                  Answer five questions and get matched with providers suited to your business model, processing volume and requirements.
                 </p>
               </div>
             )}
