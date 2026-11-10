@@ -76,9 +76,17 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Homepage
 
-### Assessment first-page text (prepared 2026-11-10)
+### Assessment title tag and meta description (prepared 2026-11-10)
 
-DEPLOY assessment-intro-copy | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY assessment-meta | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/assessment
+What changed:
+- /assessment: title tag "Which Payment Providers Will Accept Your Business? | ChosePayments" and a meta description matching the new first-page intro. Open Graph text unchanged.
+
+### Assessment first-page text (prepared and merged 2026-11-10)
+
+DEPLOY assessment-intro-copy | 2026-11-10 | commit c0dceaf
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/assessment
 What changed:
