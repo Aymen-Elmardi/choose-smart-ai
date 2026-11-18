@@ -76,9 +76,17 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Homepage
 
-### Assessment title tag and meta description (prepared 2026-11-10)
+### Chargebacks article: restrict risky payment methods (prepared 2026-11-18)
 
-DEPLOY assessment-meta | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY chargebacks-woocommerce-link | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them
+What changed:
+- "How to Reduce Chargebacks": new item "Restrict risky payment methods at checkout." after "Reduce fraud at checkout", with an outside link to Conditional Payments for WooCommerce (thedotstore.com), opening in a new tab.
+
+### Assessment title tag and meta description (prepared and merged 2026-11-10)
+
+DEPLOY assessment-meta | 2026-11-10 | commit 2db81c0
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/assessment
 What changed:

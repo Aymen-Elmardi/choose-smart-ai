@@ -159,6 +159,10 @@ const Chargebacks = () => {
         </p>
 
         <p>
+          <strong className="text-foreground">Restrict risky payment methods at checkout.</strong> For WooCommerce stores, cash-on-delivery abuse and inconsistent high-risk orders are a common source of disputes. A plugin like <a href="https://www.thedotstore.com/conditional-payments-for-woocommerce/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Conditional Payments for WooCommerce</a> lets you hide COD above a set order value, restrict gateways by location or customer, and add rules that stop risky orders from ever reaching checkout.
+        </p>
+
+        <p>
           <strong className="text-foreground">Keep proof, even if you never need it.</strong> Order confirmations, delivery confirmations, customer messages, and terms agreed at checkout all count as evidence if a dispute happens. Even if you never plan to formally contest a chargeback, this documentation protects you if your provider reviews the account.
         </p>
 
