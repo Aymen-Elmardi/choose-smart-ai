@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { AlertTriangle, DollarSign, ShieldAlert } from "lucide-react";
+import { AlertTriangle, Clock, DollarSign, ShieldAlert } from "lucide-react";
 
 const crisisArticles = [
   {
@@ -22,6 +22,12 @@ const crisisArticles = [
     description: "Why Stripe and Square reject businesses, what the MATCH list means, and how to get approved with a high-risk merchant account provider.",
     slug: "/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account",
     icon: AlertTriangle,
+  },
+  {
+    title: "Funds on Hold: Holds, Freezes and Rolling Reserves",
+    description: "Payment processor holding your funds? Learn the difference between a hold, freeze, and rolling reserve, how long each lasts, and how to get paid faster.",
+    slug: "/insights/crisis/funds-on-hold-rolling-reserve-payment-processor",
+    icon: Clock,
   },
 ];
 

@@ -69,6 +69,13 @@ export const crisisArticles: ArticleMetadata[] = [
     cluster: "crisis",
     category: "Crisis Intervention",
     keywords: ["hidden fees", "interchange", "rolling reserve", "fees", "pricing", "effective rate"]
+  },
+  {
+    slug: "funds-on-hold-rolling-reserve-payment-processor",
+    title: "Funds on hold: what it means and how rolling reserves work",
+    cluster: "crisis",
+    category: "Crisis Intervention",
+    keywords: ["funds on hold", "funds held", "rolling reserve", "freeze", "payout", "reserve"]
   }
 ];
 

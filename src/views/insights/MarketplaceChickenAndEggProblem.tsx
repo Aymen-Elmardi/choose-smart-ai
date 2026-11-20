@@ -257,7 +257,7 @@ const MarketplaceChickenAndEggProblem = () => {
           <li>If the split between what the buyer paid</li>
           <li>And what they actually receive isn&apos;t clear</li>
           <li>
-            Or if a <Link href="/insights/what-to-do-when-funds-held" className="text-primary hover:underline">dispute freezes their funds</Link> with no explanation
+            Or if a <Link href="/insights/crisis/funds-on-hold-rolling-reserve-payment-processor" className="text-primary hover:underline">dispute freezes their funds</Link> with no explanation
           </li>
         </ul>
 

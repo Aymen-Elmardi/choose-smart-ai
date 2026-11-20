@@ -33,6 +33,8 @@ const MERGED_PAGES = {
   '/insights/crisis/rejected-high-risk-strategy': '/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account',
   // 2026-11-20: replaced by the new effective rate article
   '/insights/crisis/hidden-fee-crisis': '/insights/crisis/effective-rate-hidden-fees-credit-card-processing',
+  // 2026-11-20: replaced by the new funds on hold article
+  '/insights/what-to-do-when-funds-held': '/insights/crisis/funds-on-hold-rolling-reserve-payment-processor',
 }
 
 export default {
