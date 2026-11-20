@@ -463,7 +463,7 @@ const StripeVsCheckoutCom = () => {
             Get your free processor match
           </Link>
           <p style={{ color: "#67737E", fontSize: "0.95rem", lineHeight: 1.65, margin: "1.25rem 0 0 0" }}>
-            Answer a few questions about your business and see how you stack up against 21 providers, including both of these, in about a minute, with no sales call required.
+            Answer a few questions about your business and see how you stack up against 21 providers, including both of these, in about 30 seconds, with no sales call required.
           </p>
         </section>
       </div>
