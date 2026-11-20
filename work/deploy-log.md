@@ -92,9 +92,17 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Homepage
 
-### Interchange++ blended pricing example in US pricing (prepared 2026-11-20)
+### Interchange++ worked example in dollars (prepared 2026-11-20)
 
-DEPLOY ipp-us-example | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY ipp-worked-example-usd | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/pricing-models/interchange-plus-plus
+What changed:
+- "The Math of Transparency" box: "0.30% + £0.05" and "0.60% + £0.05" now use $0.05. Percentages unchanged (0.30% is the UK credit cap; US credit interchange is higher). UK and EEA sections unchanged.
+
+### Interchange++ blended pricing example in US pricing (prepared and merged 2026-11-20)
+
+DEPLOY ipp-us-example | 2026-11-20 | commit a648507
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/pricing-models/interchange-plus-plus
 What changed:
