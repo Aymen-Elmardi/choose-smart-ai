@@ -199,7 +199,7 @@ const MarketplacePaymentsGuide = () => {
         </p>
 
         <p className="italic">
-          If you&apos;d like a second pair of eyes on your current setup before it becomes a problem, our <Link href="/assessment" className="text-primary hover:underline not-italic">free risk assessment</Link> takes about a minute and tells you where the mismatch is, if there is one.
+          If you&apos;d like a second pair of eyes on your current setup before it becomes a problem, our <Link href="/assessment" className="text-primary hover:underline not-italic">free risk assessment</Link> takes about 30 seconds and tells you where the mismatch is, if there is one.
         </p>
 
         <h2 id="compliance" className="text-2xl font-bold text-foreground mt-10 mb-4 scroll-mt-24">

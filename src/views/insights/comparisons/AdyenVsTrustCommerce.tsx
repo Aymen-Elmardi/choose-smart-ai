@@ -395,7 +395,7 @@ const AdyenVsTrustCommerce = () => {
             Write to Us
           </Link>
           <p style={{ color: "#67737E", fontSize: "0.95rem", lineHeight: 1.65, margin: "1.25rem 0 0 0" }}>
-            We will stack your business up against 21 providers, including both of these, based on your actual industry and volume, in about a minute, no sales call required.
+            We will stack your business up against 21 providers, including both of these, based on your actual industry and volume, in about 30 seconds, no sales call required.
           </p>
         </section>
       </div>

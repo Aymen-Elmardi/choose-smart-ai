@@ -76,9 +76,20 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Homepage
 
-### Chargebacks article: restrict risky payment methods (prepared 2026-11-18)
+### Assessment time "about 30 seconds" in four articles (prepared 2026-11-20)
 
-DEPLOY chargebacks-woocommerce-link | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY assessment-time-articles | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/marketplace-payments-guide
+https://chosepayments.com/insights/stripe-vs-adyen
+https://chosepayments.com/insights/comparisons/stripe-vs-checkout-com
+https://chosepayments.com/insights/comparisons/adyen-vs-trustcommerce
+What changed:
+- The free assessment is described as taking "about 30 seconds" instead of "about a minute", matching the assessment page.
+
+### Chargebacks article: restrict risky payment methods (prepared and merged 2026-11-18)
+
+DEPLOY chargebacks-woocommerce-link | 2026-11-18 | commit b201812
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them
 What changed:
