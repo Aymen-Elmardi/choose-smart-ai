@@ -364,10 +364,10 @@ const FiservPaymentsPlatform = () => {
           </li>
           <li>
             <Link 
-              href="/insights/crisis/hidden-fee-crisis" 
+              href="/insights/crisis/effective-rate-hidden-fees-credit-card-processing" 
               className="text-primary hover:underline"
             >
-              The Hidden Fee Crisis: How Your 'Low Rate' Processor is Costing You Thousands
+              Effective rate explained: hidden credit card processing fees
             </Link>
           </li>
           <li>
