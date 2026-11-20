@@ -2,6 +2,22 @@
 
 ## New articles
 
+### funds-on-hold-rolling-reserve-payment-processor (prepared 2026-11-20)
+
+DEPLOY new-article-funds-on-hold | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/crisis/funds-on-hold-rolling-reserve-payment-processor
+https://chosepayments.com/insights/crisis
+https://chosepayments.com/faq
+https://chosepayments.com/insights/marketplace-chicken-and-egg-problem
+Redirects added (301):
+https://chosepayments.com/insights/what-to-do-when-funds-held -> https://chosepayments.com/insights/crisis/funds-on-hold-rolling-reserve-payment-processor
+What changed:
+- /insights/crisis/funds-on-hold-rolling-reserve-payment-processor: new article (owner brief, rewrite of the funds held article), Article + FAQPage + Breadcrumb JSON-LD, four images, Stripe reserves page as a source, in the sitemap. The old page's source stays; worker.js does the 301.
+- /insights/crisis lists the new article; the /faq "read more" link and the marketplace chicken-and-egg article link point to the new URL; insightsArticles, the crisis cluster list and app/sitemap.ts updated. The old URL is out of both sitemaps. The "Content powered by SearchFit.ai" footer is not on the page.
+Published date: 2026-11-20 (go-live). Update PUBLISHED in src/views/insights/crisis/FundsOnHold.tsx if it merges later.
+Watch for 14 days: the new URL replacing the old one in Search Console for "funds on hold" and "rolling reserve" queries.
+
 ### effective-rate-hidden-fees-credit-card-processing (prepared and merged 2026-11-20)
 
 DEPLOY new-article-effective-rate | 2026-11-20 | commit a4c59a6
@@ -92,9 +108,9 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Homepage
 
-### Interchange++ worked example in dollars (prepared 2026-11-20)
+### Interchange++ worked example in dollars (prepared and merged 2026-11-20)
 
-DEPLOY ipp-worked-example-usd | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY ipp-worked-example-usd | 2026-11-20 | commit 1d49aca
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/pricing-models/interchange-plus-plus
 What changed:

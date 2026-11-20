@@ -87,7 +87,7 @@ const paymentFAQs: FAQItem[] = [
       "If your provider is holding funds, it usually means a compliance or risk review has been triggered. The most important steps are to respond promptly to any documentation requests, maintain clear records of your transactions, and understand what specifically triggered the hold.",
     excerpt:
       "When a payment provider holds funds, the merchant's first instinct is often to panic or escalate aggressively. In most cases the most effective approach is to respond calmly and promptly with the documentation requested, while understanding the specific compliance or risk concern that triggered the hold.",
-    readMoreLink: "/insights/what-to-do-when-funds-held",
+    readMoreLink: "/insights/crisis/funds-on-hold-rolling-reserve-payment-processor",
     readMoreLabel: "What to do when your funds are held",
   },
 ];

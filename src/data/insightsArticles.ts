@@ -242,12 +242,13 @@ export const allInsights: Insight[] = [
     isSubfolder: true
   },
   {
-    title: "What to Do When Your Payment Provider Holds Your Funds",
-    slug: "what-to-do-when-funds-held",
+    title: "Funds on hold: what it means and how rolling reserves work",
+    slug: "crisis/funds-on-hold-rolling-reserve-payment-processor",
     global: true,
-    description: "Funds being held by your payment provider? Learn why holds happen, the difference between a hold and a freeze, and the steps to take to get your money released.",
+    description: "Payment processor holding your funds? Learn the difference between a hold, freeze, and rolling reserve, how long each lasts, and how to get paid faster.",
     category: "crisis",
-    readTime: "7 min read"
+    readTime: "8 min read",
+    isSubfolder: true
   },
   // Compliance articles
   {
