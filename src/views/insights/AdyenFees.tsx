@@ -187,7 +187,7 @@ const AdyenFees = () => {
         </ul>
         <p>
           These are not hidden fees, but they are not always obvious during early sales conversations. For a broader look at how costs stack up, see our guide on the{" "}
-          <Link href="/insights/crisis/hidden-fee-crisis" className="text-primary hover:underline">hidden fee crisis</Link> that affects many merchants.
+          <Link href="/insights/crisis/effective-rate-hidden-fees-credit-card-processing" className="text-primary hover:underline">hidden fee crisis</Link> that affects many merchants.
         </p>
       </section>
 

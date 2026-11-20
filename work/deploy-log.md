@@ -2,9 +2,9 @@
 
 ## New articles
 
-### effective-rate-hidden-fees-credit-card-processing (prepared 2026-11-20)
+### effective-rate-hidden-fees-credit-card-processing (prepared and merged 2026-11-20)
 
-DEPLOY new-article-effective-rate | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY new-article-effective-rate | 2026-11-20 | commit a4c59a6
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/crisis/effective-rate-hidden-fees-credit-card-processing
 https://chosepayments.com/insights/crisis
@@ -14,7 +14,7 @@ What changed:
 - /insights/crisis/effective-rate-hidden-fees-credit-card-processing: new article (owner brief, rewrite of the hidden fee crisis article), Article + FAQPage + Breadcrumb JSON-LD, four images, in the sitemap. The old page's source stays; worker.js does the 301.
 - /insights/crisis and /merchant-account-problems lists, related-article data and app/sitemap.ts point to the new URL. The old URL is out of both sitemaps.
 - The brief's "Real example" heading said 2.6%; its table, both images and the $3,600 figure use 2.70%, so the heading reads 2.7%. The "Content powered by SearchFit.ai" footer is not on the page.
-- Not in this deploy (5-page limit; the 301 covers them meanwhile): body links to the old URL in fiserv-payments-platform, adyen-pricing-explained, pricing-models/interchange-plus-plus and crisis/stripe-account-frozen.
+- Not in this deploy (5-page limit; the 301 covers them meanwhile): body links to the old URL in fiserv-payments-platform, adyen-pricing-explained, pricing-models/interchange-plus-plus and crisis/stripe-account-frozen. Done in hidden-fee-links.
 Published date: 2026-11-20 (go-live). Update PUBLISHED in src/views/insights/crisis/EffectiveRateHiddenFees.tsx if it merges later.
 Watch for 14 days: the new URL replacing the old one in Search Console for "effective rate" and "hidden fees" queries.
 
@@ -91,6 +91,19 @@ Published date set to the go-live date, 2026-10-28.
 Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-business -> this URL) after GO M3.
 
 ## Homepage
+
+### Links to the old hidden fee crisis page (prepared 2026-11-20)
+
+DEPLOY hidden-fee-links | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/adyen-pricing-explained
+https://chosepayments.com/insights/fiserv-payments-platform
+https://chosepayments.com/insights/pricing-models/interchange-plus-plus
+https://chosepayments.com/insights/crisis/stripe-account-frozen
+What changed:
+- adyen-pricing-explained and fiserv-payments-platform: links to /insights/crisis/hidden-fee-crisis now go to /insights/crisis/effective-rate-hidden-fees-credit-card-processing (Fiserv's link text is the new article title).
+- interchange-plus-plus: the "Blended Pricing" link now goes to /insights/pricing-models/interchange-plus-vs-blended-pricing.
+- stripe-account-frozen: the "rolling reserve" link now goes to /insights/rolling-vs-fixed-reserve.
 
 ### Assessment time "about 30 seconds" in four articles (prepared and merged 2026-11-20)
 
