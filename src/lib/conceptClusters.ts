@@ -65,8 +65,8 @@ export const conceptArticles: ConceptArticle[] = [
     keywords: ["appetite", "underwriting", "rejected", "declined", "MATCH", "high-risk", "merchant account declined", "provider approval"]
   },
   {
-    slug: "crisis/hidden-fee-crisis",
-    title: "The Hidden Fee Crisis: How Low Rate Processors Cost You Thousands",
+    slug: "crisis/effective-rate-hidden-fees-credit-card-processing",
+    title: "Effective rate explained: hidden credit card processing fees",
     shortTitle: "Hidden Fee Crisis",
     concepts: ["risk"],
     keywords: ["hidden fees", "effective rate", "hidden charges", "real cost"]

@@ -20,7 +20,7 @@ const boxes = [
     icon: Receipt,
     title: "Fees and Effective Rate",
     description: "Why your 1.4% became 2.3%. Scheme fees, assessment fees, and interchange variations add up in ways your headline rate does not show.",
-    link: "/insights/crisis/hidden-fee-crisis",
+    link: "/insights/crisis/effective-rate-hidden-fees-credit-card-processing",
   },
 ];
 

@@ -12,9 +12,9 @@ const crisisArticles = [
     icon: ShieldAlert,
   },
   {
-    title: "Hidden Fee Crisis: How Your Low Rate Costs Thousands",
-    description: "Your headline rate is not your real cost. Learn how to calculate your Effective Rate and uncover the 5 hidden fees draining your profits.",
-    slug: "/insights/crisis/hidden-fee-crisis",
+    title: "Effective Rate Explained: Hidden Processing Fees",
+    description: "Your headline rate is not your real cost. Learn how to calculate your effective rate, the 5 fees processors hide, and how to cut your true cost.",
+    slug: "/insights/crisis/effective-rate-hidden-fees-credit-card-processing",
     icon: DollarSign,
   },
   {

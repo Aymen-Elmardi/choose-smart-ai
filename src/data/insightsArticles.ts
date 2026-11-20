@@ -234,11 +234,11 @@ export const allInsights: Insight[] = [
     isSubfolder: true
   },
   {
-    title: "The Hidden Fee Crisis: How Your 'Low Rate' Processor is Costing You Thousands",
-    slug: "crisis/hidden-fee-crisis",
-    description: "Your headline rate isn't your real cost. Learn how to calculate your Effective Rate and uncover the 5 hidden fees quietly draining your profits.",
+    title: "Effective rate explained: hidden credit card processing fees",
+    slug: "crisis/effective-rate-hidden-fees-credit-card-processing",
+    description: "Your headline rate isn't your real cost. Learn how to calculate your effective rate, the 5 fees processors hide, and how to cut your true cost.",
     category: "crisis",
-    readTime: "6 min read",
+    readTime: "8 min read",
     isSubfolder: true
   },
   {

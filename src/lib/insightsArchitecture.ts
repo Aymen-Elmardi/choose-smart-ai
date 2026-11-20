@@ -64,8 +64,8 @@ export const crisisArticles: ArticleMetadata[] = [
     keywords: ["frozen", "funds held", "stripe", "reserve", "emergency", "freeze"]
   },
   {
-    slug: "hidden-fee-crisis",
-    title: "The Hidden Fee Crisis: How Your 'Low Rate' Payment Processor is Costing You Thousands",
+    slug: "effective-rate-hidden-fees-credit-card-processing",
+    title: "Effective rate explained: hidden credit card processing fees",
     cluster: "crisis",
     category: "Crisis Intervention",
     keywords: ["hidden fees", "interchange", "rolling reserve", "fees", "pricing", "effective rate"]

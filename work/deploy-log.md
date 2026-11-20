@@ -2,6 +2,22 @@
 
 ## New articles
 
+### effective-rate-hidden-fees-credit-card-processing (prepared 2026-11-20)
+
+DEPLOY new-article-effective-rate | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/crisis/effective-rate-hidden-fees-credit-card-processing
+https://chosepayments.com/insights/crisis
+Redirects added (301):
+https://chosepayments.com/insights/crisis/hidden-fee-crisis -> https://chosepayments.com/insights/crisis/effective-rate-hidden-fees-credit-card-processing
+What changed:
+- /insights/crisis/effective-rate-hidden-fees-credit-card-processing: new article (owner brief, rewrite of the hidden fee crisis article), Article + FAQPage + Breadcrumb JSON-LD, four images, in the sitemap. The old page's source stays; worker.js does the 301.
+- /insights/crisis and /merchant-account-problems lists, related-article data and app/sitemap.ts point to the new URL. The old URL is out of both sitemaps.
+- The brief's "Real example" heading said 2.6%; its table, both images and the $3,600 figure use 2.70%, so the heading reads 2.7%. The "Content powered by SearchFit.ai" footer is not on the page.
+- Not in this deploy (5-page limit; the 301 covers them meanwhile): body links to the old URL in fiserv-payments-platform, adyen-pricing-explained, pricing-models/interchange-plus-plus and crisis/stripe-account-frozen.
+Published date: 2026-11-20 (go-live). Update PUBLISHED in src/views/insights/crisis/EffectiveRateHiddenFees.tsx if it merges later.
+Watch for 14 days: the new URL replacing the old one in Search Console for "effective rate" and "hidden fees" queries.
+
 ### rejected-by-stripe-or-square-high-risk-merchant-account (prepared and merged 2026-11-04)
 
 DEPLOY new-article-rejected-by-stripe-or-square | 2026-11-04 | commit 7198eaa
@@ -76,9 +92,9 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Homepage
 
-### Assessment time "about 30 seconds" in four articles (prepared 2026-11-20)
+### Assessment time "about 30 seconds" in four articles (prepared and merged 2026-11-20)
 
-DEPLOY assessment-time-articles | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY assessment-time-articles | 2026-11-20 | commit ed20c44
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/marketplace-payments-guide
 https://chosepayments.com/insights/stripe-vs-adyen
