@@ -124,11 +124,11 @@ const InterchangePlusPlus = () => {
       <div className="bg-muted/50 border border-border rounded-lg p-6 my-8">
         <h3 className="text-lg font-semibold text-foreground mb-4">The Math of Transparency:</h3>
         <ul className="space-y-2 text-foreground">
-          <li>• <strong>Interchange:</strong> 0.30% + £0.05</li>
+          <li>• <strong>Interchange:</strong> 0.30% + $0.05</li>
           <li>• <strong>Scheme Fees:</strong> 0.10%</li>
           <li>• <strong>Provider Margin:</strong> 0.20%</li>
           <li className="pt-2 border-t border-border mt-2">
-            • <strong>Total Cost:</strong> 0.60% + £0.05
+            • <strong>Total Cost:</strong> 0.60% + $0.05
           </li>
         </ul>
       </div>
