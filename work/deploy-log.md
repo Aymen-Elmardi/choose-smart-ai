@@ -92,9 +92,17 @@ Follow-up once it is live and indexed: merge M3 (/best-payment-provider-small-bu
 
 ## Homepage
 
-### Links to the old hidden fee crisis page (prepared 2026-11-20)
+### Interchange++ blended pricing example in US pricing (prepared 2026-11-20)
 
-DEPLOY hidden-fee-links | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY ipp-us-example | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/pricing-models/interchange-plus-plus
+What changed:
+- The blended pricing example "(e.g., 1.75% + 20p)" now reads "(e.g., 2.9% + 30 cents)". The rest of the article (worked example in £, UK and EEA rate tables, FAQ) is still UK-focused and unchanged.
+
+### Links to the old hidden fee crisis page (prepared and merged 2026-11-20)
+
+DEPLOY hidden-fee-links | 2026-11-20 | commit 414f1b2
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/adyen-pricing-explained
 https://chosepayments.com/insights/fiserv-payments-platform
