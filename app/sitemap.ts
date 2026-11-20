@@ -697,7 +697,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/insights/crisis/hidden-fee-crisis`,
+      url: `${BASE_URL}/insights/crisis/effective-rate-hidden-fees-credit-card-processing`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,

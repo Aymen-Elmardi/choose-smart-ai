@@ -25,7 +25,7 @@ const clusters = [
   {
     heading: "Fees Higher Than Expected",
     articles: [
-      { title: "The Hidden Fee Crisis: How Your 'Low Rate' Is Costing You Thousands", slug: "crisis/hidden-fee-crisis" },
+      { title: "Effective rate explained: hidden credit card processing fees", slug: "crisis/effective-rate-hidden-fees-credit-card-processing" },
       { title: "Interchange Plus vs. Blended Pricing: Which Saves You More?", slug: "pricing-models/interchange-plus-vs-blended-pricing" },
       { title: "Interchange++ Pricing Explained", slug: "pricing-models/interchange-plus-plus" },
     ],

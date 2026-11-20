@@ -31,6 +31,8 @@ const MERGED_PAGES = {
   '/insights/pricing-models/blended-vs-interchange': '/insights/pricing-models/interchange-plus-vs-blended-pricing',
   // 2026-11-04: replaced by the new rejected-by-Stripe-or-Square article
   '/insights/crisis/rejected-high-risk-strategy': '/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account',
+  // 2026-11-20: replaced by the new effective rate article
+  '/insights/crisis/hidden-fee-crisis': '/insights/crisis/effective-rate-hidden-fees-credit-card-processing',
 }
 
 export default {
