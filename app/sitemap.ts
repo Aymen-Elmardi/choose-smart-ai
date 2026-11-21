@@ -600,6 +600,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/insights/what-does-stripe-charge-us-businesses`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/insights/crisis/funds-on-hold-rolling-reserve-payment-processor`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
