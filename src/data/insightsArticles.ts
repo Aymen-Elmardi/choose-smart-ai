@@ -149,6 +149,13 @@ export const categoryLabels: Record<InsightCategory, string> = {
 export const allInsights: Insight[] = [
   // Fees & Costs articles
   {
+    title: "What Does Stripe Charge US Businesses? Every Fee, Explained (2026)",
+    slug: "what-does-stripe-charge-us-businesses",
+    description: "Stripe charges US businesses 2.9% + 30¢ per online card payment. See every other fee, what you really pay by order size, and what users say about Stripe.",
+    category: "fees",
+    readTime: "9 min read"
+  },
+  {
     title: "Stripe Fees Explained Clearly: What UK Businesses Actually Pay",
     slug: "stripe-fees-explained",
     description: "A complete breakdown of Stripe's pricing for UK businesses. Understand card processing fees, Connect costs, payout charges, and hidden fees that affect your real payment costs.",

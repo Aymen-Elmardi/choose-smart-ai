@@ -2,9 +2,22 @@
 
 ## New articles
 
-### funds-on-hold-rolling-reserve-payment-processor (prepared 2026-11-20)
+### what-does-stripe-charge-us-businesses (prepared 2026-11-21)
 
-DEPLOY new-article-funds-on-hold | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY new-article-stripe-fees-us | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/what-does-stripe-charge-us-businesses
+https://chosepayments.com/insights
+What changed:
+- /insights/what-does-stripe-charge-us-businesses: new US article (owner brief), Article + FAQPage + Breadcrumb JSON-LD, six images (WebP made from the supplied PNGs), in the sitemap. The layout's auto assessment CTA box is off on this page (brief: no CTA boxes). "write to us" uses the tracked data-cta link.
+- /insights lists it under Fees & Costs (insightsArticles). Not on the hand-picked /insights/fees hub. /insights/stripe-fees-explained (UK) untouched and not linked.
+- Open: author url left out of the schema (no /authors pages exist); captions left out (no caption style on the site).
+Published date: 2026-11-21 (go-live). Update PUBLISHED in src/views/insights/StripeFeesUS.tsx if it merges later.
+Watch for 14 days: "stripe fees", "stripe pricing", "stripe international fees" queries moving to the new URL.
+
+### funds-on-hold-rolling-reserve-payment-processor (prepared and merged 2026-11-20)
+
+DEPLOY new-article-funds-on-hold | 2026-11-20 | commit f300943
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/crisis/funds-on-hold-rolling-reserve-payment-processor
 https://chosepayments.com/insights/crisis
