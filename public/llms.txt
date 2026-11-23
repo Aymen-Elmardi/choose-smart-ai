@@ -1,0 +1,79 @@
+# ChosePayments
+
+> ChosePayments is an independent payment advisory that helps US businesses find, compare and switch payment processors. It explains how processors price, underwrite and monitor merchants, and matches businesses with providers that are likely to accept them.
+
+Key points about the site:
+
+- The free assessment asks five questions and suggests payment providers suited to a business's model, volume and risk profile.
+- The free statement review gives an indicative read on a business's all-in effective rate.
+- Articles focus on what merchants actually pay, why accounts get frozen or rejected, and how to choose or switch a processor.
+
+## Start here
+
+- [Homepage](https://chosepayments.com/): What ChosePayments does and how the matching works
+- [Payment provider assessment](https://chosepayments.com/assessment): Five questions to find which payment providers will accept your business
+- [Free statement review](https://chosepayments.com/statement-review): Upload a processing statement to see if you are overpaying
+- [About](https://chosepayments.com/about): Why ChosePayments is an advisory, not a comparison site
+- [FAQ](https://chosepayments.com/faq): How ChosePayments works, how it makes money and how matching works
+- [All insights](https://chosepayments.com/insights): Index of every guide and article
+
+## Choosing a payment processor
+
+- [How to choose a payment processor](https://chosepayments.com/insights/how-to-choose-a-payment-processor): Pricing models, hidden fees, risk alignment and integration
+- [Best payment processor for small US business](https://chosepayments.com/insights/best-payment-processor-for-small-business): Square, Stripe, PayPal and Helcim compared on one $15,000-a-month example
+- [Best payment processor for e-commerce](https://chosepayments.com/insights/best-payment-processor-ecommerce): The right answer by store type
+- [Stripe alternatives](https://chosepayments.com/insights/stripe-alternatives): Helcim, Square, Braintree, Stax, Adyen and Checkout.com compared with Stripe
+- [Switching payment providers](https://chosepayments.com/switch-payment-provider): How to leave without exit fees or fund holds
+- [Subscription and SaaS businesses](https://chosepayments.com/payment-provider-subscription-business): What recurring billing businesses need from a provider
+- [ACH payment processors](https://chosepayments.com/ach-payment-processors): When bank transfer beats cards
+
+## Fees and pricing
+
+- [What does Stripe charge US businesses?](https://chosepayments.com/insights/what-does-stripe-charge-us-businesses): Every Stripe fee for US businesses
+- [Square fees explained](https://chosepayments.com/insights/square-fees-explained): Square Free, Plus and Premium rates and worked examples
+- [Effective rate and hidden fees](https://chosepayments.com/insights/crisis/effective-rate-hidden-fees-credit-card-processing): How to calculate what you really pay
+- [Hidden payment processor fees](https://chosepayments.com/insights/hidden-payment-processor-fees): Fees processors bury in contracts
+- [Interchange plus vs. blended pricing](https://chosepayments.com/insights/pricing-models/interchange-plus-vs-blended-pricing): Which pricing model saves you more
+- [Interchange++ pricing explained](https://chosepayments.com/insights/pricing-models/interchange-plus-plus): What it is and who qualifies
+- [Adyen pricing explained](https://chosepayments.com/insights/adyen-pricing-explained): How Adyen's interchange plus pricing works
+- [Checkout.com fees explained](https://chosepayments.com/insights/checkout-com-fees-explained): Negotiated pricing and indicative rates
+- [Fiserv Clover pricing explained](https://chosepayments.com/insights/fiserv-clover-pricing-explained): Hardware, software plans and processing fees
+
+## Provider comparisons
+
+- [Stripe vs PayPal](https://chosepayments.com/insights/comparisons/stripe-vs-paypal): Fees and features compared
+- [Stripe vs Adyen](https://chosepayments.com/insights/stripe-vs-adyen): Flat pricing vs interchange plus
+- [Stripe vs Checkout.com](https://chosepayments.com/insights/comparisons/stripe-vs-checkout-com): Fees and features compared
+- [Adyen vs Checkout.com](https://chosepayments.com/insights/comparisons/adyen-vs-checkout-com): Enterprise payments compared
+- [Enterprise provider comparison](https://chosepayments.com/insights/enterprise-provider-comparison): Adyen, Shift4 and Checkout.com
+
+## Account problems: freezes, holds and rejections
+
+- [Stripe account frozen](https://chosepayments.com/insights/crisis/stripe-account-frozen): Common triggers, recovery steps and prevention
+- [Funds on hold and rolling reserves](https://chosepayments.com/insights/crisis/funds-on-hold-rolling-reserve-payment-processor): Holds, freezes and reserves explained
+- [Rejected by Stripe or Square](https://chosepayments.com/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account): Why it happens and how to get approved
+- [Rolling reserve vs fixed reserve](https://chosepayments.com/insights/rolling-vs-fixed-reserve): How each affects cash flow
+- [Merchant account problems](https://chosepayments.com/merchant-account-problems): Withheld funds, reserves and unexpected fees explained
+- [What to do when a provider asks for documents](https://chosepayments.com/insights/what-to-do-when-provider-asks-for-documents): Why requests happen and how to respond
+
+## High-risk businesses and chargebacks
+
+- [High-risk ecommerce payment processing](https://chosepayments.com/high-risk-ecommerce-payment-processing): Merchant accounts, reserves, chargeback thresholds and underwriting
+- [Payment processors for high-chargeback businesses](https://chosepayments.com/best-payment-processors-high-chargebacks): How risk tolerance differs between providers
+- [Chargebacks and how to avoid them](https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them): Why they happen and what they cost
+- [Provider appetite index](https://chosepayments.com/insights/provider-appetite-index): Why processors say no and how to get a yes
+
+## How payments work
+
+- [What is a payment processor?](https://chosepayments.com/insights/what-is-a-payment-processor): How processing works and who the major players are
+- [Payment gateway vs payment processor](https://chosepayments.com/payment-gateway-vs-payment-processor): The actual difference
+- [Merchant acquirer vs payment processor](https://chosepayments.com/insights/merchant-acquirer-vs-payment-processor): Who holds the risk and who routes the transaction
+- [Third-party payment processors](https://chosepayments.com/insights/third-party-payment-processors): Accepting cards without your own merchant account
+- [How processors classify your business vertical](https://chosepayments.com/insights/payment-processor-business-vertical-classification): MCC codes and why they matter
+
+## Optional
+
+- [Marketplace payments guide](https://chosepayments.com/insights/marketplace-payments-guide): Split payments, seller verification and chargeback risk for marketplaces
+- [Payment provider risk models](https://chosepayments.com/insights/payment-provider-risk-models): Why similar businesses get different outcomes
+- [Payment scheme rules explained](https://chosepayments.com/insights/payment-scheme-rules-explained): How Visa and Mastercard rules flow down to merchants
+- [Contact](https://chosepayments.com/contact): Get in touch with ChosePayments

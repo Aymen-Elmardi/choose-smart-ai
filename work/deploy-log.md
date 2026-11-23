@@ -1,10 +1,22 @@
 # Deploy log
 
+## Site files
+
+### llms.txt (prepared 2026-11-23)
+
+DEPLOY llms-txt | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to check after deploy (not a page, no indexing request needed):
+https://chosepayments.com/llms.txt
+What changed:
+- public/llms.txt: new file in the llmstxt.org format (H1, summary, sections of links with one-line descriptions). Fixes the "Llms.txt not found" (404) issue in the site audit.
+- Lists 46 pages, US-focused: start pages, choosing a processor, fees, comparisons, account problems, high risk, how payments work. Every link returned 200 on 2026-11-23. Redirected, UK-only and pending-deletion pages are left out.
+- Hand-maintained: add new US articles here when they go live.
+
 ## New articles
 
 ### what-does-stripe-charge-us-businesses (prepared 2026-11-21)
 
-DEPLOY new-article-stripe-fees-us | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY new-article-stripe-fees-us | 2026-11-21 | commit 0f1ade9
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/insights/what-does-stripe-charge-us-businesses
 https://chosepayments.com/insights
