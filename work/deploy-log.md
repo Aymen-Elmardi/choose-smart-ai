@@ -4,13 +4,27 @@
 
 ### llms.txt (prepared 2026-11-23)
 
-DEPLOY llms-txt | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY llms-txt | 2026-11-23 | commit 2f1c3a0
 URLs to check after deploy (not a page, no indexing request needed):
 https://chosepayments.com/llms.txt
 What changed:
 - public/llms.txt: new file in the llmstxt.org format (H1, summary, sections of links with one-line descriptions). Fixes the "Llms.txt not found" (404) issue in the site audit.
 - Lists 46 pages, US-focused: start pages, choosing a processor, fees, comparisons, account problems, high risk, how payments work. Every link returned 200 on 2026-11-23. Redirected, UK-only and pending-deletion pages are left out.
 - Hand-maintained: add new US articles here when they go live.
+
+## Article fixes
+
+### checkout-com-fees-explained (prepared 2026-11-24)
+
+DEPLOY checkout-com-fees-text | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/checkout-com-fees-explained
+What changed (owner brief checkout-com-fees-fixes.md, five changes, copied word for word):
+- Title "Checkout.com Fees (2026): Real Costs, FX Fee and Hidden Charges" and a 152-character meta description; Open Graph title and description match. H1 unchanged.
+- "International and Multi-Currency Fees": the sentence saying currency conversion is not a separate line item is replaced with the published 1.99% standard FX fee (linked to Checkout.com's docs).
+- "Why Checkout.com Can Feel Expensive Early": one sentence added with a text link to /assessment.
+- New "Checkout.com Fees for US Businesses" section after the pricing ranges note, before the volume example (owner chose this position). Links to Checkout.com's interchange blog post, /insights/what-does-stripe-charge-us-businesses and /assessment.
+- Not changed: the InsightsArticleLayout description prop (likely feeds the Article schema) still has the old text; the brief says not to touch schema.
 
 ## New articles
 
