@@ -264,6 +264,35 @@ const CheckoutComFees = () => {
           These are indicative ranges only. Actual fees depend on your specific agreement and are subject to negotiation. Always obtain a direct quote from Checkout.com.
         </p>
 
+        {/* Checkout.com fees for US businesses */}
+        <section className="my-12">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">
+            Checkout.com Fees for US Businesses
+          </h2>
+          <p className="text-muted-foreground mb-4">
+            Checkout.com uses the same negotiated pricing model in the US, and it doesn't publish a US rate card either. The ranges above come from UK and European agreements, so treat them as a rough guide only. Three things work differently for US merchants:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-4">
+            <li>
+              <strong className="text-foreground">Interchange is higher and harder to predict.</strong> The UK and EU cap card interchange. The US doesn't for credit cards, and there are{" "}
+              <a href="https://www.checkout.com/resources/blog/back-to-school-payment-pricing-101" target="_blank" rel="noopener" className="text-primary hover:underline">more than 300 different US interchange rates</a>{" "}
+              depending on the card, your business category and how the payment is taken.
+            </li>
+            <li>
+              <strong className="text-foreground">Debit cards cost less.</strong> Federal rules cap interchange on debit cards issued by large US banks, so a high share of debit payments can lower your total cost on this kind of pricing.
+            </li>
+            <li>
+              <strong className="text-foreground">Currency conversion is 1.99% as standard,</strong> the same published FX fee that applies everywhere.
+            </li>
+          </ul>
+          <p className="text-muted-foreground">
+            Checkout.com's US customers are mostly large, often global, businesses. If you process a smaller monthly volume, compare it with providers that publish their US pricing, such as{" "}
+            <Link href="/insights/what-does-stripe-charge-us-businesses" className="text-primary hover:underline">Stripe</Link>, or{" "}
+            <Link href="/assessment" className="text-primary hover:underline">answer 5 quick questions</Link>{" "}
+            to see which processors fit your business.
+          </p>
+        </section>
+
         <div className="bg-muted/30 rounded-lg p-6 mb-4">
           <p className="text-foreground font-semibold mb-2">Volume example: 500,000 transactions per year</p>
           <p className="text-muted-foreground text-sm">
@@ -349,7 +378,8 @@ const CheckoutComFees = () => {
           <li>Local acquiring in select regions to reduce cross-border charges</li>
         </ul>
         <p className="text-muted-foreground mb-4">
-          Currency conversion and cross-border transactions still incur costs, but these are typically negotiated into the overall commercial agreement rather than charged as separate visible line items.
+          Currency conversion is one of the few Checkout.com fees that is published: the{" "}
+          <a href="https://www.checkout.com/docs/resources/exchange-fx-rate-fee" target="_blank" rel="noopener" className="text-primary hover:underline">standard foreign exchange fee is 1.99%</a>, added on top of a base exchange rate. Your contract can set a different rate, so check your pricing schedule. Cross-border card fees from Visa and Mastercard also apply when a card is processed outside its home region.
         </p>
         <p className="text-muted-foreground">
           For businesses expanding internationally, local acquiring is a key advantage. Processing a card locally, rather than routing it cross-border, reduces scheme fees and improves authorisation rates. Understanding{" "}
@@ -557,7 +587,9 @@ const CheckoutComFees = () => {
           <li>It targets merchants who need scale and global reach</li>
         </ul>
         <p className="text-muted-foreground">
-          For smaller businesses just starting out, a flat-rate provider may look cheaper and be easier to get started with. But once your business grows or goes global, Checkout.com's model can deliver a more efficient cost structure in practice.
+          For smaller businesses just starting out, a flat-rate provider may look cheaper and be easier to get started with. If you're not sure which side of that line your business is on,{" "}
+          <Link href="/assessment" className="text-primary hover:underline">answer 5 quick questions</Link>{" "}
+          and we'll show you which processors fit your volume. But once your business grows or goes global, Checkout.com's model can deliver a more efficient cost structure in practice.
         </p>
       </section>
 
