@@ -28,6 +28,21 @@ What changed (owner brief checkout-com-fees-fixes.md, five changes, copied word 
 
 ## New articles
 
+### stripe-alternatives-marketplace (prepared and merged 2026-11-25)
+
+DEPLOY stripe-connect-alternatives | 2026-11-25 | commit 050c958
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/stripe-alternatives-marketplace
+https://chosepayments.com/insights/stripe-alternatives
+What changed:
+- /stripe-alternatives-marketplace: the old 311-word page is replaced by the US article "Stripe Connect Alternatives for US Marketplaces: What They Cost and Who Each Fits" (owner brief, copy word for word). Same URL, still in the sitemap. Moved to InsightsArticleLayout (Guides): Article + FAQPage + Breadcrumb JSON-LD, cover image (also og:image and schema image) and two charts with captions (WebP made from the supplied PNGs). The layout's assessment CTA box is off (brief: no CTA boxes); CTAs are text links to /assessment and /contact.
+- /insights lists it under Guides (insightsArticles, path /stripe-alternatives-marketplace). /insights/stripe-alternatives gets one sentence linking to it in the Helcim section.
+- Owner decisions: author Aymen Elmardi, unlinked (no /authors pages exist); cover image as hero, og:image and schema image instead of Image 1.
+- Open: the cover image text says "for US Ecommerce" while the article is about marketplaces. Share/like buttons and concept links are off (ArticleActions builds /insights/<slug> URLs). supabase/functions/prerender/index.ts and docs/cloudflare-worker.js still hold the old title and description.
+Published date: 2026-11-25 (go-live). Update PUBLISHED and PUBLISHED_DISPLAY in src/views/StripeAlternatives.tsx if needed.
+Next deploy not before: 1 to 2 days after the merge date.
+Watch for 14 days: "stripe connect alternatives" and "alternatives to stripe connect" queries for /stripe-alternatives-marketplace.
+
 ### what-does-stripe-charge-us-businesses (prepared 2026-11-21)
 
 DEPLOY new-article-stripe-fees-us | 2026-11-21 | commit 0f1ade9
