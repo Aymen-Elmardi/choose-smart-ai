@@ -23,6 +23,7 @@ Key points about the site:
 - [Best payment processor for small US business](https://chosepayments.com/insights/best-payment-processor-for-small-business): Square, Stripe, PayPal and Helcim compared on one $15,000-a-month example
 - [Best payment processor for e-commerce](https://chosepayments.com/insights/best-payment-processor-ecommerce): The right answer by store type
 - [Stripe alternatives](https://chosepayments.com/insights/stripe-alternatives): Helcim, Square, Braintree, Stax, Adyen and Checkout.com compared with Stripe
+- [Stripe Connect alternatives for US marketplaces](https://chosepayments.com/stripe-alternatives-marketplace): Adyen for Platforms, Finix, PayPal and merchants of record compared on cost and risk
 - [Switching payment providers](https://chosepayments.com/switch-payment-provider): How to leave without exit fees or fund holds
 - [Subscription and SaaS businesses](https://chosepayments.com/payment-provider-subscription-business): What recurring billing businesses need from a provider
 - [ACH payment processors](https://chosepayments.com/ach-payment-processors): When bank transfer beats cards
@@ -51,6 +52,7 @@ Key points about the site:
 
 - [Stripe account frozen](https://chosepayments.com/insights/crisis/stripe-account-frozen): Common triggers, recovery steps and prevention
 - [Funds on hold and rolling reserves](https://chosepayments.com/insights/crisis/funds-on-hold-rolling-reserve-payment-processor): Holds, freezes and reserves explained
+- [PayPal money on hold](https://chosepayments.com/insights/paypal-money-on-hold): Why PayPal holds money, how long holds, reserves and limitations last, and how to get funds released
 - [Rejected by Stripe or Square](https://chosepayments.com/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account): Why it happens and how to get approved
 - [Rolling reserve vs fixed reserve](https://chosepayments.com/insights/rolling-vs-fixed-reserve): How each affects cash flow
 - [Merchant account problems](https://chosepayments.com/merchant-account-problems): Withheld funds, reserves and unexpected fees explained
