@@ -269,6 +269,10 @@ const ThirdPartyPaymentProcessors = () => {
           The pricing gap matters more than most first-time business owners expect. Flat-rate pricing bakes in a blended average across every card type your business will ever see, including premium rewards cards with the highest interchange. Businesses with a lot of debit card volume, common in restaurant and food delivery transactions, end up subsidizing the rewards-card transactions of other merchants inside the same blended rate ({" "}
           <a href="https://www.helcim.com/guides/interchange-plus-pricing-explained/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Helcim, interchange-plus pricing guide</a>).
         </p>
+        <p className="text-muted-foreground mt-4">
+          New to the term? Start with{" "}
+          <Link href="/insights/what-is-a-merchant-account" className="text-primary hover:underline">what a merchant account is</Link>.
+        </p>
       </section>
 
       {/* Aggregator squeeze */}

@@ -73,6 +73,10 @@ const WhatIsAnAcquirer = () => {
         <p>
           Your payment provider does not operate independently. They must work under an acquirer's license.
         </p>
+        <p>
+          The account an acquirer gives you is called a{" "}
+          <Link href="/insights/what-is-a-merchant-account" className="text-primary hover:underline">merchant account</Link>.
+        </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">
           Why payment providers need acquirers

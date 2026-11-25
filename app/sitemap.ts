@@ -318,6 +318,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/insights/what-is-a-merchant-account`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/insights/merchant-acquirer-vs-payment-processor`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
