@@ -2,6 +2,16 @@
 
 ## Site files
 
+### llms.txt: Stripe Connect alternatives and PayPal money on hold (prepared and merged 2026-11-25)
+
+DEPLOY llms-txt-new-articles | 2026-11-25 | commit 38cb980
+URLs to check after deploy (not a page, no indexing request needed):
+https://chosepayments.com/llms.txt
+What changed:
+- public/llms.txt: two lines added in the existing format, nothing else changed. "Stripe Connect alternatives for US marketplaces" (/stripe-alternatives-marketplace) under Choosing a payment processor, after Stripe alternatives. "PayPal money on hold" (/insights/paypal-money-on-hold) under Account problems, after Funds on hold. Both URLs returned 200 on 2026-11-25. The file now lists 48 links.
+- Fifth production deploy on 2026-11-25 (after 050c958, 22986d4, e7d25aa and 6fd9893).
+Next deploy not before: 2026-11-27.
+
 ### llms.txt (prepared 2026-11-23)
 
 DEPLOY llms-txt | 2026-11-23 | commit 2f1c3a0
@@ -40,7 +50,8 @@ What changed:
 - /insights lists it under Crisis Intervention (insightsArticles, path /insights/paypal-money-on-hold). Not on /us/insights (no global flag).
 - Part 6: one new paragraph linking to it at the end of "What to do immediately if your funds are held" on the funds on hold article, and one before the FAQ on Stripe vs PayPal. Nothing else changed on either page.
 - Owner decisions: author Aymen Elmardi (Payments Expert) instead of Madalsa Bhat (Growth Expert), in the byline and schema; cover image as og:image and Twitter image and first in the schema image list, instead of the types chart.
-- Open: the byline date is "Published date: 25/11/2026" as the brief wrote it (day first, unlike the rest of the site). Schema author url is /about, which does not name an author. public/llms.txt not updated. Rich Results Test to run on the live URL.
+- Open: the byline date is "Published date: 25/11/2026" as the brief wrote it (day first, unlike the rest of the site). Schema author url is /about, which does not name an author. Rich Results Test to run on the live URL.
+- Added to public/llms.txt in 38cb980 (llms-txt-new-articles).
 Published date: 2026-11-25 (go-live). Update PUBLISHED and the byline in src/views/insights/PayPalMoneyOnHold.tsx if needed.
 Next deploy not before: 1 to 2 days after the merge date. This was the third production deploy on 2026-11-25.
 Watch for 14 days: "paypal money on hold", "paypal holding money" and "how long can paypal hold funds" queries for /insights/paypal-money-on-hold.
@@ -56,6 +67,7 @@ What changed:
 - /insights lists it under Guides (insightsArticles, path /stripe-alternatives-marketplace). /insights/stripe-alternatives gets one sentence linking to it in the Helcim section.
 - Owner decisions: author Aymen Elmardi, unlinked (no /authors pages exist); cover image as hero, og:image and schema image instead of Image 1.
 - Open: the cover image text says "for US Ecommerce" while the article is about marketplaces. Share/like buttons and concept links are off (ArticleActions builds /insights/<slug> URLs). supabase/functions/prerender/index.ts and docs/cloudflare-worker.js still hold the old title and description.
+- Added to public/llms.txt in 38cb980 (llms-txt-new-articles).
 Published date: 2026-11-25 (go-live). Update PUBLISHED and PUBLISHED_DISPLAY in src/views/StripeAlternatives.tsx if needed.
 Next deploy not before: 1 to 2 days after the merge date.
 Watch for 14 days: "stripe connect alternatives" and "alternatives to stripe connect" queries for /stripe-alternatives-marketplace.
