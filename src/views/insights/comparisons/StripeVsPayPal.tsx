@@ -424,6 +424,11 @@ const StripeVsPayPal = () => {
           The most common pattern among established merchants isn&apos;t choosing one over the other, it&apos;s using Stripe (or a similar processor) as the backbone and offering PayPal as a recognizable option within it.
         </p>
 
+        <p>
+          Already dealing with a hold? Here is what to do when{" "}
+          <Link href="/insights/paypal-money-on-hold" className="text-primary hover:underline">PayPal is holding your money</Link>.
+        </p>
+
         <h2 className="text-2xl font-bold text-foreground mt-10 mb-6">
           Frequently Asked Questions (FAQs)
         </h2>

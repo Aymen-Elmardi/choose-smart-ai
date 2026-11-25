@@ -612,6 +612,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/insights/paypal-money-on-hold`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/insights/chargeback-loss-recovery`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
