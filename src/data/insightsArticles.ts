@@ -450,6 +450,14 @@ export const allInsights: Insight[] = [
     readTime: "6 min read"
   },
   {
+    title: "What Is a Merchant Account, and Do You Actually Need One?",
+    slug: "what-is-a-merchant-account",
+    description: "What a merchant account is, what it costs, and when you need your own.",
+    category: "explainer",
+    readTime: "8 min read",
+    path: "/insights/what-is-a-merchant-account"
+  },
+  {
     title: "Merchant Acquirer vs Payment Processor: What's the Difference?",
     slug: "merchant-acquirer-vs-payment-processor",
     global: true,

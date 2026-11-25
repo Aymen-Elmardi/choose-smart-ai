@@ -38,6 +38,23 @@ What changed (owner brief checkout-com-fees-fixes.md, five changes, copied word 
 
 ## New articles
 
+### what-is-a-merchant-account (prepared and merged 2026-11-25)
+
+DEPLOY what-is-a-merchant-account | 2026-11-25 | PR #48 (merge commit: see the PR)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/what-is-a-merchant-account
+https://chosepayments.com/insights/third-party-payment-processors
+https://chosepayments.com/insights/what-is-an-acquirer
+What changed:
+- /insights/what-is-a-merchant-account: new US explainer (owner brief what-is-a-merchant-account-instructions.md, copy word for word). Article + FAQPage + BreadcrumbList JSON-LD (3 items, as supplied), cover image (also og:image and Twitter image) and two diagrams (WebP made from the supplied PNGs), in the sitemap. The layout's assessment CTA box is off (brief: no boxes); CTAs are text links to /assessment and /contact, and "book a free call" uses BOOKING_URL with the header's attributes (data-cta="call", data-placement="end"), so calendar_click fires and the booking panel opens.
+- /insights lists it under Explainers (insightsArticles, path /insights/what-is-a-merchant-account).
+- Part 6: one new paragraph linking to it at the end of "Third-Party Processing vs a Direct Merchant Account" and at the end of "What an acquirer actually does". Nothing else changed on either page.
+- Owner decisions: author Aymen Elmardi (Payments Expert) instead of Madalsa Bhat (Growth Expert), in the byline and schema; no cover on the /insights card (cards have no image slot); cover is the supplied "Friendly Dog Explains Merchant Accounts" image, with alt text matching it.
+- Open: byline and sources dates are day first ("25/11/2026") as the brief wrote them. Not added to public/llms.txt. Rich Results Test to run on the live URL.
+Published date: 2026-11-25 (go-live). Update PUBLISHED and the byline in src/views/insights/WhatIsAMerchantAccount.tsx if needed.
+Next deploy not before: 2026-11-27. This was the seventh production deploy on 2026-11-25 (the brief asked for it to be published right away).
+Watch for 14 days: "merchant account", "what is a merchant account" and "merchant account providers" queries for /insights/what-is-a-merchant-account.
+
 ### paypal-money-on-hold (prepared and merged 2026-11-25)
 
 DEPLOY paypal-money-on-hold | 2026-11-25 | commit e7d25aa
