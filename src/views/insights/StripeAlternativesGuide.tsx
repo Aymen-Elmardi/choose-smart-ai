@@ -260,7 +260,7 @@ const StripeAlternativesGuide = () => {
         <p>
           In my opinion, Helcim is the first call for a US or Canadian business doing $10,000 to $100,000 a month. The tradeoff is a slimmer developer ecosystem than Stripe.
         </p>
-        <p>If you rely on advanced billing logic or marketplace payouts, you will miss Stripe Connect.</p>
+        <p>If you rely on advanced billing logic or marketplace payouts, you will miss Stripe Connect. Running a marketplace? See our guide to <Link href="/stripe-alternatives-marketplace" className={link}>Stripe Connect alternatives</Link>.</p>
 
         <h3 className={h3}>Square: Best for in-person and omnichannel sales</h3>
         <p>

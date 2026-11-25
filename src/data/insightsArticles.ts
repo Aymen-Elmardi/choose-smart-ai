@@ -287,6 +287,14 @@ export const allInsights: Insight[] = [
     readTime: "12 min read"
   },
   {
+    title: "Stripe Connect Alternatives for US Marketplaces: What They Cost and Who Each Fits",
+    slug: "stripe-alternatives-marketplace",
+    description: "Compare Stripe Connect alternatives for US marketplaces: Adyen for Platforms, Finix, PayPal and more. Real 2026 costs, risks, and which one fits your stage.",
+    category: "guides",
+    readTime: "8 min read",
+    path: "/stripe-alternatives-marketplace"
+  },
+  {
     title: "The Chicken and Egg Problem: How Marketplaces Solve It",
     slug: "marketplace-chicken-and-egg-problem",
     description: "The chicken and egg problem stalls most marketplaces before launch. Real examples, 8 proven strategies, and the payout mistake that kills early supply.",
