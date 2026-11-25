@@ -28,6 +28,23 @@ What changed (owner brief checkout-com-fees-fixes.md, five changes, copied word 
 
 ## New articles
 
+### paypal-money-on-hold (prepared and merged 2026-11-25)
+
+DEPLOY paypal-money-on-hold | 2026-11-25 | commit e7d25aa
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/insights/paypal-money-on-hold
+https://chosepayments.com/insights/crisis/funds-on-hold-rolling-reserve-payment-processor
+https://chosepayments.com/insights/comparisons/stripe-vs-paypal
+What changed:
+- /insights/paypal-money-on-hold: new US article (owner brief paypal-money-on-hold-instructions.md, copy word for word). Article + FAQPage + BreadcrumbList JSON-LD (3 items, as supplied), cover image and two charts (WebP made from the supplied PNGs), in the sitemap. The layout's assessment CTA box is off (brief: no boxes); CTAs are text links to /assessment and /contact.
+- /insights lists it under Crisis Intervention (insightsArticles, path /insights/paypal-money-on-hold). Not on /us/insights (no global flag).
+- Part 6: one new paragraph linking to it at the end of "What to do immediately if your funds are held" on the funds on hold article, and one before the FAQ on Stripe vs PayPal. Nothing else changed on either page.
+- Owner decisions: author Aymen Elmardi (Payments Expert) instead of Madalsa Bhat (Growth Expert), in the byline and schema; cover image as og:image and Twitter image and first in the schema image list, instead of the types chart.
+- Open: the byline date is "Published date: 25/11/2026" as the brief wrote it (day first, unlike the rest of the site). Schema author url is /about, which does not name an author. public/llms.txt not updated. Rich Results Test to run on the live URL.
+Published date: 2026-11-25 (go-live). Update PUBLISHED and the byline in src/views/insights/PayPalMoneyOnHold.tsx if needed.
+Next deploy not before: 1 to 2 days after the merge date. This was the third production deploy on 2026-11-25.
+Watch for 14 days: "paypal money on hold", "paypal holding money" and "how long can paypal hold funds" queries for /insights/paypal-money-on-hold.
+
 ### stripe-alternatives-marketplace (prepared and merged 2026-11-25)
 
 DEPLOY stripe-connect-alternatives | 2026-11-25 | commit 050c958
