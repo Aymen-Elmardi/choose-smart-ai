@@ -257,6 +257,14 @@ export const allInsights: Insight[] = [
     readTime: "8 min read",
     isSubfolder: true
   },
+  {
+    title: "PayPal Money on Hold? Why It Happens and How to Get It Released",
+    slug: "paypal-money-on-hold",
+    description: "Why PayPal holds your money, how long it can last, and how to get it released.",
+    category: "crisis",
+    readTime: "8 min read",
+    path: "/insights/paypal-money-on-hold"
+  },
   // Compliance articles
   {
     title: "Understanding Proof of Business Activity Requests",

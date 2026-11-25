@@ -211,6 +211,10 @@ const FundsOnHold = () => {
           and, if you&apos;ve already been rejected outright, our guide on{" "}
           <Link href="/insights/crisis/rejected-by-stripe-or-square-high-risk-merchant-account" className={link}>getting approved after a Stripe or Square rejection</Link>.
         </p>
+        <p>
+          If PayPal is the one holding your money, read our guide to{" "}
+          <Link href="/insights/paypal-money-on-hold" className={link}>PayPal money on hold</Link>.
+        </p>
 
         <h2 className={h2}>How long do holds and reserves actually last?</h2>
         <Figure
