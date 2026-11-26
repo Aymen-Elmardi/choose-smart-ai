@@ -175,6 +175,12 @@ const Recommendation = () => {
       });
       if (error || !data?.success) {
         console.error("Assessment submission failed:", error ?? data?.error);
+      } else if (!honeypot) {
+        // The real conversion: a name and email were accepted and the lead was
+        // saved. Reaching the last question fires assessment_questions_complete
+        // in Quiz.tsx instead, so GA's "assessment_complete" key event now
+        // counts leads, not people who answered the questions and left.
+        trackEvent("assessment_complete", { segment: answers.segment, market });
       }
     } catch (err) {
       // The visitor sees the thank-you screen regardless; failures are logged

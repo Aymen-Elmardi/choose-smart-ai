@@ -152,7 +152,7 @@ const Quiz = () => {
         const isLastQuestion = currentQuestionIndex === questions.length - 1;
         
         if (isLastQuestion) {
-          trackEvent("assessment_complete", { segment: updatedAnswers.segment });
+          trackEvent("assessment_questions_complete", { segment: updatedAnswers.segment });
           // OPTIMISTIC: Navigate immediately, save in background
           router.push("/recommendation?fromQuiz=true");
           // Prepare engine-compatible answers
@@ -193,7 +193,7 @@ const Quiz = () => {
     const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
     if (isLastQuestion) {
-          trackEvent("assessment_complete", { segment: updatedAnswers.segment });
+          trackEvent("assessment_questions_complete", { segment: updatedAnswers.segment });
           router.push("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(updatedAnswers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
@@ -260,7 +260,7 @@ const Quiz = () => {
       if (question?.multiSelect) {
         const isLastQuestion = currentStep === questionCount;
         if (isLastQuestion) {
-          trackEvent("assessment_complete", { segment: answers.segment });
+          trackEvent("assessment_questions_complete", { segment: answers.segment });
           router.push("/recommendation?fromQuiz=true");
           const engineAnswers = prepareEngineAnswers(answers);
           sessionStorage.setItem("quizAnswers", JSON.stringify(engineAnswers));
