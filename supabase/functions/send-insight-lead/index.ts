@@ -6,6 +6,7 @@ import {
   errorResponse as sharedErrorResponse,
 } from "../_shared/cors.ts";
 import { adminClient, checkRateLimit, getClientIp } from "../_shared/rateLimit.ts";
+import { LEAD_INBOX } from "../_shared/leadInbox.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
@@ -115,11 +116,11 @@ const handler = async (req: Request): Promise<Response> => {
 </body>
 </html>`;
 
-    console.log("Sending insight lead email to: hello@chosepayments.com");
+    console.log("Sending insight lead email to: " + LEAD_INBOX.join(", "));
 
     await resend.emails.send({
       from: "ChosePayments <leads@chosepayments.com>",
-      to: "hello@chosepayments.com",
+      to: LEAD_INBOX,
       subject: `Insight Lead – ${escapeHtml(tagDisplay)}`,
       html: emailHtml,
     });

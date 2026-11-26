@@ -11,12 +11,13 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { LEAD_INBOX } from "../_shared/leadInbox.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 // Guard against accidental whitespace/newlines in the stored secret (an invalid
 // header value otherwise throws before the request is sent).
 const ANTHROPIC_API_KEY = (Deno.env.get("ANTHROPIC_API_KEY") ?? "").split(/\s+/)[0].trim();
-const TEAM_EMAIL = "hello@chosepayments.com";
+const TEAM_EMAIL = LEAD_INBOX;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",

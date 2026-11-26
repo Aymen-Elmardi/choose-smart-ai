@@ -7,6 +7,7 @@ import {
 } from "../_shared/cors.ts";
 import { adminClient, checkRateLimit, getClientIp } from "../_shared/rateLimit.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
+import { LEAD_INBOX } from "../_shared/leadInbox.ts";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
@@ -90,6 +91,31 @@ const handler = async (req: Request): Promise<Response> => {
       return errorResponse("Invalid email format", 400);
     }
 
+    // Save the submission before sending any email, so a delivery problem can
+    // never lose the lead again. A failed insert is logged, not fatal: the
+    // email below is then the only copy, as before.
+    const admin = adminClient();
+    let submissionId: string | null = null;
+    const { data: saved, error: saveError } = await admin
+      .from("contact_submissions")
+      .insert({
+        type: isNewsletter ? "newsletter" : "contact",
+        name: sanitizedName,
+        email: sanitizedEmail,
+        business_name: sanitizedBusinessName || null,
+        message: sanitizedMessage,
+        landing_page: sanitizedLandingPage || null,
+        previous_page: sanitizedPreviousPage || null,
+        ip: clientIp,
+      })
+      .select("id")
+      .single();
+    if (saveError) {
+      console.error("Failed to save contact submission:", saveError);
+    } else {
+      submissionId = saved?.id ?? null;
+    }
+
     console.log("Sending contact form email from:", sanitizedEmail);
 
     // Sender must be on the verified chosepayments.com domain. The shared
@@ -98,7 +124,7 @@ const handler = async (req: Request): Promise<Response> => {
     // silently, because the results below were previously not inspected.
     const notification = await resend.emails.send({
       from: "ChosePayments <leads@chosepayments.com>",
-      to: ["hello@chosepayments.com"],
+      to: LEAD_INBOX,
       reply_to: sanitizedEmail,
       subject: isNewsletter
         ? `New newsletter subscriber: ${escapeHtml(sanitizedEmail)}`
@@ -148,9 +174,25 @@ const handler = async (req: Request): Promise<Response> => {
     // unchecked `await` reports success even when nothing was delivered. Treat a
     // failed notification as a failed request; a failed auto-reply is logged but
     // not fatal, since the submission itself already reached the inbox.
+    if (submissionId) {
+      const { error: updateError } = await admin
+        .from("contact_submissions")
+        .update({
+          notification_email_status: notification.error ? "failed" : "sent",
+          notification_email_id: notification.data?.id ?? null,
+        })
+        .eq("id", submissionId);
+      if (updateError) console.error("Failed to record notification status:", updateError);
+    }
+
+    // Once the submission is saved, a failed notification no longer loses the
+    // lead, so the visitor still gets the success message. Only fail the
+    // request when there is no copy anywhere.
     if (notification.error) {
       console.error("Resend rejected the notification email:", notification.error);
-      return errorResponse("Could not deliver your message. Please email hello@chosepayments.com.", 502);
+      if (!submissionId) {
+        return errorResponse("Could not deliver your message. Please email hello@chosepayments.com.", 502);
+      }
     }
     if (autoReply.error) {
       console.error("Resend rejected the auto-reply email:", autoReply.error);
