@@ -19,6 +19,7 @@ import { Resend } from "https://esm.sh/resend@2.0.0";
 import { buildLeadEmail, buildResultsEmail } from "./emails.ts";
 import type { AssessmentContext, RawAnswers } from "./emails.ts";
 import { toSegment } from "./results.ts";
+import { LEAD_INBOX, LEAD_REPLY_TO } from "../_shared/leadInbox.ts";
 
 // Created on first send rather than at load: the constructor throws when
 // RESEND_API_KEY is unset, which would take the whole function down and lose
@@ -28,7 +29,7 @@ const getResend = (): Resend => (resendClient ??= new Resend(Deno.env.get("RESEN
 
 const RESULTS_FROM = "ChosePayments <hello@chosepayments.com>";
 const LEAD_FROM = "ChosePayments <leads@chosepayments.com>";
-const LEAD_TO = "hello@chosepayments.com";
+const LEAD_TO = LEAD_INBOX;
 
 // ============================================================================
 // VALIDATION
@@ -218,7 +219,7 @@ const handler = async (req: Request): Promise<Response> => {
       send("results", {
         from: RESULTS_FROM,
         to: email,
-        reply_to: LEAD_TO,
+        reply_to: LEAD_REPLY_TO,
         subject: results.subject,
         html: results.html,
         text: results.text,
