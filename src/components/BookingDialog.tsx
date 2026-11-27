@@ -37,17 +37,6 @@ const BookingDialog = () => {
   // Close on route change (e.g. a link inside the page behind the overlay).
   useEffect(() => setOpen(false), [pathname]);
 
-  // The Crisp chat bubble sits above everything (near-max z-index) and would
-  // cover the panel's footer on mobile, so hide it while the panel is open.
-  useEffect(() => {
-    if (!open) return;
-    const crisp = (window as unknown as { $crisp?: unknown[][] }).$crisp;
-    crisp?.push(["do", "chat:hide"]);
-    return () => {
-      crisp?.push(["do", "chat:show"]);
-    };
-  }, [open]);
-
   return (
     <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
       <DialogPrimitive.Portal>

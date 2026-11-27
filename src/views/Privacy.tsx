@@ -10,7 +10,7 @@ const Privacy = () => {
       <main className="flex-1 py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold text-foreground mb-2">Privacy Policy</h1>
-          <p className="text-muted-foreground mb-12">Last Updated: October 29, 2026</p>
+          <p className="text-muted-foreground mb-12">Last Updated: November 27, 2026</p>
 
           <section className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">1. Introduction</h2>
@@ -80,7 +80,6 @@ const Privacy = () => {
             <ul className="list-disc list-inside text-muted-foreground space-y-2 ml-4 mb-6">
               <li>Website hosting providers</li>
               <li>Analytics services (Google Analytics, and Microsoft Clarity for anonymised page interaction and session recordings)</li>
-              <li>Live chat (Crisp)</li>
               <li>Website visitor identification (Gojiberry), only if you accept it in our cookie banner</li>
               <li>Email service providers</li>
               <li>Customer support tools</li>

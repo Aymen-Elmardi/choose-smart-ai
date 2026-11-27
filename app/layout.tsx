@@ -93,9 +93,6 @@ export default function RootLayout({
         <Script id="gtag-init" strategy="afterInteractive">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L6LB24F1J8');`}
         </Script>
-        <Script id="crisp-chat" strategy="afterInteractive">
-          {`window.$crisp=[];window.CRISP_WEBSITE_ID="0292116c-4c90-40f8-9367-5343a3431cc8";(function(){var loaded=false;function load(){if(loaded)return;loaded=true;var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);}var evts=["mousemove","scroll","keydown","touchstart","click"];function onInteract(){load();evts.forEach(function(e){window.removeEventListener(e,onInteract);});}evts.forEach(function(e){window.addEventListener(e,onInteract,{passive:true});});setTimeout(load,8000);})();`}
-        </Script>
         <Script id="ms-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","uybbw4kt5g");`}
         </Script>

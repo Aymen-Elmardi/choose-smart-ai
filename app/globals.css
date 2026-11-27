@@ -526,8 +526,7 @@
 .cp-footer-links button { font-size: 14px; color: var(--cp-text-2); transition: color .25s; background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; }
 .cp-footer-links button:hover { color: var(--cp-text); }
 
-/* Cookie consent (src/components/CookieConsent.tsx). Bottom left, so the
-   Crisp chat bubble in the bottom right stays clickable. */
+/* Cookie consent (src/components/CookieConsent.tsx). Bottom left. */
 .cp-consent {
   position: fixed; left: 16px; bottom: 16px; z-index: 60;
   width: min(420px, calc(100vw - 104px));
