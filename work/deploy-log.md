@@ -24,6 +24,22 @@ What changed:
 
 ## Article fixes
 
+### high-risk-ecommerce-payment-processing retarget (prepared and merged 2026-11-28)
+
+DEPLOY high-risk-merchant-account-retarget | 2026-11-28 | commit 1126940
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/high-risk-ecommerce-payment-processing
+What changed (owner brief high-risk-merchant-account-instructions.md, copied word for word):
+- Guide retargeted to "high risk merchant account". URL and canonical unchanged. Title "High Risk Merchant Account (2026): Costs, Approval, Reserves" (60 characters), new meta description, Open Graph and Twitter title and description match. H1 "High-Risk Merchant Account: How Approval, Reserves and Costs Work in 2026".
+- Two H2s renamed, ids kept, "In this guide" labels updated (owner brief gave no wording for the labels). Quick answer and first-section opening sentences replaced. Cover alt text changed, image file unchanged (it still reads "High-Risk Ecommerce Payments").
+- "Updated: November 28, 2026" line under the byline, italic as the brief asks (the byline itself is not italic).
+- New blocks: pros and cons, how to choose a provider (six questions), "Is instant approval real?" with a text link to /assessment, a text link to /contact in the frozen section, two FAQs (12 in total, visible and schema match).
+- New chart public/insights/high-risk-merchant-account-reserve (1600 x 820, lazy-loaded). Only the PNG was supplied; the WebP was made from it (lossless) and the PNG is the fallback.
+- Article schema: headline, description and dateModified 2026-11-28 (datePublished stays 2026-10-30). Breadcrumb name "High-Risk Merchant Account".
+- Part 7 links to the guide added on rejected-by-stripe-or-square, chargeback-thresholds-high-risk-processors and why-some-businesses-never-get-approved (not worth an indexing request). 7.1 and 7.3 skipped: those pages were redirected to the guide the same day (M2a and M2c).
+- Not changed: listing cards and llms.txt still use the old guide title; the brief says to change nothing else.
+- Not run: Google's Rich Results Test (needs the live URL). JSON-LD parsed cleanly in the build.
+
 ### checkout-com-fees-explained (prepared 2026-11-24)
 
 DEPLOY checkout-com-fees-text | merged: pending | commit: pending (fill in the merge commit after merge)
