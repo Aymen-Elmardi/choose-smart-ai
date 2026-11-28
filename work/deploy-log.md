@@ -331,9 +331,9 @@ Revert after 2026-10-31: set SEASONAL_LOGO to null in src/lib/brand.ts.
 
 Gated merges, each shipped on its own from main after the owner's "GO M<id>".
 
-### M2a, M2b and M2c (prepared 2026-11-28)
+### M2a, M2b and M2c (prepared and merged 2026-11-28)
 
-DEPLOY M2a-M2b-M2c | merged: pending | commit: pending (fill in the merge commit after merge)
+DEPLOY M2a-M2b-M2c | 2026-11-28 | commit e88b0d7
 URLs to request indexing (full https URLs, one per line):
 https://chosepayments.com/high-risk-ecommerce-payment-processing
 Redirects added (301):
@@ -348,6 +348,7 @@ What changed:
 - Featured cards on /insights: provider-fit now shows the hub, ecommerce now shows chargeback thresholds.
 - /insights/provider-fit: two old cards removed (the hub card was already there). /insights/ecommerce: high-risk-to-high-growth card replaced by the hub.
 - Links to the old pages now point to the hub: chargeback loss recovery, best processor for ecommerce, best processor for small business (two links merged into one sentence) (not worth an indexing request).
+Post-deploy checks (2026-11-28): production deploy passed. All three old URLs 301 to the hub in one hop (also with trailing slash and www); hub 200; live sitemap 127 URLs without the old ones; llms.txt without the high-chargebacks line.
 Watch for 14 days: the hub picking up the three old URLs' queries in Search Console; propose a revert if combined clicks fall more than 25% with stable impressions.
 
 ### M5a (merged 2026-10-20)
