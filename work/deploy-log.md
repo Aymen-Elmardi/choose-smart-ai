@@ -343,6 +343,7 @@ https://chosepayments.com/insights/ecommerce/high-risk-to-high-growth -> https:/
 What changed:
 - Owner asked for all three in one deploy on 2026-11-28 ("do all of them"), not one at a time. The hub returned 200 before the change.
 - worker.js: three MERGED_PAGES entries, one hop to the hub (checked locally with trailing slash, .html, query string and www). Old page sources stay.
+- Cleanup (owner's request, 2026-11-28, separate commit): old page sources deleted (three app/ routes and HighRiskEcommerce, HighChargebackProcessors and HighRiskToHighGrowth views). The build no longer outputs those pages; worker.js still does the 301s.
 - No content folded in: the hub (owner brief, 2026-10-30) already covers all three topics. Hub H1, title, meta and copy unchanged.
 - All three old URLs out of both sitemaps (built sitemap now 127 URLs) and out of insightsArticles and conceptClusters. The high-chargebacks line is out of llms.txt.
 - Featured cards on /insights: provider-fit now shows the hub, ecommerce now shows chargeback thresholds.
