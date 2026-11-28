@@ -70,7 +70,7 @@ const ChargebackLossRecovery = () => {
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">When to Consider Switching Providers</h2>
         <p>
-          If you operate in an industry with inherently higher dispute rates (subscriptions, digital goods, travel), standard providers may not be the right fit. Some providers have higher risk tolerances and <Link href="/best-payment-processors-high-chargebacks" className="text-primary hover:underline">specialise in high-chargeback businesses</Link>.
+          If you operate in an industry with inherently higher dispute rates (subscriptions, digital goods, travel), standard providers may not be the right fit. Some providers have higher risk tolerances and <Link href="/high-risk-ecommerce-payment-processing" className="text-primary hover:underline">specialise in high-chargeback businesses</Link>.
         </p>
 
         <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4">Key Takeaway</h2>

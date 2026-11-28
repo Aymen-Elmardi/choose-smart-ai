@@ -258,12 +258,8 @@ const BestPaymentProcessorSmallBusiness = () => {
         <p>
           In exchange, you get a provider who already expects your risk, instead of one that discovers it later and freezes your funds in response.
         </p>
-        <p>Two dedicated guides go deeper by category.</p>
         <p>
-          <Link href="/payment-processors-high-risk-ecommerce" className={link}>Payment processors for high-risk e-commerce</Link> covers online-specific risk factors.
-        </p>
-        <p>
-          <Link href="/best-payment-processors-high-chargebacks" className={link}>Processors built for high-chargeback businesses</Link> cover dispute-heavy categories.
+          Our <Link href="/high-risk-ecommerce-payment-processing" className={link}>guide to high-risk ecommerce payment processing</Link> goes deeper on online risk factors, chargeback thresholds and how to get approved.
         </p>
         <p>
           {/* Brief linked "free risk assessment" (/assessment); T01 retires assessment CTAs in articles. */}

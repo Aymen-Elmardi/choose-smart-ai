@@ -61,7 +61,6 @@ Key points about the site:
 ## High-risk businesses and chargebacks
 
 - [High-risk ecommerce payment processing](https://chosepayments.com/high-risk-ecommerce-payment-processing): Merchant accounts, reserves, chargeback thresholds and underwriting
-- [Payment processors for high-chargeback businesses](https://chosepayments.com/best-payment-processors-high-chargebacks): How risk tolerance differs between providers
 - [Chargebacks and how to avoid them](https://chosepayments.com/insights/chargebacks-what-they-are-and-how-to-avoid-them): Why they happen and what they cost
 - [Provider appetite index](https://chosepayments.com/insights/provider-appetite-index): Why processors say no and how to get a yes
 

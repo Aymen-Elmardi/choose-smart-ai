@@ -221,7 +221,7 @@ const BestPaymentProcessorEcommerce = () => {
         </p>
         <p className="text-muted-foreground">
           <strong className="text-foreground">Where this breaks down:</strong> running high-ticket goods through a standard flat-rate aggregator without adjusting fraud settings or authentication flows is the single most common way a growing high-ticket store gets its account frozen mid-quarter. See{" "}
-          <Link href="/payment-processors-high-risk-ecommerce" className="text-primary hover:underline">payment processors for high-risk e-commerce businesses</Link>{" "}
+          <Link href="/high-risk-ecommerce-payment-processing" className="text-primary hover:underline">payment processors for high-risk e-commerce businesses</Link>{" "}
           for how to evaluate a specialist fit.
         </p>
       </section>

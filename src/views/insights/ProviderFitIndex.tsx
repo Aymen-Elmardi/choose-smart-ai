@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
-import { RefreshCw, ShoppingCart, UtensilsCrossed, AlertTriangle, Truck, Store, ShieldCheck } from "lucide-react";
+import { RefreshCw, UtensilsCrossed, Truck, Store, ShieldCheck } from "lucide-react";
 
 const providerFitArticles = [
   {
@@ -25,18 +25,6 @@ const providerFitArticles = [
     description: "How high-risk merchant accounts, reserves and approval work: 2026 Visa chargeback thresholds, real cost ranges, underwriting and how to get approved.",
     slug: "/high-risk-ecommerce-payment-processing",
     icon: ShieldCheck,
-  },
-  {
-    title: "Payment Processors for High-Risk Ecommerce",
-    description: "High-risk ecommerce needs a specialist processor. Compare providers that accept your industry, offer chargeback protection, and won't freeze your account.",
-    slug: "/payment-processors-high-risk-ecommerce",
-    icon: ShoppingCart,
-  },
-  {
-    title: "Best Payment Processors for High Chargeback Businesses",
-    description: "High chargeback rates don't have to mean rejection. Find payment processors that work with your chargeback ratio and won't freeze your funds.",
-    slug: "/best-payment-processors-high-chargebacks",
-    icon: AlertTriangle,
   },
   {
     title: "MCC 5812 Payment Gateway UK: Best Options for Restaurants",

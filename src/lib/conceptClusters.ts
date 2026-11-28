@@ -332,13 +332,6 @@ export const conceptArticles: ConceptArticle[] = [
 
   // === E-COMMERCE ===
   {
-    slug: "ecommerce/high-risk-to-high-growth",
-    title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
-    shortTitle: "High-Risk eCommerce Guide",
-    concepts: ["risk", "approval", "provider-behaviour"],
-    keywords: ["high risk ecommerce", "ecommerce payment", "high growth", "online business", "ecommerce processor", "high risk merchant"]
-  },
-  {
     slug: "ecommerce/subscription-revenue-recurring-billing",
     title: "Maximizing Subscription Revenue: Payment Success Rates and Risk Management for Recurring Billing",
     shortTitle: "Subscription Payment Success",

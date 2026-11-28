@@ -57,21 +57,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/best-payment-processors-high-chargebacks`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
       url: `${BASE_URL}/high-risk-ecommerce-payment-processing`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/payment-processors-high-risk-ecommerce`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
@@ -752,12 +740,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     // Ecommerce guides
-    {
-      url: `${BASE_URL}/insights/ecommerce/high-risk-to-high-growth`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
     {
       url: `${BASE_URL}/insights/ecommerce/subscription-revenue-recurring-billing`,
       lastModified: new Date(),

@@ -92,19 +92,19 @@ export const featuredInsights: Record<InsightCategory, Insight> = {
     readTime: "7 min read"
   },
   "provider-fit": {
-    title: "Best Payment Processors for High Chargeback Businesses",
-    slug: "best-payment-processors-high-chargebacks",
-    description: "Learn why many processors reject high chargeback merchants, how risk tolerance differs between providers, and how to find the right fit.",
+    title: "High-Risk Ecommerce Payment Processing: How Merchant Accounts, Reserves and Approval Work",
+    slug: "high-risk-ecommerce-payment-processing",
+    description: "What makes ecommerce high risk, 2026 Visa chargeback thresholds, reserves and costs, how underwriting works, and how to get approved and stay stable.",
     category: "provider-fit",
-    readTime: "7 min read"
+    readTime: "14 min read"
   },
   ecommerce: {
-    title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
-    slug: "ecommerce/high-risk-to-high-growth",
+    title: "Beyond the 1%: Navigating Chargeback Thresholds With High Risk Payment Processors",
+    slug: "ecommerce/chargeback-thresholds-high-risk-processors",
     global: true,
-    description: "Learn why ecommerce businesses get labeled high-risk, what processors actually evaluate during underwriting, and how to build a payments strategy that supports growth.",
+    description: "Learn how chargeback thresholds work, why standard processors reject high dispute businesses, and how to find a payment provider that supports your risk profile.",
     category: "ecommerce",
-    readTime: "14 min read",
+    readTime: "11 min read",
     isSubfolder: true
   }
 };
@@ -762,20 +762,6 @@ export const allInsights: Insight[] = [
     readTime: "9 min read"
   },
   {
-    title: "Best Payment Processors for High Chargeback Businesses",
-    slug: "best-payment-processors-high-chargebacks",
-    description: "Learn why many processors reject high chargeback merchants, how risk tolerance differs between providers, and how to find the right fit for your business.",
-    category: "provider-fit",
-    readTime: "7 min read"
-  },
-  {
-    title: "Payment Processors for High-Risk E-commerce Businesses",
-    slug: "payment-processors-high-risk-ecommerce",
-    description: "Learn why high-risk ecommerce struggles with Stripe or Square, which processors tolerate high risk industries, and how risk appetite differs across providers.",
-    category: "provider-fit",
-    readTime: "8 min read"
-  },
-  {
     title: "Choosing the Right Payment Provider for Subscription and SaaS Businesses",
     slug: "payment-provider-subscription-business",
     description: "Learn what subscription and SaaS businesses need from a payment provider, including recurring billing, dunning logic, and fraud exposure.",
@@ -797,15 +783,6 @@ export const allInsights: Insight[] = [
     readTime: "8 min read"
   },
   // E-commerce
-  {
-    title: "From High-Risk to High-Growth: A Strategic Guide to eCommerce Payment Processing",
-    slug: "ecommerce/high-risk-to-high-growth",
-    global: true,
-    description: "Learn why ecommerce businesses get labeled high-risk, what processors actually evaluate during underwriting, and how to build a payments strategy that supports growth.",
-    category: "ecommerce",
-    readTime: "14 min read",
-    isSubfolder: true
-  },
   {
     title: "Maximizing Subscription Revenue: Payment Success Rates and Risk Management for Recurring Billing",
     slug: "ecommerce/subscription-revenue-recurring-billing",

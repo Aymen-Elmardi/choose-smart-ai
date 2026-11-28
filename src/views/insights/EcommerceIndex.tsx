@@ -5,14 +5,14 @@ import Footer from "@/components/Footer";
 import FAQSchema from "@/components/FAQSchema";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import FAQAccordion from "@/components/FAQAccordion";
-import { TrendingUp, Repeat, AlertTriangle } from "lucide-react";
+import { ShieldCheck, Repeat, AlertTriangle } from "lucide-react";
 
 const ecommerceArticles = [
   {
-    title: "From High-Risk to High-Growth: Payment Strategy for Scaling Ecommerce",
-    description: "High-risk labels don't have to hold you back. Learn how to reposition your ecommerce business and access better payment infrastructure as you scale.",
-    slug: "/insights/ecommerce/high-risk-to-high-growth",
-    icon: TrendingUp,
+    title: "High-Risk Ecommerce Payment Processing",
+    description: "How high-risk merchant accounts, reserves and approval work: 2026 Visa chargeback thresholds, real cost ranges, underwriting and how to get approved.",
+    slug: "/high-risk-ecommerce-payment-processing",
+    icon: ShieldCheck,
   },
   {
     title: "Subscription Revenue & Recurring Billing: Payment Infrastructure Guide",

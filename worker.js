@@ -35,6 +35,10 @@ const MERGED_PAGES = {
   '/insights/crisis/hidden-fee-crisis': '/insights/crisis/effective-rate-hidden-fees-credit-card-processing',
   // 2026-11-20: replaced by the new funds on hold article
   '/insights/what-to-do-when-funds-held': '/insights/crisis/funds-on-hold-rolling-reserve-payment-processor',
+  // M2a, M2b and M2c, 2026-11-28: moved into the high-risk ecommerce hub
+  '/payment-processors-high-risk-ecommerce': '/high-risk-ecommerce-payment-processing',
+  '/best-payment-processors-high-chargebacks': '/high-risk-ecommerce-payment-processing',
+  '/insights/ecommerce/high-risk-to-high-growth': '/high-risk-ecommerce-payment-processing',
 }
 
 export default {

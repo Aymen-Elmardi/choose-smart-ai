@@ -171,7 +171,7 @@ What changed:
 - /high-risk-ecommerce-payment-processing: new top-level hub (owner brief), Article + FAQPage JSON-LD in one @graph, rendered in the HTML, plus the usual Breadcrumb JSON-LD. Authors Aymen Elmardi and Madalsa Bhat. Cover image from the owner, in the sitemap. One CTA only (the risk analysis block); the layout's assessment CTA and advisory note are off.
 - /insights and /insights/provider-fit: new listing card (not worth an indexing request).
 Published date: 2026-10-30 (go-live). Update PUBLISHED in src/views/insights/HighRiskEcommercePaymentProcessing.tsx if it merges later.
-No redirects yet. M2a (/payment-processors-high-risk-ecommerce), M2b (/best-payment-processors-high-chargebacks) and M2c (/insights/ecommerce/high-risk-to-high-growth) move here later, one at a time, after "GO M2a", "GO M2b" and "GO M2c", once this page is live and returns 200.
+No redirects yet. M2a (/payment-processors-high-risk-ecommerce), M2b (/best-payment-processors-high-chargebacks) and M2c (/insights/ecommerce/high-risk-to-high-growth) move here later, one at a time, after "GO M2a", "GO M2b" and "GO M2c", once this page is live and returns 200. Done together on 2026-11-28, see M2a, M2b and M2c under Merges.
 
 ### stripe-alternatives (prepared and merged 2026-10-29)
 
@@ -330,6 +330,25 @@ Revert after 2026-10-31: set SEASONAL_LOGO to null in src/lib/brand.ts.
 ## Merges (Section 5)
 
 Gated merges, each shipped on its own from main after the owner's "GO M<id>".
+
+### M2a, M2b and M2c (prepared 2026-11-28)
+
+DEPLOY M2a-M2b-M2c | merged: pending | commit: pending (fill in the merge commit after merge)
+URLs to request indexing (full https URLs, one per line):
+https://chosepayments.com/high-risk-ecommerce-payment-processing
+Redirects added (301):
+https://chosepayments.com/payment-processors-high-risk-ecommerce -> https://chosepayments.com/high-risk-ecommerce-payment-processing
+https://chosepayments.com/best-payment-processors-high-chargebacks -> https://chosepayments.com/high-risk-ecommerce-payment-processing
+https://chosepayments.com/insights/ecommerce/high-risk-to-high-growth -> https://chosepayments.com/high-risk-ecommerce-payment-processing
+What changed:
+- Owner asked for all three in one deploy on 2026-11-28 ("do all of them"), not one at a time. The hub returned 200 before the change.
+- worker.js: three MERGED_PAGES entries, one hop to the hub (checked locally with trailing slash, .html, query string and www). Old page sources stay.
+- No content folded in: the hub (owner brief, 2026-10-30) already covers all three topics. Hub H1, title, meta and copy unchanged.
+- All three old URLs out of both sitemaps (built sitemap now 127 URLs) and out of insightsArticles and conceptClusters. The high-chargebacks line is out of llms.txt.
+- Featured cards on /insights: provider-fit now shows the hub, ecommerce now shows chargeback thresholds.
+- /insights/provider-fit: two old cards removed (the hub card was already there). /insights/ecommerce: high-risk-to-high-growth card replaced by the hub.
+- Links to the old pages now point to the hub: chargeback loss recovery, best processor for ecommerce, best processor for small business (two links merged into one sentence) (not worth an indexing request).
+Watch for 14 days: the hub picking up the three old URLs' queries in Search Console; propose a revert if combined clicks fall more than 25% with stable impressions.
 
 ### M5a (merged 2026-10-20)
 
