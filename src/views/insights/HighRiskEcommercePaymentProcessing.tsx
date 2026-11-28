@@ -7,11 +7,16 @@ import ArticleByline from "@/components/ArticleByline";
 const BASE_URL = "https://chosepayments.com";
 const SLUG = "high-risk-ecommerce-payment-processing";
 const PAGE_URL = `${BASE_URL}/${SLUG}`;
-const HEADLINE = "High-Risk Ecommerce Payment Processing: How Merchant Accounts, Reserves and Approval Work";
+const HEADLINE = "High-Risk Merchant Account: How Approval, Reserves and Costs Work in 2026";
 const DESCRIPTION =
-  "What makes ecommerce high risk, 2026 Visa chargeback thresholds, reserves and costs, how underwriting works, and how to get approved and stay stable.";
+  "What a high risk merchant account is, what it really costs in 2026, how reserves work, and how US businesses get approved without a string of declines.";
 // Go-live date. Update to the merge date if the page ships later than this.
 const PUBLISHED = "2026-10-30";
+// Go-live date of the high-risk merchant account retarget. Update this and
+// UPDATED_LABEL to the merge date if it ships later.
+const MODIFIED = "2026-11-28";
+const UPDATED_LABEL = "November 28, 2026";
+const RESERVE_IMG = "/insights/high-risk-merchant-account-reserve";
 const COVER = `/insights/${SLUG}-cover.jpg`;
 const AUTHORS = "Aymen Elmardi (Payments Expert) and Madalsa Bhat (Growth Expert)";
 
@@ -67,6 +72,16 @@ const faqs = [
     answer:
       "Process cleanly for 6 to 12 months, keep disputes low, hold volume steady and keep records tidy. Then ask your provider for repricing, a lower reserve or a shorter hold, or apply to a standard provider with your processing history as evidence.",
   },
+  {
+    question: "Can I get instant approval for a high-risk merchant account?",
+    answer:
+      "Not in the way the ads suggest. Platforms that approve you instantly review you later, and that review is where high-risk businesses get frozen. A real high-risk merchant account is underwritten first, which often takes a few business days. Be wary of any provider that guarantees approval.",
+  },
+  {
+    question: "How do I choose a high-risk merchant account provider?",
+    answer:
+      "Look past the rate. Ask which bank is the acquirer, how the reserve works and when it ends, how long the contract runs and what it costs to leave, whether they support your category and markets, and what help you get with disputes. Get every answer in writing.",
+  },
 ];
 
 // Listed in the body (not the layout's sources block) so the brief's note can
@@ -100,7 +115,7 @@ const schema = {
       description: DESCRIPTION,
       mainEntityOfPage: { "@type": "WebPage", "@id": PAGE_URL },
       datePublished: PUBLISHED,
-      dateModified: PUBLISHED,
+      dateModified: MODIFIED,
       author: [
         { "@type": "Person", name: "Aymen Elmardi", jobTitle: "Payments Expert" },
         { "@type": "Person", name: "Madalsa Bhat", jobTitle: "Growth Expert" },
@@ -128,14 +143,14 @@ const schema = {
 };
 
 const toc = [
-  ["what-is-high-risk-ecommerce-payment-processing", "What high-risk ecommerce payment processing is"],
+  ["what-is-high-risk-ecommerce-payment-processing", "What a high-risk merchant account is"],
   ["what-makes-an-ecommerce-business-high-risk", "What makes a business high risk"],
   ["which-ecommerce-categories-are-treated-as-high-risk", "Which categories are treated as high risk"],
   ["why-do-stripe-square-and-paypal-reject-or-freeze-high-risk-merchants", "Why Stripe, Square and PayPal reject or freeze merchants"],
   ["what-chargeback-rate-is-too-high-in-2026", "Chargeback thresholds in 2026"],
   ["what-is-the-match-list", "The MATCH list"],
   ["how-does-high-risk-underwriting-work", "How underwriting works"],
-  ["which-type-of-provider-accepts-high-risk-merchants", "Types of providers compared"],
+  ["which-type-of-provider-accepts-high-risk-merchants", "Which high-risk merchant account providers will accept you"],
   ["how-much-does-a-high-risk-merchant-account-cost", "What it costs"],
   ["how-do-you-get-approved-for-a-high-risk-merchant-account", "How to get approved"],
   ["contract-red-flags-to-check-before-you-sign", "Contract red flags"],
@@ -293,7 +308,7 @@ const HighRiskEcommercePaymentProcessing = () => {
         { name: "Home", url: "/" },
         { name: "Insights", url: "/insights" },
         { name: "Provider Fit Guides", url: "/insights/provider-fit" },
-        { name: "High-Risk Ecommerce Payment Processing" },
+        { name: "High-Risk Merchant Account" },
       ]}
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
@@ -304,7 +319,7 @@ const HighRiskEcommercePaymentProcessing = () => {
         <source srcSet={COVER.replace(/\.jpg$/, ".webp")} type="image/webp" />
         <img
           src={COVER}
-          alt="High-risk ecommerce payments: merchant accounts, reserves and approvals explained."
+          alt="High-risk merchant account guide: costs, reserves and approval explained."
           width={1200}
           height={630}
           fetchPriority="high"
@@ -314,10 +329,12 @@ const HighRiskEcommercePaymentProcessing = () => {
 
       <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">{HEADLINE}</h1>
       <ArticleByline />
+      {/* Sits directly under the byline: -mt-8 cancels the byline's bottom margin. */}
+      <p className="-mt-8 mb-8 text-sm text-muted-foreground italic">Updated: {UPDATED_LABEL}</p>
 
       <div className="text-muted-foreground space-y-6">
         <p>
-          <strong className="text-foreground">Quick answer:</strong> High-risk ecommerce payment processing is card acceptance for businesses that banks and card networks expect to generate more chargebacks, fraud or regulatory exposure than average. In practice it means individual underwriting instead of instant approval, higher rates than a standard account, and often a rolling reserve. Approval depends on your category, chargeback history and documents, and most merchants can improve all three.
+          <strong className="text-foreground">Quick answer:</strong> A high-risk merchant account is a card processing account for businesses that banks and card networks expect to generate more chargebacks, fraud or regulatory exposure than average. In practice it means individual underwriting instead of instant approval, higher rates than a standard account, and often a rolling reserve. Approval depends on your category, chargeback history and documents, and most merchants can improve all three.
         </p>
 
         <div className="rounded-lg border border-border p-6">
@@ -346,9 +363,9 @@ const HighRiskEcommercePaymentProcessing = () => {
           <em>How we researched this:</em> card-network figures come from Visa&apos;s published VAMP fact sheet, category restrictions from Stripe&apos;s published Prohibited and Restricted Businesses list (updated 22 September 2026), and cost figures from provider and industry publications, which we flag as ranges rather than benchmarks. Check any number against your acquirer before you rely on it.
         </p>
 
-        <H2 id="what-is-high-risk-ecommerce-payment-processing">What is high-risk ecommerce payment processing?</H2>
+        <H2 id="what-is-high-risk-ecommerce-payment-processing">What is a high-risk merchant account?</H2>
         <p>
-          High-risk ecommerce payment processing is card acceptance set up for merchants whose exposure is above what a standard, automated account will accept.
+          A high-risk merchant account is a card processing account set up for merchants whose exposure is above what a standard, automated account will accept.
         </p>
         <p>
           When you sell online, your payment provider and its acquiring bank are liable if a customer disputes a charge, if an order is never delivered, or if the card was stolen.
@@ -359,6 +376,26 @@ const HighRiskEcommercePaymentProcessing = () => {
         <p>
           A high-risk merchant account is simply the account that results. It is usually offered by a provider that reviews each business individually instead of approving it from a category code. The label is about the provider&apos;s risk, not your integrity. Plenty of honest, fast-growing stores start here.
         </p>
+
+        <h3 className={h3}>Pros and cons of a high-risk merchant account</h3>
+        <p>
+          <strong className="text-foreground">Pros</strong>
+        </p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>You can accept cards in categories that Stripe, Square and PayPal won&apos;t support.</li>
+          <li>Your risk is reviewed before approval, so the terms are agreed up front instead of a freeze arriving later.</li>
+          <li>Volume limits are usually set around your real numbers, which suits fast-growing stores.</li>
+          <li>Many providers give you a named account manager instead of a support form.</li>
+        </ul>
+        <p>
+          <strong className="text-foreground">Cons</strong>
+        </p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Rates are higher than a standard account, with extra monthly fees.</li>
+          <li>A rolling reserve can tie up a meaningful share of your cash for months.</li>
+          <li>Contracts can run longer and carry early termination fees.</li>
+          <li>Approval takes paperwork and time, not a five-minute signup.</li>
+        </ul>
 
         <H2 id="what-makes-an-ecommerce-business-high-risk">What makes an ecommerce business high risk?</H2>
         <p>Underwriters score five things, and you can improve most of them.</p>
@@ -505,7 +542,7 @@ const HighRiskEcommercePaymentProcessing = () => {
           </li>
         </ul>
 
-        <H2 id="which-type-of-provider-accepts-high-risk-merchants">Which type of provider accepts high-risk merchants?</H2>
+        <H2 id="which-type-of-provider-accepts-high-risk-merchants">Which high-risk merchant account providers will accept you?</H2>
         <p>
           Not all providers treat risk the same way. This comparison is qualitative, because pricing and speed vary by provider.
         </p>
@@ -523,8 +560,9 @@ const HighRiskEcommercePaymentProcessing = () => {
         </p>
       </div>
 
-      {/* The article's one call to action (brief: no other CTA in the body and
-          no closing CTA). */}
+      {/* The article's one call-to-action block (brief: no other CTA block in the
+          body and no closing CTA). The 2026-11 retarget added two plain in-body
+          links (/assessment and /contact) further down. */}
       <section className="my-10 rounded-xl p-8 md:p-10" style={{ background: "#0C141D" }}>
         <h3 className="text-2xl font-semibold mb-3" style={{ color: "#F3F5F7" }}>
           Not sure which type fits your business?
@@ -541,6 +579,31 @@ const HighRiskEcommercePaymentProcessing = () => {
       </section>
 
       <div className="text-muted-foreground space-y-6">
+        <h3 className={h3}>How to choose a high-risk merchant account provider</h3>
+        <p>
+          Rates get the attention, but the terms decide whether the account still works in a year. Ask every provider these six questions and get the answers in writing:
+        </p>
+        <ol className="list-decimal pl-6 space-y-2">
+          <li>
+            <strong className="text-foreground">Which bank is the acquirer?</strong> If a broker can&apos;t name the bank that holds your funds, walk away.
+          </li>
+          <li>
+            <strong className="text-foreground">Do you underwrite in-house?</strong> In-house underwriters can explain a decline and tell you what would change it.
+          </li>
+          <li>
+            <strong className="text-foreground">What is the reserve, and when does it end?</strong> Get the percentage, the hold period, any cap, and the conditions for lowering it.
+          </li>
+          <li>
+            <strong className="text-foreground">How long is the contract, and what does it cost to leave?</strong> Twelve months or less with no early termination fee is a fair ask.
+          </li>
+          <li>
+            <strong className="text-foreground">Do you support my category and the countries I sell to?</strong> Check against their written list, not a sales call.
+          </li>
+          <li>
+            <strong className="text-foreground">What help do I get with disputes?</strong> Chargeback alerts and a fast response process protect the account more than a lower rate does.
+          </li>
+        </ol>
+
         <H2 id="how-much-does-a-high-risk-merchant-account-cost">How much does a high-risk merchant account cost?</H2>
         <p>
           Pricing is the part most merchants get wrong, because the headline rate is only one line. These are provider-published ranges from industry sources, not a benchmark, and quotes vary a lot.
@@ -556,6 +619,20 @@ const HighRiskEcommercePaymentProcessing = () => {
         <p>
           If a 10% reserve is held for 180 days, each month adds $5,000 to the reserve, so after six months about $30,000 of your own cash sits with the provider at any time.
         </p>
+        {/* WebP on the page, PNG as fallback. Width and height are set so the
+            layout doesn't shift while it loads. */}
+        <picture>
+          <source srcSet={`${RESERVE_IMG}.webp`} type="image/webp" />
+          <img
+            src={`${RESERVE_IMG}.png`}
+            alt="Bar chart of a 10% rolling reserve on $50,000 in monthly card sales, building from $5,000 in month one to $30,000 held by month six, then staying level as holds and releases even out."
+            width={1600}
+            height={820}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto rounded-lg border border-border"
+          />
+        </picture>
         <p>
           Model your cash flow with the reserve before you compare rates. For how reserves work and what to negotiate, see{" "}
           <Link href="/insights/rolling-vs-fixed-reserve" className={link}>rolling vs fixed reserve</Link>.
@@ -595,6 +672,15 @@ const HighRiskEcommercePaymentProcessing = () => {
           covers what to fix before reapplying.
         </p>
 
+        <h3 className={h3}>Is instant approval real?</h3>
+        <p>
+          Mostly, no. &quot;Instant approval&quot; usually means a platform like Stripe, Square or PayPal has let you start on a shared account and will review you later. For a high-risk business, that later review is where the freezes and held payouts come from. A real high-risk merchant account is underwritten before you go live, which often takes a few business days and longer if documents are missing. Treat any provider that promises guaranteed or instant approval for a high-risk business as a red flag.
+        </p>
+        <p>
+          Not sure which providers will say yes?{" "}
+          <Link href="/assessment" className={link}>Answer five questions and we&apos;ll match you</Link> to the ones that fit your risk profile.
+        </p>
+
         <H2 id="contract-red-flags-to-check-before-you-sign">Contract red flags to check before you sign</H2>
         <ul className="list-disc pl-6 space-y-2">
           <li>Terms longer than 12 months or an early termination fee that is hard to find</li>
@@ -624,6 +710,9 @@ const HighRiskEcommercePaymentProcessing = () => {
             <strong className="text-foreground">Apply to an underwritten or specialist provider with a clear explanation.</strong> Underwriters accept a documented cause better than silence.
           </li>
         </ol>
+        <p>
+          If your funds are held right now, <Link href="/contact" className={link}>write to us</Link> with what happened and we&apos;ll tell you your options.
+        </p>
         <p>
           The full walkthrough is in the{" "}
           <Link href="/insights/crisis/stripe-account-frozen" className={link}>Stripe account frozen action plan</Link>.

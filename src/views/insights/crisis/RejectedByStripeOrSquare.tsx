@@ -151,6 +151,9 @@ const RejectedByStripeOrSquare = () => {
           An email lands in your inbox: your Stripe or Square application has been rejected, or your account has been flagged for closure. The message is usually vague (&quot;risk,&quot; &quot;policy violation,&quot; &quot;unable to support your business&quot;) with no specifics and no appeal path that actually works.
         </p>
         <p>
+          If you&apos;re starting over, our <Link href="/high-risk-ecommerce-payment-processing" className={link}>high-risk merchant account guide</Link> explains costs, reserves and what underwriters look for.
+        </p>
+        <p>
           It feels personal. It isn&apos;t. A rejection from Stripe or Square is a technical mismatch between your business model and an automated underwriting system, not a judgment on whether your business is legitimate. Understanding why that mismatch happens is the first step to actually fixing it, and the fix is rarely &quot;apply again and hope.&quot;
         </p>
 

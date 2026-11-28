@@ -27,6 +27,10 @@ const WhySomeBusinessesNeverApproved = () => {
         <p>
           Some business models carry higher inherent risk. Others lack operational clarity, clear customer flows, or sufficient documentation at the time of application.
         </p>
+
+        <p>
+          Our <Link href="/high-risk-ecommerce-payment-processing" className="text-primary hover:underline">high-risk merchant account guide</Link> walks through underwriting and how to get approved.
+        </p>
         
         <p>
           Approval failures often result from misalignment between the business model and the provider's risk appetite. Applying to the wrong provider repeatedly can actually make approval harder over time. Understanding the <Link href="/stripe-vs-square-vs-paypal-uk" className="text-primary hover:underline">payment provider approval differences</Link> is essential before applying.

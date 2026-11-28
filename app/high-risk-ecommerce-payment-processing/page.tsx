@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import HighRiskEcommercePaymentProcessing from '@/views/insights/HighRiskEcommercePaymentProcessing'
 
-const TITLE = 'High-Risk Ecommerce Merchant Account: How to Get Approved'
+const TITLE = 'High Risk Merchant Account (2026): Costs, Approval, Reserves'
 const DESCRIPTION =
-  'What makes ecommerce high risk, 2026 Visa chargeback thresholds, reserves and costs, how underwriting works, and how to get approved and stay stable.'
+  'What a high risk merchant account is, what it really costs in 2026, how reserves work, and how US businesses get approved without a string of declines.'
 const COVER = '/insights/high-risk-ecommerce-payment-processing-cover.jpg'
 
 export const metadata: Metadata = {
-  // `absolute`: the brand suffix would push the 57-character title past 65.
+  // `absolute`: the brand suffix would push the 60-character title past 65.
   title: { absolute: TITLE },
   description: DESCRIPTION,
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         url: COVER,
         width: 1200,
         height: 630,
-        alt: 'High-risk ecommerce payments: merchant accounts, reserves and approvals explained.',
+        alt: 'High-risk merchant account guide: costs, reserves and approval explained.',
       },
     ],
     title: TITLE,
@@ -35,6 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
     images: [COVER],
   },
 }

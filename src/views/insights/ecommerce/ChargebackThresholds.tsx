@@ -73,6 +73,9 @@ const ChargebackThresholds = () => {
         For many online businesses the moment chargebacks cross one percent something unexpected happens.
       </p>
       <p className="text-lg text-muted-foreground mb-4">
+        For how this affects approval and pricing, see our <Link href="/high-risk-ecommerce-payment-processing" className="text-primary hover:underline">high-risk merchant account guide</Link>.
+      </p>
+      <p className="text-lg text-muted-foreground mb-4">
         Payments suddenly become difficult.
       </p>
       <p className="text-lg text-muted-foreground mb-8">
